@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Entorno
+.env
+.env.local
+*.key
+
+# Datos intermedios (no queremos el caché en git)
+data/cache/
+data/raw/
+!data/.gitkeep
+
+# Sistema
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
