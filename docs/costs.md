@@ -1,30 +1,53 @@
 ---
-layout: page
+layout: default
 title: Costes
 permalink: /costes/
 ---
 
 # Control de costes
 
-*Dashboard generado automáticamente tras cada ejecución del pipeline.*
+*Última actualización: 2026-04-20 06:21 UTC*
 
-## Política
+## Mes en curso
 
-- **Tope mensual:** 5,00 USD (~4,60 €).
-- Si el gasto del mes en curso supera el tope, el pipeline **aborta** antes de llamar a la API y el workflow del lunes falla en rojo.
-- Coste esperado: ~2 USD/mes (~1,85 €). El 90 % de ese gasto es Claude Opus generando el informe del lunes. El resto es Claude Haiku clasificando 15-25 titulares por semana.
+- **Gastado 2026-04:** `$0.6295` USD
+- **Tope mensual:** `$5.00` USD
+- **Consumo:** `12.6%` del tope
 
-## Modelos y tarifas vigentes
+```
+[██░░░░░░░░░░░░░░░░░░] 12.6%
+```
 
-| Modelo | Input (USD/Mtok) | Output (USD/Mtok) | Uso |
-|---|---|---|---|
-| `claude-haiku-4-5` | 1,00 | 5,00 | Clasificación semanal de titulares |
-| `claude-opus-4-7` | 15,00 | 75,00 | Generación del informe semanal |
+## Histórico mensual
 
-## Data
+| Mes | Gasto USD |
+|-----|-----------|
+| 2026-04 | $0.6295 |
+| **TOTAL** | **$0.6295** |
 
-*El histórico real de ejecuciones aparecerá aquí tras el primer `cron` de GitHub Actions. El archivo fuente es [`data/costs.csv`](https://github.com/otundra/ibiza-housing-radar/blob/main/data/costs.csv) (append-only, commiteado en cada run).*
+## Gasto por fase
 
-## Subir o bajar el tope
+| Fase | Gasto USD | % |
+|------|-----------|---|
+| generate | $0.6131 | 97.4% |
+| classify | $0.0164 | 2.6% |
 
-Editar `MONTHLY_BUDGET_USD` en [`src/costs.py`](https://github.com/otundra/ibiza-housing-radar/blob/main/src/costs.py) y hacer push. El siguiente workflow lo aplica automáticamente.
+## Consumo por modelo
+
+| Modelo | Input tokens | Output tokens | Gasto USD |
+|--------|--------------|---------------|-----------|
+| `claude-opus-4-7` | 20,396 | 4,096 | $0.6131 |
+| `claude-haiku-4-5-20251001` | 3,961 | 2,481 | $0.0164 |
+
+## Últimas 20 llamadas
+
+| Fecha | Edición | Fase | Modelo | In | Out | USD |
+|-------|---------|------|--------|-----|-----|-----|
+| 2026-04-20 06:21 | 2026-W17 | generate | `claude-opus-4-7` | 20,396 | 4,096 | $0.6131 |
+| 2026-04-20 06:18 | adhoc | classify | `claude-haiku-4-5-20251001` | 3,961 | 2,481 | $0.0164 |
+
+## Política de costes
+
+Si el gasto mensual supera **$5.00 USD**, el pipeline aborta automáticamente antes de llamar a la API. Para subir el tope, editar `MONTHLY_BUDGET_USD` en [`src/costs.py`](https://github.com/otundra/ibiza-housing-radar/blob/main/src/costs.py).
+
+El sistema prioriza **Claude Haiku** para clasificación (~$0.01 por ejecución) y **Claude Opus** solo para generar el informe final (~$0.50 por ejecución). Coste esperado ≈ **$2/mes**.

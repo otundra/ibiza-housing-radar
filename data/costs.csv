@@ -1,0 +1,3 @@
+ts,edition,stage,model,input_tokens,output_tokens,cache_read_tokens,cache_write_tokens,cost_usd
+2026-04-20T06:18:42+00:00,adhoc,classify,claude-haiku-4-5-20251001,3961,2481,0,0,0.016366
+2026-04-20T06:21:08+00:00,2026-W17,generate,claude-opus-4-7,20396,4096,0,0,0.61314
