@@ -4,17 +4,19 @@ Lee el histórico de propuestas documentadas y selecciona 3-5 candidatas
 para que el generador elija 1-2 para la sección "Rescate" de la edición
 semanal.
 
-Criterios duros para candidato a rescate:
+Criterios duros para candidato a rescate (determinista, sin LLM):
 1. Estado ∈ {propuesta, en_movimiento, en_debate, aprobada}. No implementadas ni
    descartadas.
 2. NO mencionada en ninguna de las últimas 4 ediciones.
 3. Edad entre 2 y 16 semanas.
-4. Haiku confirma vigencia (opcional, solo para las top candidatas).
 
 Ranking:
-- Frescura del actor (menos aparición reciente → mejor).
-- Recencia (ni muy reciente ni muy antigua).
 - Estado (propuesta > en_debate > aprobada > en_movimiento como tiebreak editorial).
+- Recencia (bonus para edad ~8 semanas, el punto medio de la ventana).
+
+Nota de diseño: en iteraciones futuras se puede añadir verificación de vigencia
+con Haiku (¿la propuesta sigue viva según cobertura posterior?), pero por ahora
+el rescate es puramente basado en reglas para ser 100% determinista y auditable.
 """
 from __future__ import annotations
 

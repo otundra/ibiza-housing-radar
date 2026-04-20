@@ -77,7 +77,7 @@
 
 1. **Abrir la web** → <https://otundra.github.io/ibiza-housing-radar/>
 2. **Leer la W17 entera** → es el primer informe 100% generado por el pipeline. Si te sabe bien, el sistema funciona. Si hay frases raras, dime qué y retoco el system prompt del generador.
-3. **Revisar costes** → abre `private/costs.md` en tu clon local o en GitHub. Debe estar bien por debajo del tope blando (8 €).
+3. **Revisar costes** → abre `private/costs.md` en tu clon local o en GitHub. Debe estar bien por debajo del tope blando (12 €).
 
 ### Recomendable (15 min)
 
@@ -132,7 +132,7 @@ El roadmap de trabajo activo vive ahora en [`ROADMAP.md`](ROADMAP.md) bajo el pi
 
 **Bloqueante antes de arrancar Fase 0:** confirmar las 16 decisiones en [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) (reescritura W16-W17, dominio propio, fecha relanzamiento, autoría, distribución, etc.).
 
-**Fase 0 incluye:** pipeline nuevo (A), 15+ páginas web (B), contenido retroactivo 4 ediciones (C), SEO masivo (D), analítica (E), distribución newsletter + bots (F), utilidad pública `/recursos` (G), legal y transparencia (H). Coste API estimado ~5,85 €/mes dentro del tope blando.
+**Fase 0 incluye:** pipeline nuevo (A **cerrado 2026-04-20**), 15+ páginas web (B pendiente), contenido retroactivo 8 ediciones (C pendiente), SEO masivo (D), analítica (E), distribución newsletter (F), utilidad pública diferida (G), legal y transparencia (H). Coste API proyectado ~6-7 €/mes dentro del tope blando 12 €.
 
 ## 🐛 Si algo falla
 

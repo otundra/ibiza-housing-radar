@@ -324,19 +324,19 @@ Se escribe a `private/balance.md` (consulta del editor) y se sirve en `/balance`
 
 Tras el [benchmark comparativo](ESTUDIO-3-MODELOS.md) sobre 17 items del dataset v1 con gold auto (Opus thinking + Sonnet validador), el editor eligió **Opción C** (Haiku como base en extracción, con validador Sonnet y fallback Opus en caso de disputa).
 
-| Tarea / módulo | Modelo principal | Validación / fallback |
-|---|---|---|
-| `classify.py` (is_housing + actor + lever + proposal_type) | Haiku 4.5 | — |
-| `extract.py` (ficha estructurada de propuesta) | **Haiku 4.5** | Sonnet 4.6 valida; Opus 4.7 reintenta si discrepancia |
-| `verify.py` — URLs, trazabilidad, verbos prohibidos | sin LLM | — |
-| `verify.py` — fact-check precedentes externos (si los hay) | Haiku 4.5 | — |
-| `rescue.py` (vigencia propuestas previas) | Haiku 4.5 | — |
-| `balance.py` (reparto de actores) | sin LLM | — |
-| `generate.py` (composición editorial semanal) | Opus 4.7 + prompt caching | — |
-| `self_review.py` (autoevaluación semanal) | Sonnet 4.6 | — |
-| `quarterly_audit.py` (auditoría trimestral) | Opus 4.7 | — |
-| `model_rebench.py` (re-benchmark mensual) | Mixto (reevalúa los 3) | — |
-| `generate_gold.py` (cada rebench) | Opus 4.7 thinking + Sonnet 4.6 | — |
+| Tarea / módulo | Modelo principal | Validación / fallback | Estado implementación |
+|---|---|---|---|
+| `classify.py` (is_housing + actor + lever + proposal_type) | Haiku 4.5 | — | ✅ implementado |
+| `extract.py` (ficha estructurada de propuesta) | **Haiku 4.5** | Sonnet 4.6 valida; Opus 4.7 reintenta si discrepancia | ✅ implementado |
+| `verify.py` — URLs, trazabilidad, verbos prohibidos | sin LLM | — | ✅ implementado |
+| `verify.py` — fact-check precedentes externos (si los hay) | Haiku 4.5 | — | ⏸ pendiente (no hay precedentes externos en el modelo documental actual; el pipeline solo reproduce los que ya trae la noticia) |
+| `rescue.py` (selección de propuestas previas) | sin LLM (puramente reglas) | — | ✅ implementado (sin Haiku por ahora; añadible en iteración futura) |
+| `balance.py` (reparto de actores) | sin LLM | — | ✅ implementado |
+| `generate.py` (composición editorial semanal) | Opus 4.7 + prompt caching | — | ✅ implementado |
+| `self_review.py` (autoevaluación semanal) | Sonnet 4.6 | — | ✅ implementado |
+| `quarterly_audit.py` (auditoría trimestral) | Opus 4.7 | — | ⏸ **pendiente** (tarea A13 ROADMAP) |
+| `model_rebench.py` (re-benchmark mensual) | Mixto (reevalúa los 3) | — | ⏸ **pendiente** (tarea A14 ROADMAP) |
+| `generate_gold.py` (cada rebench) | Opus 4.7 thinking + Sonnet 4.6 | — | ✅ implementado (en `scripts/`, no en `src/`; solo se ejecuta desde el benchmark) |
 
 ### Por qué esta distribución
 

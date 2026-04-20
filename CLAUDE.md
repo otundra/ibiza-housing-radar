@@ -92,7 +92,7 @@ gh workflow run validate-key.yml
 
 4. **Commit-back desde Actions.** El workflow commitea la edición generada al mismo repo. Permite ver el histórico completo en GitHub sin servidor adicional.
 
-5. **Topes de presupuesto en euros + filosofía no-cortar-editorial.** Sistema de capas en `src/costs.py`: blando (`MONTHLY_SOFT_CAP_EUR = 8`) solo avisa por Telegram y sigue publicando; duro (`MONTHLY_HARD_CAP_EUR = 20`) corta para proteger contra runaway (bugs, bucles). No se pierde editorial por sobrecoste salvo desastre real. Alertas vía `src/notify.py` (Telegram con fallback a issue GitHub).
+5. **Topes de presupuesto en euros + filosofía no-cortar-editorial.** Sistema de capas en `src/costs.py` (actualizado 2026-04-20 para pivote documental): blando `MONTHLY_SOFT_CAP_EUR = 12` solo avisa por Telegram y sigue publicando; duro `MONTHLY_HARD_CAP_EUR = 20` corta para proteger contra runaway (bugs, bucles). Capas: verde <6, amarilla 6-9, naranja 9-12, roja blanda 12-20, roja dura >20. No se pierde editorial por sobrecoste salvo desastre real. Alertas vía `src/notify.py` (Telegram con fallback a issue GitHub **solo en Actions**, no en ejecución local salvo level=critical).
 
 6. **Modelo por fase.** Haiku para filtrar (coste marginal), Opus solo para la pieza final donde la calidad editorial sí importa. No mezclar.
 

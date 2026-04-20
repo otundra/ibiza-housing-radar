@@ -4,6 +4,8 @@ title: Acerca
 permalink: /acerca/
 ---
 
+> ⚠️ **Esta página refleja el modelo antiguo del proyecto.** Desde 2026-04-20 está en marcha un pivote a "observatorio documental": el LLM no genera propuestas propias; documenta las que actores con nombre formulan cada semana. La reescritura de esta página forma parte del Bloque B del [ROADMAP](../../ROADMAP.md). Valores actualizados: coste proyectado ~6-7 €/mes, tope blando 12 €/mes, tope duro 20 €/mes.
+
 ## Qué es esto
 
 **Ibiza Housing Radar** es un observatorio automatizado sobre la crisis de vivienda en Ibiza, con foco en los trabajadores de temporada que cada año se ven empujados a caravanas, sofás compartidos o a renunciar a la isla directamente.
