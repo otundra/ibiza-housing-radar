@@ -22,6 +22,14 @@ kramdown:
 
 permalink: /:path/
 
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+feed:
+  path: feed.xml
+
 # Ordena ediciones por slug descendente (los nombres ya son YYYY-wWW)
 collections:
   editions:
