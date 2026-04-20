@@ -320,6 +320,82 @@ Se escribe a `private/balance.md` (consulta del editor) y se sirve en `/balance`
 
 ---
 
+## Reparto de modelos — decisión 2026-04-20
+
+Tras el [benchmark comparativo](ESTUDIO-3-MODELOS.md) sobre 17 items del dataset v1 con gold auto (Opus thinking + Sonnet validador), el editor eligió **Opción C** (Haiku como base en extracción, con validador Sonnet y fallback Opus en caso de disputa).
+
+| Tarea / módulo | Modelo principal | Validación / fallback |
+|---|---|---|
+| `classify.py` (is_housing + actor + lever + proposal_type) | Haiku 4.5 | — |
+| `extract.py` (ficha estructurada de propuesta) | **Haiku 4.5** | Sonnet 4.6 valida; Opus 4.7 reintenta si discrepancia |
+| `verify.py` — URLs, trazabilidad, verbos prohibidos | sin LLM | — |
+| `verify.py` — fact-check precedentes externos (si los hay) | Haiku 4.5 | — |
+| `rescue.py` (vigencia propuestas previas) | Haiku 4.5 | — |
+| `balance.py` (reparto de actores) | sin LLM | — |
+| `generate.py` (composición editorial semanal) | Opus 4.7 + prompt caching | — |
+| `self_review.py` (autoevaluación semanal) | Sonnet 4.6 | — |
+| `quarterly_audit.py` (auditoría trimestral) | Opus 4.7 | — |
+| `model_rebench.py` (re-benchmark mensual) | Mixto (reevalúa los 3) | — |
+| `generate_gold.py` (cada rebench) | Opus 4.7 thinking + Sonnet 4.6 | — |
+
+### Por qué esta distribución
+
+El benchmark mostró que Haiku compite o supera a Sonnet/Opus en las 3 tareas del pipeline de entrada (classify, detect, extract) sobre el dataset v1. Pero el dataset tiene solo 4-5 propuestas reales de 17 items; la tarea crítica `extract` está poco estresada. Para mitigar el riesgo de que Haiku alucine en noticias más complejas, se añade validación Sonnet sobre cada extracción no vacía. Si Sonnet detecta inferencias no soportadas por el texto, URL inventada, o actor inferido, se reintenta con Opus.
+
+Opus se mantiene como principal **solo** en composición editorial (pieza final semanal donde la calidad del lenguaje no es negociable) y en auditorías (razonamiento profundo sobre corpus extenso).
+
+### Coste mensual esperado (proyectado)
+
+| Fase | Coste (€/mes) |
+|---|---|
+| classify (Haiku) | ~0,10 |
+| extract base (Haiku) | ~0,07 |
+| extract validación (Sonnet) | ~0,30 |
+| extract fallback disputa (Opus, ocasional) | ~0,50 (tope) |
+| verify (sin LLM) | 0,00 |
+| rescue (Haiku) | ~0,02 |
+| balance (sin LLM) | 0,00 |
+| generate (Opus con caching) | ~1,40 |
+| self_review (Sonnet semanal) | ~0,60 |
+| quarterly_audit (Opus trimestral, promediado) | ~1,50 |
+| model_rebench (mixto mensual) | ~1,00 |
+| generate_gold (cada rebench) | ~0,80 |
+| **Total esperado** | **~6-7 €/mes** |
+
+Dentro del tope blando 12 € con margen. Si extract se dispara a Opus más del 20% del tiempo, el re-benchmark lo detectará y promoverá extract a Sonnet directamente.
+
+### Validación en extract — cómo funciona
+
+```
+items con proposal_type != 'ninguna'
+    ↓
+Haiku extrae ficha estructurada
+    ↓
+Sonnet valida cada ficha contra la noticia original
+    ├─ valid → se mantiene la de Haiku
+    └─ invalid (inferencia, URL inventada, actor no en texto) →
+            Opus reextrae
+            └─ su respuesta reemplaza la de Haiku
+```
+
+Criterios de "invalid" del validador Sonnet:
+
+- URL citada ≠ URL del input.
+- Actor nombrado no aparece literalmente en el texto.
+- Cifra citada no aparece en el texto.
+- Inferencia clara (p.ej., atribuir propuesta a un actor que la noticia no menciona como proponente).
+- Coalición nombrando actores concretos que la noticia solo menciona de forma genérica.
+
+### Cláusula de reevaluación
+
+Este reparto **no es definitivo**. Se revalida en:
+
+1. El **re-benchmark mensual** automático (módulo `model_rebench.py`).
+2. Si tras el primer mes real `/correcciones/` muestra >2 correcciones/edición atribuibles a extracción fallida, promovemos extract a Sonnet como principal.
+3. Si el fallback Opus se dispara en >20% de propuestas, señal de que Haiku no llega; promovemos extract a Sonnet.
+
+---
+
 ## Módulos — detalle
 
 ### `src/ingest.py`

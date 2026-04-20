@@ -228,7 +228,28 @@ Un coste manejable frente al retorno: un 10% de ahorro en el coste base del pipe
 
 ---
 
-## 12. Referencias
+## 12. Decisión final — 2026-04-20
+
+Tras ejecución real del benchmark, el editor eligió **Opción C**: Haiku como base en el pipeline de entrada, con red de seguridad sobre la tarea más sensible.
+
+| Fase | Modelo | Rol |
+|---|---|---|
+| classify + detect | Haiku 4.5 | Filtrado y triaje |
+| **extract** | **Haiku 4.5 → Sonnet 4.6 valida → Opus 4.7 fallback si disputa** | Extracción estructurada con red de seguridad |
+| verify (URLs/verbos) | — | Checks determinísticos |
+| verify (fact-check) | Haiku 4.5 | Solo si hay precedentes externos |
+| rescue | Haiku 4.5 | Vigencia de propuestas previas |
+| generate (editorial) | Opus 4.7 | Composición final semanal |
+| self_review | Sonnet 4.6 | Semanal |
+| quarterly_audit | Opus 4.7 | Trimestral |
+
+Coste mensual proyectado total: **~6-7 €/mes**, dentro del tope blando 12 €.
+
+Detalle del reparto, razonamiento, proyección de costes y cláusula de reevaluación en [ARQUITECTURA.md — sección "Reparto de modelos"](ARQUITECTURA.md#reparto-de-modelos--decisión-2026-04-20).
+
+---
+
+## 13. Referencias
 
 - [`data/bench/dataset_v1.json`](data/bench/dataset_v1.json) — 20 noticias curadas.
 - [`data/bench/gold_standard_v1.json`](data/bench/gold_standard_v1.json) — solución ideal manual.

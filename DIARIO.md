@@ -12,6 +12,25 @@ Reglas:
 
 ---
 
+## 2026-04-20 — Benchmark final + reparto de modelos decidido + classify/extract reescritos
+
+- **Benchmark final sobre gold auto (17 items validados)** — resultados:
+  - classify: los 3 modelos empatan al 94,1%.
+  - detect: los 3 al 94,1%.
+  - extract: Haiku y Sonnet 97,1%, Opus 70,6%.
+  - Coste total benchmark (2º run correcto): 0,59 €.
+- **Hallazgo metodológico**: Opus sin thinking cae en extract porque el gold lo generó Opus CON thinking. Opus+thinking llega a conclusiones más elaboradas que Opus sin thinking, y eso penaliza al Opus "normal" del pipeline. No es que Haiku sea intrínsecamente mejor; es que el benchmark mide "acuerdo con Opus-thinking" y los pequeños coinciden mejor con ese árbitro.
+- **Dataset v1 limitado**: solo 4-5 propuestas reales de 17 items. Acertar "vacío" es tarea fácil. Extract está poco estresado. Conclusión: ampliar dataset con más propuestas complejas para el re-benchmark mensual.
+- **Decisión del editor: opción C (belt and suspenders)** — Haiku como base en las 3 tareas de entrada; Sonnet valida cada extracción no vacía; Opus reextrae si Sonnet marca invalid. Cláusula de reevaluación al primer re-benchmark mensual: si Haiku alucina mucho (correcciones recibidas o fallback Opus >20%), promovemos extract a Sonnet como principal.
+- **Coste mensual proyectado total con reparto final: ~6-7 €/mes** (incluye pipeline operativo + self_review semanal + auditoría trimestral + re-benchmark mensual). Dentro del tope blando 12 €.
+- **Reparto documentado en [`ARQUITECTURA.md`](ARQUITECTURA.md#reparto-de-modelos--decisión-2026-04-20)** con tabla completa, razonamiento, proyección de costes y cláusula de reevaluación.
+- **`src/classify.py` reescrito** — nuevo schema con `proposal_type` (formal|en_movimiento|ninguna) y `proposal_actor_hint`. Integra detect dentro de classify para una sola llamada Haiku. Resiliencia: si Haiku devuelve menos items que el input, sigue con fallback conservador (marca items sin clasificación como no-housing). Prompt caching activado.
+- **`src/extract.py` nuevo** — pipeline de tres pasos Haiku base → Sonnet valida → Opus fallback si disputa. Output incluye metadata por propuesta (`produced_by`, `validator_verdict`, `was_disputed`). Alerta si ratio de disputas >20%. Campos del schema actualizado (coaliciones, state=en_movimiento, statement_verbatim). Principio "cero inferencia" explícito en el prompt.
+- **Coste total del día (pipeline + estudios): ~1,96 €** de los cuales 0,57 € desperdiciados por el error del gold manual (registrado en `private/postmortems.md`).
+- **Pendiente próximo turno**: `src/verify.py` (URLs + trazabilidad + verbos prohibidos), `src/rescue.py`, `src/balance.py`, `src/generate.py` (reescribir con nuevo prompt documental), `src/self_review.py`, adaptar `src/report.py`. Todo bajo el reparto decidido.
+
+---
+
 ## 2026-04-20 — Primer benchmark ejecutado + post-mortem del desajuste gold
 
 - **`generate_gold.py` ejecutado con éxito** — Opus con `thinking.type=adaptive` + `output_config.effort=high` generó gold para 20 items; Sonnet validó 17; 3 discrepancias apartadas. Coste real: 0,80 € (muy por debajo de los 3 € estimados gracias a prompt caching). Discrepancias: n08 (coalición: classify pierde sindicatos por limitación del enum actor), n09 (Opus infirió nombres concretos CAEB/PIMEEF/CCOO/UGT que la noticia solo dice genéricamente — exactamente el tipo de alucinación que el pivote quiere evitar, el sistema lo atrapó), n10 (inconsistencia interna de Opus entre detect y extract). Primer uso real del sistema de gold autogenerado: funcionó como se diseñó.

@@ -84,3 +84,5 @@ ts,edition,stage,model,input_tokens,output_tokens,cache_read_tokens,cache_write_
 2026-04-20T17:48:35+00:00,bench-detect,bench_detect,claude-sonnet-4-6,4026,605,0,0,0.021153
 2026-04-20T17:48:41+00:00,bench-detect,bench_detect,claude-opus-4-7,5064,631,0,0,0.123285
 2026-04-20T17:49:05+00:00,bench-extract,bench_extract,claude-haiku-4-5-20251001,4390,3824,0,0,0.02351
+2026-04-20T17:50:00+00:00,bench-extract,bench_extract,claude-sonnet-4-6,4391,4140,0,0,0.075273
+2026-04-20T17:50:23+00:00,bench-extract,bench_extract,claude-opus-4-7,5526,2009,0,0,0.233565
