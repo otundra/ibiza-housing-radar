@@ -8,41 +8,49 @@ permalink: /balance/
 
 *Última actualización: 2026-04-20. Recalculado automáticamente tras cada edición.*
 
-Total de propuestas documentadas: **3**.
+Total de propuestas documentadas: **4**.
 
-## Últimos 90 días — 3 propuestas
-
-### Por tipo de actor
-
-| Categoría | N | % |
-|---|---|---|
-| otro | 1 | 33.3% |
-| coalicion_institucional | 1 | 33.3% |
-| coalicion_intersectorial | 1 | 33.3% |
-
-### Por palanca
-
-| Categoría | N | % |
-|---|---|---|
-| oferta_vivienda | 2 | 66.7% |
-| enforcement | 1 | 33.3% |
-
-## Últimos 365 días — 3 propuestas
+## Últimos 90 días — 4 propuestas
 
 ### Por tipo de actor
 
 | Categoría | N | % |
 |---|---|---|
-| otro | 1 | 33.3% |
-| coalicion_institucional | 1 | 33.3% |
-| coalicion_intersectorial | 1 | 33.3% |
+| coalicion_institucional | 2 | 50.0% |
+| otro | 1 | 25.0% |
+| coalicion_intersectorial | 1 | 25.0% |
 
 ### Por palanca
 
 | Categoría | N | % |
 |---|---|---|
-| oferta_vivienda | 2 | 66.7% |
-| enforcement | 1 | 33.3% |
+| oferta_vivienda | 3 | 75.0% |
+| enforcement | 1 | 25.0% |
+
+## Últimos 365 días — 4 propuestas
+
+### Por tipo de actor
+
+| Categoría | N | % |
+|---|---|---|
+| coalicion_institucional | 2 | 50.0% |
+| otro | 1 | 25.0% |
+| coalicion_intersectorial | 1 | 25.0% |
+
+### Por palanca
+
+| Categoría | N | % |
+|---|---|---|
+| oferta_vivienda | 3 | 75.0% |
+| enforcement | 1 | 25.0% |
+
+## Alertas metodológicas activas
+
+- coalicion_institucional concentra 50.0% de las citas (>50%).
+
+Si una concentración >50% persiste durante 2 trimestres consecutivos, 
+revisamos los criterios de admisión y las fuentes de ingesta. Ver 
+[política editorial](/politica-editorial/).
 
 ## Metodología
 

@@ -61,5 +61,26 @@
     "id": "2026-w17-005",
     "first_seen": "2026-04-20T18:16:38.850788+00:00",
     "first_seen_edition": "2026-W17"
+  },
+  {
+    "actor": "Consell d'Eivissa, patronales, sindicatos",
+    "actor_type": "coalicion_institucional",
+    "statement_summary": "Consell, patronales y sindicatos respaldan la creación de residencias para trabajadores temporeros.",
+    "statement_verbatim": "Consell, patronales y sindicatos respaldan la creación de residencias para temporeros",
+    "url_source": "https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/",
+    "palanca": "oferta_vivienda",
+    "target_actor": "",
+    "horizon": "corto_plazo",
+    "state": "en_debate",
+    "viability_legal": "no_evaluada",
+    "viability_legal_reason": "",
+    "viability_economic": "no_evaluada",
+    "viability_economic_reason": "",
+    "supporters_cited": [],
+    "opponents_cited": [],
+    "precedents": [],
+    "id": "2026-w17-004",
+    "first_seen": "2026-04-20T18:30:48.917390+00:00",
+    "first_seen_edition": "2026-W17"
   }
 ]
