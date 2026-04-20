@@ -124,8 +124,9 @@ def call(client, model: str, system: str, user: str, max_tokens: int = 8192,
         "messages": [{"role": "user", "content": user}],
     }
     if thinking:
-        # Opus con razonamiento extendido
-        kwargs["thinking"] = {"type": "enabled", "budget_tokens": 6000}
+        # Opus con razonamiento extendido (API actualizada 2026)
+        kwargs["thinking"] = {"type": "adaptive"}
+        kwargs["output_config"] = {"effort": "high"}
         kwargs["max_tokens"] = max(kwargs["max_tokens"], 8000)
     resp = client.messages.create(**kwargs)
     text = "".join(b.text for b in resp.content if b.type == "text").strip()
