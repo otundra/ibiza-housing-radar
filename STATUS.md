@@ -104,13 +104,13 @@ python -m src.report
 
 ## 📋 Plan de mejora
 
-El roadmap vivo vive en [`PLAN.md`](PLAN.md): 4 fases (base, distribución, contenido diferencial, red) + deuda técnica puntual.
+El roadmap vivo vive en [`PLAN.md`](PLAN.md): 4 fases (base, distribución, contenido diferencial, red) + deuda técnica puntual. **Principio económico: 0 € salvo IA** (~2 €/mes de la API ya en marcha). Dominio propio diferido hasta tracción.
 
-**Prioridades próximas 4 semanas** (del PLAN):
+**Prioridades próximas 4 semanas** (del PLAN, todas 0 €):
 
-1. Dominio propio + analítica privacy-friendly (Fase 1).
-2. Newsletter + envío directo a periodistas locales (Fase 2).
-3. Observatorio de precios de habitación scrapeando Idealista/Milanuncios (Fase 3).
+1. Analítica (GoatCounter) + identidad editorial + metodología pública (Fase 1).
+2. Newsletter (Buttondown free) + envío directo a periodistas locales (Fase 2).
+3. Observatorio de precios por agregación de fuentes oficiales + crowd-sourcing ciudadano (Fase 3).
 
 **Deuda técnica recomendada en paralelo:** prompt caching en Opus (~50 % ahorro), resiliencia en `classify.py`, métricas de pipeline, notificación de fallo del cron.
 

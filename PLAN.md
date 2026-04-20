@@ -4,13 +4,19 @@ Estrategia para convertir el proyecto en un observatorio de referencia sobre viv
 
 Última revisión: 2026-04-20.
 
+## Principio económico
+
+**Coste-cero salvo IA.** Único gasto aceptado: llamadas a la API de Anthropic (~2 €/mes, tope duro 5 €/mes en `src/costs.py`). Toda herramienta externa debe tener alternativa 0 € o quedar diferida hasta que el proyecto demuestre tracción.
+
+**Dominio propio diferido.** `radaribiza.org` o similar (~12 €/año) es el único gasto externo que merece la pena pagar, pero se aplaza hasta ver que el proyecto tiene tracción. Mientras tanto se trabaja sobre `otundra.github.io/ibiza-housing-radar`.
+
 ## Diagnóstico
 
 **Lo que funciona.** Pipeline limpio, control de costes sólido, theme profesional, calidad editorial de la W17 alta (propuestas accionables, precedentes verificables, tono directo). La parte técnica está casi terminada.
 
 **El problema real no es técnico, es de impacto.** Un observatorio que nadie lee no cambia nada. Estado actual:
 
-- **0 distribución.** URL `otundra.github.io/ibiza-housing-radar` sin dominio propio. No memorizable ni citable en prensa.
+- **0 distribución.** URL GitHub Pages sin dominio propio. No memorizable ni citable en prensa (aceptado hasta tracción).
 - **0 tracking.** Sin analítica. Decisiones a ciegas.
 - **0 feedback.** Vía de un solo sentido. Nadie puede contactar, corregir o aportar datos.
 - **0 red.** Cáritas, IBAVI, sindicatos y periodistas aparecen en los informes pero no saben que existes.
@@ -24,48 +30,51 @@ Ser referente = que Diario de Ibiza te cite, que un regidor lea tu lunes, que un
 
 ## Fase 1 — Base imprescindible
 
-Sin esto, el resto da igual. Coste one-shot ≈ 20 €. Duración estimada: 2-3 semanas.
+Coste: 0 €. Duración estimada: 2-3 semanas.
 
-1. **Dominio propio.** `radaribiza.org` o similar (~12 €/año). Apuntar a GitHub Pages vía `CNAME`. Marca memorable, citable, permanente.
-2. **Analítica privacy-friendly.** Plausible (~9 €/mes) o Umami self-hosted (0 €). Saber qué ediciones y propuestas se leen.
+1. **Dominio propio → diferido.** Se comprará cuando el proyecto tenga tracción (criterios sugeridos: >20 suscriptores al newsletter o una cita en prensa local). Mientras tanto, URL de GitHub Pages. Pérdida aceptada: imposible candidatarse a Google News, marca menos memorizable.
+2. **Analítica privacy-friendly.** **GoatCounter** (gratis para sitios no comerciales, open-source, sin cookies) o **Cloudflare Web Analytics** (gratis ilimitado si el dominio pasa por CF, aplicable cuando haya dominio propio). Saber qué ediciones y propuestas se leen.
 3. **Identidad editorial.** Página `/quien-edita` con nombre, método, sesgos reconocidos, política de correcciones. Firmar cada edición.
-4. **Contacto + aportes.** Formspree gratis (50 env/mes). Formulario en `/contacto` y `/aportar-caso`. Email `radar@<dominio>`.
+4. **Contacto + aportes.** **Formspree** gratis (50 env/mes) como opción principal; **Formsubmit.co** como fallback si se satura (gratis ilimitado con anti-spam básico). Formulario en `/contacto` y `/aportar-caso`. Email de contacto via alias Gmail hasta que haya dominio.
 5. **Metodología pública.** Página `/metodologia`: cribado con Haiku, redacción con Opus, supervisión humana antes de publicar. Transparencia = credibilidad.
 6. **Licencia Creative Commons (CC-BY)** en el footer. Invita a medios a reproducir citando.
 
 ## Fase 2 — Distribución activa
 
-Coste ≈ 5 €/mes. Duración estimada: 3-4 semanas.
+Coste: 0 €. Duración estimada: 3-4 semanas.
 
-1. **Newsletter.** Buttondown (<100 subs gratis, 9 $/mes después). Envío automático del lunes 10:00 CEST con la edición completa. Captura email en home y al final de cada edición.
+1. **Newsletter.** **Buttondown** (gratis <100 subs) o **Mailchimp** (gratis <500 subs, interfaz más pesada). Envío automático del lunes 10:00 CEST con la edición completa. Captura email en home y al final de cada edición. Cuando se aproxime el límite, reevaluar plan.
 2. **Bot social.** Bluesky + Mastodon (gratis). GitHub Action publica un hilo los lunes con las señales + enlace. **No X**: ecosistema baleárico se ha movido a Bluesky y X obliga a pagar API.
 3. **Envío directo.** Al publicar, email automático a lista curada (15-20 personas): periodistas de vivienda (Diario de Ibiza, Periódico, elDiario.es Baleares, Ara Balears), gabinetes Consell y ayuntamientos, Cáritas, GEN-GOB, sindicatos (CCOO, UGT, PIMEEF). Dos citas = referencia.
-4. **SEO básico.** Meta OpenGraph, schema.org `NewsArticle`, sitemap.xml, robots.txt. Google News verification (requiere dominio ≥30 días + política editorial publicada → por eso la Fase 1 primero).
+4. **SEO básico.** Meta OpenGraph, schema.org `NewsArticle`, sitemap.xml, robots.txt. Google News verification queda bloqueada hasta que haya dominio propio; el resto del SEO sí se puede hacer ya.
 
 ## Fase 3 — Contenido diferencial
 
-Duración estimada: 6-8 semanas. Aquí dejas de ser refrito y te vuelves fuente primaria.
+Coste: 0 €. Duración estimada: 6-8 semanas. Aquí dejas de ser refrito y te vuelves fuente primaria.
 
-1. **Observatorio de precios.** Scraping ético (respetando robots.txt y rate-limit) de Idealista y Milanuncios filtrado por "habitación Ibiza". Guardar precio medio/mediana semanal en CSV. En 3 meses tienes serie temporal que nadie más tiene. Datos agregados públicos, sin reproducir anuncios individuales. Consulta legal previa (~80 €).
+1. **Observatorio de precios (ruta 0 €).** Dos vías complementarias, ninguna requiere scraping legalmente gris:
+   - **Agregación de fuentes oficiales.** Citar y visualizar los informes trimestrales que ya publican Idealista, Fotocasa, INE, IBESTAT y Ministerio de Vivienda. Dato sólido, 0 € y 0 riesgo legal.
+   - **Crowd-sourcing ciudadano.** Formulario permanente "¿cuánto pagas por tu habitación?" (Formsubmit o Formspree gratis). En una temporada, dataset propio que ni INE ni IBAVI tienen. Sincera tu sesgo estadístico (muestra autoseleccionada) en la metodología.
+   - **Scraping Idealista/Milanuncios queda descartado** por riesgo legal sin consulta previa (los 80 € de la consulta son el único coste externo que seguiría justificado, pero aplazado hasta tracción).
 2. **Tracker de propuestas.** Cada edición genera 3-5 propuestas. Añadir columna `estado` (propuesta / recogida por medio / debatida en pleno / implementada / descartada). Página `/propuestas` con tabla filtrable. Convierte el informe en sistema de rendición de cuentas.
-3. **BOIB watcher.** Scraping del BOIB diario filtrado por keywords (IBAVI, vivienda, alquiler, turístico). Alerta en la siguiente edición de normativa nueva. Alto valor, baja competencia.
+3. **BOIB watcher.** Scraping del BOIB diario filtrado por keywords (IBAVI, vivienda, alquiler, turístico). Alerta en la siguiente edición de normativa nueva. Alto valor, baja competencia. BOIB es publicación oficial pública, sin problema legal.
 4. **Serie multi-semana.** Tag "Temporada 2026" agrupando ediciones mayo-octubre. Al cierre del verano, edición especial "Balance temporada": qué propusimos, qué pasó.
-5. **Idioma.** Versión CA automatizada (Claude traduce, coste marginal) y resumen EN de 200 palabras por edición para temporeros internacionales. No traducir todo, solo resumen + propuestas.
+5. **Idioma.** Versión CA automatizada (Claude traduce, coste marginal IA) y resumen EN de 200 palabras por edición para temporeros internacionales. No traducir todo, solo resumen + propuestas.
 
 ## Fase 4 — Red y escala (opcional)
 
-Duración estimada: 3-6 meses.
+Coste: 0 €. Duración estimada: 3-6 meses.
 
 1. **Consejo editorial honorífico.** 3-5 personas con credibilidad local (académico UIB, trabajador social de Cáritas, periodista senior, sindicalista). No pagan, no deciden contenido: prestan nombre y revisan una vez al trimestre. Multiplica credibilidad.
-2. **Datos ciudadanos.** Formulario permanente para que temporeros reporten anonimizados precio/condiciones de su habitación. En 1 temporada, dataset que ni INE ni IBAVI tienen.
+2. **Datos ciudadanos.** Formulario permanente para que temporeros reporten anonimizados precio/condiciones de su habitación. Mismo formulario que el del Observatorio de precios, se retroalimenta.
 3. **Cobertura pitiusa.** Extender a Formentera. Mismo pipeline, fuentes adicionales.
-4. **Eventos anuales.** Mesa redonda presencial en octubre cerrando temporada. Convierte proyecto digital en actor físico.
+4. **Evento anual de cierre de temporada.** Mesa redonda presencial en octubre, **co-organizada** con entidad local (UIB Ibiza, Cáritas, Ateneu, IBAVI o sindicatos): ellos ponen sala, tú pones contenido. Alternativa 100 % online (Meet/Jitsi) si no cuaja. Convierte proyecto digital en actor físico a coste 0.
 
 ---
 
 ## Mejoras técnicas puntuales
 
-Sin relación con la estrategia pero deuda fácil. 1-2 días total.
+Sin relación con la estrategia pero deuda fácil. 1-2 días total. Todas 0 €.
 
 - **Prompt caching en Opus** (`generate.py`): añadir `cache_control={"type": "ephemeral"}` al SYSTEM. Ahorro ~50 % del coste Opus (~1 €/mes). ROI inmediato.
 - **Resiliencia en `classify.py`**: si Haiku devuelve menos items que el input, loguear y continuar con los válidos en vez de abortar.
@@ -77,11 +86,24 @@ Sin relación con la estrategia pero deuda fácil. 1-2 días total.
 
 ## Prioridades honestas (próximas 4 semanas)
 
-Solo 3 cosas. El resto es deseable pero no crítico.
+Solo 3 cosas. Todas 0 €. El resto es deseable pero no crítico.
 
-1. **Dominio propio + analítica** (Fase 1.1 + 1.2). Sin esto, no hay métrica de nada.
+1. **Analítica (GoatCounter) + identidad editorial + metodología pública** (Fase 1.2, 1.3, 1.5). Desbloquea medición y credibilidad sin depender de nada externo.
 2. **Newsletter + envío directo a periodistas** (Fase 2.1 + 2.3). La única vía realista a que te citen.
-3. **Observatorio de precios** (Fase 3.1). Lo único que te hace irremplazable.
+3. **Observatorio de precios por agregación + crowd-sourcing** (Fase 3.1). Lo único que te hace irremplazable; el formulario de precios se reutiliza en la Fase 4.2.
+
+---
+
+## Criterios para desbloquear gasto futuro
+
+Cuando se cumpla al menos **uno** de estos criterios, revisar y considerar comprar dominio propio:
+
+- >20 suscriptores reales al newsletter.
+- 1 cita en prensa local (Diario de Ibiza, Periódico, elDiario.es Baleares, Ara Balears, etc.).
+- 1 regidor, técnico municipal o sindicalista que se reconozca como lector habitual.
+- 3 meses consecutivos con >200 lectores únicos mensuales según analítica.
+
+Hasta entonces, GitHub Pages free tier.
 
 ---
 
@@ -92,14 +114,15 @@ Solo 3 cosas. El resto es deseable pero no crítico.
 - **Monetización en 2026.** Matar credibilidad por 20 €/mes de publicidad es mal trade. Mantén gratis y CC-BY al menos el primer año.
 - **App nativa.** Sobre-ingeniería. Web responsive + newsletter cubre el 95 % del uso.
 - **Ampliar a toda Baleares.** Diluye foco. Ibiza + Formentera primero; Mallorca/Menorca solo si la marca aguanta.
+- **Scraping de Idealista/Milanuncios** sin consulta legal previa. Sustituido por agregación de informes oficiales + crowd-sourcing.
 
 ---
 
 ## Riesgos reales
 
-1. **Legal (scraping Idealista).** Operar con datos agregados, sin reproducir anuncios. Consulta de 1 h con abogado antes de lanzar el observatorio de precios (~80 €).
-2. **Reputacional.** Una propuesta de Opus con cifra mal estimada erosiona credibilidad. Mitigación: página `/correcciones` pública + revisión humana obligatoria antes del commit del lunes.
-3. **Sesgo IA.** Opus tiende a propuestas "progresistas". Mitigación: sesgo reconocido en `/metodologia` + consejo editorial mixto (Fase 4.1).
+1. **Reputacional.** Una propuesta de Opus con cifra mal estimada erosiona credibilidad. Mitigación: página `/correcciones` pública + revisión humana obligatoria antes del commit del lunes.
+2. **Sesgo IA.** Opus tiende a propuestas "progresistas". Mitigación: sesgo reconocido en `/metodologia` + consejo editorial mixto (Fase 4.1).
+3. **Sesgo muestral del crowd-sourcing.** Los que responden son autoseleccionados (probablemente los que pagan más o están peor). Mitigación: avisarlo explícitamente y triangular con fuentes oficiales.
 4. **Fatiga editor.** Revisar cada lunes cuesta ~30 min reales. Diseñar el proceso para aguantar sin Raúl 2 semanas al año.
 
 ---
@@ -110,17 +133,17 @@ Al cerrar cada punto, actualizar [`DIARIO.md`](DIARIO.md) con la entrada corresp
 
 | Fase | Punto | Estado |
 |---|---|---|
-| 1 | Dominio propio | pendiente |
-| 1 | Analítica | pendiente |
+| 1 | Dominio propio | diferido (hasta tracción) |
+| 1 | Analítica (GoatCounter) | pendiente |
 | 1 | Identidad editorial | pendiente |
-| 1 | Contacto + aportes | pendiente |
+| 1 | Contacto + aportes (Formspree) | pendiente |
 | 1 | Metodología pública | pendiente |
 | 1 | Licencia CC-BY | pendiente |
-| 2 | Newsletter | pendiente |
-| 2 | Bot social | pendiente |
+| 2 | Newsletter (Buttondown free) | pendiente |
+| 2 | Bot social (Bluesky + Mastodon) | pendiente |
 | 2 | Envío directo a periodistas | pendiente |
 | 2 | SEO básico | pendiente |
-| 3 | Observatorio de precios | pendiente |
+| 3 | Observatorio de precios (agregación + crowd) | pendiente |
 | 3 | Tracker de propuestas | pendiente |
 | 3 | BOIB watcher | pendiente |
 | 3 | Serie multi-semana | pendiente |
@@ -128,7 +151,7 @@ Al cerrar cada punto, actualizar [`DIARIO.md`](DIARIO.md) con la entrada corresp
 | 4 | Consejo editorial | pendiente |
 | 4 | Datos ciudadanos | pendiente |
 | 4 | Cobertura Formentera | pendiente |
-| 4 | Evento anual | pendiente |
+| 4 | Evento anual co-organizado | pendiente |
 | Técnico | Prompt caching Opus | pendiente |
 | Técnico | Resiliencia classify | pendiente |
 | Técnico | Métricas de pipeline | pendiente |
