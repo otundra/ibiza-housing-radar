@@ -36,6 +36,11 @@
 - [ ] **A9.** Prompt caching en Opus (`cache_control`) — ahorro ~50 % del coste Opus.
 - [ ] **A10.** Resiliencia en `classify.py` ante menor cantidad devuelta.
 - [ ] **A11.** Métricas de pipeline en CSV (`n_feeds_ok`, `n_items_raw`, `n_housing`, `n_proposals_extracted`, `n_duplicates`).
+- [ ] **A12.** `src/self_review.py` — autoevaluación semanal con Sonnet tras publicar edición. Alerta Telegram si score < 7 en cualquier dimensión.
+- [ ] **A13.** `src/quarterly_audit.py` — auditoría trimestral con Opus, output público en `/auditoria/YYYY-qN/`.
+- [ ] **A14.** `src/model_rebench.py` — re-benchmark mensual de modelos, 10 noticias nuevas, alerta si ratio calidad/coste cambia >20%.
+- [ ] **A15.** Ampliar `src/costs.py` con: coste por módulo, coste por modelo, cache hit rate, tendencia 8 semanas, estimación semanal/mensual/anual, alertas de desviación.
+- [ ] **A16.** Subir tope blando a 12 € (nueva capa 🟠 naranja 9-12 €) para absorber los 3 niveles de autoevaluación sin cruzar umbral cada mes.
 
 ### Bloque B — Arquitectura web
 
@@ -61,6 +66,10 @@ Detalle en [DISENO-WEB.md](DISENO-WEB.md).
 - [ ] **B16.** `/financiacion` — coste actual transparente (~2-3 €/mes API), sin monetización activa.
 - [ ] **B17.** `/aviso-legal` — aviso mínimo, titular del sitio, contacto.
 - [ ] **B18.** 404 personalizado con links a home y últimas ediciones.
+- [ ] **B27.** `/sin-dato/` — archivo público de propuestas con campos "no evaluada" + formulario para aportar datos con URL obligatoria.
+- [ ] **B28.** `/auditoria/` — índice de auditorías trimestrales públicas.
+- [ ] **B29.** `/costes/` — dashboard público simplificado con coste agregado, capa actual y link al CSV completo.
+- [ ] **B30.** `/estado/` — histórico operacional del pipeline estilo Solar Low-Tech (registro de ejecuciones, retrasos, versiones, contadores globales).
 
 **Mejoras técnicas web:**
 
@@ -127,8 +136,11 @@ Detalle en [SEO.md](SEO.md).
 ### Bloque E — Analítica y métricas
 
 - [ ] **E1.** GoatCounter configurado en todas las páginas (script ligero sin cookies).
-- [ ] **E2.** Panel privado de métricas en `private/metricas.md` generado mensual.
-- [ ] **E3.** Dashboard de costes ya migrado (✅ hecho) — verificar que sigue coherente tras el pivote.
+- [ ] **E2.** Panel privado de métricas en `private/metricas.md` generado mensual con tráfico + corpus editorial + operaciones.
+- [ ] **E3.** Dashboard de costes ampliado con estimaciones, tendencias, alertas de desviación (ver A15).
+- [ ] **E4.** Dashboard público `/costes/` con agregados mensuales.
+- [ ] **E5.** Verificación del sitio en Google Search Console + Bing Webmaster Tools (solapa con D12, D13).
+- [ ] **E6.** Integración Search Console → página `/estadisticas/` con top queries, top páginas, posición media por trimestre.
 
 ### Bloque F — Distribución inicial
 

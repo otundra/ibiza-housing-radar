@@ -41,7 +41,12 @@
 │   ├── /explica/alquiler-turistico-ibiza/
 │   └── /explica/vivienda-temporera/
 ├── /glosario/
-├── /recursos/ (para afectados)
+├── /sin-dato/ (propuestas con campos "no evaluada" + formulario para aportar)
+├── /auditoria/ (auditorías trimestrales con Opus, públicas)
+│   └── /auditoria/2026-qN/
+├── /costes/ (dashboard público simplificado)
+├── /estado/ (histórico operacional del pipeline, Solar Low-Tech style)
+├── /recursos/ (para afectados, Fase 1)
 ├── /como-usarlo/ (guía para primera visita)
 ├── /politica-editorial/
 ├── /metodologia/
@@ -425,6 +430,76 @@ semana, sin generar propuestas propias.
 El contenido está bajo Creative Commons CC-BY 4.0. Puedes reproducir
 citando la fuente con enlace al artículo original.
 ```
+
+### `/sin-dato/` (nuevo — archivo de huecos de información)
+
+**Propósito:** convertir los "no evaluada" / "sin dato público" en oportunidad para que expertos del público aporten.
+
+Contenido:
+
+```
+# Propuestas con datos pendientes
+
+Cuando una propuesta tiene viabilidad jurídica, viabilidad económica, actor
+ejecutor o precedente en "no evaluada" o "sin dato público", aparece aquí.
+Si tienes el dato con fuente verificable, puedes aportarlo.
+
+Política: solo se incorporan aportaciones con URL a fuente primaria. Se
+documenta cada cambio en [/correcciones/].
+
+## Tabla filtrable
+
+Filtros: Campo que falta · Actor · Palanca · Edición · Antigüedad
+
+[Tabla con: propuesta, actor, campo(s) faltante(s), edición, fecha, 
+botón "aportar este dato"]
+```
+
+Cada fila con botón → formulario Formspree pre-rellenado con propuesta ID + campo a completar. El aportante incluye URL + justificación breve.
+
+El editor (o pipeline automatizado con `verify.py`) revisa la aportación:
+
+- URL responde 200 y es fuente primaria.
+- Dato es consistente con otros elementos de la propuesta.
+
+Si OK, se incorpora al registro con `dateModified` y entrada en `/correcciones/` reconociendo al aportante (si quiere).
+
+### `/auditoria/` (nuevo — transparencia radical)
+
+Índice de auditorías trimestrales generadas por `src/quarterly_audit.py`. Cada una como documento público de 800-1.500 palabras con:
+
+- Cumplimiento de las 5 reglas duras en el trimestre.
+- Patrones emergentes detectados.
+- Calidad editorial comparada con trimestre anterior.
+- Recomendaciones concretas para ajustes de prompt, fuentes, criterios.
+- Señales sistemáticamente perdidas.
+
+Contenido generado por Opus. Editor puede añadir nota humana breve al principio de cada auditoría si tiene contexto relevante.
+
+Primera auditoría: Q3 2026 (tras 13 ediciones del pivote).
+
+### `/costes/` (nuevo — dashboard público simplificado)
+
+Versión pública del dashboard privado. Transparencia operacional:
+
+- Coste acumulado del año en curso (€).
+- Coste del mes en curso (€ redondeado a céntimo).
+- Coste medio por edición del último trimestre.
+- Mini-gráfico de evolución (SVG nativo o tabla simple).
+- Capa actual (🟢/🟡/🟠/🔴/🚨).
+- Nota: "Proyecto sostenido por tiempo voluntario del editor + gasto en API Anthropic, costeado por Raúl Serrano. Transparencia: [CSV completo](/data/costs.csv)."
+
+Sin datos por modelo o por tarea (eso queda en privado). Solo agregados razonables.
+
+### `/estado/` (nuevo — histórico operacional Solar Low-Tech)
+
+- Registro histórico de ejecuciones del pipeline (fecha, resultado, tiempo, incidencias).
+- Ediciones publicadas a tiempo vs con retraso.
+- Versiones del sitio (changelog operativo).
+- Número total de: ediciones, actores documentados, propuestas en seguimiento, correcciones recibidas y atendidas.
+- Tiempo medio desde propuesta detectada hasta publicación.
+
+Se alimenta automáticamente de logs del pipeline + frontmatter de ediciones + formularios recibidos.
 
 ### Resto de páginas
 

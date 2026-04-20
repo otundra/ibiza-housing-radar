@@ -49,6 +49,36 @@ Comparado con propuesta original (solo Haiku + Opus, ~5,85 €/mes), el coste su
 
 **Plazo:** ejecutar en la primera semana del arranque de Fase 0, antes de producir el contenido retroactivo para que las 8 ediciones se beneficien del nuevo reparto.
 
+### 6 criterios de evaluación por tarea
+
+Tras reunión con editor 2026-04-20, se amplían a **6 criterios**:
+
+1. **Calidad contra gold standard.** Output comparado con solución ideal sobre dataset curado. Métricas: precisión, recall.
+2. **Coste real en €.** Tokens × precio × ratio de caché.
+3. **Robustez contra alucinación** (crítico para "cero inferencia" del editor). Zero-tolerance en extract y verify.
+4. **Cumplimiento de instrucciones estrictas.** % de respuestas que respetan las 5 reglas duras sin reintento.
+5. **Fiabilidad técnica.** JSON malformado, timeouts, variabilidad entre ejecuciones idénticas.
+6. **Impacto real (correcciones recibidas / edición).** Proxy directo de calidad percibida. Se mide a partir del segundo mes cuando `/correcciones/` acumule datos. Si el modelo barato genera >2× correcciones que el caro, el ahorro se paga en credibilidad. **Esta variable entra en el re-benchmark mensual, no en el benchmark inicial (no hay datos acumulados todavía).**
+
+### Re-benchmark continuo (cada 4 semanas)
+
+Con los 5 criterios iniciales + el 6º cuando haya datos, el benchmark se re-ejecuta cada mes con 10 noticias nuevas. Módulo `src/model_rebench.py` descrito en [ARQUITECTURA.md](ARQUITECTURA.md#srcmodel_rebenchpy-nuevo--re-benchmark-mensual-de-modelos).
+
+Objetivos:
+
+- Detectar modelos nuevos que cambien el ratio calidad/coste.
+- Detectar degradación silenciosa de versiones actuales.
+- Detectar cambios de precios de Anthropic.
+- Validar que el 6º criterio (impacto real) confirma o contradice la decisión original.
+
+Coste: ~1 €/mes. Se convierte en parte del presupuesto operativo permanente.
+
+### Filosofía de afinado continuo
+
+No queremos pagar de más, pero si un modelo superior multiplica el impacto (menos correcciones recibidas, mejor cobertura editorial, menos sesgo), compensa el precio. La variable 6 cuantifica esto.
+
+Regla operativa: **el reparto de modelos se revisa cada trimestre** con datos reales de los 4 re-benchmarks intermedios + el trimestre de auditoría Opus. Si cambia, se aplica al mes siguiente.
+
 ---
 
 ## 2. Dominio propio — estudio previo antes de comprar

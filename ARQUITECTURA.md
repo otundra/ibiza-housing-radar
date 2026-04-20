@@ -414,6 +414,86 @@ Corre tras publicar (en report.py), o independiente para auditoría.
 4. Genera alertas si algún bloque > 50% en ventana 90d durante 2+ meses.
 5. Escribe `private/balance.md` (privado) y `docs/balance.md` (público).
 
+### `src/self_review.py` (nuevo — autoevaluación semanal)
+
+Corre inmediatamente después de publicar la edición. Responsabilidad: verificar que la edición recién publicada cumple los estándares del pivote y alertar si no.
+
+Input: edición recién escrita + 3 ediciones anteriores + las 5 reglas duras literales.
+
+Modelo: **Sonnet 4.6** (no Opus — suficiente aquí y 5× más barato).
+
+Prompt (resumido):
+
+```
+Eres un revisor interno del observatorio. Analiza la edición recién
+publicada contra las 5 reglas duras y devuelve JSON con:
+
+- score_reglas (1-10): cumplimiento de las reglas duras.
+- score_rigor (1-10): calidad factual (cifras trazables, actores con nombre).
+- score_balance (1-10): diversidad de actores en la edición.
+- score_cobertura (1-10): ¿cubre los hechos importantes de la semana?
+- score_claridad (1-10): legibilidad sin perder densidad.
+- warnings: lista de problemas concretos detectados.
+- suggestions: 0-3 ajustes al prompt si detectas patrón degradado.
+```
+
+Output: `private/self-review/YYYY-wWW.md`.
+
+Si cualquier score < 7 → **Telegram urgente con link** al archivo. Editor revisa.
+
+Si todos ≥ 7 → silencio.
+
+Coste estimado: ~0,15 €/edición ≈ 0,60 €/mes.
+
+### `src/quarterly_audit.py` (nuevo — auditoría trimestral)
+
+Corre cada 13 semanas (programado en GitHub Action separado).
+
+Input: 13 ediciones publicadas + 13 self-reviews + balance acumulado + `proposals_history.json`.
+
+Modelo: **Opus 4.7** (única fase donde se justifica razonamiento profundo sobre corpus extenso).
+
+Prompt (resumido):
+
+```
+Eres un auditor externo del observatorio. Revisa las 13 ediciones del
+trimestre. Evalúa:
+
+1. Cumplimiento sostenido de las 5 reglas duras (regresión vs trimestre
+   anterior).
+2. Patrones emergentes (temas recurrentes, actores nuevos, propuestas
+   zombies).
+3. Calidad editorial evolutiva (comparativa con trimestre anterior si
+   existe).
+4. Recomendaciones concretas: ajustar prompt, añadir/retirar fuentes RSS,
+   modificar criterios de admisión.
+5. Señales sistemáticamente perdidas (hechos importantes que el pipeline
+   no detectó pero deberían haberlo sido).
+
+Devuelve un informe en markdown de 800-1500 palabras, tono directo,
+publicable tal cual.
+```
+
+Output: **público** en `docs/_auditorias/YYYY-qN.md`, accesible en `/auditoria/YYYY-qN/`. Transparencia radical: el proyecto se audita a sí mismo en abierto.
+
+Coste estimado: ~3-5 €/trimestre ≈ 1,50 €/mes promediado.
+
+### `src/model_rebench.py` (nuevo — re-benchmark mensual de modelos)
+
+Corre cada 4 semanas (programado).
+
+Dataset: 10 noticias nuevas del mes recién cerrado.
+
+Ejecuta las 6 tareas del pipeline con los 3 modelos contra gold standard generado con Opus + razonamiento extendido.
+
+Output: `private/bench/YYYY-MM.csv` + alerta Telegram si:
+
+- Ratio calidad/coste de algún modelo cambia >20% vs línea base.
+- Aparece un modelo nuevo de Anthropic (detectar manualmente cada 4 semanas).
+- Precios cambian (leer desde API si exponen endpoint, o chequeo manual).
+
+Coste estimado: ~1 €/mes.
+
 ### `src/report.py` (adaptado)
 
 Orquestador:
@@ -465,17 +545,32 @@ Pasos:
 
 ---
 
-## Coste API estimado bajo el nuevo pipeline
+## Coste API estimado bajo el nuevo pipeline (con los 3 niveles de autoevaluación)
 
 | Fase | Modelo | Coste/edición (€) |
 |---|---|---|
 | Clasificación | Haiku | 0,015 |
-| Extracción de propuestas | Haiku | 0,02 |
+| Detección de propuestas | Haiku | 0,010 |
+| Extracción estructurada | Sonnet | 0,18 |
 | Rescate (verificación de vigencia) | Haiku | 0,005 |
+| Fact-check de precedentes | Sonnet | 0,08 |
 | Generación | Opus 4.7 (con prompt caching) | 1,40 |
-| Verificación (fact-check) | Haiku | 0,02 |
-| Balance (sin LLM) | — | 0 |
-| **Total/edición** | | **~1,46 €** |
-| **Total/mes (4 ediciones)** | | **~5,85 €** |
+| Verificación técnica (URLs, verbos) | — (no LLM) | 0 |
+| Self-review semanal | Sonnet | 0,15 |
+| **Total/edición** | | **~1,84 €** |
+| **Total/mes (4 ediciones de operación)** | | **~7,36 €** |
+| Auditoría trimestral (promedio/mes) | Opus | 1,50 |
+| Re-benchmark de modelos (mes) | Mixto | 1,00 |
+| **Total mensual proyectado** | | **~9,86 €** |
 
-El coste sube respecto al actual (~2 €/mes) pero queda por debajo del tope blando 8 € y muy lejos del duro 20 €. Cuando se active trilingüe, subirá a ~8-9 €/mes, rozando el blando. Se revisará en ese momento.
+**Cruce de tope blando:** el nuevo coste proyectado (~9,86 €/mes) cruza el tope blando actual de 8 €. Decisión derivada (pendiente de confirmar): **subir tope blando a 12 €** manteniendo la misma filosofía ("avisa pero publica"). Nuevo sistema de capas propuesto:
+
+| Capa | Umbral | Acción |
+|---|---|---|
+| 🟢 Verde | < 6 € | Silencio |
+| 🟡 Amarilla | 6-9 € | Telegram FYI |
+| 🟠 Naranja | 9-12 € | Telegram atención |
+| 🔴 Roja blanda | 12-20 € | Telegram urgente, pipeline sigue publicando |
+| 🚨 Roja dura | > 20 € | Corte, alerta crítica (protección runaway) |
+
+Cuando se active trilingüe (Fase 4 diferida), subirá a ~13-14 €/mes cruzando la capa naranja. Revisar tope duro en ese momento.
