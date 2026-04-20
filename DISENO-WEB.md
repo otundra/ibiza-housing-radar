@@ -547,6 +547,111 @@ Prioridades:
 
 ---
 
+## Inspiración editorial — Solar Low-Tech Magazine
+
+El editor señala [solar.lowtechmagazine.com](https://solar.lowtechmagazine.com/) como referencia de aproximación ética y visual. Se importan elementos concretos sin romper la identidad actual (terracota + crema editorial).
+
+### Qué importamos
+
+**1. Indicadores de transparencia operacional en footer (o barra fija inferior).**
+
+Solar Low-Tech muestra el % de batería del servidor y el estado energético. Nosotros mostramos:
+
+- Coste API del mes en curso: `0,XX €`.
+- Capa de alerta actual: `🟢 verde` / `🟡 amarilla` / etc.
+- Última edición publicada: `hace N días`.
+- Estado del pipeline: `✅ OK última ejecución` / `⚠️ con avisos` / `🚨 fallo`.
+- Ediciones publicadas: `N`.
+- Actores documentados: `M`.
+- Propuestas en seguimiento: `K`.
+
+Formato monospace, actualizado automáticamente por script tras cada ejecución.
+
+**2. Tipografía monospace para datos.**
+
+Ya usamos JetBrains Mono. Darle más peso:
+
+- Cifras, URLs, fechas técnicas, nombres de archivos, todo en mono.
+- Fichas de propuesta: campos técnicos (estado, horizonte, viabilidad) en mono.
+- Tabla de "Mapa de posiciones": columna Fuente en mono.
+
+**3. Notas al margen (estilo Edward Tufte / libro académico).**
+
+En ediciones largas y páginas `/explica/`, notas al margen con:
+
+- Aclaraciones de términos técnicos.
+- Referencias cruzadas a otras ediciones.
+- Contexto histórico relevante.
+
+Implementación CSS: `<aside class="margin-note">` absolutamente posicionado a la derecha en desktop (≥1024 px), plegado en `<details>` desplegable en mobile.
+
+**4. Dithering 1-bit en imágenes OG (opcional, fase 2).**
+
+Solar Low-Tech dithera todas sus imágenes a blanco y negro con patrón. Estéticamente muy distintivo y pesaje mínimo (10-30 kB vs 100-500 kB).
+
+Nosotros:
+
+- OG images de ediciones: dithering sobre paleta terracota + crema (no puro b/n), mantiene identidad.
+- Genera el script de OG images (ver [SEO.md](SEO.md)) con capa de dithering Floyd-Steinberg antes de exportar PNG.
+- Decisión final tras ver un prototipo (fase 2 de diseño, no bloquea Fase 0).
+
+**5. Manifiesto visible en footer.**
+
+Bloque estable en footer con texto corto:
+
+> **Ibiza Housing Radar es un observatorio documental.** No genera propuestas propias. Documenta las que actores con nombre formulan cada semana, con fuente verificable. 5 reglas duras en [/politica-editorial/]. Balance público en [/balance/]. Coste de funcionamiento: 0,XX € este mes.
+
+Transparencia = credibilidad.
+
+**6. Rechazo radical de JS innecesario.**
+
+Ya lo hacemos; reforzar y declarar:
+
+- Sin frameworks client-side.
+- Sin trackers de terceros (GoatCounter es self-hosted sin cookies).
+- Sin webfonts pesadas (las actuales son las estrictamente necesarias).
+- Toda página legible y funcional sin JS activado.
+- Menú hamburguesa resuelto con `<details>` nativo, no JS.
+
+**7. Accesibilidad radical.**
+
+Todo contenido accesible:
+
+- Sin JS (ya dicho).
+- Sin cookies (GoatCounter no las usa).
+- Sin necesidad de webfonts (fallback system fonts en caso de bloqueo).
+- Contraste AAA donde se pueda (más exigente que AA).
+- Navegación completa por teclado auditada.
+
+**8. Transparencia histórica — `/estado/`.**
+
+Página dedicada con:
+
+- Registro histórico de fallos del pipeline (cuándo falló, por qué, cómo se resolvió).
+- Coste acumulado por mes.
+- Ediciones publicadas a tiempo vs con retraso.
+- Versiones del sitio (changelog visible).
+
+Más radical que `/correcciones/` (que solo cubre errores editoriales). Cubre también errores operacionales.
+
+### Qué NO importamos
+
+- La paleta amarillo mostaza de Solar Low-Tech. Mantenemos terracota + crema.
+- El layout de 3 columnas fijas. El nuestro es más editorial fluido.
+- El tono de manifiesto ecológico. Nuestro ángulo es social/vivienda, no ambiental.
+- La dependencia estética extrema de monospace (Solar es 100% mono; nosotros mantenemos Instrument Serif para headlines).
+
+### Resumen de qué cambia en Fase 0
+
+- Componente nuevo: indicadores de transparencia en footer (6-8 datos en mono, actualizados).
+- Componente nuevo: notas al margen en ediciones y `/explica/`.
+- Manifiesto editorial visible en footer.
+- Auditoría de accesibilidad más exigente (contraste AAA donde posible).
+- Página `/estado/` con histórico operacional.
+- Posible dithering en OG images (fase 2 estética, tras ver prototipo).
+
+---
+
 ## Performance
 
 Objetivos Core Web Vitals:

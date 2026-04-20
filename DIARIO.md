@@ -12,6 +12,27 @@ Reglas:
 
 ---
 
+## 2026-04-20 — Decisiones del editor sobre Fase 0 del pivote
+
+- **16 decisiones resueltas** por el editor — documento [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) actualizado con cabecera nueva de "decisiones resueltas" y detalle de cada una.
+- **W16-W17 se borran** (no se reescriben). Decisión más drástica que la recomendación inicial: archivo público arranca limpio bajo modelo documental sin residuos del modelo antiguo. Originales conservadas en histórico git pre-merge.
+- **Contenido retroactivo a 2 meses, 8 ediciones (W10-W17)**, cubriendo marzo y abril 2026. Arco narrativo "de planificación pre-temporada al desalojo de asentamientos en vísperas de mayo". Veracidad alta con nota metodológica visible. Coste puntual ~13,52 € puede cruzar el tope blando de abril; asumido. Tiempo humano estimado 10-17 h. Orden de producción sugerido: hacia atrás desde W17 (más fácil con RSS reciente) hasta W10 (mayor búsqueda manual en archivos de diarios). [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) reescrito con el plan completo.
+- **Firma "Raúl S." sin foto ni email directo**, solo formulario. Apunte de pasar a nombre completo + email propio cuando haya dominio.
+- **Dominio propio confirmado, pero con estudio previo** antes de comprar. Apuntado en [`ESTUDIOS-PENDIENTES.md #2`](ESTUDIOS-PENDIENTES.md).
+- **Analítica ambiciosa** — el editor pide algo "muy potente": GoatCounter + Search Console + dashboard público de estadísticas del corpus editorial + transparencia operacional tipo Solar Low-Tech. Apuntado como [`ESTUDIOS-PENDIENTES.md #7`](ESTUDIOS-PENDIENTES.md).
+- **Newsletter de pago valorado y descartado como modelo puro**. Contradice misión, mercado demasiado pequeño, rompe citabilidad, asimetría web/email absurda, complejidad operativa. Recomendación: **modelo híbrido** (gratis base + tier Pro opcional) en Fase 2, no en Fase 0. Detalle y razones en [`ESTUDIOS-PENDIENTES.md #4`](ESTUDIOS-PENDIENTES.md).
+- **Página `/recursos/` sale de Fase 0**, se estudia en Fase 1.
+- **Balance público con prioridad alta** — se convierte en diferenciador principal del proyecto junto con el pivote documental. Se publica desde día 1 y se amplía continuamente con estadísticas del corpus.
+- **Diseño: mantener + inspiración Solar Low-Tech**. Nueva sección en [`DISENO-WEB.md`](DISENO-WEB.md) con 8 elementos a importar: indicadores de transparencia en footer, tipografía mono para datos, notas al margen, posible dithering en OG images, manifiesto visible, rechazo de JS innecesario, accesibilidad radical, página `/estado/` con histórico operacional.
+- **Redes sociales fuera de Fase 0** — se estudian en Fase 1. Se quita Bluesky y Mastodon del Bloque F.
+- **🔴 Estudio urgente: integración de 3 modelos IA** (Haiku + Sonnet + Opus). Reparto por tarea: Haiku para clasificación y vigencia; Sonnet para extracción estructurada y fact-check; Opus para composición y auditorías cualitativas. Coste estimado ~1,69 €/edición, ~6,76 €/mes. Primera semana de Fase 0 antes de contenido retroactivo. Detalle en [`ESTUDIOS-PENDIENTES.md #1`](ESTUDIOS-PENDIENTES.md).
+- **Licencia CC-BY 4.0 confirmada** para dataset de propuestas y contenido editorial.
+- **Fecha de relanzamiento propuesta: lunes 18 de mayo de 2026** — deja 4 semanas desde hoy, 2 semanas de margen sobre inicio de temporada, tiempo para los 3 estudios urgentes. Pendiente de confirmación del editor.
+- **Nuevo documento [`ESTUDIOS-PENDIENTES.md`](ESTUDIOS-PENDIENTES.md)** consolida los 8 estudios pendientes (urgentes + diferidos) con prioridad, plazo y entregable cada uno.
+- **[`ROADMAP.md`](ROADMAP.md) actualizado**: Bloque C a 8 ediciones, Bloque G ajustado (quita `/recursos/`), Bloque F ajustado (quita bots sociales), nuevo Bloque I con 5 estudios/tareas previas bloqueantes antes del lanzamiento.
+
+---
+
 ## 2026-04-20 — Pivote estratégico aprobado: observatorio documental
 
 - **Decisión aprobada por el editor** — tras el estudio crítico del corpus W16-W17, se confirma el pivote de "generador de propuestas" a "observatorio documental". El LLM deja de generar propuestas y pasa a extraer, ordenar y verificar las propuestas reales que los actores con nombre formulan cada semana. Documento fundacional en [`PIVOTE.md`](PIVOTE.md).

@@ -1,10 +1,79 @@
-# Decisiones pendientes del editor antes de arrancar Fase 0
+# Decisiones resueltas — 2026-04-20
 
-**Fecha:** 2026-04-20
+**Estado:** RESUELTAS por el editor el 2026-04-20.
 **Origen:** [PIVOTE.md](PIVOTE.md), [ROADMAP.md](ROADMAP.md).
-**Uso:** lista cerrada de decisiones que requieren sí/no del editor antes de que Claude ejecute el bloque A del ROADMAP. Cada una con opciones y recomendación explícita.
+**Nota:** Los estudios pendientes derivados viven en [`ESTUDIOS-PENDIENTES.md`](ESTUDIOS-PENDIENTES.md).
 
-Responde con número y elección. Ejemplo válido: "1.A, 2.B, 3.A, 4.B, 5.A, 6.A, 7.A, 8.A, 9.B, 10.A, 11.A, 12.A".
+## Resumen rápido de lo decidido
+
+| # | Tema | Decisión |
+|---|---|---|
+| 1 | Ediciones W16-W17 | ❌ **BORRAR** (más drástico que A) |
+| 2 | Contenido retroactivo | ✅ **8 ediciones** (W10-W17, 2 meses) |
+| 3 | Fecha relanzamiento | ⏸ Implícita: "cuando cerremos". Propuesta: lunes 18 may |
+| 4 | Autoría | ✅ "Raúl S." sin email directo, solo formulario. Apuntar pasar a nombre+email más adelante |
+| 5 | Dominio propio | ⏸ Sí, pero **estudio previo** antes de comprar |
+| 6 | Contador visitas | ✅ Sí, desde día 1, con ambición de análisis potente |
+| 7 | Newsletter | ✅ Sí, modelo a definir (inclinación a pago, **valoración: híbrido gratis+Pro opcional en Fase 2**) |
+| 8 | `/recursos/` | ⏸ **Fuera de Fase 0**. Estudio para más adelante |
+| 9 | Balance público | ✅ Sí, desde día 1. **Prioridad alta**, estadísticas potentes |
+| 10 | Diseño visual | ✅ Mantener actual + **importar elementos de [Solar Low-Tech](https://solar.lowtechmagazine.com/)** |
+| 11 | SEO subdominio | (resuelto por #5: dominio propio cuando cerremos) |
+| 12 | Redes sociales | ⏸ **Apuntar para más adelante** |
+| 13 | Email propio | ⏸ Cuando haya nombre del dominio |
+| 14 | Privacidad editor | ✅ "Raúl S." sin foto |
+| 15 | Modelos IA | ⏸ **Estudio urgente**: integrar los 3 modelos (Haiku + Sonnet + Opus) y ajustar costes |
+| 16 | Licencia dataset | ✅ CC-BY 4.0 |
+
+## Detalle de las decisiones
+
+### 1. Ediciones W16-W17 → BORRAR
+El editor opta por la opción más drástica: **eliminar las ediciones actuales** en lugar de reescribirlas. Motivo: "para no contaminar". Coherencia completa del archivo bajo el modelo nuevo, sin residuos del modelo antiguo. Las originales quedan en el histórico git del branch `main` pre-merge si hacen falta para auditoría.
+
+### 2. Contenido retroactivo → 8 ediciones
+Ampliado de 4 a 8 ediciones: W10-W17, cubriendo marzo y abril 2026. El editor pide que sea real (fuentes reales, URLs reales). Valoración publicada: sentido alto, veracidad alta con nota metodológica, esfuerzo manual mayor (+4-8 h), coste puntual ~12 € (cruza tope blando ocasionalmente pero no corta). Ver detalle en [CONTENIDO-RETROACTIVO.md](CONTENIDO-RETROACTIVO.md).
+
+### 3. Fecha relanzamiento
+El editor no fija fecha; implícitamente "cuando tengamos cerrado el proyecto". Propuesta documentada en [ESTUDIOS-PENDIENTES.md](ESTUDIOS-PENDIENTES.md#6-fecha-concreta-del-relanzamiento): **lunes 18 de mayo de 2026**. Decisión pendiente.
+
+### 4. Firma editor
+Firma "Raúl S." en ediciones y `/acerca/`. **Solo formulario de contacto**, no email directo. Se apunta pasar a nombre completo + email cuando haya dominio propio.
+
+### 5. Dominio propio
+Decisión de comprarlo tomada. Pendiente de elegir nombre y registrador. **Estudio previo** en [ESTUDIOS-PENDIENTES.md #2](ESTUDIOS-PENDIENTES.md#2-dominio-propio--estudio-previo-antes-de-comprar).
+
+### 6. Contador de visitas / analítica
+100% sí. El editor pide analítica potente: "hay que analizar muy bien todo lo que pasa en la web". Implica más que GoatCounter básico: dashboard público propio + Search Console + análisis de corpus editorial. Ver [ESTUDIOS-PENDIENTES.md #7](ESTUDIOS-PENDIENTES.md#7-estadísticas-y-analítica-potente-refuerzo-de-transparencia).
+
+### 7. Newsletter
+Newsletter **sí o sí**. El editor plantea modelo de pago con "el que no paga que mire la web". **Valoración**: modelo de pago puro no funciona aquí (contradice misión, mercado pequeño, rompe citabilidad, asimetría web/email absurda, complejidad operativa). **Modelo híbrido recomendado**: gratis base en Fase 0 + tier Pro opcional en Fase 2 con valor diferencial real (datasets agregados, adelantos, resúmenes mensuales ejecutivos). Detalle en [ESTUDIOS-PENDIENTES.md #4](ESTUDIOS-PENDIENTES.md#4-newsletter-de-pago-vs-gratis-vs-híbrido).
+
+### 8. Página `/recursos/`
+El editor pide estudiarla más adelante, no en Fase 0. Sale del Roadmap Fase 0 Bloque B. Estudio en [ESTUDIOS-PENDIENTES.md #3](ESTUDIOS-PENDIENTES.md#3-página-recursos--qué-incluir-y-cómo-verificar).
+
+### 9. Balance público
+Decisión = A + ampliada. Se publica desde el día 1 con datos iniciales. **Prioridad alta**: el editor pide estadísticas y análisis potentes, "hacer algo muy potente aquí". Se convierte en diferenciador del proyecto. Implementar y revisar iterativamente.
+
+### 10. Diseño
+A: mantener el diseño actual. Ampliado con **inspiración de [Solar Low-Tech Magazine](https://solar.lowtechmagazine.com/)**: aproximación ética y visual. Detalles concretos en [DISENO-WEB.md — bloque Solar Low-Tech](DISENO-WEB.md).
+
+### 11. Posicionamiento en Google
+Resuelto implícitamente por #5: cuando haya dominio propio, lanzamiento SEO agresivo. Plan completo en [SEO.md](SEO.md).
+
+### 12. Redes sociales
+El editor lo aparta: "lo hablamos más adelante, apunta". Fuera de Fase 0. Estudio en [ESTUDIOS-PENDIENTES.md #5](ESTUDIOS-PENDIENTES.md#5-redes-sociales--estrategia-antes-de-activar).
+
+### 13. Email del proyecto
+Pendiente de tener dominio propio. "En cuanto tengamos nombre creamos email." Orden natural: estudio dominio → comprar → crear email `hola@{dominio}`.
+
+### 14. Acerca
+B modificada: "Raúl S." sin foto. Solo nombre + descripción breve. No foto.
+
+### 15. Modelos de IA
+El editor pide un **estudio urgente para integrar los tres modelos y ajustar costes**. Haiku + Sonnet + Opus repartidos por tarea. Detalle en [ESTUDIOS-PENDIENTES.md #1](ESTUDIOS-PENDIENTES.md#1--urgente--integración-de-los-tres-modelos-de-ia-haiku--sonnet--opus). Primera semana de Fase 0.
+
+### 16. Licencia dataset
+**A: CC-BY 4.0**.
 
 ---
 

@@ -73,20 +73,24 @@ Detalle en [DISENO-WEB.md](DISENO-WEB.md).
 - [ ] **B25.** Botón "cómo citar esto" en cada edición.
 - [ ] **B26.** Ediciones enlazadas entre sí (anterior/siguiente) para navegación y SEO.
 
-### Bloque C — Contenido retroactivo (1 mes simulado)
+### Bloque C — Contenido retroactivo (2 meses / 8 ediciones)
 
-Detalle en [CONTENIDO-RETROACTIVO.md](CONTENIDO-RETROACTIVO.md).
+Detalle en [CONTENIDO-RETROACTIVO.md](CONTENIDO-RETROACTIVO.md). Decisión editor 2026-04-20: **borrar** W16-W17 actuales (no reescribir) y producir **8 ediciones** (W10-W17) bajo modelo nuevo.
 
-- [ ] **C1.** Confirmar decisión sobre W16-W17 (reescribir bajo nuevo modelo o mantener con nota).
-- [ ] **C2.** Ejecutar `ingest.py` con ventana temporal W14 (30 mar - 5 abr 2026).
-- [ ] **C3.** Ejecutar pipeline completo sobre W14.
-- [ ] **C4.** Revisión humana de W14, ajustes, publicación.
-- [ ] **C5.** Repetir C2-C4 para W15 (6-12 abr 2026).
-- [ ] **C6.** Si aprobado: reejecutar pipeline sobre W16 con nuevo modelo, reescribir edición.
-- [ ] **C7.** Si aprobado: reejecutar pipeline sobre W17 con nuevo modelo, reescribir edición.
-- [ ] **C8.** Verificación manual de todas las URLs de las 4 ediciones.
-- [ ] **C9.** Publicar balance retrospectivo inicial con las 4 ediciones en `/balance`.
-- [ ] **C10.** Nota metodológica única enlazada desde cada edición retroactiva: "Edición procesada/reprocesada bajo el modelo documental del pivote 2026-04-20. Las señales y fuentes son originales de la semana correspondiente."
+- [ ] **C1.** Borrar W16-W17 antiguas del branch (preservadas en histórico git de `main`).
+- [ ] **C2.** Adaptar `ingest.py` con parámetro `--window-start/--window-end` para ejecución retroactiva.
+- [ ] **C3.** Producir W17 (20-26 abr) — primera en orden inverso.
+- [ ] **C4.** Producir W16 (13-19 abr).
+- [ ] **C5.** Producir W15 (6-12 abr).
+- [ ] **C6.** Producir W14 (30 mar - 5 abr).
+- [ ] **C7.** Producir W13 (23-29 mar) — arranca búsqueda manual.
+- [ ] **C8.** Producir W12 (16-22 mar).
+- [ ] **C9.** Producir W11 (9-15 mar).
+- [ ] **C10.** Producir W10 (2-8 mar) — la más antigua, más trabajo manual.
+- [ ] **C11.** Verificación manual de todas las URLs (8 ediciones).
+- [ ] **C12.** Publicar balance retrospectivo inicial 2 meses en `/balance/`.
+- [ ] **C13.** Nota metodológica visible en cada edición retroactiva: "Edición procesada a posteriori sobre archivo público de prensa, bajo modelo documental del pivote 2026-04-20. Fechas y fuentes reales; fecha de publicación en el observatorio posterior a la semana cubierta."
+- [ ] **C14.** Commits individuales por edición en orden cronológico (W10 primero, W17 último) para progresión limpia en git log.
 
 ### Bloque D — SEO masivo (pilar fundamental)
 
@@ -128,21 +132,35 @@ Detalle en [SEO.md](SEO.md).
 
 ### Bloque F — Distribución inicial
 
-- [ ] **F1.** Newsletter Buttondown (gratis <100 subs) configurado. Formulario de suscripción en home y pie de cada edición.
+- [ ] **F1.** Newsletter Buttondown (gratis <100 subs) **modelo gratis** en Fase 0. Formulario de suscripción en home y pie de cada edición. Modelo de pago/híbrido se evalúa en Fase 2 — ver [ESTUDIOS-PENDIENTES.md #4](ESTUDIOS-PENDIENTES.md#4-newsletter-de-pago-vs-gratis-vs-híbrido).
 - [ ] **F2.** Envío automático del lunes 10:00 CEST con la edición completa. GitHub Action.
-- [ ] **F3.** Bot Bluesky (`@ibizahousing.bsky.social` o similar) publicando hilo los lunes.
-- [ ] **F4.** Bot Mastodon en instancia equivalente.
+- [ ] **F3.** ⏸ Bot Bluesky — **fuera de Fase 0 por decisión editor**. Estudio en [ESTUDIOS-PENDIENTES.md #5](ESTUDIOS-PENDIENTES.md#5-redes-sociales--estrategia-antes-de-activar). Fase 1.
+- [ ] **F4.** ⏸ Bot Mastodon — mismo criterio. Fase 1.
 - [ ] **F5.** Lista curada de contactos directos (15-25 personas): periodistas de vivienda (Diario de Ibiza, Periódico de Ibiza, elDiario.es Baleares, Ara Balears, El País delegación Baleares), gabinetes Consell y ayuntamientos, Cáritas, GEN-GOB, sindicatos (CCOO, UGT, PIMEEF), CAEB, IBAVI.
-- [ ] **F6.** Email manual de relanzamiento a la lista curada el día del lanzamiento de Fase 0.
+- [ ] **F6.** Email manual de relanzamiento a la lista curada el día del lanzamiento de Fase 0 (desde formulario de contacto + BCC, sin email propio hasta tener dominio).
 
 ### Bloque G — Utilidad pública (diferenciador directo)
 
-Este bloque es lo que convierte al observatorio en **herramienta de cambio**, no solo en medio.
-
-- [ ] **G1.** `/recursos` poblada con teléfonos y horarios verificados (servicios sociales 5 ayuntamientos, Cáritas Ibiza y Formentera, Cruz Roja, Oficina de Vivienda Consell, Juzgado de Guardia, 012, 016).
+- [ ] **G1.** ⏸ `/recursos` — **fuera de Fase 0 por decisión del editor 2026-04-20**. Estudio previo en [ESTUDIOS-PENDIENTES.md #3](ESTUDIOS-PENDIENTES.md#3-página-recursos--qué-incluir-y-cómo-verificar). Lanzamiento Fase 1.
 - [ ] **G2.** `/glosario` con los 30-50 términos más relevantes del corpus actual.
 - [ ] **G3.** Directorio de colectivos ciudadanos y asociaciones relevantes en Ibiza/Formentera.
-- [ ] **G4.** Kit de prensa en `/cita-esto` con descripción corta/larga, logo, cómo citar en formato APA y Chicago, email para periodistas.
+- [ ] **G4.** Kit de prensa en `/cita-esto` con descripción corta/larga, logo, cómo citar en formato APA y Chicago, contacto por formulario.
+
+### Bloque I — Estudios previos bloqueantes
+
+Tras las decisiones del editor 2026-04-20, estos estudios se ejecutan antes o durante Fase 0. Detalle completo en [ESTUDIOS-PENDIENTES.md](ESTUDIOS-PENDIENTES.md).
+
+- [ ] **I1.** 🔴 **URGENTE** — Estudio integración 3 modelos (Haiku + Sonnet + Opus) + benchmark + código actualizado. Primera semana.
+- [ ] **I2.** Estudio dominio propio: shortlist de nombres, disponibilidad, registrador, plan migración. 2ª semana.
+- [ ] **I3.** Confirmación de fecha de relanzamiento (propuesta: lunes 18 may 2026). Esta semana.
+- [ ] **I4.** Diseño del dashboard de estadísticas potente + página `/estadisticas/` complementaria a `/balance/`. Durante Fase 0.
+- [ ] **I5.** Implementación de elementos de [Solar Low-Tech](https://solar.lowtechmagazine.com/) — ver [DISENO-WEB.md §Inspiración](DISENO-WEB.md). Indicadores de transparencia en footer + notas al margen + manifiesto + `/estado/`. Durante Fase 0.
+
+### Estudios diferidos (no bloquean Fase 0)
+
+- Página `/recursos/` — ver [ESTUDIOS-PENDIENTES.md #3](ESTUDIOS-PENDIENTES.md#3-página-recursos--qué-incluir-y-cómo-verificar). Fase 1.
+- Modelo de newsletter pago vs gratis vs híbrido — ver [ESTUDIOS-PENDIENTES.md #4](ESTUDIOS-PENDIENTES.md#4-newsletter-de-pago-vs-gratis-vs-híbrido). Fase 2.
+- Redes sociales — ver [ESTUDIOS-PENDIENTES.md #5](ESTUDIOS-PENDIENTES.md#5-redes-sociales--estrategia-antes-de-activar). Fase 1.
 
 ### Bloque H — Legal y transparencia
 
