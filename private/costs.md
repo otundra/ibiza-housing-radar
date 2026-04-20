@@ -1,22 +1,22 @@
 # Control de costes — privado
 
-*Archivo privado. No se publica en la web. Última actualización: 2026-04-20 13:43 UTC*
+*Archivo privado. No se publica en la web. Última actualización: 2026-04-20 16:53 UTC*
 
 Tipo de cambio interno: **1 USD = 0.92 EUR** (revisar cada 3 meses).
 
 ## Mes en curso
 
 - **Gastado 2026-04:** `1.78 €` (`$1.9391` USD)
-- **Tope blando:** `8.00 €` → solo avisa por Telegram, sigue publicando
+- **Tope blando:** `12.00 €` → solo avisa por Telegram, sigue publicando
 - **Tope duro:** `20.00 €` → corta el pipeline (protección runaway)
-- **Consumo vs blando:** `22.3%`
+- **Consumo vs blando:** `14.9%`
 - **Consumo vs duro:** `8.9%`
 
 ```
 [█░░░░░░░░░░░░░░░░░░░] 8.9% del tope duro
 ```
 
-**Capa actual:** 🟢 Verde (<4 €) — silencio
+**Capa actual:** 🟢 Verde (<6 €) — silencio
 
 ## Histórico mensual
 
@@ -52,9 +52,9 @@ Tipo de cambio interno: **1 USD = 0.92 EUR** (revisar cada 3 meses).
 
 ## Política de costes
 
-- **Tope blando (8.00 €):** Telegram avisa, pero el pipeline **sigue publicando la editorial**. No se pierde informe por sobrecoste.
+- **Tope blando (12.00 €):** Telegram avisa, pero el pipeline **sigue publicando la editorial**. No se pierde informe por sobrecoste.
 - **Tope duro (20.00 €):** Telegram crítico + **corte inmediato**. Protección real contra bugs o bucles runaway.
 
-Coste esperado actual: ~2 €/mes. Con trilingüe activo (diferido): ~3,15 €/mes. Los topes cubren ambos escenarios sin retoque.
+Coste esperado (pivote documental + autoevaluación 3 niveles): ~9,86 €/mes. Tras afinar reparto de modelos y con corpus estable, objetivo bajar a ~6-7 €/mes y reducir tope blando de vuelta a 8 €.
 
 Para cambiar topes: editar `MONTHLY_SOFT_CAP_EUR` y `MONTHLY_HARD_CAP_EUR` en [`src/costs.py`](https://github.com/otundra/ibiza-housing-radar/blob/main/src/costs.py).

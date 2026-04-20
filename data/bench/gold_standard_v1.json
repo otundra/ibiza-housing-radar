@@ -1,0 +1,377 @@
+{
+  "_metadata": {
+    "version": 1,
+    "created": "2026-04-20",
+    "author": "Claude Opus 4.7 con razonamiento extendido, revisado con criterio del editor pendiente",
+    "dataset": "dataset_v1.json",
+    "task_coverage": ["task_1_classify", "task_2_proposal_detect", "task_3_extract"],
+    "notes": "Casos ambiguos marcados explícitamente con 'ambiguous: true' y justificación. El editor puede revisar y ajustar antes de correr el benchmark."
+  },
+  "n01": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "ayuntamiento",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": true,
+      "proposal_actor_hint": "Cáritas Ibiza"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Cáritas Ibiza",
+        "actor_type": "tercer_sector",
+        "statement_summary": "Reclama que el desalojo no se ejecute sin alternativa habitacional acreditada para cada persona censada en los asentamientos.",
+        "url_source": "https://elpais.com/espana/2026-04-19/ibiza-desalojara-a-200-trabajadores-de-sus-asentamientos-a-las-puertas-de-la-temporada.html",
+        "palanca": "denuncia_social",
+        "target_actor": "Ayuntamiento de Ibiza",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_economic": "no_evaluada",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n02": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "trabajadores",
+      "lever": "denuncia_social"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n03": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "ayuntamiento",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Cobertura TV del hecho. No hay propuesta explícita en el propio reportaje; las propuestas asociadas viven en otras fuentes (n01, n04)."
+  },
+  "n04": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "tercer_sector",
+      "lever": "denuncia_social"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": true,
+      "proposal_actor_hint": "Cáritas Ibiza"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Cáritas Ibiza",
+        "actor_type": "tercer_sector",
+        "statement_summary": "Solicita que no se ejecute el desalojo de los asentamientos sin garantía previa de alojamiento alternativo y pide participar en el proceso de realojo.",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/11/preocupacion-caritas-ibiza-desalojo-asentamientos-128948679.html",
+        "palanca": "denuncia_social",
+        "target_actor": "Ayuntamiento de Ibiza",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_economic": "no_evaluada",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "_dedup_note": "Misma propuesta de Cáritas que aparece en n01. En el pipeline real se consolidarían con dos url_source."
+  },
+  "n05": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "propietarios",
+      "lever": "precio"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n06": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "propietarios",
+      "lever": "denuncia_social"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Caso de subarriendo fraudulento. Es una señal importante pero la noticia no contiene propuesta explícita de ningún actor con nombre. Candidato a aparecer como OMISIÓN en la edición."
+  },
+  "n07": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "La acción del Consell está ya ejecutada (retirada de 2.800 anuncios). No es propuesta nueva sino resultado. El pipeline debería clasificarla como señal de enforcement efectivo, no como propuesta."
+  },
+  "n08": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "patronal",
+      "lever": "oferta_vivienda"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": true,
+      "proposal_actor_hint": "CAEB, PIMEEF, CCOO, UGT (conjunto)"
+    },
+    "task_3_extract": [
+      {
+        "actor": "CAEB, PIMEEF, CCOO y UGT",
+        "actor_type": "patronal",
+        "statement_summary": "Patronales y sindicatos mayoritarios de Ibiza se alinean públicamente a favor de crear residencias específicas para trabajadores de temporada y piden al Consell y ayuntamientos que identifiquen suelo dotacional disponible para operar antes de la temporada 2027.",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/11/2606853/patronales-sindicatos-favor-residencias-ibiza-para-trabajadores-temporada.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Consell d'Eivissa y ayuntamientos pitiusos",
+        "horizon": "temporada_2027",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_economic": "no_evaluada",
+        "supporters_cited": ["CAEB", "PIMEEF", "CCOO", "UGT"],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "_ambiguity_note": "Actor primario es ambiguo (4 entidades). Aceptable tanto 'patronal' como 'sindicato'; se prioriza patronal por aparecer primero en el titular. El LLM puede razonablemente devolver cualquiera de los dos."
+  },
+  "n09": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "oferta_vivienda"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": true,
+      "proposal_actor_hint": "Consell d'Eivissa, patronales, sindicatos"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Consell d'Eivissa, patronales y sindicatos",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Respaldo tripartito formalizado a la creación de residencias para temporeros. Sin identificación de suelo ni calendario de licitación; la cuestión queda en declaración de intenciones compartida.",
+        "url_source": "https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Consell d'Eivissa (ejecutor principal)",
+        "horizon": "estructural",
+        "state": "en_debate",
+        "viability_legal": "no_evaluada",
+        "viability_economic": "no_evaluada",
+        "supporters_cited": ["Consell d'Eivissa", "CAEB", "PIMEEF", "CCOO", "UGT"],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "_dedup_note": "Misma propuesta conjunta que n08 con el Consell añadido como cosignatario. En pipeline real se consolidarían."
+  },
+  "n10": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "govern_balear",
+      "lever": "oferta_vivienda"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Convocatoria de VPO ya publicada = acción ejecutada, no propuesta nueva. El requisito de 10 años de residencia sí es debatible pero la noticia lo reporta sin que ningún actor con nombre proponga modificarlo."
+  },
+  "n11": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "govern_balear",
+      "lever": "oferta_vivienda"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_dedup_note": "Misma noticia que n10 cubierta por otro diario."
+  },
+  "n12": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Dato descriptivo sobre perfil de infractores. No contiene propuesta."
+  },
+  "n13": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Balance de acción ejecutada, no propuesta."
+  },
+  "n14": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_dedup_note": "Cobertura paralela de n13."
+  },
+  "n15": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Cobertura de la cifra de recaudación. No se cita propuesta sobre uso de esos fondos. Candidato a omisión: los 2 M€ recaudados y sin destino finalista son hecho documentado sin propuesta asociada."
+  },
+  "n16": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "judicial",
+      "lever": "normativa"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Sentencia del TSJIB. Doctrina judicial, no propuesta. Sí genera criterio vinculante sobre licencias turísticas."
+  },
+  "n17": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "otro"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": true,
+      "proposal_actor_hint": "Consell d'Eivissa"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Formaliza el encargo de un estudio técnico sobre viviendas vacías en Ibiza, con la intención declarada de diseñar políticas de movilización a partir de sus resultados.",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/03/31/2600245/consell-eivissa-encarga-estudio-sobre-viviendas-vacias-isla.html",
+        "palanca": "otro",
+        "target_actor": "Consell d'Eivissa",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "alta",
+        "viability_legal_reason": "Estudio técnico es competencia propia del Consell.",
+        "viability_economic": "no_evaluada",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "ambiguous": true,
+    "_ambiguity_note": "Caso borderline. El encargo de un estudio NO es una propuesta concreta de política, pero SÍ es un acto de agencia del Consell con intención declarada de generar política. Aceptable tanto true como false con razonamiento. El pipeline probablemente lo clasificará como propuesta para que figure en el tracker; el editor puede ajustar."
+  },
+  "n18": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "propietarios",
+      "lever": "precio"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n19": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "propietarios",
+      "lever": "precio"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n20": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "ayuntamiento",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "has_explicit_proposal": false,
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Cobertura en inglés del patrón recurrente de desalojos. No propuesta nueva; sí posible fuente para contexto internacional."
+  },
+  "_aggregate_stats": {
+    "total_items": 20,
+    "housing_yes": 20,
+    "housing_no": 0,
+    "has_proposal_yes": 5,
+    "has_proposal_no": 15,
+    "ambiguous_cases": 2,
+    "proposals_total": 5,
+    "by_palanca": {
+      "denuncia_social": 2,
+      "oferta_vivienda": 2,
+      "otro": 1
+    },
+    "by_actor_type": {
+      "tercer_sector": 2,
+      "patronal": 1,
+      "institucional_publico": 2
+    },
+    "dedup_groups": [
+      ["n01", "n03", "n04"],
+      ["n08", "n09"],
+      ["n10", "n11"],
+      ["n13", "n14"]
+    ]
+  },
+  "_review_notes_for_editor": [
+    "Caso n08/n09: actor primario de la propuesta conjunta es ambiguo (patronal vs sindicato vs institucional público). Aceptar cualquiera es razonable.",
+    "Caso n17: ¿el encargo de estudio cuenta como propuesta? Mi criterio: sí, porque hay actor con nombre (Consell) y acción con intención declarada (movilizar vacío). Pero si el editor prefiere criterio más estricto, marcar como false.",
+    "Todas las noticias tienen is_housing=true: dataset v1 está sesgado hacia housing. Siguiente versión del dataset debería incluir 5-10 noticias NO de vivienda para medir también falsos positivos de clasificación."
+  ]
+}

@@ -44,14 +44,28 @@ USD_TO_EUR: Final[float] = 0.92
 # Topes mensuales en EUROS.
 # Blando: solo avisa por Telegram y sigue publicando. No pierde editorial.
 # Duro: corta el pipeline. Protección runaway (bug, bucle, escalada accidental).
-MONTHLY_SOFT_CAP_EUR: Final[float] = 8.00
+#
+# Historial:
+# - 2026-04-20 v1: blando=8.00, duro=20.00 (basado en ~2 €/mes + margen trilingüe)
+# - 2026-04-20 v2 (pivote documental): blando=12.00, duro=20.00. Sube para
+#   absorber los 3 niveles de autoevaluación (self-review semanal con Sonnet,
+#   auditoría trimestral con Opus, re-benchmark mensual). Proyección ~9,86 €/mes.
+#   Objetivo: tras ~2-3 meses de datos reales, afinar reparto de modelos y
+#   bajar el tope blando de nuevo.
+MONTHLY_SOFT_CAP_EUR: Final[float] = 12.00
 MONTHLY_HARD_CAP_EUR: Final[float] = 20.00
 
 # Capas de alerta (en EUR). Se notifica solo al cruzar por primera vez en el mes.
+# Nuevas capas (2026-04-20 v2):
+#   🟢 Verde      < 6 €
+#   🟡 Amarilla   6 - 9 €
+#   🟠 Naranja    9 - 12 €
+#   🔴 Roja blanda 12 - 20 €  (publica igual)
+#   🚨 Roja dura  > 20 €      (corte)
 _ALERT_THRESHOLDS_EUR: Final[list[tuple[float, str, str]]] = [
     # (umbral, nivel, etiqueta)
-    (4.00, "info",     "🟡 Amarilla"),
-    (6.00, "warning",  "🟠 Naranja"),
+    (6.00,  "info",     "🟡 Amarilla"),
+    (9.00,  "warning",  "🟠 Naranja"),
     (MONTHLY_SOFT_CAP_EUR, "warning",  "🔴 Roja blanda (tope blando superado, sigo publicando)"),
     (MONTHLY_HARD_CAP_EUR, "critical", "🚨 Roja dura (tope duro; el pipeline se cortará)"),
 ]
@@ -356,8 +370,9 @@ def regenerate_dashboard() -> None:
     )
     lines.append("")
     lines.append(
-        f"Coste esperado actual: ~2 €/mes. Con trilingüe activo (diferido): "
-        f"~3,15 €/mes. Los topes cubren ambos escenarios sin retoque."
+        f"Coste esperado (pivote documental + autoevaluación 3 niveles): "
+        f"~9,86 €/mes. Tras afinar reparto de modelos y con corpus estable, "
+        f"objetivo bajar a ~6-7 €/mes y reducir tope blando de vuelta a 8 €."
     )
     lines.append("")
     lines.append(
@@ -373,12 +388,12 @@ def regenerate_dashboard() -> None:
 
 
 def _current_layer(spend_eur: float) -> str:
-    if spend_eur < 4.00:
-        return "🟢 Verde (<4 €) — silencio"
     if spend_eur < 6.00:
-        return "🟡 Amarilla (4-6 €) — FYI"
+        return "🟢 Verde (<6 €) — silencio"
+    if spend_eur < 9.00:
+        return "🟡 Amarilla (6-9 €) — FYI"
     if spend_eur < MONTHLY_SOFT_CAP_EUR:
-        return "🟠 Naranja (6-8 €) — atención"
+        return "🟠 Naranja (9-12 €) — atención"
     if spend_eur < MONTHLY_HARD_CAP_EUR:
         return f"🔴 Roja blanda ({MONTHLY_SOFT_CAP_EUR:.0f}-{MONTHLY_HARD_CAP_EUR:.0f} €) — publica igual"
     return f"🚨 Roja dura (>{MONTHLY_HARD_CAP_EUR:.0f} €) — pipeline cortado"
