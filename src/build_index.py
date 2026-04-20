@@ -313,7 +313,7 @@ def render_index(editions: list[dict[str, Any]]) -> str:
     out.append('<section class="dash-about">')
     out.append('<div class="dash-about-inner">')
     out.append('<p><strong>Observatorio automatizado.</strong> Cada lunes a las 7:00 CEST un pipeline lee la prensa local (Diario de Ibiza, Periódico de Ibiza, Google News), filtra lo relevante y produce este informe.</p>')
-    out.append(f'<p>Editado por Raúl Serrano. Coste operativo ~2 €/mes, <a href="{baseurl}/costes/">transparentes</a>. <a href="{baseurl}/acerca/">Metodología completa →</a></p>')
+    out.append(f'<p>Editado por Raúl Serrano. Coste operativo ~2 €/mes con topes automáticos. <a href="{baseurl}/acerca/">Metodología completa →</a></p>')
     out.append('</div>')
     out.append('</section>')
     out.append('')

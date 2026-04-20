@@ -20,19 +20,24 @@
 ### 2. Pipeline completo (`src/`)
 
 - `ingest.py` — lee RSS de Google News (4 queries temáticas) + Diario de Ibiza + Periódico de Ibiza. Filtra por keywords, ventana de 10 días, deduplicación. Resuelve URLs de Google News al artículo original en paralelo.
-- `classify.py` — una sola llamada a **Claude Haiku 4.5** clasifica todos los titulares (is_housing, actor, palanca). Coste ≈ $0,01/semana.
-- `generate.py` — **Claude Opus 4.7** genera el informe semanal (max 8.192 tokens). Coste ≈ $0,60/semana.
+- `classify.py` — una sola llamada a **Claude Haiku 4.5** clasifica todos los titulares (is_housing, actor, palanca). Coste ≈ 0,01 €/semana.
+- `generate.py` — **Claude Opus 4.7** genera el informe semanal (max 8.192 tokens). Coste ≈ 0,55 €/semana.
 - `build_index.py` — regenera `docs/index.md` con todas las ediciones ordenadas.
-- `costs.py` — registra cada llamada en CSV, regenera dashboard, aborta si mes supera $5.
-- `report.py` — orquestador end-to-end.
+- `costs.py` — registra cada llamada en CSV (USD interno, euros para display), regenera dashboard privado, corta solo ante tope duro.
+- `notify.py` — alertas Telegram con fallback a issue GitHub. Coste 0 €.
+- `report.py` — orquestador end-to-end con resumen/alerta por Telegram al terminar (OK o fallo).
 
-### 3. Sistema de control de costes
+### 3. Sistema de control de costes en € con capas
 
-- Append-only en [`data/costs.csv`](data/costs.csv)
-- Dashboard legible en [`docs/costs.md`](docs/costs.md) (se regenera tras cada run)
-- Tope duro: **5 USD/mes**. Editar `MONTHLY_BUDGET_USD` en `src/costs.py` para subirlo.
-- Coste esperado real: **~2 USD/mes** (60-70% es Opus, el resto Haiku + ingesta).
-- Si se supera el tope, el pipeline aborta **antes** de llamar a la API. No hay forma de que se dispare el gasto.
+- Append-only en [`data/costs.csv`](data/costs.csv) (USD internos para precisión).
+- Dashboard **privado** en [`private/costs.md`](private/costs.md) — **no se sirve en la web**. Se regenera tras cada run.
+- Topes en euros (editar `MONTHLY_SOFT_CAP_EUR` y `MONTHLY_HARD_CAP_EUR` en `src/costs.py`):
+  - 🟢 <4 €: silencio
+  - 🟡 4-6 €: Telegram FYI
+  - 🟠 6-8 €: Telegram atención
+  - 🔴 8-20 € (**tope blando**): Telegram urgente, **pipeline sigue publicando**. No se pierde editorial por sobrecoste.
+  - 🚨 >20 € (**tope duro**): corte inmediato + alerta crítica. Protección runaway.
+- Coste esperado real: **~2 €/mes** (~3,15 €/mes si se activa trilingüe). Los topes cubren ambos escenarios.
 
 ### 4. Theme Jekyll editorial custom
 
@@ -54,18 +59,18 @@
 
 1. **Abrir la web** → <https://otundra.github.io/ibiza-housing-radar/>
 2. **Leer la W17 entera** → es el primer informe 100% generado por el pipeline. Si te sabe bien, el sistema funciona. Si hay frases raras, dime qué y retoco el system prompt del generador.
-3. **Revisar costes** → <https://otundra.github.io/ibiza-housing-radar/costes/>. Debe estar en torno al 15-25 % del tope.
+3. **Revisar costes** → abre `private/costs.md` en tu clon local o en GitHub. Debe estar bien por debajo del tope blando (8 €).
 
 ### Recomendable (15 min)
 
-4. **Decidir si subes el tope de coste.** Está en $5/mes. Si quieres más margen, cambia `MONTHLY_BUDGET_USD` en `src/costs.py`.
+4. **Topes ya calibrados en €.** Blando 8 €, duro 20 €. Cubre trilingüe cuando se active. Solo tocar si hay razón concreta.
 5. **Decidir lector objetivo.** Sigue sin definir. Afecta a: tono (más técnico-político vs. más divulgativo), distribución (newsletter, RRSS, nada), y qué diarios priorizar. Sin esto afinado, el sistema irá dando vueltas sobre lo mismo.
 
 ## ⚠️ Decisiones que tomé sin preguntarte
 
 1. **Repo público en lugar de privado.** GitHub Pages no sirve desde repos privados en plan Free. Alternativas eran: pagar Pro, usar Netlify/Cloudflare Pages (cuenta nueva), o hacer el repo público. Elegí pública porque (a) el contenido ya es prensa pública + ideas, (b) la API key sigue guardada en Secrets, (c) te da transparencia como proyecto.
 2. **Modelos de Anthropic.** Haiku 4.5 para clasificar (es lo más barato que mantiene calidad), Opus 4.7 para el informe (la calidad editorial sí importa ahí). Puedes cambiarlos en `src/classify.py` y `src/generate.py` — variable `MODEL`.
-3. **Tope mensual $5.** Es ~2,5× el coste esperado. Margen razonable para evitar bloqueos por picos ocasionales pero suficientemente bajo para que una avería no haga daño.
+3. **Topes revisados en €** (20-abr-2026): blando 8 € (≈4× coste actual) avisa sin cortar, duro 20 € (≈10× actual) corta solo ante runaway. Cubre también el escenario trilingüe (~3,15 €/mes) sin retocar. Filosofía: no perder editorial por sobrecoste salvo desastre real.
 4. **Fuentes RSS.** Google News como base (robusto, cubre todo) + RSS nativos de Diario y Periódico como refuerzo. Si un feed falla, se salta y sigue.
 
 ## 🟢 Flujo del lunes (qué pasará automáticamente)
@@ -77,10 +82,11 @@
 05:02      src/classify.py → data/classified.json   (1 llamada a Haiku)
 05:03-05   src/generate.py → docs/_editions/YYYY-wWW.md  (1 llamada a Opus)
 05:05      src/build_index.py → docs/index.md (panel de la última edición)
-05:05      src/costs.py   → docs/costs.md + data/costs.csv
+05:05      src/costs.py   → private/costs.md + data/costs.csv
+05:05      src/report.py  → resumen OK a Telegram (o alerta crítica si falló)
 05:05      git commit + push con retry/rebase
 05:06      Jekyll rebuild en GitHub Pages (~30s)
-05:07      Nueva edición visible en la web
+05:07      Nueva edición visible en la web + aviso en tu Telegram
 ```
 
 ## 🛠 Comandos útiles
@@ -122,7 +128,8 @@ El roadmap vivo vive en [`PLAN.md`](PLAN.md): 4 fases (base, distribución, cont
 | Web no muestra nueva edición | Jekyll build aún corriendo | Esperar 1-2 min y recargar |
 | Edición sale truncada | `max_tokens` demasiado bajo | Subir en `src/generate.py` |
 | Ediciones repetidas / raras | Bug en `build_index.py` | Mirar git log de `docs/index.md` |
-| Presupuesto bloqueado | Mes excedió tope | Subir `MONTHLY_BUDGET_USD` en `src/costs.py` |
+| Pipeline cortado por tope duro | Mes excedió 20 € (runaway real o bug) | Abrir `private/costs.md`, identificar origen, subir `MONTHLY_HARD_CAP_EUR` en `src/costs.py` solo si hay razón legítima |
+| Telegram no llega | Token rotado, bot bloqueado o red caída | Si es crítico llegará como issue en GitHub. Verificar `TELEGRAM_BOT_TOKEN` con `curl` a `api.telegram.org/bot<TOKEN>/getMe` |
 
 ---
 

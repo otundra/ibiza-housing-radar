@@ -173,6 +173,6 @@ La ventana se cierra esta semana: el Ayuntamiento ejecuta desalojos antes de que
 <section class="dash-about">
 <div class="dash-about-inner">
 <p><strong>Observatorio automatizado.</strong> Cada lunes a las 7:00 CEST un pipeline lee la prensa local (Diario de Ibiza, Periódico de Ibiza, Google News), filtra lo relevante y produce este informe.</p>
-<p>Editado por Raúl Serrano. Coste operativo ~2 €/mes, <a href="{{ site.baseurl }}/costes/">transparentes</a>. <a href="{{ site.baseurl }}/acerca/">Metodología completa →</a></p>
+<p>Editado por Raúl Serrano. Coste operativo ~2 €/mes con topes automáticos. <a href="{{ site.baseurl }}/acerca/">Metodología completa →</a></p>
 </div>
 </section>

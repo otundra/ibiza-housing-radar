@@ -429,11 +429,11 @@ Al cerrar cada punto, actualizar [`DIARIO.md`](DIARIO.md) con la entrada corresp
 | 3 | Tracker de propuestas | pendiente |
 | 3 | BOIB watcher | pendiente |
 | 3 | Serie multi-semana | pendiente |
-| Operativo | Privatizar costes (fuera de `docs/`) | pendiente |
-| Operativo | Bot Telegram + alertas por capas | pendiente |
-| Operativo | Fallback Telegram → issue GitHub | pendiente |
-| Operativo | Refactor `costs.py` a €, tope blando 8 €, tope duro 20 € | pendiente |
-| Operativo | Resumen semanal vía Telegram en `report.py` | pendiente |
+| Operativo | Privatizar costes (fuera de `docs/`) | ✅ hecho 20-abr-2026 |
+| Operativo | Bot Telegram + alertas por capas | ✅ hecho 20-abr-2026 |
+| Operativo | Fallback Telegram → issue GitHub | ✅ hecho 20-abr-2026 |
+| Operativo | Refactor `costs.py` a €, tope blando 8 €, tope duro 20 € | ✅ hecho 20-abr-2026 |
+| Operativo | Resumen semanal vía Telegram en `report.py` | ✅ hecho 20-abr-2026 |
 | Trilingüe | Chrome ES/CA/EN + selector + diccionario i18n | **diferido** |
 | Trilingüe | Glosario eivissenc + prompt Sonnet (Opción A) | **diferido** |
 | Trilingüe | Pipeline 3 idiomas + validador de datos | **diferido** |

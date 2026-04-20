@@ -5,7 +5,7 @@ Observatorio automatizado de noticias sobre la crisis de vivienda en Ibiza, cent
 - **Web pública:** <https://otundra.github.io/ibiza-housing-radar/>
 - **Cadencia:** informe semanal, lunes 07:00 CEST (05:00 UTC)
 - **Stack:** Python 3.12 + Anthropic API (Claude) + GitHub Actions + GitHub Pages
-- **Coste:** 0 € de infraestructura; consumo API ~2 USD/mes (tope duro 5 USD)
+- **Coste:** 0 € de infraestructura; consumo API ~2 €/mes (tope blando 8 €, tope duro 20 €)
 - **Licencia:** MIT
 
 ## Qué hace
@@ -14,13 +14,15 @@ Observatorio automatizado de noticias sobre la crisis de vivienda en Ibiza, cent
 2. **Clasifica** cada noticia con Claude Haiku 4.5 (housing sí/no, actor, palanca).
 3. **Genera** el informe con Claude Opus 4.7: 3-5 propuestas con actor responsable, coste estimado, precedente real y primer paso en ≤30 días.
 4. **Publica** como Markdown en `docs/_editions/` y lo sirve por GitHub Pages. La home es un panel con la última edición desplegada (señales, propuestas, a vigilar); el archivo completo vive en `/ediciones/`.
-5. **Audita** cada llamada en `data/costs.csv` + dashboard en `docs/costs.md`.
+5. **Audita** cada llamada en `data/costs.csv` + dashboard privado en `private/costs.md` (no servido por Jekyll).
 
 ## Puesta en marcha
 
-Ya está en marcha. Solo necesitas estos dos secretos para que el workflow pueda correr:
+Ya está en marcha. Los secrets necesarios están configurados en Settings → Secrets → Actions:
 
-- `ANTHROPIC_API_KEY` — pegado en Settings → Secrets → Actions. **[Ya configurado.]**
+- `ANTHROPIC_API_KEY` — API de Anthropic. **[Configurado]**
+- `TELEGRAM_BOT_TOKEN` — bot de alertas (`@ibiza_vivienda_bot`). **[Configurado]**
+- `TELEGRAM_CHAT_ID` — chat personal para recibir alertas. **[Configurado]**
 
 El workflow `weekly-report.yml` se dispara:
 - Automáticamente cada lunes 05:00 UTC.
@@ -28,9 +30,17 @@ El workflow `weekly-report.yml` se dispara:
 
 ## Control de costes
 
-Tope mensual duro: **5 USD**. Si el gasto del mes en curso lo supera, el pipeline aborta antes de llamar a la API. Editar `MONTHLY_BUDGET_USD` en [`src/costs.py`](src/costs.py) para ajustar.
+Sistema de capas en euros:
 
-Ver [`docs/costs.md`](docs/costs.md) para el dashboard en vivo.
+- **Verde (<4 €):** silencio.
+- **Amarilla (4-6 €):** aviso por Telegram (FYI).
+- **Naranja (6-8 €):** aviso por Telegram (atención).
+- **Roja blanda (8-20 €):** aviso urgente por Telegram. **El pipeline sigue publicando**, no se pierde editorial por sobrecoste.
+- **Roja dura (>20 €):** pipeline cortado + alerta crítica. Protección runaway contra bugs o bucles.
+
+Editar `MONTHLY_SOFT_CAP_EUR` y `MONTHLY_HARD_CAP_EUR` en [`src/costs.py`](src/costs.py) para ajustar.
+
+Dashboard privado en [`private/costs.md`](private/costs.md) (no se sirve en la web). Histórico completo en `data/costs.csv`.
 
 ## Ejecutar localmente
 
@@ -40,7 +50,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 python -m src.report
 ```
 
-Genera `docs/_editions/<YYYY>-w<WW>.md`, actualiza `docs/index.md` (panel de la última edición) y `docs/costs.md`, y registra el gasto en `data/costs.csv`.
+Genera `docs/_editions/<YYYY>-w<WW>.md`, actualiza `docs/index.md` (panel de la última edición) y `private/costs.md` (dashboard privado), y registra el gasto en `data/costs.csv`. Al terminar (o si falla) envía resumen al bot de Telegram.
 
 ## Estructura
 

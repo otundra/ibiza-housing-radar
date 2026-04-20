@@ -12,6 +12,19 @@ Reglas:
 
 ---
 
+## 2026-04-20 — Bloque operativo implementado: Telegram + privatización costes + euros
+
+- **Bot de Telegram operativo** — `@ibiza_vivienda_bot` creado por Raúl vía @BotFather. Token y `chat_id` configurados como GitHub Secrets (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`). Ping de prueba recibido OK antes de cablear nada. Smoke test local de `src.notify` confirma entrega end-to-end.
+- **`src/notify.py` nuevo** — módulo con `send_telegram(message, level)` usando `httpx` (ya en requirements, sin dependencia nueva) y `notify(message, level)` que delega a Telegram y cae a `gh issue create` si falla. Niveles soportados: `ok` ✅, `info` ℹ️, `warning` ⚠️, `critical` 🚨. Silencioso ante fallos de notificación para no romper el pipeline.
+- **Refactor `src/costs.py` a euros + filosofía no-cortar-editorial** — mantiene USD como unidad interna (precisión, consistencia histórica del CSV) pero todo el display y topes en euros (tipo de cambio fijo 1 USD = 0,92 EUR, revisable cada 3 meses). Nuevos topes: `MONTHLY_SOFT_CAP_EUR = 8.00`, `MONTHLY_HARD_CAP_EUR = 20.00`. `assert_budget_available()` solo lanza excepción si se supera el duro. Añadido `_maybe_notify_threshold_crossing()`: detecta cruces de umbral (4/6/8/20 €) tras cada `record_call()` y notifica por Telegram solo el cruce más alto, sin spam. Dashboard movido a `private/costs.md` con nueva sección "Capa actual" y columnas en € y USD.
+- **`private/costs.md` fuera de Jekyll** — carpeta `private/` al nivel raíz del repo, fuera de `docs/`, así que GitHub Pages no la sirve. El CSV `data/costs.csv` sigue en repo (visible vía GitHub UI), pero el dashboard ya no está indexado en la web pública. Eliminado `docs/costs.md`, `docs/_includes/header.html` sin enlace "Costes", `docs/_includes/footer.html` sin enlace "Transparencia de costes", `docs/acerca.md` y `src/build_index.py` actualizados para referir a "topes automáticos" en lugar de enlazar.
+- **`src/report.py` con resumen Telegram + try/except global** — al terminar envía mensaje OK con semana, gasto mes y capa actual. Si cualquier fase lanza excepción, envía alerta `critical` con stack y re-lanza para que Actions marque el run como fallido. Importación de `notify` perezosa dentro del except para que un fallo en la red de seguridad no tape el error original.
+- **Workflow actualizado** — `.github/workflows/weekly-report.yml` pasa `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` y `GH_TOKEN` al job. Permisos ampliados con `issues: write` para habilitar el fallback de alertas a issue. `git add` apunta a `private/costs.md` en lugar del desaparecido `docs/costs.md`.
+- **README, STATUS, CLAUDE.md actualizados** — ruta del dashboard, nuevos topes en € y capas de alerta, nuevo módulo `notify.py`, filosofía no-cortar-editorial documentada. Tabla de troubleshooting con entradas específicas para Telegram caído y corte por tope duro.
+- **Verificación local** — `python -m src.costs` regenera `private/costs.md` con formato correcto (gasto actual 1,78 €, 22 % del tope blando, capa 🟢 verde). `python -m src.build_index` regenera home sin enlace a `/costes/`. `python -m src.notify` entrega mensaje Telegram HTTP 200.
+
+---
+
 ## 2026-04-20 — Trilingüe diferido, seguimos con privatización de costes + Telegram
 
 - **Trilingüe ES/CA/EN pasa a diferido** — decisión revisada en la misma sesión. Razón: el concepto editorial todavía no está cerrado (identidad, metodología, newsletter, primera cita en prensa están pendientes). Montar 3 idiomas antes de validar demanda es gastar tokens y complejidad sin retorno. Todo el análisis hecho se conserva en PLAN.md bajo "Trilingüe — diferido" (Opción A estándar IEC + glosario eivissenc basado en estudio de medios locales, infra manual sin polyglot, pipeline Sonnet con validador, estructura de carpetas, SEO multilingüe). No se repite cuando se reactive.

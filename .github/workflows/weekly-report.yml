@@ -8,7 +8,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # necesario para commit-back de la edición + costes
+  contents: write  # commit-back de la edición + costes
+  issues: write    # fallback de alertas si Telegram cae (src/notify.py)
 
 concurrency:
   group: weekly-report
@@ -20,6 +21,10 @@ jobs:
     timeout-minutes: 15
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      # `gh` CLI disponible para fallback de alertas a issue. Usa GH_TOKEN automático.
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       PYTHONUNBUFFERED: "1"
 
     steps:
@@ -49,8 +54,9 @@ jobs:
           git config user.name "ibiza-radar-bot"
           git config user.email "bot@users.noreply.github.com"
 
-          # Añade la edición nueva, índice, costes dashboard y CSV de costes
-          git add docs/_editions/ docs/index.md docs/costs.md data/costs.csv 2>/dev/null || true
+          # Añade la edición nueva, índice, dashboard privado de costes y CSV de costes.
+          # docs/costs.md ya no existe (el dashboard se mueve a private/ fuera de Jekyll).
+          git add docs/_editions/ docs/index.md private/costs.md data/costs.csv 2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "Sin cambios para commitear"

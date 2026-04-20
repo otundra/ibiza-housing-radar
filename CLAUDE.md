@@ -41,8 +41,9 @@ Observatorio automatizado semanal sobre la crisis de vivienda en Ibiza con foco 
 │   ├── _editions/              # Ediciones semanales YYYY-wWW.md (colección Jekyll)
 │   ├── index.md                # Regenerado por build_index.py (panel de la última edición)
 │   ├── ediciones.md            # Página /ediciones/ con archivo completo
-│   ├── acerca.md
-│   └── costs.md                # Regenerado por costs.py
+│   └── acerca.md
+├── private/                    # Fuera de Jekyll, no servido por GitHub Pages
+│   └── costs.md                # Dashboard privado de costes (regenerado por costs.py)
 ├── .github/workflows/
 │   ├── weekly-report.yml       # Cron lunes 05:00 UTC
 │   └── validate-key.yml        # Test manual de la API key
@@ -79,7 +80,7 @@ gh workflow run validate-key.yml
 
 4. **Commit-back desde Actions.** El workflow commitea la edición generada al mismo repo. Permite ver el histórico completo en GitHub sin servidor adicional.
 
-5. **Tope de presupuesto duro.** Antes de cualquier llamada a la API, el pipeline comprueba el gasto del mes en curso. Si el proyectado supera `MONTHLY_BUDGET_USD`, aborta. Protege contra bucles o escalada accidental.
+5. **Topes de presupuesto en euros + filosofía no-cortar-editorial.** Sistema de capas en `src/costs.py`: blando (`MONTHLY_SOFT_CAP_EUR = 8`) solo avisa por Telegram y sigue publicando; duro (`MONTHLY_HARD_CAP_EUR = 20`) corta para proteger contra runaway (bugs, bucles). No se pierde editorial por sobrecoste salvo desastre real. Alertas vía `src/notify.py` (Telegram con fallback a issue GitHub).
 
 6. **Modelo por fase.** Haiku para filtrar (coste marginal), Opus solo para la pieza final donde la calidad editorial sí importa. No mezclar.
 

@@ -20,13 +20,13 @@ Cada lunes a las 7:00 de la mañana (CEST), un pipeline lee la prensa local de l
 | Fase | Herramienta | Coste |
 |---|---|---|
 | Ingesta | Feeds RSS de Google News + Diario de Ibiza + Periódico de Ibiza | 0 € |
-| Clasificación | Claude Haiku 4.5 (Anthropic) | ~0,01 USD/semana |
-| Generación del informe | Claude Opus 4.7 (Anthropic) | ~0,50 USD/semana |
+| Clasificación | Claude Haiku 4.5 (Anthropic) | ~0,01 €/semana |
+| Generación del informe | Claude Opus 4.7 (Anthropic) | ~0,50 €/semana |
 | Publicación | GitHub Pages (Jekyll) | 0 € |
 | Scheduler | GitHub Actions (cron semanal) | 0 € |
-| **Total** | | **~2 USD/mes** |
+| **Total** | | **~2 €/mes** |
 
-Todo el código es abierto y está en [github.com/otundra/ibiza-housing-radar](https://github.com/otundra/ibiza-housing-radar). El gasto real actualizado está en [Costes](/ibiza-housing-radar/costes/).
+Todo el código es abierto y está en [github.com/otundra/ibiza-housing-radar](https://github.com/otundra/ibiza-housing-radar). El pipeline tiene topes de gasto automáticos (tope blando 8 €/mes con aviso, tope duro 20 €/mes con corte por protección runaway).
 
 ## Qué NO es
 

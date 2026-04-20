@@ -1,8 +1,13 @@
 """Control de costes de la API Anthropic.
 
-- Registra cada llamada en data/costs.csv (append-only)
-- Regenera docs/costs.md con dashboard legible
-- Tope mensual configurable; si se supera, aborta
+- Registra cada llamada en data/costs.csv (append-only, en USD internamente).
+- Regenera private/costs.md con dashboard legible en euros (no publicado).
+- Topes en euros con capas de alerta. Solo corta en TOPE DURO.
+- Emite alertas Telegram cuando se cruza un umbral.
+
+Filosofía: **no perdemos editorial por sobrecoste**. Solo cortamos ante
+runaway real (tope duro), que protege contra bugs/bucles. En tope blando
+solo avisamos por Telegram y seguimos publicando.
 """
 from __future__ import annotations
 
@@ -12,12 +17,13 @@ import logging
 from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Final
 
 log = logging.getLogger("costs")
 
 ROOT = Path(__file__).resolve().parent.parent
 COSTS_CSV = ROOT / "data" / "costs.csv"
-COSTS_MD = ROOT / "docs" / "costs.md"
+COSTS_MD = ROOT / "private" / "costs.md"  # Fuera de docs/: no servido por Jekyll
 
 # Precios por millón de tokens (USD). Actualizar si cambian.
 # Referencia: https://www.anthropic.com/pricing (abril 2026)
@@ -30,8 +36,25 @@ PRICING = {
     "claude-haiku-4-5-20251001":  {"input":  1.00, "output":  5.00},
 }
 
-# Tope de gasto mensual en USD. Si se supera, el pipeline aborta.
-MONTHLY_BUDGET_USD = 5.00
+# Conversión USD → EUR usada solo para display y comparación con topes.
+# Anthropic factura en USD; el CSV histórico se guarda en USD para precisión.
+# Revisar cada 3 meses y ajustar si la divergencia supera el 5 %.
+USD_TO_EUR: Final[float] = 0.92
+
+# Topes mensuales en EUROS.
+# Blando: solo avisa por Telegram y sigue publicando. No pierde editorial.
+# Duro: corta el pipeline. Protección runaway (bug, bucle, escalada accidental).
+MONTHLY_SOFT_CAP_EUR: Final[float] = 8.00
+MONTHLY_HARD_CAP_EUR: Final[float] = 20.00
+
+# Capas de alerta (en EUR). Se notifica solo al cruzar por primera vez en el mes.
+_ALERT_THRESHOLDS_EUR: Final[list[tuple[float, str, str]]] = [
+    # (umbral, nivel, etiqueta)
+    (4.00, "info",     "🟡 Amarilla"),
+    (6.00, "warning",  "🟠 Naranja"),
+    (MONTHLY_SOFT_CAP_EUR, "warning",  "🔴 Roja blanda (tope blando superado, sigo publicando)"),
+    (MONTHLY_HARD_CAP_EUR, "critical", "🚨 Roja dura (tope duro; el pipeline se cortará)"),
+]
 
 
 @dataclass
@@ -44,13 +67,24 @@ class CallRecord:
     output_tokens: int
     cache_read_tokens: int
     cache_write_tokens: int
-    cost_usd: float
+    cost_usd: float    # Guardado en USD para precisión; display en EUR
 
+
+# ---------------------------------------------------------------------------
+# Conversión
+# ---------------------------------------------------------------------------
+
+def usd_to_eur(usd: float) -> float:
+    return round(usd * USD_TO_EUR, 4)
+
+
+# ---------------------------------------------------------------------------
+# Pricing y registro
+# ---------------------------------------------------------------------------
 
 def price_for(model: str) -> dict[str, float]:
     if model in PRICING:
         return PRICING[model]
-    # Fallback: busca por prefijo
     for key, val in PRICING.items():
         if model.startswith(key):
             return val
@@ -59,12 +93,11 @@ def price_for(model: str) -> dict[str, float]:
 
 
 def compute_cost(model: str, usage: dict) -> float:
-    """usage es el objeto `response.usage` (o dict con esos campos)."""
+    """Devuelve el coste en USD para una llamada dada."""
     p = price_for(model)
     inp = usage.get("input_tokens", 0) or 0
     out = usage.get("output_tokens", 0) or 0
     cache_read = usage.get("cache_read_input_tokens", 0) or 0
-    # cache_creation tiene recargo (1.25x sobre input base)
     cache_write = usage.get("cache_creation_input_tokens", 0) or 0
     cost = (
         inp * p["input"] / 1_000_000
@@ -81,6 +114,7 @@ def record_call(
     model: str,
     usage: dict,
 ) -> CallRecord:
+    spend_before_eur = current_month_spend_eur()
     rec = CallRecord(
         ts=datetime.now(timezone.utc).isoformat(timespec="seconds"),
         edition=edition,
@@ -93,6 +127,8 @@ def record_call(
         cost_usd=compute_cost(model, usage),
     )
     append_csv(rec)
+    spend_after_eur = current_month_spend_eur()
+    _maybe_notify_threshold_crossing(spend_before_eur, spend_after_eur)
     return rec
 
 
@@ -128,130 +164,206 @@ def read_all_records() -> list[CallRecord]:
     return out
 
 
-def current_month_spend() -> float:
+# ---------------------------------------------------------------------------
+# Gasto del mes y comprobaciones
+# ---------------------------------------------------------------------------
+
+def current_month_spend_usd() -> float:
     now = datetime.now(timezone.utc)
     key = now.strftime("%Y-%m")
-    total = 0.0
-    for r in read_all_records():
-        if r.ts.startswith(key):
-            total += r.cost_usd
-    return round(total, 4)
+    return round(sum(r.cost_usd for r in read_all_records() if r.ts.startswith(key)), 6)
+
+
+def current_month_spend_eur() -> float:
+    return usd_to_eur(current_month_spend_usd())
 
 
 def assert_budget_available(planned_cost: float = 0.0) -> None:
-    spent = current_month_spend()
-    projected = spent + planned_cost
-    if projected > MONTHLY_BUDGET_USD:
-        raise RuntimeError(
-            f"Presupuesto mensual excedido: gastado {spent:.4f} USD + "
-            f"previsto {planned_cost:.4f} USD > tope {MONTHLY_BUDGET_USD} USD. "
-            f"Revisa docs/costs.md y sube el tope si procede."
-        )
+    """Corta solo si se supera el TOPE DURO en euros (protección runaway).
 
+    - `planned_cost` va en USD (coste estimado de la próxima llamada).
+    - En tope blando NO corta: `record_call()` se encargará de notificar
+      por Telegram cuando se materialice el cruce del umbral.
+    """
+    projected_usd = current_month_spend_usd() + planned_cost
+    projected_eur = usd_to_eur(projected_usd)
+    if projected_eur > MONTHLY_HARD_CAP_EUR:
+        msg = (
+            f"TOPE DURO SUPERADO: proyectado {projected_eur:.2f} € > "
+            f"{MONTHLY_HARD_CAP_EUR:.2f} €. "
+            f"Pipeline cortado para proteger contra runaway. "
+            f"Revisar `private/costs.md` y gasto reciente antes de reactivar."
+        )
+        log.error(msg)
+        try:
+            from src.notify import notify  # import perezoso para evitar ciclos
+            notify(msg, level="critical")
+        except Exception as exc:  # noqa: BLE001
+            log.error("No se pudo notificar el corte: %s", exc)
+        raise RuntimeError(msg)
+
+
+def _maybe_notify_threshold_crossing(spend_before_eur: float, spend_after_eur: float) -> None:
+    """Notifica por Telegram si acabamos de cruzar algún umbral de coste.
+
+    Solo dispara cuando `before < umbral <= after`, para no spamear en cada
+    llamada una vez se supera el nivel.
+    """
+    crossed: list[tuple[float, str, str]] = [
+        (umbral, nivel, etiqueta)
+        for (umbral, nivel, etiqueta) in _ALERT_THRESHOLDS_EUR
+        if spend_before_eur < umbral <= spend_after_eur
+    ]
+    if not crossed:
+        return
+
+    # Si se cruzaron varios a la vez (improbable pero posible si una llamada
+    # enorme salta de 3 a 9 €), notificamos solo el más alto.
+    umbral, nivel, etiqueta = crossed[-1]
+    msg = (
+        f"*Coste mensual: {etiqueta}*\n"
+        f"Gasto actual: *{spend_after_eur:.2f} €* "
+        f"(umbral cruzado: {umbral:.2f} €).\n"
+        f"Tope blando: {MONTHLY_SOFT_CAP_EUR:.2f} €. "
+        f"Tope duro: {MONTHLY_HARD_CAP_EUR:.2f} €."
+    )
+    try:
+        from src.notify import notify  # import perezoso
+        notify(msg, level=nivel)
+    except Exception as exc:  # noqa: BLE001
+        log.error("Notificación de umbral falló: %s", exc)
+
+
+# ---------------------------------------------------------------------------
+# Dashboard
+# ---------------------------------------------------------------------------
 
 def regenerate_dashboard() -> None:
     records = read_all_records()
-    spend = current_month_spend()
+    spend_usd = current_month_spend_usd()
+    spend_eur = usd_to_eur(spend_usd)
     now = datetime.now(timezone.utc)
 
-    # Agregados por mes
-    by_month: dict[str, float] = {}
-    by_stage: dict[str, float] = {}
+    by_month_usd: dict[str, float] = {}
+    by_stage_usd: dict[str, float] = {}
     by_model: dict[str, dict] = {}
     for r in records:
         month = r.ts[:7]
-        by_month[month] = by_month.get(month, 0) + r.cost_usd
-        by_stage[r.stage] = by_stage.get(r.stage, 0) + r.cost_usd
-        m = by_model.setdefault(r.model, {"in": 0, "out": 0, "cost": 0.0})
+        by_month_usd[month] = by_month_usd.get(month, 0) + r.cost_usd
+        by_stage_usd[r.stage] = by_stage_usd.get(r.stage, 0) + r.cost_usd
+        m = by_model.setdefault(r.model, {"in": 0, "out": 0, "cost_usd": 0.0})
         m["in"] += r.input_tokens
         m["out"] += r.output_tokens
-        m["cost"] += r.cost_usd
+        m["cost_usd"] += r.cost_usd
 
-    total_cost = sum(r.cost_usd for r in records)
-    budget_pct = (spend / MONTHLY_BUDGET_USD * 100) if MONTHLY_BUDGET_USD else 0
+    total_usd = sum(r.cost_usd for r in records)
+    soft_pct = (spend_eur / MONTHLY_SOFT_CAP_EUR * 100) if MONTHLY_SOFT_CAP_EUR else 0
+    hard_pct = (spend_eur / MONTHLY_HARD_CAP_EUR * 100) if MONTHLY_HARD_CAP_EUR else 0
 
     lines: list[str] = []
-    lines.append("---")
-    lines.append("layout: default")
-    lines.append("title: Costes")
-    lines.append("permalink: /costes/")
-    lines.append("---")
+    lines.append(f"# Control de costes — privado")
     lines.append("")
-    lines.append("# Control de costes")
+    lines.append(
+        f"*Archivo privado. No se publica en la web. "
+        f"Última actualización: {now.strftime('%Y-%m-%d %H:%M UTC')}*"
+    )
     lines.append("")
-    lines.append(f"*Última actualización: {now.strftime('%Y-%m-%d %H:%M UTC')}*")
+    lines.append(f"Tipo de cambio interno: **1 USD = {USD_TO_EUR:.2f} EUR** "
+                 f"(revisar cada 3 meses).")
     lines.append("")
+
+    # Mes en curso
     lines.append("## Mes en curso")
     lines.append("")
-    lines.append(f"- **Gastado {now.strftime('%Y-%m')}:** `${spend:.4f}` USD")
-    lines.append(f"- **Tope mensual:** `${MONTHLY_BUDGET_USD:.2f}` USD")
-    lines.append(f"- **Consumo:** `{budget_pct:.1f}%` del tope")
+    lines.append(f"- **Gastado {now.strftime('%Y-%m')}:** `{spend_eur:.2f} €` (`${spend_usd:.4f}` USD)")
+    lines.append(f"- **Tope blando:** `{MONTHLY_SOFT_CAP_EUR:.2f} €` "
+                 f"→ solo avisa por Telegram, sigue publicando")
+    lines.append(f"- **Tope duro:** `{MONTHLY_HARD_CAP_EUR:.2f} €` "
+                 f"→ corta el pipeline (protección runaway)")
+    lines.append(f"- **Consumo vs blando:** `{soft_pct:.1f}%`")
+    lines.append(f"- **Consumo vs duro:** `{hard_pct:.1f}%`")
     lines.append("")
 
-    # Barra visual
-    filled = min(int(budget_pct / 5), 20)
+    # Barra visual (respecto al tope duro)
+    filled = min(int(hard_pct / 5), 20)
     bar = "█" * filled + "░" * (20 - filled)
-    lines.append(f"```\n[{bar}] {budget_pct:.1f}%\n```")
+    lines.append(f"```\n[{bar}] {hard_pct:.1f}% del tope duro\n```")
     lines.append("")
 
-    if by_month:
+    # Capa actual
+    current_layer = _current_layer(spend_eur)
+    lines.append(f"**Capa actual:** {current_layer}")
+    lines.append("")
+
+    if by_month_usd:
         lines.append("## Histórico mensual")
         lines.append("")
-        lines.append("| Mes | Gasto USD |")
-        lines.append("|-----|-----------|")
-        for m in sorted(by_month.keys(), reverse=True):
-            lines.append(f"| {m} | ${by_month[m]:.4f} |")
-        lines.append(f"| **TOTAL** | **${total_cost:.4f}** |")
+        lines.append("| Mes | Gasto (€) | Gasto (USD) |")
+        lines.append("|---|---|---|")
+        for m in sorted(by_month_usd.keys(), reverse=True):
+            eur = usd_to_eur(by_month_usd[m])
+            lines.append(f"| {m} | {eur:.2f} € | ${by_month_usd[m]:.4f} |")
+        lines.append(
+            f"| **TOTAL** | **{usd_to_eur(total_usd):.2f} €** | **${total_usd:.4f}** |"
+        )
         lines.append("")
 
-    if by_stage:
+    if by_stage_usd:
         lines.append("## Gasto por fase")
         lines.append("")
-        lines.append("| Fase | Gasto USD | % |")
-        lines.append("|------|-----------|---|")
-        for s in sorted(by_stage.keys(), key=lambda k: -by_stage[k]):
-            pct = by_stage[s] / total_cost * 100 if total_cost else 0
-            lines.append(f"| {s} | ${by_stage[s]:.4f} | {pct:.1f}% |")
+        lines.append("| Fase | Gasto (€) | % |")
+        lines.append("|---|---|---|")
+        for s in sorted(by_stage_usd.keys(), key=lambda k: -by_stage_usd[k]):
+            pct = by_stage_usd[s] / total_usd * 100 if total_usd else 0
+            lines.append(f"| {s} | {usd_to_eur(by_stage_usd[s]):.2f} € | {pct:.1f}% |")
         lines.append("")
 
     if by_model:
         lines.append("## Consumo por modelo")
         lines.append("")
-        lines.append("| Modelo | Input tokens | Output tokens | Gasto USD |")
-        lines.append("|--------|--------------|---------------|-----------|")
-        for m in sorted(by_model.keys(), key=lambda k: -by_model[k]["cost"]):
+        lines.append("| Modelo | Input tokens | Output tokens | Gasto (€) |")
+        lines.append("|---|---|---|---|")
+        for m in sorted(by_model.keys(), key=lambda k: -by_model[k]["cost_usd"]):
             d = by_model[m]
             lines.append(
-                f"| `{m}` | {d['in']:,} | {d['out']:,} | ${d['cost']:.4f} |"
+                f"| `{m}` | {d['in']:,} | {d['out']:,} | {usd_to_eur(d['cost_usd']):.2f} € |"
             )
         lines.append("")
 
     if records:
         lines.append("## Últimas 20 llamadas")
         lines.append("")
-        lines.append("| Fecha | Edición | Fase | Modelo | In | Out | USD |")
-        lines.append("|-------|---------|------|--------|-----|-----|-----|")
+        lines.append("| Fecha | Edición | Fase | Modelo | In | Out | € |")
+        lines.append("|---|---|---|---|---|---|---|")
         for r in records[-20:][::-1]:
             lines.append(
                 f"| {r.ts[:16].replace('T',' ')} | {r.edition} | {r.stage} "
                 f"| `{r.model}` | {r.input_tokens:,} | {r.output_tokens:,} "
-                f"| ${r.cost_usd:.4f} |"
+                f"| {usd_to_eur(r.cost_usd):.4f} € |"
             )
         lines.append("")
 
     lines.append("## Política de costes")
     lines.append("")
     lines.append(
-        f"Si el gasto mensual supera **${MONTHLY_BUDGET_USD:.2f} USD**, el "
-        "pipeline aborta automáticamente antes de llamar a la API. "
-        "Para subir el tope, editar `MONTHLY_BUDGET_USD` en "
-        "[`src/costs.py`](https://github.com/otundra/ibiza-housing-radar/blob/main/src/costs.py)."
+        f"- **Tope blando ({MONTHLY_SOFT_CAP_EUR:.2f} €):** Telegram avisa, "
+        f"pero el pipeline **sigue publicando la editorial**. "
+        f"No se pierde informe por sobrecoste."
+    )
+    lines.append(
+        f"- **Tope duro ({MONTHLY_HARD_CAP_EUR:.2f} €):** Telegram crítico + "
+        f"**corte inmediato**. Protección real contra bugs o bucles runaway."
     )
     lines.append("")
     lines.append(
-        "El sistema prioriza **Claude Haiku** para clasificación "
-        "(~$0.01 por ejecución) y **Claude Opus** solo para generar el "
-        "informe final (~$0.50 por ejecución). Coste esperado ≈ **$2/mes**."
+        f"Coste esperado actual: ~2 €/mes. Con trilingüe activo (diferido): "
+        f"~3,15 €/mes. Los topes cubren ambos escenarios sin retoque."
+    )
+    lines.append("")
+    lines.append(
+        f"Para cambiar topes: editar `MONTHLY_SOFT_CAP_EUR` y "
+        f"`MONTHLY_HARD_CAP_EUR` en "
+        f"[`src/costs.py`](https://github.com/otundra/ibiza-housing-radar/blob/main/src/costs.py)."
     )
     lines.append("")
 
@@ -260,13 +372,35 @@ def regenerate_dashboard() -> None:
     log.info("Dashboard regenerado → %s", COSTS_MD)
 
 
+def _current_layer(spend_eur: float) -> str:
+    if spend_eur < 4.00:
+        return "🟢 Verde (<4 €) — silencio"
+    if spend_eur < 6.00:
+        return "🟡 Amarilla (4-6 €) — FYI"
+    if spend_eur < MONTHLY_SOFT_CAP_EUR:
+        return "🟠 Naranja (6-8 €) — atención"
+    if spend_eur < MONTHLY_HARD_CAP_EUR:
+        return f"🔴 Roja blanda ({MONTHLY_SOFT_CAP_EUR:.0f}-{MONTHLY_HARD_CAP_EUR:.0f} €) — publica igual"
+    return f"🚨 Roja dura (>{MONTHLY_HARD_CAP_EUR:.0f} €) — pipeline cortado"
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s %(name)s] %(message)s")
     regenerate_dashboard()
-    print(json.dumps({"spend_current_month_usd": current_month_spend()}))
+    print(json.dumps({
+        "spend_current_month_eur": current_month_spend_eur(),
+        "spend_current_month_usd": current_month_spend_usd(),
+        "soft_cap_eur": MONTHLY_SOFT_CAP_EUR,
+        "hard_cap_eur": MONTHLY_HARD_CAP_EUR,
+    }, indent=2))
     return 0
 
 
 if __name__ == "__main__":
     import sys
+
     sys.exit(main())
