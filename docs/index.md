@@ -7,7 +7,7 @@ permalink: /
 <article class="edition-card">
   <div class="edition-meta">2026-04-20 · 2026-W17</div>
   <h2><a href="{{ site.baseurl }}/ediciones/2026-w17/">Semana 17 · 2026</a></h2>
-  <p class="edition-excerpt">Desalojo inminente de 200 temporeros en asentamientos mientras se piden 3.500€ por habitación y el Ayuntamiento saca 7 VPO.</p>
+  <p class="edition-excerpt">Ibiza desaloja 200 trabajadores de asentamientos a las puertas de la temporada mientras se piden 3.500 € por una habitación.</p>
   <a class="edition-cta" href="{{ site.baseurl }}/ediciones/2026-w17/">Leer informe →</a>
 </article>
 
