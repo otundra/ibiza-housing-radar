@@ -52,10 +52,32 @@ Coste: 0 €. Duración estimada: 3-4 semanas.
 
 Coste: 0 €. Duración estimada: 6-8 semanas. Aquí dejas de ser refrito y te vuelves fuente primaria.
 
-1. **Observatorio de precios (ruta 0 €).** Dos vías complementarias, ninguna requiere scraping legalmente gris:
-   - **Agregación de fuentes oficiales.** Citar y visualizar los informes trimestrales que ya publican Idealista, Fotocasa, INE, IBESTAT y Ministerio de Vivienda. Dato sólido, 0 € y 0 riesgo legal.
-   - **Crowd-sourcing ciudadano.** Formulario permanente "¿cuánto pagas por tu habitación?" (Formsubmit o Formspree gratis). En una temporada, dataset propio que ni INE ni IBAVI tienen. Sincera tu sesgo estadístico (muestra autoseleccionada) en la metodología.
-   - **Scraping Idealista/Milanuncios queda descartado** por riesgo legal sin consulta previa (los 80 € de la consulta son el único coste externo que seguiría justificado, pero aplazado hasta tracción).
+1. **Observatorio de precios (ruta 0 €).** Dos vías complementarias en paralelo:
+
+   **Vía A — Agregación de fuentes oficiales.** Script mensual que recoja datos de informes trimestrales públicos: Idealista (Informe de Precios), Fotocasa (Índice Inmobiliario), INE (ECV y EPA), IBESTAT, Ministerio de Vivienda (Observatorio del Alquiler). Publicar en `/precios` con gráfico de líneas, ficha por fuente con link al PDF original, y CSV descargable. Dato sólido, 0 € y 0 riesgo legal. Limitación: granularidad trimestral, mide vivienda general, no separa habitación.
+
+   **Vía B — Crowd-sourcing ciudadano.** Formulario permanente en `/aportar-precio` (Formspree gratis <50/mes, Formsubmit gratis ilimitado como fallback) con campos:
+   - Zona: dropdown con los 5 municipios de Ibiza (**toda la isla**).
+   - Tipo: individual / compartida / cama en compartida / piso entero.
+   - Precio mensual (€).
+   - Duración: mensual / temporada / anual.
+   - Suministros incluidos: sí / no / algunos.
+   - ¿Trabajador de temporada?: sí / no.
+   - Mes de inicio del contrato.
+   - Email (opcional, no se publica).
+
+   Política:
+   - **Email: solo acuse automático.** No se responde personalmente salvo caso grave que Raúl decida escalar manualmente.
+   - **Publicación anónima.** Cada respuesta se añade a `data/prices_crowd.csv` sin email ni metadatos personales; el CSV completo se publica como dato abierto descargable. Solo se publican agregados en la web (media, mediana, p25, p75 por zona y tipo).
+   - **Umbral mínimo de publicación**: no publicar agregados de una zona/tipo hasta tener ≥10 respuestas en ese segmento, para evitar reidentificación.
+   - **Sesgo muestral declarado** en `/metodologia`: muestra autoseleccionada, probablemente sesgada hacia quienes peor están. Triangular con Vía A.
+
+   **Calendario:**
+   - Semanas 1-4: montar Vía A, abrir formulario de Vía B (acumular sin publicar).
+   - Junio-julio: empezar a publicar crowd-sourcing junto a oficial cuando ≥50 respuestas y ≥10 por zona.
+   - Octubre: edición especial "Balance temporada" con dataset completo.
+
+   El scraping directo de Idealista/Milanuncios queda descartado. Ver sección *Rutas descartadas*.
 2. **Tracker de propuestas.** Cada edición genera 3-5 propuestas. Añadir columna `estado` (propuesta / recogida por medio / debatida en pleno / implementada / descartada). Página `/propuestas` con tabla filtrable. Convierte el informe en sistema de rendición de cuentas.
 3. **BOIB watcher.** Scraping del BOIB diario filtrado por keywords (IBAVI, vivienda, alquiler, turístico). Alerta en la siguiente edición de normativa nueva. Alto valor, baja competencia. BOIB es publicación oficial pública, sin problema legal.
 4. **Serie multi-semana.** Tag "Temporada 2026" agrupando ediciones mayo-octubre. Al cierre del verano, edición especial "Balance temporada": qué propusimos, qué pasó.
@@ -114,7 +136,31 @@ Hasta entonces, GitHub Pages free tier.
 - **Monetización en 2026.** Matar credibilidad por 20 €/mes de publicidad es mal trade. Mantén gratis y CC-BY al menos el primer año.
 - **App nativa.** Sobre-ingeniería. Web responsive + newsletter cubre el 95 % del uso.
 - **Ampliar a toda Baleares.** Diluye foco. Ibiza + Formentera primero; Mallorca/Menorca solo si la marca aguanta.
-- **Scraping de Idealista/Milanuncios** sin consulta legal previa. Sustituido por agregación de informes oficiales + crowd-sourcing.
+- **Scraping de Idealista/Milanuncios.** Descartado. Ver sección *Rutas descartadas*.
+
+---
+
+## Rutas descartadas con justificación
+
+### Scraping directo de portales inmobiliarios (Idealista, Fotocasa, Milanuncios)
+
+**Qué sería:** script que parsea listados públicos del portal y agrega estadísticas semanales por zona y tipo de habitación. Publicar solo agregados, nunca anuncios individuales.
+
+**Por qué se descarta:**
+
+1. **Contradicción reputacional.** Un proyecto que denuncia semanalmente el alquiler turístico ilegal no puede permitirse violar los TOS de un portal. Basta que un comentarista lo levante para inhabilitar la línea editorial.
+2. **Riesgo legal real.** Idealista ha llevado a tribunales a terceros por scraping en España, con jurisprudencia favorable bajo competencia desleal (Ley 3/1991) y derecho *sui generis* del fabricante de bases de datos (arts. 133-137 LPI). No es empresa pasiva en defensa. Un cease-and-desist de sus abogados, aunque no llegue a juicio, mata el proyecto de precios.
+3. **Coste real de consulta legal.** Un dictamen escrito de abogado especializado en propiedad intelectual ronda 500-1.500 €, no los 80 € que se estimaron en la primera versión del plan. Por debajo es apretón de manos sin valor probatorio.
+4. **Valor marginal sobre Vía A + Vía B.** El scraping aporta granularidad semanal del precio de oferta, pero las vías limpias ya cubren lo esencial. Lo que más daña al mercado de temporeros es el circuito off-portal (Facebook Groups, WhatsApp, carteles), que el scraping **tampoco captura** — solo la Vía B llega ahí.
+5. **Coste oculto de mantenimiento.** El DOM del portal cambia cada 3-6 meses; el scraper se rompe y hay que rehacerlo. Tiempo que Raúl no tiene.
+
+**Ruta limpia de reserva — API oficial de partners.** Idealista y Fotocasa tienen programas de API para entidades sin ánimo de lucro. Requieren persona jurídica o proyecto con respaldo institucional (UIB, sindicato, ONG), solicitud justificada y aprobación manual. **Condiciones para reactivar esta línea:**
+
+- Fase 4.1 cerrada: consejo editorial con al menos un miembro institucional.
+- Solicitud de API aprobada por vía oficial.
+- En ningún caso scraping contra TOS, ni aunque la API sea rechazada.
+
+Si la API se rechaza tras cumplir las condiciones, se reevalúa — pero **nunca** reintroducir scraping directo.
 
 ---
 
@@ -143,7 +189,8 @@ Al cerrar cada punto, actualizar [`DIARIO.md`](DIARIO.md) con la entrada corresp
 | 2 | Bot social (Bluesky + Mastodon) | pendiente |
 | 2 | Envío directo a periodistas | pendiente |
 | 2 | SEO básico | pendiente |
-| 3 | Observatorio de precios (agregación + crowd) | pendiente |
+| 3 | Observatorio de precios — Vía A (agregación oficial) | pendiente |
+| 3 | Observatorio de precios — Vía B (crowd-sourcing, toda isla, acuse auto, CSV anónimo) | pendiente |
 | 3 | Tracker de propuestas | pendiente |
 | 3 | BOIB watcher | pendiente |
 | 3 | Serie multi-semana | pendiente |
