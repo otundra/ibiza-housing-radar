@@ -44,7 +44,7 @@ Genera `docs/editions/<YYYY>-w<WW>.md`, actualiza `docs/index.md` y `docs/costs.
 
 ## Estructura
 
-Ver [CLAUDE.md](CLAUDE.md) para detalles de arquitectura, decisiones y comandos. Ver [CAMBIOS.md](CAMBIOS.md) para el diario de cambios relevantes del proyecto.
+Ver [CLAUDE.md](CLAUDE.md) para detalles de arquitectura, decisiones y comandos. Ver [DIARIO.md](DIARIO.md) para el diario del proyecto.
 
 ## Aviso
 

@@ -46,7 +46,7 @@ Observatorio automatizado semanal sobre la crisis de vivienda en Ibiza con foco 
 │   ├── weekly-report.yml       # Cron lunes 05:00 UTC
 │   └── validate-key.yml        # Test manual de la API key
 ├── requirements.txt
-├── CAMBIOS.md                  # Diario de cambios relevantes del proyecto
+├── DIARIO.md                   # Diario del proyecto (hitos, decisiones, cambios)
 ├── STATUS.md                   # Snapshot de estado actual (se actualiza a mano)
 └── README.md
 ```
@@ -82,9 +82,9 @@ gh workflow run validate-key.yml
 
 6. **Modelo por fase.** Haiku para filtrar (coste marginal), Opus solo para la pieza final donde la calidad editorial sí importa. No mezclar.
 
-## Diario de cambios
+## Diario del proyecto
 
-Cuando haya un cambio relevante (hito, decisión, fix estructural, no-commits triviales), añadir una entrada a [`CAMBIOS.md`](CAMBIOS.md) con: qué cambió, por qué, impacto.
+Cuando haya un cambio relevante (hito, decisión, fix estructural, no-commits triviales), añadir una entrada a [`DIARIO.md`](DIARIO.md) con formato viñetas: tema en **negrita** + línea breve combinando qué/por qué/impacto.
 
 ## Convenciones de commits
 

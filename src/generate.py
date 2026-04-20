@@ -12,7 +12,7 @@ import logging
 import os
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -36,7 +36,7 @@ El informe debe tener esta ESTRUCTURA EXACTA (Markdown con front-matter Jekyll):
 
 ---
 layout: edition
-title: "Semana WW · YYYY"
+title: "<usa el título que te paso literal en el user prompt, sin modificarlo>"
 week: "YYYY-WWW"
 date: YYYY-MM-DD
 permalink: /ediciones/YYYY-wWW/
@@ -84,11 +84,20 @@ REGLAS DURAS:
 
 USER_TEMPLATE = """Semana ISO: {iso_week}
 Fecha corte: {cutoff_date}
+Título de la edición (úsalo LITERAL en el campo `title` del front-matter, entre comillas): {edition_title}
 
 Noticias clasificadas como relevantes de vivienda en Ibiza (JSON):
 {payload}
 
 Escribe el informe completo siguiendo la estructura del system prompt. Empieza por el front-matter YAML y termina con la sección "A vigilar". Nada más."""
+
+
+MONTHS_ES = [
+    "",
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
+]
+ORDINALS_ES = ["", "Primera", "Segunda", "Tercera", "Cuarta", "Quinta", "Sexta"]
 
 
 def iso_week_string(dt: datetime) -> str:
@@ -99,6 +108,27 @@ def iso_week_string(dt: datetime) -> str:
 def edition_slug(dt: datetime) -> str:
     iso = dt.isocalendar()
     return f"{iso.year}-w{iso.week:02d}"
+
+
+def human_week_title(dt: datetime) -> str:
+    """Devuelve un título tipo 'Tercera semana de abril de 2026 (13/4/2026 - 19/4/2026)'.
+
+    Regla: el mes y el año se toman del jueves de la semana ISO (día 'dueño' de la semana).
+    El ordinal es la posición del jueves dentro de su mes (1º, 2º, ... jueves del mes).
+    El rango mostrado es lunes-domingo.
+    """
+    monday = (dt - timedelta(days=dt.weekday())).replace(
+        hour=0, minute=0, second=0, microsecond=0, tzinfo=None
+    )
+    sunday = monday + timedelta(days=6)
+    thursday = monday + timedelta(days=3)
+    ordinal_idx = (thursday.day - 1) // 7 + 1
+    ordinal = ORDINALS_ES[ordinal_idx]
+    month_name = MONTHS_ES[thursday.month]
+    year = thursday.year
+    start = f"{monday.day}/{monday.month}/{monday.year}"
+    end = f"{sunday.day}/{sunday.month}/{sunday.year}"
+    return f"{ordinal} semana de {month_name} de {year} ({start} - {end})"
 
 
 def generate(items: list[dict[str, Any]], now: datetime, edition: str) -> str:
@@ -122,6 +152,7 @@ def generate(items: list[dict[str, Any]], now: datetime, edition: str) -> str:
     prompt = USER_TEMPLATE.format(
         iso_week=iso_week_string(now),
         cutoff_date=now.strftime("%Y-%m-%d"),
+        edition_title=human_week_title(now),
         payload=json.dumps(slim, ensure_ascii=False, indent=2),
     )
 
@@ -154,7 +185,7 @@ def minimal_frontmatter(now: datetime) -> str:
     return (
         "---\n"
         f'layout: edition\n'
-        f'title: "Semana {iso.week} · {iso.year}"\n'
+        f'title: "{human_week_title(now)}"\n'
         f'week: "{iso.year}-W{iso.week:02d}"\n'
         f'date: {now.strftime("%Y-%m-%d")}\n'
         f'permalink: /ediciones/{iso.year}-w{iso.week:02d}/\n'
@@ -171,10 +202,9 @@ def write_edition(text: str, now: datetime) -> Path:
 
 
 def empty_edition(now: datetime, edition: str) -> str:
-    iso = now.isocalendar()
     return f"""---
 layout: edition
-title: "Semana {iso.week} · {iso.year}"
+title: "{human_week_title(now)}"
 week: "{edition}"
 date: {now.strftime('%Y-%m-%d')}
 permalink: /ediciones/{edition_slug(now)}/
