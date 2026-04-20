@@ -1,0 +1,411 @@
+{
+  "_metadata": {
+    "version": "auto_v1",
+    "timestamp": "2026-04-20T17:37:15.778588+00:00",
+    "method": "Opus 4.7 extended thinking + Sonnet 4.6 validator",
+    "dataset": "dataset_v1.json"
+  },
+  "n01": {
+    "task_1_classify": {
+      "id": "n01",
+      "is_housing": true,
+      "actor": "ayuntamiento",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "id": "n01",
+      "proposal_type": "formal",
+      "proposal_actor_hint": "Ayuntamiento de Ibiza"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Ayuntamiento de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Ayuntamiento de Ibiza ejecutará la próxima semana el desalojo de unas 200 personas de los asentamientos de sa Joveria y Can Misses, a dos semanas del inicio operativo de la temporada.",
+        "url_source": "https://elpais.com/espana/2026-04-19/ibiza-desalojara-a-200-trabajadores-de-sus-asentamientos-a-las-puertas-de-la-temporada.html",
+        "palanca": "enforcement",
+        "target_actor": "Ayuntamiento de Ibiza",
+        "horizon": "inmediato",
+        "state": "en_ejecucion",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [
+          "Cáritas"
+        ],
+        "precedents": []
+      },
+      {
+        "actor": "Cáritas",
+        "actor_type": "tercer_sector",
+        "statement_summary": "Cáritas alerta de que no hay alternativa habitacional prevista para los trabajadores que serán desalojados de los asentamientos.",
+        "url_source": "https://elpais.com/espana/2026-04-19/ibiza-desalojara-a-200-trabajadores-de-sus-asentamientos-a-las-puertas-de-la-temporada.html",
+        "palanca": "denuncia_social",
+        "target_actor": "Ayuntamiento de Ibiza",
+        "horizon": "inmediato",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n02": {
+    "task_1_classify": {
+      "id": "n02",
+      "is_housing": true,
+      "actor": "trabajadores",
+      "lever": "denuncia_social"
+    },
+    "task_2_proposal_detect": {
+      "id": "n02",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n03": {
+    "task_1_classify": {
+      "id": "n03",
+      "is_housing": true,
+      "actor": "ayuntamiento",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "id": "n03",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n04": {
+    "task_1_classify": {
+      "id": "n04",
+      "is_housing": true,
+      "actor": "tercer_sector",
+      "lever": "denuncia_social"
+    },
+    "task_2_proposal_detect": {
+      "id": "n04",
+      "proposal_type": "formal",
+      "proposal_actor_hint": "Cáritas Ibiza"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Cáritas Ibiza",
+        "actor_type": "tercer_sector",
+        "statement_summary": "Cáritas Ibiza pide que no se ejecute el desalojo de los asentamientos de sa Joveria y Can Misses sin alternativa habitacional acreditada y solicita participación en el proceso de realojo.",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/11/preocupacion-caritas-ibiza-desalojo-asentamientos-128948679.html",
+        "palanca": "denuncia_social",
+        "target_actor": "Ayuntamiento de Ibiza",
+        "horizon": "inmediato",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n05": {
+    "task_1_classify": {
+      "id": "n05",
+      "is_housing": true,
+      "actor": "otro",
+      "lever": "precio"
+    },
+    "task_2_proposal_detect": {
+      "id": "n05",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n06": {
+    "task_1_classify": {
+      "id": "n06",
+      "is_housing": true,
+      "actor": "otro",
+      "lever": "denuncia_social"
+    },
+    "task_2_proposal_detect": {
+      "id": "n06",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n07": {
+    "task_1_classify": {
+      "id": "n07",
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "id": "n07",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [
+      {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell d'Eivissa atribuye al programa de enforcement contra la oferta turística ilegal el descenso del 70% en un año, con 2.800 anuncios retirados y 14.500 plazas liberadas.",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/09/2606075/desploma-oferta-ilegal-viviendas-turisticas-ibiza.html",
+        "palanca": "enforcement",
+        "target_actor": "Consell d'Eivissa",
+        "horizon": "inmediato",
+        "state": "en_ejecucion",
+        "viability_legal": "alta",
+        "viability_legal_reason": "Programa en aplicación con resultados documentados",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n11": {
+    "task_1_classify": {
+      "id": "n11",
+      "is_housing": true,
+      "actor": "govern_balear",
+      "lever": "oferta_vivienda"
+    },
+    "task_2_proposal_detect": {
+      "id": "n11",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [
+      {
+        "actor": "Govern Balear, IBAVI",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Govern Balear a través del IBAVI saca a concurso siete viviendas protegidas en sa Penya con precios regulados de 200-460 €/mes y requisito de residencia continuada de 10 años en la isla.",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/16/siete-viviendas-protegidas-ibiza-alquiler-129182651.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "IBAVI",
+        "horizon": "inmediato",
+        "state": "en_ejecucion",
+        "viability_legal": "alta",
+        "viability_legal_reason": "Concurso formal publicado",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n12": {
+    "task_1_classify": {
+      "id": "n12",
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "id": "n12",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n13": {
+    "task_1_classify": {
+      "id": "n13",
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "id": "n13",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [
+      {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell d'Eivissa acumula 260 expedientes sancionadores y 2 millones de euros de multas recaudadas en dos años de programa de enforcement contra el alquiler turístico ilegal, con 700 anuncios retirados en el último año.",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/17/consell-retira-700-anuncios-129197215.html",
+        "palanca": "enforcement",
+        "target_actor": "Consell d'Eivissa",
+        "horizon": "inmediato",
+        "state": "en_ejecucion",
+        "viability_legal": "alta",
+        "viability_legal_reason": "Programa con resultados sancionadores documentados",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n14": {
+    "task_1_classify": {
+      "id": "n14",
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "id": "n14",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [
+      {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell d'Eivissa presenta el balance 2025 de 260 expedientes sancionadores de alquiler turístico ilegal, apoyado en denuncias ciudadanas y plataformas, y anuncia continuidad del programa en 2026.",
+        "url_source": "https://es.arabalears.cat/sociedad/ibiza-consolida-control-alquiler-ilegal-260-expedientes-2025_1_5709512.html",
+        "palanca": "enforcement",
+        "target_actor": "Consell d'Eivissa",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "alta",
+        "viability_legal_reason": "Programa consolidado con continuidad anunciada",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n15": {
+    "task_1_classify": {
+      "id": "n15",
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "id": "n15",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n16": {
+    "task_1_classify": {
+      "id": "n16",
+      "is_housing": true,
+      "actor": "judicial",
+      "lever": "normativa"
+    },
+    "task_2_proposal_detect": {
+      "id": "n16",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [
+      {
+        "actor": "Tribunal Superior de Justicia de Islas Baleares",
+        "actor_type": "judicial",
+        "statement_summary": "El TSJIB confirma la denegación de licencia de vivienda turística a una plurifamiliar, avalando el criterio del Consell de restringir las licencias a unifamiliares aisladas y sentando doctrina sobre la aplicación del PTI.",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/17/2610881/tsjib-avala-denegacion-licencia-turistica-vivienda-por-ser-unifamiliar-aislada.html",
+        "palanca": "judicial",
+        "target_actor": "Consell d'Eivissa",
+        "horizon": "estructural",
+        "state": "aprobada",
+        "viability_legal": "alta",
+        "viability_legal_reason": "Sentencia firme que sienta doctrina",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [
+          "Consell d'Eivissa"
+        ],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n17": {
+    "task_1_classify": {
+      "id": "n17",
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "oferta_vivienda"
+    },
+    "task_2_proposal_detect": {
+      "id": "n17",
+      "proposal_type": "en_movimiento",
+      "proposal_actor_hint": "Consell d'Eivissa"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell d'Eivissa ha formalizado el encargo de un estudio técnico sobre viviendas vacías en Ibiza para cuantificar el parque y diseñar políticas de movilización, con resultados preliminares antes de fin de mes.",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/03/31/2600245/consell-eivissa-encarga-estudio-sobre-viviendas-vacias-isla.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Consell d'Eivissa",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "alta",
+        "viability_legal_reason": "Encargo técnico formalizado",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n18": {
+    "task_1_classify": {
+      "id": "n18",
+      "is_housing": true,
+      "actor": "otro",
+      "lever": "precio"
+    },
+    "task_2_proposal_detect": {
+      "id": "n18",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n19": {
+    "task_1_classify": {
+      "id": "n19",
+      "is_housing": true,
+      "actor": "otro",
+      "lever": "precio"
+    },
+    "task_2_proposal_detect": {
+      "id": "n19",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n20": {
+    "task_1_classify": {
+      "id": "n20",
+      "is_housing": true,
+      "actor": "ayuntamiento",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "id": "n20",
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  }
+}

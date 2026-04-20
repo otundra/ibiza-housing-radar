@@ -11,3 +11,9 @@ Registro automático de cada ejecución de `scripts/generate_gold.py` y `scripts
 ## Histórico
 
 *Aún no hay ejecuciones registradas. La primera se anotará al ejecutar `python -m scripts.generate_gold` seguido de `python -m scripts.run_benchmark` con `ANTHROPIC_API_KEY` en el entorno.*
+
+## 2026-04-20 17:37 UTC
+- Dataset: v1 (20 items)
+- Validados (gold_auto): **17** / 20
+- Discrepancias: **3**
+- Coste total: **0.7999 €**
