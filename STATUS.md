@@ -58,9 +58,8 @@
 
 ### Recomendable (15 min)
 
-4. **Comprobar que las URLs de la W17 llevan al artículo real**. El pipeline resuelve los redirects de Google News; si alguno quedó como URL larga de `news.google.com`, es que el redirect falló (no rompe, solo queda feo).
-5. **Decidir si subes el tope de coste.** Está en $5/mes. Si quieres más margen, cambia `MONTHLY_BUDGET_USD` en `src/costs.py`.
-6. **Decidir lector objetivo.** Sigue sin definir. Afecta a: tono (más técnico-político vs. más divulgativo), distribución (newsletter, RRSS, nada), y qué diarios priorizar. Sin esto afinado, el sistema irá dando vueltas sobre lo mismo.
+4. **Decidir si subes el tope de coste.** Está en $5/mes. Si quieres más margen, cambia `MONTHLY_BUDGET_USD` en `src/costs.py`.
+5. **Decidir lector objetivo.** Sigue sin definir. Afecta a: tono (más técnico-político vs. más divulgativo), distribución (newsletter, RRSS, nada), y qué diarios priorizar. Sin esto afinado, el sistema irá dando vueltas sobre lo mismo.
 
 ## ⚠️ Decisiones que tomé sin preguntarte
 
@@ -102,14 +101,6 @@ pip install -r requirements.txt
 export ANTHROPIC_API_KEY=sk-ant-...
 python -m src.report
 ```
-
-## ⚠️ Limitación conocida: URLs a través de Google News
-
-Las URLs de las noticias en la edición automática apuntan a `news.google.com/rss/articles/...` en vez de al dominio del diario original. Motivo: Google News firma las URLs y ya no hace un simple redirect HTTP — requiere decodificar una URL firmada con un protocolo específico.
-
-**Impacto real:** ninguno funcional — el click funciona y termina en el artículo original via Google News. Solo es cosmético (el href es largo y no informativo).
-
-**Cómo resolverlo cuando quieras:** instalar el paquete `googlenewsdecoder` en `requirements.txt` y usarlo en `src/ingest.py::_resolve_gnews`. Añade ~200 ms por URL pero da URLs limpias del estilo `https://www.elpais.com/...`.
 
 ## 📋 Mejoras candidatas (cuando quieras)
 
