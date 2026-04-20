@@ -12,6 +12,20 @@ Reglas:
 
 ---
 
+## 2026-04-20 — Primer benchmark ejecutado + post-mortem del desajuste gold
+
+- **`generate_gold.py` ejecutado con éxito** — Opus con `thinking.type=adaptive` + `output_config.effort=high` generó gold para 20 items; Sonnet validó 17; 3 discrepancias apartadas. Coste real: 0,80 € (muy por debajo de los 3 € estimados gracias a prompt caching). Discrepancias: n08 (coalición: classify pierde sindicatos por limitación del enum actor), n09 (Opus infirió nombres concretos CAEB/PIMEEF/CCOO/UGT que la noticia solo dice genéricamente — exactamente el tipo de alucinación que el pivote quiere evitar, el sistema lo atrapó), n10 (inconsistencia interna de Opus entre detect y extract). Primer uso real del sistema de gold autogenerado: funcionó como se diseñó.
+- **Fix `thinking` API desactualizada** — el formato `{"type": "enabled", "budget_tokens": N}` ya no es válido en `claude-opus-4-7`. Cambiado a `{"type": "adaptive"}` + `output_config={"effort": "high"}`. Error 400 con mensaje claro → fix en una línea. Sin coste (400 no cobra).
+- **Fix `notify.py`: no crear issues en ejecución local** — el fallback a issue GitHub disparaba en local cuando no hay `TELEGRAM_BOT_TOKEN`. Ahora solo dispara si `GITHUB_ACTIONS=true` o si `level=critical`. En local basta con el log en stdout. Issue #1 (falso positivo del primer test) cerrado.
+- **Post-mortem abierto: [`private/postmortems.md`](private/postmortems.md)** — registro público-interno de errores evitables con coste o impacto. Primera entrada: desajuste entre `generate_gold.py` (produjo `gold_auto_v1.json`) y `run_benchmark.py` (leía `gold_standard_v1.json` manual hardcoded). El primer benchmark costó 0,57 € desperdiciados antes de detectar el problema. Causa raíz: los dos scripts se diseñaron por separado sin conexión. Responsable: Claude. Lección: flujos multi-paso con coste deben orquestarse por código, no por costumbre.
+- **Prevención aplicada:**
+  1. `run_benchmark.py` prefiere gold_auto con fallback a manual + aviso visible en log.
+  2. Nuevo orquestador [`scripts/bench_full.py`](scripts/bench_full.py) — un solo comando que genera gold si falta y ejecuta benchmark contra gold_auto. Verificaciones entre pasos. Abort si falta ANTHROPIC_API_KEY.
+  3. `ESTUDIO-3-MODELOS.md` actualizado: el comando recomendado pasa a ser `python -m scripts.bench_full`. Los individuales quedan como bajo nivel.
+- **Primer benchmark con gold auto: pendiente de ejecución por el editor con el orquestador `bench_full`**.
+
+---
+
 ## 2026-04-20 — Schema con coaliciones, página /radar/, gold autogenerado
 
 - **Coaliciones en el schema** — nuevos valores de `actor_type`: `coalicion_intersectorial` (patronal + sindicato) y `coalicion_institucional` (con administración o con sociedad civil organizada). Regla: cuando varios actores firman una propuesta juntos, el campo `actor` contiene los nombres literales de todos los firmantes separados por coma, sin elegir "primario". Fidelidad al consenso real firmado. Caso W15 (CAEB+PIMEEF+CCOO+UGT sobre residencias) es el ejemplo canónico.

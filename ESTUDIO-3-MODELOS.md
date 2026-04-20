@@ -108,29 +108,38 @@ Los prompts son idénticos entre los 3 modelos para que la comparación sea just
 
 ## 7. Cómo ejecutar
 
-### Paso 1: generar gold automático (primero)
+### Comando recomendado — orquestador completo
 
 ```bash
 cd ~/Documents/GitHub/ibiza-housing-radar
 export ANTHROPIC_API_KEY=sk-ant-...
-python -m scripts.generate_gold
+python -m scripts.bench_full
 ```
 
-Opus con thinking + Sonnet validador producen `data/bench/gold_auto_v1.json` sin intervención humana. Coste ~3 €. Telegram avisa al terminar con válidos/discrepancias. Los items donde Opus y Sonnet discrepan van a `data/bench/gold_discrepancies.json` (no entran en el benchmark).
+`bench_full` hace los dos pasos en orden: genera gold si no existe (Opus thinking + Sonnet validador), y luego corre el benchmark sobre los 3 modelos contra ese gold. Impide el desajuste que costó 0,57 € el 2026-04-20 (ver `private/postmortems.md`).
 
-### Paso 2: correr el benchmark contra los 3 modelos
+Opciones:
+
+- `--regen-gold` — regenera el gold aunque exista (útil tras cambiar el dataset o el prompt).
+- `--skip-gold` — usa el gold existente, no lo toca (útil para re-benchmarkar sin regenerar).
+- `--dry-run` — muestra qué haría sin llamar a la API.
+
+### Scripts individuales (bajo nivel)
+
+Para casos especiales (debug, solo una fase):
 
 ```bash
+# Solo generar gold
+python -m scripts.generate_gold
+
+# Solo ejecutar benchmark contra gold existente
 python -m scripts.run_benchmark
 ```
 
-El script lee el gold auto y evalúa Haiku, Sonnet y Opus sobre las 3 tareas.
-
-### Dry-run previo (sin coste, valida estructura)
+### Dry-run previo (sin coste)
 
 ```bash
-python -m scripts.generate_gold --dry-run
-python -m scripts.run_benchmark --dry-run
+python -m scripts.bench_full --dry-run
 ```
 
 Opciones:
