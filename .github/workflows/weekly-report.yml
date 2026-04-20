@@ -63,4 +63,16 @@ jobs:
           Generado automáticamente por el workflow Weekly report.
 
           Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>"
-          git push
+
+          # Reintento con rebase si alguien empujó entre medias (humanos o
+          # ediciones anteriores). Máximo 3 intentos para no engancharse.
+          for i in 1 2 3; do
+            if git push; then
+              echo "Push OK en intento $i"
+              exit 0
+            fi
+            echo "Push rechazado, rebase y reintento ($i/3)..."
+            git pull --rebase origin main
+          done
+          echo "::error::No se pudo hacer push tras 3 intentos"
+          exit 1
