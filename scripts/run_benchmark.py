@@ -37,7 +37,8 @@ log = logging.getLogger("bench")
 
 ROOT = Path(__file__).resolve().parent.parent
 DATASET_PATH = ROOT / "data" / "bench" / "dataset_v1.json"
-GOLD_PATH = ROOT / "data" / "bench" / "gold_standard_v1.json"
+GOLD_AUTO_PATH = ROOT / "data" / "bench" / "gold_auto_v1.json"
+GOLD_MANUAL_PATH = ROOT / "data" / "bench" / "gold_standard_v1.json"
 DEFAULT_OUT = ROOT / "data" / "bench" / "results_v1.json"
 REPORT_PATH = ROOT / "REPORTE-BENCHMARK.md"
 
@@ -151,7 +152,19 @@ def load_dataset() -> list[dict]:
 
 
 def load_gold() -> dict:
-    return json.loads(GOLD_PATH.read_text())
+    """Prefiere gold_auto (consenso Opus+Sonnet) sobre manual.
+
+    El manual se conserva como referencia histórica en gold_standard_v1.json,
+    pero el benchmark oficial usa gold_auto_v1.json cuando exista.
+    """
+    if GOLD_AUTO_PATH.exists():
+        log.info("Usando gold AUTO (consenso Opus+Sonnet): %s", GOLD_AUTO_PATH.name)
+        data = json.loads(GOLD_AUTO_PATH.read_text())
+        # Filtrar metadata del top-level
+        return {k: v for k, v in data.items() if not k.startswith("_")}
+    log.warning("gold_auto no existe; usando gold manual como fallback: %s", GOLD_MANUAL_PATH.name)
+    data = json.loads(GOLD_MANUAL_PATH.read_text())
+    return {k: v for k, v in data.items() if not k.startswith("_")}
 
 
 def build_user_message(task: str, items: list[dict]) -> str:
@@ -388,6 +401,12 @@ def generate_report(results: BenchmarkResults, gold: dict, out_path: Path) -> No
     for call in results.calls:
         by.setdefault((call.model, call.task), []).append(call)
 
+    # Solo evaluar items que estén en el gold (los discrepantes del gold_auto quedan fuera)
+    gold_ids = set(gold.keys())
+
+    lines.append(f"**Items evaluados:** {len(gold_ids)} de 20 (los ausentes son discrepancias Opus↔Sonnet excluidas automáticamente).")
+    lines.append("")
+
     lines.append("## Resumen — precisión por modelo y tarea")
     lines.append("")
     lines.append("| Modelo | classify | detect | extract | ∑ score |")
@@ -396,7 +415,7 @@ def generate_report(results: BenchmarkResults, gold: dict, out_path: Path) -> No
         row = [f"**{model_key}**"]
         total = 0.0
         for task in TASKS:
-            calls = by.get((model_key, task), [])
+            calls = [c for c in by.get((model_key, task), []) if c.news_id in gold_ids]
             scores = []
             for c in calls:
                 g = gold.get(c.news_id, {})
@@ -494,11 +513,13 @@ def derive_recommendation(results: BenchmarkResults, gold: dict) -> dict:
     for call in results.calls:
         by.setdefault((call.model, call.task), []).append(call)
 
+    gold_ids = set(gold.keys())
+
     reco = {}
     for task in TASKS:
         candidates = []
         for model_key in MODELS:
-            calls = by.get((model_key, task), [])
+            calls = [c for c in by.get((model_key, task), []) if c.news_id in gold_ids]
             scores = []
             total_cost = 0.0
             for c in calls:
