@@ -4,6 +4,19 @@ Estrategia para convertir el proyecto en un observatorio de referencia sobre viv
 
 Última revisión: 2026-04-20.
 
+> ⚠️ **PIVOTE 2026-04-20.** Tras el [estudio crítico](private/estudios/2026-04-20-propuestas.md) de las propuestas W16-W17, el proyecto pivota de "generador de propuestas" a "observatorio documental". Todo este PLAN.md se mantiene como referencia histórica pero **el roadmap de trabajo activo vive ahora en**:
+>
+> - [`PIVOTE.md`](PIVOTE.md) — decisión fundacional, 5 reglas duras.
+> - [`ROADMAP.md`](ROADMAP.md) — Fase 0 completa + fases siguientes.
+> - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline técnico nuevo.
+> - [`DISENO-WEB.md`](DISENO-WEB.md) — arquitectura de información y UX.
+> - [`SEO.md`](SEO.md) — plan SEO ambicioso.
+> - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 4 ediciones simuladas.
+> - [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) — input editor antes de arrancar.
+>
+> El trabajo vive en el branch `pivote/observatorio-documental` hasta merge.
+
+
 ## Principio económico
 
 **Coste-cero salvo IA.** Único gasto aceptado: llamadas a la API de Anthropic. Coste actual ~2 €/mes. Topes definidos en € dentro de `src/costs.py`: **tope blando 8 €/mes** (avisa por Telegram pero sigue publicando) y **tope duro 20 €/mes** (corta para proteger contra runaway). Trilingüe ES/CA/EN previsto subiría a ~3,15 €/mes cuando se active; margen del tope ya contempla ese escenario. Toda herramienta externa debe tener alternativa 0 € o quedar diferida hasta que el proyecto demuestre tracción.

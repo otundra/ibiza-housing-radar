@@ -2,6 +2,18 @@
 
 Instrucciones para Claude Code al trabajar en este proyecto.
 
+> ⚠️ **Pivote activo 2026-04-20.** El proyecto está migrando a "observatorio documental" (el LLM no genera propuestas, solo documenta las de actores reales con URL verificable). Todo el trabajo vive en el branch `pivote/observatorio-documental`. Antes de tocar código en ese branch, leer:
+>
+> - [`PIVOTE.md`](PIVOTE.md) — 5 reglas duras + decisión fundacional.
+> - [`ROADMAP.md`](ROADMAP.md) — Fase 0 completa.
+> - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline nuevo con módulos `extract.py`, `verify.py`, `rescue.py`, `balance.py`.
+> - [`DISENO-WEB.md`](DISENO-WEB.md) — UX dual (primer visitante + profesional recurrente).
+> - [`SEO.md`](SEO.md) — plan SEO ambicioso.
+> - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 4 ediciones simuladas W14-W17.
+> - [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) — 16 decisiones pendientes del editor.
+>
+> El contenido que sigue describe el **modelo antiguo** (aún operativo en `main` hasta merge). Las convenciones de commit, coste y estructura de repo siguen siendo válidas.
+
 ## Qué es
 
 Observatorio automatizado semanal sobre la crisis de vivienda en Ibiza con foco en trabajadores de temporada (mayo-octubre). Cada lunes genera un informe con propuestas accionables enlazadas a las noticias que las motivan. Publicado en GitHub Pages.

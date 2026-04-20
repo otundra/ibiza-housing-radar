@@ -1,6 +1,8 @@
 # Ibiza Housing Radar
 
-Observatorio automatizado de noticias sobre la crisis de vivienda en Ibiza, centrado en trabajadores de temporada (mayo-octubre). Cada lunes genera un informe con propuestas accionables enlazadas a las noticias que las motivan.
+Observatorio semanal de la crisis de vivienda en Ibiza, con foco en trabajadores de temporada (mayo-octubre). Cada lunes genera un informe con las señales de la semana, mapa de posiciones de los actores y propuestas reales documentadas con fuente verificable.
+
+> ⚠️ **Pivote 2026-04-20.** El proyecto está migrando de "generador de propuestas" a **"observatorio documental"**. El LLM ya no genera propuestas propias; mapea, ordena y verifica las propuestas reales que actores con nombre formulan cada semana. Detalle en [`PIVOTE.md`](PIVOTE.md) y [`ROADMAP.md`](ROADMAP.md). El trabajo del pivote vive en el branch `pivote/observatorio-documental` hasta merge. El modelo antiguo sigue operativo en `main` hasta entonces.
 
 - **Web pública:** <https://otundra.github.io/ibiza-housing-radar/>
 - **Cadencia:** informe semanal, lunes 07:00 CEST (05:00 UTC)
@@ -54,8 +56,12 @@ Genera `docs/_editions/<YYYY>-w<WW>.md`, actualiza `docs/index.md` (panel de la 
 
 ## Estructura
 
-Ver [CLAUDE.md](CLAUDE.md) para detalles de arquitectura, decisiones y comandos. Ver [DIARIO.md](DIARIO.md) para el diario del proyecto. Ver [PLAN.md](PLAN.md) para el roadmap estratégico hacia observatorio de referencia.
+Ver [CLAUDE.md](CLAUDE.md) para detalles de arquitectura, decisiones y comandos. Ver [DIARIO.md](DIARIO.md) para el diario del proyecto.
+
+**Roadmap activo (post-pivote):** [`ROADMAP.md`](ROADMAP.md) + documentos hermanos [`PIVOTE.md`](PIVOTE.md), [`ARQUITECTURA.md`](ARQUITECTURA.md), [`DISENO-WEB.md`](DISENO-WEB.md), [`SEO.md`](SEO.md), [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md), [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md). El antiguo [PLAN.md](PLAN.md) se conserva como referencia histórica.
 
 ## Aviso
 
-Las propuestas son sugerencias generadas por IA sobre prensa pública. No son análisis técnico ni asesoramiento jurídico, político o económico. Contrasta cifras con la fuente original antes de usarlas.
+**Modelo antiguo (en `main`):** las propuestas son sugerencias generadas por IA sobre prensa pública. No son análisis técnico ni asesoramiento jurídico, político o económico. Contrasta cifras con la fuente original antes de usarlas.
+
+**Modelo nuevo (pivote, en branch):** el observatorio ya no genera propuestas propias. Documenta propuestas reales de actores identificables con URL a la fuente primaria. Política editorial con 5 reglas duras en `/politica-editorial` tras lanzamiento. Ver [`PIVOTE.md`](PIVOTE.md).
