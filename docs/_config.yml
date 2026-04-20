@@ -30,14 +30,15 @@ plugins:
 feed:
   path: feed.xml
 
-# Ordena ediciones por slug descendente (los nombres ya son YYYY-wWW)
+# Colección de ediciones. El folder es `_editions/`.
 collections:
   editions:
-    output: false
+    output: true
 
 defaults:
   - scope:
-      path: "editions"
+      path: ""
+      type: editions
     values:
       layout: edition
 

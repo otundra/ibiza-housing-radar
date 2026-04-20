@@ -50,7 +50,7 @@ jobs:
           git config user.email "bot@users.noreply.github.com"
 
           # Añade la edición nueva, índice, costes dashboard y CSV de costes
-          git add docs/editions/ docs/index.md docs/costs.md data/costs.csv 2>/dev/null || true
+          git add docs/_editions/ docs/index.md docs/costs.md data/costs.csv 2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "Sin cambios para commitear"

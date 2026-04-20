@@ -1,7 +1,7 @@
 """Genera el informe semanal con Claude Opus.
 
 Entrada: data/classified.json (solo items is_housing=True)
-Salida: docs/editions/<YYYY>-W<WW>.md con front-matter Jekyll.
+Salida: docs/_editions/<YYYY>-W<WW>.md con front-matter Jekyll.
 
 Si no hay señales suficientes, escribe una edición "sin novedades" concisa.
 """
@@ -24,7 +24,7 @@ log = logging.getLogger("generate")
 
 ROOT = Path(__file__).resolve().parent.parent
 IN_FILE = ROOT / "data" / "classified.json"
-EDITIONS_DIR = ROOT / "docs" / "editions"
+EDITIONS_DIR = ROOT / "docs" / "_editions"
 
 MODEL = "claude-opus-4-7"
 

@@ -8,7 +8,7 @@ layout: default
     </p>
     <h1 class="edition-title">{{ page.title }}</h1>
     <p class="edition-meta">
-      <time datetime="{{ page.date }}">{{ page.date }}</time>
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time>
       <span class="sep">·</span>
       <span>{{ page.week }}</span>
     </p>
@@ -24,7 +24,7 @@ layout: default
   <footer class="edition-footer">
     <p>Informe generado automáticamente con Claude (Anthropic). Revisado antes de publicar.</p>
     <p>
-      <a href="https://github.com/otundra/ibiza-housing-radar/blob/main/docs/editions/{{ page.week | downcase }}.md">Ver fuente en GitHub</a>
+      <a href="https://github.com/otundra/ibiza-housing-radar/blob/main/docs/_editions/{{ page.week | downcase }}.md">Ver fuente en GitHub</a>
       &nbsp;·&nbsp;
       <a href="{{ site.baseurl }}/acerca/">Metodología</a>
     </p>
