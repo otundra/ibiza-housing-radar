@@ -133,7 +133,7 @@ Hasta entonces, GitHub Pages free tier.
 
 - **Instagram/TikTok.** Coste de producción alto, audiencia dispersa, no es el canal.
 - **Podcast.** Consume horas, sin retorno para un observatorio de datos.
-- **Monetización en 2026.** Matar credibilidad por 20 €/mes de publicidad es mal trade. Mantén gratis y CC-BY al menos el primer año.
+- **Monetización activa en 2026.** Foco en tracción. Solo canal pasivo de donaciones + `/financiacion` transparente. Ver sección *Monetización* para roadmap completo.
 - **App nativa.** Sobre-ingeniería. Web responsive + newsletter cubre el 95 % del uso.
 - **Ampliar a toda Baleares.** Diluye foco. Ibiza + Formentera primero; Mallorca/Menorca solo si la marca aguanta.
 - **Scraping de Idealista/Milanuncios.** Descartado. Ver sección *Rutas descartadas*.
@@ -161,6 +161,67 @@ Hasta entonces, GitHub Pages free tier.
 - En ningún caso scraping contra TOS, ni aunque la API sea rechazada.
 
 Si la API se rechaza tras cumplir las condiciones, se reevalúa — pero **nunca** reintroducir scraping directo.
+
+---
+
+## Monetización
+
+Techo realista honesto si todo va bien en año 3-5: **5-20 k€/año combinados**. No es un proyecto que financie un salario. Puede complementar ingresos, cubrir dedicación parcial o costear infra/tiempo.
+
+### Condicionantes que acotan todas las vías
+
+- **Misión social explícita.** Cualquier ingreso de actores con intereses en el mercado de vivienda/turismo mata la credibilidad editorial. No es reversible.
+- **Nicho geográfico pequeño.** Ibiza tiene ~150 k residentes + ~100 k temporeros. Mercado de pago limitado.
+- **Público partido.** Los afectados (temporeros) no pagan; quienes pueden pagar (instituciones, académicos, periodistas) esperan acceso público por interés general.
+- **Sin persona jurídica.** Hoy es repo personal. Sin asociación/cooperativa el techo de grants y convenios es bajo.
+
+### Vías compatibles con la misión
+
+| Vía | Realista año 1 | Realista año 3 | Esfuerzo | Riesgo misión |
+|---|---|---|---|---|
+| **Donaciones pasivas** (Ko-fi, GitHub Sponsors, Liberapay, Open Collective) | 50-300 € | 500-2.000 € | Mínimo | Nulo |
+| **Grants periodísticos y de innovación social** (Google News Initiative, Meta Journalism, Caixa, Fundación Sa Nostra, Govern Balear, Institut d'Estudis Eivissencs, NextGenerationEU) | 0 € (sin persona jurídica no cualificas) | 5-25 k€ si ganas una sola | Alto (2-4 semanas por propuesta) | Bajo |
+| **Consultoría a instituciones** (Consell, ayuntamientos, IBAVI, sindicatos) — Raúl factura aparte | 0 € | 3-10 k€ | Medio | Medio-alto (captura editorial) |
+| **Partnership institucional** (cátedra UIB, convenio con Cáritas o sindicato) | 0 € | 2-5 k€ | Alto | Bajo |
+| **Charlas y mesas redondas** | 0 € | 400-4 k€ | Bajo marginal | Bajo |
+| **Libro/informe anual** (Amazon KDP o editorial local) | 0 € | 500-3 k€ | Alto | Bajo (valor real = posicionamiento, no €) |
+| **Membership voluntario** (Substack/Buttondown paid tier con extras opcionales) | 0-200 € | 500-2 k€ | Medio | Medio (riesgo de paywall percibido) |
+| **Licencia del dataset** (API premium, exports personalizados para medios/consultoras) | 0 € | 500-2 k€ | Medio | Bajo |
+| **Servicios freelance derivados** (montar radares temáticos para otros) | 0 € | 3-9 k€ | Alto | Bajo (negocio separado) |
+
+### Vías grises
+
+- **Merchandising simbólico** (camiseta/tote con frase fuerte, impresión a demanda). 100-500 €/año. Más branding que ingreso. Tiene sentido en evento presencial de Fase 4.4.
+
+### Líneas rojas (descartadas sin matices)
+
+- **Publicidad o sponsored content** de cualquier actor con intereses en vivienda/turismo.
+- **Affiliate** de plataformas inmobiliarias o de alquiler turístico.
+- **Paywall total** del informe semanal principal.
+- **Aceptar encargo** del mismo actor al que se está fiscalizando esa misma semana.
+- **Ocultar** cualquier fuente de financiación.
+
+### Transparencia radical
+
+Publicar en `/financiacion` cada ingreso, origen, fecha e importe. Única forma de que la monetización no erosione la credibilidad editorial. Misma lógica que `/metodologia`: lo que no se hace público, pesa en contra.
+
+### Roadmap de monetización
+
+**2026 (año 1) — tracción, monetización cero activa.**
+- Abrir Ko-fi o GitHub Sponsors como canal pasivo (10 min). Enlace discreto en footer y en `/quien-edita`. Sin push.
+- Publicar `/financiacion` con situación real: "proyecto sostenido por tiempo voluntario del editor; coste directo actual ~2 €/mes de API Anthropic, costeado por Raúl Serrano".
+
+**2027 (año 2) — institucionalización mínima.**
+- Constituir asociación sin ánimo de lucro (60-300 €, requiere 3 personas — buscar aliados del consejo editorial Fase 4.1).
+- Aplicar a 1-2 grants específicos.
+- Aceptar primera charla o encargo institucional si aparece, con reglas de transparencia publicadas.
+- Libro anual opcional si hay material.
+
+**2028+ (año 3 en adelante) — diversificación si el proyecto pesa.**
+- Grant ganado o consultoría consolidada como base.
+- Partnership institucional con UIB o similar.
+- Charlas regulares.
+- Licencia de dataset si hay demanda profesional real.
 
 ---
 
@@ -204,3 +265,7 @@ Al cerrar cada punto, actualizar [`DIARIO.md`](DIARIO.md) con la entrada corresp
 | Técnico | Métricas de pipeline | pendiente |
 | Técnico | Smoke test | pendiente |
 | Técnico | Notificación de fallo | pendiente |
+| Monetización | Ko-fi / GitHub Sponsors pasivo | pendiente (año 1) |
+| Monetización | Página `/financiacion` transparente | pendiente (año 1) |
+| Monetización | Constituir asociación sin ánimo de lucro | pendiente (año 2) |
+| Monetización | Aplicar a primer grant | pendiente (año 2) |
