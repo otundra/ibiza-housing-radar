@@ -12,6 +12,32 @@ Reglas:
 
 ---
 
+## 2026-04-20 — Revisión de coherencia + registro de ajustes
+
+- **Revisión sistemática de incoherencias** tras petición del editor ("revisa todo el proyecto a ver si hay incoherencias"). 5 encontradas y corregidas:
+  1. **Topes obsoletos de 8 €** en [`README.md`](README.md), [`STATUS.md`](STATUS.md), [`CLAUDE.md`](CLAUDE.md) del proyecto y [`docs/acerca.md`](docs/acerca.md) → actualizados a 12 € blando / 20 € duro + nuevas capas (verde <6 / amarilla 6-9 / naranja 9-12 / roja blanda 12-20 / dura >20).
+  2. **Coste esperado "~2 €/mes"** → actualizado a "~6-7 €/mes" (pivote documental + 3 niveles de autoevaluación).
+  3. **`src/rescue.py` docstring decía "Haiku confirma vigencia"** pero el código nunca llama a Haiku. Docstring corregida para coincidir con el código real (rescate 100% determinista basado en reglas). Nota de diseño sobre posible ampliación futura conservada.
+  4. **`ARQUITECTURA.md` tabla del reparto de modelos** listaba `quarterly_audit.py` y `model_rebench.py` como si estuvieran implementados. Añadida columna "Estado implementación" con ✅/⏸ y clarificación: `self_review.py` y `generate_gold.py` ✅; `quarterly_audit.py` ⏸ (tarea A13); `model_rebench.py` ⏸ (tarea A14); fact-check de precedentes externos en `verify.py` ⏸ (no aplica en el modelo documental actual porque el pipeline solo reproduce precedentes del input, no genera).
+  5. **`docs/acerca.md` describía el modelo antiguo** (3 secciones: señales/lectura/propuestas/a-vigilar con formato anterior al pivote). Añadido callout al inicio avisando que la reescritura completa es parte del Bloque B.
+- **Nueva infraestructura de trazabilidad: [`private/adjustments-log.md`](private/adjustments-log.md)** — registro vivo de cambios voluntarios (prompts, umbrales, modelos, reglas). Complementa `postmortems.md`:
+  - `postmortems.md` → errores con coste.
+  - `adjustments-log.md` → cambios voluntarios con hipótesis y efecto medido.
+  - Formato estándar por entrada: qué se cambió, motivo, datos que lo soportan, efecto esperado, efecto medido, reversible sí/no.
+  - 5 entradas iniciales con los cambios de hoy (tope blando 12 €, mejoras prompt generate, mejora clasificación institucional en extract, verify tolerante, inicialización del log).
+  - Sección **"Propuestas en evaluación sin aplicar"** para decisiones deferidas. Primera entrada: propuesta del editor de subir umbral de rigor de `<7` a `<8`, con criterio explícito de aplicación: *"si en 4 ediciones consecutivas el rigor observado es ≥8, se sube el umbral sin riesgo de ruido"*. Revisión prevista 2026-05-20.
+- **Banner de estado en `ROADMAP.md`** — tabla resumen al inicio con los 9 bloques y su estado (A cerrado, B-H pendientes, I parcial). Lectura rápida del progreso del Bloque 0. Links a `adjustments-log` y `postmortems` para contexto de decisiones y errores.
+- **Toda decisión futura tiene ya su sitio auditable:**
+  - Ver errores pasados → `private/postmortems.md` (con patrones transversales al principio).
+  - Ver decisiones pasadas y efecto medido → `private/adjustments-log.md`.
+  - Ver coste real y tendencias → `private/costs.md` + `data/costs.csv`.
+  - Ver calidad de cada edición → `private/self-review/YYYY-wWW.md`.
+  - Ver reparto de actores → `private/balance.md` + `docs/balance.md` (público).
+  - Ver estado operativo → `data/proposals_history.json` + `data/bench/results_v1.json`.
+- **Bloque B arranca cuando el editor confirme** — rediseño web sin coste API, 2-3 turnos para páginas principales (home reescrita, `build_index.py` documental, `/radar/`, `/propuestas/`, `/actores/`, `/balance/`, `/sin-dato/`, `/estadisticas/`, `/estado/`, `/politica-editorial/`, `/metodologia/`, `/correcciones/`, `/cita-esto/`).
+
+---
+
 ## 2026-04-20 — Política de aprendizaje de errores formalizada
 
 - **Patrones transversales añadidos al principio de `private/postmortems.md`** — 4 patrones conocidos hasta la fecha con salvaguardas vinculantes. Cada error nuevo se coteja primero con estos patrones antes de añadir uno nuevo. Si encaja, la causa es repetición (agravante); si no, se documenta nuevo patrón.
