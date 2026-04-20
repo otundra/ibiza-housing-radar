@@ -4,8 +4,8 @@
     "proposals": [
       {
         "actor": "Marí",
-        "actor_type": "otro",
-        "statement_summary": "Marí anima a las víctimas de abusos en los alquileres a denunciar para que se multe a quienes especulan con viviendas.",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Marí anima a las víctimas de abusos en los alquileres a denunciar para multar a quienes especulan con viviendas.",
         "statement_verbatim": "anima a las víctimas de abusos en los alquileres en Ibiza a denunciar \"para multar a los que especulan con un sofá\"",
         "url_source": "https://cadenaser.com/baleares/2026/04/19/mari-anima-a-las-victimas-de-abusos-en-los-alquileres-en-ibiza-a-denunciar-para-multar-a-los-que-especulan-con-un-sofa-radio-ibiza/",
         "palanca": "enforcement",
@@ -38,13 +38,13 @@
     "news_id": "item-002",
     "proposals": [
       {
-        "actor": "Consell, patronales, sindicatos",
-        "actor_type": "coalicion_institucional",
-        "statement_summary": "El Consell, las patronales y los sindicatos respaldan la creación de residencias para trabajadores temporeros.",
+        "actor": "Consell d'Eivissa, patronales, sindicatos",
+        "actor_type": "coalicion_intersectorial",
+        "statement_summary": "Consell, patronales y sindicatos respaldan la creación de residencias para trabajadores de temporada.",
         "statement_verbatim": "Consell, patronales y sindicatos respaldan la creación de residencias para temporeros",
         "url_source": "https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/",
         "palanca": "oferta_vivienda",
-        "target_actor": "Consell",
+        "target_actor": "",
         "horizon": "corto_plazo",
         "state": "en_debate",
         "viability_legal": "no_evaluada",
@@ -67,7 +67,7 @@
       {
         "actor": "patronales, sindicatos",
         "actor_type": "coalicion_intersectorial",
-        "statement_summary": "Las patronales y sindicatos se posicionan a favor de la creación de residencias en Ibiza para trabajadores de temporada.",
+        "statement_summary": "Patronales y sindicatos se pronuncian a favor de la creación de residencias en Ibiza para trabajadores de temporada.",
         "statement_verbatim": "Patronales y sindicatos, a favor de las residencias en Ibiza para trabajadores de temporada",
         "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/11/2606853/patronales-sindicatos-favor-residencias-ibiza-para-trabajadores-temporada.html",
         "palanca": "oferta_vivienda",

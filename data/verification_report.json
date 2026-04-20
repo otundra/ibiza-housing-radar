@@ -1,10 +1,17 @@
 {
-  "urls_checked": 11,
-  "urls_failed": [],
-  "actors_checked": 3,
+  "urls_checked": 13,
+  "urls_failed": [
+    {
+      "url": "https://cadenaser.com/baleares/2026/04/19/mari-anima-a-las-victimas-de-abusos-en-los-alquileres-en-ibiza-a-denunciar-para-multar-a-los-que-especulan-con-un-sofa-radio-ibiza/",
+      "status": 403
+    }
+  ],
+  "actors_checked": 2,
   "actors_untraceable": [],
   "forbidden_verbs_found": [],
   "frontmatter_issues": [],
-  "blocking_failures": [],
+  "blocking_failures": [
+    "URL fallida: {'url': 'https://cadenaser.com/baleares/2026/04/19/mari-anima-a-las-victimas-de-abusos-en-los-alquileres-en-ibiza-a-denunciar-para-multar-a-los-que-especulan-con-un-sofa-radio-ibiza/', 'status': 403}"
+  ],
   "soft_warnings": []
 }

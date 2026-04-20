@@ -49,6 +49,25 @@ VERBOS_PROHIBIDOS = [
 URL_PATTERN = re.compile(r"\[[^\]]*\]\((https?://[^\s)]+)\)|<(https?://[^\s>]+)>")
 HTTP_TIMEOUT = 10.0
 
+# User-Agent realista. Muchos medios (Cadena SER, El País, La Vanguardia…)
+# rechazan HEAD/GET desde agentes minimalistas o "python-httpx" con 403.
+# No intentamos engañar: la URL es pública y solo estamos comprobando que
+# existe. Un UA de navegador estándar es lo que pasa por cualquier proxy.
+HTTP_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "es-ES,es;q=0.9,ca;q=0.8,en;q=0.7",
+}
+
+# Códigos que consideramos "URL viva pero inaccesible para bots". No bloquean;
+# solo generan soft_warning. El editor sabe que la URL es válida y el lector
+# humano la abrirá sin problema.
+SOFT_FAIL_CODES = {401, 403, 405, 429}
+BLOCKING_FAIL_CODES = {404, 410}
+
 
 @dataclass
 class VerificationReport:
@@ -129,20 +148,43 @@ def extract_cited_actors(body: str) -> list[str]:
 # Checks
 # ---------------------------------------------------------------------------
 
-def check_urls(urls: list[str]) -> tuple[int, list[dict]]:
-    failed: list[dict] = []
-    with httpx.Client(timeout=HTTP_TIMEOUT, follow_redirects=True) as client:
+def check_urls(urls: list[str]) -> tuple[int, list[dict], list[dict]]:
+    """Devuelve (total_checked, blocking_failures, soft_warnings).
+
+    - 2xx/3xx: OK.
+    - 401/403/405/429: URL viva pero bloquea bots. Soft warning.
+    - 404/410: URL rota real. Bloqueante.
+    - 5xx o excepción de red: Soft warning (no culpa nuestra).
+    - Otros 4xx: Bloqueante por defecto (comportamiento raro que merece revisión).
+    """
+    blocking: list[dict] = []
+    soft: list[dict] = []
+    with httpx.Client(timeout=HTTP_TIMEOUT, follow_redirects=True, headers=HTTP_HEADERS) as client:
         for url in urls:
+            status: int | None = None
+            error: str | None = None
             try:
                 r = client.head(url)
-                if r.status_code >= 400:
-                    # Algunos servidores rechazan HEAD; intenta GET
+                status = r.status_code
+                if status >= 400:
                     r = client.get(url)
-                if r.status_code >= 400:
-                    failed.append({"url": url, "status": r.status_code})
+                    status = r.status_code
             except Exception as exc:  # noqa: BLE001
-                failed.append({"url": url, "error": str(exc)})
-    return len(urls), failed
+                error = str(exc)
+
+            if error:
+                soft.append({"url": url, "error": error})
+            elif status is None or status < 400:
+                pass  # OK
+            elif status in SOFT_FAIL_CODES:
+                soft.append({"url": url, "status": status, "reason": "bot-blocked or rate-limited (URL viva)"})
+            elif status in BLOCKING_FAIL_CODES:
+                blocking.append({"url": url, "status": status})
+            elif status >= 500:
+                soft.append({"url": url, "status": status, "reason": "server error"})
+            else:
+                blocking.append({"url": url, "status": status})
+    return len(urls), blocking, soft
 
 
 def check_actor_traceability(actors: list[str], extracted: list[dict]) -> list[str]:
@@ -222,11 +264,13 @@ def verify(md_path: Path, extracted_path: Path = EXTRACTED_FILE) -> Verification
 
     # 2. URLs
     urls = extract_urls(body)
-    n, failed = check_urls(urls)
+    n, blocking, soft = check_urls(urls)
     rep.urls_checked = n
-    rep.urls_failed = failed
-    for f in failed:
-        rep.blocking_failures.append(f"URL fallida: {f}")
+    rep.urls_failed = blocking
+    for f in blocking:
+        rep.blocking_failures.append(f"URL rota (bloqueante): {f}")
+    for s in soft:
+        rep.soft_warnings.append(f"URL con aviso (no bloqueante): {s}")
 
     # 3. Trazabilidad de actores
     extracted = []
