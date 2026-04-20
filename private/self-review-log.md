@@ -9,3 +9,7 @@ Registro automático de cada ejecución de `src/self_review.py` tras publicar un
 ## Histórico
 
 *Aún no hay self-reviews. Empiezan al lanzar la primera edición bajo modelo documental.*
+
+## 2026-W17 · 2026-04-20 18:16 UTC
+- Scores bajos: rigor=6
+- Detalle: [2026-w17.md](private/self-review/2026-w17.md)

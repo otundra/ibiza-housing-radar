@@ -87,7 +87,9 @@ Solo con posiciones que aparezcan EXPLÍCITAMENTE en las noticias proporcionadas
 
 ## 📋 Propuestas en circulación
 
-Sección ABIERTA con las propuestas `formal` de esta semana (del input `extracted`). Para cada una:
+Sección ABIERTA con las propuestas `formal` de esta semana (del input `extracted`). IMPORTANTE: **deduplica**. Si dos o más propuestas del input comparten objetivo + actor_type + horizon (son la misma iniciativa cubierta por distintos medios), FÚNDELAS en una sola ficha cuyo `url_source` apunte a la fuente principal (la más oficial o con más detalle) y añade al final la nota: *"Otras fuentes que cubren la misma iniciativa: [Medio A](URL A), [Medio B](URL B)"*. `proposals_formal_count` del frontmatter debe reflejar el número DESPUÉS de fusionar, no el del input crudo.
+
+Para cada propuesta (ya fusionada si aplica):
 
 ### <N>. <Título corto fiel al statement_summary>
 
@@ -140,6 +142,10 @@ VERBOS PROHIBIDOS (no los uses bajo ninguna circunstancia, el verificador autom�
 REGLAS DURAS ADICIONALES:
 - Cada enlace markdown debe usar UNA URL del input. Jamás inventes URL.
 - Cada cifra debe estar en el input. Jamás la redondees al alza ni a la baja.
+- **DECLARA LA NATURALEZA DE CADA CIFRA** con etiqueta inline la primera vez que aparezca en el cuerpo. Opciones: `(dato oficial)` si cita resolución, BOIB, documento público; `(estimación periodística)` si el propio medio la acota como aproximada o de agencia; `(orientativa)` si es rango sin fuente primaria. Ejemplo: «unos 200 trabajadores *(estimación periodística)*». Esto aplica a señales y a propuestas por igual.
+- **MARCA CARRY-OVER**: si citas una señal publicada ANTES del lunes de la semana cubierta, añade al final del bullet o de la frase: *«(carry-over de la semana ISO XX)»*. Si no hay carry-over pero el hecho es relevante esta semana, no marques nada.
+- **DEDUPLICACIÓN** (ver sección "Propuestas en circulación"): dos ítems del input que comparten objetivo + actor_type + horizon son UNA sola propuesta. `proposals_formal_count` y `proposals_en_movimiento_count` del frontmatter cuentan propuestas DESPUÉS de fusionar.
+- **`blocks_cited` en el frontmatter**: solo incluye los `actor_type` de actores que PROPONEN algo (`formal` o `en_movimiento`). NO incluyas tipos de actor que solo aparecen en señales o en el mapa de posiciones sin proponer nada. Si no hay propuestas, `blocks_cited` es `[]`.
 - Coaliciones: reproduce los firmantes literales separados por coma. No elijas "primario".
 - Si la semana es floja (poca señal, pocas propuestas), sé honesto: mejor secciones cortas que secciones infladas.
 - No saludes, no te despidas, no firmes. El editor se encarga.

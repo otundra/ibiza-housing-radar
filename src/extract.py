@@ -76,6 +76,12 @@ REGLAS DURAS:
 - EN_MOVIMIENTO: si la propuesta es intención sin medida concreta, state = "en_movimiento".
 - Viabilidad: solo la declaras si el propio texto de la noticia la argumenta. Si no, "no_evaluada" con reason vacío.
 
+CLASIFICACIÓN DE ACTOR_TYPE — reglas específicas para instituciones públicas:
+- Si el actor aparece vinculado a "Consell d'Eivissa", "Consell Insular", "Govern Balear", "Govern", "IBAVI", "Ayuntamiento de [municipio]", "Ministerio", "Delegación del Gobierno", "Síndic", "Defensor", o cualquier cargo institucional ("conseller/a", "consejero/a", "regidor/a", "alcalde/sa", "director/a general", "secretari/a d'Estat"): **actor_type = "institucional_publico"**. NO uses "otro" en estos casos aunque el nombre del cargo sea corto o poco familiar.
+- Si el actor es PARTIDO POLÍTICO en oposición o como siglas (PP, PSOE, Vox, Més, Sumar, Sa Unió, Unides Podem, PI), actor_type = "partido".
+- Si estás cubriendo un actor que habla DESDE un partido pero ostenta un cargo institucional (p.ej. "conseller de Vivienda" que es de PSOE), prima el cargo institucional: actor_type = "institucional_publico". El partido puede anotarse en supporters_cited si aparece explícito.
+- "otro" solo para actores genuinamente fuera de las categorías.
+
 Responde EXCLUSIVAMENTE con el JSON empezando por `[`."""
 
 

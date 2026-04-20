@@ -290,11 +290,46 @@ Resumen de elementos que importar:
 
 ---
 
+---
+
+## 9. Auditoría de fuentes de ingesta
+
+**Contexto:** apunte del editor 2026-04-20 tras primera ejecución end-to-end del pipeline documental. Se detectó que:
+
+- 4 queries de Google News funcionaron bien (vivienda, trabajadores temporada, Consell Eivissa vivienda, desahucios caravanas).
+- **RSS directos de Diario de Ibiza y Periódico de Ibiza fallaron** ("Feed empty or malformed"). Google News los cubre indirectamente.
+- Aparecen en las señales medios que NO están como feeds directos: NouDiari, La Voz de Ibiza, Cadena SER Baleares, Ara Balears (solo a través de Google News).
+
+**Preguntas que responder:**
+
+1. **Transparencia pública.** Crear página `/fuentes/` o sección en `/metodologia/` que liste:
+   - Qué feeds consultamos esta semana.
+   - Qué medios han aparecido en las señales (y cuáles no).
+   - Ventana temporal (últimos N días).
+   - Política de cobertura (idiomas, nacional vs local, tipo de medio).
+2. **Cobertura real.** ¿Son todos los medios que deberían estar cubiertos?
+   - Locales Pitiusas: Diario de Ibiza, Periódico de Ibiza, NouDiari, La Voz de Ibiza, IB3 Eivissa. Revisar si todos están en la ingesta directa o llegan solo vía Google News.
+   - Regionales: Ara Balears, Última Hora, diariodemallorca.es (cobertura cruzada), IB3.
+   - Nacionales con sección Baleares: El País, elDiario.es, La Vanguardia, ABC, 20 Minutos.
+   - Radios: Cadena SER, COPE, Onda Cero, RNE (secciones Ibiza/Baleares).
+   - Oficiales: BOIB, BOE (solo si publican normativa vivienda Baleares).
+3. **Feeds rotos.** Los RSS directos de Diario y Periódico de Ibiza devuelven vacío. Opciones:
+   - Probar URLs alternativas del feed.
+   - Dejar solo Google News como captura y confiar en que cubre.
+   - Crawling ligero de la sección local si los RSS siguen rotos (dentro de límites de robots.txt).
+4. **Detección de vacíos.** ¿Hay temas que deberíamos cubrir y ningún medio publica? ¿Algún medio silencia sistemáticamente un tipo de actor?
+
+**Entregable:** documento `ESTUDIO-FUENTES.md` + página pública `/fuentes/` (o sección en `/metodologia/`) con listado actualizado y política declarada. También: arreglo de los feeds locales si se detectan URLs válidas.
+
+**Plazo:** Fase 1 del ROADMAP (primer mes post-lanzamiento).
+
+---
+
 ## Resumen de prioridades
 
 | Estudio | Prioridad | Bloquea Fase 0 | Plazo ejecución |
 |---|---|---|---|
-| 1. 3 modelos de IA | 🔴 Urgente | No (pero mejor antes de retroactivos) | Primera semana |
+| 1. 3 modelos de IA | ✅ Cerrado | — | Benchmark ejecutado 2026-04-20. Reparto opción C aplicado |
 | 2. Dominio propio | 🟠 Alta | Sí para lanzamiento público | 2ª semana |
 | 3. `/recursos/` | 🟡 Media | No | Fase 1 |
 | 4. Newsletter de pago | 🟢 Baja | No | Fase 2 (3-6 meses) |
@@ -302,3 +337,4 @@ Resumen de elementos que importar:
 | 6. Fecha relanzamiento | 🟠 Alta | Sí | Decidir esta semana |
 | 7. Estadísticas potentes | 🟡 Media | Parcial | Fase 0 versión mínima + Fase 1 |
 | 8. Inspiración Solar | 🟢 Baja | No | Durante Fase 0 |
+| 9. Auditoría de fuentes | 🟡 Media | No (documentable después) | Fase 1 (primer mes) |

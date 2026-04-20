@@ -1,0 +1,10 @@
+{
+  "urls_checked": 11,
+  "urls_failed": [],
+  "actors_checked": 3,
+  "actors_untraceable": [],
+  "forbidden_verbs_found": [],
+  "frontmatter_issues": [],
+  "blocking_failures": [],
+  "soft_warnings": []
+}
