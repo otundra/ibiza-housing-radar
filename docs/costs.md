@@ -6,43 +6,45 @@ permalink: /costes/
 
 # Control de costes
 
-*Última actualización: 2026-04-20 06:33 UTC*
+*Última actualización: 2026-04-20 06:41 UTC*
 
 ## Mes en curso
 
-- **Gastado 2026-04:** `$1.4883` USD
+- **Gastado 2026-04:** `$1.9391` USD
 - **Tope mensual:** `$5.00` USD
-- **Consumo:** `29.8%` del tope
+- **Consumo:** `38.8%` del tope
 
 ```
-[█████░░░░░░░░░░░░░░░] 29.8%
+[███████░░░░░░░░░░░░░] 38.8%
 ```
 
 ## Histórico mensual
 
 | Mes | Gasto USD |
 |-----|-----------|
-| 2026-04 | $1.4883 |
-| **TOTAL** | **$1.4883** |
+| 2026-04 | $1.9391 |
+| **TOTAL** | **$1.9391** |
 
 ## Gasto por fase
 
 | Fase | Gasto USD | % |
 |------|-----------|---|
-| generate | $1.4580 | 98.0% |
-| classify | $0.0302 | 2.0% |
+| generate | $1.8921 | 97.6% |
+| classify | $0.0469 | 2.4% |
 
 ## Consumo por modelo
 
 | Modelo | Input tokens | Output tokens | Gasto USD |
 |--------|--------------|---------------|-----------|
-| `claude-opus-4-7` | 41,523 | 11,136 | $1.4580 |
-| `claude-haiku-4-5-20251001` | 7,926 | 4,464 | $0.0302 |
+| `claude-opus-4-7` | 50,466 | 15,135 | $1.8921 |
+| `claude-haiku-4-5-20251001` | 11,891 | 7,009 | $0.0469 |
 
 ## Últimas 20 llamadas
 
 | Fecha | Edición | Fase | Modelo | In | Out | USD |
 |-------|---------|------|--------|-----|-----|-----|
+| 2026-04-20 06:41 | 2026-W17 | generate | `claude-opus-4-7` | 8,943 | 3,999 | $0.4341 |
+| 2026-04-20 06:40 | adhoc | classify | `claude-haiku-4-5-20251001` | 3,965 | 2,545 | $0.0167 |
 | 2026-04-20 06:33 | 2026-W17 | generate | `claude-opus-4-7` | 21,127 | 7,040 | $0.8449 |
 | 2026-04-20 06:29 | adhoc | classify | `claude-haiku-4-5-20251001` | 3,965 | 1,983 | $0.0139 |
 | 2026-04-20 06:21 | 2026-W17 | generate | `claude-opus-4-7` | 20,396 | 4,096 | $0.6131 |

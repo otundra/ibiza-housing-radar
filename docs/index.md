@@ -7,7 +7,7 @@ permalink: /
 <article class="edition-card">
   <div class="edition-meta">2026-04-20 · 2026-W17</div>
   <h2><a href="{{ site.baseurl }}/ediciones/2026-w17/">Semana 17 · 2026</a></h2>
-  <p class="edition-excerpt">Ibiza desaloja 200 trabajadores de asentamientos a las puertas de la temporada mientras se piden 3.500 € por una habitación.</p>
+  <p class="edition-excerpt">Ibiza desaloja 200 trabajadores de asentamientos mientras la habitación de temporada se dispara a 3.500 €/mes y solo salen 7 VPO.</p>
   <a class="edition-cta" href="{{ site.baseurl }}/ediciones/2026-w17/">Leer informe →</a>
 </article>
 

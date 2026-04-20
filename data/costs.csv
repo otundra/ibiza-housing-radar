@@ -3,3 +3,5 @@ ts,edition,stage,model,input_tokens,output_tokens,cache_read_tokens,cache_write_
 2026-04-20T06:21:08+00:00,2026-W17,generate,claude-opus-4-7,20396,4096,0,0,0.61314
 2026-04-20T06:29:39+00:00,adhoc,classify,claude-haiku-4-5-20251001,3965,1983,0,0,0.01388
 2026-04-20T06:33:04+00:00,2026-W17,generate,claude-opus-4-7,21127,7040,0,0,0.844905
+2026-04-20T06:40:31+00:00,adhoc,classify,claude-haiku-4-5-20251001,3965,2545,0,0,0.01669
+2026-04-20T06:41:37+00:00,2026-W17,generate,claude-opus-4-7,8943,3999,0,0,0.43407
