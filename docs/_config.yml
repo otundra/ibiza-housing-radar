@@ -1,0 +1,41 @@
+title: Ibiza Housing Radar
+tagline: Observatorio semanal sobre la crisis de vivienda en Ibiza
+description: >
+  Informe automatizado de la crisis de vivienda en Ibiza, con foco en
+  trabajadores de temporada. Cada lunes una lectura de la prensa local
+  y propuestas accionables enlazadas a las noticias que las motivan.
+author: otundra
+email: serranocervantes@gmail.com
+
+baseurl: "/ibiza-housing-radar"
+url: "https://otundra.github.io"
+
+timezone: Europe/Madrid
+lang: es
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  smart_quotes: ldquo,rdquo,lsquo,rsquo
+  hard_wrap: false
+
+permalink: /:path/
+
+# Ordena ediciones por slug descendente (los nombres ya son YYYY-wWW)
+collections:
+  editions:
+    output: false
+
+defaults:
+  - scope:
+      path: "editions"
+    values:
+      layout: edition
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - node_modules/

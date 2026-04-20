@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<article class="edition">
+  <header class="edition-header">
+    <p class="edition-kicker">
+      <a href="{{ site.baseurl }}/">← Todas las ediciones</a>
+    </p>
+    <h1 class="edition-title">{{ page.title }}</h1>
+    <p class="edition-meta">
+      <time datetime="{{ page.date }}">{{ page.date }}</time>
+      <span class="sep">·</span>
+      <span>{{ page.week }}</span>
+    </p>
+    {% if page.excerpt %}
+      <p class="edition-lede">{{ page.excerpt }}</p>
+    {% endif %}
+  </header>
+
+  <div class="edition-body">
+    {{ content }}
+  </div>
+
+  <footer class="edition-footer">
+    <p>Informe generado automáticamente con Claude (Anthropic). Revisado antes de publicar.</p>
+    <p>
+      <a href="https://github.com/otundra/ibiza-housing-radar/blob/main/docs/editions/{{ page.week | slice: 0, 4 }}-{{ page.week | slice: 6, 7 | downcase }}.md">Ver fuente en GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="{{ site.baseurl }}/acerca/">Metodología</a>
+    </p>
+  </footer>
+</article>

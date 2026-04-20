@@ -1,0 +1,68 @@
+# Fuentes RSS para Ibiza Housing Radar.
+# Estrategia: Google News como base (robusto, siempre funciona) +
+# RSS nativos de diarios cuando existen (más directo).
+# Si un feed falla, se salta y se registra en log; no tumba el pipeline.
+
+feeds:
+  # Google News - consultas temáticas (lo más fiable a largo plazo)
+  - name: "Google News · Ibiza vivienda"
+    url: "https://news.google.com/rss/search?q=Ibiza+vivienda+OR+alquiler+OR+temporada&hl=es&gl=ES&ceid=ES:es"
+    kind: google_news
+
+  - name: "Google News · Ibiza trabajadores temporada"
+    url: "https://news.google.com/rss/search?q=Ibiza+%22trabajadores+de+temporada%22+OR+%22trabajadores+temporeros%22&hl=es&gl=ES&ceid=ES:es"
+    kind: google_news
+
+  - name: "Google News · Consell Eivissa vivienda"
+    url: "https://news.google.com/rss/search?q=%22Consell+d%27Eivissa%22+vivienda+OR+habitatge&hl=es&gl=ES&ceid=ES:es"
+    kind: google_news
+
+  - name: "Google News · Ibiza desahucio caravanas"
+    url: "https://news.google.com/rss/search?q=Ibiza+desahucio+OR+caravanas+OR+asentamientos&hl=es&gl=ES&ceid=ES:es"
+    kind: google_news
+
+  # RSS nativos - Prensa Ibérica group (Diario de Ibiza)
+  - name: "Diario de Ibiza · Pitiusas"
+    url: "https://www.diariodeibiza.es/rss/pitiusas.xml"
+    kind: native
+
+  # Periódico de Ibiza
+  - name: "Periódico de Ibiza · Ibiza"
+    url: "https://www.periodicodeibiza.es/rss/ibiza/"
+    kind: native
+
+# Palabras clave para filtro inicial antes de clasificación con IA.
+# Basta con que aparezca una en título o resumen.
+keywords:
+  - vivienda
+  - alquiler
+  - habitatge
+  - temporada
+  - temporero
+  - temporera
+  - trabajador
+  - trabajadora
+  - asentamient
+  - caravana
+  - desahucio
+  - realquiler
+  - infravivienda
+  - chabolis
+  - residencia
+  - habitación
+  - piso
+  - inquilino
+  - propietario
+  - okupa
+  - ETV
+  - turística
+  - Consell
+  - IBAVI
+  - BOIB
+  - sindicat
+  - patronal
+  - PIMEEF
+  - CAEB
+
+# Ventana temporal (días hacia atrás) para cada ejecución
+lookback_days: 10
