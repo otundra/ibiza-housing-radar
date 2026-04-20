@@ -12,6 +12,28 @@ Reglas:
 
 ---
 
+## 2026-04-20 — Política de aprendizaje de errores formalizada
+
+- **Patrones transversales añadidos al principio de `private/postmortems.md`** — 4 patrones conocidos hasta la fecha con salvaguardas vinculantes. Cada error nuevo se coteja primero con estos patrones antes de añadir uno nuevo. Si encaja, la causa es repetición (agravante); si no, se documenta nuevo patrón.
+  - **P1. Flujos multi-paso sin orquestador** — corregido con `bench_full.py` y `regen_edition.py`.
+  - **P2. Verificadores demasiado estrictos** — corregido con distinción 404/410 bloquea vs 403/5xx avisa en `verify.py`.
+  - **P3. Umbrales calibrados sin datos** — pendiente de primera revisión mensual con ≥4 ediciones publicadas.
+  - **P4. Contaminación del contexto del LLM por contenido de versiones antiguas** — se resolverá en Bloque C cuando W16-W17 antiguas se eliminen y las 8 ediciones retroactivas W10-W17 se regeneren bajo modelo documental.
+- **Confirmado: política de contenido retroactivo** — W16 y W17 actuales (modelo antiguo) se **borran** al arrancar Bloque C. Originales quedan en histórico git para auditoría futura. Las 8 nuevas ediciones se generarán desde cero bajo modelo documental, sin contaminar unas a otras (orden de producción: W17 → W10 hacia atrás; publicación en orden cronológico natural W10 → W17 con commits separados).
+- **Umbral de rigor pendiente de revisión** — hoy salta alerta en `<7`. Propuesta editor: considerar subir a `<8`. Decisión deferida hasta tener 4-5 ediciones bajo modelo documental. Subirlo ahora sin datos podría saturar de alertas. Registrado como P3.
+- **Auditabilidad del sistema confirmada** — toda la información queda en archivos para revisión del editor:
+  - `private/postmortems.md` — errores + patrones + salvaguardas.
+  - `private/self-review/YYYY-wWW.md` — cada self-review archivado.
+  - `private/self-review-log.md` — agregado de los que dispararon alerta.
+  - `private/bench-log.md` — historial de ejecuciones de benchmark.
+  - `private/balance.md` — dashboard privado actualizado tras cada edición.
+  - `private/costs.md` — gasto y capa actual.
+  - `data/costs.csv` — cada llamada API registrada (append-only).
+  - `data/proposals_history.json` — histórico de propuestas documentadas.
+  - `data/bench/results_v1.json` — resultados crudos del benchmark.
+
+---
+
 ## 2026-04-20 — Pipeline end-to-end + 2ª iteración con rigor subido a 7
 
 - **Primera ejecución completa del pipeline documental** — `python -m src.report` corrió de principio a fin: ingest (35 items, 2 RSS locales vacíos), classify (19 housing, 2 formal, 2 en_movimiento), extract (4 candidatos → 3 propuestas, 0 disputas Opus), rescue (vacío, primera vez), generate (Opus con prompt documental), verify (11 URLs OK, 0 verbos prohibidos), balance (dashboard público + privado), self_review (score rigor=6, resto ≥7). Coste real: ~2,25 €.

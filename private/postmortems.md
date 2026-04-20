@@ -6,6 +6,48 @@ No es lista de excusas. Es herramienta de mejora. Revisable en cualquier momento
 
 ---
 
+## Patrones identificados — lecciones transversales
+
+Cada vez que aparece un error nuevo, cotejar primero con estos patrones. Si encaja con uno ya conocido, la prevención ya existe y la causa es repetida (agravante). Si no encaja, añadir patrón nuevo al final.
+
+### P1 — Flujos multi-paso con coste sin orquestador
+
+Cuando dos scripts producen input para el siguiente y el editor debe lanzarlos en orden correcto, la integración es el punto de fallo más común. Un paso lee output desactualizado; otro paso asume estado que no existe; el editor olvida la secuencia.
+
+**Casos previos:** post-mortem 2026-04-20 17:42 (gold manual vs auto).
+
+**Salvaguarda vinculante:** siempre que haya flujo N→M con coste API, **crear orquestador que conecte por código y no dependa de la memoria del editor**. El orquestador verifica por defecto que lee el output del paso anterior y aborta limpiamente si no encaja.
+
+### P2 — Verificadores demasiado estrictos
+
+Un verificador que rechaza por exceso genera falsos positivos que cuestan dinero y retrasan publicación. Confundir "problema operacional puntual" con "error de contenido" es el modo típico.
+
+**Casos previos:** post-mortem 2026-04-20 18:24 (verify 403 Cadena SER).
+
+**Salvaguarda vinculante:** **distinguir `error real` de `inconveniente superable`**:
+- Error real (bloquea): URL 404/410, schema JSON inválido, actor inventado, verbo prohibido en cuerpo, cifra sin soporte en input.
+- Inconveniente (avisa, no bloquea): 401/403/405/429 (bot-blocked), 5xx (servidor caído), timeout puntual.
+
+Cualquier verificador nuevo debe declarar explícitamente en su docstring qué clasifica como uno u otro.
+
+### P3 — Umbrales calibrados sin datos reales
+
+Los umbrales de alerta (score `<7` dispara, gasto `>8 €` avisa, disputas `>20%` escala) son hipótesis hasta que se observen con al menos 4-5 ejecuciones reales. Subirlos o bajarlos antes de tener datos puede saturar de ruido o silenciar problemas reales.
+
+**Casos previos:** implícito, pendiente de primera revisión mensual tras Fase 0.
+
+**Salvaguarda vinculante:** revisión de umbrales **solo con ≥4 ediciones publicadas** + dato de correcciones recibidas del público. Cualquier cambio de umbral se registra en este documento con el rango observado y la justificación.
+
+### P4 — Contaminación del contexto del LLM por contenido de versiones antiguas
+
+Cuando el pipeline evoluciona (pivote, cambio de prompt) pero el histórico contiene producto antiguo, el LLM puede leer ese histórico como ejemplo y degradar su output.
+
+**Casos previos:** self-review 2026-04-20 detectó que la W16 antigua (modelo propuestas propias) aparece en el contexto del generador y viola la regla 2 del pivote.
+
+**Salvaguarda vinculante:** cuando se cambia el modelo editorial, el contenido antiguo **se purga del contexto del LLM** (no del repo — queda en histórico git). Regenerar contenido retroactivo bajo el modelo nuevo antes de publicar ediciones nuevas que dependan de él.
+
+---
+
 ## 2026-04-20 17:42 — Benchmark duplicado por desajuste de fuentes de gold
 
 **Qué pasó.** `scripts/run_benchmark.py` se ejecutó contra `gold_standard_v1.json` (gold manual, 20 items) en lugar de `gold_auto_v1.json` (gold auto validado Opus+Sonnet, 17 items). Tras ver resultados se detectó el desajuste y se relanzó contra el gold correcto.
