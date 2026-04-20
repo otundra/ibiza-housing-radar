@@ -101,13 +101,9 @@ Tipos usados:
 
 Todos los commits generados por el bot llevan `Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>`.
 
-## Próximas mejoras candidatas
+## Roadmap
 
-- Añadir fuente de BOIB (convocatorias IBAVI, normativa autonómica).
-- Detectar tendencias multi-semana (p.ej. evolución del precio medio de habitación).
-- Newsletter por email vía Buttondown o similar (0-5 €/mes).
-- Dominio propio `radar.ibizahousing.org` cuando tenga tracción.
-- Caché de prompt (Anthropic prompt caching) sobre el SYSTEM prompt del generador para bajar el 50 % del coste del Opus.
+El plan de mejora estratégico vive en [`PLAN.md`](PLAN.md): 4 fases (base / distribución / contenido diferencial / red) + deuda técnica puntual + prioridades honestas + qué NO hacer. Al cerrar un punto, marcar estado en la tabla de seguimiento de `PLAN.md` y registrar entrada en [`DIARIO.md`](DIARIO.md).
 
 ## Qué NO hacer
 

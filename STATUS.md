@@ -102,13 +102,17 @@ export ANTHROPIC_API_KEY=sk-ant-...
 python -m src.report
 ```
 
-## 📋 Mejoras candidatas (cuando quieras)
+## 📋 Plan de mejora
 
-- **Prompt caching** del `SYSTEM` del generador. Bajaría ~50% el coste de Opus. Gratis salvo el primer turno.
-- **Newsletter email** con Buttondown (5 €/mes) o Listmonk self-hosted (0 €).
-- **BOIB scraper** — normativa oficial de Baleares, gratis.
-- **Dominio propio** `radar.ibizahousing.org` o similar. ~10 €/año.
-- **Mejorar prompt del generador** con tu feedback sobre la W17.
+El roadmap vivo vive en [`PLAN.md`](PLAN.md): 4 fases (base, distribución, contenido diferencial, red) + deuda técnica puntual.
+
+**Prioridades próximas 4 semanas** (del PLAN):
+
+1. Dominio propio + analítica privacy-friendly (Fase 1).
+2. Newsletter + envío directo a periodistas locales (Fase 2).
+3. Observatorio de precios de habitación scrapeando Idealista/Milanuncios (Fase 3).
+
+**Deuda técnica recomendada en paralelo:** prompt caching en Opus (~50 % ahorro), resiliencia en `classify.py`, métricas de pipeline, notificación de fallo del cron.
 
 ## 🐛 Si algo falla
 
