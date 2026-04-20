@@ -130,7 +130,7 @@ def generate(items: list[dict[str, Any]], now: datetime, edition: str) -> str:
     log.info("Generating edition with %s (items=%d)", MODEL, len(items))
     resp = client.messages.create(
         model=MODEL,
-        max_tokens=4096,
+        max_tokens=8192,
         system=SYSTEM,
         messages=[{"role": "user", "content": prompt}],
     )

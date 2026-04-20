@@ -30,17 +30,41 @@ def load_sources() -> dict[str, Any]:
         return yaml.safe_load(f)
 
 
+def _resolve_gnews(url: str) -> str:
+    """Resuelve una URL de news.google.com al artículo original.
+
+    Google News firma las URLs y NO expone siempre un redirect HTTP directo.
+    Esta función hace un GET ligero con follow_redirects y mira la URL final.
+    Si falla (rate limit, timeout, etc.), devuelve la URL original intacta.
+    """
+    try:
+        import httpx
+        with httpx.Client(timeout=6.0, follow_redirects=True, headers={
+            "User-Agent": "Mozilla/5.0 (compatible; IbizaHousingRadar/1.0)"
+        }) as c:
+            r = c.get(url)
+            final = str(r.url)
+            # Si seguimos en google.com, no hemos resuelto nada útil
+            if "google.com" in urlparse(final).netloc:
+                return url
+            return final
+    except Exception:
+        return url
+
+
 def canonical_url(url: str) -> str:
-    """Limpia trackers y resuelve URL Google News cuando sea trivial."""
+    """Limpia trackers y resuelve URL Google News al artículo original."""
     if not url:
         return url
-    # Google News a veces devuelve URLs con `url=` parameter
     parsed = urlparse(url)
     if "news.google.com" in parsed.netloc:
+        # Caso trivial (a veces aparece `url=` en query)
         qs = parse_qs(parsed.query)
         if "url" in qs:
             return qs["url"][0]
-    # Quitar utm_ y similares
+        # Caso general: resolver via HTTP
+        return _resolve_gnews(url)
+    # Limpieza de trackers en URLs normales
     if parsed.query:
         clean_q = "&".join(
             p for p in parsed.query.split("&")
@@ -75,12 +99,14 @@ def parse_entry_date(entry: dict[str, Any]) -> datetime | None:
 
 
 def ingest() -> list[dict[str, Any]]:
+    from concurrent.futures import ThreadPoolExecutor
+
     cfg = load_sources()
     keywords: list[str] = cfg["keywords"]
     lookback_days: int = cfg["lookback_days"]
     cutoff = datetime.now(timezone.utc) - timedelta(days=lookback_days)
 
-    collected: dict[str, dict[str, Any]] = {}
+    raw_items: list[dict[str, Any]] = []
 
     for feed_cfg in cfg["feeds"]:
         name = feed_cfg["name"]
@@ -99,8 +125,8 @@ def ingest() -> list[dict[str, Any]]:
         for entry in parsed.entries:
             title = strip_html(entry.get("title", ""))
             summary = strip_html(entry.get("summary", ""))
-            link = canonical_url(entry.get("link", ""))
-            if not link or not title:
+            raw_link = entry.get("link", "")
+            if not raw_link or not title:
                 continue
 
             haystack = f"{title} {summary}"
@@ -111,16 +137,29 @@ def ingest() -> list[dict[str, Any]]:
             if pub and pub < cutoff:
                 continue
 
-            key = link
-            if key in collected:
-                continue
-            collected[key] = {
+            raw_items.append({
                 "title": title,
                 "summary": summary,
-                "url": link,
+                "raw_url": raw_link,
                 "source": name,
                 "published": pub.isoformat() if pub else None,
-            }
+            })
+
+    # Paralelizamos la resolución de URLs (Google News redirect)
+    log.info("Resolving %d URLs in parallel...", len(raw_items))
+    with ThreadPoolExecutor(max_workers=10) as ex:
+        resolved = list(ex.map(canonical_url, [it["raw_url"] for it in raw_items]))
+    for it, final in zip(raw_items, resolved):
+        it["url"] = final
+        it.pop("raw_url", None)
+
+    # Dedup por URL canónica
+    collected: dict[str, dict[str, Any]] = {}
+    for it in raw_items:
+        key = it["url"]
+        if key in collected:
+            continue
+        collected[key] = it
 
     items = sorted(
         collected.values(),
