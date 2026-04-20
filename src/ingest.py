@@ -31,25 +31,23 @@ def load_sources() -> dict[str, Any]:
 
 
 def _resolve_gnews(url: str) -> str:
-    """Resuelve una URL de news.google.com al artículo original.
+    """Resuelve una URL firmada de news.google.com al artículo original.
 
-    Google News firma las URLs y NO expone siempre un redirect HTTP directo.
-    Esta función hace un GET ligero con follow_redirects y mira la URL final.
-    Si falla (rate limit, timeout, etc.), devuelve la URL original intacta.
+    Usa la librería `googlenewsdecoder` (no hace simple redirect HTTP: es un
+    esquema firmado). Si falla (rate limit, cambio de protocolo, etc.),
+    devuelve la URL original intacta — el click sigue funcionando via
+    redirect de Google News.
     """
     try:
-        import httpx
-        with httpx.Client(timeout=6.0, follow_redirects=True, headers={
-            "User-Agent": "Mozilla/5.0 (compatible; IbizaHousingRadar/1.0)"
-        }) as c:
-            r = c.get(url)
-            final = str(r.url)
-            # Si seguimos en google.com, no hemos resuelto nada útil
-            if "google.com" in urlparse(final).netloc:
-                return url
-            return final
-    except Exception:
-        return url
+        from googlenewsdecoder import gnewsdecoder
+        result = gnewsdecoder(url, interval=1)
+        if result.get("status") and result.get("decoded_url"):
+            decoded = result["decoded_url"]
+            if decoded and "google.com" not in urlparse(decoded).netloc:
+                return decoded
+    except Exception as e:
+        log.debug("gnewsdecoder falló para %s: %s", url[:80], e)
+    return url
 
 
 def canonical_url(url: str) -> str:
