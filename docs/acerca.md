@@ -8,7 +8,7 @@ permalink: /acerca/
 
 **Ibiza Housing Radar** es un observatorio automatizado sobre la crisis de vivienda en Ibiza, con foco en los trabajadores de temporada que cada año se ven empujados a caravanas, sofás compartidos o a renunciar a la isla directamente.
 
-Cada lunes a las 7:00 de la mañana, un pipeline lee la prensa local de los últimos 10 días, filtra lo relevante, y produce un informe con:
+Cada lunes a las 7:00 de la mañana (CEST), un pipeline lee la prensa local de los últimos 10 días, filtra lo relevante, y produce un informe con:
 
 1. **Señales detectadas** — los hechos enlazados a la fuente original.
 2. **Lectura** — qué cambia esta semana y dónde está la ventana de decisión.
@@ -20,11 +20,11 @@ Cada lunes a las 7:00 de la mañana, un pipeline lee la prensa local de los últ
 | Fase | Herramienta | Coste |
 |---|---|---|
 | Ingesta | Feeds RSS de Google News + Diario de Ibiza + Periódico de Ibiza | 0 € |
-| Clasificación | Claude Haiku 4.5 (Anthropic) | ~$0.01/semana |
-| Generación del informe | Claude Opus 4.7 (Anthropic) | ~$0.50/semana |
+| Clasificación | Claude Haiku 4.5 (Anthropic) | ~0,01 USD/semana |
+| Generación del informe | Claude Opus 4.7 (Anthropic) | ~0,50 USD/semana |
 | Publicación | GitHub Pages (Jekyll) | 0 € |
 | Scheduler | GitHub Actions (cron semanal) | 0 € |
-| **Total** |  | **~2 €/mes** |
+| **Total** | | **~2 USD/mes** |
 
 Todo el código es abierto y está en [github.com/otundra/ibiza-housing-radar](https://github.com/otundra/ibiza-housing-radar). El gasto real actualizado está en [Costes](/ibiza-housing-radar/costes/).
 
@@ -33,7 +33,7 @@ Todo el código es abierto y está en [github.com/otundra/ibiza-housing-radar](h
 - **No es una fuente primaria.** Resume y enlaza. Si una cifra importa, contrasta con la noticia original.
 - **No es análisis técnico.** Las propuestas son sugerencias generadas por IA sobre prensa pública. Un análisis real de vivienda necesita datos de catastro, padrón y registros que este sistema no tiene.
 - **No es asesoramiento jurídico, político ni económico.**
-- **No pretende reemplazar al periodismo local.** Al contrario: depende de él. Si quieres que esto siga existiendo, suscríbete a los diarios que produce la información original.
+- **No pretende reemplazar al periodismo local.** Al contrario: depende de él. Si quieres que esto siga existiendo, suscríbete a los diarios que producen la información original.
 
 ## Por qué Ibiza
 
