@@ -36,10 +36,11 @@ Observatorio automatizado semanal sobre la crisis de vivienda en Ibiza con foco 
 │   ├── _config.yml
 │   ├── _layouts/               # default, home, edition, page
 │   ├── _includes/              # header, footer
-│   ├── assets/css/main.css     # Theme custom
+│   ├── assets/css/main.css     # Theme custom (incluye dashboard de la home)
 │   ├── assets/favicon.svg
-│   ├── editions/               # Ediciones semanales YYYY-wWW.md
-│   ├── index.md                # Regenerado por build_index.py
+│   ├── _editions/              # Ediciones semanales YYYY-wWW.md (colección Jekyll)
+│   ├── index.md                # Regenerado por build_index.py (panel de la última edición)
+│   ├── ediciones.md            # Página /ediciones/ con archivo completo
 │   ├── acerca.md
 │   └── costs.md                # Regenerado por costs.py
 ├── .github/workflows/

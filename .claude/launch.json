@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "jekyll",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "PATH=/Users/raulserrano/.gem/ruby/2.7.0/bin:$PATH GEM_PATH=/Users/raulserrano/.gem/ruby/2.7.0 jekyll serve --source docs --destination docs/_site --port 4000 --baseurl '' --host 127.0.0.1"
+      ],
+      "port": 4000
+    }
+  ]
+}

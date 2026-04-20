@@ -75,8 +75,8 @@
 05:00      checkout + pip install
 05:01      src/ingest.py   → data/ingested.json
 05:02      src/classify.py → data/classified.json   (1 llamada a Haiku)
-05:03-05   src/generate.py → docs/editions/YYYY-wWW.md  (1 llamada a Opus)
-05:05      src/build_index.py → docs/index.md
+05:03-05   src/generate.py → docs/_editions/YYYY-wWW.md  (1 llamada a Opus)
+05:05      src/build_index.py → docs/index.md (panel de la última edición)
 05:05      src/costs.py   → docs/costs.md + data/costs.csv
 05:05      git commit + push con retry/rebase
 05:06      Jekyll rebuild en GitHub Pages (~30s)

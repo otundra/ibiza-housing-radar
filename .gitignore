@@ -23,3 +23,13 @@ data/raw/
 Thumbs.db
 .idea/
 .vscode/
+
+# Jekyll (build local)
+docs/_site/
+docs/.jekyll-cache/
+docs/.jekyll-metadata
+docs/vendor/
+docs/Gemfile.lock
+
+# Claude Code local
+.claude/settings.local.json
