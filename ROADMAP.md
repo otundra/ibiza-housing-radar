@@ -4,6 +4,23 @@
 **Origen:** [PIVOTE.md](PIVOTE.md).
 **Principio base:** lanzar en Fase 0 todo lo que se pueda para que el relanzamiento del proyecto sea fuerte, coherente y memorable. Coste 0 externo salvo API Anthropic. Reversible vía branch aislado.
 
+## Estado a 2026-04-20
+
+| Bloque | Tema | Estado |
+|---|---|---|
+| A | Pipeline técnico del pivote | ✅ **cerrado** (salvo A13 auditoría trimestral y A14 re-benchmark mensual, diferidos a cuando haya ≥4 ediciones) |
+| B | Arquitectura web (home, /radar/, /propuestas/, /actores/, /balance/, /estadisticas/, /estado/, /sin-dato/, …) | ⏸ pendiente (próximo) |
+| C | Contenido retroactivo 8 ediciones (W10-W17) | ⏸ pendiente |
+| D | SEO masivo | ⏸ pendiente |
+| E | Analítica (GoatCounter, dashboard público) | ⏸ pendiente |
+| F | Distribución (newsletter Buttondown gratis) | ⏸ pendiente |
+| G | Utilidad pública (glosario, kit prensa) | ⏸ pendiente (/recursos/ diferido) |
+| H | Legal y transparencia | ⏸ pendiente |
+| I | Estudios previos bloqueantes | 🔄 parcial (estudio 3 modelos ✅ cerrado, dominio pendiente, fecha relanzamiento pendiente) |
+
+**Historia de decisiones y cambios voluntarios:** [`private/adjustments-log.md`](private/adjustments-log.md).
+**Errores registrados:** [`private/postmortems.md`](private/postmortems.md).
+
 ---
 
 ## Fase 0 — Relanzamiento completo
