@@ -189,6 +189,33 @@ Margen del tope blando ≈ 4× el coste actual. Tope duro ≈ 10× el coste actu
 
 ---
 
+## Calidad editorial de las propuestas — salvaguardas
+
+Origen: [estudio crítico 2026-04-20](private/estudios/2026-04-20-propuestas.md) sobre el corpus W16-W17 (8 propuestas). Conclusión: formato sólido, control de calidad del contenido inexistente. Riesgos detectados: precedentes sospechosos de alucinación, errores aritméticos y jurídicos puntuales, sesgo intervencionista uniforme (6/8), concentración de responsabilidad en el Consell (5/8 primario), cero propuestas estructurales, redundancia entre ediciones.
+
+Tres tiers de mitigación, coste API marginal, sin infra extra.
+
+### Tier 1 — antes de la edición del 27-abr (2-4 h)
+
+1. **Fact-checker automático de precedentes.** Paso nuevo en pipeline tras `generate.py`: extrae cada `**Precedente:**` de la edición generada, lo manda a Haiku con rol de verificador (*"¿existe este programa con este nombre y esta cifra con alta confianza? Devuelve exacto / aproximado / dudoso / no encontrado"*). Si hay ≥1 "dudoso" o "no encontrado", bloquea la publicación y notifica por Telegram para revisión manual. Coste marginal ~0,05 €/edición. Mitiga el riesgo reputacional existencial (citas inventadas son fatales).
+2. **Declaración explícita de sesgo en `/metodologia`.** Dos líneas que reconozcan: las propuestas las genera un LLM con sesgo hacia medidas públicas y regulatorias; si el lector busca propuestas desde otro marco, este no es su observatorio. Ya previsto en Fase 1.5; aquí se concreta la redacción.
+
+### Tier 2 — siguientes 2-3 semanas (~1 día)
+
+3. **Regla de diversidad de actor** en el SYSTEM prompt de `generate.py`: al menos 3 actores responsables distintos entre las 3-5 propuestas, nunca más de 2 con el mismo primario, al menos una con actor no-administrativo (patronal, sindicato, propietarios, tercer sector).
+4. **Regla de pluralidad ideológica** en el prompt: al menos una propuesta incentivadora sin coerción ni tope (bonificación fiscal, exención, subvención voluntaria) por edición.
+5. **Rango obligatorio en cifras.** Toda cifra monetaria como rango con método de estimación declarado. Prohibir cifras puntuales sin margen.
+6. **Anti-duplicado intra-serie.** Pasar al prompt las propuestas de las 4 ediciones anteriores con regla: no repetir propuesta sustantivamente idéntica, evolución sí, duplicado no.
+
+### Tier 3 — cuando haya tiempo (~2-4 h)
+
+7. **Verificador jurídico ligero.** Paso extra con Haiku: *"¿esta propuesta tiene encaje en marco legal español? Cita ley concreta, señala si choca con principio constitucional o norma supraordenada."* No sustituye abogado pero atrapa errores tipo "afectar retroactivamente 2 M€ ya recaudados".
+8. **Metadata por propuesta** en front-matter: tabla con `actor_responsable`, `palanca`, `horizonte`, `ideologia_declarada`. Alimenta el tracker de Fase 3.2 y permite auditar sesgo en segundos.
+9. **Auditoría trimestral automática.** Script que cada 13 semanas agrega propuestas y genera informe interno: concentración de actor, palancas usadas, horizontes, balance ideológico. Convierte el estudio manual en rutina medible.
+10. **Checklist de revisión humana del lunes.** Cinco preguntas fijas en lugar de lectura libre: ¿alguna cifra puntual sin rango? ¿algún precedente que no reconozco? ¿el actor responsable se repite? ¿alguna propuesta con sabor panfletario? ¿alguna repetida de ediciones recientes? 5 min, no 30.
+
+---
+
 ## Trilingüe ES/CA/EN — **diferido**
 
 Decisión 2026-04-20: no se monta ahora. Razones:
@@ -434,6 +461,16 @@ Al cerrar cada punto, actualizar [`DIARIO.md`](DIARIO.md) con la entrada corresp
 | Operativo | Fallback Telegram → issue GitHub | ✅ hecho 20-abr-2026 |
 | Operativo | Refactor `costs.py` a €, tope blando 8 €, tope duro 20 € | ✅ hecho 20-abr-2026 |
 | Operativo | Resumen semanal vía Telegram en `report.py` | ✅ hecho 20-abr-2026 |
+| Calidad editorial | Tier 1: fact-checker de precedentes (Haiku) | pendiente |
+| Calidad editorial | Tier 1: declaración explícita de sesgo en `/metodologia` | pendiente |
+| Calidad editorial | Tier 2: regla diversidad de actor en prompt | pendiente |
+| Calidad editorial | Tier 2: regla pluralidad ideológica en prompt | pendiente |
+| Calidad editorial | Tier 2: rango obligatorio en cifras | pendiente |
+| Calidad editorial | Tier 2: anti-duplicado intra-serie | pendiente |
+| Calidad editorial | Tier 3: verificador jurídico ligero | pendiente |
+| Calidad editorial | Tier 3: metadata por propuesta en front-matter | pendiente |
+| Calidad editorial | Tier 3: auditoría trimestral automática | pendiente |
+| Calidad editorial | Tier 3: checklist de revisión humana del lunes | pendiente |
 | Trilingüe | Chrome ES/CA/EN + selector + diccionario i18n | **diferido** |
 | Trilingüe | Glosario eivissenc + prompt Sonnet (Opción A) | **diferido** |
 | Trilingüe | Pipeline 3 idiomas + validador de datos | **diferido** |

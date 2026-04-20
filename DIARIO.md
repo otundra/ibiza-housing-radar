@@ -12,6 +12,17 @@ Reglas:
 
 ---
 
+## 2026-04-20 — Estudio crítico de las propuestas (corpus W16-W17)
+
+- **Auditoría completa de las 8 propuestas publicadas** — revisión sobre 9 dimensiones (concreción, rigor numérico, trazabilidad a señal, verificabilidad del precedente, viabilidad jurídica, viabilidad política, equilibrio ideológico, diversidad de actor, originalidad intra-serie). Documento completo en [`private/estudios/2026-04-20-propuestas.md`](private/estudios/2026-04-20-propuestas.md). Resumen: formato bien calibrado, control de calidad del contenido inexistente.
+- **Tres hallazgos críticos** — (1) precedentes sospechosos de alucinación en al menos 3 propuestas (Jooble Workers Portugal, Reallotjament Barcelona con cifra específica, Zermatt cantón 1.200 temporeros 2019); (2) errores técnicos concretos (aritmética W17.1, error jurídico W17.2 sobre afectación retroactiva de 2 M€ ya recaudados, inviabilidad W17.3 bajo Directiva de Servicios); (3) sesgo estructural no declarado: 6/8 intervencionistas puras, 5/8 cargan sobre el Consell (PP+Vox), 0/8 sobre Govern Balear pese a ser competente en vivienda.
+- **Palancas ciegas del generador** — cero propuestas en: derecho laboral (obligación empresa de alojar), fiscalidad penalizadora de vacío (LEH 12/2023), judicial (agilizar desahucios por subarriendo fraudulento, pese a caso documentado en señales), cooperativismo ciudadano. El modelo tiene un mapa mental restringido de qué es "política de vivienda".
+- **Redundancia detectada** — W16.2 y W17.4 son la misma idea (residencias modulares en suelo público) en dos semanas consecutivas. Sin anti-duplicado, la temporada se llena de variantes.
+- **Riesgo reputacional concretado** — el `PLAN.md` ya mencionaba "Opus tiende a propuestas progresistas" como riesgo sin mitigación; este estudio lo cuantifica y propone mitigación operativa.
+- **Plan de mitigación en tres tiers** — Tier 1 (2-4 h, antes de la edición del 27-abr): fact-checker automático de precedentes con Haiku + declaración explícita de sesgo en `/metodologia`. Tier 2 (1 día, próximas semanas): regla de diversidad de actor + regla de pluralidad ideológica + rango obligatorio en cifras + anti-duplicado intra-serie, todo en el prompt. Tier 3 (2-4 h, cuando toque): verificador jurídico ligero + metadata por propuesta en front-matter + auditoría trimestral automática + checklist de revisión humana. Añadido a [`PLAN.md`](PLAN.md) como bloque nuevo "Calidad editorial de las propuestas (salvaguardas)" y filas dedicadas en la tabla de seguimiento.
+
+---
+
 ## 2026-04-20 — Bloque operativo implementado: Telegram + privatización costes + euros
 
 - **Bot de Telegram operativo** — `@ibiza_vivienda_bot` creado por Raúl vía @BotFather. Token y `chat_id` configurados como GitHub Secrets (`TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`). Ping de prueba recibido OK antes de cablear nada. Smoke test local de `src.notify` confirma entrega end-to-end.
