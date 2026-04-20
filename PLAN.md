@@ -6,7 +6,7 @@ Estrategia para convertir el proyecto en un observatorio de referencia sobre viv
 
 ## Principio económico
 
-**Coste-cero salvo IA.** Único gasto aceptado: llamadas a la API de Anthropic. Coste actual ~2 €/mes; con trilingüe ES/CA/EN previsto ~3,15 €/mes. Topes definidos en € dentro de `src/costs.py`: **tope blando 8 €/mes** (avisa por Telegram pero sigue publicando) y **tope duro 20 €/mes** (corta para proteger contra runaway). Toda herramienta externa debe tener alternativa 0 € o quedar diferida hasta que el proyecto demuestre tracción.
+**Coste-cero salvo IA.** Único gasto aceptado: llamadas a la API de Anthropic. Coste actual ~2 €/mes. Topes definidos en € dentro de `src/costs.py`: **tope blando 8 €/mes** (avisa por Telegram pero sigue publicando) y **tope duro 20 €/mes** (corta para proteger contra runaway). Trilingüe ES/CA/EN previsto subiría a ~3,15 €/mes cuando se active; margen del tope ya contempla ese escenario. Toda herramienta externa debe tener alternativa 0 € o quedar diferida hasta que el proyecto demuestre tracción.
 
 **Dominio propio diferido.** `radaribiza.org` o similar (~12 €/año) es el único gasto externo que merece la pena pagar, pero se aplaza hasta ver que el proyecto tiene tracción. Mientras tanto se trabaja sobre `otundra.github.io/ibiza-housing-radar`.
 
@@ -113,70 +113,15 @@ Sin relación con la estrategia pero deuda fácil. 1-2 días total. Todas 0 €.
 1. **Analítica (GoatCounter) + identidad editorial + metodología pública** (Fase 1.2, 1.3, 1.5). Desbloquea medición y credibilidad sin depender de nada externo.
 2. **Newsletter + envío directo a periodistas** (Fase 2.1 + 2.3). La única vía realista a que te citen.
 3. **Observatorio de precios por agregación + crowd-sourcing** (Fase 3.1). Lo único que te hace irremplazable; el formulario de precios se reutiliza en la Fase 4.2.
-4. **Bloque trilingüe + privacidad de costes + alertas Telegram** (sección dedicada abajo). Triplica audiencia potencial (castellano, catalán, inglés para temporeros internacionales), saca costes del público y blinda el pipeline contra pérdidas por sobrecoste o fallo. Coste marginal: ~1,15 €/mes extra en API.
+4. **Privacidad de costes + alertas Telegram + refactor `costs.py` a €** (sección "Bloque operativo inmediato" abajo). Saca la contabilidad del público, blinda el pipeline contra pérdidas por sobrecoste o fallo y expresa todo en euros. Coste marginal: 0 €. La parte trilingüe queda **diferida** con criterios de reactivación explícitos.
 
 ---
 
-## Bloque trilingüe — privacidad de costes — alertas
+## Bloque operativo inmediato — privacidad de costes + alertas Telegram
 
-Ejecución prioritaria, en paralelo a las Fases 1-2. Coste recurrente extra ~1,15 €/mes sobre el actual (~2 €/mes → ~3,15 €/mes).
+Ejecución prioritaria, en paralelo a las Fases 1-2. Coste recurrente: 0 €.
 
-### 1. Web trilingüe ES/CA/EN desde el día 1
-
-**Estructura:**
-
-- `/` → castellano (default, contenido actual).
-- `/ca/` → catalán.
-- `/en/` → inglés.
-- Selector ES / CA / EN visible en todas las páginas.
-- `<html lang>` correcto por idioma, `hreflang` por página apuntando a sus hermanas.
-
-**Alcance completo:** chrome (nav, footer, home, /acerca, /ediciones) **y** ediciones semanales íntegras en los 3 idiomas. No versión reducida EN ni solo chrome.
-
-**Implementación Jekyll sin plugins externos:** carpetas manuales `/ca/` y `/en/` + diccionario central `_data/i18n.yml` para strings UI + `_includes/lang-switcher.html`. Sin `polyglot` (no está en allowlist de GitHub Pages y la infra manual cubre lo necesario). El builder nativo de Pages sigue sirviendo el sitio; no se cambia la fuente de deploy.
-
-### 2. Variante de catalán: estándar IEC + glosario eivissenc (Opción A)
-
-Decisión basada en estudio de medios locales (20-abril-2026):
-
-- **IB3 Notícies Eivissa** (referencia pública) usa catalán estándar IEC desde 2015; abandonó el article salat en informativos.
-- **Diario de Ibiza** y **Última Hora Ibiza** solo publican en castellano.
-- **Periódico de Ibiza** y **NouDiari** reservan el balear con article salat para columnas de opinión y cultura popular, no para hard news.
-- El catalán balear escrito en registro periodístico **casi no existe** como corpus. Riesgo de fallo del LLM traductor alto.
-
-Por tanto, variante = **catalán estándar IEC** (la del ARA, Vilaweb, IB3), alineada con el estándar de hard news en las islas. Glosario obligatorio en el prompt del traductor:
-
-| Término | Forma a usar |
-|---|---|
-| Ciudad | **Eivissa** (nunca "Ibiza" en texto catalán) |
-| Municipios | **Sant Antoni de Portmany, Santa Eulària des Riu, Sant Josep de sa Talaia, Sant Joan de Labritja** (formas oficiales) |
-| Microtopónimos | **Sa Penya, Dalt Vila, Ses Figueretes, Can Toni, es Cubells, s'Argentera, Cala Llonga** (literal desde el ES) |
-| Gentilicio | **eivissenc/a** (nunca "ibicenc"); **pitiús/pitiüsa** para asuntos de ambas islas |
-| Instituciones | **Consell d'Eivissa, IBAVI, GOIB, Govern Balear** (siglas literales) |
-| Leyes y planes | Forma oficial catalana (*Llei d'habitatge de les Illes Balears*, *PTI d'Eivissa*) |
-
-Regla dura adicional para el traductor: **nunca alterar palabras con mayúscula interior** (preserva topónimos insulares tipo "Can Toni", "Sa Penya" aunque coincidan con determinantes balear).
-
-### 3. Pipeline de generación y traducción
-
-Flujo actualizado:
-
-```
-ingest → classify (Haiku) → generate ES (Opus) → translate CA (Sonnet) → translate EN (Sonnet) → validate → write 3 archivos .md
-```
-
-- **Castellano = fuente de verdad.** Opus genera el informe en castellano. Las otras dos versiones son traducciones fieles.
-- **Traductor = Sonnet.** Equilibrio calidad/coste. Haiku descartado para traducir por riesgo de aplanar el tono editorial.
-- **Validador pre-publicación** (protege contra alucinaciones del traductor):
-  1. Mismo número de enlaces markdown que el ES.
-  2. Mismas URLs (set igual).
-  3. Mismas cifras (regex sobre `\d[\d.,]*\s*(€|%|m²|anys?/años?)`).
-  4. Mismo número de bullets en "Señales" y propuestas.
-  5. Si falla → publica solo ES + alerta Telegram. Nunca pierde editorial.
-
-Archivos: `docs/_editions/YYYY-wWW.md` (ES), `docs/_editions/ca/YYYY-wWW.md` (CA), `docs/_editions/en/YYYY-wWW.md` (EN). El front-matter mantiene `date`, `week`, cifras y URLs; traduce `title` y `excerpt`. Permalinks: `/ediciones/YYYY-wWW/`, `/ca/edicions/YYYY-wWW/`, `/en/editions/YYYY-wWW/`.
-
-### 4. Privacidad de costes
+### 1. Privacidad de costes
 
 El CSV y el dashboard de costes salen de la carpeta pública:
 
@@ -186,7 +131,7 @@ El CSV y el dashboard de costes salen de la carpeta pública:
 - Dashboard regenerado por `src/costs.py` va a `private/costs.md` (carpeta excluida de Jekyll vía `_config.yml`).
 - Consulta: Raúl abre el archivo desde su clon local o desde GitHub directamente. Sigue teniendo visibilidad completa, simplemente no está en la web pública.
 
-### 5. Alertas Telegram + filosofía "no cortar editorial"
+### 2. Alertas Telegram + filosofía "no cortar editorial"
 
 Cambio de diseño respecto al pipeline actual: **no se aborta en caso de sobrecoste blando**. El pipeline avisa y sigue publicando. Solo corta en caso extremo (tope duro = protección runaway).
 
@@ -204,9 +149,9 @@ Cambio de diseño respecto al pipeline actual: **no se aborta en caso de sobreco
 
 - Resumen semanal tras publicar (OK / con avisos).
 - Alerta de coste según capa.
-- Fallo de validación de traducción (publicó solo ES).
 - Excepciones no controladas del pipeline.
 - API key inválida o sin créditos.
+- (Cuando se active el trilingüe) fallo de validación de traducción.
 
 **Infra:**
 
@@ -215,23 +160,111 @@ Cambio de diseño respecto al pipeline actual: **no se aborta en caso de sobreco
 - **Fallback si Telegram falla:** crea issue en el propio repo (vía `gh` CLI) con la misma alerta. Doble red.
 - Coste: 0 €. Telegram Bot API es gratis, GitHub issues es gratis.
 
-### 6. Coste mensual revisado en €
+### 3. Refactor `src/costs.py` a euros
+
+- Migrar todo el cálculo interno a € (ahora en USD). Tipo de cambio fijo publicado en el propio módulo, revisable cada 3 meses.
+- Topes: blando 8 €, duro 20 €.
+- Cambio de filosofía: `assert_budget_available()` deja de lanzar excepción en tope blando; solo lanza en tope duro. En blando invoca `notify.send_telegram(...)` y devuelve `True` para seguir.
+- Dashboard pasa a `private/costs.md`.
+
+### 4. Coste actual en €
 
 | Partida | Coste/mes |
 |---|---|
 | Clasificar noticias (Haiku) | 0,06 € |
 | Generar informe ES (Opus 4.7) | 2,70 € |
-| Traducir CA (Sonnet 4.6) | 0,30 € |
-| Traducir EN (Sonnet 4.6) | 0,30 € |
-| **Total previsto** | **~3,15 €/mes** |
+| **Total actual** | **~2 €/mes** |
 | **Tope blando** | 8 € |
 | **Tope duro (corte)** | 20 € |
 
-Incremento vs estado actual: **+1,15 €/mes**. Asumible. Margen del tope blando ≈ 2,5× el coste esperado; tope duro ≈ 6× esperado.
+Margen del tope blando ≈ 4× el coste actual. Tope duro ≈ 10× el coste actual. Pensado para cubrir también el escenario trilingüe (~3,15 €/mes) sin tener que ajustar cuando se reactive.
 
-### 7. SEO multilingüe (tarea separada, post-trilingüe)
+### 5. Orden de ejecución
 
-Se aborda en sesión dedicada sobre el sitio ya trilingüe. Checklist:
+1. Crear bot de Telegram (Raúl) + configurar secrets (Claude).
+2. Módulo `src/notify.py` con Telegram + fallback a issue.
+3. Privatizar costes (mover `docs/costs.md` → `private/costs.md`, excluir de Jekyll, quitar enlace del nav).
+4. Refactor `src/costs.py` a € + topes 8/20 + capas de alerta + filosofía no-corte-en-blando.
+5. Integrar notificaciones en `report.py` (resumen semanal, excepciones).
+
+---
+
+## Trilingüe ES/CA/EN — **diferido**
+
+Decisión 2026-04-20: no se monta ahora. Razones:
+
+- El concepto editorial aún no está cerrado (identidad, metodología, newsletter, primera cita en prensa están pendientes). Montar trilingüe antes de tener audiencia es gastar tokens sin validar demanda.
+- Mejor esperar a tener datos reales para decidir si CA y EN aportan.
+
+**Criterios de reactivación** (basta con que se cumpla uno):
+
+- Analítica muestra >10 % del tráfico llegando desde fuera de España durante 4 semanas consecutivas.
+- 1 cita o mención en medio catalán (Ara Balears, Vilaweb, IB3) o anglófono.
+- Newsletter supera 50 suscriptores y al menos 5 son de fuera de España o identificados como catalanohablantes.
+- Raúl lo pide explícitamente porque el concepto está cerrado.
+
+**Recordatorio activo:** en cada sesión en la que se cumpla alguno de los criterios de reactivación, Claude debe proponer explícitamente retomar este bloque. Límite: una sugerencia por sesión (respetando nivel de proactividad global).
+
+### Decisiones ya tomadas para cuando se reactive
+
+No repetir el análisis cuando toque ejecutar.
+
+**Alcance:** chrome (nav, footer, home, /acerca, /ediciones) + ediciones semanales íntegras en ES/CA/EN desde el día 1 de la reactivación. Castellano = fuente de verdad. Sin versión EN reducida.
+
+**Variante catalán: estándar IEC + glosario eivissenc (Opción A).** Justificación basada en estudio de medios locales:
+
+- **IB3 Notícies Eivissa** (referencia pública) usa catalán estándar IEC desde 2015; abandonó el article salat en informativos.
+- **Diario de Ibiza** y **Última Hora Ibiza** solo publican en castellano.
+- **Periódico de Ibiza** y **NouDiari** reservan el balear con article salat para columnas de opinión y cultura popular, no para hard news.
+- El catalán balear escrito en registro periodístico **casi no existe** como corpus. Riesgo de fallo del LLM traductor alto.
+
+Variante = la del ARA, Vilaweb, IB3. Balear descartado.
+
+**Glosario obligatorio** en el prompt del traductor:
+
+| Término | Forma a usar |
+|---|---|
+| Ciudad | **Eivissa** (nunca "Ibiza" en texto catalán) |
+| Municipios | **Sant Antoni de Portmany, Santa Eulària des Riu, Sant Josep de sa Talaia, Sant Joan de Labritja** (formas oficiales) |
+| Microtopónimos | **Sa Penya, Dalt Vila, Ses Figueretes, Can Toni, es Cubells, s'Argentera, Cala Llonga** (literal desde el ES) |
+| Gentilicio | **eivissenc/a** (nunca "ibicenc"); **pitiús/pitiüsa** para asuntos de ambas islas |
+| Instituciones | **Consell d'Eivissa, IBAVI, GOIB, Govern Balear** (siglas literales) |
+| Leyes y planes | Forma oficial catalana (*Llei d'habitatge de les Illes Balears*, *PTI d'Eivissa*) |
+
+Regla dura adicional para el traductor: **nunca alterar palabras con mayúscula interior** (preserva topónimos insulares tipo "Can Toni", "Sa Penya" aunque coincidan con determinantes balear).
+
+**Infra Jekyll sin plugins externos:** carpetas manuales `/ca/` y `/en/` + diccionario central `_data/i18n.yml` + `_includes/lang-switcher.html`. `polyglot` descartado (fuera de allowlist de GitHub Pages y la infra manual cubre lo necesario). El builder nativo de Pages sigue sirviendo el sitio; no se cambia la fuente de deploy.
+
+**Estructura:**
+
+- `/` → castellano (default).
+- `/ca/` → catalán.
+- `/en/` → inglés.
+- Selector ES / CA / EN visible en todas las páginas.
+- `<html lang>` correcto por idioma, `hreflang` por página apuntando a sus hermanas.
+
+**Pipeline de generación y traducción:**
+
+```
+ingest → classify (Haiku) → generate ES (Opus) → translate CA (Sonnet) → translate EN (Sonnet) → validate → write 3 archivos .md
+```
+
+- Castellano = fuente de verdad. Opus genera solo en castellano.
+- Traductor = Sonnet. Equilibrio calidad/coste. Haiku descartado para traducir por riesgo de aplanar el tono editorial.
+- **Validador pre-publicación** protege contra alucinaciones:
+  1. Mismo número de enlaces markdown que el ES.
+  2. Mismas URLs (set igual).
+  3. Mismas cifras (regex sobre `\d[\d.,]*\s*(€|%|m²|anys?/años?)`).
+  4. Mismo número de bullets en "Señales" y propuestas.
+  5. Si falla → publica solo ES + alerta Telegram. Nunca pierde editorial.
+
+**Archivos:** `docs/_editions/YYYY-wWW.md` (ES), `docs/_editions/ca/YYYY-wWW.md` (CA), `docs/_editions/en/YYYY-wWW.md` (EN). Front-matter mantiene `date`, `week`, cifras y URLs; traduce `title` y `excerpt`. Permalinks: `/ediciones/YYYY-wWW/`, `/ca/edicions/YYYY-wWW/`, `/en/editions/YYYY-wWW/`.
+
+**Coste esperado en modo trilingüe:** ~3,15 €/mes (+1,15 € sobre actual). Cubierto por los topes ya establecidos.
+
+### SEO multilingüe (tarea separada, post-activación trilingüe)
+
+Checklist para la sesión dedicada cuando el trilingüe esté montado:
 
 - `hreflang` por página apuntando a sus hermanas ES/CA/EN (no solo home).
 - URL canónica por idioma.
@@ -245,18 +278,15 @@ Se aborda en sesión dedicada sobre el sitio ya trilingüe. Checklist:
 - Internal linking: cada edición enlaza a las 2 anteriores y 2 siguientes del mismo idioma.
 - Títulos y descripciones **optimizados** por idioma (no solo traducidos): EN enfatiza "Ibiza", "housing crisis", "seasonal workers"; CA enfatiza "Eivissa", "habitatge", "treballadors de temporada".
 
-Coste API: 0 €. Tiempo: ~2 h de sesión dedicada.
+Coste API: 0 €. Tiempo estimado: ~2 h.
 
-### 8. Orden de ejecución
+### Orden de ejecución cuando se reactive
 
-1. Privatizar costes (sacar de `docs/`).
-2. Crear bot de Telegram (Raúl) + configurar secrets (Claude).
-3. Chrome trilingüe ES/CA/EN + selector + diccionario i18n.
-4. Glosario eivissenc + prompt del traductor con Opción A.
-5. Pipeline Python: generate ES + translate CA/EN + validador + escritura 3 archivos.
-6. Sistema de alertas Telegram + fallback a issue.
-7. Subida del tope duro a 20 €, refactor `src/costs.py` a €.
-8. Sesión dedicada de SEO multilingüe.
+1. Chrome trilingüe ES/CA/EN + selector + diccionario i18n.
+2. Glosario eivissenc + prompt del traductor con Opción A.
+3. Pipeline Python: generate ES + translate CA/EN + validador + escritura 3 archivos.
+4. Integrar notificaciones de fallo de validación en Telegram.
+5. Sesión dedicada de SEO multilingüe.
 
 ---
 
@@ -399,14 +429,15 @@ Al cerrar cada punto, actualizar [`DIARIO.md`](DIARIO.md) con la entrada corresp
 | 3 | Tracker de propuestas | pendiente |
 | 3 | BOIB watcher | pendiente |
 | 3 | Serie multi-semana | pendiente |
-| Trilingüe | Privatizar costes (fuera de `docs/`) | pendiente |
-| Trilingüe | Chrome ES/CA/EN + selector + diccionario i18n | pendiente |
-| Trilingüe | Glosario eivissenc + prompt Sonnet (Opción A) | pendiente |
-| Trilingüe | Pipeline 3 idiomas + validador de datos | pendiente |
-| Trilingüe | Bot Telegram + alertas por capas | pendiente |
-| Trilingüe | Fallback Telegram → issue GitHub | pendiente |
-| Trilingüe | Refactor `costs.py` a €, tope blando 8 €, tope duro 20 € | pendiente |
-| Trilingüe | SEO multilingüe (hreflang, feeds por idioma, JSON-LD) | pendiente |
+| Operativo | Privatizar costes (fuera de `docs/`) | pendiente |
+| Operativo | Bot Telegram + alertas por capas | pendiente |
+| Operativo | Fallback Telegram → issue GitHub | pendiente |
+| Operativo | Refactor `costs.py` a €, tope blando 8 €, tope duro 20 € | pendiente |
+| Operativo | Resumen semanal vía Telegram en `report.py` | pendiente |
+| Trilingüe | Chrome ES/CA/EN + selector + diccionario i18n | **diferido** |
+| Trilingüe | Glosario eivissenc + prompt Sonnet (Opción A) | **diferido** |
+| Trilingüe | Pipeline 3 idiomas + validador de datos | **diferido** |
+| Trilingüe | SEO multilingüe (hreflang, feeds por idioma, JSON-LD) | **diferido** |
 | 4 | Consejo editorial | pendiente |
 | 4 | Datos ciudadanos | pendiente |
 | 4 | Cobertura Formentera | pendiente |
