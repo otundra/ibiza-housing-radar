@@ -12,6 +12,17 @@ Reglas:
 
 ---
 
+## 2026-04-20 — Rediseño de la web a panel editorial
+
+- **Home pasa de archivo de ediciones a panel de la última edición** — el problema era que el "oro" (señales con enlace a fuente, propuestas accionables, calendario A vigilar) vivía un click por debajo, dentro de cada edición. Ahora la home es un dashboard: headline serif gigante (excerpt de la edición) + lectura + CTAs en cover, con aside de 4 propuestas numeradas + 5 puntos A vigilar visible above-the-fold en desktop; debajo secciones completas de señales, cards de propuestas (actor/coste/primer paso, ancla directa a la edición para precedente y por-qué-ahora), A vigilar íntegra, archivo compacto con las 4 ediciones más recientes y línea "sobre el proyecto".
+- **Refactor de collection Jekyll: `docs/editions/` → `docs/_editions/`** — Jekyll exige el prefijo `_` para que los archivos sean documentos de colección accesibles vía `site.editions` en Liquid; con `editions/` a secas estaban servidos como páginas sueltas pero `site.editions` venía vacío y la nueva página `/ediciones/` mostraba "sin ediciones". Permalinks dentro del front-matter inalterados (`/ediciones/YYYY-wWW/`), URLs públicas idénticas. Ajustados `generate.py`, `build_index.py`, `weekly-report.yml`, `edition.html` (incluido fix para que la fecha se renderice `YYYY-MM-DD` en vez del timestamp completo que Jekyll promociona al ser ahora documento).
+- **`build_index.py` reescrito como parser de secciones** — antes extraía solo la sección "Lectura" de cada edición para el home cronológico. Ahora parsea la última edición completa: título, excerpt, lectura, señales, propuestas (con sus campos Qué/Actor/Precedente/Coste/Primer paso/Por qué ahora), A vigilar. Las propuestas se emiten como cards estructuradas con dl y enlace ancla a la edición. El slug del ancla se calcula replicando el auto_id de kramdown GFM (testeado contra kramdown real: conserva acentos y dígitos). Las ediciones anteriores salen en el archivo compacto. Coste API extra: 0 €, todo parsing.
+- **Nueva página `/ediciones/` como archivo completo** — lista densa de todas las ediciones usando `site.editions | sort: date | reverse`. Pensada para crecer sin que sature la home.
+- **CSS +667 líneas (`main.css`)** — nueva sección "Dashboard" con cover two-column en desktop (breakpoint 1024), grid de propuestas 1→2→4 columnas según ancho, señales en dos columnas a partir de 1024, archive densa y about minimalista. Mobile-first: base 1 columna, breakpoints en 640/720/1024/1280. Aprovecha las variables del tema existente (terracota + crema + serif + mono). Preview verificado en 375 y 1280 px, light y dark.
+- **`.claude/launch.json` para preview local con Jekyll** — configurado `jekyll serve --baseurl ''` para desarrollo; `.gitignore` ignora `docs/_site/`, cachés Jekyll y `.claude/settings.local.json`.
+
+---
+
 ## 2026-04-20 — Plan de mejora estratégico
 
 - **Diagnóstico y plan de ruta** — auditoría completa del proyecto tras la primera edición automática. Conclusión: parte técnica sólida, pero impacto cero porque no hay distribución, ni tracking, ni feedback, ni fuente primaria propia. Creado [`PLAN.md`](PLAN.md) con 4 fases (base, distribución, contenido diferencial, red) + deuda técnica puntual + prioridades honestas + qué NO hacer. Documento vivo; cada punto cerrado se registra aquí.
