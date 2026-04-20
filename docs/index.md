@@ -8,7 +8,7 @@ permalink: /
 
 <div class="edition-meta">2026-04-20 · 2026-W17</div>
 
-## [Cuarta semana de Abril de 2026 (20/4/2026 - 26/4/2026)]({{ site.baseurl }}/ediciones/2026-w17/)
+## [Semana 4 - Abril 2026]({{ site.baseurl }}/ediciones/2026-w17/)
 
 <p class="edition-excerpt">Ibiza desaloja 200 trabajadores de asentamientos mientras la habitación de temporada se dispara a 3.500 €/mes y solo salen 7 VPO.</p>
 
@@ -26,7 +26,7 @@ La ventana se cierra esta semana: el Ayuntamiento ejecuta desalojos antes de que
 
 <div class="edition-meta">2026-04-20 · 2026-W16</div>
 
-## [Tercera semana de Abril de 2026 (13/4/2026 - 19/4/2026)]({{ site.baseurl }}/ediciones/2026-w16/)
+## [Semana 3 - Abril 2026]({{ site.baseurl }}/ediciones/2026-w16/)
 
 <p class="edition-excerpt">Consenso político-sindical por primera vez, 2.800 pisos turísticos cerrados y un desahucio el 29-abr. Ventana de decisión real antes de temporada.</p>
 

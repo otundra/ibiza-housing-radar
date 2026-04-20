@@ -97,7 +97,6 @@ MONTHS_ES = [
     "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
 ]
-ORDINALS_ES = ["", "Primera", "Segunda", "Tercera", "Cuarta", "Quinta", "Sexta"]
 
 
 def iso_week_string(dt: datetime) -> str:
@@ -111,24 +110,18 @@ def edition_slug(dt: datetime) -> str:
 
 
 def human_week_title(dt: datetime) -> str:
-    """Devuelve un título tipo 'Tercera semana de abril de 2026 (13/4/2026 - 19/4/2026)'.
+    """Devuelve un título tipo 'Semana 3 - Abril 2026'.
 
     Regla: el mes y el año se toman del jueves de la semana ISO (día 'dueño' de la semana).
-    El ordinal es la posición del jueves dentro de su mes (1º, 2º, ... jueves del mes).
-    El rango mostrado es lunes-domingo.
+    El número es la posición del jueves dentro de su mes (1..5).
     """
     monday = (dt - timedelta(days=dt.weekday())).replace(
         hour=0, minute=0, second=0, microsecond=0, tzinfo=None
     )
-    sunday = monday + timedelta(days=6)
     thursday = monday + timedelta(days=3)
-    ordinal_idx = (thursday.day - 1) // 7 + 1
-    ordinal = ORDINALS_ES[ordinal_idx]
+    week_of_month = (thursday.day - 1) // 7 + 1
     month_name = MONTHS_ES[thursday.month]
-    year = thursday.year
-    start = f"{monday.day}/{monday.month}/{monday.year}"
-    end = f"{sunday.day}/{sunday.month}/{sunday.year}"
-    return f"{ordinal} semana de {month_name} de {year} ({start} - {end})"
+    return f"Semana {week_of_month} - {month_name} {thursday.year}"
 
 
 def generate(items: list[dict[str, Any]], now: datetime, edition: str) -> str:
