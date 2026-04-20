@@ -114,12 +114,25 @@ Para cada item con `has_explicit_proposal=true`, extrae una o varias propuestas 
 
 **Dominios (enums):**
 
-- `actor_type`: `partido`, `sindicato`, `patronal`, `tercer_sector`, `academico`, `judicial`, `institucional_publico`, `colectivo_ciudadano`, `otro`
+- `actor_type`: `partido`, `sindicato`, `patronal`, `tercer_sector`, `academico`, `judicial`, `institucional_publico`, `colectivo_ciudadano`, `coalicion_intersectorial`, `coalicion_institucional`, `otro`
 - `palanca`: `normativa`, `fiscal`, `oferta_vivienda`, `intermediacion`, `enforcement`, `laboral`, `judicial`, `denuncia_social`, `otro`
-- `horizon`: `inmediato`, `corto_plazo`, `temporada_2026`, `estructural`
-- `state`: `propuesta`, `en_debate`, `aprobada`, `en_ejecucion`, `implementada`, `descartada`, `pendiente_resolucion_judicial`
+- `horizon`: `inmediato`, `corto_plazo`, `temporada_2026`, `temporada_2027`, `estructural`
+- `state`: `propuesta`, `en_movimiento`, `en_debate`, `aprobada`, `en_ejecucion`, `implementada`, `descartada`, `pendiente_resolucion_judicial`
 - `viability_legal`: `alta`, `media`, `baja`, `no_evaluada`
 - `viability_economic`: `alta`, `media`, `baja`, `sin_cifra_publica_disponible`, `no_evaluada`
+
+**Coaliciones (regla):** cuando varios actores firman una propuesta juntos, el campo `actor` contiene los **nombres literales de todos los firmantes** separados por coma (ej.: *"CAEB, PIMEEF, CCOO y UGT"*). El `actor_type` es:
+
+- `coalicion_intersectorial`: coalición privado-sindical (patronal + sindicato típicamente).
+- `coalicion_institucional`: coalición entre administraciones o entre administración y sociedad civil organizada.
+
+No se elige un actor "primario". Fidelidad a la realidad del consenso firmado.
+
+**Propuestas vs señales en movimiento:** la tarea `detect` devuelve `proposal_type` con tres valores:
+
+- `formal` → propuesta concreta de actor con nombre (acción ejecutable). Aparece en `/propuestas/` con ficha completa.
+- `en_movimiento` → intención declarada sin medida concreta, estudio encargado pendiente de resultado, debate abierto, anuncio institucional sin plan definido. Aparece en `/radar/` con ficha reducida. Cuando se concreta, se promueve a `formal` con trazabilidad.
+- `ninguna` → cobertura de hecho, dato descriptivo, testimonio individual, sentencia judicial, acción ya ejecutada. No se extrae propuesta; si corresponde puede aparecer en "Omisiones" de la edición semanal.
 
 **ID de propuesta:** formato `YYYY-wWW-{slug_actor}-{nn}`. Ejemplo: `2026-w15-consell-ahr-01`. Permite deduplicación entre ediciones y enlaces estables desde el tracker.
 

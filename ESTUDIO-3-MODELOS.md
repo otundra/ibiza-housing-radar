@@ -70,23 +70,26 @@ El dataset v1 tiene sesgo de dominio (100% housing). Para medir falsos positivos
 
 ---
 
-## 5. Gold standard
+## 5. Gold standard — autogenerado, sin revisión humana
 
-Cada noticia tiene solución ideal manual en cada tarea:
+Desde la decisión editor 2026-04-20, el gold standard del benchmark **no depende de mi criterio manual**. Se genera automáticamente con `scripts/generate_gold.py`:
 
-- `task_1_classify`: `is_housing` + `actor` + `lever` con valores exactos.
-- `task_2_proposal_detect`: `has_explicit_proposal` + `proposal_actor_hint`.
-- `task_3_extract`: lista de propuestas estructuradas con todos los campos del schema.
+1. **Opus 4.7 con extended thinking** responde cada tarea sobre cada noticia.
+2. **Sonnet 4.6** actúa como validador crítico de cada respuesta de Opus.
+3. Items donde Opus y Sonnet coinciden → gold definitivo.
+4. Items donde discrepan → se apartan en `gold_discrepancies.json`, **no entran en el benchmark**.
 
-Ubicación: [`data/bench/gold_standard_v1.json`](data/bench/gold_standard_v1.json).
+El editor no revisa nada. Las discrepancias quedan documentadas por trazabilidad, pero la decisión recae en el consenso Opus↔Sonnet.
 
-**Notas al editor (en el propio archivo, sección `_review_notes_for_editor`)** — 3 puntos donde el gold standard puede revisarse antes de ejecutar:
+- Gold auto: [`data/bench/gold_auto_v1.json`](data/bench/gold_auto_v1.json) (se genera al ejecutar).
+- Discrepancias: [`data/bench/gold_discrepancies.json`](data/bench/gold_discrepancies.json).
+- Gold manual de referencia (histórico, no usado en benchmark): [`data/bench/gold_standard_v1.json`](data/bench/gold_standard_v1.json).
 
-1. Casos `n08/n09`: actor primario de propuesta conjunta (patronal vs sindicato vs institucional) es ambiguo.
-2. Caso `n17`: ¿el encargo de un estudio cuenta como propuesta? Criterio ampliado (incluye) vs estricto (excluye).
-3. Sesgo 100% housing del dataset.
+### Schema del gold (v1.1)
 
-El editor puede ajustar el gold o aceptar mi criterio tal cual.
+- `task_1_classify`: `is_housing` + `actor` + `lever`.
+- `task_2_proposal_detect`: `proposal_type` ∈ {`formal`, `en_movimiento`, `ninguna`} + `proposal_actor_hint`.
+- `task_3_extract`: lista de propuestas con todos los campos del schema, incluyendo soporte para coaliciones (`coalicion_intersectorial`, `coalicion_institucional`) y propuestas en movimiento (`state: "en_movimiento"`).
 
 ---
 
@@ -105,20 +108,29 @@ Los prompts son idénticos entre los 3 modelos para que la comparación sea just
 
 ## 7. Cómo ejecutar
 
-### Dry-run (sin coste, valida estructura)
+### Paso 1: generar gold automático (primero)
 
 ```bash
 cd ~/Documents/GitHub/ibiza-housing-radar
-python -m scripts.run_benchmark --dry-run
+export ANTHROPIC_API_KEY=sk-ant-...
+python -m scripts.generate_gold
 ```
 
-Output esperado: 20 items cargados, 20 entradas en gold, tres prompts mostrados.
+Opus con thinking + Sonnet validador producen `data/bench/gold_auto_v1.json` sin intervención humana. Coste ~3 €. Telegram avisa al terminar con válidos/discrepancias. Los items donde Opus y Sonnet discrepan van a `data/bench/gold_discrepancies.json` (no entran en el benchmark).
 
-### Ejecución real
+### Paso 2: correr el benchmark contra los 3 modelos
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
 python -m scripts.run_benchmark
+```
+
+El script lee el gold auto y evalúa Haiku, Sonnet y Opus sobre las 3 tareas.
+
+### Dry-run previo (sin coste, valida estructura)
+
+```bash
+python -m scripts.generate_gold --dry-run
+python -m scripts.run_benchmark --dry-run
 ```
 
 Opciones:

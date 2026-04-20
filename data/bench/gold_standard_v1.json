@@ -1,11 +1,19 @@
 {
   "_metadata": {
-    "version": 1,
+    "version": "1.1",
     "created": "2026-04-20",
-    "author": "Claude Opus 4.7 con razonamiento extendido, revisado con criterio del editor pendiente",
+    "updated": "2026-04-20",
+    "author": "Claude Opus 4.7 con razonamiento extendido. Referencia histórica — el gold de producción se genera automáticamente por generate_gold.py (Opus thinking + validador Sonnet).",
     "dataset": "dataset_v1.json",
+    "schema_changes_v1_1": [
+      "task_2 ahora devuelve proposal_type: formal|en_movimiento|ninguna (antes has_explicit_proposal bool)",
+      "actor_type amplía con coalicion_intersectorial y coalicion_institucional",
+      "state amplía con en_movimiento (propuestas que van a /radar/)",
+      "Caso n17: reclasificado de formal a en_movimiento",
+      "Casos n08/n09: actor_type cambia a coalicion_intersectorial/institucional con todos los firmantes nombrados"
+    ],
     "task_coverage": ["task_1_classify", "task_2_proposal_detect", "task_3_extract"],
-    "notes": "Casos ambiguos marcados explícitamente con 'ambiguous: true' y justificación. El editor puede revisar y ajustar antes de correr el benchmark."
+    "notes": "Casos ambiguos marcados explícitamente con 'ambiguous: true' y justificación."
   },
   "n01": {
     "task_1_classify": {
@@ -14,7 +22,7 @@
       "lever": "enforcement"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": true,
+      "proposal_type": "formal",
       "proposal_actor_hint": "Cáritas Ibiza"
     },
     "task_3_extract": [
@@ -42,7 +50,7 @@
       "lever": "denuncia_social"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": []
@@ -54,11 +62,11 @@
       "lever": "enforcement"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": [],
-    "_note": "Cobertura TV del hecho. No hay propuesta explícita en el propio reportaje; las propuestas asociadas viven en otras fuentes (n01, n04)."
+    "_note": "Cobertura TV del hecho. Propuestas asociadas viven en otras fuentes (n01, n04)."
   },
   "n04": {
     "task_1_classify": {
@@ -67,7 +75,7 @@
       "lever": "denuncia_social"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": true,
+      "proposal_type": "formal",
       "proposal_actor_hint": "Cáritas Ibiza"
     },
     "task_3_extract": [
@@ -87,7 +95,7 @@
         "precedents": []
       }
     ],
-    "_dedup_note": "Misma propuesta de Cáritas que aparece en n01. En el pipeline real se consolidarían con dos url_source."
+    "_dedup_note": "Misma propuesta de Cáritas que aparece en n01. En el pipeline se consolidarían con dos url_source."
   },
   "n05": {
     "task_1_classify": {
@@ -96,7 +104,7 @@
       "lever": "precio"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": []
@@ -108,11 +116,11 @@
       "lever": "denuncia_social"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": [],
-    "_note": "Caso de subarriendo fraudulento. Es una señal importante pero la noticia no contiene propuesta explícita de ningún actor con nombre. Candidato a aparecer como OMISIÓN en la edición."
+    "_note": "Caso de subarriendo fraudulento. Candidato a aparecer como OMISIÓN en la edición."
   },
   "n07": {
     "task_1_classify": {
@@ -121,11 +129,11 @@
       "lever": "enforcement"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": [],
-    "_note": "La acción del Consell está ya ejecutada (retirada de 2.800 anuncios). No es propuesta nueva sino resultado. El pipeline debería clasificarla como señal de enforcement efectivo, no como propuesta."
+    "_note": "Acción del Consell ya ejecutada. No propuesta nueva."
   },
   "n08": {
     "task_1_classify": {
@@ -134,13 +142,13 @@
       "lever": "oferta_vivienda"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": true,
-      "proposal_actor_hint": "CAEB, PIMEEF, CCOO, UGT (conjunto)"
+      "proposal_type": "formal",
+      "proposal_actor_hint": "CAEB, PIMEEF, CCOO y UGT (coalición)"
     },
     "task_3_extract": [
       {
         "actor": "CAEB, PIMEEF, CCOO y UGT",
-        "actor_type": "patronal",
+        "actor_type": "coalicion_intersectorial",
         "statement_summary": "Patronales y sindicatos mayoritarios de Ibiza se alinean públicamente a favor de crear residencias específicas para trabajadores de temporada y piden al Consell y ayuntamientos que identifiquen suelo dotacional disponible para operar antes de la temporada 2027.",
         "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/11/2606853/patronales-sindicatos-favor-residencias-ibiza-para-trabajadores-temporada.html",
         "palanca": "oferta_vivienda",
@@ -153,8 +161,7 @@
         "opponents_cited": [],
         "precedents": []
       }
-    ],
-    "_ambiguity_note": "Actor primario es ambiguo (4 entidades). Aceptable tanto 'patronal' como 'sindicato'; se prioriza patronal por aparecer primero en el titular. El LLM puede razonablemente devolver cualquiera de los dos."
+    ]
   },
   "n09": {
     "task_1_classify": {
@@ -163,14 +170,14 @@
       "lever": "oferta_vivienda"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": true,
-      "proposal_actor_hint": "Consell d'Eivissa, patronales, sindicatos"
+      "proposal_type": "formal",
+      "proposal_actor_hint": "Consell d'Eivissa, CAEB, PIMEEF, CCOO y UGT (coalición institucional)"
     },
     "task_3_extract": [
       {
-        "actor": "Consell d'Eivissa, patronales y sindicatos",
-        "actor_type": "institucional_publico",
-        "statement_summary": "Respaldo tripartito formalizado a la creación de residencias para temporeros. Sin identificación de suelo ni calendario de licitación; la cuestión queda en declaración de intenciones compartida.",
+        "actor": "Consell d'Eivissa, CAEB, PIMEEF, CCOO y UGT",
+        "actor_type": "coalicion_institucional",
+        "statement_summary": "Respaldo tripartito formalizado a la creación de residencias para temporeros. Sin identificación de suelo ni calendario de licitación; la cuestión queda en declaración de intenciones compartida entre Consell, patronales y sindicatos.",
         "url_source": "https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/",
         "palanca": "oferta_vivienda",
         "target_actor": "Consell d'Eivissa (ejecutor principal)",
@@ -183,7 +190,7 @@
         "precedents": []
       }
     ],
-    "_dedup_note": "Misma propuesta conjunta que n08 con el Consell añadido como cosignatario. En pipeline real se consolidarían."
+    "_dedup_note": "Misma propuesta conjunta que n08 con el Consell añadido. En pipeline real se consolidarían."
   },
   "n10": {
     "task_1_classify": {
@@ -192,11 +199,11 @@
       "lever": "oferta_vivienda"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": [],
-    "_note": "Convocatoria de VPO ya publicada = acción ejecutada, no propuesta nueva. El requisito de 10 años de residencia sí es debatible pero la noticia lo reporta sin que ningún actor con nombre proponga modificarlo."
+    "_note": "Convocatoria ya publicada = acción ejecutada."
   },
   "n11": {
     "task_1_classify": {
@@ -205,11 +212,11 @@
       "lever": "oferta_vivienda"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": [],
-    "_dedup_note": "Misma noticia que n10 cubierta por otro diario."
+    "_dedup_note": "Duplicado de n10."
   },
   "n12": {
     "task_1_classify": {
@@ -218,11 +225,10 @@
       "lever": "enforcement"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
-    "task_3_extract": [],
-    "_note": "Dato descriptivo sobre perfil de infractores. No contiene propuesta."
+    "task_3_extract": []
   },
   "n13": {
     "task_1_classify": {
@@ -231,11 +237,10 @@
       "lever": "enforcement"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
-    "task_3_extract": [],
-    "_note": "Balance de acción ejecutada, no propuesta."
+    "task_3_extract": []
   },
   "n14": {
     "task_1_classify": {
@@ -244,7 +249,7 @@
       "lever": "enforcement"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": [],
@@ -257,11 +262,11 @@
       "lever": "enforcement"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": [],
-    "_note": "Cobertura de la cifra de recaudación. No se cita propuesta sobre uso de esos fondos. Candidato a omisión: los 2 M€ recaudados y sin destino finalista son hecho documentado sin propuesta asociada."
+    "_note": "Candidato a omisión: 2 M€ recaudados sin destino finalista documentado."
   },
   "n16": {
     "task_1_classify": {
@@ -270,11 +275,11 @@
       "lever": "normativa"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": [],
-    "_note": "Sentencia del TSJIB. Doctrina judicial, no propuesta. Sí genera criterio vinculante sobre licencias turísticas."
+    "_note": "Sentencia = doctrina, no propuesta."
   },
   "n17": {
     "task_1_classify": {
@@ -283,29 +288,28 @@
       "lever": "otro"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": true,
+      "proposal_type": "en_movimiento",
       "proposal_actor_hint": "Consell d'Eivissa"
     },
     "task_3_extract": [
       {
         "actor": "Consell d'Eivissa",
         "actor_type": "institucional_publico",
-        "statement_summary": "Formaliza el encargo de un estudio técnico sobre viviendas vacías en Ibiza, con la intención declarada de diseñar políticas de movilización a partir de sus resultados.",
+        "statement_summary": "Formaliza el encargo de un estudio técnico sobre viviendas vacías en Ibiza, con intención declarada de diseñar políticas de movilización a partir de sus resultados. Sin medida concreta todavía definida.",
         "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/03/31/2600245/consell-eivissa-encarga-estudio-sobre-viviendas-vacias-isla.html",
         "palanca": "otro",
         "target_actor": "Consell d'Eivissa",
         "horizon": "corto_plazo",
-        "state": "en_ejecucion",
+        "state": "en_movimiento",
         "viability_legal": "alta",
-        "viability_legal_reason": "Estudio técnico es competencia propia del Consell.",
+        "viability_legal_reason": "Encargo técnico dentro de competencias del Consell.",
         "viability_economic": "no_evaluada",
         "supporters_cited": [],
         "opponents_cited": [],
         "precedents": []
       }
     ],
-    "ambiguous": true,
-    "_ambiguity_note": "Caso borderline. El encargo de un estudio NO es una propuesta concreta de política, pero SÍ es un acto de agencia del Consell con intención declarada de generar política. Aceptable tanto true como false con razonamiento. El pipeline probablemente lo clasificará como propuesta para que figure en el tracker; el editor puede ajustar."
+    "_note": "Reclasificado a en_movimiento. Aparece en /radar/, no en /propuestas/. Promovible a formal cuando se publique el estudio y el Consell anuncie medida concreta."
   },
   "n18": {
     "task_1_classify": {
@@ -314,7 +318,7 @@
       "lever": "precio"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": []
@@ -326,7 +330,7 @@
       "lever": "precio"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
     "task_3_extract": []
@@ -338,29 +342,28 @@
       "lever": "enforcement"
     },
     "task_2_proposal_detect": {
-      "has_explicit_proposal": false,
+      "proposal_type": "ninguna",
       "proposal_actor_hint": null
     },
-    "task_3_extract": [],
-    "_note": "Cobertura en inglés del patrón recurrente de desalojos. No propuesta nueva; sí posible fuente para contexto internacional."
+    "task_3_extract": []
   },
   "_aggregate_stats": {
     "total_items": 20,
     "housing_yes": 20,
     "housing_no": 0,
-    "has_proposal_yes": 5,
-    "has_proposal_no": 15,
-    "ambiguous_cases": 2,
-    "proposals_total": 5,
-    "by_palanca": {
+    "proposal_type_formal": 4,
+    "proposal_type_en_movimiento": 1,
+    "proposal_type_ninguna": 15,
+    "proposals_formal_total": 4,
+    "proposals_en_movimiento_total": 1,
+    "by_palanca_formal": {
       "denuncia_social": 2,
-      "oferta_vivienda": 2,
-      "otro": 1
+      "oferta_vivienda": 2
     },
-    "by_actor_type": {
+    "by_actor_type_formal": {
       "tercer_sector": 2,
-      "patronal": 1,
-      "institucional_publico": 2
+      "coalicion_intersectorial": 1,
+      "coalicion_institucional": 1
     },
     "dedup_groups": [
       ["n01", "n03", "n04"],
@@ -368,10 +371,5 @@
       ["n10", "n11"],
       ["n13", "n14"]
     ]
-  },
-  "_review_notes_for_editor": [
-    "Caso n08/n09: actor primario de la propuesta conjunta es ambiguo (patronal vs sindicato vs institucional público). Aceptar cualquiera es razonable.",
-    "Caso n17: ¿el encargo de estudio cuenta como propuesta? Mi criterio: sí, porque hay actor con nombre (Consell) y acción con intención declarada (movilizar vacío). Pero si el editor prefiere criterio más estricto, marcar como false.",
-    "Todas las noticias tienen is_housing=true: dataset v1 está sesgado hacia housing. Siguiente versión del dataset debería incluir 5-10 noticias NO de vivienda para medir también falsos positivos de clasificación."
-  ]
+  }
 }

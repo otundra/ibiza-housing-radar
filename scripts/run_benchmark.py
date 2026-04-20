@@ -63,53 +63,54 @@ Recibirás una lista JSON de noticias (título + resumen). Devuelves un JSON con
 
 Responde EXCLUSIVAMENTE con el JSON, sin texto previo ni posterior, empezando por `["""
 
-DETECT_SYSTEM = """Eres un analista que identifica propuestas explícitas en noticias de vivienda en Ibiza.
+DETECT_SYSTEM = """Eres un analista que identifica propuestas en noticias de vivienda en Ibiza.
 
-Para cada noticia te paso (título + resumen), determina si hay una propuesta concreta hecha por un actor con nombre. Una "propuesta explícita" requiere:
-- Actor identificable (institución, partido, sindicato, patronal, ONG, persona con cargo) citado con nombre.
-- Acción concreta propuesta (no descripción de hechos, no testimonio, no dato estadístico).
+Para cada noticia, clasifica en uno de TRES valores:
 
-NO son propuestas: (a) cobertura de una acción ya ejecutada, (b) testimonio personal sin pedir medida, (c) dato descriptivo, (d) sentencia judicial (es doctrina, no propuesta), (e) cobertura genérica sin actor que demande algo concreto.
+- "formal": actor con nombre propone medida CONCRETA y ejecutable. Ejemplo: "Cáritas reclama moratoria del desalojo hasta acreditar realojo". Aparece en /propuestas/.
 
-SÍ son propuestas: (a) actor con nombre "propone X", "reclama Y", "solicita Z", "pide K", (b) anuncio institucional de medida con intención declarada (aunque no esté aún concretada), (c) respaldo formal a una medida específica.
+- "en_movimiento": actor con nombre declara intención pero SIN medida concreta todavía. Ejemplo: "El Consell encarga estudio sobre vivienda vacía para diseñar políticas". Es intención registrada, pero la medida queda por concretar. Aparece en /radar/.
+
+- "ninguna": cobertura de hecho, testimonio personal, dato descriptivo, sentencia judicial, acción ya ejecutada. Ejemplo: "Se ofrecen habitaciones a 3.500 €/mes"; "TSJIB avala denegación de licencia"; "La Cifra: 2 M€ recaudados en multas".
 
 Devuelve JSON en el mismo orden de las noticias, cada elemento con:
-- "has_explicit_proposal" (bool)
-- "proposal_actor_hint" (string | null): nombre del actor que propone, si has_explicit_proposal=true.
+- "proposal_type" ("formal" | "en_movimiento" | "ninguna")
+- "proposal_actor_hint" (string | null): nombre del actor, si proposal_type ≠ ninguna.
 
 Responde EXCLUSIVAMENTE con el JSON empezando por `["""
 
-EXTRACT_SYSTEM = """Eres un analista que extrae propuestas explícitas con estructura completa.
+EXTRACT_SYSTEM = """Eres un analista que extrae propuestas con estructura completa.
 
-Para cada noticia te paso, identifica las propuestas hechas por actores con nombre y devuelve una ficha estructurada por cada una.
+Para cada noticia, identifica las propuestas de actores con nombre (formales o en_movimiento) y devuelve ficha estructurada.
 
 REGLAS DURAS:
-- Si una noticia no contiene propuesta explícita (en el sentido del prompt de detección), devuelve lista vacía para esa noticia.
-- url_source debe ser la URL exacta proporcionada en el input, no inventada.
-- statement_summary debe ser resumen fiel de 1-2 frases; nunca añadir interpretación que no esté en el texto.
-- Si un campo de viabilidad no puede evaluarse desde el propio input, "no_evaluada" con reason vacío.
-- Si un campo no tiene dato (supporters_cited, opponents_cited, precedents), lista vacía.
-- NUNCA inventes precedentes, cifras ni datos que no estén en el input.
+- Si la noticia NO contiene propuesta (formal ni en_movimiento), devuelve lista vacía.
+- url_source debe ser la URL EXACTA del input, no inventada.
+- statement_summary: resumen fiel 1-2 frases; nunca añadir interpretación no textual.
+- Si no se puede evaluar viabilidad desde el input, "no_evaluada" con reason vacío.
+- Si no hay dato, lista vacía (no inventes).
+- COALICIONES: si varios actores firman juntos, actor = nombres literales separados por coma ("CAEB, PIMEEF, CCOO y UGT"). actor_type = coalicion_intersectorial (privado+sindicato) o coalicion_institucional (con administración o sociedad civil).
+- EN MOVIMIENTO: si la propuesta es intención sin medida concreta (ej. estudio encargado, anuncio sin plan), state = "en_movimiento".
 
-Devuelve JSON: lista del mismo tamaño que las noticias. Cada elemento es un objeto con:
-- "news_id" (str): id de la noticia.
-- "proposals" (array): lista de propuestas extraídas. Cada propuesta:
+Devuelve JSON: lista del mismo tamaño que las noticias. Cada elemento:
+- "news_id" (str)
+- "proposals" (array de objetos):
   {
-    "actor": "<nombre del actor o coalición>",
-    "actor_type": "<partido|sindicato|patronal|tercer_sector|academico|judicial|institucional_publico|colectivo_ciudadano|otro>",
+    "actor": "<nombre(s) literal(es), coma si coalición>",
+    "actor_type": "partido|sindicato|patronal|tercer_sector|academico|judicial|institucional_publico|colectivo_ciudadano|coalicion_intersectorial|coalicion_institucional|otro",
     "statement_summary": "<resumen fiel 1-2 frases>",
     "url_source": "<URL literal del input>",
-    "palanca": "<normativa|fiscal|oferta_vivienda|intermediacion|enforcement|laboral|judicial|denuncia_social|otro>",
-    "target_actor": "<actor que tendría que ejecutar, o cadena vacía>",
-    "horizon": "<inmediato|corto_plazo|temporada_2026|temporada_2027|estructural>",
-    "state": "<propuesta|en_debate|aprobada|en_ejecucion|implementada|descartada>",
-    "viability_legal": "<alta|media|baja|no_evaluada>",
-    "viability_legal_reason": "<razón si distinta de no_evaluada, o cadena vacía>",
-    "viability_economic": "<alta|media|baja|sin_cifra_publica_disponible|no_evaluada>",
-    "viability_economic_reason": "<razón o cadena vacía>",
-    "supporters_cited": [<nombres>],
-    "opponents_cited": [<nombres>],
-    "precedents": [{"description":"<texto>", "url":"<URL si aparece en la noticia>"}]
+    "palanca": "normativa|fiscal|oferta_vivienda|intermediacion|enforcement|laboral|judicial|denuncia_social|otro",
+    "target_actor": "<actor que ejecutaría o cadena vacía>",
+    "horizon": "inmediato|corto_plazo|temporada_2026|temporada_2027|estructural",
+    "state": "propuesta|en_movimiento|en_debate|aprobada|en_ejecucion|implementada|descartada|pendiente_resolucion_judicial",
+    "viability_legal": "alta|media|baja|no_evaluada",
+    "viability_legal_reason": "",
+    "viability_economic": "alta|media|baja|sin_cifra_publica_disponible|no_evaluada",
+    "viability_economic_reason": "",
+    "supporters_cited": [],
+    "opponents_cited": [],
+    "precedents": []
   }
 
 Responde EXCLUSIVAMENTE con el JSON empezando por `["""
@@ -312,12 +313,18 @@ def evaluate_detect(output: dict | None, gold: dict) -> dict:
     if not isinstance(output, dict):
         return {"ok": False, "score": 0.0, "details": "output no es dict"}
     gold_d = gold["task_2_proposal_detect"]
-    match_bool = output.get("has_explicit_proposal") == gold_d["has_explicit_proposal"]
-    return {
-        "ok": match_bool,
-        "score": 1.0 if match_bool else 0.0,
-        "has_proposal_ok": match_bool,
-    }
+    gold_type = gold_d.get("proposal_type", "ninguna")
+    out_type = output.get("proposal_type", "ninguna")
+
+    # Match exacto da 1.0; match parcial (formal vs en_movimiento vs ninguna)
+    # con algún acierto parcial da 0.5 solo si el modelo distingue "algo vs nada".
+    if out_type == gold_type:
+        return {"ok": True, "score": 1.0, "match_exact": True}
+    # Si gold es "ninguna" y output no, es falso positivo pleno (score 0).
+    # Si gold es "formal" y output "en_movimiento", error parcial (score 0.5).
+    if {out_type, gold_type} == {"formal", "en_movimiento"}:
+        return {"ok": False, "score": 0.5, "match_exact": False, "note": "confusión formal↔en_movimiento"}
+    return {"ok": False, "score": 0.0, "match_exact": False}
 
 
 def evaluate_extract(output: dict | None, gold: dict) -> dict:

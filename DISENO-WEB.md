@@ -41,6 +41,7 @@
 │   ├── /explica/alquiler-turistico-ibiza/
 │   └── /explica/vivienda-temporera/
 ├── /glosario/
+├── /radar/ (intenciones y estudios en movimiento — aún no propuestas formales)
 ├── /sin-dato/ (propuestas con campos "no evaluada" + formulario para aportar)
 ├── /auditoria/ (auditorías trimestrales con Opus, públicas)
 │   └── /auditoria/2026-qN/
@@ -430,6 +431,58 @@ semana, sin generar propuestas propias.
 El contenido está bajo Creative Commons CC-BY 4.0. Puedes reproducir
 citando la fuente con enlace al artículo original.
 ```
+
+### `/radar/` (nuevo — señales en movimiento)
+
+**Propósito:** página de trazabilidad para todo lo que un actor con nombre ha anunciado o puesto en marcha **sin haber concretado medida todavía**. Intenciones, estudios encargados, debates abiertos, declaraciones de intención sin plan.
+
+Filosofía: el observatorio distingue tres niveles:
+
+1. **Propuesta formal** (va a `/propuestas/`): actor con nombre + medida concreta + primera acción ejecutable.
+2. **En movimiento** (va aquí, a `/radar/`): actor con nombre + intención declarada + **pendiente de concretar**.
+3. **Omisión** (va a la sección "Omisiones" de la edición semanal): hecho documentado sin actor que proponga nada.
+
+**Juego con la marca:** el proyecto se llama "Housing Radar". Esta página es literalmente el radar interno del observatorio: señales débiles que aún no son propuesta firme pero están en movimiento.
+
+**Guiño al lector:** nota en cabecera que el nombre "Housing Radar" será reevaluado cuando se elija dominio propio; mientras tanto, `/radar/` sigue siendo la página de referencia para señales tempranas independientemente del nombre final del proyecto.
+
+```
+# Radar — señales en movimiento
+
+Cosas que actores con nombre han anunciado pero aún no han concretado.
+Cuando se concretan, pasan a [Propuestas]. Mientras tanto, viven aquí
+con fecha de entrada, motivo por el que no son propuesta formal todavía,
+y qué esperaríamos que se concrete.
+
+## Activas
+
+[Tabla filtrable: actor · qué dijo · fecha · motivo "en movimiento" · 
+qué se espera · edición donde apareció]
+
+## Promovidas a propuesta formal
+
+[Histórico de las que ya se concretaron, con enlace a su ficha en /propuestas/ 
+y nota "antes en movimiento desde fecha X"]
+
+## Caducadas
+
+[Las que llevan >6 meses sin concretarse y no han generado movimiento nuevo.
+Se archivan con motivo "sin concreción tras N meses".]
+```
+
+Cada fila tiene ficha individual en `/radar/{id}/` con:
+
+- Declaración del actor (verbatim + URL).
+- Actor, tipo, fecha.
+- Motivo por el que es "en movimiento" y no "formal".
+- Qué se esperaría para promoverlo a formal (ej: *"cuando el Consell publique el estudio y anuncie medida concreta"*).
+- Histórico de seguimiento (si aparece en ediciones posteriores como recordatorio).
+
+Cuando se promueve:
+
+- `state` pasa de `en_movimiento` a `propuesta`.
+- Se crea ficha en `/propuestas/{id}/`.
+- `/radar/{id}/` se mantiene con redirect suave + nota "**promovida a propuesta formal el [fecha]**".
 
 ### `/sin-dato/` (nuevo — archivo de huecos de información)
 

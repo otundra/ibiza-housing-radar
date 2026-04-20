@@ -70,6 +70,9 @@ Detalle en [DISENO-WEB.md](DISENO-WEB.md).
 - [ ] **B28.** `/auditoria/` — índice de auditorías trimestrales públicas.
 - [ ] **B29.** `/costes/` — dashboard público simplificado con coste agregado, capa actual y link al CSV completo.
 - [ ] **B30.** `/estado/` — histórico operacional del pipeline estilo Solar Low-Tech (registro de ejecuciones, retrasos, versiones, contadores globales).
+- [ ] **B31.** `/radar/` — señales en movimiento (intenciones, estudios encargados, debates sin propuesta concreta). Juego con la marca del proyecto. Ciclo de vida formal: en_movimiento → propuesta → archivo o caducada. Detalle en [DISENO-WEB.md](DISENO-WEB.md#radar-nuevo--señales-en-movimiento).
+- [ ] **B32.** Generación automática del gold standard del benchmark (`scripts/generate_gold.py`): Opus con thinking + Sonnet validador. Sin revisión humana. Output: `data/bench/gold_auto_v1.json` + discrepancias aparte. Coste una vez: ~3 €. Re-ejecutable en cada re-benchmark mensual. Telegram alerta con resumen.
+- [ ] **B33.** Sistema de seguimiento: alertas Telegram puntuales + `private/bench-log.md` + `private/auditoria-log.md` + `private/self-review-log.md` + `data/bench/trends.csv` + `data/audit/trends.csv`. Tú no revisas nada activamente; el sistema escribe y avisa.
 
 **Mejoras técnicas web:**
 

@@ -108,6 +108,8 @@ Regla operativa: **el reparto de modelos se revisa cada trimestre** con datos re
 
 **Plazo:** antes del relanzamiento público de Fase 0 (~11 may 2026).
 
+**Apunte editor 2026-04-20:** cuando se elija dominio, **reevaluar también el nombre del proyecto** ("Ibiza Housing Radar"). Puede que quede corto, largo, o que no encaje con el dominio elegido. Mantener página `/radar/` funciona independientemente del nombre final del proyecto (el juego semántico con "radar" se conserva aunque el proyecto cambie de nombre).
+
 ---
 
 ## 3. Página `/recursos/` — qué incluir y cómo verificar
