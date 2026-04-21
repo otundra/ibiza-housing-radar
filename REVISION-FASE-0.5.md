@@ -23,6 +23,17 @@
 - **Coste cerrado:** ~3,50 € totales (backfill + auditor + pieza retroactiva Opus). Dentro del tope blando mensual con margen.
 - **Tiempo editor estimado:** ~4 h (antes 15 h).
 
+### 2026-04-21 · Ajustes al auditor IA y al presupuesto
+- **Verbatim match diferenciado por `statement_type`**: si la propuesta contiene cita textual entrecomillada (`quote`), el substring match en el HTML es obligatorio. Si es reporte paráfrasico del periodista (`reported`), se relaja a (a) nombre del actor en página + (b) términos clave de la propuesta presentes + (c) sin contradicción lógica con el texto. Motivo: exigir literal siempre rechazaba propuestas legítimas reportadas en estilo indirecto.
+- **Dos URLs que cubren la misma propuesta**: se guarda una `url_source` principal + lista `url_corroboration`. Jerarquía para elegir principal: (1) URL del propio actor, (2) diario local con cita entrecomillada, (3) empate → la más antigua. Las demás quedan visibles como *"también cubierto por:"*. Beneficio: si la principal cae, la red de corroboración es el respaldo natural.
+- **Tope duro mensual subido a 50 €** (antes 20). Blando sigue en 12 €. Margen para backfill + experimentación sin bloqueos. Actualizado en `src/costs.py` v3.
+
+### 2026-04-21 · Tres salvaguardas para competencia del editor
+Responde a la preocupación del editor sobre si su conocimiento del tema puede afectar seriamente al proyecto:
+- **Modo entrenamiento 4 semanas (nueva ED5)**: primeras 4 semanas tras arranque, TODAS las propuestas pasan por el editor con resumen corto + veredicto IA. Se calibran mutuamente. Luego se pasa al modo normal (solo flagged + muestreo).
+- **Sanity check externo pre-lanzamiento (nueva EX5)**: pagar 1-2 h a periodista local o académico UIB para auditar 30 propuestas del backfill antes de publicar. ~50-100 €. Escudo de validación independiente.
+- **Correcciones como feature, no como bug (refuerzo de OP1)**: las correcciones visibles con traza no son fracaso, son la regla 5 en acción. Un observatorio sin correcciones está mintiendo.
+
 ### 2026-04-21 · Orden de ejecución reordenado
 Antes de retomar ED1 (criterios de admisión), se ejecutan primero las tareas que producen la materia prima y la infraestructura para validar con datos reales:
 1. **PI2-A** (append-only inmediato).
@@ -61,6 +72,10 @@ La imparcialidad es pilar. Hoy se mide a trimestre vista en `/balance/`. Hace fa
 ### ED3 · Presencia editorial de "Omisiones" ⏳
 Hoy Omisiones vive como sección 6 de la edición. ¿Es suficiente? ¿Merece página propia `/omisiones/` como tracker? ¿Debería tener peso visual en la home? Es uno de los tres diferenciales editoriales.
 **Salida:** decisión sobre peso + posible nueva página + ajuste a `DISENO-WEB.md`.
+
+### ED5 · Modo entrenamiento — primeras 4 semanas de revisión total ⏳ [NUEVO 2026-04-21]
+Durante las primeras 4 semanas tras relanzamiento, el editor revisa TODAS las propuestas (no solo flagged). Cada una llega con resumen de 2 líneas + veredicto IA sugerido. El editor aprueba, corrige o rechaza. El sistema registra cada corrección para ajustar prompts y heurísticas. Tras esas 4 semanas, se pasa al modo normal (solo flagged + muestreo 10%). Permite al editor calibrar su ojo y al sistema aprender de las correcciones humanas sin presión de producción.
+**Salida:** flag `TRAINING_MODE=true` en pipeline + UI de revisión ligera (CLI o página privada) + log de correcciones con análisis automático.
 
 ### ED4 · Horizonte temporal = fecha de inicio del proyecto ⏳
 Regla dura: cuando una propuesta dice *"primera vez documentada"*, se refiere al **observatorio**, no a la historia. El proyecto no pretende cubrir lo anterior a su arranque. Debe quedar explícito en UI y copy.
@@ -245,6 +260,10 @@ Cómo se lanza. A quién se le dice primero. Embargo con periodista afín. Nota 
 Mirror automático a GitLab o Codeberg. Cero coste, seguro ante cualquier incidencia en GitHub.
 **Salida:** workflow GitHub Actions que empuja a mirror.
 
+### EX5 · Sanity check externo pre-lanzamiento ⏳ [NUEVO 2026-04-21]
+Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 30 propuestas del backfill antes de hacer público el sitio. Coste estimado 50-100 €. Sirve para (a) detectar sesgos que el editor y la IA no ven por proximidad al tema, (b) validar que el tono y la neutralidad funcionan para lector profesional local, (c) tener un escudo de validación independiente documentado en `/metodologia/`.
+**Salida:** selección de revisor + informe escrito + ajustes previos a lanzamiento + mención pública en metodología (con consentimiento del revisor).
+
 ---
 
 ## Leyenda de estados
@@ -262,6 +281,7 @@ Mirror automático a GitLab o Codeberg. Cero coste, seguro ante cualquier incide
 | ED2 | Imparcialidad alertable | ⏳ | |
 | ED3 | Presencia de Omisiones | ⏳ | |
 | ED4 | Horizonte desde inicio | ⏳ | |
+| ED5 | Modo entrenamiento 4 semanas | ⏳ | Nuevo, salvaguarda competencia editor |
 | FU1 | Fuentes vivas | ⏳ | |
 | FU2 | Queries Google News | ⏳ | |
 | FU3 | Hora Ibiza + Nou Diari | ⏳ | |
@@ -294,3 +314,4 @@ Mirror automático a GitLab o Codeberg. Cero coste, seguro ante cualquier incide
 | EX2 | SEO schema.org | ⏳ | |
 | EX3 | Estrategia lanzamiento | ⏳ | |
 | EX4 | Backup repo | ⏳ | |
+| EX5 | Sanity check externo pre-lanzamiento | ⏳ | Nuevo, 50-100 € |

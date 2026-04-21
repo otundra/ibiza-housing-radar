@@ -159,8 +159,14 @@ def main() -> int:
                 log.error("No pude eliminar la edición rota: %s", exc)
             raise RuntimeError("verify falló; edición eliminada para no publicar contenido roto.")
 
-        # Publicable: persistir al histórico y regenerar derivados
+        # Publicable: persistir al histórico, archivar snapshot crudo y regenerar derivados
         append_to_history()
+        try:
+            from src.archive import snapshot_to_archive
+            snapshot_to_archive()
+        except Exception as exc:  # noqa: BLE001
+            # El archivado nunca debe tumbar el pipeline; solo logueamos.
+            log.error("Archive falló (no bloqueante): %s", exc)
         run("balance")
         run("self_review")
         run("build_index")

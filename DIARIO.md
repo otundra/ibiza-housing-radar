@@ -12,6 +12,19 @@ Reglas:
 
 ---
 
+## 2026-04-21 (noche · Fase 0.5 continuación) — PI2-A archivado append-only + ajustes auditor + tope 50 €
+
+- **PI2-A cerrada:** nuevo módulo [`src/archive.py`](src/archive.py) con `snapshot_to_archive()` que copia `ingested/classified/extracted/rescue/verification_report.json` a `data/archive/YYYY-WNN/` + `snapshot_meta.json` (timestamp, slug, gasto del mes hasta ese momento). Integrado en [`src/report.py`](src/report.py) tras `append_to_history()` — no bloqueante si falla. Primera snapshot ejecutada: `data/archive/2026-W17/` con los 5 archivos de esta semana. A partir de ahora no se pierde materia prima nunca más.
+- **Tope duro mensual subido a 50 €** (antes 20 €) en [`src/costs.py`](src/costs.py) v3. Motivo: absorber backfill 12 semanas + auditor IA 5 capas + experimentación sin bloqueos. Blando se mantiene en 12 €.
+- **Verbatim match diferenciado por `statement_type`**: si la propuesta contiene cita entrecomillada (`quote`) exigimos substring match literal; si es paráfrasis del periodista (`reported`) se relaja a nombre del actor + términos clave + sin contradicción lógica. El criterio original habría rechazado propuestas legítimas en estilo indirecto — pillado por el editor.
+- **Elección entre dos fuentes sobre la misma propuesta**: jerarquía determinística (URL del actor > diario local con cita > más antigua). Se guarda una `url_source` principal + lista `url_corroboration`; las otras fuentes no se ocultan, se muestran como *"también cubierto por:"*.
+- **Tres salvaguardas nuevas ante preocupación del editor sobre su propia competencia para auditar**:
+  - **ED5 (nueva) · Modo entrenamiento 4 semanas:** tras relanzamiento, todas las propuestas pasan por el editor con resumen corto + veredicto IA. Se calibran mutuamente antes de activar auto-aprobación.
+  - **EX5 (nueva) · Sanity check externo pre-lanzamiento:** pagar 1-2 h a periodista local o académico UIB para auditar 30 propuestas del backfill (50-100 €). Escudo de validación independiente.
+  - **Refuerzo de OP1:** correcciones visibles son la regla 5 en acción, no fracaso. Observatorio sin correcciones = observatorio que miente.
+
+---
+
 ## 2026-04-21 (noche · revisión Fase 0.5) — Backfill 12 semanas + auditor IA + Camino A
 
 - **Abierta Fase 0.5 de revisión crítica** ([REVISION-FASE-0.5.md](REVISION-FASE-0.5.md)) tras detectar el editor que necesita entender el concepto con más profundidad antes de entrar en diseño visual. 34 tareas organizadas en 6 categorías (P0 método/fuentes, P1 estructural, P2 UX, P3 operacional, P4 identidad/legal/financiación, P5 misc). Trabajo a una tarea por vez.

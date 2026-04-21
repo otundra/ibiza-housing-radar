@@ -52,16 +52,19 @@ USD_TO_EUR: Final[float] = 0.92
 #   auditoría trimestral con Opus, re-benchmark mensual). Proyección ~9,86 €/mes.
 #   Objetivo: tras ~2-3 meses de datos reales, afinar reparto de modelos y
 #   bajar el tope blando de nuevo.
+# - 2026-04-21 v3 (Fase 0.5): duro sube a 50.00 para absorber el backfill de
+#   12 semanas (W06-W17) + auditor IA de 5 capas + experimentación libre sin
+#   miedo a bloqueos. Blando se mantiene en 12.00 (sigue avisando pronto).
 MONTHLY_SOFT_CAP_EUR: Final[float] = 12.00
-MONTHLY_HARD_CAP_EUR: Final[float] = 20.00
+MONTHLY_HARD_CAP_EUR: Final[float] = 50.00
 
 # Capas de alerta (en EUR). Se notifica solo al cruzar por primera vez en el mes.
-# Nuevas capas (2026-04-20 v2):
+# Capas (2026-04-21 v3):
 #   🟢 Verde      < 6 €
 #   🟡 Amarilla   6 - 9 €
 #   🟠 Naranja    9 - 12 €
-#   🔴 Roja blanda 12 - 20 €  (publica igual)
-#   🚨 Roja dura  > 20 €      (corte)
+#   🔴 Roja blanda 12 - 50 €  (publica igual)
+#   🚨 Roja dura  > 50 €      (corte)
 _ALERT_THRESHOLDS_EUR: Final[list[tuple[float, str, str]]] = [
     # (umbral, nivel, etiqueta)
     (6.00,  "info",     "🟡 Amarilla"),
