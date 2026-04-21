@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Radar Ibiza — explorador de logos</title>
+  <title>radar))vivienda_ibiza — preview tipográfico</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #f8f4ec;
@@ -16,206 +16,150 @@
       --ink-muted: #7a6e62;
       --rule: #e2d8c5;
       --accent: #c14a2d;
-      --card: #ffffff;
-      --serif: 'Instrument Serif', Georgia, serif;
+      --accent-soft: #e86c4a;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
       --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --serif: 'Instrument Serif', Georgia, serif;
     }
     *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: var(--sans);
       background: var(--bg);
       color: var(--ink);
-      line-height: 1.55;
-      padding: 48px 32px 120px;
-    }
-    header { max-width: 980px; margin: 0 auto 40px; }
-    header h1 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 2.4rem;
-      line-height: 1.1;
-      margin: 0 0 16px;
-      letter-spacing: -0.01em;
-    }
-    header p {
-      color: var(--ink-soft);
-      max-width: 62ch;
-      font-size: 17px;
-      margin: 0 0 8px;
-    }
-    header code {
-      font-family: var(--mono);
-      font-size: 13px;
-      background: var(--bg-soft);
-      padding: 2px 6px;
-      border-radius: 3px;
-      border: 1px solid var(--rule);
-    }
-    h2 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 1.6rem;
-      margin: 56px auto 24px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--rule);
-      max-width: 980px;
-    }
-    h3 {
       font-family: var(--sans);
-      font-weight: 600;
-      font-size: 1rem;
-      margin: 0 0 14px;
+      padding: 48px 32px 120px;
+      line-height: 1.55;
+    }
+    header { max-width: 940px; margin: 0 auto 40px; }
+    header h1 { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; margin: 0 0 14px; letter-spacing: -0.01em; }
+    header p { color: var(--ink-soft); max-width: 62ch; font-size: 17px; margin: 0; }
+    header code { font-family: var(--mono); font-size: 13px; background: var(--bg-soft); padding: 2px 6px; border-radius: 3px; border: 1px solid var(--rule); }
+    h2 {
+      font-family: var(--serif); font-weight: 400; font-size: 1.6rem;
+      margin: 52px auto 20px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule); max-width: 940px;
+    }
+    section {
+      max-width: 940px; margin: 0 auto 20px;
+      padding: 28px 32px;
+      background: #ffffff;
+      border: 1px solid var(--rule); border-radius: 10px;
+    }
+    section.dark { background: #1a1411; border-color: #362c25; color: #f2ece0; }
+    section h3 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 0 0 18px; }
+    section.dark h3 { color: #f2ece0; }
+
+    /* Wordmark base */
+    .wm {
+      font-family: var(--mono);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
       color: var(--ink);
     }
-    .section-wrap { max-width: 980px; margin: 0 auto; }
-    .grid {
-      display: grid;
-      grid-template-columns: 150px repeat(5, 1fr);
-      gap: 20px;
-      padding: 28px 32px;
-      background: var(--card);
-      border: 1px solid var(--rule);
-      border-radius: 10px;
-      margin-bottom: 20px;
-      align-items: center;
-    }
-    .grid.dark-grid {
-      background: #1a1411;
-      border-color: #362c25;
-      color: #f2ece0;
-    }
-    .grid .dir-label {
-      font-family: var(--mono);
-      font-size: 12.5px;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      color: var(--ink-muted);
-      padding-right: 10px;
-      border-right: 1px solid var(--rule);
-      line-height: 1.4;
-    }
-    .dark-grid .dir-label { color: #9b8f80; border-right-color: #362c25; }
-    .grid .size-head {
-      font-family: var(--mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--ink-muted);
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--rule);
-      text-align: center;
-      line-height: 1.3;
-    }
-    .dark-grid .size-head { color: #9b8f80; border-bottom-color: #362c25; }
-    .size-cell {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 72px;
-    }
-    .size-cell.large { min-height: 280px; }
+    section.dark .wm { color: #f2ece0; }
 
-    /* Composition block */
-    .composition {
-      max-width: 980px;
-      margin: 0 auto 20px;
-      padding: 28px 32px;
-      background: var(--card);
-      border: 1px solid var(--rule);
-      border-radius: 10px;
-    }
-    .composition.dark {
-      background: #1a1411;
-      border-color: #362c25;
-      color: #f2ece0;
-    }
-    .compo-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 0;
-      border-bottom: 1px dashed var(--rule);
-    }
-    .composition.dark .compo-row { border-bottom-color: #362c25; }
-    .compo-row:last-child { border-bottom: 0; }
-    .compo-row .lbl {
-      width: 120px;
+    .wm .waves { color: var(--accent); font-weight: 600; }
+    .wm .topic { color: var(--ink-muted); font-weight: 400; }
+    section.dark .wm .topic { color: #9b8f80; }
+
+    /* Variants */
+    .wm.v-mono-flat { color: inherit; }
+    .wm.v-mono-flat .waves,
+    .wm.v-mono-flat .topic { color: inherit; font-weight: inherit; }
+
+    .wm.v-split .waves { color: var(--accent); font-weight: 600; }
+    .wm.v-split .topic { color: inherit; font-weight: 400; }
+
+    .wm.v-tri .radar { font-weight: 600; }
+    .wm.v-tri .waves { color: var(--accent); font-weight: 700; }
+    .wm.v-tri .topic { color: var(--ink-muted); font-weight: 400; }
+    section.dark .wm.v-tri .topic { color: #9b8f80; }
+
+    .wm.v-under { }
+    .wm.v-under .radar { border-bottom: 1.5px solid currentColor; padding-bottom: 1px; }
+
+    /* Rows */
+    .row { display: flex; align-items: baseline; gap: 20px; padding: 14px 0; border-bottom: 1px dashed var(--rule); }
+    .row:last-child { border-bottom: 0; }
+    section.dark .row { border-bottom-color: #362c25; }
+    .lbl {
       flex: 0 0 120px;
-      font-family: var(--mono);
-      font-size: 11.5px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      font-family: var(--mono); font-size: 11px;
       color: var(--ink-muted);
+      text-transform: uppercase; letter-spacing: 0.06em;
     }
-    .composition.dark .compo-row .lbl { color: #9b8f80; }
-    .wordmark {
-      font-family: var(--serif);
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      color: inherit;
-    }
-    .wordmark.small { font-size: 18px; }
-    .wordmark.medium { font-size: 32px; }
-    .wordmark.large { font-size: 64px; line-height: 1; }
+    section.dark .lbl { color: #9b8f80; }
 
-    /* Tab simulation */
-    .tab-sim {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--bg-soft);
-      border: 1px solid var(--rule);
-      padding: 8px 14px;
-      border-radius: 8px 8px 0 0;
-      font-size: 13px;
-      color: var(--ink-soft);
-      max-width: 300px;
-      margin-right: 16px;
-      margin-bottom: 12px;
-    }
+    /* Sizes scale */
+    .s14 { font-size: 14px; }
+    .s18 { font-size: 18px; }
+    .s24 { font-size: 24px; }
+    .s32 { font-size: 32px; }
+    .s48 { font-size: 48px; line-height: 1; }
+    .s72 { font-size: 72px; line-height: 1; }
 
     /* OG simulation */
     .og-sim {
-      width: 600px;
-      max-width: 100%;
+      width: 600px; max-width: 100%;
       height: 315px;
       background: var(--bg);
       border: 1px solid var(--rule);
       padding: 36px 44px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      display: flex; flex-direction: column; justify-content: space-between;
       margin: 0 auto 20px;
     }
-    .og-head { display: flex; align-items: center; gap: 12px; }
-    .og-head .wm { font-family: var(--serif); font-size: 22px; letter-spacing: -0.01em; }
-    .og-head .tag { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-left: auto; }
+    .og-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .og-head .wm { font-size: 22px; }
+    .og-head .tag { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); letter-spacing: 0.08em; text-transform: uppercase; }
     .og-title {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 36px;
-      line-height: 1.08;
-      letter-spacing: -0.015em;
-      max-width: 20ch;
+      font-family: var(--serif); font-weight: 400;
+      font-size: 38px; line-height: 1.08;
+      letter-spacing: -0.015em; max-width: 20ch;
     }
     .og-foot {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--ink-muted);
-      letter-spacing: 0.04em;
+      font-family: var(--mono); font-size: 11px;
+      color: var(--ink-muted); letter-spacing: 0.04em;
     }
 
-    .legend {
-      max-width: 980px;
-      margin: 0 auto 32px;
-      padding: 20px 28px;
+    /* Tab simulation */
+    .tab-sim {
+      display: inline-flex; align-items: center; gap: 10px;
       background: var(--bg-soft);
       border: 1px solid var(--rule);
+      padding: 8px 14px;
+      border-radius: 8px 8px 0 0;
+      font-size: 13px; color: var(--ink-soft);
+      max-width: 360px; margin-right: 16px; margin-bottom: 10px;
+    }
+    .tab-sim .wm { font-size: 11px; }
+
+    /* Header simulation */
+    .header-sim {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 22px;
+      background: rgba(248, 244, 236, .88);
+      border: 1px solid var(--rule);
       border-radius: 8px;
-      font-size: 14px;
-      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+    .header-sim.dark {
+      background: rgba(26, 20, 17, 0.85);
+      border-color: #362c25;
+      color: #f2ece0;
+    }
+    .header-sim nav {
+      display: flex; gap: 18px;
+      font-size: 14px; color: var(--ink-soft);
+    }
+    .header-sim.dark nav { color: #d1c6b5; }
+
+    .legend {
+      max-width: 940px; margin: 0 auto 36px;
+      padding: 20px 28px;
+      background: var(--bg-soft);
+      border: 1px solid var(--rule); border-radius: 8px;
+      font-size: 14px; color: var(--ink-soft);
     }
     .legend strong { color: var(--ink); }
     .legend ul { margin: 8px 0 0; padding-left: 20px; }
@@ -224,197 +168,117 @@
 </head>
 <body>
 
-<!-- Sprite SVG con los 3 logos como symbols reutilizables -->
-<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
-  <defs>
-    <symbol id="logo-dir1" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10" fill="none" stroke="#c14a2d" stroke-width="1" opacity="0.22"/>
-      <circle cx="12" cy="12" r="6" fill="none" stroke="#c14a2d" stroke-width="1" opacity="0.45"/>
-      <circle cx="12" cy="12" r="2" fill="#c14a2d"/>
-    </symbol>
-    <symbol id="logo-dir2" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10" fill="none" stroke="#c14a2d" stroke-width="1" opacity="0.22"/>
-      <circle cx="12" cy="12" r="6" fill="none" stroke="#c14a2d" stroke-width="1" opacity="0.45"/>
-      <text x="12" y="16.8" font-family="'Instrument Serif',Georgia,serif" font-size="14" font-style="italic" text-anchor="middle" fill="#c14a2d" font-weight="400">I</text>
-    </symbol>
-    <symbol id="logo-dir3" viewBox="0 0 24 24">
-      <text x="4.5" y="17.2" font-family="'Instrument Serif',Georgia,serif" font-size="15" font-style="italic" fill="#c14a2d" font-weight="400">I</text>
-      <path d="M 12 6 A 7 7 0 0 1 12 18" fill="none" stroke="#c14a2d" stroke-width="1" opacity="0.55" stroke-linecap="round"/>
-      <path d="M 13 3 A 11 11 0 0 1 13 21" fill="none" stroke="#c14a2d" stroke-width="1" opacity="0.28" stroke-linecap="round"/>
-    </symbol>
-  </defs>
-</svg>
-
 <header>
-  <h1>Radar Ibiza — explorador de logos</h1>
-  <p>Tres direcciones de monograma, mismos colores (<code>#c14a2d</code> terracota). Míralos a los tamaños reales de uso antes de decidir. El wordmark tipográfico va en <code>Instrument Serif</code>.</p>
+  <h1>radar))vivienda_ibiza — preview tipográfico</h1>
+  <p>Wordmark sin monograma gráfico. Todo tipografía monospace (<code>JetBrains Mono</code>). Las dos <code>))</code> funcionan como señal de radar visual. Los underscores (<code>_</code>) separan topic + location como si fuera un módulo técnico, preparando el ecosistema futuro (<code>radar))turismo_ibiza</code>, <code>radar))medioambiente_ibiza</code>, etc.).</p>
 </header>
 
 <div class="legend">
-  <strong>Qué estás viendo:</strong>
+  <strong>Qué ves abajo:</strong>
   <ul>
-    <li><strong>Dirección 1</strong> — punto limpio + arcos concéntricos. Metáfora radar pura.</li>
-    <li><strong>Dirección 2</strong> — "I" italic serif centrada + arcos concéntricos. La I dobla como inicial de Ibiza y centro del radar.</li>
-    <li><strong>Dirección 3</strong> — "I" italic serif a la izquierda + arcos asimétricos a la derecha.</li>
+    <li><strong>V1 · Mono plano</strong> — todo un solo color, peso medio. La opción más sobria.</li>
+    <li><strong>V2 · Split</strong> — <code>))</code> en terracota, resto en tinta. Destaca el gesto radar.</li>
+    <li><strong>V3 · Tri</strong> — <code>radar</code> semibold, <code>))</code> terracota bold, <code>vivienda_ibiza</code> regular muted. Jerarquiza marca, gesto, tema.</li>
+    <li><strong>V4 · Underline</strong> — <code>radar</code> subrayado (seam), resto regular. Coherente con la dirección "mono + seams".</li>
   </ul>
 </div>
 
-<section class="section-wrap">
-  <h2>Tamaños — modo claro</h2>
-  <div class="grid">
-    <div></div>
-    <div class="size-head">16 px<br><span style="font-size:9px;opacity:.7">favicon</span></div>
-    <div class="size-head">22 px<br><span style="font-size:9px;opacity:.7">cabecera</span></div>
-    <div class="size-head">48 px<br><span style="font-size:9px;opacity:.7">og pequeño</span></div>
-    <div class="size-head">120 px<br><span style="font-size:9px;opacity:.7">og principal</span></div>
-    <div class="size-head">256 px<br><span style="font-size:9px;opacity:.7">kit prensa</span></div>
+<section>
+  <h3>Tamaños en modo claro — V1 Mono plano</h3>
+  <div class="row"><span class="lbl">14 px · meta</span><span class="wm v-mono-flat s14"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">18 px · cabecera</span><span class="wm v-mono-flat s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">24 px · hero</span><span class="wm v-mono-flat s24"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">32 px · og medio</span><span class="wm v-mono-flat s32"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px · og grande</span><span class="wm v-mono-flat s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">72 px · kit prensa</span><span class="wm v-mono-flat s72"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
 
-    <div class="dir-label">Dir 1<br>punto limpio</div>
-    <div class="size-cell"><svg width="16" height="16"><use href="#logo-dir1"/></svg></div>
-    <div class="size-cell"><svg width="22" height="22"><use href="#logo-dir1"/></svg></div>
-    <div class="size-cell"><svg width="48" height="48"><use href="#logo-dir1"/></svg></div>
-    <div class="size-cell large"><svg width="120" height="120"><use href="#logo-dir1"/></svg></div>
-    <div class="size-cell large"><svg width="256" height="256"><use href="#logo-dir1"/></svg></div>
+<section>
+  <h3>V2 Split — <code>))</code> en terracota</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-split s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">24 px</span><span class="wm v-split s24"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-split s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">72 px</span><span class="wm v-split s72"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
 
-    <div class="dir-label">Dir 2<br>I italic centro</div>
-    <div class="size-cell"><svg width="16" height="16"><use href="#logo-dir2"/></svg></div>
-    <div class="size-cell"><svg width="22" height="22"><use href="#logo-dir2"/></svg></div>
-    <div class="size-cell"><svg width="48" height="48"><use href="#logo-dir2"/></svg></div>
-    <div class="size-cell large"><svg width="120" height="120"><use href="#logo-dir2"/></svg></div>
-    <div class="size-cell large"><svg width="256" height="256"><use href="#logo-dir2"/></svg></div>
+<section>
+  <h3>V3 Tri — jerarquía con peso y color</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-tri s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">24 px</span><span class="wm v-tri s24"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-tri s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">72 px</span><span class="wm v-tri s72"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
 
-    <div class="dir-label">Dir 3<br>I + arcos lado</div>
-    <div class="size-cell"><svg width="16" height="16"><use href="#logo-dir3"/></svg></div>
-    <div class="size-cell"><svg width="22" height="22"><use href="#logo-dir3"/></svg></div>
-    <div class="size-cell"><svg width="48" height="48"><use href="#logo-dir3"/></svg></div>
-    <div class="size-cell large"><svg width="120" height="120"><use href="#logo-dir3"/></svg></div>
-    <div class="size-cell large"><svg width="256" height="256"><use href="#logo-dir3"/></svg></div>
+<section>
+  <h3>V4 Underline — <code>radar</code> con seam</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-under s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">24 px</span><span class="wm v-under s24"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-under s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<h2>Modo oscuro</h2>
+
+<section class="dark">
+  <h3>V1 Mono plano — oscuro</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-mono-flat s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-mono-flat s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<section class="dark">
+  <h3>V2 Split — oscuro</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-split s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-split s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<section class="dark">
+  <h3>V3 Tri — oscuro</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-tri s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-tri s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<h2>En contexto · cabecera de sitio</h2>
+
+<section>
+  <h3>Modo claro (V3 Tri)</h3>
+  <div class="header-sim">
+    <span class="wm v-tri s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span>
+    <nav>Ediciones · Propuestas · Actores · Recursos · Más ▾</nav>
+  </div>
+  <div class="header-sim dark">
+    <span class="wm v-tri s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span>
+    <nav>Ediciones · Propuestas · Actores · Recursos · Más ▾</nav>
   </div>
 </section>
 
-<section class="section-wrap">
-  <h2>Tamaños — modo oscuro</h2>
-  <div class="grid dark-grid">
-    <div></div>
-    <div class="size-head">16 px</div>
-    <div class="size-head">22 px</div>
-    <div class="size-head">48 px</div>
-    <div class="size-head">120 px</div>
-    <div class="size-head">256 px</div>
+<h2>En contexto · pestaña del navegador (sin logo gráfico)</h2>
 
-    <div class="dir-label">Dir 1</div>
-    <div class="size-cell"><svg width="16" height="16"><use href="#logo-dir1"/></svg></div>
-    <div class="size-cell"><svg width="22" height="22"><use href="#logo-dir1"/></svg></div>
-    <div class="size-cell"><svg width="48" height="48"><use href="#logo-dir1"/></svg></div>
-    <div class="size-cell large"><svg width="120" height="120"><use href="#logo-dir1"/></svg></div>
-    <div class="size-cell large"><svg width="256" height="256"><use href="#logo-dir1"/></svg></div>
-
-    <div class="dir-label">Dir 2</div>
-    <div class="size-cell"><svg width="16" height="16"><use href="#logo-dir2"/></svg></div>
-    <div class="size-cell"><svg width="22" height="22"><use href="#logo-dir2"/></svg></div>
-    <div class="size-cell"><svg width="48" height="48"><use href="#logo-dir2"/></svg></div>
-    <div class="size-cell large"><svg width="120" height="120"><use href="#logo-dir2"/></svg></div>
-    <div class="size-cell large"><svg width="256" height="256"><use href="#logo-dir2"/></svg></div>
-
-    <div class="dir-label">Dir 3</div>
-    <div class="size-cell"><svg width="16" height="16"><use href="#logo-dir3"/></svg></div>
-    <div class="size-cell"><svg width="22" height="22"><use href="#logo-dir3"/></svg></div>
-    <div class="size-cell"><svg width="48" height="48"><use href="#logo-dir3"/></svg></div>
-    <div class="size-cell large"><svg width="120" height="120"><use href="#logo-dir3"/></svg></div>
-    <div class="size-cell large"><svg width="256" height="256"><use href="#logo-dir3"/></svg></div>
-  </div>
+<section>
+  <div class="tab-sim"><span class="wm v-split">radar<span class="waves">))</span>vivienda_ibiza</span> — Observatorio</div>
+  <div class="tab-sim"><span class="wm v-tri">radar<span class="waves">))</span><span class="topic">vivienda_ibiza</span></span> — Observatorio</div>
+  <p style="font-size: 13px; color: var(--ink-muted); margin: 14px 0 0;">Sin logo gráfico, el favicon podría ser simplemente las dos <code>))</code> en terracota como glifo puro, o una combinación simple de 2-3 caracteres. Pendiente de decidir en Paso 1 del prototipo.</p>
 </section>
 
-<section class="section-wrap">
-  <h2>Composición con wordmark — modo claro</h2>
+<h2>En contexto · OG image (600×315 escalada)</h2>
 
-  <div class="composition">
-    <h3>Dirección 1 — punto limpio</h3>
-    <div class="compo-row"><span class="lbl">cabecera 22px</span><svg width="22" height="22"><use href="#logo-dir1"/></svg><span class="wordmark small">Radar Ibiza</span></div>
-    <div class="compo-row"><span class="lbl">og medio 32px</span><svg width="32" height="32"><use href="#logo-dir1"/></svg><span class="wordmark medium">Radar Ibiza</span></div>
-    <div class="compo-row"><span class="lbl">og grande 64px</span><svg width="64" height="64"><use href="#logo-dir1"/></svg><span class="wordmark large">Radar Ibiza</span></div>
-  </div>
-
-  <div class="composition">
-    <h3>Dirección 2 — I italic centro</h3>
-    <div class="compo-row"><span class="lbl">cabecera 22px</span><svg width="22" height="22"><use href="#logo-dir2"/></svg><span class="wordmark small">Radar Ibiza</span></div>
-    <div class="compo-row"><span class="lbl">og medio 32px</span><svg width="32" height="32"><use href="#logo-dir2"/></svg><span class="wordmark medium">Radar Ibiza</span></div>
-    <div class="compo-row"><span class="lbl">og grande 64px</span><svg width="64" height="64"><use href="#logo-dir2"/></svg><span class="wordmark large">Radar Ibiza</span></div>
-  </div>
-
-  <div class="composition">
-    <h3>Dirección 3 — I + arcos lado</h3>
-    <div class="compo-row"><span class="lbl">cabecera 22px</span><svg width="22" height="22"><use href="#logo-dir3"/></svg><span class="wordmark small">Radar Ibiza</span></div>
-    <div class="compo-row"><span class="lbl">og medio 32px</span><svg width="32" height="32"><use href="#logo-dir3"/></svg><span class="wordmark medium">Radar Ibiza</span></div>
-    <div class="compo-row"><span class="lbl">og grande 64px</span><svg width="64" height="64"><use href="#logo-dir3"/></svg><span class="wordmark large">Radar Ibiza</span></div>
-  </div>
-</section>
-
-<section class="section-wrap">
-  <h2>Composición con wordmark — modo oscuro</h2>
-
-  <div class="composition dark">
-    <h3 style="color:#f2ece0">Dirección 1</h3>
-    <div class="compo-row"><span class="lbl">cabecera 22px</span><svg width="22" height="22"><use href="#logo-dir1"/></svg><span class="wordmark small">Radar Ibiza</span></div>
-    <div class="compo-row"><span class="lbl">og grande 64px</span><svg width="64" height="64"><use href="#logo-dir1"/></svg><span class="wordmark large">Radar Ibiza</span></div>
-  </div>
-
-  <div class="composition dark">
-    <h3 style="color:#f2ece0">Dirección 2</h3>
-    <div class="compo-row"><span class="lbl">cabecera 22px</span><svg width="22" height="22"><use href="#logo-dir2"/></svg><span class="wordmark small">Radar Ibiza</span></div>
-    <div class="compo-row"><span class="lbl">og grande 64px</span><svg width="64" height="64"><use href="#logo-dir2"/></svg><span class="wordmark large">Radar Ibiza</span></div>
-  </div>
-
-  <div class="composition dark">
-    <h3 style="color:#f2ece0">Dirección 3</h3>
-    <div class="compo-row"><span class="lbl">cabecera 22px</span><svg width="22" height="22"><use href="#logo-dir3"/></svg><span class="wordmark small">Radar Ibiza</span></div>
-    <div class="compo-row"><span class="lbl">og grande 64px</span><svg width="64" height="64"><use href="#logo-dir3"/></svg><span class="wordmark large">Radar Ibiza</span></div>
-  </div>
-</section>
-
-<section class="section-wrap">
-  <h2>Simulación pestaña navegador (favicon 16px)</h2>
-  <div style="padding:24px 28px;background:var(--card);border:1px solid var(--rule);border-radius:10px;">
-    <div class="tab-sim"><svg width="16" height="16"><use href="#logo-dir1"/></svg>Radar Ibiza — Observatorio</div>
-    <div class="tab-sim"><svg width="16" height="16"><use href="#logo-dir2"/></svg>Radar Ibiza — Observatorio</div>
-    <div class="tab-sim"><svg width="16" height="16"><use href="#logo-dir3"/></svg>Radar Ibiza — Observatorio</div>
-  </div>
-</section>
-
-<section class="section-wrap">
-  <h2>Simulación OG image (1200×630 escalada a 600×315)</h2>
-
-  <p style="text-align:center;color:var(--ink-muted);font-size:13px;margin:0 0 12px;">Dirección 1</p>
+<section style="background: transparent; border: 0; padding: 0;">
+  <p style="text-align:center;color:var(--ink-muted);font-size:13px;margin:0 0 12px;">V2 Split</p>
   <div class="og-sim">
     <div class="og-head">
-      <svg width="36" height="36"><use href="#logo-dir1"/></svg>
-      <span class="wm">Radar Ibiza</span>
-      <span class="tag">W17 · 2026-04-20</span>
+      <span class="wm v-split"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span>
+      <span class="tag">20-26 abril 2026</span>
     </div>
     <div class="og-title">La crisis de vivienda en Ibiza documentada cada lunes</div>
-    <div class="og-foot">23 propuestas · 18 actores · 6 palancas · observatorio documental</div>
+    <div class="og-foot">23 propuestas · 18 actores seguidos · 6 palancas · observatorio documental</div>
   </div>
 
-  <p style="text-align:center;color:var(--ink-muted);font-size:13px;margin:0 0 12px;">Dirección 2</p>
+  <p style="text-align:center;color:var(--ink-muted);font-size:13px;margin:0 0 12px;">V3 Tri</p>
   <div class="og-sim">
     <div class="og-head">
-      <svg width="36" height="36"><use href="#logo-dir2"/></svg>
-      <span class="wm">Radar Ibiza</span>
-      <span class="tag">W17 · 2026-04-20</span>
+      <span class="wm v-tri"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span>
+      <span class="tag">20-26 abril 2026</span>
     </div>
     <div class="og-title">La crisis de vivienda en Ibiza documentada cada lunes</div>
-    <div class="og-foot">23 propuestas · 18 actores · 6 palancas · observatorio documental</div>
-  </div>
-
-  <p style="text-align:center;color:var(--ink-muted);font-size:13px;margin:0 0 12px;">Dirección 3</p>
-  <div class="og-sim">
-    <div class="og-head">
-      <svg width="36" height="36"><use href="#logo-dir3"/></svg>
-      <span class="wm">Radar Ibiza</span>
-      <span class="tag">W17 · 2026-04-20</span>
-    </div>
-    <div class="og-title">La crisis de vivienda en Ibiza documentada cada lunes</div>
-    <div class="og-foot">23 propuestas · 18 actores · 6 palancas · observatorio documental</div>
+    <div class="og-foot">23 propuestas · 18 actores seguidos · 6 palancas · observatorio documental</div>
   </div>
 </section>
 

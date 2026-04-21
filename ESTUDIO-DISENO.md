@@ -1,15 +1,17 @@
-# Estudio de diseño — Radar Ibiza
+# Estudio de diseño — Radar Vivienda Ibiza (provisional)
 
 **Fecha:** 2026-04-20 · **Cerrado con OK del editor:** 2026-04-21
 **Autor:** Claude Opus 4.7 + Raúl Serrano
 **Origen:** [PIVOTE.md](PIVOTE.md), [DISENO-WEB.md](DISENO-WEB.md), [ROADMAP.md](ROADMAP.md).
-**Alcance:** estudio previo al Bloque B del Roadmap. Consolida identidad de marca, sistema visual, componentes clave, benchmark comparado con 13 referentes, plan de prototipo y decisiones del editor. Al cerrarse este documento, el Bloque B puede ejecutarse sin decisiones de diseño pendientes (salvo D2 logo, diferido hasta revisión del prototipo SVG).
+**Alcance:** estudio previo al Bloque B del Roadmap. Consolida identidad de marca, sistema visual, componentes clave, benchmark comparado con 13 referentes, plan de prototipo y decisiones del editor. Al cerrarse este documento, el Bloque B puede ejecutarse sin decisiones de diseño pendientes. D2 resuelta con wordmark tipográfico; variante tipográfica concreta (V1-V4) pendiente de elección.
 
 > Este estudio **no reemplaza** a [DISENO-WEB.md](DISENO-WEB.md) (arquitectura de información, mapa del sitio, contenido por página). Lo complementa añadiendo identidad, tokens de sistema, spec de componentes y criterio de prototipado.
 
-> 🏷️ **Rebranding 2026-04-21.** Nombre público nuevo: **Radar Ibiza**. Dominio objetivo `radaribiza.com` (compra pendiente editor). Repo GitHub mantiene slug `ibiza-housing-radar` hasta compra del dominio. Tagline estable: *"Observatorio documental de vivienda"*.
+> 🏷️ **Rebranding 2026-04-21 (provisional).** Nombre público de trabajo: **Radar Vivienda Ibiza**. Es provisional — se reevaluará antes del relanzamiento. Wordmark tipográfico: `radar))vivienda_ibiza`. Dominio candidato `radaribiza.com`. Repo GitHub mantiene slug `ibiza-housing-radar` hasta compra del dominio. Tagline: *"Observatorio documental"*.
 
-> 🎯 **Dirección visual apuntada:** "mono + seams" — peso tipográfico mono (JetBrains Mono) en más elementos editoriales + separadores tipo costura (dashed, líneas finas). Queda por formalizar al construir el prototipo HTML estático (Paso 1, §10). Iconografía: Unicode puro, no emoji coloreado.
+> 🎯 **Dirección visual confirmada:** **"mono + seams"** — peso tipográfico mono (JetBrains Mono) en más elementos editoriales + separadores tipo costura (dashed, líneas finas). Iconografía: Unicode puro, no emoji coloreado.
+>
+> 🚫 **Logo gráfico descartado.** Las 3 direcciones SVG (punto + arcos) quedaron desechadas 2026-04-21. La identidad se resuelve **enteramente con tipografía**. Sin monograma separable. Ver `prototype/logo/preview.html` con 4 variantes tipográficas.
 
 ---
 
@@ -115,79 +117,69 @@ Destilados del benchmark + 5 reglas duras del pivote. Si un componente nuevo no 
 
 ## 4. Identidad de marca
 
-### 4.1 Nombre y wordmark
+### 4.1 Nombre y wordmark (actualizado 2026-04-21)
 
-**Nombre del proyecto:** "Ibiza Housing Radar" (se mantiene hasta decidir dominio propio, ver [ESTUDIOS-PENDIENTES.md](ESTUDIOS-PENDIENTES.md)).
+**Nombre del proyecto (provisional):** "Radar Vivienda Ibiza". Se reevaluará antes del relanzamiento.
 
-**Wordmark recomendado:** dos líneas, tipografía Instrument Serif, peso regular.
+**Wordmark tipográfico:** `radar))vivienda_ibiza`
+
+Todo en `JetBrains Mono`, minúsculas, `letter-spacing: -0.01em`. Los dos `))` evocan ondas de radar. El underscore separa *topic_location* como un módulo técnico, preparando un futuro ecosistema (`radar))turismo_ibiza`, `radar))medioambiente_ibiza`, `radar))vivienda_formentera`, etc.).
+
+**Cuatro variantes tipográficas** (ver renderizadas en `prototype/logo/preview.html`):
+
+| Variante | Tratamiento | Uso probable |
+|---|---|---|
+| **V1 · Mono plano** | Todo un solo color (ink), peso medio | Máxima sobriedad, pie de página, metadata |
+| **V2 · Split** | `))` en terracota, resto en ink | Cabecera, destaca el gesto radar |
+| **V3 · Tri** | `radar` semibold, `))` terracota bold, `vivienda_ibiza` muted regular | Hero, OG image, kit de prensa |
+| **V4 · Underline** | `radar` con subrayado fino (seam), resto regular | Alternativa "mono + seams" pura |
+
+Tamaños:
+- 14 px — metadata, pestañas
+- 18 px — cabecera desktop
+- 24 px — hero móvil
+- 32 px — OG image secundario
+- 48 px — OG image principal
+- 72 px — kit de prensa
+
+**Variante corta** (breadcrumbs, RSS, contextos con espacio limitado):
 
 ```
-Ibiza
-Housing Radar
+rvi
 ```
 
-- Línea 1 "Ibiza" en Instrument Serif italic, color terracota (`--accent`).
-- Línea 2 "Housing Radar" en Instrument Serif regular, color tinta (`--ink`).
-- Tracking ligeramente negativo (-0.02em).
-- Tamaños:
-  - Header (desktop): 22 px / 18 px por línea.
-  - Header (móvil): 16 px / 14 px.
-  - OG image: 72 px / 56 px.
-  - Favicon: no usar wordmark, ver §4.3.
+JetBrains Mono, letter-spacing 0.04em, color muted. "rvi" = Radar Vivienda Ibiza iniciales. Legible en 16 px favicon.
 
-**Alternativa corta** para espacios reducidos (breadcrumbs, OG secundarios, RSS):
+### 4.2 Logo gráfico — descartado
 
-```
-IHR · W17
-```
+**Decisión editor 2026-04-21:** no habrá logo gráfico (monograma SVG). La identidad se resuelve **enteramente con tipografía**. Las tres direcciones iniciales (punto + arcos concéntricos) se juzgaron "muy feas" y quedan desechadas.
 
-JetBrains Mono, 13 px, letter-spacing 0.04em, color `--ink-muted`.
+Consecuencias:
 
-### 4.2 Logo / marca gráfica
+- No hay monograma separable para usar fuera del wordmark.
+- El avatar en RRSS se construye como glifo tipográfico (`))` en terracota sobre fondo crema, o iniciales `rvi`).
+- El favicon se resuelve tipográficamente (ver §4.3).
+- Si en el futuro surge necesidad real de monograma gráfico (por ejemplo para merchandising), se revisa entonces.
 
-**Propuesta principal:** punto pulsante + arco de radar.
+**Ventaja colateral**: refuerza la dirección "mono + seams". Nada de decoración gráfica; todo peso y letra.
 
-Concepto: un punto terracota centrado y tres arcos concéntricos como un radar barriendo. Referencia visual al nombre (Radar) y al pulso de información semanal. Ya existe un elemento similar en la home actual (`.dash-pulse` con animación `dash-pulse`), que se puede formalizar como marca.
+### 4.3 Favicon — tipográfico
 
-Especificación SVG (1:1, viewBox 24×24):
+Dado que no hay logo gráfico, el favicon se construye con tipografía:
 
-```svg
-<svg viewBox="0 0 24 24" width="24" height="24" role="img" aria-label="Ibiza Housing Radar">
-  <circle cx="12" cy="12" r="2" fill="#c14a2d"/>
-  <circle cx="12" cy="12" r="6" fill="none" stroke="#c14a2d" stroke-width="1" opacity="0.45"/>
-  <circle cx="12" cy="12" r="10" fill="none" stroke="#c14a2d" stroke-width="1" opacity="0.22"/>
-</svg>
-```
+**Opciones a probar en Paso 1 del prototipo:**
 
-Sin animación en logo estático. La animación `dash-pulse` se reserva al indicador "en directo" de la home (ya implementada).
+1. **`))` en terracota** sobre fondo crema/transparente. El glifo puro de "ondas radar". Mejor si se dibuja vectorialmente como path SVG para control fino.
+2. **`r))`** — primera letra + onda. Más específico de Radar.
+3. **`rvi`** — iniciales del nombre provisional, JetBrains Mono semibold, terracota.
 
-**Tamaños oficiales:**
+Se probarán las tres en el prototipo y se elige. Formatos finales:
 
-- 16 px — favicon, meta icons.
-- 22 px — header actual.
-- 48 px — OG secundario.
-- 120 px — OG principal (header de la imagen).
-- 512 px — PNG descargable en `/cita-esto/`.
-
-**Variantes:**
-
-- **Monocromo tinta** (para fondo claro sin color).
-- **Monocromo crema** (para fondo oscuro o terracota pleno, para RRSS).
-- **Color completo** (default).
-
-Todas generadas desde el mismo SVG cambiando el `fill` y `stroke`.
-
-### 4.3 Favicon
-
-Actual: `docs/assets/favicon.svg`. Revisar y alinear al logo anterior. Si no encaja, regenerar con el SVG de §4.2.
-
-**Iconos requeridos** (todos derivables del SVG):
-
-- `favicon.svg` (SVG único, Safari usa el path `mask-icon`).
-- `favicon-32.png` (32×32).
+- `favicon.svg` (SVG tipográfico con path vectorial — no depende de carga de fuente).
+- `favicon-32.png` (32×32 generado desde el SVG).
 - `favicon-192.png` (192×192, Android).
 - `apple-touch-icon.png` (180×180).
-- `og-fallback.png` (1200×630, para casos sin OG específico).
+- `og-fallback.png` (1200×630, para casos sin OG específico — wordmark grande centrado).
 
 ### 4.4 Iconografía
 
@@ -792,8 +784,8 @@ Sirve al editor y a cualquier futuro colaborador. No es público pero es indexab
 
 | # | Tema | Elección final | Nota |
 |---|---|---|---|
-| D1 | Wordmark | **D · separable** (monograma + wordmark "Radar Ibiza" como piezas independientes) | |
-| D2 | Logo · dirección | **diferido** — 3 direcciones SVG en prototype, editor elige tras ver | Dir 1 punto limpio, Dir 2 "I" italic centro, Dir 3 "I" + arcos lado |
+| D1 | Wordmark | **Tipográfico puro** — `radar))vivienda_ibiza` en JetBrains Mono | 4 variantes tipográficas por probar (V1-V4). Sin monograma separable |
+| D2 | Logo · dirección | **Descartado logo gráfico** — identidad 100% tipográfica | Las 3 direcciones SVG iniciales quedaron desechadas 2026-04-21 |
 | D3 | Chrome operacional · datos | **A · 6 datos** (edición, propuestas, actores, coste API mes, última publicación, pipeline) | |
 | D4 | Chrome operacional · colocación | **A · pie de cada página** (encima del footer estándar) | |
 | D5 | Paleta por tipo de actor | **A · 8 categorías con candado** | Taxonomía cerrada, casos fronterizos se asimilan |

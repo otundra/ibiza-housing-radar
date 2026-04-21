@@ -12,6 +12,22 @@ Reglas:
 
 ---
 
+## 2026-04-21 (tarde) — Ajuste de nombre provisional y logo tipográfico
+
+- **Nombre provisional actualizado:** "Radar Ibiza" pasa a "**Radar Vivienda Ibiza**" (provisional). Formato: minúsculas, descriptivo, deja la palabra "vivienda" explícita por claridad y SEO; marca explícitamente como provisional para reevaluar antes del relanzamiento. Dominio candidato `radaribiza.com` se mantiene de momento.
+- **Logo gráfico descartado.** Las 3 direcciones SVG exploradas en prototype/logo/ (punto limpio + arcos, "I" italic + arcos, "I" + arcos asimétricos) fueron valoradas como "muy feas" por el editor y quedan desechadas. La identidad se resuelve **enteramente con tipografía** — sin monograma gráfico separable.
+- **Wordmark tipográfico** adoptado: `radar))vivienda_ibiza`. Todo en `JetBrains Mono`, minúsculas, las `))` evocan ondas de radar como glifo puro, el underscore separa *topic_location* preparando el futuro ecosistema (`radar))turismo_ibiza`, `radar))medioambiente_ibiza`, `radar))vivienda_formentera`, etc.). Refuerza la dirección visual "mono + seams" que ya estaba apuntada.
+- **Preview tipográfico** en [`prototype/logo/preview.html`](prototype/logo/preview.html) con 4 variantes a distintos tamaños (14-72 px), claro y oscuro, simulaciones de cabecera, pestaña y OG image:
+  - V1 · Mono plano — todo un color, peso medio.
+  - V2 · Split — `))` en terracota, resto en tinta.
+  - V3 · Tri — `radar` semibold, `))` terracota bold, `vivienda_ibiza` regular muted.
+  - V4 · Underline — `radar` con subrayado fino (seam).
+- **Favicon** también será tipográfico. Opciones a probar en Paso 1 del prototipo: `))` en terracota, `r))`, o iniciales `rvi`. Se evita depender de carga de fuente mediante path vectorial SVG.
+- **Tagline simplificado:** *"Observatorio documental"* (antes *"Observatorio documental de vivienda"*). La palabra "vivienda" ya está en el nombre; evitar redundancia.
+- **Docs actualizadas:** CLAUDE.md, STATUS.md, ESTUDIO-DISENO.md §4 (reescrita entera), ROADMAP.md (B38, I7 reformuladas).
+
+---
+
 ## 2026-04-21 — Estudio de diseño completo + rebranding a "Radar Ibiza"
 
 - **Rebranding del proyecto a "Radar Ibiza"** (antes "Ibiza Housing Radar"). Dominio objetivo `radaribiza.com` — compra pendiente del editor. Motivos: el nombre en inglés restaba credibilidad local (target real: ibicencos + temporeros castellanohablantes + extranjeros residentes, no internacional); "Housing" sonaba corporativo y mal SEO castellano; referentes españoles del género (Civio, Datadista, Maldita) no meten la temática en el dominio. Tagline estable: *"Observatorio documental de vivienda"*. El repo GitHub mantiene slug `ibiza-housing-radar` hasta que se compre el dominio; renombrado coordinado después.

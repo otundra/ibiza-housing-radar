@@ -1,14 +1,14 @@
 # Estado al despertar — 21 abr 2026
 
-## 🏷️ REBRANDING (21-abr-2026)
+## 🏷️ REBRANDING PROVISIONAL (21-abr-2026)
 
-> Nombre público pasa a ser **Radar Ibiza** (antes "Ibiza Housing Radar"). Dominio objetivo `radaribiza.com` — compra pendiente del editor. Repo GitHub mantiene slug `ibiza-housing-radar` hasta compra del dominio. Ver [DIARIO.md](DIARIO.md) entrada 2026-04-21 para motivos.
+> Nombre público de trabajo: **Radar Vivienda Ibiza** (provisional). Wordmark tipográfico `radar))vivienda_ibiza` en monospace. Logo SVG gráfico descartado; identidad totalmente tipográfica. Dominio candidato `radaribiza.com` (compra pendiente). Repo GitHub mantiene slug `ibiza-housing-radar` hasta compra del dominio. Ver [DIARIO.md](DIARIO.md) entradas 2026-04-21.
 
 ## 🎨 ESTUDIO DE DISEÑO CERRADO (21-abr-2026)
 
 > Entregable: [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) (14 secciones, ~700 líneas, benchmark con 13 referentes, 9 componentes especificados, plan de prototipo en 6 pasos).
 >
-> **13 decisiones (D1-D13) cerradas.** D2 (logo) diferida hasta elección del editor entre las 3 direcciones SVG de [`prototype/logo/preview.html`](prototype/logo/preview.html).
+> **13 decisiones (D1-D13) cerradas.** D2 (logo) resuelta con **wordmark tipográfico** — sin logo gráfico. Preview vivo con 4 variantes tipográficas en [`prototype/logo/preview.html`](prototype/logo/preview.html) (V1 mono plano · V2 split · V3 tri · V4 underline). Pendiente elección de variante.
 >
 > Dirección visual apuntada: **"mono + seams"** — mono tipográfico en más elementos + separadores tipo costura + iconografía Unicode (no emoji). Por formalizar al construir el prototipo HTML estático (Paso 1).
 >

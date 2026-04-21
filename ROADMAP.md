@@ -98,7 +98,7 @@ Detalle en [DISENO-WEB.md](DISENO-WEB.md).
 - [ ] **B35.** Implementar **9 componentes nuevos** en Jekyll (partials + CSS): chrome operacional, numeración edición por fecha, tags tipográficos, card de propuesta, pill de estado + barra de progreso (8 estados), chip de actor (8 tipos), ficha actor con sidebar sticky, margin notes (Tufte), toggle Temporada/Pre-temporada/Histórico.
 - [ ] **B36.** Formulario **"Escríbenos"** flotante universal (Formspree). Botón fijo esquina inferior derecha, visible en todas las páginas salvo confirmación. Campos: mensaje (obligatorio) + nombre y email (opcionales) + auto-captura de URL origen. Honeypot anti-spam. Mono + seams.
 - [ ] **B37.** Página `/sistema/` interna con `noindex,nofollow` (documentación viva del sistema visual: paleta, tipografía, los 9 componentes renderizados). Solo para editor y colaboradores vía URL directa.
-- [ ] **B38.** **Logo SVG final** tras elección del editor entre las 3 direcciones de `prototype/logo/` (Dir 1 punto limpio / Dir 2 "I" italic centro / Dir 3 "I" + arcos lado). Pendiente D2 del estudio.
+- [ ] **B38.** **Wordmark tipográfico finalizado** — elección de variante entre V1 mono plano / V2 split / V3 tri / V4 underline (ver `prototype/logo/preview.html`). Logo gráfico descartado 2026-04-21; la identidad se resuelve enteramente con tipografía. Incluye favicon tipográfico (opciones a probar: `))`, `r))`, o iniciales `rvi`).
 - [ ] **B39.** Automatización **OG images con Puppeteer** (Node.js en runner CI). Plantilla `docs/assets/og-template.html` + script `scripts/gen_og.mjs`. Generación por edición, ficha actor, ficha palanca. OG fallback estática.
 - [ ] **B40.** Modo oscuro con **toggle manual ○/●** (localStorage) además del automático por `prefers-color-scheme`. Sin opción "auto" explícita (default implícito al no tocar nada).
 
@@ -199,7 +199,7 @@ Tras las decisiones del editor 2026-04-20, estos estudios se ejecutan antes o du
 - [ ] **I4.** Diseño del dashboard de estadísticas potente + página `/estadisticas/` complementaria a `/balance/`. Durante Fase 0.
 - [ ] **I5.** Implementación de elementos de [Solar Low-Tech](https://solar.lowtechmagazine.com/) — ver [DISENO-WEB.md §Inspiración](DISENO-WEB.md). Indicadores de transparencia en footer + notas al margen + manifiesto + `/estado/`. Durante Fase 0.
 - [x] **I6.** ✅ **Estudio de diseño completo** cerrado 2026-04-21. Entregable: [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md) (14 secciones, 13 decisiones D1-D13 cerradas con OK del editor, salvo D2 logo diferido). Incluye: benchmark editorial con 13 referentes, sistema visual completo con 8 tipos de actor, 9 componentes especificados, plan de prototipo en 6 pasos, decisiones sobre nombre ("Radar Ibiza"), calendario editorial (opening/closing), numeración por fecha, formulario universal "Escríbenos", automatización anual para temporadas. Derivadas en B34-B40 y A17.
-- [ ] **I7.** Logo final: el editor elige entre Dir 1/2/3 de [`prototype/logo/preview.html`](prototype/logo/preview.html). Tras elección, formalizar SVG definitivo + favicon + variantes. Pendiente D2 del estudio.
+- [ ] **I7.** Wordmark tipográfico final: el editor elige variante entre V1-V4 de [`prototype/logo/preview.html`](prototype/logo/preview.html). Logo gráfico descartado 2026-04-21. Tras elección, formalizar favicon tipográfico + variantes de uso.
 
 ### Estudios diferidos (no bloquean Fase 0)
 
@@ -305,12 +305,12 @@ Detalle en [PLAN.md](PLAN.md) sección Monetización.
 | B | B35. 9 componentes en Jekyll | crítica | pendiente |
 | B | B36. Formulario "Escríbenos" | alta | pendiente |
 | B | B37. Página `/sistema/` interna | media | pendiente |
-| B | B38. Logo SVG final | alta | **pendiente editor** |
+| B | B38. Wordmark tipográfico (V1-V4) | alta | **pendiente editor** |
 | B | B39. OG images con Puppeteer | alta | pendiente |
 | B | B40. Toggle modo oscuro manual | media | pendiente |
 | A | A17. `update_temporadas.py` | media | pendiente |
 | I | I6. Estudio de diseño | crítica | ✅ **cerrado 2026-04-21** |
-| I | I7. Logo final (Dir 1/2/3) | alta | **pendiente editor** |
+| I | I7. Wordmark tipográfico (V1-V4) | alta | **pendiente editor** |
 | C | C1. Decisión W16-W17 | crítica | **pendiente editor** |
 | C | C2. Ingest W14 | crítica | pendiente |
 | C | C3. Pipeline W14 | crítica | pendiente |

@@ -1,8 +1,12 @@
-# CLAUDE.md — Radar Ibiza (repo: ibiza-housing-radar)
+# CLAUDE.md — Radar Vivienda Ibiza (provisional · repo: ibiza-housing-radar)
 
 Instrucciones para Claude Code al trabajar en este proyecto.
 
-> 🏷️ **Rebranding 2026-04-21.** El nombre público pasa a ser **Radar Ibiza**. Dominio objetivo `radaribiza.com` (compra pendiente del editor). El repo GitHub mantiene el slug `ibiza-housing-radar` hasta que se compre el dominio. Handle RRSS previsto: `@radaribiza`. Tagline estable: *"Observatorio documental de vivienda"*.
+> 🏷️ **Rebranding 2026-04-21 (provisional).** El nombre público de trabajo es **Radar Vivienda Ibiza**. Es *provisional* — se reevaluará antes del relanzamiento público. Wordmark tipográfico: `radar))vivienda_ibiza` (todo en `JetBrains Mono`, las `))` evocan ondas de radar). Formato pensado para un futuro ecosistema: `radar))turismo_ibiza`, `radar))medioambiente_ibiza`, etc.
+>
+> **Dominio:** `radaribiza.com` sigue siendo candidato principal (objetivo corto). Si el nombre "Radar Vivienda Ibiza" se consolida, se revaluará `radarviviendaibiza.com`. El repo GitHub mantiene el slug `ibiza-housing-radar` hasta que se compre dominio. Tagline estable: *"Observatorio documental"*.
+>
+> **Logo gráfico descartado** 2026-04-21. Dirección visual elegida: **tipográfica pura**. Sin monograma SVG. El wordmark cumple la función de identidad completa. Preview vivo en [`prototype/logo/preview.html`](prototype/logo/preview.html) con 4 variantes (V1 mono plano · V2 split · V3 tri · V4 underline). Pendiente elección de variante.
 
 > ⚠️ **Pivote activo 2026-04-20.** El proyecto está migrando a "observatorio documental" (el LLM no genera propuestas, solo documenta las de actores reales con URL verificable). Todo el trabajo vive en el branch `pivote/observatorio-documental`. Antes de tocar código en ese branch, leer:
 >
