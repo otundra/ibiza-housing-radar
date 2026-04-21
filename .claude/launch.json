@@ -16,7 +16,7 @@
       "runtimeArgs": [
         "-I",
         "-c",
-        "from http.server import HTTPServer, SimpleHTTPRequestHandler;import functools;HTTPServer(('127.0.0.1',4100),functools.partial(SimpleHTTPRequestHandler,directory='/Users/raulserrano/Documents/GitHub/ibiza-housing-radar/docs/prototype')).serve_forever()"
+        "from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler;import functools;ThreadingHTTPServer(('127.0.0.1',4100),functools.partial(SimpleHTTPRequestHandler,directory='/Users/raulserrano/Documents/GitHub/ibiza-housing-radar/docs/prototype')).serve_forever()"
       ],
       "port": 4100
     }

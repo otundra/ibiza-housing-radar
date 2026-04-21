@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Método — radar))vivienda_ibiza</title>
+  <meta name="description" content="Cómo funciona el observatorio documental: reglas editoriales, pipeline técnico, modelos de IA usados, taxonomía de actores y sesgos declarados.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('rvi-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="home.html" class="wm" aria-label="Radar Vivienda Ibiza — Portada">
+      <span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span>
+    </a>
+    <nav class="site-nav" aria-label="Principal">
+      <a href="home.html">Portada</a>
+      <a href="edition.html">Ediciones</a>
+      <a href="proposal.html">Propuestas</a>
+      <a href="actor.html">Actores</a>
+      <a href="balance.html">Balance</a>
+      <a href="metodo.html" aria-current="page">Método</a>
+    </nav>
+    <div class="theme-toggle" role="group" aria-label="Tema claro u oscuro">
+      <button type="button" data-theme-set="light" aria-label="Modo claro" title="Modo claro">○</button>
+      <button type="button" data-theme-set="dark"  aria-label="Modo oscuro" title="Modo oscuro">●</button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido" class="page page--reading">
+
+  <header class="edition-header">
+    <span class="edition-id edition-id--kicker">Método · observatorio documental · versión 1.0</span>
+    <h1>Método</h1>
+    <p class="lede">Cómo funciona el observatorio por dentro: reglas editoriales no negociables, pipeline semanal, modelos de IA usados y por qué, taxonomía cerrada de actores, sesgos declarados y lo que este observatorio <strong>no hace</strong>. Si algo no cuadra con esta página, es un error — <a href="#">avísanos</a>.</p>
+    <ul class="tags" aria-label="Etiquetas">
+      <li><a href="#">[transparencia]</a></li>
+      <li><a href="#">[pipeline]</a></li>
+      <li><a href="#">[sesgos]</a></li>
+    </ul>
+  </header>
+
+  <section id="reglas" class="edition-section">
+    <h2>Las 5 reglas duras <span class="section-kicker">no negociables</span></h2>
+    <p>Son el contrato público del observatorio. Si una edición no cumple alguna, se corrige o se retira. Inmutables salvo decisión editorial formal, registrada en <a href="#">/correcciones/</a>.</p>
+
+    <ol class="rules-block">
+      <li>
+        <div>
+          <h3>Solo propuestas con autor identificado y URL verificable</h3>
+          <p>No documentamos rumores, filtraciones anónimas ni «se dice». Si una propuesta no tiene un actor con nombre que la haya formulado públicamente y una fuente primaria enlazable, no entra en el corpus. Mejor decir «sin dato público» que inventar.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>El observatorio no genera propuestas propias</h3>
+          <p>Este proyecto <strong>mapea</strong>, no <strong>propone</strong>. El LLM extrae, ordena y verifica lo que actores reales ya han puesto encima de la mesa. Nunca inferimos qué «debería hacerse», ni generamos propuestas sintéticas a partir del debate.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Ningún actor excluido por filiación</h3>
+          <p>PP, PSOE, Vox, Sumar, MÉS, patronales, sindicatos, colectivos ciudadanos, Cáritas, UIB, juzgados: si proponen con fuente verificable, se documenta. La <a href="balance.html">auditoría pública de balance</a> es la vacuna contra el sesgo editorial.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Balance de actores auditado cada trimestre</h3>
+          <p>Publicamos <a href="balance.html">la distribución de citas por categoría</a> cada semana, y una auditoría cualitativa cada trimestre. Si un bloque queda infra-representado, se declara como hueco y se busca activamente.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Correcciones públicas con traza</h3>
+          <p>Cada corrección (de dato, de atribución, de clasificación) se registra en <a href="#">/correcciones/</a> con fecha, motivo y <em>diff</em> del cambio. Nunca editamos en silencio. Los errores son parte del corpus igual que los aciertos.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="pipeline" class="edition-section">
+    <h2>Pipeline semanal <span class="section-kicker">lunes 05:00 UTC</span></h2>
+    <p>Automatizado con GitHub Actions. Corre cada lunes temprano. Tiempo total típico: 3-4 min. Coste por ejecución: ~1,5 €. Todo el código en el <a href="https://github.com/otundra/ibiza-housing-radar">repo público</a>.</p>
+
+    <ol class="pipeline-steps" aria-label="Pasos del pipeline">
+      <li>
+        <span class="step-name">Ingest</span>
+        <span class="step-desc">Lee RSS de Google News + Diario de Ibiza + Periódico de Ibiza. Filtra por keywords, ventana 10 días, deduplica. Resuelve URLs firmadas de Google News al artículo original.</span>
+      </li>
+      <li>
+        <span class="step-name">Classify</span>
+        <span class="step-desc">Haiku 4.5 clasifica cada titular en una sola llamada: <code>is_housing</code>, actor detectado, tipo de propuesta (<code>formal</code> · <code>en_movimiento</code> · <code>ninguna</code>).</span>
+      </li>
+      <li>
+        <span class="step-name">Extract</span>
+        <span class="step-desc">Sonnet 4.6 extrae la ficha estructurada de cada propuesta <code>formal</code> o <code>en_movimiento</code>. Si Sonnet detecta inconsistencia, Opus 4.7 re-extrae como árbitro.</span>
+      </li>
+      <li>
+        <span class="step-name">Rescue</span>
+        <span class="step-desc">Busca propuestas de ediciones anteriores que sigan vigentes y no hayan sido mencionadas en 4 semanas. Las <em>rescata</em> con badge visible para no perder el hilo.</span>
+      </li>
+      <li>
+        <span class="step-name">Generate</span>
+        <span class="step-desc">Opus 4.7 redacta la edición en 7 secciones (señales · cronología · mapa · propuestas · radar · omisiones · a vigilar) con <code>max_tokens=8192</code> y prompt caching.</span>
+      </li>
+      <li>
+        <span class="step-name">Verify</span>
+        <span class="step-desc">Chequeo HTTP de cada URL citada. 404/410 → bloquea publicación. 403/5xx → soft-warning (muchos medios rechazan bots). Lista de verbos prohibidos (<em>«debería», «hay que»</em>) como anti-opinativo.</span>
+      </li>
+      <li>
+        <span class="step-name">Balance</span>
+        <span class="step-desc">Recalcula reparto de actores, actualiza <a href="balance.html">/balance/</a> público y <code>private/balance.md</code>. Alerta si alguna categoría pierde más de 15 puntos semana a semana.</span>
+      </li>
+      <li>
+        <span class="step-name">Self-review</span>
+        <span class="step-desc">Sonnet 4.6 puntúa la edición en 5 dimensiones (reglas, rigor, balance, cobertura, claridad). Si <code>&lt; 7/10</code> en alguna → alerta Telegram urgente al editor.</span>
+      </li>
+    </ol>
+
+    <p class="u-muted" style="font-size:13px">Post-mortem de cada fallo en <a href="#">private/postmortems.md</a> (visible vía git pero no servido públicamente). Decisiones voluntarias (ajuste de prompts, umbrales, modelos) registradas en <a href="#">private/adjustments-log.md</a>.</p>
+  </section>
+
+  <section id="modelos" class="edition-section">
+    <h2>Modelos de IA <span class="section-kicker">reparto por fase</span></h2>
+    <p>Elegimos el modelo más barato que cumple cada tarea. El benchmark mensual verifica que el reparto sigue siendo óptimo. No mezclamos modelos a mitad de ejecución (rompería el prompt cache).</p>
+
+    <table class="models-table">
+      <caption class="sr-only">Modelos de Anthropic usados por fase del pipeline</caption>
+      <thead>
+        <tr>
+          <th scope="col">Tarea</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Por qué</th>
+          <th scope="col" style="text-align:right">€/mes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Tarea">Clasificación</td>
+          <td data-label="Modelo"><strong>Haiku 4.5</strong></td>
+          <td data-label="Por qué">Titulares + 1 párrafo. Precisión sobrada para <code>is_housing</code>, 20× más barato que Sonnet.</td>
+          <td data-label="€/mes">0,10 €</td>
+        </tr>
+        <tr>
+          <td data-label="Tarea">Extracción</td>
+          <td data-label="Modelo"><strong>Sonnet 4.6</strong></td>
+          <td data-label="Por qué">Schema estructurado + verificación de consistencia. Haiku falla en fichas largas.</td>
+          <td data-label="€/mes">1,80 €</td>
+        </tr>
+        <tr>
+          <td data-label="Tarea">Disputa / árbitro</td>
+          <td data-label="Modelo"><strong>Opus 4.7</strong></td>
+          <td data-label="Por qué">Solo si Sonnet marca <code>invalid</code>. ~5% de las extracciones. Coste marginal.</td>
+          <td data-label="€/mes">0,30 €</td>
+        </tr>
+        <tr>
+          <td data-label="Tarea">Redacción editorial</td>
+          <td data-label="Modelo"><strong>Opus 4.7</strong></td>
+          <td data-label="Por qué">La calidad del informe final <em>sí</em> importa. Con prompt caching, coste controlado.</td>
+          <td data-label="€/mes">3,80 €</td>
+        </tr>
+        <tr>
+          <td data-label="Tarea">Self-review</td>
+          <td data-label="Modelo"><strong>Sonnet 4.6</strong></td>
+          <td data-label="Por qué">Juez externo del propio output. Opus revisando Opus tiende a auto-confirmar.</td>
+          <td data-label="€/mes">0,60 €</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total mensual proyectado</td>
+          <td style="text-align:right">~6,60 €</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <p class="u-muted" style="font-size:13px">Topes automáticos: capa 🟡 amarilla a 4 €, 🟠 naranja a 9 €, 🔴 roja blanda a 12 € <em>(avisa pero no corta — no perdemos editorial por sobrecoste)</em>, 🚨 roja dura a 20 € <em>(corta solo ante runaway real)</em>. Dashboard privado en <code>private/costs.md</code>, auditable vía clon del repo.</p>
+  </section>
+
+  <section id="taxonomia" class="edition-section">
+    <h2>Taxonomía de actores <span class="section-kicker">8 categorías cerradas</span></h2>
+    <p>El campo <code>actor_type</code> es un enum cerrado con candado. Ampliarlo a 9 categorías requiere decisión editorial formal con entrada en <a href="#">/correcciones/</a>. Casos fronterizos se asimilan con nota (ejemplo: colegios profesionales → <code>académico</code>).</p>
+
+    <ul class="taxonomia-grid">
+      <li>
+        <span class="actor-chip actor-chip--publico"><span class="actor-chip-dot"></span>Institucional público</span>
+        <h3 style="margin-top:10px">Consell, Govern, ayuntamientos, IBAVI</h3>
+        <p>Organismos con competencia administrativa directa. Su «propuesta» tiene peso ejecutivo.</p>
+      </li>
+      <li>
+        <span class="actor-chip actor-chip--partido"><span class="actor-chip-dot"></span>Partido</span>
+        <h3 style="margin-top:10px">PP, PSOE, Vox, Sumar, MÉS, Proposta…</h3>
+        <p><strong>Regla dura:</strong> siempre gris neutro en la UI, nunca el color del partido. Evita sesgo visual.</p>
+      </li>
+      <li>
+        <span class="actor-chip actor-chip--patronal"><span class="actor-chip-dot"></span>Patronal</span>
+        <h3 style="margin-top:10px">CAEB, PIMEEF, Fecoei, Ashome, COAPI</h3>
+        <p>Asociaciones empresariales. Su propuesta refleja intereses sectoriales declarados.</p>
+      </li>
+      <li>
+        <span class="actor-chip actor-chip--sindicato"><span class="actor-chip-dot"></span>Sindicato</span>
+        <h3 style="margin-top:10px">CCOO, UGT, CSIF, USO</h3>
+        <p>Representación laboral organizada. Voz de los trabajadores en el debate.</p>
+      </li>
+      <li>
+        <span class="actor-chip actor-chip--tercer-sector"><span class="actor-chip-dot"></span>Tercer sector</span>
+        <h3 style="margin-top:10px">Cáritas, Cruz Roja, GEN-GOB, Diócesis vía Cáritas</h3>
+        <p>ONGs y entidades sin ánimo de lucro con programa público.</p>
+      </li>
+      <li>
+        <span class="actor-chip actor-chip--academico"><span class="actor-chip-dot"></span>Académico</span>
+        <h3 style="margin-top:10px">UIB, IBESTAT, consultoras, colegios profesionales</h3>
+        <p>Función técnico-consultiva. Aportan datos y evaluaciones, rara vez formulan propuestas operativas.</p>
+      </li>
+      <li>
+        <span class="actor-chip actor-chip--judicial"><span class="actor-chip-dot"></span>Judicial</span>
+        <h3 style="margin-top:10px">TSJIB, juzgados, Fiscalía, Sindic de Greuges</h3>
+        <p>Intervención vía resoluciones públicas, informes o declaraciones institucionales.</p>
+      </li>
+      <li>
+        <span class="actor-chip actor-chip--colectivo"><span class="actor-chip-dot"></span>Colectivo ciudadano</span>
+        <h3 style="margin-top:10px">PAH Pitiüses, Ens Plantem, asambleas de temporeros</h3>
+        <p>Plataformas autoconvocadas sin personalidad jurídica rígida. Suelen comunicar en RRSS; el pipeline los capta peor.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="sesgos" class="edition-section">
+    <h2>Sesgos declarados <span class="section-kicker">transparencia activa</span></h2>
+    <p>Ningún observatorio es neutral. Enumeramos abajo los sesgos conocidos. Si detectas uno no listado, <a href="#">escríbenos</a>.</p>
+
+    <ul class="nohace-list nohace-list--sesgos">
+      <li><strong>Sesgo de fuente:</strong> solo leemos RSS de prensa escrita. Lo que se dice en TV, radio, podcast, RRSS o calle no entra hasta que un diario lo recoge.</li>
+      <li><strong>Sesgo de cobertura mediática:</strong> los diarios cubren más a las instituciones que a los colectivos ciudadanos. El balance lo refleja — ver <a href="balance.html">/balance/</a>.</li>
+      <li><strong>Sesgo del LLM:</strong> Haiku, Sonnet y Opus son modelos entrenados globalmente. Pueden tener sesgos occidentales, anglófonos o favorables a la retórica institucional. Mitigación: prompt explícito anti-inferencia + validación cruzada Sonnet/Opus en casos dudosos.</li>
+      <li><strong>Sesgo idiomático:</strong> 90% del corpus está en castellano. Contenido en catalán (IB3, Periódico de Ibiza) se procesa correctamente pero representa &lt; 10% del volumen.</li>
+      <li><strong>Sesgo del editor:</strong> un solo editor (Raúl S.) decide la agenda. No hay pluralidad editorial. La <a href="balance.html">auditoría trimestral</a> es la vacuna.</li>
+    </ul>
+  </section>
+
+  <section id="nohace" class="edition-section">
+    <h2>Qué NO hace este observatorio <span class="section-kicker">líneas rojas</span></h2>
+    <ul class="nohace-list">
+      <li><strong>No genera propuestas propias.</strong> No inferimos, no completamos, no sintetizamos propuestas que nadie haya formulado.</li>
+      <li><strong>No evalúa viabilidad jurídica o económica</strong> salvo cuando la fuente lo declare. Si no hay dato público, el campo queda <em>no evaluada</em>.</li>
+      <li><strong>No hace scraping de portales inmobiliarios ni medios de pago.</strong> Riesgo legal real + contradicción reputacional. Datos de precio vienen de fuentes oficiales (INE, IBESTAT, ministerio) y crowdsourcing ciudadano.</li>
+      <li><strong>No recibe financiación de actores fiscalizables</strong> (instituciones, partidos, patronales, sindicatos, promotoras). Modelo sostenible: donaciones pasivas + grants periodísticos + consultoría con transparencia.</li>
+      <li><strong>No publica sin fuente verificable.</strong> Si la URL no responde 200, la propuesta se marca como <em>fuente caída</em> y no entra hasta recuperación.</li>
+      <li><strong>No edita en silencio.</strong> Cada cambio post-publicación pasa por <a href="#">/correcciones/</a>.</li>
+    </ul>
+  </section>
+
+  <section id="transparencia" class="edition-section">
+    <h2>Transparencia radical <span class="section-kicker">todo auditable</span></h2>
+    <p>No pedimos confianza — ofrecemos evidencia verificable. Todo lo siguiente está disponible sin registro ni login.</p>
+    <div class="download-block" style="flex-direction:column;align-items:flex-start;gap:10px">
+      <span><strong>Código fuente:</strong> <a href="https://github.com/otundra/ibiza-housing-radar">github.com/otundra/ibiza-housing-radar</a> · MIT</span>
+      <span><strong>Contenido:</strong> CC BY 4.0 · reutilizable citando fuente</span>
+      <span><strong>Registro de ejecuciones:</strong> <a href="#">/estado/</a> · última ejecución, tiempo, tamaño</span>
+      <span><strong>Coste desagregado:</strong> <a href="#">/costes/</a> · gasto por módulo + capa actual</span>
+      <span><strong>Correcciones:</strong> <a href="#">/correcciones/</a> · cada edición post-publicación</span>
+      <span><strong>Balance de actores:</strong> <a href="balance.html">/balance/</a> · reparto en vivo</span>
+      <span><strong>Auditorías trimestrales:</strong> <a href="#">/auditoria/</a> · informe Opus cada 13 semanas</span>
+      <span><strong>Dataset de propuestas:</strong> <a href="#">/datos-abiertos/</a> · descarga CSV/JSON</span>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <aside class="chrome-ops" aria-label="Estado operativo del observatorio">
+    <div class="chrome-ops-inner">
+      <h2>Estado operativo</h2>
+      <ul>
+        <li><span class="ops-label">Edición actual</span> <span class="ops-val">20-26 abril 2026</span></li>
+        <li><span class="ops-label">Propuestas documentadas</span> <span class="ops-val">23</span></li>
+        <li><span class="ops-label">Actores seguidos</span> <span class="ops-val">18</span></li>
+        <li><span class="ops-label">Coste API mes</span> <span class="ops-val status-amber">6,22 € / 12 €</span></li>
+        <li><span class="ops-label">Última publicación</span> <span class="ops-val">hace 1 día</span></li>
+        <li><span class="ops-label">Pipeline</span> <span class="ops-val status-ok">OK</span></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="site-footer-std">
+    <p>© 2026 Radar Vivienda Ibiza (provisional) · CC BY 4.0 · Observatorio documental.</p>
+    <nav aria-label="Enlaces del pie">
+      <a href="metodo.html">Método</a>
+      <a href="#">Política editorial</a>
+      <a href="#">Correcciones</a>
+      <a href="balance.html">Balance de actores</a>
+      <a href="#">Cítanos</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="fab-escribenos" aria-label="Contacto">
+  <button type="button" id="fab-toggle" class="fab-escribenos-btn" aria-expanded="false" aria-controls="fab-panel">
+    <span class="ico" aria-hidden="true">))</span>
+    Escríbenos
+  </button>
+  <div class="fab-panel" id="fab-panel" role="dialog" aria-label="Formulario de contacto">
+    <button type="button" id="fab-close" class="fab-close" aria-label="Cerrar">×</button>
+    <h2>Escríbenos</h2>
+    <p>Recibimos correcciones, datos nuevos, pistas, testimonios, dudas, críticas y colaboraciones.</p>
+    <form action="https://formspree.io/f/placeholder" method="POST" novalidate>
+      <div>
+        <label for="msg">Tu mensaje</label>
+        <textarea id="msg" name="message" required placeholder="Cuéntanos lo que quieras compartir…"></textarea>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <label for="nombre">Nombre (opcional)</label>
+          <input id="nombre" name="name" type="text" autocomplete="name">
+        </div>
+        <div>
+          <label for="email">Email (opcional)</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+        </div>
+      </div>
+      <p class="fab-nota">Si aportas un dato, adjunta URL a fuente primaria. Sin fuente verificable no lo incorporamos, pero lo leemos igual.</p>
+      <input type="hidden" name="page_url" value="">
+      <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<script src="theme.js" defer></script>
+</body>
+</html>

@@ -1542,3 +1542,300 @@ hr {
 .u-muted { color: var(--ink-muted); }
 .u-acc { color: var(--accent); }
 .sr-only { position:absolute!important;clip:rect(1px,1px,1px,1px);padding:0!important;border:0!important;height:1px!important;width:1px!important;overflow:hidden!important; }
+
+/* ==========================================================================
+   Balance — barras horizontales simples
+   ========================================================================== */
+.balance-chart {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-5) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.balance-chart li {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(160px, 200px) 1fr 72px;
+  gap: var(--sp-4);
+  align-items: center;
+  font-size: var(--fs-small);
+}
+.balance-chart .bar-label {
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+.balance-chart .bar-label small {
+  display: block;
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+.balance-chart .bar-track {
+  height: 10px;
+  background: var(--bg-soft);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--rule);
+}
+.balance-chart .bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--ink-muted);
+  transition: width 0.3s ease;
+}
+.balance-chart .bar-fill--publico       { background: var(--actor-publico); }
+.balance-chart .bar-fill--partido       { background: var(--actor-partido); }
+.balance-chart .bar-fill--patronal      { background: var(--actor-patronal); }
+.balance-chart .bar-fill--sindicato     { background: var(--actor-sindicato); }
+.balance-chart .bar-fill--tercer-sector { background: var(--actor-tercer-sector); }
+.balance-chart .bar-fill--academico     { background: var(--actor-academico); }
+.balance-chart .bar-fill--judicial      { background: var(--actor-judicial); }
+.balance-chart .bar-fill--colectivo     { background: var(--actor-colectivo); }
+.balance-chart .bar-value {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 640px) {
+  .balance-chart li { grid-template-columns: 1fr 60px; row-gap: 4px; }
+  .balance-chart .bar-label { grid-column: 1 / -1; }
+  .balance-chart .bar-track { grid-column: 1; }
+  .balance-chart .bar-value { grid-column: 2; }
+}
+
+/* Ranking tabla */
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+  margin: var(--sp-4) 0;
+}
+.ranking-table th, .ranking-table td {
+  text-align: left;
+  padding: var(--sp-3);
+  border-bottom: 1px dashed var(--rule);
+  vertical-align: middle;
+}
+.ranking-table th {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.ranking-table .rank {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+  width: 48px;
+}
+.ranking-table .count {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--ink);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  width: 72px;
+}
+
+/* ==========================================================================
+   Método — bloque de reglas numeradas
+   ========================================================================== */
+.rules-block {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-5) 0;
+  counter-reset: rule;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+.rules-block li {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: var(--sp-4);
+  align-items: start;
+  padding: var(--sp-5);
+  background: var(--bg-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  counter-increment: rule;
+}
+.rules-block li::before {
+  content: counter(rule, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.rules-block h3 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 6px;
+  letter-spacing: -0.005em;
+}
+.rules-block p {
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* Pipeline visual — pasos */
+.pipeline-steps {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-5) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  counter-reset: pstep;
+}
+.pipeline-steps li {
+  margin: 0;
+  flex: 1 1 160px;
+  min-width: 0;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: var(--sp-3) var(--sp-4);
+  position: relative;
+  counter-increment: pstep;
+  font-size: var(--fs-small);
+}
+.pipeline-steps li::before {
+  content: counter(pstep, decimal-leading-zero);
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
+.pipeline-steps .step-name {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.pipeline-steps .step-desc {
+  color: var(--ink-soft);
+  line-height: 1.45;
+  font-size: 13px;
+}
+
+/* Tabla de modelos */
+.models-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--sp-4) 0;
+  font-size: var(--fs-small);
+}
+.models-table th, .models-table td {
+  padding: var(--sp-3);
+  border-bottom: 1px dashed var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+.models-table th {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.models-table td:last-child {
+  text-align: right;
+  font-family: var(--mono);
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+.models-table tfoot td {
+  font-weight: 600;
+  color: var(--ink);
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 0;
+}
+@media (max-width: 640px) {
+  .models-table, .models-table thead, .models-table tbody, .models-table tfoot, .models-table tr, .models-table th, .models-table td { display: block; }
+  .models-table thead { display: none; }
+  .models-table tr { border: 1px solid var(--rule); border-radius: 6px; padding: var(--sp-3); margin-bottom: var(--sp-3); }
+  .models-table td { border: 0; padding: 2px 0; }
+  .models-table td:last-child { text-align: left; }
+  .models-table td::before { content: attr(data-label) ": "; color: var(--ink-muted); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; margin-right: 6px; }
+}
+
+/* Chips de taxonomía */
+.taxonomia-grid {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-4) 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--sp-3);
+}
+.taxonomia-grid li {
+  margin: 0;
+  padding: var(--sp-4);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--card);
+}
+.taxonomia-grid h3 {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+.taxonomia-grid p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* Bloque "no hace" / sesgos */
+.nohace-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-4) 0;
+}
+.nohace-list li {
+  padding: var(--sp-3) 0 var(--sp-3) 28px;
+  border-bottom: 1px dashed var(--rule);
+  position: relative;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.nohace-list li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  top: var(--sp-3);
+  color: var(--danger);
+  font-family: var(--mono);
+  font-weight: 600;
+}
+.nohace-list--sesgos li::before { content: "!"; color: var(--warning); }

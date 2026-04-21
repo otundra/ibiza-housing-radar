@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Balance de actores — radar))vivienda_ibiza</title>
+  <meta name="description" content="Auditoría pública del reparto de actores citados en el observatorio documental. Temporada 2026.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('rvi-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="home.html" class="wm" aria-label="Radar Vivienda Ibiza — Portada">
+      <span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span>
+    </a>
+    <nav class="site-nav" aria-label="Principal">
+      <a href="home.html">Portada</a>
+      <a href="edition.html">Ediciones</a>
+      <a href="proposal.html">Propuestas</a>
+      <a href="actor.html">Actores</a>
+      <a href="balance.html" aria-current="page">Balance</a>
+      <a href="metodo.html">Método</a>
+    </nav>
+    <div class="theme-toggle" role="group" aria-label="Tema claro u oscuro">
+      <button type="button" data-theme-set="light" aria-label="Modo claro" title="Modo claro">○</button>
+      <button type="button" data-theme-set="dark"  aria-label="Modo oscuro" title="Modo oscuro">●</button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido" class="page">
+
+  <header class="edition-header">
+    <span class="edition-id edition-id--kicker">Balance · auditoría pública · actualizado 20 abr 2026</span>
+    <h1>Balance de actores</h1>
+    <p class="lede">Reparto de los actores citados en el observatorio, auditado y público. Verificamos cada trimestre que ningún bloque queda infra-representado por sesgo del pipeline. Si un actor formula propuestas con fuente verificable, lo documentamos; si no, no.</p>
+    <ul class="tags" aria-label="Etiquetas">
+      <li><a href="#">[auditoría]</a></li>
+      <li><a href="#">[transparencia]</a></li>
+      <li><a href="#">[temporada: 2026]</a></li>
+    </ul>
+  </header>
+
+  <section class="edition-section" aria-label="Ventana temporal">
+    <div class="horizon-toggle" role="group">
+      <input type="radio" id="h-temporada" name="horizon" checked>
+      <input type="radio" id="h-historico" name="horizon">
+      <div class="horizon-labels">
+        <label for="h-temporada">Temporada 2026 (8 semanas)</label>
+        <label for="h-historico">Histórico completo</label>
+      </div>
+
+      <div class="horizon-panel horizon-panel--temporada">
+
+        <section style="margin-top:32px">
+          <h2>Distribución por tipo de actor <span class="section-kicker">8 categorías</span></h2>
+          <p>Porcentaje de citas totales en las propuestas, señales y declaraciones documentadas durante la <strong>Temporada 2026</strong>. Las 8 categorías son el techo cerrado del sistema: abrir una novena requiere entrada en <a href="#">/correcciones/</a>. Los partidos políticos se muestran siempre en <strong>gris neutro</strong> — nunca con su color de marca (regla dura).</p>
+
+          <ul class="balance-chart" aria-label="Distribución por tipo de actor">
+            <li>
+              <span class="bar-label">
+                <span class="actor-chip-dot" style="background:var(--actor-publico)"></span>
+                Institucional público
+                <small>Consell, Govern, Ayto, IBAVI</small>
+              </span>
+              <span class="bar-track"><span class="bar-fill bar-fill--publico" style="width:35%"></span></span>
+              <span class="bar-value">35% · 32</span>
+            </li>
+            <li>
+              <span class="bar-label">
+                <span class="actor-chip-dot" style="background:var(--actor-partido)"></span>
+                Partido
+                <small>PP, PSOE, Vox, Sumar, MÉS</small>
+              </span>
+              <span class="bar-track"><span class="bar-fill bar-fill--partido" style="width:20%"></span></span>
+              <span class="bar-value">20% · 18</span>
+            </li>
+            <li>
+              <span class="bar-label">
+                <span class="actor-chip-dot" style="background:var(--actor-patronal)"></span>
+                Patronal
+                <small>CAEB, PIMEEF, Fecoei</small>
+              </span>
+              <span class="bar-track"><span class="bar-fill bar-fill--patronal" style="width:15%"></span></span>
+              <span class="bar-value">15% · 14</span>
+            </li>
+            <li>
+              <span class="bar-label">
+                <span class="actor-chip-dot" style="background:var(--actor-sindicato)"></span>
+                Sindicato
+                <small>CCOO, UGT</small>
+              </span>
+              <span class="bar-track"><span class="bar-fill bar-fill--sindicato" style="width:12%"></span></span>
+              <span class="bar-value">12% · 11</span>
+            </li>
+            <li>
+              <span class="bar-label">
+                <span class="actor-chip-dot" style="background:var(--actor-tercer-sector)"></span>
+                Tercer sector
+                <small>Cáritas, Cruz Roja, GEN-GOB</small>
+              </span>
+              <span class="bar-track"><span class="bar-fill bar-fill--tercer-sector" style="width:10%"></span></span>
+              <span class="bar-value">10% · 9</span>
+            </li>
+            <li>
+              <span class="bar-label">
+                <span class="actor-chip-dot" style="background:var(--actor-academico)"></span>
+                Académico
+                <small>UIB, IBESTAT, consultoras</small>
+              </span>
+              <span class="bar-track"><span class="bar-fill bar-fill--academico" style="width:5%"></span></span>
+              <span class="bar-value">5% · 5</span>
+            </li>
+            <li>
+              <span class="bar-label">
+                <span class="actor-chip-dot" style="background:var(--actor-colectivo)"></span>
+                Colectivo ciudadano
+                <small>PAH Pitiüses, Ens Plantem</small>
+              </span>
+              <span class="bar-track"><span class="bar-fill bar-fill--colectivo" style="width:3%"></span></span>
+              <span class="bar-value">3% · 3</span>
+            </li>
+            <li>
+              <span class="bar-label">
+                <span class="actor-chip-dot" style="background:var(--actor-judicial)"></span>
+                Judicial
+                <small>TSJIB, juzgados, Fiscalía</small>
+              </span>
+              <span class="bar-track"><span class="bar-fill bar-fill--judicial" style="width:0%"></span></span>
+              <span class="bar-value">0% · 0</span>
+            </li>
+          </ul>
+        </section>
+
+        <section style="margin-top:48px">
+          <h2>Top actores citados <span class="section-kicker">8 primeros</span></h2>
+          <table class="ranking-table">
+            <caption class="sr-only">Actores con más citas en la Temporada 2026</caption>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Actor</th>
+                <th scope="col">Tipo</th>
+                <th scope="col" style="text-align:right">Citas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="rank">01</td>
+                <td><a href="actor.html">Consell d'Eivissa</a></td>
+                <td><span class="actor-chip actor-chip--publico"><span class="actor-chip-dot"></span>institucional público</span></td>
+                <td class="count">12</td>
+              </tr>
+              <tr>
+                <td class="rank">02</td>
+                <td><a href="#">Govern balear</a></td>
+                <td><span class="actor-chip actor-chip--publico"><span class="actor-chip-dot"></span>institucional público</span></td>
+                <td class="count">9</td>
+              </tr>
+              <tr>
+                <td class="rank">03</td>
+                <td><a href="#">Ayuntamiento de Ibiza</a></td>
+                <td><span class="actor-chip actor-chip--publico"><span class="actor-chip-dot"></span>institucional público</span></td>
+                <td class="count">7</td>
+              </tr>
+              <tr>
+                <td class="rank">04</td>
+                <td><a href="#">CAEB Ibiza</a></td>
+                <td><span class="actor-chip actor-chip--patronal"><span class="actor-chip-dot"></span>patronal</span></td>
+                <td class="count">6</td>
+              </tr>
+              <tr>
+                <td class="rank">05</td>
+                <td><a href="#">CCOO Illes Balears</a></td>
+                <td><span class="actor-chip actor-chip--sindicato"><span class="actor-chip-dot"></span>sindicato</span></td>
+                <td class="count">5</td>
+              </tr>
+              <tr>
+                <td class="rank">06</td>
+                <td><a href="#">Cáritas Ibiza</a></td>
+                <td><span class="actor-chip actor-chip--tercer-sector"><span class="actor-chip-dot"></span>tercer sector</span></td>
+                <td class="count">5</td>
+              </tr>
+              <tr>
+                <td class="rank">07</td>
+                <td><a href="#">UGT Illes Balears</a></td>
+                <td><span class="actor-chip actor-chip--sindicato"><span class="actor-chip-dot"></span>sindicato</span></td>
+                <td class="count">4</td>
+              </tr>
+              <tr>
+                <td class="rank">08</td>
+                <td><a href="#">PAH Pitiüses</a></td>
+                <td><span class="actor-chip actor-chip--colectivo"><span class="actor-chip-dot"></span>colectivo ciudadano</span></td>
+                <td class="count">3</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="u-muted" style="font-size:13px">Más actores en el <a href="actor.html">directorio completo</a>. Cada ficha incluye historial de declaraciones, propuestas en las que participa y descarga en JSON/CSV.</p>
+        </section>
+
+        <section style="margin-top:48px">
+          <h2>Distribución por orientación ideológica <span class="section-kicker">solo cuando aplica</span></h2>
+          <p>Cuando un actor es un partido político o un bloque ideológico identificable, lo etiquetamos explícitamente. <strong>Nunca con su color de marca.</strong> Esta tabla cubre únicamente declaraciones y propuestas en las que el actor-partido está firmando directamente (no cuando el Consell actúa como institución).</p>
+
+          <ul class="balance-chart" aria-label="Distribución ideológica">
+            <li>
+              <span class="bar-label"><span class="actor-chip-dot" style="background:var(--actor-partido)"></span>PP</span>
+              <span class="bar-track"><span class="bar-fill bar-fill--partido" style="width:45%"></span></span>
+              <span class="bar-value">45% · 8</span>
+            </li>
+            <li>
+              <span class="bar-label"><span class="actor-chip-dot" style="background:var(--actor-partido)"></span>PSOE</span>
+              <span class="bar-track"><span class="bar-fill bar-fill--partido" style="width:25%"></span></span>
+              <span class="bar-value">25% · 5</span>
+            </li>
+            <li>
+              <span class="bar-label"><span class="actor-chip-dot" style="background:var(--actor-partido)"></span>Vox</span>
+              <span class="bar-track"><span class="bar-fill bar-fill--partido" style="width:10%"></span></span>
+              <span class="bar-value">10% · 2</span>
+            </li>
+            <li>
+              <span class="bar-label"><span class="actor-chip-dot" style="background:var(--actor-partido)"></span>Sumar / MÉS</span>
+              <span class="bar-track"><span class="bar-fill bar-fill--partido" style="width:15%"></span></span>
+              <span class="bar-value">15% · 2</span>
+            </li>
+            <li>
+              <span class="bar-label"><span class="actor-chip-dot" style="background:var(--actor-partido)"></span>Otros</span>
+              <span class="bar-track"><span class="bar-fill bar-fill--partido" style="width:5%"></span></span>
+              <span class="bar-value">5% · 1</span>
+            </li>
+          </ul>
+          <p class="u-muted" style="font-size:13px">El sesgo PP→PSOE refleja la mayoría institucional actual (gobierno del Consell, Govern y Ayuntamiento de Ibiza). No indica preferencia editorial. Si detectas un actor con peso desproporcionado en esta tabla, <a href="#">escríbenos</a> o abre una corrección.</p>
+        </section>
+
+        <section style="margin-top:48px">
+          <h2>Autoevaluación del balance</h2>
+          <div class="omisiones-card">
+            <ul>
+              <li><strong>Bloque judicial sin voz</strong>: 0 citas esta temporada. TSJIB, juzgados y Fiscalía no han emitido posiciones públicas sobre vivienda. Hueco real, no sesgo. A vigilar.</li>
+              <li><strong>Colectivos ciudadanos sub-representados</strong>: solo 3%. PAH Pitiüses y otros colectivos comunican en RRSS más que en notas de prensa; el pipeline RSS los capta peor. Mitigación: el <a href="#">formulario Escríbenos</a> está abierto a aportar URLs.</li>
+              <li><strong>Coalición institucional dominante</strong>: la propuesta <a href="proposal.html">Residencias para temporeros</a> concentra 6 actores. Contabilizada como 6 citas, pero es <em>una</em> iniciativa. La auditoría trimestral corrige este doble conteo.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section style="margin-top:48px">
+          <h2>Metodología del balance</h2>
+          <p>Cada propuesta, señal y declaración pasa por <a href="metodo.html">el pipeline documentado en Método</a>. El actor queda asignado a su categoría en <code>src/classify.py</code> con la taxonomía cerrada de 8. Los recuentos de esta página se recalculan en cada build semanal. Código fuente en <a href="https://github.com/otundra/ibiza-housing-radar">GitHub</a>, licencia CC BY 4.0.</p>
+          <div class="download-block" style="margin-top:16px">
+            <a href="#">balance-temporada-2026.csv</a>
+            <span class="u-muted">·</span>
+            <a href="#">balance-temporada-2026.json</a>
+            <span class="u-muted">·</span>
+            <a href="https://github.com/otundra/ibiza-housing-radar/blob/main/src/balance.py">src/balance.py ↗</a>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="horizon-panel horizon-panel--historico">
+        <section style="margin-top:32px">
+          <h2>Histórico completo</h2>
+          <p>El observatorio documenta desde la <em>Pre-temporada 2026</em> (marzo 2026). El histórico combina 8 ediciones retroactivas (W10-W17) más todas las semanales publicadas en la <em>Temporada 2026</em>. La granularidad semanal se conserva en el CSV descargable.</p>
+          <p style="margin-top:20px" class="u-muted">Panel histórico completo en construcción — se activará al cerrar el Bloque C del ROADMAP (contenido retroactivo bajo modelo documental). Por ahora se ve solo la Temporada 2026 en curso.</p>
+          <div class="download-block" style="margin-top:16px">
+            <a href="#">balance-historico.csv</a>
+            <span class="u-muted">·</span>
+            <a href="#">balance-historico.json</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <aside class="chrome-ops" aria-label="Estado operativo del observatorio">
+    <div class="chrome-ops-inner">
+      <h2>Estado operativo</h2>
+      <ul>
+        <li><span class="ops-label">Edición actual</span> <span class="ops-val">20-26 abril 2026</span></li>
+        <li><span class="ops-label">Propuestas documentadas</span> <span class="ops-val">23</span></li>
+        <li><span class="ops-label">Actores seguidos</span> <span class="ops-val">18</span></li>
+        <li><span class="ops-label">Coste API mes</span> <span class="ops-val status-amber">6,22 € / 12 €</span></li>
+        <li><span class="ops-label">Última publicación</span> <span class="ops-val">hace 1 día</span></li>
+        <li><span class="ops-label">Pipeline</span> <span class="ops-val status-ok">OK</span></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="site-footer-std">
+    <p>© 2026 Radar Vivienda Ibiza (provisional) · CC BY 4.0 · Observatorio documental.</p>
+    <nav aria-label="Enlaces del pie">
+      <a href="metodo.html">Método</a>
+      <a href="#">Política editorial</a>
+      <a href="#">Correcciones</a>
+      <a href="balance.html">Balance de actores</a>
+      <a href="#">Cítanos</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="fab-escribenos" aria-label="Contacto">
+  <button type="button" id="fab-toggle" class="fab-escribenos-btn" aria-expanded="false" aria-controls="fab-panel">
+    <span class="ico" aria-hidden="true">))</span>
+    Escríbenos
+  </button>
+  <div class="fab-panel" id="fab-panel" role="dialog" aria-label="Formulario de contacto">
+    <button type="button" id="fab-close" class="fab-close" aria-label="Cerrar">×</button>
+    <h2>Escríbenos</h2>
+    <p>Recibimos correcciones, datos nuevos, pistas, testimonios, dudas, críticas y colaboraciones.</p>
+    <form action="https://formspree.io/f/placeholder" method="POST" novalidate>
+      <div>
+        <label for="msg">Tu mensaje</label>
+        <textarea id="msg" name="message" required placeholder="Cuéntanos lo que quieras compartir…"></textarea>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <label for="nombre">Nombre (opcional)</label>
+          <input id="nombre" name="name" type="text" autocomplete="name">
+        </div>
+        <div>
+          <label for="email">Email (opcional)</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+        </div>
+      </div>
+      <p class="fab-nota">Si aportas un dato, adjunta URL a fuente primaria. Sin fuente verificable no lo incorporamos, pero lo leemos igual.</p>
+      <input type="hidden" name="page_url" value="">
+      <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<script src="theme.js" defer></script>
+</body>
+</html>
