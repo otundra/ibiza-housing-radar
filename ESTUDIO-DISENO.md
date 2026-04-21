@@ -11,7 +11,7 @@
 
 > 🎯 **Dirección visual confirmada:** **"mono + seams"** — peso tipográfico mono (JetBrains Mono) en más elementos editoriales + separadores tipo costura (dashed, líneas finas). Iconografía: Unicode puro, no emoji coloreado.
 >
-> 🚫 **Logo gráfico descartado.** Las 3 direcciones SVG (punto + arcos) quedaron desechadas 2026-04-21. La identidad se resuelve **enteramente con tipografía**. Sin monograma separable. Ver `prototype/logo/preview.html` con 4 variantes tipográficas.
+> 🚫 **Logo gráfico descartado.** Las 3 direcciones SVG (punto + arcos) quedaron desechadas 2026-04-21. La identidad se resuelve **enteramente con tipografía**. Sin monograma separable. Ver `docs/prototype/logo/preview.html` con 4 variantes tipográficas.
 
 ---
 
@@ -125,7 +125,7 @@ Destilados del benchmark + 5 reglas duras del pivote. Si un componente nuevo no 
 
 Todo en `JetBrains Mono`, minúsculas, `letter-spacing: -0.01em`. Los dos `))` evocan ondas de radar. El underscore separa *topic_location* como un módulo técnico, preparando un futuro ecosistema (`radar))turismo_ibiza`, `radar))medioambiente_ibiza`, `radar))vivienda_formentera`, etc.).
 
-**Cuatro variantes tipográficas** (ver renderizadas en `prototype/logo/preview.html`):
+**Cuatro variantes tipográficas** (ver renderizadas en `docs/prototype/logo/preview.html`):
 
 | Variante | Tratamiento | Uso probable |
 |---|---|---|
@@ -167,7 +167,7 @@ Consecuencias:
 
 El favicon es el glifo `))` del wordmark V2 Split aislado: dos arcos terracota sobre fondo transparente. Máxima coherencia — el mismo elemento cromático que funciona en el wordmark funciona en solitario como firma visual en pestañas, avatares de RRSS y bookmarks.
 
-**SVG vectorial** (no depende de carga de fuente, en `prototype/logo/favicon.svg`):
+**SVG vectorial** (no depende de carga de fuente, en `docs/prototype/logo/favicon.svg`):
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="radar))vivienda_ibiza">
@@ -699,7 +699,7 @@ Construir en este orden, cada paso valida antes de continuar. **No saltarse paso
 
 > **Estado:** entregado, verificado y pausado a petición del editor antes de pasar al Paso 2. Ver [`DIARIO.md` entrada 2026-04-21 (tarde · pausa)](DIARIO.md) y memoria [`prototipo_paso1_en_pausa.md`](../../.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/prototipo_paso1_en_pausa.md).
 >
-> **Qué está en `prototype/`:** `styles.css` (tokens §5 + 9 componentes §6), `theme.js` (toggle + fab + scroll-spy), `home.html`, `edition.html`, `actor.html`, `proposal.html`. Datos reales de la edición del 20-26 abril 2026.
+> **Qué está en `docs/prototype/`:** `styles.css` (tokens §5 + 9 componentes §6), `theme.js` (toggle + fab + scroll-spy), `home.html`, `edition.html`, `actor.html`, `proposal.html`. Datos reales de la edición del 20-26 abril 2026.
 >
 > **Preguntas abiertas al editor** (retomar antes de Paso 2): (1) lectura del wordmark V2 Split en cabecera real, (2) apilado de 6 chips coalición en mobile, (3) barra progreso — mostrar siempre los 8 estados o solo los aplicables.
 >
@@ -709,11 +709,11 @@ Construir en este orden, cada paso valida antes de continuar. **No saltarse paso
 
 **Entregables:**
 
-- `prototype/home.html` — home dual con dashboard editorial poblado con datos de W17 reales.
-- `prototype/edition.html` — página de edición con 7 secciones, tags, margin notes.
-- `prototype/actor.html` — ficha de actor con sidebar sticky.
-- `prototype/proposal.html` — ficha de propuesta con pill de estado y barra de progreso.
-- `prototype/styles.css` — CSS consolidado con todos los tokens.
+- `docs/prototype/home.html` — home dual con dashboard editorial poblado con datos de W17 reales.
+- `docs/prototype/edition.html` — página de edición con 7 secciones, tags, margin notes.
+- `docs/prototype/actor.html` — ficha de actor con sidebar sticky.
+- `docs/prototype/proposal.html` — ficha de propuesta con pill de estado y barra de progreso.
+- `docs/prototype/styles.css` — CSS consolidado con todos los tokens.
 
 **Datos:** usar W17 real (tras generar la edición con el pipeline nuevo). Si no está lista, datos ficticios pero realistas.
 
@@ -795,12 +795,12 @@ Sirve al editor y a cualquier futuro colaborador. No es público pero es indexab
 
 ## 11. Decisiones cerradas por el editor (2026-04-21)
 
-**Las 13 decisiones del estudio resueltas. D2 (logo) diferida hasta que el editor revise [`prototype/logo/preview.html`](prototype/logo/preview.html) con las 3 direcciones SVG.**
+**Las 13 decisiones del estudio resueltas. D2 (logo) diferida hasta que el editor revise [`docs/prototype/logo/preview.html`](docs/prototype/logo/preview.html) con las 3 direcciones SVG.**
 
 | # | Tema | Elección final | Nota |
 |---|---|---|---|
 | D1 | Wordmark | **V2 Split** — `radar))vivienda_ibiza` en JetBrains Mono, con `))` en terracota y resto en tinta | Decidido 2026-04-21 |
-| D2 | Logo · dirección | **Descartado logo gráfico + favicon `))` vectorial** — identidad 100% tipográfica. Favicon heredado del `))` del wordmark | `prototype/logo/favicon.svg` |
+| D2 | Logo · dirección | **Descartado logo gráfico + favicon `))` vectorial** — identidad 100% tipográfica. Favicon heredado del `))` del wordmark | `docs/prototype/logo/favicon.svg` |
 | D3 | Chrome operacional · datos | **A · 6 datos** (edición, propuestas, actores, coste API mes, última publicación, pipeline) | |
 | D4 | Chrome operacional · colocación | **A · pie de cada página** (encima del footer estándar) | |
 | D5 | Paleta por tipo de actor | **A · 8 categorías con candado** | Taxonomía cerrada, casos fronterizos se asimilan |
@@ -967,7 +967,7 @@ Explicitado para **no** hacer en Fase 0:
 Al completar el Bloque B del Roadmap, estas casillas deben estar marcadas:
 
 - [ ] D1–D12 decididas por el editor.
-- [ ] `prototype/` HTML estático validado.
+- [ ] `docs/prototype/` HTML estático validado.
 - [ ] Logo SVG final + favicon renovado.
 - [ ] Paleta extendida implementada en `main.css`.
 - [ ] Escala tipográfica implementada con tokens `--fs-*`, `--lh-*`.

@@ -4,7 +4,7 @@
 
 > **El editor pide parar el tema diseño/frontend para estudiar primero la arquitectura.** Nada que retocar del prototipo hasta nueva orden.
 >
-> **Qué está entregado:** Paso 1 del plan de prototipo (B34 del ROADMAP, §10 del estudio). 4 HTMLs estáticos en [`prototype/`](prototype/) + CSS + JS vanilla, datos reales de la edición del 20-26 abril 2026. Verificado en navegador, consola limpia, toggle tema persiste, a11y spot-checks OK. **B34 en revisión, no cerrado** — falta visto bueno visual y responder 3 preguntas abiertas.
+> **Qué está entregado:** Paso 1 del plan de prototipo (B34 del ROADMAP, §10 del estudio). 4 HTMLs estáticos en [`docs/prototype/`](docs/prototype/) + CSS + JS vanilla, datos reales de la edición del 20-26 abril 2026. Verificado en navegador, consola limpia, toggle tema persiste, a11y spot-checks OK. **B34 en revisión, no cerrado** — falta visto bueno visual y responder 3 preguntas abiertas.
 >
 > **Qué queda por revisar cuando se retome:** (1) lectura del wordmark V2 Split en cabecera real; (2) apilado de 6 chips de coalición en mobile; (3) si la barra de progreso muestra siempre los 8 estados o solo los aplicables.
 >
@@ -20,7 +20,7 @@
 
 > Entregable: [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) (14 secciones, ~700 líneas, benchmark con 13 referentes, 9 componentes especificados, plan de prototipo en 6 pasos).
 >
-> **13 decisiones (D1-D13) cerradas.** D1 cerrada con **V2 Split** (2026-04-21): `radar))vivienda_ibiza` en JetBrains Mono con `))` en terracota y resto en tinta. D2 resuelta con **favicon `))` vectorial** ([`prototype/logo/favicon.svg`](prototype/logo/favicon.svg)) — identidad 100% tipográfica. Preview vivo en [`prototype/logo/preview.html`](prototype/logo/preview.html).
+> **13 decisiones (D1-D13) cerradas.** D1 cerrada con **V2 Split** (2026-04-21): `radar))vivienda_ibiza` en JetBrains Mono con `))` en terracota y resto en tinta. D2 resuelta con **favicon `))` vectorial** ([`docs/prototype/logo/favicon.svg`](docs/prototype/logo/favicon.svg)) — identidad 100% tipográfica. Preview vivo en [`docs/prototype/logo/preview.html`](docs/prototype/logo/preview.html).
 >
 > Dirección visual apuntada: **"mono + seams"** — mono tipográfico en más elementos + separadores tipo costura + iconografía Unicode (no emoji). Por formalizar al construir el prototipo HTML estático (Paso 1).
 >
