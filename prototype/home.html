@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>radar))vivienda_ibiza — Observatorio documental</title>
+  <meta name="description" content="Observatorio documental semanal de la crisis de vivienda en Ibiza. Cada lunes mapeamos las propuestas de actores con nombre y fuente verificable.">
+  <meta name="robots" content="noindex,nofollow"><!-- prototipo, no indexar -->
+
+  <link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    // Paint inicial del tema antes de pintar body — evita FOUC.
+    (function () {
+      try {
+        var t = localStorage.getItem('rvi-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="home.html" class="wm" aria-label="Radar Vivienda Ibiza">
+      <span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span>
+    </a>
+    <nav class="site-nav" aria-label="Principal">
+      <a href="home.html" aria-current="page">Portada</a>
+      <a href="edition.html">Ediciones</a>
+      <a href="proposal.html">Propuestas</a>
+      <a href="actor.html">Actores</a>
+      <a href="#">Balance</a>
+      <a href="#">Método</a>
+    </nav>
+    <div class="theme-toggle" role="group" aria-label="Tema claro u oscuro">
+      <button type="button" data-theme-set="light" aria-label="Modo claro" title="Modo claro">○</button>
+      <button type="button" data-theme-set="dark"  aria-label="Modo oscuro" title="Modo oscuro">●</button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido" class="page">
+
+  <section class="hero">
+    <span class="edition-id edition-id--kicker">Edición · 20-26 abril 2026 · Temporada 2026</span>
+    <h1>Desmantelamiento de sa Joveria a las puertas de la temporada y respaldo a residencias para temporeros</h1>
+    <p class="lede">Consell, patronales y sindicatos respaldan la creación de residencias para trabajadores de temporada mientras se ejecutan los desalojos de asentamientos con unos 200 trabajadores afectados <em>(estimación periodística)</em>.</p>
+
+    <ul class="hero-metrics" aria-label="Métricas de la edición">
+      <li><strong>23</strong> propuestas documentadas</li>
+      <li><strong>18</strong> actores seguidos</li>
+      <li><strong>6</strong> palancas activas</li>
+      <li><strong>2</strong> omisiones registradas</li>
+    </ul>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="edition.html">Leer edición completa →</a>
+      <a class="btn" href="#">Suscribir por RSS</a>
+    </div>
+  </section>
+
+  <section class="dash-grid" aria-label="Propuestas y alertas de la semana">
+
+    <div class="dash-section dash-propuestas-section">
+      <h2>Propuestas en circulación <span class="count">3 destacadas</span></h2>
+      <div class="dash-propuestas">
+
+        <article class="card-propuesta">
+          <header class="card-propuesta-head">
+            <span class="card-propuesta-id">P-2026-017</span>
+            <span class="state-pill state-pill--en-debate">en debate</span>
+          </header>
+          <h3><a href="proposal.html">Residencias para trabajadores de temporada en Ibiza</a></h3>
+          <p class="card-propuesta-resumen">Consell, patronales y sindicatos respaldan crear residencias para temporeros. Titularidad, ubicación y financiación aún sin concretar.</p>
+          <dl class="card-propuesta-meta">
+            <dt>Actor</dt>
+            <dd><span class="actor-chip actor-chip--publico"><span class="actor-chip-dot"></span>Consell d'Eivissa</span></dd>
+            <dt>Horizonte</dt>
+            <dd>corto plazo</dd>
+            <dt>Viabilidad</dt>
+            <dd>no evaluada</dd>
+          </dl>
+          <footer class="card-propuesta-footer">
+            <a class="card-propuesta-source" href="https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/">La Voz de Ibiza ↗</a>
+            <a href="proposal.html">Ver ficha →</a>
+          </footer>
+        </article>
+
+        <article class="card-propuesta">
+          <header class="card-propuesta-head">
+            <span class="card-propuesta-id">P-2026-018</span>
+            <span class="state-pill state-pill--propuesta">propuesta</span>
+          </header>
+          <h3><a href="#">Campaña de denuncia y sanción contra abusos en el alquiler</a></h3>
+          <p class="card-propuesta-resumen">Marí (Govern balear) anima a las víctimas de abusos en los alquileres a denunciar para permitir sancionar a quienes especulan. Aún sin medida formal concreta.</p>
+          <dl class="card-propuesta-meta">
+            <dt>Actor</dt>
+            <dd><span class="actor-chip actor-chip--publico"><span class="actor-chip-dot"></span>Govern balear</span></dd>
+            <dt>Horizonte</dt>
+            <dd>inmediato</dd>
+            <dt>Viabilidad</dt>
+            <dd>no evaluada</dd>
+          </dl>
+          <footer class="card-propuesta-footer">
+            <a class="card-propuesta-source" href="https://cadenaser.com/baleares/2026/04/19/mari-anima-a-las-victimas-de-abusos-en-los-alquileres-en-ibiza-a-denunciar-para-multar-a-los-que-especulan-con-un-sofa-radio-ibiza/">Cadena SER ↗</a>
+            <a href="#">Ver ficha →</a>
+          </footer>
+        </article>
+
+        <article class="card-propuesta">
+          <header class="card-propuesta-head">
+            <span class="card-propuesta-id">
+              P-2026-015
+              <span class="badge-rescate">rescate W15</span>
+            </span>
+            <span class="state-pill state-pill--registrada">registrada</span>
+          </header>
+          <h3><a href="#">Vigilancia permanente y preventiva contra nuevos asentamientos</a></h3>
+          <p class="card-propuesta-resumen">El Ayuntamiento de Ibiza mantiene vigilancia tras los desalojos. Dispositivo conjunto Policía Local y Nacional.</p>
+          <dl class="card-propuesta-meta">
+            <dt>Actor</dt>
+            <dd><span class="actor-chip actor-chip--publico"><span class="actor-chip-dot"></span>Ayuntamiento de Ibiza</span></dd>
+            <dt>Horizonte</dt>
+            <dd>inmediato</dd>
+            <dt>Viabilidad</dt>
+            <dd>en ejecución</dd>
+          </dl>
+          <footer class="card-propuesta-footer">
+            <a class="card-propuesta-source" href="https://www.diariodeibiza.es/ibiza/2026/04/11/ibiza-mantiene-vigilancia-permanente-preventiva-128963940.html">Diario de Ibiza ↗</a>
+            <a href="#">Ver ficha →</a>
+          </footer>
+        </article>
+
+      </div>
+    </div>
+
+    <aside class="dash-section dash-vigilar" aria-label="A vigilar la semana que viene">
+      <h2>A vigilar <span class="count">5 hilos abiertos</span></h2>
+      <ol>
+        <li>Ejecución efectiva del desmantelamiento de sa Joveria y destino de los trabajadores desalojados.</li>
+        <li>Posible actuación sobre el asentamiento de Can Misses, citado por Cáritas.</li>
+        <li>Concreción (titularidad, ubicación, financiación) de las residencias para temporeros.</li>
+        <li>Formalización o no de la vía sancionadora anunciada por Marí contra abusos en el alquiler.</li>
+        <li>Resolución del sorteo de las siete viviendas protegidas con alquileres entre 200 y 460 €.</li>
+      </ol>
+    </aside>
+
+  </section>
+
+  <section class="dash-section dash-senales" aria-label="Señales detectadas esta semana">
+    <h2>Señales detectadas <span class="count">9 esta semana</span></h2>
+    <ul>
+      <li>Desmantelamiento inminente del asentamiento de sa Joveria, descrito como el mayor de Ibiza, con dispositivo conjunto de Policía Local y Policía Nacional. <a class="source-mark" href="https://www.diariodeibiza.es/ibiza/2026/04/20/sa-joveria-asentamiento-chabolas-ibiza-129308028.html">[Diario de Ibiza]</a></li>
+      <li>EL PAÍS cifra en unos 200 trabajadores <em>(estimación periodística)</em> los afectados por los desalojos previstos a las puertas de la temporada. <a class="source-mark" href="https://elpais.com/espana/2026-04-19/ibiza-desalojara-a-200-trabajadores-de-sus-asentamientos-a-las-puertas-de-la-temporada.html">[EL PAÍS]</a></li>
+      <li>Trabajadores de sa Joveria: «Somos trabajadores pero si no tenemos dónde dormir nos iremos de Ibiza». <a class="source-mark" href="https://www.noudiari.es/local-ibiza/desalojo-de-sa-joveria-somos-trabajadores-pero-si-no-tenemos-donde-dormir-nos-iremos-de-ibiza/">[Noudiari]</a></li>
+      <li>Ayuntamiento de Ibiza anuncia vigilancia «permanente y preventiva» tras los desalojos <em>(carry-over sem. 15)</em>. <a class="source-mark" href="https://www.diariodeibiza.es/ibiza/2026/04/11/ibiza-mantiene-vigilancia-permanente-preventiva-128963940.html">[Diario de Ibiza]</a></li>
+      <li>Cáritas Ibiza expresa preocupación por el desalojo de los asentamientos de sa Joveria y Can Misses <em>(carry-over sem. 15)</em>. <a class="source-mark" href="https://www.diariodeibiza.es/ibiza/2026/04/11/preocupacion-caritas-ibiza-desalojo-asentamientos-128948679.html">[Diario de Ibiza]</a></li>
+      <li>Catalina Barceló (Govern) señala que la vivienda es «el principal reto económico de las Pitiusas». <a class="source-mark" href="https://www.diariodeibiza.es/ibiza/2026/04/19/catalina-barcelo-directora-general-economia-129261459.html">[Diario de Ibiza]</a></li>
+      <li>Sorteo de siete viviendas protegidas en Ibiza <em>(dato oficial)</em> con alquileres entre 200 y 460 € mensuales. <a class="source-mark" href="https://www.diariodeibiza.es/ibiza/2026/04/16/siete-viviendas-protegidas-ibiza-alquiler-129182651.html">[Diario de Ibiza]</a></li>
+      <li>Informe sectorial advierte de «escalada de precios preocupante» y «presión única» en el alquiler en Baleares. <a class="source-mark" href="https://www.periodicodeibiza.es/noticias/baleares/2026/04/14/2608769/vivienda-alquiler-advierten-baleares-continua-escalada-precios-preocupante-sufre-presion-unica.html">[Periódico de Ibiza]</a></li>
+      <li>Un residente sancionado por aparcar su caravana como vivienda declara que no abandonará la isla. <a class="source-mark" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/13/2608013/sancionado-por-aparcar-caravana-via-publica-voy-isla-nacido.html">[Periódico de Ibiza]</a></li>
+    </ul>
+  </section>
+
+  <section class="dash-section dash-archive" aria-label="Ediciones recientes">
+    <h2>Ediciones recientes</h2>
+    <ul>
+      <li>
+        <a href="edition.html">
+          <span class="edition-id edition-id--kicker">20-26 abril 2026</span>
+          <h3>Desmantelamiento de sa Joveria y respaldo a residencias</h3>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="edition-id edition-id--kicker">13-19 abril 2026</span>
+          <h3>Patronales y sindicatos piden residencias. Vigilancia preventiva</h3>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="edition-id edition-id--kicker">6-12 abril 2026</span>
+          <h3>Viviendas eventuales, coliving y sorteo de 7 VPO</h3>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="edition-id edition-id--kicker">30 marzo-5 abril 2026</span>
+          <h3>Apertura de la pre-temporada: primeros avisos institucionales</h3>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <aside class="chrome-ops" aria-label="Estado operativo del observatorio">
+    <div class="chrome-ops-inner">
+      <h2>Estado operativo</h2>
+      <ul>
+        <li><span class="ops-label">Edición actual</span> <span class="ops-val">20-26 abril 2026</span></li>
+        <li><span class="ops-label">Propuestas documentadas</span> <span class="ops-val">23</span></li>
+        <li><span class="ops-label">Actores seguidos</span> <span class="ops-val">18</span></li>
+        <li><span class="ops-label">Coste API mes</span> <span class="ops-val status-amber">6,22 € / 12 €</span></li>
+        <li><span class="ops-label">Última publicación</span> <span class="ops-val">hace 1 día</span></li>
+        <li><span class="ops-label">Pipeline</span> <span class="ops-val status-ok">OK</span></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="site-footer-std">
+    <p>© 2026 Radar Vivienda Ibiza (provisional) · CC BY 4.0 · Observatorio documental.</p>
+    <nav aria-label="Enlaces del pie">
+      <a href="#">Método</a>
+      <a href="#">Política editorial</a>
+      <a href="#">Correcciones</a>
+      <a href="#">Balance de actores</a>
+      <a href="#">Cítanos</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="fab-escribenos" aria-label="Contacto">
+  <button type="button" id="fab-toggle" class="fab-escribenos-btn" aria-expanded="false" aria-controls="fab-panel">
+    <span class="ico" aria-hidden="true">))</span>
+    Escríbenos
+  </button>
+  <div class="fab-panel" id="fab-panel" role="dialog" aria-label="Formulario de contacto">
+    <button type="button" id="fab-close" class="fab-close" aria-label="Cerrar">×</button>
+    <h2>Escríbenos</h2>
+    <p>Recibimos correcciones, datos nuevos, pistas, testimonios, dudas, críticas y colaboraciones.</p>
+    <form action="https://formspree.io/f/placeholder" method="POST" novalidate>
+      <div>
+        <label for="msg">Tu mensaje</label>
+        <textarea id="msg" name="message" required placeholder="Cuéntanos lo que quieras compartir…"></textarea>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <label for="nombre">Nombre (opcional)</label>
+          <input id="nombre" name="name" type="text" autocomplete="name">
+        </div>
+        <div>
+          <label for="email">Email (opcional)</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+        </div>
+      </div>
+      <p class="fab-nota">Si aportas un dato, adjunta URL a fuente primaria. Sin fuente verificable no lo incorporamos, pero lo leemos igual.</p>
+      <input type="hidden" name="page_url" value="">
+      <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<script src="theme.js" defer></script>
+</body>
+</html>

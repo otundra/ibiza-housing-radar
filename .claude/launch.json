@@ -9,6 +9,16 @@
         "PATH=/Users/raulserrano/.gem/ruby/2.7.0/bin:$PATH GEM_PATH=/Users/raulserrano/.gem/ruby/2.7.0 jekyll serve --source docs --destination docs/_site --port 4000 --baseurl '' --host 127.0.0.1"
       ],
       "port": 4000
+    },
+    {
+      "name": "prototype",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
+      "runtimeArgs": [
+        "-I",
+        "-c",
+        "from http.server import HTTPServer, SimpleHTTPRequestHandler;import functools;HTTPServer(('127.0.0.1',4100),functools.partial(SimpleHTTPRequestHandler,directory='/Users/raulserrano/Documents/GitHub/ibiza-housing-radar/prototype')).serve_forever()"
+      ],
+      "port": 4100
     }
   ]
 }
