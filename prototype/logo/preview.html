@@ -171,7 +171,18 @@
 <header>
   <h1>radar))vivienda_ibiza — preview tipográfico</h1>
   <p>Wordmark sin monograma gráfico. Todo tipografía monospace (<code>JetBrains Mono</code>). Las dos <code>))</code> funcionan como señal de radar visual. Los underscores (<code>_</code>) separan topic + location como si fuera un módulo técnico, preparando el ecosistema futuro (<code>radar))turismo_ibiza</code>, <code>radar))medioambiente_ibiza</code>, etc.).</p>
+  <p style="margin-top: 14px; font-size: 14px; color: var(--ink-muted);"><strong>Decidido 2026-04-21:</strong> variante <strong>V2 Split</strong> + favicon <code>))</code> como glifo puro.</p>
 </header>
+
+<!-- Favicon SVG embebido como symbol reutilizable -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+  <defs>
+    <symbol id="favicon-glyph" viewBox="0 0 24 24">
+      <path d="M 7 5 Q 11 12 7 19" fill="none" stroke="#c14a2d" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M 14 5 Q 18 12 14 19" fill="none" stroke="#c14a2d" stroke-width="2.4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
 
 <div class="legend">
   <strong>Qué ves abajo:</strong>
@@ -250,12 +261,30 @@
   </div>
 </section>
 
-<h2>En contexto · pestaña del navegador (sin logo gráfico)</h2>
+<h2>Favicon elegido · <code>))</code> como glifo puro vectorial</h2>
 
 <section>
-  <div class="tab-sim"><span class="wm v-split">radar<span class="waves">))</span>vivienda_ibiza</span> — Observatorio</div>
-  <div class="tab-sim"><span class="wm v-tri">radar<span class="waves">))</span><span class="topic">vivienda_ibiza</span></span> — Observatorio</div>
-  <p style="font-size: 13px; color: var(--ink-muted); margin: 14px 0 0;">Sin logo gráfico, el favicon podría ser simplemente las dos <code>))</code> en terracota como glifo puro, o una combinación simple de 2-3 caracteres. Pendiente de decidir en Paso 1 del prototipo.</p>
+  <h3>Muestra a tamaños reales (SVG path, sin depender de fuente)</h3>
+  <div class="row"><span class="lbl">16 px · favicon</span><svg width="16" height="16"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">24 px</span><svg width="24" height="24"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">32 px · tab retina</span><svg width="32" height="32"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">64 px</span><svg width="64" height="64"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">128 px · avatar RRSS</span><svg width="128" height="128"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">192 px · android</span><svg width="192" height="192"><use href="#favicon-glyph"/></svg></div>
+</section>
+
+<section class="dark">
+  <h3>Favicon sobre fondo oscuro</h3>
+  <div class="row"><span class="lbl">16 px</span><svg width="16" height="16"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">64 px</span><svg width="64" height="64"><use href="#favicon-glyph"/></svg></div>
+  <p style="font-size: 13px; color: #9b8f80; margin: 14px 0 0;">El mismo color terracota <code>#c14a2d</code> aguanta sobre fondo ink. En modo oscuro del sistema, el navegador renderiza el favicon sin fondo (transparente por defecto).</p>
+</section>
+
+<h2>En contexto · pestaña del navegador con favicon real</h2>
+
+<section>
+  <div class="tab-sim"><svg width="16" height="16" style="flex-shrink:0"><use href="#favicon-glyph"/></svg><span class="wm v-split">radar<span class="waves">))</span>vivienda_ibiza</span> — Observatorio</div>
+  <p style="font-size: 13px; color: var(--ink-muted); margin: 14px 0 0;">El <code>))</code> del favicon refuerza el mismo <code>))</code> del wordmark. Máxima coherencia cromática: único elemento terracota visible en toda la cabecera.</p>
 </section>
 
 <h2>En contexto · OG image (600×315 escalada)</h2>

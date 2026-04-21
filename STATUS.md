@@ -8,7 +8,7 @@
 
 > Entregable: [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) (14 secciones, ~700 líneas, benchmark con 13 referentes, 9 componentes especificados, plan de prototipo en 6 pasos).
 >
-> **13 decisiones (D1-D13) cerradas.** D2 (logo) resuelta con **wordmark tipográfico** — sin logo gráfico. Preview vivo con 4 variantes tipográficas en [`prototype/logo/preview.html`](prototype/logo/preview.html) (V1 mono plano · V2 split · V3 tri · V4 underline). Pendiente elección de variante.
+> **13 decisiones (D1-D13) cerradas.** D1 cerrada con **V2 Split** (2026-04-21): `radar))vivienda_ibiza` en JetBrains Mono con `))` en terracota y resto en tinta. D2 resuelta con **favicon `))` vectorial** ([`prototype/logo/favicon.svg`](prototype/logo/favicon.svg)) — identidad 100% tipográfica. Preview vivo en [`prototype/logo/preview.html`](prototype/logo/preview.html).
 >
 > Dirección visual apuntada: **"mono + seams"** — mono tipográfico en más elementos + separadores tipo costura + iconografía Unicode (no emoji). Por formalizar al construir el prototipo HTML estático (Paso 1).
 >

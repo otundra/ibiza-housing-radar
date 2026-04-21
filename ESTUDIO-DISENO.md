@@ -163,23 +163,30 @@ Consecuencias:
 
 **Ventaja colateral**: refuerza la dirección "mono + seams". Nada de decoración gráfica; todo peso y letra.
 
-### 4.3 Favicon — tipográfico
+### 4.3 Favicon — `))` como glifo puro (decidido 2026-04-21)
 
-Dado que no hay logo gráfico, el favicon se construye con tipografía:
+El favicon es el glifo `))` del wordmark V2 Split aislado: dos arcos terracota sobre fondo transparente. Máxima coherencia — el mismo elemento cromático que funciona en el wordmark funciona en solitario como firma visual en pestañas, avatares de RRSS y bookmarks.
 
-**Opciones a probar en Paso 1 del prototipo:**
+**SVG vectorial** (no depende de carga de fuente, en `prototype/logo/favicon.svg`):
 
-1. **`))` en terracota** sobre fondo crema/transparente. El glifo puro de "ondas radar". Mejor si se dibuja vectorialmente como path SVG para control fino.
-2. **`r))`** — primera letra + onda. Más específico de Radar.
-3. **`rvi`** — iniciales del nombre provisional, JetBrains Mono semibold, terracota.
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="radar))vivienda_ibiza">
+  <path d="M 7 5 Q 11 12 7 19" fill="none" stroke="#c14a2d" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M 14 5 Q 18 12 14 19" fill="none" stroke="#c14a2d" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
+```
 
-Se probarán las tres en el prototipo y se elige. Formatos finales:
+Dos paths Bezier cuadráticos, stroke-linecap round para suavidad. Escala limpio de 16 px a 512 px sin pérdida.
 
-- `favicon.svg` (SVG tipográfico con path vectorial — no depende de carga de fuente).
-- `favicon-32.png` (32×32 generado desde el SVG).
+**Formatos a generar** (todos derivados del SVG):
+
+- `favicon.svg` — principal.
+- `favicon-32.png` (32×32, navegadores legacy).
 - `favicon-192.png` (192×192, Android).
-- `apple-touch-icon.png` (180×180).
-- `og-fallback.png` (1200×630, para casos sin OG específico — wordmark grande centrado).
+- `apple-touch-icon.png` (180×180, iOS).
+- `og-fallback.png` (1200×630, OG sin edición específica — wordmark grande centrado + glifo `))` como filigrana).
+
+**Justificación cromática:** el favicon hereda el color terracota (`#c14a2d`) que es el único acento del sistema. Se renderiza igual en tema claro del sistema operativo (fondo transparente → crema del navegador) y en tema oscuro (fondo transparente → ink). No hay variante cromática; el terracota aguanta ambos.
 
 ### 4.4 Iconografía
 
@@ -784,8 +791,8 @@ Sirve al editor y a cualquier futuro colaborador. No es público pero es indexab
 
 | # | Tema | Elección final | Nota |
 |---|---|---|---|
-| D1 | Wordmark | **Tipográfico puro** — `radar))vivienda_ibiza` en JetBrains Mono | 4 variantes tipográficas por probar (V1-V4). Sin monograma separable |
-| D2 | Logo · dirección | **Descartado logo gráfico** — identidad 100% tipográfica | Las 3 direcciones SVG iniciales quedaron desechadas 2026-04-21 |
+| D1 | Wordmark | **V2 Split** — `radar))vivienda_ibiza` en JetBrains Mono, con `))` en terracota y resto en tinta | Decidido 2026-04-21 |
+| D2 | Logo · dirección | **Descartado logo gráfico + favicon `))` vectorial** — identidad 100% tipográfica. Favicon heredado del `))` del wordmark | `prototype/logo/favicon.svg` |
 | D3 | Chrome operacional · datos | **A · 6 datos** (edición, propuestas, actores, coste API mes, última publicación, pipeline) | |
 | D4 | Chrome operacional · colocación | **A · pie de cada página** (encima del footer estándar) | |
 | D5 | Paleta por tipo de actor | **A · 8 categorías con candado** | Taxonomía cerrada, casos fronterizos se asimilan |

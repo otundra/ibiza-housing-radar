@@ -12,6 +12,15 @@ Reglas:
 
 ---
 
+## 2026-04-21 (cierre identidad) — Variante V2 Split elegida + favicon `))` vectorial
+
+- **D1 cerrado con V2 Split:** wordmark `radar))vivienda_ibiza` en JetBrains Mono con las `))` en terracota (`#c14a2d`) como único acento cromático, resto en tinta. La variante más sobria con economía radical de color: un solo elemento colorado, el resto monocromo.
+- **D2 cerrado con favicon `))` vectorial** (glifo puro). Las dos `))` del wordmark aisladas como favicon — máxima coherencia: el elemento cromático del wordmark es la firma en pestañas y avatares. Archivo [`prototype/logo/favicon.svg`](prototype/logo/favicon.svg), dos paths Bezier cuadráticos, stroke-linecap round, stroke-width 2.4, color terracota. Escala limpio de 16 px a 512 px sin pérdida. No depende de carga de fuente.
+- **Paquete completo de marca resuelto:** nombre + wordmark + favicon forman sistema tipográfico homogéneo sin necesidad de logo gráfico. Coherente con dirección "mono + seams".
+- **Formatos pendientes de generar** (derivables del SVG en Paso 1 del prototipo): favicon-32.png, favicon-192.png (Android), apple-touch-icon.png (180×180 iOS), og-fallback.png (1200×630).
+
+---
+
 ## 2026-04-21 (tarde) — Ajuste de nombre provisional y logo tipográfico
 
 - **Nombre provisional actualizado:** "Radar Ibiza" pasa a "**Radar Vivienda Ibiza**" (provisional). Formato: minúsculas, descriptivo, deja la palabra "vivienda" explícita por claridad y SEO; marca explícitamente como provisional para reevaluar antes del relanzamiento. Dominio candidato `radaribiza.com` se mantiene de momento.
