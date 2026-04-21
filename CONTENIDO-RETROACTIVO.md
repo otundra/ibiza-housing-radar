@@ -1,8 +1,29 @@
-# Contenido retroactivo — 8 ediciones de marzo y abril 2026
+# Contenido retroactivo — 12 ediciones de febrero a abril 2026
 
-**Fecha del plan:** 2026-04-20
-**Origen:** [PIVOTE.md](PIVOTE.md), [ROADMAP.md](ROADMAP.md) bloque C, decisión del editor 2026-04-20.
-**Alcance:** producir 8 ediciones coherentes que cubran los últimos 2 meses (semanas ISO 10-17 de 2026) bajo el modelo documental nuevo. Relanzamiento con 2 meses de rodaje visible.
+**Fecha del plan:** 2026-04-20 · **Ampliado:** 2026-04-21 (de 8 → 12 semanas)
+**Origen:** [PIVOTE.md](PIVOTE.md), [ROADMAP.md](ROADMAP.md) bloque C, decisiones del editor 2026-04-20 y 2026-04-21.
+**Alcance:** producir 12 ediciones coherentes que cubran los últimos 3 meses (semanas ISO W06-W17 de 2026) bajo el modelo documental nuevo. Relanzamiento con 3 meses de rodaje visible.
+
+---
+
+## Actualización 2026-04-21 — Camino A + auditor IA
+
+Decidido en la revisión Fase 0.5 ([REVISION-FASE-0.5.md](REVISION-FASE-0.5.md)):
+
+- **Camino A confirmado:** las 12 ediciones se publican con fecha real (W06 del 2-8 feb hasta W17 del 20-26 abr) + banner *"procesada a posteriori bajo modelo documental"*.
+- **Backfill técnico vía `src/backfill.py`** con Google News + RSS nativos + BOIB. Ventana: 12 semanas.
+- **Auditoría automatizada (PI9)** sustituye la revisión humana exhaustiva. El editor revisa solo (a) propuestas marcadas `flagged` por el sistema de 5 capas (~15%) y (b) muestreo aleatorio del 10% de las auto-aprobadas.
+- **Coste operativo cerrado:** ~3,50 € (backfill + auditor + pieza retroactiva Opus).
+- **Tiempo editor estimado:** ~4 h, no 15 h.
+- **Log de auditoría completo** en `data/audit/YYYY-wWW/` para defendibilidad legal ante cualquier impugnación posterior.
+
+Las 12 ediciones alimentan simultáneamente:
+- El archivo público de ediciones (`/ediciones/2026-wNN/`).
+- La base de datos de `/propuestas/`.
+- Las fichas de `/actores/`.
+- El cálculo de `/balance/` (con 3 meses de datos reales desde día 1).
+- El grafo de evolución de propuestas (PI3).
+- Las omisiones retroactivas (`/omisiones/` si se aprueba en ED3).
 
 ---
 
@@ -14,20 +35,24 @@
 
 ---
 
-## Ventanas temporales
+## Ventanas temporales (ampliado a 12)
 
 | # | Edición | Semana ISO | Lunes | Domingo | Título | Contexto temporal |
 |---|---|---|---|---|---|---|
-| 1 | W10 | 2026-W10 | 2 mar 2026 | 8 mar 2026 | Semana 1 - Marzo 2026 | Pre-temporada, planificación institucional Q1 |
-| 2 | W11 | 2026-W11 | 9 mar | 15 mar | Semana 2 - Marzo 2026 | Arrancan primeras ofertas de habitación |
-| 3 | W12 | 2026-W12 | 16 mar | 22 mar | Semana 3 - Marzo 2026 | Debate público pre-Semana Santa |
-| 4 | W13 | 2026-W13 | 23 mar | 29 mar | Semana 4 - Marzo 2026 | Cierre trimestre, publicación datos Q1 |
-| 5 | W14 | 2026-W14 | 30 mar | 5 abr | Semana 1 - Abril 2026 | Semana Santa, pausa institucional |
-| 6 | W15 | 2026-W15 | 6 abr | 12 abr | Semana 2 - Abril 2026 | Post-Semana Santa, tensión visible en mercado |
-| 7 | W16 | 2026-W16 | 13 abr | 19 abr | Semana 3 - Abril 2026 | Movimiento sobre residencias para temporeros |
-| 8 | W17 | 2026-W17 | 20 abr | 26 abr | Semana 4 - Abril 2026 | Desalojo sa Joveria a 2 semanas del arranque de temporada |
+| 1 | W06 | 2026-W06 | 2 feb 2026 | 8 feb 2026 | Semana 1 - Febrero 2026 | Cierre temporada 2025, primeros balances |
+| 2 | W07 | 2026-W07 | 9 feb | 15 feb | Semana 2 - Febrero 2026 | Plenos municipales, presupuestos Q1 |
+| 3 | W08 | 2026-W08 | 16 feb | 22 feb | Semana 3 - Febrero 2026 | Primeros anuncios pre-temporada |
+| 4 | W09 | 2026-W09 | 23 feb | 1 mar | Semana 4 - Febrero 2026 | Cierre de mes, datos económicos |
+| 5 | W10 | 2026-W10 | 2 mar | 8 mar | Semana 1 - Marzo 2026 | Pre-temporada, planificación institucional Q1 |
+| 6 | W11 | 2026-W11 | 9 mar | 15 mar | Semana 2 - Marzo 2026 | Arrancan primeras ofertas de habitación |
+| 7 | W12 | 2026-W12 | 16 mar | 22 mar | Semana 3 - Marzo 2026 | Debate público pre-Semana Santa |
+| 8 | W13 | 2026-W13 | 23 mar | 29 mar | Semana 4 - Marzo 2026 | Cierre trimestre, publicación datos Q1 |
+| 9 | W14 | 2026-W14 | 30 mar | 5 abr | Semana 1 - Abril 2026 | Semana Santa, pausa institucional |
+| 10 | W15 | 2026-W15 | 6 abr | 12 abr | Semana 2 - Abril 2026 | Post-Semana Santa, tensión visible en mercado |
+| 11 | W16 | 2026-W16 | 13 abr | 19 abr | Semana 3 - Abril 2026 | Movimiento sobre residencias para temporeros |
+| 12 | W17 | 2026-W17 | 20 abr | 26 abr | Semana 4 - Abril 2026 | Desalojo sa Joveria a 2 semanas del arranque de temporada |
 
-Las 8 ediciones conforman un arco narrativo: **"de la planificación de temporada al desalojo de los asentamientos en vísperas de mayo"**. Lectura completa muestra al lector nuevo un producto maduro con cobertura real.
+Las 12 ediciones conforman un arco narrativo extendido: **"del cierre de la temporada 2025 al desalojo de los asentamientos en vísperas de la temporada 2026"**. Lectura completa muestra al lector nuevo un producto maduro con 3 meses de cobertura real y continuidad editorial sólida.
 
 ---
 

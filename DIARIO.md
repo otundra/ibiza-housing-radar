@@ -12,6 +12,20 @@ Reglas:
 
 ---
 
+## 2026-04-21 (noche · revisión Fase 0.5) — Backfill 12 semanas + auditor IA + Camino A
+
+- **Abierta Fase 0.5 de revisión crítica** ([REVISION-FASE-0.5.md](REVISION-FASE-0.5.md)) tras detectar el editor que necesita entender el concepto con más profundidad antes de entrar en diseño visual. 34 tareas organizadas en 6 categorías (P0 método/fuentes, P1 estructural, P2 UX, P3 operacional, P4 identidad/legal/financiación, P5 misc). Trabajo a una tarea por vez.
+- **Primera tarea (ED1, criterios de admisión de propuestas) desvió a infraestructura** al constatar que `ingested.json` / `classified.json` se sobreescriben (diseño temporal heredado del modelo antiguo) y solo hay corpus de 10 días. No hay material histórico para validar criterios con datos reales. El editor pide solución de raíz: 3 meses de backfill para cimientos sólidos.
+- **Decisión fundacional — backfill retroactivo de 12 semanas (W06→W17, ~2 feb → 20 abr)**. Script `src/backfill.py` one-shot que recorre Google News con operadores temporales + buscadores nativos + BOIB si factible. Salida a `data/archive/YYYY-wWW/`. Alimenta simultáneamente el archivo público de ediciones, la base de datos de propuestas, actores, balance con 3 meses reales, grafo de evolución (PI3) y omisiones retroactivas.
+- **Camino A confirmado para publicación retroactiva** (frente a B corpus privado o C pieza única): las 12 ediciones salen con fecha real + banner *"procesada a posteriori bajo modelo documental"*. Razonamiento del editor: tomar información del pasado no pierde legitimidad, construye pre-temporada, ofrece contexto al público, es defendible al 100%. La tensión legal por cambios de posición de actores queda mitigada por el schema de evolución (state + proposals_history append-only + PI3 grafo visible).
+- **Sistema de auditoría IA de 5 capas (PI9, nueva)** sustituye la revisión humana exhaustiva: (1) Haiku extrae, (2) Sonnet audita ciego, (3) comparador determinístico Python + verify.py 5-checks, (4) Opus arbitra discrepancias (~15%), (5) editor revisa solo flagged + muestreo 10%. Reduce tiempo editor de ~15 h a ~4 h sin sacrificar calidad (dos modelos independientes detectan más errores que uno). Heurísticas sin IA: cross-source confirmation, verbatim substring match, domain-actor whitelist, viability sanity.
+- **Log de auditoría radical** en `data/audit/YYYY-wWW/{proposal_id}.json` con output literal de cada capa + timestamps + decisión final. Trazabilidad completa como escudo legal. 10 KB por propuesta.
+- **Coste cerrado:** ~3,50 € totales (backfill ~0,50 € + auditor sobre 12 semanas ~2,70 € + pieza retroactiva Opus ~0,30 €). Dentro del tope blando mensual (12 €) con amplio margen.
+- **Orden de ejecución reordenado:** PI2-A (append-only inmediato) → PI2-B (backfill) → PI9 (auditor) → ED1 (criterios validados con corpus real) → resto P0/P1. ED1 ya no se cierra en abstracto, se cierra con evidencia empírica de ~150 propuestas reales.
+- **[CONTENIDO-RETROACTIVO.md](CONTENIDO-RETROACTIVO.md) ampliado de 8 a 12 ediciones** (W06-W17 en vez de W10-W17). Arco narrativo extendido: *"del cierre de temporada 2025 al desalojo de los asentamientos en vísperas de temporada 2026"*.
+
+---
+
 ## 2026-04-21 (tarde · publicación) — Prototipo visitable en GitHub Pages
 
 - **Prototipo movido de `prototype/` → [`docs/prototype/`](docs/prototype/)** para que GitHub Pages lo sirva sin arrancar servidor local. Motivo: el editor pide poder revisarlo en cualquier momento (incluidas las 2 preguntas abiertas que requieren iPhone real). Pages solo publica desde `/` o `/docs` en plan gratuito → mover es la vía de coste 0.
