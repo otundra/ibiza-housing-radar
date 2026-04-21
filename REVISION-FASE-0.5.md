@@ -92,7 +92,106 @@ Cada tarea tiene:
 - **Estado**: ⏳ pendiente · 🔄 en discusión · ✅ cerrada · ⏸ pausada.
 - **Salida esperada**: qué debe quedar escrito/decidido/implementado al cerrarla.
 
-Orden: P0 (fundacional, bloquea lo demás) → P1 (estructural) → P2 (UX) → P3 (operacional) → P4 (identidad/negocio) → P5 (misc).
+Orden: **P-1 (hallazgos de la revisión técnica, antes de relanzar)** → P0 (fundacional, bloquea lo demás) → P1 (estructural) → P2 (UX) → P3 (operacional) → P4 (identidad/negocio) → P5 (misc).
+
+---
+
+## P-1 — Hallazgos nuevos de la revisión técnica 2026-04-21 noche (antes del relanzamiento)
+
+Tareas abiertas tras el barrido de coherencia profundo que el editor pidió el 2026-04-21 noche. Todas son bloqueantes de algún aspecto del relanzamiento o del backfill; por eso van delante del resto.
+
+### RT1 · Backfill empírico — prototipar 1 semana antes de comprometer 12 ⏳
+El plan del backfill (12 semanas W06-W17, Camino A) está estimado en ~3,50 € de API y ~4 h de trabajo del editor. Esa estimación asume reconstrucción limpia de prensa local con Google News operadores `after:/before:`, RSS nativos y Wayback. En la práctica: los RSS locales devuelven vacío, Google News cambia resultados según contexto del usuario, Wayback no siempre archivó la URL exacta, y los diarios locales reorganizan URLs cada 6-12 meses.
+
+**Riesgo:** comprometer 12 semanas a ciegas y descubrir a mitad del proceso que las semanas W06-W10 tienen cobertura muy pobre, forzando a descartarlas o bajar el estándar de verificación.
+
+**Acción:** ejecutar el backfill de **una sola semana antigua** (W10, 2-8 marzo 2026) como prueba empírica. Medir: (a) % de URLs que siguen vivas y responden 200; (b) % de URLs con verbatim recuperable; (c) % de propuestas que pasan el verify; (d) tiempo real de revisión humana; (e) coste API real. Con esos 5 datos se decide si el backfill final cubre 12 semanas, 6, o solo las últimas 4. La decisión vuelve a abrirse tras la prueba.
+
+**Salida esperada:** informe corto en `private/estudios/backfill-prueba-W10.md` con los 5 números + recomendación al editor + ajuste del plan en `CONTENIDO-RETROACTIVO.md`.
+
+**Prioridad de ejecución:** ANTES del backfill grande.
+
+### RT2 · Rol editor operador vs muestreo 10% — resolver contradicción ⏳
+El plan actual del auditor IA de 5 capas asume que el editor revisa (a) propuestas marcadas `flagged` (~15%) y (b) un muestreo aleatorio del 10% de las auto-aprobadas. Simultáneamente, el editor se define a sí mismo como **operador, no revisor**: *"en principio yo no voy a revisar nada"* (DIARIO 2026-04-21 noche). Ambas afirmaciones no pueden ser ciertas a la vez.
+
+Opciones:
+1. **Aceptar que el editor revise el 10%.** Implica ~20 min/semana adicionales cuando el histórico esté lleno. Compatible con "operador" si se presenta como rutina de 10 min los martes, no como "revisión experta".
+2. **Eliminar el muestreo humano** y confiar enteramente en el auditor IA. Mayor riesgo de error silencioso; implica reforzar la capa 2 (Sonnet auditor ciego) + capa 3 (comparador determinístico) hasta que sean la única red de seguridad.
+3. **Contratar el 10% externamente** (periodista local, académico UIB, otro revisor humano ajeno al editor). Coste recurrente ~20-50 €/mes; resuelve el conflicto manteniendo una capa humana real.
+
+Hoy no está decidido cuál de las tres se aplica. El plan se lee como opción 1 pero la conversación apunta a opción 2. Hay que elegir antes de publicar la política editorial pública, porque esa decisión condiciona qué se le promete al lector sobre el control de calidad.
+
+**Salida esperada:** decisión cerrada del editor (1, 2 o 3) + texto en `/politica-editorial/` que describa el control de calidad real en lenguaje llano.
+
+### RT3 · Tiers de confianza — validar UX con los dos públicos ⏳
+El sistema de tiers públicos 🟢/🟡/🟠 con cuarentena 🔴 fue aprobado para reemplazar el modo entrenamiento. La intuición: el periodista entiende lo que significa "fuente única" y lo valora; el primer visitante (temporero, ciudadano) puede no entender el código de colores o directamente percibirlo como ruido.
+
+El proyecto tiene dos públicos declarados en `DISENO-WEB.md`: primer visitante vs profesional recurrente. Los tiers sirven al segundo y potencialmente confunden al primero. No hay evidencia de cómo se percibe realmente porque no se ha probado.
+
+**Acción:** antes de lanzar los tiers en abierto, hacer un test rápido de usabilidad con 2-3 personas de cada público (1 periodista local, 1 temporero, 1 ciudadano sin contexto técnico). Mostrar una edición con los badges de tier y preguntar: *"¿qué te dice esto?"*, *"¿cambia cómo confías en la propuesta?"*, *"¿te ayuda o te distrae?"*. Con tres conversaciones de 10 min por público se afina el copy o se decide si los tiers se muestran solo al público profesional (y al temporero se le muestra ya filtrado sin tier visible).
+
+**Salida esperada:** notas cortas del test + decisión de UI (tier visible para todos / solo para lector que elige "modo profesional" / tier invisible pero filtro silencioso en el backend) + copy ajustado al resultado.
+
+### RT4 · Techo de cobertura + banner de limitaciones hasta datos propios ⏳
+El PLAN estratégico reconoce que el observatorio es "refrito de prensa" y que los datos propios (Vía A agregación oficial + Vía B crowd-sourcing de precios) son el diferencial que convertirá el proyecto en fuente primaria. Hasta que esas vías estén operativas (previsto Fase 2, 3-6 meses tras el relanzamiento), el proyecto sigue siendo lectura estructurada de prensa local, con un techo de impacto limitado.
+
+El pivote resuelve dos problemas reales (alucinación del LLM, sesgo en la generación de propuestas) pero **no** resuelve el techo de cobertura ni el problema de valor diferencial. Si el copy público del relanzamiento vende "observatorio de referencia" y el producto real es "lectura estructurada de prensa local con tracker de propuestas", el lector profesional nota el gap a la segunda semana.
+
+**Acción en dos partes:**
+
+1. **Banner visible en fase de rodaje.** Copy estable que reconozca honestamente dónde estamos: *"Observatorio en fase de rodaje. N ediciones documentadas. Próximo hito: observatorio de precios con datos propios (agregación oficial + crowd-sourcing ciudadano), previsto para \[fecha\]. Transparencia radical: `/metodologia/` y `/balance/`"*. Se mantiene visible hasta que exista la primera publicación con datos propios.
+
+2. **Plan de datos propios priorizado.** Revisar el cronograma de Fase 2 en PLAN.md y decidir si se adelanta al menos la Vía A (agregación de informes públicos Idealista, Fotocasa, INE, IBESTAT) al mismo tiempo que el relanzamiento. La Vía A es scraping ético de fuentes oficiales, no de portales. Coste 0 € si se hace con scripts sencillos. Tiempo de montaje: 2-3 días.
+
+**Salida esperada:** (a) bloque de banner en `_layouts/` con copy cerrado; (b) decisión sobre si Vía A entra en Fase 0 o se queda en Fase 2; (c) actualización de `PLAN.md` con el cronograma resultante.
+
+### RT5 · Tests básicos del pipeline ⏳
+Hoy no hay carpeta `tests/` y no hay ningún test automatizado. Un cambio en `classify.py` puede romper `extract.py` sin que nada lo avise hasta que falle el cron del lunes. Con el pipeline ya en producción (W17 publicada) y el backfill por delante (reprocesar 12 semanas de datos), el coste de un fallo silencioso sube.
+
+**Acción mínima (5-6 h):**
+- `tests/fixtures/` con 3 noticias reales: una con propuesta formal, una con propuesta en movimiento, una sin propuesta.
+- Mock de la API de Anthropic que devuelva respuestas deterministas.
+- Tests end-to-end: `tests/test_pipeline.py` que verifica que `ingest → classify → extract → rescue → generate → verify` produce un markdown válido sin llamar a la API real.
+- Tests específicos: `tests/test_verify.py` (URL rota bloquea, verbo prohibido bloquea, propuesta sin actor bloquea), `tests/test_rescue.py` (criterios duros), `tests/test_balance.py` (ventanas correctas, silencio con N<20).
+
+**Salida esperada:** carpeta `tests/` con cobertura mínima + entrada en `.github/workflows/` para ejecutar tests en cada PR.
+
+### RT6 · Balance — rediseño completo tras 3 meses de datos ⏳
+El fix aplicado hoy en `src/balance.py` es un parche temporal: silencia las alertas mientras el histórico sea menor de 20 propuestas. La regla vinculante del pivote (regla 4) es *"si un bloque supera 50% durante dos trimestres consecutivos"*. Eso requiere comparar la ventana actual con la anterior, no solo mirar la actual.
+
+**Acción diferida a 3 meses:** cuando el histórico tenga al menos 3 meses de datos (esperado julio 2026), rediseñar `balance.py` para:
+1. Guardar snapshot semanal del balance en `data/balance_snapshots/YYYY-wWW.json`.
+2. Comparar ventana actual (últimos 90d) con anterior (90d previos).
+3. Disparar alerta solo si concentración >50% **y** tendencia sostenida.
+4. Añadir test determinista con datos sintéticos de 2 trimestres.
+
+**Salida esperada:** rediseño implementado, snapshots acumulados desde hoy, alerta fiable desde el 3er mes post-relanzamiento.
+
+### RT7 · `build_index.py` — adaptar al schema documental ✅
+**Cerrada 2026-04-21 noche** como parte del barrido de esta revisión técnica. El regenerador de la home buscaba campos del modelo antiguo (`Actor responsable`, `Precedente`, `Coste`, `Primer paso`, `Por qué ahora`) que no existen en las ediciones documentales. Resultado: cards vacíos en la home. Actualizado el parser para el schema nuevo (`Actor que la propone`, `Estado`, `Horizonte`, `Actor que tendría que ejecutarla`) + copy de la home reescrito para no vender "propuestas accionables" del modelo antiguo.
+
+### RT8 · Banner de "página en reescritura" en `/acerca/` ⏳
+Aplicado fix temporal 2026-04-21: `docs/acerca.md` mantiene un callout de *"página en reescritura"* con los números correctos (topes 12/50, coste ~6-7 €). El texto conceptual sigue siendo del modelo antiguo. La reescritura completa depende de decidir si `/acerca/` queda como página breve de identidad y `/metodo/` absorbe el detalle técnico (recomendado), o si `/acerca/` absorbe todo y `/metodo/` no se crea como página separada.
+
+**Acción:** decidir estructura (split `/acerca/` + `/metodo/` basada en el prototipo `docs/prototype/metodo.html` vs. una sola página) y reescribir cuando se retome Diseño.
+
+**Salida esperada:** dos páginas Jekyll coherentes, enlazadas desde el pie de edición y desde el menú.
+
+### RT9 · Prototipo de páginas mínimas que las reglas duras exigen ⏳
+Las 5 reglas duras del pivote asumen que existen tres páginas públicas: `/politica-editorial/` (texto de las reglas), `/metodologia/` (cómo funciona el pipeline y sesgos declarados), `/correcciones/` (log público de enmiendas). Hoy ninguna existe. El pipeline emite ediciones que hacen afirmaciones editoriales fuertes ("las 5 reglas duras", "balance auditado", "correcciones públicas") sin soporte público.
+
+**Acción mínima:** crear stubs Jekyll de las tres páginas con contenido textual suficiente para no ser páginas vacías. Fuente de contenido: el prototipo ya construido (`docs/prototype/metodo.html` para metodología). Para política editorial, extraer las 5 reglas del `PIVOTE.md`. Para correcciones, página vacía con formato estándar listo para la primera enmienda.
+
+Esto se hace **cuando se reanude el bloque Diseño** (pausado por esta revisión). No antes.
+
+**Salida esperada:** 3 páginas Jekyll en `docs/` con permalinks `/politica-editorial/`, `/metodologia/`, `/correcciones/`, enlazadas desde el menú y el pie de edición.
+
+### RT10 · Promover LG1 y LG2 a prioridad alta antes del relanzamiento ⏳
+Las tareas de identidad/legalidad del editor ([LG1 anonimato, LG2 portfolio sin nombre](REVISION-FASE-0.5.md)) están catalogadas en P4. El editor confirmó 2026-04-21 noche que el proyecto se relanza sin su nombre completo ("Raúl S." sin email directo). Sin resolver la legalidad (LSSI exige identificar titular del sitio), cualquier atención pública antes del relanzamiento es un riesgo.
+
+**Acción:** subir LG1 y LG2 a prioridad alta dentro de P-1. Resolución sugerida: buzón virtual + servicio de representación legal mínimo (50-150 €/año) que actúe como titular declarado, con el editor como "responsable editorial" sin aparición en el aviso legal. Alternativas: pseudónimo + referencia a entidad paraguas (asociación o fundación pequeña) si existe aliado disponible.
+
+**Salida esperada:** aviso legal redactado, titular declarado legalmente identificable, editor protegido mediante estructura intermedia. Todo previo al primer empuje público del relanzamiento.
 
 ---
 
@@ -337,6 +436,16 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 
 | Código | Tarea | Estado | Notas |
 |---|---|---|---|
+| **RT1** | **Backfill empírico W10 antes de las 12** | ⏳ | **P-1 · antes del backfill grande** |
+| **RT2** | **Rol editor vs muestreo 10% — decidir** | ⏳ | **P-1 · antes de política editorial pública** |
+| **RT3** | **Tiers UX — validar con dos públicos** | ⏳ | **P-1 · antes de lanzar tiers** |
+| **RT4** | **Techo cobertura + banner limitaciones + Vía A adelantada** | ⏳ | **P-1 · antes del relanzamiento** |
+| **RT5** | **Tests básicos del pipeline** | ⏳ | **P-1 · antes del backfill grande** |
+| **RT6** | **Balance — rediseño con persistencia (tras 3 meses)** | ⏳ | **P-1 · diferido a ~julio 2026** |
+| **RT7** | **build_index.py adaptado al schema documental** | ✅ | **Cerrada 2026-04-21 noche** |
+| **RT8** | **Banner temporal en `/acerca/` + split acerca/metodo** | 🔄 | **Fix temporal aplicado, reescritura cuando se retome Diseño** |
+| **RT9** | **Prototipo de páginas mínimas (política editorial, metodología, correcciones)** | ⏳ | **P-1 · cuando se retome Diseño** |
+| **RT10** | **LG1 + LG2 promovidas a alta — anonimato legal pre-relanzamiento** | ⏳ | **P-1 · antes de empuje público** |
 | ED1 | Criterio OK propuestas | ⏳ | |
 | ED2 | Imparcialidad alertable | ⏳ | |
 | ED3 | Presencia de Omisiones | ⏳ | |

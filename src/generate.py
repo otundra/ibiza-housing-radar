@@ -315,6 +315,7 @@ def generate(
     resp = client.messages.create(
         model=MODEL,
         max_tokens=8192,
+        temperature=0.2,
         system=[{"type": "text", "text": SYSTEM, "cache_control": {"type": "ephemeral"}}],
         messages=[{"role": "user", "content": prompt}],
     )

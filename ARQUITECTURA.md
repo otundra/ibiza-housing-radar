@@ -73,17 +73,16 @@ Para cada item se añaden los campos nuevos sobre los existentes (`is_housing`, 
   "actor": "consell",
   "lever": "normativa",
   "headline_es": "El Consell retira 700 anuncios de alquiler turístico ilegal",
-  "has_explicit_proposal": true,
-  "proposal_actor_hint": "Consell d'Eivissa",
-  "proposal_actor_type_hint": "institucional_publico"
+  "proposal_type": "formal",
+  "proposal_actor_hint": "Consell d'Eivissa"
 }
 ```
 
-El clasificador Haiku solo marca si **parece haber propuesta** (`has_explicit_proposal`) y da pistas mínimas. La extracción detallada la hace `extract.py`.
+El clasificador Haiku marca si hay propuesta y de qué tipo mediante el campo `proposal_type` (enum: `formal` | `en_movimiento` | `ninguna`) y da una pista mínima del actor en `proposal_actor_hint`. La extracción detallada (incluyendo `actor_type` completo) la hace `extract.py`.
 
 ### 3. Salida de `extract.py` (nueva)
 
-Para cada item con `has_explicit_proposal=true`, extrae una o varias propuestas estructuradas:
+Para cada item con `proposal_type` ∈ {`formal`, `en_movimiento`}, extrae una o varias propuestas estructuradas:
 
 ```json
 {
@@ -409,13 +408,13 @@ Cambios mínimos:
 
 Cambios:
 
-- Schema ampliado con `has_explicit_proposal`, `proposal_actor_hint`, `proposal_actor_type_hint`.
+- Schema ampliado con `proposal_type` (enum `formal` | `en_movimiento` | `ninguna`) y `proposal_actor_hint`.
 - Prompt de Haiku actualizado para detectar propuestas explícitas (patrones: "X propone", "X reclama", "X solicita", "X presenta moción", "X rechaza", "X pide").
 - Resiliencia ante respuesta corta (si devuelve menos items que input, loguea y sigue con los válidos).
 
 ### `src/extract.py` (nuevo)
 
-Responsabilidad única: para cada item con `has_explicit_proposal=true`, invocar a Haiku con prompt que extraiga la ficha estructurada completa.
+Responsabilidad única: para cada item con `proposal_type ∈ {formal, en_movimiento}`, invocar a Haiku con prompt que extraiga la ficha estructurada completa.
 
 Prompt resumido (ver implementación detallada):
 
@@ -431,7 +430,7 @@ Regla dura: statement_verbatim debe ser texto literal de la noticia o resumen
 fiel sin añadir interpretación. url_source obligatorio.
 ```
 
-Input: lista de items con `has_explicit_proposal=true`. Output: lista de propuestas estructuradas, puede ser 0-N por item.
+Input: lista de items con `proposal_type ∈ {formal, en_movimiento}`. Output: lista de propuestas estructuradas, puede ser 0-N por item.
 
 Dedup entre items: si dos noticias reportan la misma propuesta del mismo actor, se consolidan (una sola entrada con múltiples `url_source`).
 

@@ -12,6 +12,43 @@ Reglas:
 
 ---
 
+## 2026-04-21 (cierre · revisión técnica profunda y fixes de coherencia) — Borrado de W16 + fixes pipeline + 10 tareas nuevas
+
+Revisión crítica solicitada por el editor sobre concepto y proceso. Detectadas 19 inconsistencias de distinta gravedad entre documentación, código y web pública. Ejecutados los fixes inequívocos y apuntadas como tareas las decisiones que requieren criterio editorial.
+
+**Fixes aplicados en este commit:**
+
+- **W16 antigua borrada** ([`docs/_editions/2026-w16.md`](docs/_editions/2026-w16.md)). Era modelo antiguo, con propuestas firmadas por el observatorio ("Censo-a-contrato en 90 días", "Residencias modulares") y precedentes detectados como probablemente alucinados en el [estudio crítico del 20-abril](private/estudios/2026-04-20-propuestas.md). La W17 se conserva: es del modelo documental y el único ejemplo público limpio del pivote. Histórico git mantiene la W16 para auditoría.
+- **`proposals_history.json` regenerado** desde `extracted.json` vigente. El histórico tenía (a) bug "Marí = actor_type `otro`" heredado de una ejecución vieja cuando el extractor era menos estricto, (b) entrada duplicada de la coalición "Consell + patronales + sindicatos" (una con nombre corto, otra con nombre largo — dedup por actor literal no la capturó). Quedan 3 entradas correctas con IDs 001-003.
+- **Temperature fijada en `generate.py`** a 0,2. La regla 2 del pivote ("el observatorio no genera propuestas propias") exige cero inferencia; el modelo corría con temperature default (≈1,0), lo que dejaba margen para alucinación. Una línea de fix, impacto directo en calidad.
+- **Check bloqueante en `verify.py`**: propuesta sin actor en `extracted.json` bloquea la publicación. Extract ya lo prohíbe en su prompt, pero verify ahora lo atrapa como red de seguridad.
+- **Alerta de `balance.py` silenciada hasta N≥20 propuestas**. Con el histórico actual (3 propuestas) cualquier bloque supera el 50% por artefacto estadístico. Parche temporal; el rediseño completo (comparación de trimestres consecutivos, como dicta la regla 4) se hace cuando haya 3 meses de datos reales (ver RT6 en la revisión fundacional). La página pública `/balance/` muestra ahora un bloque "Fase de rodaje" hasta alcanzar el umbral.
+- **Schema de `classify.py` alineado en [`ARQUITECTURA.md`](ARQUITECTURA.md)**. La doc decía `has_explicit_proposal: bool`; el código devuelve `proposal_type: formal|en_movimiento|ninguna`. Actualizado el doc, no el código (el código está bien).
+- **Topes y costes unificados en todos los docs**: blando 12 €, duro **50 €** (antes mezcla de 8/12/20 en distintos sitios), coste proyectado ~6-7 €/mes con nota "revisable tras 3 meses de datos reales". Sitios tocados: [README](README.md), [CLAUDE](CLAUDE.md), [STATUS](STATUS.md), [docs/acerca](docs/acerca.md). PLAN.md queda como documento histórico con los números originales.
+- **`build_index.py` adaptado al schema documental**. El regenerador de la home buscaba campos del modelo antiguo (`Actor responsable`, `Precedente`, `Coste`, `Primer paso`, `Por qué ahora`) → cards vacíos. Ahora busca los campos reales (`Actor que la propone`, `Estado`, `Horizonte`, `Actor que tendría que ejecutarla`). Copy reescrito: *"propuestas accionables con precedente"* → *"propuestas documentadas en circulación"*. Eliminado el copy "observatorio automatizado con propuestas con actor, coste y primer paso" → *"observatorio documental, no genera propuestas propias"*. `docs/index.md` regenerado.
+- **docs/balance.md regenerado** con el fix de silencio + bloque "Fase de rodaje".
+
+**10 tareas nuevas añadidas al inicio de [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md) como categoría P-1** (antes del resto):
+
+- RT1 — Backfill empírico: ejecutar 1 semana antigua (W10) como prueba antes de comprometer 12.
+- RT2 — Resolver contradicción editor operador vs muestreo 10%.
+- RT3 — Validar tiers UX con los dos públicos (periodista + temporero).
+- RT4 — Techo de cobertura + banner de fase de rodaje + adelantar Vía A de precios si es posible.
+- RT5 — Tests básicos del pipeline (no hay `tests/`).
+- RT6 — Balance: rediseño completo con persistencia tras 3 meses de datos.
+- RT7 — `build_index.py` al schema documental (✅ cerrada en este commit).
+- RT8 — Split `/acerca/` + `/metodo/` (basado en prototipo `metodo.html`).
+- RT9 — Stubs de las 3 páginas que las reglas duras exigen: política editorial, metodología, correcciones.
+- RT10 — LG1 + LG2 promovidas a prioridad alta: anonimato legal resuelto antes del empuje público.
+
+**Pendiente del mismo barrido (no en este commit, requiere confirmación):**
+
+- Borrador de reescritura conceptual de la home (el copy actual generado por `build_index.py` es mejor que el de ayer, pero el editor pidió ver draft antes de aplicar cambios conceptuales mayores).
+- Borrador de reescritura de `/acerca/` para apuntarlo al modelo documental o dividirla en `/acerca/` (corta) + `/metodo/` (detalle técnico, basado en el prototipo `docs/prototype/metodo.html`).
+- Propuesta concreta de Vía A (observatorio de precios por agregación oficial) como posible adelanto a Fase 0.
+
+---
+
 ## 2026-04-21 (cierre · barrido documental post-merge) — Eliminadas referencias al branch del pivote
 
 - **Merge del pivote consolidado 2026-04-21 12:04 CEST** (commit `b24a6ad`) pero la documentación seguía describiendo el pivote como trabajo vivo en branch separado. Barrido en 7 documentos para que el repo diga la verdad.

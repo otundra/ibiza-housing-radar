@@ -82,11 +82,12 @@
 - Dashboard **privado** en [`private/costs.md`](private/costs.md) — **no se sirve en la web**. Se regenera tras cada run.
 - Topes en euros (editar `MONTHLY_SOFT_CAP_EUR` y `MONTHLY_HARD_CAP_EUR` en `src/costs.py`):
   - 🟢 <4 €: silencio
-  - 🟡 4-6 €: Telegram FYI
-  - 🟠 6-8 €: Telegram atención
-  - 🔴 8-20 € (**tope blando**): Telegram urgente, **pipeline sigue publicando**. No se pierde editorial por sobrecoste.
-  - 🚨 >20 € (**tope duro**): corte inmediato + alerta crítica. Protección runaway.
-- Coste esperado real: **~2 €/mes** (~3,15 €/mes si se activa trilingüe). Los topes cubren ambos escenarios.
+  - 🟢 <6 €: silencio
+  - 🟡 6-9 €: Telegram FYI
+  - 🟠 9-12 €: Telegram atención
+  - 🔴 12-50 € (entre **tope blando** y **tope duro**): Telegram urgente, **pipeline sigue publicando**. No se pierde editorial por sobrecoste.
+  - 🚨 >50 € (**tope duro**): corte inmediato + alerta crítica. Protección runaway.
+- Coste esperado proyectado: **~6-7 €/mes** (pipeline + autoevaluación semanal + auditoría trimestral). Revisable cuando haya 3 meses de datos reales en `data/costs.csv`.
 
 ### 4. Theme Jekyll editorial custom
 
@@ -99,8 +100,7 @@
 
 ### 5. Primera edición publicada
 
-- **W16 (2026-04-20)** — escrita a mano durante el setup, con contenido real de noticias recientes. La tienes en [`/ediciones/2026-w16/`](https://otundra.github.io/ibiza-housing-radar/ediciones/2026-w16/).
-- **W17** — generada automáticamente por el pipeline (contenido real, URLs resueltas al artículo original). En [`/ediciones/2026-w17/`](https://otundra.github.io/ibiza-housing-radar/ediciones/2026-w17/).
+- **W17 (20-26 abril 2026)** — primera edición generada 100% por el pipeline documental. Contenido real, URLs resueltas al artículo original, sin propuestas del observatorio. En [`/ediciones/2026-w17/`](https://otundra.github.io/ibiza-housing-radar/ediciones/2026-w17/). La W16 previa (modelo antiguo) se borró el 2026-04-21 para no contaminar el archivo público — sigue disponible en el histórico git.
 
 ## 🔍 Qué revisar cuando despiertes
 
@@ -112,14 +112,14 @@
 
 ### Recomendable (15 min)
 
-4. **Topes ya calibrados en €.** Blando 8 €, duro 20 €. Cubre trilingüe cuando se active. Solo tocar si hay razón concreta.
+4. **Topes ya calibrados en €.** Blando 12 €, duro 50 €. Cubre pipeline documental + autoevaluación + trilingüe cuando se active. Solo tocar si hay razón concreta.
 5. **Decidir lector objetivo.** Sigue sin definir. Afecta a: tono (más técnico-político vs. más divulgativo), distribución (newsletter, RRSS, nada), y qué diarios priorizar. Sin esto afinado, el sistema irá dando vueltas sobre lo mismo.
 
 ## ⚠️ Decisiones que tomé sin preguntarte
 
 1. **Repo público en lugar de privado.** GitHub Pages no sirve desde repos privados en plan Free. Alternativas eran: pagar Pro, usar Netlify/Cloudflare Pages (cuenta nueva), o hacer el repo público. Elegí pública porque (a) el contenido ya es prensa pública + ideas, (b) la API key sigue guardada en Secrets, (c) te da transparencia como proyecto.
 2. **Modelos de Anthropic.** Haiku 4.5 para clasificar (es lo más barato que mantiene calidad), Opus 4.7 para el informe (la calidad editorial sí importa ahí). Puedes cambiarlos en `src/classify.py` y `src/generate.py` — variable `MODEL`.
-3. **Topes revisados en €** (20-abr-2026): blando 8 € (≈4× coste actual) avisa sin cortar, duro 20 € (≈10× actual) corta solo ante runaway. Cubre también el escenario trilingüe (~3,15 €/mes) sin retocar. Filosofía: no perder editorial por sobrecoste salvo desastre real.
+3. **Topes revisados en €** (21-abr-2026): blando 12 € (absorbe pipeline documental + autoevaluación), duro 50 € (subido desde 20 € para absorber backfill 12 semanas + auditor IA sin bloqueos). Filosofía: no perder editorial por sobrecoste salvo desastre real.
 4. **Fuentes RSS.** Google News como base (robusto, cubre todo) + RSS nativos de Diario y Periódico como refuerzo. Si un feed falla, se salta y sigue.
 
 ## 🟢 Flujo del lunes (qué pasará automáticamente)
@@ -173,7 +173,7 @@ El roadmap de trabajo activo vive ahora en [`ROADMAP.md`](ROADMAP.md) bajo el pi
 | Web no muestra nueva edición | Jekyll build aún corriendo | Esperar 1-2 min y recargar |
 | Edición sale truncada | `max_tokens` demasiado bajo | Subir en `src/generate.py` |
 | Ediciones repetidas / raras | Bug en `build_index.py` | Mirar git log de `docs/index.md` |
-| Pipeline cortado por tope duro | Mes excedió 20 € (runaway real o bug) | Abrir `private/costs.md`, identificar origen, subir `MONTHLY_HARD_CAP_EUR` en `src/costs.py` solo si hay razón legítima |
+| Pipeline cortado por tope duro | Mes excedió 50 € (runaway real o bug) | Abrir `private/costs.md`, identificar origen, subir `MONTHLY_HARD_CAP_EUR` en `src/costs.py` solo si hay razón legítima |
 | Telegram no llega | Token rotado, bot bloqueado o red caída | Si es crítico llegará como issue en GitHub. Verificar `TELEGRAM_BOT_TOKEN` con `curl` a `api.telegram.org/bot<TOKEN>/getMe` |
 
 ---

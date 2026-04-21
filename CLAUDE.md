@@ -37,7 +37,7 @@ Publicado en GitHub Pages.
 - **OG images:** Puppeteer (Node.js en runner CI) renderiza plantilla HTML → PNG. Ver [ESTUDIO-DISENO.md §7](ESTUDIO-DISENO.md).
 - **Scheduler:** GitHub Actions cron semanal + tarea anual para fechas de temporada.
 - **Hosting:** 100 % GitHub (repo + Pages + Actions). 0 € de infra.
-- **Coste esperado:** ~6-7 €/mes en API Anthropic. Capas de coste en `src/costs.py`: blando 12 €, duro 20 €. Ver [DIARIO.md 2026-04-20](DIARIO.md).
+- **Coste esperado:** ~6-7 €/mes en API Anthropic (proyección, a revisar con 3 meses de datos reales). Capas de coste en `src/costs.py`: blando 12 €, duro 50 €. Ver [DIARIO.md 2026-04-21](DIARIO.md).
 
 ## Estructura
 

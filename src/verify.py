@@ -243,6 +243,26 @@ def check_frontmatter(fm: dict) -> list[str]:
     return issues
 
 
+def check_proposals_have_actor(extracted: list[dict]) -> list[dict]:
+    """Devuelve las propuestas del extracted.json con actor vacío o ausente.
+
+    Regla dura del pivote (regla 1): toda propuesta documentada tiene autor
+    identificado. Si extract.py falla en silencio y deja alguna propuesta sin
+    actor, el verificador lo atrapa como bloqueante antes de publicar.
+    """
+    missing: list[dict] = []
+    for item in extracted:
+        for prop in item.get("proposals", []) or []:
+            actor = (prop.get("actor") or "").strip()
+            if not actor:
+                missing.append({
+                    "news_id": item.get("news_id", "?"),
+                    "url_source": prop.get("url_source", ""),
+                    "statement_summary": (prop.get("statement_summary") or "")[:120],
+                })
+    return missing
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -288,6 +308,15 @@ def verify(md_path: Path, extracted_path: Path = EXTRACTED_FILE) -> Verification
     rep.forbidden_verbs_found = verbs
     for v in verbs:
         rep.blocking_failures.append(f"Verbo prohibido: {v['verb']!r} — contexto: {v['context']!r}")
+
+    # 5. Propuestas sin actor en extracted.json (regla dura del pivote)
+    missing_actor = check_proposals_have_actor(extracted)
+    for m in missing_actor:
+        rep.blocking_failures.append(
+            f"Propuesta sin actor identificado en extracted.json "
+            f"(news_id={m['news_id']}, url={m['url_source']}, "
+            f"summary={m['statement_summary']!r})"
+        )
 
     return rep
 

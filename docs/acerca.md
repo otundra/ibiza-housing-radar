@@ -4,7 +4,7 @@ title: Acerca
 permalink: /acerca/
 ---
 
-> ⚠️ **Esta página refleja el modelo antiguo del proyecto.** Desde 2026-04-20 está en marcha un pivote a "observatorio documental": el LLM no genera propuestas propias; documenta las que actores con nombre formulan cada semana. La reescritura de esta página forma parte del Bloque B del [ROADMAP](../../ROADMAP.md). Valores actualizados: coste proyectado ~6-7 €/mes, tope blando 12 €/mes, tope duro 20 €/mes.
+> ⚠️ **Página en reescritura.** Desde el 2026-04-21 el proyecto funciona bajo modelo documental: el LLM no genera propuestas propias, documenta las que actores con nombre formulan cada semana con URL verificable. Los números de esta página están al día (coste proyectado ~6-7 €/mes, tope blando 12 €/mes, tope duro 50 €/mes); el texto conceptual se reescribe en breve.
 
 ## Qué es esto
 
@@ -26,9 +26,9 @@ Cada lunes a las 7:00 de la mañana (CEST), un pipeline lee la prensa local de l
 | Generación del informe | Claude Opus 4.7 (Anthropic) | ~0,50 €/semana |
 | Publicación | GitHub Pages (Jekyll) | 0 € |
 | Scheduler | GitHub Actions (cron semanal) | 0 € |
-| **Total** | | **~2 €/mes** |
+| **Total proyectado** | | **~6-7 €/mes** |
 
-Todo el código es abierto y está en [github.com/otundra/ibiza-housing-radar](https://github.com/otundra/ibiza-housing-radar). El pipeline tiene topes de gasto automáticos (tope blando 8 €/mes con aviso, tope duro 20 €/mes con corte por protección runaway).
+Todo el código es abierto y está en [github.com/otundra/ibiza-housing-radar](https://github.com/otundra/ibiza-housing-radar). El pipeline tiene topes de gasto automáticos (tope blando 12 €/mes con aviso, tope duro 50 €/mes con corte por protección runaway).
 
 ## Qué NO es
 

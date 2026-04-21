@@ -23,11 +23,10 @@ H2_SPLIT_RE = re.compile(r"^##\s+([^\n]+)\n(.*?)(?=^##\s|\Z)", re.DOTALL | re.MU
 PROPUESTA_SPLIT_RE = re.compile(r"^###\s+(\d+)\.\s+", re.MULTILINE)
 
 FIELD_RE = {
-    "actor": re.compile(r"^-\s*\*\*Actor responsable:\*\*\s*(.+?)$", re.MULTILINE),
-    "precedente": re.compile(r"^-\s*\*\*Precedente:\*\*\s*(.+?)$", re.MULTILINE),
-    "coste": re.compile(r"^-\s*\*\*Coste(?:\s+\w+)?:\*\*\s*(.+?)$", re.MULTILINE),
-    "primer_paso": re.compile(r"^-\s*\*\*Primer paso:\*\*\s*(.+?)$", re.MULTILINE),
-    "por_que_ahora": re.compile(r"^-\s*\*\*Por qu[eé] ahora:\*\*\s*(.+?)$", re.MULTILINE),
+    "actor": re.compile(r"^\*\*Actor que la propone:\*\*\s*(.+?)$", re.MULTILINE),
+    "estado": re.compile(r"^-\s*\*\*Estado:\*\*\s*(.+?)$", re.MULTILINE),
+    "horizonte": re.compile(r"^-\s*\*\*Horizonte:\*\*\s*(.+?)$", re.MULTILINE),
+    "target_actor": re.compile(r"^-\s*\*\*Actor que tendría que ejecutarla:\*\*\s*(.+?)$", re.MULTILINE),
 }
 QUE_RE = re.compile(r"\*\*Qu[eé]:\*\*\s*(.+?)(?=\n\n|\n-\s*\*\*|\Z)", re.DOTALL)
 
@@ -84,6 +83,23 @@ def extract_field(pattern: re.Pattern[str], text: str) -> str:
     return m.group(1).strip() if m else ""
 
 
+def clean_actor(actor: str) -> str:
+    """Deja solo el nombre del actor para mostrar en el card de la home.
+
+    Los valores del markdown vienen como:
+      "Consell d'Eivissa, patronales, sindicatos (coalicion_institucional) — [fuente](URL)"
+    En el card queremos solo los nombres, sin el tipo técnico ni el enlace.
+    """
+    s = actor
+    s = re.sub(r"\s*—\s*\[fuente\]\([^)]+\).*$", "", s)
+    s = re.sub(r"\s*\([^)]*_[^)]*\)\s*", "", s)  # quita (coalicion_institucional), (institucional_publico), etc.
+    return s.strip()
+
+
+def pluralize(n: int, singular: str, plural: str) -> str:
+    return f"{n} {singular}" if n == 1 else f"{n} {plural}"
+
+
 def parse_propuestas(content: str) -> list[dict[str, Any]]:
     parts = PROPUESTA_SPLIT_RE.split(content)
     if len(parts) < 3:
@@ -101,11 +117,10 @@ def parse_propuestas(content: str) -> list[dict[str, Any]]:
             "titulo": titulo,
             "slug": slugify_kramdown(f"{num}-{titulo}"),
             "que": extract_field(QUE_RE, rest),
-            "actor": extract_field(FIELD_RE["actor"], rest),
-            "precedente": extract_field(FIELD_RE["precedente"], rest),
-            "coste": extract_field(FIELD_RE["coste"], rest),
-            "primer_paso": extract_field(FIELD_RE["primer_paso"], rest),
-            "por_que_ahora": extract_field(FIELD_RE["por_que_ahora"], rest),
+            "actor": clean_actor(extract_field(FIELD_RE["actor"], rest)),
+            "estado": extract_field(FIELD_RE["estado"], rest),
+            "horizonte": extract_field(FIELD_RE["horizonte"], rest),
+            "target_actor": extract_field(FIELD_RE["target_actor"], rest),
         })
     return results
 
@@ -121,8 +136,8 @@ def parse_edition(path: Path) -> dict[str, Any]:
         "permalink": fm.get("permalink", f"/ediciones/{path.stem}/"),
         "excerpt": fm.get("excerpt", ""),
         "senales": find_section(sections, "senales") or find_section(sections, "señales"),
-        "lectura": find_section(sections, "lectura"),
-        "propuestas": parse_propuestas(find_section(sections, "propuestas")),
+        "cronologia": find_section(sections, "cronologia") or find_section(sections, "cronología"),
+        "propuestas": parse_propuestas(find_section(sections, "propuestas en circulación") or find_section(sections, "propuestas")),
         "a_vigilar": find_section(sections, "vigilar"),
     }
 
@@ -173,14 +188,14 @@ def render_index(editions: list[dict[str, Any]]) -> str:
     out.append('</p>')
     out.append('<div class="dash-cover-grid">')
 
-    # Main: headline + lectura + CTAs
+    # Main: headline + cronología + CTAs
     out.append('<div class="dash-cover-main">')
     out.append(f'<p class="dash-cover-eyebrow">{latest["title"]}</p>')
     out.append(f'<h1 class="dash-cover-headline">{latest["excerpt"]}</h1>')
-    if latest["lectura"]:
+    if latest["cronologia"]:
         out.append('<div class="dash-cover-lectura" markdown="1">')
         out.append('')
-        out.append(latest["lectura"])
+        out.append(latest["cronologia"])
         out.append('')
         out.append('</div>')
     out.append('<div class="dash-cover-ctas">')
@@ -194,8 +209,8 @@ def render_index(editions: list[dict[str, Any]]) -> str:
     out.append('<aside class="dash-cover-aside">')
     if latest["propuestas"]:
         out.append('<section class="dash-aside-block">')
-        out.append(f'<p class="dash-aside-kicker">{n_propuestas} propuestas</p>')
-        out.append('<h2 class="dash-aside-title">Qué se propone esta semana</h2>')
+        out.append(f'<p class="dash-aside-kicker">{pluralize(n_propuestas, "propuesta documentada", "propuestas documentadas")}</p>')
+        out.append('<h2 class="dash-aside-title">Qué se ha propuesto esta semana</h2>')
         out.append('<ol class="dash-aside-list dash-aside-propuestas">')
         for p in latest["propuestas"]:
             link = f"{permalink}#{p['slug']}"
@@ -242,9 +257,9 @@ def render_index(editions: list[dict[str, Any]]) -> str:
     if latest["propuestas"]:
         out.append('<section class="dash-propuestas" id="propuestas">')
         out.append('<header class="dash-section-header">')
-        out.append('<p class="dash-section-kicker">Propuestas accionables</p>')
-        out.append(f'<h2>{n_propuestas} medidas con actor, coste y primer paso</h2>')
-        out.append('<p class="dash-section-lead">Cada propuesta tiene precedente en otra ciudad o país. Pulsa en el título para ver el detalle completo.</p>')
+        out.append('<p class="dash-section-kicker">Propuestas documentadas</p>')
+        out.append(f'<h2>{pluralize(n_propuestas, "propuesta en circulación", "propuestas en circulación")} esta semana</h2>')
+        out.append('<p class="dash-section-lead">Cada propuesta la ha formulado un actor con nombre, con fuente verificable. El observatorio no genera propuestas propias.</p>')
         out.append('</header>')
         out.append('<div class="dash-propuestas-grid">')
         for p in latest["propuestas"]:
@@ -256,13 +271,13 @@ def render_index(editions: list[dict[str, Any]]) -> str:
                 out.append(f'<p class="dash-propuesta-que">{p["que"]}</p>')
             out.append('<dl class="dash-propuesta-meta">')
             if p["actor"]:
-                out.append(f'<dt>Actor</dt><dd>{p["actor"]}</dd>')
-            if p["coste"]:
-                out.append(f'<dt>Coste</dt><dd>{p["coste"]}</dd>')
-            if p["primer_paso"]:
-                out.append(f'<dt>Primer paso</dt><dd>{p["primer_paso"]}</dd>')
+                out.append(f'<dt>Propone</dt><dd>{p["actor"]}</dd>')
+            if p["estado"]:
+                out.append(f'<dt>Estado</dt><dd>{p["estado"]}</dd>')
+            if p["horizonte"]:
+                out.append(f'<dt>Horizonte</dt><dd>{p["horizonte"]}</dd>')
             out.append('</dl>')
-            out.append(f'<a class="dash-propuesta-link" href="{link}">Ver precedente y contexto →</a>')
+            out.append(f'<a class="dash-propuesta-link" href="{link}">Ver ficha y fuentes →</a>')
             out.append('</article>')
         out.append('</div>')
         out.append('</section>')
@@ -312,8 +327,8 @@ def render_index(editions: list[dict[str, Any]]) -> str:
     # ---------- SOBRE EL PROYECTO ----------
     out.append('<section class="dash-about">')
     out.append('<div class="dash-about-inner">')
-    out.append('<p><strong>Observatorio automatizado.</strong> Cada lunes a las 7:00 CEST un pipeline lee la prensa local (Diario de Ibiza, Periódico de Ibiza, Google News), filtra lo relevante y produce este informe.</p>')
-    out.append(f'<p>Editado por Raúl Serrano. Coste operativo ~2 €/mes con topes automáticos. <a href="{baseurl}/acerca/">Metodología completa →</a></p>')
+    out.append('<p><strong>Observatorio documental.</strong> Cada lunes un pipeline lee la prensa local (Diario de Ibiza, Periódico de Ibiza, Google News), identifica propuestas que actores con nombre han formulado públicamente esa semana, las contrasta con fuente primaria y publica la edición. No genera propuestas propias.</p>')
+    out.append(f'<p>Editado por Raúl S. Coste operativo ~6-7 €/mes proyectado, con topes automáticos. <a href="{baseurl}/acerca/">Sobre el proyecto →</a></p>')
     out.append('</div>')
     out.append('</section>')
     out.append('')

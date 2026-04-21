@@ -7,7 +7,7 @@ Observatorio semanal de la crisis de vivienda en Ibiza, con foco en trabajadores
 - **Web pública:** <https://otundra.github.io/ibiza-housing-radar/>
 - **Cadencia:** informe semanal, lunes 07:00 CEST (05:00 UTC)
 - **Stack:** Python 3.12 + Anthropic API (Claude Haiku 4.5 + Sonnet 4.6 + Opus 4.7) + GitHub Actions + GitHub Pages
-- **Coste (pivote documental):** 0 € de infraestructura; API ~6-7 €/mes proyectado incluyendo autoevaluación semanal con Sonnet y auditoría trimestral con Opus. Tope blando 12 €/mes (avisa, sigue publicando), tope duro 20 €/mes (corta, protección runaway).
+- **Coste:** 0 € de infraestructura; API ~6-7 €/mes proyectado (pipeline + autoevaluación semanal + auditoría trimestral). Proyección revisable cuando haya 3 meses de datos reales en `data/costs.csv`. Tope blando 12 €/mes (avisa, sigue publicando), tope duro 50 €/mes (corta, protección runaway).
 - **Licencia:** MIT (código) + CC-BY 4.0 (contenido editorial).
 
 ## Qué hace

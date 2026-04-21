@@ -6,51 +6,47 @@ permalink: /balance/
 
 # Balance de actores citados
 
-*Última actualización: 2026-04-20. Recalculado automáticamente tras cada edición.*
+*Última actualización: 2026-04-21. Recalculado automáticamente tras cada edición.*
 
-Total de propuestas documentadas: **4**.
+Total de propuestas documentadas: **3**.
 
-## Últimos 90 días — 4 propuestas
-
-### Por tipo de actor
-
-| Categoría | N | % |
-|---|---|---|
-| coalicion_institucional | 2 | 50.0% |
-| otro | 1 | 25.0% |
-| coalicion_intersectorial | 1 | 25.0% |
-
-### Por palanca
-
-| Categoría | N | % |
-|---|---|---|
-| oferta_vivienda | 3 | 75.0% |
-| enforcement | 1 | 25.0% |
-
-## Últimos 365 días — 4 propuestas
+## Últimos 90 días — 3 propuestas
 
 ### Por tipo de actor
 
 | Categoría | N | % |
 |---|---|---|
-| coalicion_institucional | 2 | 50.0% |
-| otro | 1 | 25.0% |
-| coalicion_intersectorial | 1 | 25.0% |
+| institucional_publico | 1 | 33.3% |
+| coalicion_institucional | 1 | 33.3% |
+| coalicion_intersectorial | 1 | 33.3% |
 
 ### Por palanca
 
 | Categoría | N | % |
 |---|---|---|
-| oferta_vivienda | 3 | 75.0% |
-| enforcement | 1 | 25.0% |
+| oferta_vivienda | 2 | 66.7% |
+| enforcement | 1 | 33.3% |
 
-## Alertas metodológicas activas
+## Últimos 365 días — 3 propuestas
 
-- coalicion_institucional concentra 50.0% de las citas (>50%).
+### Por tipo de actor
 
-Si una concentración >50% persiste durante 2 trimestres consecutivos, 
-revisamos los criterios de admisión y las fuentes de ingesta. Ver 
-[política editorial](/politica-editorial/).
+| Categoría | N | % |
+|---|---|---|
+| institucional_publico | 1 | 33.3% |
+| coalicion_institucional | 1 | 33.3% |
+| coalicion_intersectorial | 1 | 33.3% |
+
+### Por palanca
+
+| Categoría | N | % |
+|---|---|---|
+| oferta_vivienda | 2 | 66.7% |
+| enforcement | 1 | 33.3% |
+
+## Fase de rodaje
+
+El observatorio está en fase de rodaje (3 propuestas documentadas). Los umbrales de alerta se activan cuando el histórico supere las 20 propuestas — con muestras menores, cualquier reparto es artefacto estadístico.
 
 ## Metodología
 

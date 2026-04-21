@@ -163,16 +163,29 @@ def build_public(history: list[dict]) -> str:
         counts = count_dimension(filtered_365, field)
         lines.extend(render_table(title, counts))
 
-    alerts = alert_if_concentrated(count_dimension(filtered_90, "actor_type"))
-    if alerts:
-        lines.append("## Alertas metodológicas activas")
+    # Mostramos alertas solo cuando hay muestra suficiente. Con corpus corto,
+    # cualquier concentración es artefacto estadístico, no señal editorial.
+    if len(history) >= MIN_HISTORY_FOR_ALERTS:
+        alerts = alert_if_concentrated(count_dimension(filtered_90, "actor_type"))
+        if alerts:
+            lines.append("## Alertas metodológicas activas")
+            lines.append("")
+            for a in alerts:
+                lines.append(f"- {a}")
+            lines.append("")
+            lines.append("Si una concentración >50% persiste durante 2 trimestres consecutivos, ")
+            lines.append("revisamos los criterios de admisión y las fuentes de ingesta. Ver ")
+            lines.append("[política editorial](/politica-editorial/).")
+            lines.append("")
+    else:
+        lines.append("## Fase de rodaje")
         lines.append("")
-        for a in alerts:
-            lines.append(f"- {a}")
-        lines.append("")
-        lines.append("Si una concentración >50% persiste durante 2 trimestres consecutivos, ")
-        lines.append("revisamos los criterios de admisión y las fuentes de ingesta. Ver ")
-        lines.append("[política editorial](/politica-editorial/).")
+        lines.append(
+            f"El observatorio está en fase de rodaje ({len(history)} propuestas "
+            f"documentadas). Los umbrales de alerta se activan cuando el "
+            f"histórico supere las {MIN_HISTORY_FOR_ALERTS} propuestas — con "
+            f"muestras menores, cualquier reparto es artefacto estadístico."
+        )
         lines.append("")
 
     lines.append("## Metodología")
@@ -185,10 +198,31 @@ def build_public(history: list[dict]) -> str:
     return "\n".join(lines)
 
 
+MIN_HISTORY_FOR_ALERTS = 20
+
+
 def maybe_alert(history: list[dict]) -> None:
+    """Avisa por Telegram si un bloque supera el 50% en ventana 60d.
+
+    Silenciado mientras el histórico tenga < 20 propuestas totales: con corpus
+    pequeño, cualquier bloque activa falso positivo (p.ej. 1 propuesta →
+    "institucional_publico concentra 100%"). Regla vinculante del pivote es
+    "dos trimestres consecutivos"; esta versión es un parche temporal.
+
+    Pendiente: rediseño con histórico semanal de balance para comparar
+    trimestres consecutivos (ver REVISION-FASE-0.5.md). Activar tras ~3 meses
+    de datos reales acumulados.
+    """
+    if len(history) < MIN_HISTORY_FOR_ALERTS:
+        log.info(
+            "Balance: silencio de alertas (histórico=%d, mínimo=%d).",
+            len(history), MIN_HISTORY_FOR_ALERTS,
+        )
+        return
+
     filtered_60 = filter_window(history, 60)
     if len(filtered_60) < 5:
-        return  # demasiado pronto para alertar
+        return  # muy poca actividad reciente, sin señal fiable
     counts = count_dimension(filtered_60, "actor_type")
     alerts = alert_if_concentrated(counts)
     if not alerts:
