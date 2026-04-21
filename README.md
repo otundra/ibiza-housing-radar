@@ -2,7 +2,7 @@
 
 Observatorio semanal de la crisis de vivienda en Ibiza, con foco en trabajadores de temporada (mayo-octubre). Cada lunes genera un informe con las señales de la semana, mapa de posiciones de los actores y propuestas reales documentadas con fuente verificable.
 
-> ⚠️ **Pivote 2026-04-20.** El proyecto está migrando de "generador de propuestas" a **"observatorio documental"**. El LLM ya no genera propuestas propias; mapea, ordena y verifica las propuestas reales que actores con nombre formulan cada semana. Detalle en [`PIVOTE.md`](PIVOTE.md) y [`ROADMAP.md`](ROADMAP.md). El trabajo del pivote vive en el branch `pivote/observatorio-documental` hasta merge. El modelo antiguo sigue operativo en `main` hasta entonces.
+> 🧭 **Modelo activo: observatorio documental** (desde el 2026-04-21, merge a `main`). El LLM no genera propuestas propias; documenta las que actores con nombre formulan cada semana, con URL verificable. Detalle en [`PIVOTE.md`](PIVOTE.md) y [`ROADMAP.md`](ROADMAP.md).
 
 - **Web pública:** <https://otundra.github.io/ibiza-housing-radar/>
 - **Cadencia:** informe semanal, lunes 07:00 CEST (05:00 UTC)
@@ -13,10 +13,12 @@ Observatorio semanal de la crisis de vivienda en Ibiza, con foco en trabajadores
 ## Qué hace
 
 1. **Ingesta** por RSS: Google News + Diario de Ibiza + Periódico de Ibiza.
-2. **Clasifica** cada noticia con Claude Haiku 4.5 (housing sí/no, actor, palanca).
-3. **Genera** el informe con Claude Opus 4.7: 3-5 propuestas con actor responsable, coste estimado, precedente real y primer paso en ≤30 días.
-4. **Publica** como Markdown en `docs/_editions/` y lo sirve por GitHub Pages. La home es un panel con la última edición desplegada (señales, propuestas, a vigilar); el archivo completo vive en `/ediciones/`.
-5. **Audita** cada llamada en `data/costs.csv` + dashboard privado en `private/costs.md` (no servido por Jekyll).
+2. **Clasifica** cada noticia con Claude Haiku 4.5 (housing sí/no, actor, palanca, si contiene propuesta explícita).
+3. **Extrae** la ficha estructurada de cada propuesta detectada con Haiku + validador Sonnet (actor, URL fuente, estado, viabilidad, verbatim).
+4. **Verifica** que cada URL responde, que el actor está trazable y que no aparecen verbos prohibidos (`debería`, `urge`, `proponemos`, etc.).
+5. **Compone** la edición semanal con Claude Opus 4.7 a partir del material ya verificado. El Opus no genera propuestas, solo ordena y redacta.
+6. **Publica** como Markdown en `docs/_editions/` y lo sirve por GitHub Pages. La home es un panel con la última edición desplegada; el archivo completo vive en `/ediciones/`.
+7. **Audita** cada llamada en `data/costs.csv` + dashboard privado en `private/costs.md` (no servido por Jekyll). Archivo append-only por ejecución en `data/archive/YYYY-WNN/`.
 
 ## Puesta en marcha
 
@@ -64,6 +66,4 @@ Ver [CLAUDE.md](CLAUDE.md) para detalles de arquitectura, decisiones y comandos.
 
 ## Aviso
 
-**Modelo antiguo (en `main`):** las propuestas son sugerencias generadas por IA sobre prensa pública. No son análisis técnico ni asesoramiento jurídico, político o económico. Contrasta cifras con la fuente original antes de usarlas.
-
-**Modelo nuevo (pivote, en branch):** el observatorio ya no genera propuestas propias. Documenta propuestas reales de actores identificables con URL a la fuente primaria. Política editorial con 5 reglas duras en `/politica-editorial` tras lanzamiento. Ver [`PIVOTE.md`](PIVOTE.md).
+El observatorio no genera propuestas propias. Documenta propuestas reales de actores identificables con URL a la fuente primaria. Política editorial con 5 reglas duras en `/politica-editorial` tras el relanzamiento público. Ver [`PIVOTE.md`](PIVOTE.md).

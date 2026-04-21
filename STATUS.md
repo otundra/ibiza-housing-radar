@@ -30,11 +30,11 @@
 >
 > Siguiente fase operativa: **Paso 1 del plan de prototipo** (B34 en ROADMAP) — HTML estático de 4 páginas con datos reales antes de migrar a Jekyll.
 
-## 🧭 PIVOTE EN MARCHA (20-abr-2026)
+## 🧭 MODELO DOCUMENTAL ACTIVO (merge a `main` el 21-abr-2026)
 
-> El proyecto ha decidido pivotar de "generador de propuestas" a **"observatorio documental"** tras el [estudio crítico](private/estudios/2026-04-20-propuestas.md) del corpus W16-W17. Todo el trabajo del pivote vive en el branch `pivote/observatorio-documental` hasta merge. El `main` queda intacto como salvaguarda.
+> El pivote a **"observatorio documental"** está consolidado en `main` desde el 2026-04-21 mediodía (commit `b24a6ad`). Es el único modelo vigente. Origen: [estudio crítico](private/estudios/2026-04-20-propuestas.md) sobre el corpus W16-W17.
 >
-> **Expediente estratégico completo (en el branch):**
+> **Expediente estratégico completo:**
 >
 > - [`PIVOTE.md`](PIVOTE.md) — decisión fundacional + 5 reglas duras.
 > - [`ROADMAP.md`](ROADMAP.md) — Fase 0 de relanzamiento (pipeline + 15 páginas + contenido retroactivo + SEO + distribución) + fases siguientes.
@@ -45,13 +45,13 @@
 > - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 8 ediciones simuladas W10-W17 bajo modelo nuevo.
 > - [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) — 16 decisiones del editor resueltas.
 >
-> **Estado:** Bloque B desbloqueado tras cierre del estudio de diseño. Implementación arranca con prototipo HTML estático (B34). Todo el código del pipeline antiguo sigue operativo mientras tanto.
+> **Estado:** pipeline documental operativo en `main`. Bloque B (web) en pausa activa tras entrega del prototipo Paso 1. Revisión Fase 0.5 en curso antes de retomar diseño visual.
 
 ---
 
-## 🎯 TL;DR (del modelo antiguo, aún operativo en `main`)
+## 🎯 TL;DR operativo
 
-**Todo funciona.** La web está live, la primera edición publicada, el pipeline semanal automatizado y el control de costes operativo.
+**Todo funciona.** La web está live, el pipeline documental automatizado corre cada lunes y el control de costes está operativo. Snapshot append-only en `data/archive/YYYY-WNN/` desde la ejecución W17.
 
 - 🌐 **Web:** <https://otundra.github.io/ibiza-housing-radar/>
 - 📦 **Repo:** <https://github.com/otundra/ibiza-housing-radar> (público)

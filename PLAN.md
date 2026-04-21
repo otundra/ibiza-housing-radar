@@ -4,17 +4,16 @@ Estrategia para convertir el proyecto en un observatorio de referencia sobre viv
 
 Última revisión: 2026-04-20.
 
-> ⚠️ **PIVOTE 2026-04-20.** Tras el [estudio crítico](private/estudios/2026-04-20-propuestas.md) de las propuestas W16-W17, el proyecto pivota de "generador de propuestas" a "observatorio documental". Todo este PLAN.md se mantiene como referencia histórica pero **el roadmap de trabajo activo vive ahora en**:
+> 📜 **Documento histórico.** Tras el [estudio crítico](private/estudios/2026-04-20-propuestas.md) de las propuestas W16-W17, el proyecto pivotó a "observatorio documental" el 2026-04-20 y el merge a `main` se consolidó el 2026-04-21. Este PLAN.md se conserva como referencia histórica. **El roadmap de trabajo activo vive en:**
 >
 > - [`PIVOTE.md`](PIVOTE.md) — decisión fundacional, 5 reglas duras.
 > - [`ROADMAP.md`](ROADMAP.md) — Fase 0 completa + fases siguientes.
-> - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline técnico nuevo.
+> - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline técnico.
 > - [`DISENO-WEB.md`](DISENO-WEB.md) — arquitectura de información y UX.
 > - [`SEO.md`](SEO.md) — plan SEO ambicioso.
-> - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 4 ediciones simuladas.
-> - [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) — input editor antes de arrancar.
->
-> El trabajo vive en el branch `pivote/observatorio-documental` hasta merge.
+> - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 12 ediciones retroactivas W06-W17.
+> - [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) — decisiones del editor resueltas.
+> - [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) — auditoría fundacional en curso.
 
 
 ## Principio económico

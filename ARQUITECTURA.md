@@ -621,7 +621,7 @@ Ubicación: `tests/` en raíz del repo. Framework: `pytest`.
 
 ## Migración desde el código actual
 
-No se mantiene backwards compatibility. El modelo antiguo queda en el histórico git de `main` y se puede consultar ahí si hace falta.
+No se mantiene backwards compatibility. El modelo antiguo quedó en el histórico git anterior al merge del pivote (2026-04-21, commit `b24a6ad`) y se puede consultar ahí si hace falta.
 
 Pasos:
 

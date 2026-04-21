@@ -12,6 +12,16 @@ Reglas:
 
 ---
 
+## 2026-04-21 (cierre · barrido documental post-merge) — Eliminadas referencias al branch del pivote
+
+- **Merge del pivote consolidado 2026-04-21 12:04 CEST** (commit `b24a6ad`) pero la documentación seguía describiendo el pivote como trabajo vivo en branch separado. Barrido en 7 documentos para que el repo diga la verdad.
+- **Archivos actualizados:** [CLAUDE.md](CLAUDE.md) (callout de cabecera reescrito + estructura de `src/` y `data/` al día con `extract.py`/`verify.py`/`rescue.py`/`balance.py`/`self_review.py`/`archive.py`), [README.md](README.md) (aviso de pivote + sección "Qué hace" con los pasos reales del pipeline documental + aviso final simplificado), [STATUS.md](STATUS.md) (callout "PIVOTE EN MARCHA" → "MODELO DOCUMENTAL ACTIVO" + eliminado "TL;DR del modelo antiguo"), [PIVOTE.md](PIVOTE.md) (cabecera + sección Reversibilidad adaptadas a merge consolidado), [PLAN.md](PLAN.md) (aviso pivote → documento histórico), [CONTENIDO-RETROACTIVO.md](CONTENIDO-RETROACTIVO.md) y [DECISIONES-PENDIENTES.md](DECISIONES-PENDIENTES.md) (frases "pre-merge" contextualizadas con fecha), [ARQUITECTURA.md](ARQUITECTURA.md) (sección "Migración desde el código actual" aclara dónde vive el modelo antiguo).
+- **Tabla de seguimiento del ROADMAP arreglada:** A1-A7, A9-A12, A16 marcadas ✅ (cerradas tras merge). A8 (tests) sigue pendiente — no hay carpeta `tests/`. A13, A14, A17 ⏸ diferidos. A15 (dashboard costes ampliado) pendiente. Se añadió PI2-A (archivado append-only) al listado como cerrada 21-abr.
+- **Qué NO se tocó:** entradas históricas del DIARIO que mencionan el branch (son registro de lo que pasó en su momento, no se reescribe). `docs/acerca.md` sigue con su callout *"esta página refleja el modelo antiguo"* porque su reescritura es tarea pendiente del Bloque B, no un error de actualización.
+- **Impacto:** cero código tocado. Documentación ahora coherente con la realidad del repo. Cualquier Claude que abra una sesión nueva lee un callout de cabecera que dice la verdad (modelo documental único, activo en `main`).
+
+---
+
 ## 2026-04-21 (noche · Fase 0.5 cierre de sesión) — Rol operador + tiers públicos + alerta lunes
 
 - **Rol del editor redefinido como operador, no revisor experto.** El editor expresa: *"en principio yo no voy a revisar nada"*. Tras diálogo honesto sobre qué absorbe el sistema y qué no, queda claro el mínimo no delegable: responder emails de `/contacto/` en 48-72 h (0-3/semana), mirar la web los lunes 3 min tras publicar, escalar cuando llegue algo excepcional. Total estimado 15-45 min/semana reactivos. El conocimiento experto del tema NO es requisito para sostener el proyecto — el sistema (tiers + cuarentena + sanity check externo pre-lanzamiento) absorbe la validación.

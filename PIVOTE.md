@@ -1,9 +1,9 @@
 # Pivote — de generador de propuestas a observatorio documental
 
-**Fecha:** 2026-04-20
-**Branch:** `pivote/observatorio-documental`
+**Fecha de decisión:** 2026-04-20
+**Merge a `main`:** 2026-04-21 12:04 CEST (commit `b24a6ad`)
 **Rango:** documento fundacional. Todo lo que siga (ROADMAP, ARQUITECTURA, DISEÑO, SEO, CONTENIDO RETROACTIVO) deriva de las decisiones aquí.
-**Estado:** propuesto, pendiente de confirmación del editor antes de arrancar ejecución.
+**Estado:** consolidado en `main`. Modelo documental único del proyecto.
 
 ---
 
@@ -119,7 +119,7 @@ Ninguno puede ser un KPI si el proyecto toma partido. Todos son posibles bajo el
 
 ## Reversibilidad
 
-Todo este bloque de trabajo vive en el branch `pivote/observatorio-documental`. El `main` queda intacto hasta que el editor apruebe el merge. Si tras 4-6 semanas bajo el nuevo modelo el balance muestra que no funciona, se puede revertir con un merge del main anterior al commit del merge.
+El pivote está consolidado en `main` desde el 2026-04-21 (commit `b24a6ad`). Si tras un período razonable bajo el modelo documental el balance mostrara que no funciona, la reversión se haría con un revert del merge y posterior commit de limpieza — no con un cambio de branch. El modelo antiguo (generador de propuestas) vive solo en el histórico git anterior al merge.
 
 ---
 

@@ -29,7 +29,7 @@ Las 12 ediciones alimentan simultáneamente:
 
 ## Decisión del editor
 
-**Borramos las 2 ediciones actuales (W16-W17 en modelo antiguo)** — se eliminan del repo. Las originales quedan en el histórico git de `main` pre-merge para auditoría. El archivo público arranca 100% bajo modelo documental.
+**Borramos las 2 ediciones actuales (W16-W17 en modelo antiguo)** — se eliminan del repo. Las originales quedan en el histórico git anterior al merge del pivote (2026-04-21) para auditoría. El archivo público arranca 100% bajo modelo documental.
 
 **Producimos 8 ediciones retroactivas** cubriendo marzo (W10-W13) y abril (W14-W17). Cada una con nota metodológica visible.
 

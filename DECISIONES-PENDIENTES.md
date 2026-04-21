@@ -28,7 +28,7 @@
 ## Detalle de las decisiones
 
 ### 1. Ediciones W16-W17 → BORRAR
-El editor opta por la opción más drástica: **eliminar las ediciones actuales** en lugar de reescribirlas. Motivo: "para no contaminar". Coherencia completa del archivo bajo el modelo nuevo, sin residuos del modelo antiguo. Las originales quedan en el histórico git del branch `main` pre-merge si hacen falta para auditoría.
+El editor opta por la opción más drástica: **eliminar las ediciones actuales** en lugar de reescribirlas. Motivo: "para no contaminar". Coherencia completa del archivo bajo el modelo nuevo, sin residuos del modelo antiguo. Las originales quedan en el histórico git anterior al merge del pivote (2026-04-21) si hacen falta para auditoría.
 
 ### 2. Contenido retroactivo → 8 ediciones
 Ampliado de 4 a 8 ediciones: W10-W17, cubriendo marzo y abril 2026. El editor pide que sea real (fuentes reales, URLs reales). Valoración publicada: sentido alto, veracidad alta con nota metodológica, esfuerzo manual mayor (+4-8 h), coste puntual ~12 € (cruza tope blando ocasionalmente pero no corta). Ver detalle en [CONTENIDO-RETROACTIVO.md](CONTENIDO-RETROACTIVO.md).

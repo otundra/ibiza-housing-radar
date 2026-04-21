@@ -8,18 +8,17 @@ Instrucciones para Claude Code al trabajar en este proyecto.
 >
 > **Logo gráfico descartado** 2026-04-21. Dirección visual elegida: **tipográfica pura**. Sin monograma SVG. El wordmark cumple la función de identidad completa. Preview vivo en [`docs/prototype/logo/preview.html`](docs/prototype/logo/preview.html) con 4 variantes (V1 mono plano · V2 split · V3 tri · V4 underline). Pendiente elección de variante.
 
-> ⚠️ **Pivote activo 2026-04-20.** El proyecto está migrando a "observatorio documental" (el LLM no genera propuestas, solo documenta las de actores reales con URL verificable). Todo el trabajo vive en el branch `pivote/observatorio-documental`. Antes de tocar código en ese branch, leer:
+> 🧭 **Modelo activo: observatorio documental.** Desde el 2026-04-21 (merge del pivote a `main`) el modelo documental es el único vigente. El LLM no genera propuestas; documenta las que actores con nombre formulan cada semana, con URL verificable. Documentos de referencia:
 >
 > - [`PIVOTE.md`](PIVOTE.md) — 5 reglas duras + decisión fundacional.
 > - [`ROADMAP.md`](ROADMAP.md) — Fase 0 completa.
-> - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline nuevo con módulos `extract.py`, `verify.py`, `rescue.py`, `balance.py`.
+> - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline con módulos `extract.py`, `verify.py`, `rescue.py`, `balance.py`, `archive.py`, `self_review.py`.
 > - [`DISENO-WEB.md`](DISENO-WEB.md) — UX dual (primer visitante + profesional recurrente).
 > - [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) — sistema visual, benchmark editorial, 13 decisiones cerradas (D1-D13).
 > - [`SEO.md`](SEO.md) — plan SEO ambicioso.
-> - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 8 ediciones simuladas W10-W17.
+> - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 12 ediciones retroactivas W06-W17 bajo modelo documental.
 > - [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) — 16 decisiones resueltas del editor.
->
-> El contenido que sigue describe el **modelo antiguo** (aún operativo en `main` hasta merge). Las convenciones de commit, coste y estructura de repo siguen siendo válidas.
+> - [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) — auditoría fundacional abierta 2026-04-21, pendiente antes de reanudar diseño visual.
 
 ## Qué es
 
@@ -44,18 +43,27 @@ Publicado en GitHub Pages.
 
 ```
 .
-├── src/                        # Pipeline Python
+├── src/                        # Pipeline Python (modelo documental)
 │   ├── ingest.py               # Lee RSS + filtra keywords + dedup
-│   ├── classify.py             # Haiku: is_housing, actor, palanca
-│   ├── generate.py             # Opus: genera informe semanal markdown
+│   ├── classify.py             # Haiku: is_housing, actor, palanca, has_explicit_proposal
+│   ├── extract.py              # Haiku + validador Sonnet: ficha estructurada por propuesta
+│   ├── rescue.py               # Reglas: candidatas a rescate de ediciones previas
+│   ├── generate.py             # Opus: compone la edición (no genera propuestas)
+│   ├── verify.py               # URLs 200 + trazabilidad actor + verbos prohibidos
+│   ├── balance.py              # Reparto de actores y bloques (30/90/180/365 días)
+│   ├── self_review.py          # Sonnet: autoevaluación semanal tras publicar
+│   ├── archive.py              # Snapshot append-only a data/archive/YYYY-WNN/
 │   ├── build_index.py          # Regenera docs/index.md
-│   ├── costs.py                # Tracking + dashboard + tope mensual
+│   ├── costs.py                # Tracking + dashboard + capas de tope mensual
+│   ├── notify.py               # Alertas Telegram + fallback issue GitHub
 │   ├── report.py               # Orquestador end-to-end
 │   └── sources.yaml            # Feeds + keywords + ventana temporal
 ├── data/
+│   ├── archive/YYYY-WNN/       # Snapshot append-only por ejecución (desde W17)
+│   ├── proposals_history.json  # Propuestas extraídas, histórico acumulado
 │   ├── costs.csv               # Append-only, histórico de llamadas API
-│   ├── ingested.json           # (temporal) noticias crudas de la semana
-│   └── classified.json         # (temporal) noticias ya clasificadas
+│   ├── ingested.json           # Noticias crudas de la semana en curso
+│   └── classified.json         # Noticias clasificadas de la semana en curso
 ├── docs/                       # Jekyll root (sirve como GitHub Pages)
 │   ├── _config.yml
 │   ├── _layouts/               # default, home, edition, page

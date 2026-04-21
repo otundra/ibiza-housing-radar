@@ -8,7 +8,7 @@
 
 | Bloque | Tema | Estado |
 |---|---|---|
-| A | Pipeline técnico del pivote | ✅ **cerrado** (salvo A13 auditoría trimestral, A14 re-benchmark mensual y A17 automatización temporadas, diferidos) |
+| A | Pipeline técnico del pivote | ✅ **cerrado** (salvo A8 tests básicos, A13 auditoría trimestral, A14 re-benchmark mensual, A15 dashboard costes ampliado y A17 automatización temporadas — todos pendientes/diferidos) |
 | B | Arquitectura web (home, /radar/, /propuestas/, /actores/, /balance/, /estadisticas/, /estado/, /sin-dato/, /sistema/, …) | ⏸ **en pausa** (21-abr tarde). Prototipo (B34) entregado y en revisión; hold a petición del editor para estudiar arquitectura antes de Paso 2 |
 | C | Contenido retroactivo 8 ediciones (W10-W17) | ⏸ pendiente |
 | D | SEO masivo | ⏸ pendiente |
@@ -259,17 +259,23 @@ Detalle en [PLAN.md](PLAN.md) sección Monetización.
 
 | Bloque | Tarea | Prioridad | Estado |
 |---|---|---|---|
-| A | A1. Prompt documental | crítica | pendiente |
-| A | A2. Schema classify ampliado | crítica | pendiente |
-| A | A3. `extract.py` | crítica | pendiente |
-| A | A4. `verify.py` bloqueante | crítica | pendiente |
-| A | A5. `rescue.py` | alta | pendiente |
-| A | A6. `balance.py` | alta | pendiente |
-| A | A7. Adaptación `report.py` | crítica | pendiente |
-| A | A8. Tests básicos | alta | pendiente |
-| A | A9. Prompt caching Opus | media | pendiente |
-| A | A10. Resiliencia classify | media | pendiente |
-| A | A11. Métricas pipeline | media | pendiente |
+| A | A1. Prompt documental | crítica | ✅ cerrado (merge 21-abr) |
+| A | A2. Schema classify ampliado | crítica | ✅ cerrado |
+| A | A3. `extract.py` | crítica | ✅ cerrado |
+| A | A4. `verify.py` bloqueante | crítica | ✅ cerrado |
+| A | A5. `rescue.py` | alta | ✅ cerrado |
+| A | A6. `balance.py` | alta | ✅ cerrado |
+| A | A7. Adaptación `report.py` | crítica | ✅ cerrado |
+| A | A8. Tests básicos | alta | pendiente (no hay `tests/` todavía) |
+| A | A9. Prompt caching Opus | media | ✅ cerrado |
+| A | A10. Resiliencia classify | media | ✅ cerrado |
+| A | A11. Métricas pipeline | media | ✅ cerrado |
+| A | A12. `self_review.py` | alta | ✅ cerrado |
+| A | A13. `quarterly_audit.py` | media | ⏸ diferido |
+| A | A14. `model_rebench.py` | media | ⏸ diferido |
+| A | A15. Dashboard costes ampliado | media | pendiente |
+| A | A16. Tope blando 12 € | crítica | ✅ cerrado (duro subido a 50 € en 21-abr) |
+| A | PI2-A. Archivado append-only | alta | ✅ cerrado 21-abr (`archive.py`) |
 | B | B1. Home dual | crítica | pendiente |
 | B | B2. `/politica-editorial` | crítica | pendiente |
 | B | B3. `/metodologia` reescrita | crítica | pendiente |
