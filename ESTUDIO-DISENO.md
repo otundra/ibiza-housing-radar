@@ -695,7 +695,15 @@ Si alguna página supera el budget, investigar antes de publicar.
 
 Construir en este orden, cada paso valida antes de continuar. **No saltarse pasos.**
 
-### Paso 1 — Prototipo HTML estático (semana 1)
+### Paso 1 — Prototipo HTML estático (semana 1) · 🟡 ENTREGADO + EN PAUSA (2026-04-21 tarde)
+
+> **Estado:** entregado, verificado y pausado a petición del editor antes de pasar al Paso 2. Ver [`DIARIO.md` entrada 2026-04-21 (tarde · pausa)](DIARIO.md) y memoria [`prototipo_paso1_en_pausa.md`](../../.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/prototipo_paso1_en_pausa.md).
+>
+> **Qué está en `prototype/`:** `styles.css` (tokens §5 + 9 componentes §6), `theme.js` (toggle + fab + scroll-spy), `home.html`, `edition.html`, `actor.html`, `proposal.html`. Datos reales de la edición del 20-26 abril 2026.
+>
+> **Preguntas abiertas al editor** (retomar antes de Paso 2): (1) lectura del wordmark V2 Split en cabecera real, (2) apilado de 6 chips coalición en mobile, (3) barra progreso — mostrar siempre los 8 estados o solo los aplicables.
+>
+> **Cómo arrancar el preview:** `preview_start("prototype")` → `http://127.0.0.1:4100/home.html`. Config en [`.claude/launch.json`](.claude/launch.json) usa `/opt/homebrew/bin/python3` (el de Xcode está sandboxed).
 
 **Objetivo:** validar que las decisiones del estudio funcionan en pantalla real antes de tocar Jekyll.
 

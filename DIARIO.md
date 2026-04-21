@@ -12,6 +12,17 @@ Reglas:
 
 ---
 
+## 2026-04-21 (tarde · pausa) — Prototipo HTML Paso 1 entregado y pausado
+
+- **Paso 1 del plan de prototipo del estudio (§10) completado y verificado** — 4 HTMLs estáticos en [`prototype/`](prototype/) + CSS + JS vanilla. Datos reales de la edición del 20-26 abril 2026 (W17 interno). Entregables: [`styles.css`](prototype/styles.css) con tokens del §5 y 9 componentes del §6; [`theme.js`](prototype/theme.js) con toggle tema ○/● y `localStorage` (`rvi-theme`), fab Escríbenos con Escape, auto-captura de URL origen, scroll-spy sidebar; [`home.html`](prototype/home.html) dashboard editorial; [`edition.html`](prototype/edition.html) con 7 secciones + margin notes Tufte + tabla mapa; [`actor.html`](prototype/actor.html) Consell d'Eivissa con sidebar sticky + horizon toggle sin JS + timeline; [`proposal.html`](prototype/proposal.html) Residencias temporeros con pill "en debate" + barra progreso 8 estados + ficha 13 campos + 6 chips coalición.
+- **Verificado en navegador** con servidor estático en `127.0.0.1:4100`: consola limpia en las 4 páginas, toggle tema persiste entre navegaciones, sidebar sticky activa ≥900 px, horizon toggle sin JS (CSS `:checked ~`), progress bar respeta `prefers-reduced-motion`. A11y spot-checks: 1 H1 por página, `lang=es`, skip-link, landmarks completos, radios con `<label for>`, tabla con `<caption>` + `th scope`, 0 inputs sin label. Responsive OK en 375/768/1280 px. Lighthouse completo pendiente (herramienta no disponible en el entorno de verificación).
+- **Pausa activa desde 2026-04-21 tarde.** El editor pide parar el tema diseño/frontend para estudiar primero la arquitectura antes de seguir. B34 queda **en revisión (no cerrado)** — el prototipo está entregado pero pendiente de visto bueno visual y de 3 preguntas abiertas: (1) lectura del wordmark V2 Split a 17 px en cabecera real, (2) comportamiento de 6 chips coalición en mobile real, (3) si la barra de progreso muestra siempre los 8 estados o solo los aplicables.
+- **Fix técnico: launch.json usa `/opt/homebrew/bin/python3`** en vez de `/usr/bin/python3` para la config `prototype`. El python de Xcode está sandboxed y bloquea `os.getcwd()` (argparse lo llama al importar `http.server`). Sin este cambio, el servidor arranca pero da 500 en cada request.
+- **Memoria nueva** [`prototipo_paso1_en_pausa.md`](../../.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/prototipo_paso1_en_pausa.md) — consolida estado del prototipo, cómo retomar el preview, checks superados, preguntas abiertas. Enlazada desde MEMORY.md.
+- **Cómo retomar:** leer la memoria anterior + §10 Paso 1 del estudio; arrancar preview con `preview_start("prototype")`; responder a las 3 preguntas; decidir si el estudio de arquitectura modifica algo antes de pasar al Paso 2 (Jekyll, tarea B35).
+
+---
+
 ## 2026-04-21 (cierre identidad) — Variante V2 Split elegida + favicon `))` vectorial
 
 - **D1 cerrado con V2 Split:** wordmark `radar))vivienda_ibiza` en JetBrains Mono con las `))` en terracota (`#c14a2d`) como único acento cromático, resto en tinta. La variante más sobria con economía radical de color: un solo elemento colorado, el resto monocromo.

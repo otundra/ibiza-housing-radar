@@ -1,5 +1,17 @@
 # Estado al despertar — 21 abr 2026
 
+## ⏸ PAUSA ACTIVA (21-abr-2026 tarde) — Prototipo HTML entregado, diseño en hold
+
+> **El editor pide parar el tema diseño/frontend para estudiar primero la arquitectura.** Nada que retocar del prototipo hasta nueva orden.
+>
+> **Qué está entregado:** Paso 1 del plan de prototipo (B34 del ROADMAP, §10 del estudio). 4 HTMLs estáticos en [`prototype/`](prototype/) + CSS + JS vanilla, datos reales de la edición del 20-26 abril 2026. Verificado en navegador, consola limpia, toggle tema persiste, a11y spot-checks OK. **B34 en revisión, no cerrado** — falta visto bueno visual y responder 3 preguntas abiertas.
+>
+> **Qué queda por revisar cuando se retome:** (1) lectura del wordmark V2 Split en cabecera real; (2) apilado de 6 chips de coalición en mobile; (3) si la barra de progreso muestra siempre los 8 estados o solo los aplicables.
+>
+> **Cómo recuperar el preview:** `preview_start("prototype")` → `http://127.0.0.1:4100/home.html`. La config en [`.claude/launch.json`](.claude/launch.json) usa `/opt/homebrew/bin/python3` (el de Xcode está sandboxed).
+>
+> **Punto de entrada al retomar:** memoria [`prototipo_paso1_en_pausa.md`](../../.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/prototipo_paso1_en_pausa.md) + [`DIARIO.md`](DIARIO.md) entrada 2026-04-21 (tarde · pausa) + [`ESTUDIO-DISENO.md §10`](ESTUDIO-DISENO.md). No asumir aprobado.
+
 ## 🏷️ REBRANDING PROVISIONAL (21-abr-2026)
 
 > Nombre público de trabajo: **Radar Vivienda Ibiza** (provisional). Wordmark tipográfico `radar))vivienda_ibiza` en monospace. Logo SVG gráfico descartado; identidad totalmente tipográfica. Dominio candidato `radaribiza.com` (compra pendiente). Repo GitHub mantiene slug `ibiza-housing-radar` hasta compra del dominio. Ver [DIARIO.md](DIARIO.md) entradas 2026-04-21.

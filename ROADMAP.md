@@ -9,7 +9,7 @@
 | Bloque | Tema | Estado |
 |---|---|---|
 | A | Pipeline técnico del pivote | ✅ **cerrado** (salvo A13 auditoría trimestral, A14 re-benchmark mensual y A17 automatización temporadas, diferidos) |
-| B | Arquitectura web (home, /radar/, /propuestas/, /actores/, /balance/, /estadisticas/, /estado/, /sin-dato/, /sistema/, …) | 🔄 **estudio cerrado**, implementación arranca con prototipo (B34) |
+| B | Arquitectura web (home, /radar/, /propuestas/, /actores/, /balance/, /estadisticas/, /estado/, /sin-dato/, /sistema/, …) | ⏸ **en pausa** (21-abr tarde). Prototipo (B34) entregado y en revisión; hold a petición del editor para estudiar arquitectura antes de Paso 2 |
 | C | Contenido retroactivo 8 ediciones (W10-W17) | ⏸ pendiente |
 | D | SEO masivo | ⏸ pendiente |
 | E | Analítica (GoatCounter, dashboard público) | ⏸ pendiente |
@@ -94,7 +94,7 @@ Detalle en [DISENO-WEB.md](DISENO-WEB.md).
 
 **Derivados del estudio de diseño (cerrado 2026-04-21, ver [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md)):**
 
-- [ ] **B34.** Prototipo HTML estático en `prototype/` (Paso 1 del plan §10). 4 páginas (home, edición, ficha actor, ficha propuesta) con datos reales W17 y los 9 componentes nuevos. Validación en móvil real antes de migrar a Jekyll.
+- [~] **B34.** Prototipo HTML estático en `prototype/` (Paso 1 del plan §10). 4 páginas (home, edición, ficha actor, ficha propuesta) con datos reales W17 y los 9 componentes nuevos. **Entregado 2026-04-21 tarde y en revisión** — ver [memoria prototipo_paso1_en_pausa](../../.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/prototipo_paso1_en_pausa.md). Pausado a petición del editor para estudiar arquitectura antes de seguir con B35 (Jekyll). Al retomar: (1) revisión visual del wordmark V2 Split en cabecera real, (2) comportamiento chips coalición 6 actores en mobile, (3) decisión barra progreso 8 estados siempre o solo aplicables.
 - [ ] **B35.** Implementar **9 componentes nuevos** en Jekyll (partials + CSS): chrome operacional, numeración edición por fecha, tags tipográficos, card de propuesta, pill de estado + barra de progreso (8 estados), chip de actor (8 tipos), ficha actor con sidebar sticky, margin notes (Tufte), toggle Temporada/Pre-temporada/Histórico.
 - [ ] **B36.** Formulario **"Escríbenos"** flotante universal (Formspree). Botón fijo esquina inferior derecha, visible en todas las páginas salvo confirmación. Campos: mensaje (obligatorio) + nombre y email (opcionales) + auto-captura de URL origen. Honeypot anti-spam. Mono + seams.
 - [ ] **B37.** Página `/sistema/` interna con `noindex,nofollow` (documentación viva del sistema visual: paleta, tipografía, los 9 componentes renderizados). Solo para editor y colaboradores vía URL directa.
@@ -301,7 +301,7 @@ Detalle en [PLAN.md](PLAN.md) sección Monetización.
 | B | B29. `/costes/` público | media | pendiente |
 | B | B30. `/estado/` | alta | pendiente |
 | B | B31. `/radar/` | alta | pendiente |
-| B | B34. Prototipo HTML estático | crítica | pendiente |
+| B | B34. Prototipo HTML estático | crítica | 🟡 entregado + en revisión (pausado 21-abr tarde) |
 | B | B35. 9 componentes en Jekyll | crítica | pendiente |
 | B | B36. Formulario "Escríbenos" | alta | pendiente |
 | B | B37. Página `/sistema/` interna | media | pendiente |
