@@ -12,6 +12,15 @@ Reglas:
 
 ---
 
+## 2026-04-21 (post-revisión · decisiones del editor) — /acerca/ reescrita + 2 tareas nuevas (RT11 home, RT12 precios)
+
+- **`docs/acerca.md` reescrita** (opción A, breve ~250 palabras). Qué es el observatorio + quién lo edita + licencias + financiación + contacto + avisos. El detalle técnico (reglas duras, pipeline, modelos, sesgos) se delega a la futura `/metodo/`. Copy sin prometer nada que no tenga ya; banner de "página en reescritura" retirado.
+- **RT11 — Copy y tono de la home.** Añadida como tarea P-1 para resolver en la etapa de Diseño. El fix mecánico del barrido ya limpia el copy del modelo antiguo; la decisión editorial final (tono, jerarquía, integración con tiers, UX dual) se toma cuando se reanude el bloque de diseño, tras cerrar RT1-RT10.
+- **RT12 — Vía A de precios, estudio en profundidad.** Añadida como tarea P-1 prioridad ALTA. Objetivo: valorar si adelantar al pre-relanzamiento la agregación mensual de informes públicos (Idealista, Fotocasa, INE, IBESTAT, Ministerio de Vivienda, BOIB). Coste 0 €, sin riesgo legal, convierte el proyecto de "lectura estructurada de prensa" a "observatorio con datos primarios". Salida: `ESTUDIO-PRECIOS.md` con matriz de fuentes + esquema normalizado + recomendación de cronograma.
+- **Método queda en RT8** como estaba: stubs + split `/acerca/` + `/metodo/` cuando se retome Diseño, basado en el prototipo `docs/prototype/metodo.html` ya construido.
+
+---
+
 ## 2026-04-21 (cierre · revisión técnica profunda y fixes de coherencia) — Borrado de W16 + fixes pipeline + 10 tareas nuevas
 
 Revisión crítica solicitada por el editor sobre concepto y proceso. Detectadas 19 inconsistencias de distinta gravedad entre documentación, código y web pública. Ejecutados los fixes inequívocos y apuntadas como tareas las decisiones que requieren criterio editorial.

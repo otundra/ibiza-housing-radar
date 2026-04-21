@@ -186,6 +186,48 @@ Esto se hace **cuando se reanude el bloque Diseño** (pausado por esta revisión
 
 **Salida esperada:** 3 páginas Jekyll en `docs/` con permalinks `/politica-editorial/`, `/metodologia/`, `/correcciones/`, enlazadas desde el menú y el pie de edición.
 
+### RT11 · Copy y tono de la home — decisión editorial en la etapa de Diseño ⏳
+El fix mecánico aplicado en el barrido 2026-04-21 ya quita el copy del modelo antiguo de la home (cambios en `build_index.py`: *"propuestas accionables con precedente"* → *"propuestas documentadas en circulación"*, bloque final reescrito para reflejar que el observatorio no genera propuestas propias). Queda pendiente la **decisión editorial** sobre el tono, jerarquía visual, qué se ve above-the-fold, cómo se comunica a los dos públicos (primer visitante vs profesional recurrente) y cómo se integra con los tiers de confianza (RT3).
+
+Esa decisión se toma cuando se reanude la etapa de Diseño, tras cerrar los hallazgos técnicos (RT1-RT10). Depende de:
+- Resultado del test de usabilidad con los dos públicos (RT3).
+- Qué copy final tienen los tiers y la cuarentena cuando existan.
+- Si la Vía A de precios (RT12) entra antes del relanzamiento; en ese caso la home debe darle espacio.
+
+**Salida esperada:** copy final de la home cerrado, componentes del dashboard revisados contra las decisiones D1-D13 del estudio de diseño, `build_index.py` emite el copy definitivo.
+
+### RT12 · Vía A de precios — estudio en profundidad antes del relanzamiento ⏳ [ALTA]
+Adelantar la [Vía A del observatorio de precios](PLAN.md) (agregación mensual de informes públicos) al pre-relanzamiento es la palanca más fuerte para convertir el proyecto de "lectura estructurada de prensa local" a **fuente primaria con datos propios**. Coste 0 €, sin riesgo legal (son informes públicos descargables), sin scraping contra TOS. El PLAN la dejaba en Fase 2 (3-6 meses post-relanzamiento); el editor 2026-04-21 noche acepta adelantarla y pide estudio profundo antes de comprometer trabajo.
+
+**Preguntas que debe responder el estudio:**
+
+1. **Fuentes efectivas.** Cuáles publican datos agregados de Ibiza (no solo Baleares, no solo España) con granularidad útil:
+   - **Idealista — Informe de Precios.** Trimestral, por provincia y municipio. Descargable en PDF. ¿Desglosa Ibiza vs Formentera? ¿Separa habitación vs vivienda completa? ¿Distingue temporada vs anual?
+   - **Fotocasa — Índice Inmobiliario.** Mensual, ahora disponible por municipio. Revisar cobertura real de Ibiza en su panel.
+   - **INE** — Estadística Continua de Viviendas (ECV), Encuesta de Población Activa (EPA, para alquiler como gasto). ¿Granularidad Ibiza?
+   - **IBESTAT** (Institut d'Estadística de les Illes Balears). Es la fuente más local; probablemente la que mejor encaja. ¿Qué series tienen sobre vivienda?
+   - **Ministerio de Vivienda — Observatorio del Alquiler.** Nacional con desglose por provincia y municipio desde 2024. ¿Datos descargables en CSV?
+   - **BOIB.** Convocatorias del IBAVI (adjudicaciones, precios de VPO) como dato primario.
+   - **Portales menores:** Habitaclia, Pisos.com, Engel & Völkers (si publican agregado).
+
+2. **Frecuencia y latencia.** Cada fuente publica con qué frecuencia y cuántos días de retraso. La página `/precios/` necesita actualización mínima mensual.
+
+3. **Scraping ético vs API.** Qué fuentes tienen API abierta (IBESTAT sí, INE sí, Ministerio depende), cuáles exigen descarga manual del PDF/XLS, cuáles requieren registro.
+
+4. **Normalización de datos.** Las fuentes no comparten tipología. Hay que definir un esquema propio (zona, tipo de vivienda, periodo, precio medio, mediana, percentil 25/75, método de cálculo declarado) y mapear cada fuente contra él.
+
+5. **Presentación visual.** Gráfico de líneas por zona y tipo, tabla comparativa trimestral, ficha por fuente con link al PDF original, CSV descargable (alimenta `/datos-abiertos/`).
+
+6. **Disclaimer de limitaciones.** Cada fuente mide cosas distintas (oferta vs contrato firmado, portal vs BOE) y tiene sesgos (Idealista infra-representa alquiler de temporada, el Ministerio sobre-representa nuevos contratos). Hay que declararlo para no inducir a error.
+
+7. **Coste operativo y tiempo de mantenimiento.** Script mensual que se ejecuta por GitHub Action. Tiempo estimado de mantenimiento cuando cambia un formato de origen.
+
+8. **Encaje con el relanzamiento.** Si el estudio concluye que Vía A es viable con 2-3 días de trabajo, se monta antes del relanzamiento y la página `/precios/` sale con 3-6 meses de datos agregados (Q1 2026 hasta fecha de lanzamiento). Si concluye que es más complejo, se mantiene en Fase 2.
+
+**Salida esperada:** documento `ESTUDIO-PRECIOS.md` con (a) matriz de fuentes × granularidad × coste de extracción, (b) esquema de datos normalizado, (c) recomendación firme sobre si adelantar al pre-relanzamiento o mantener en Fase 2, (d) si se adelanta, plan de ejecución en días de trabajo.
+
+**Prioridad:** ALTA. Adelantarla al pre-relanzamiento cambia la narrativa de "observatorio documental de prensa" a "observatorio documental de prensa **+** datos primarios de precios". Es el diferencial que el lector profesional espera.
+
 ### RT10 · Promover LG1 y LG2 a prioridad alta antes del relanzamiento ⏳
 Las tareas de identidad/legalidad del editor ([LG1 anonimato, LG2 portfolio sin nombre](REVISION-FASE-0.5.md)) están catalogadas en P4. El editor confirmó 2026-04-21 noche que el proyecto se relanza sin su nombre completo ("Raúl S." sin email directo). Sin resolver la legalidad (LSSI exige identificar titular del sitio), cualquier atención pública antes del relanzamiento es un riesgo.
 
@@ -446,6 +488,8 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | **RT8** | **Banner temporal en `/acerca/` + split acerca/metodo** | 🔄 | **Fix temporal aplicado, reescritura cuando se retome Diseño** |
 | **RT9** | **Prototipo de páginas mínimas (política editorial, metodología, correcciones)** | ⏳ | **P-1 · cuando se retome Diseño** |
 | **RT10** | **LG1 + LG2 promovidas a alta — anonimato legal pre-relanzamiento** | ⏳ | **P-1 · antes de empuje público** |
+| **RT11** | **Copy y tono de la home — decisión editorial** | ⏳ | **P-1 · en la etapa de Diseño, depende de RT3 y RT12** |
+| **RT12** | **Vía A de precios — estudio en profundidad** | ⏳ | **P-1 · ALTA · adelantarla al pre-relanzamiento si el estudio da viable** |
 | ED1 | Criterio OK propuestas | ⏳ | |
 | ED2 | Imparcialidad alertable | ⏳ | |
 | ED3 | Presencia de Omisiones | ⏳ | |
