@@ -103,6 +103,93 @@ def append_to_history() -> None:
     log.info("proposals_history.json: +%d (total %d)", added, len(history))
 
 
+def _edition_summary_stats() -> dict:
+    """Cuenta ligera sobre la edición recién publicada.
+
+    Extrae lo que se puede computar sin parsear markdown:
+    - Nº propuestas y actores distintos de `extracted.json`.
+    - URL pública de la edición en GitHub Pages.
+
+    Datos pendientes (TODO, se añaden cuando los módulos upstream los emitan):
+    - Nº señales / omisiones / rescate (requieren parseo del markdown o que
+      `generate.py` emita un summary JSON al publicar).
+    - Estado del balance trimestral (🟢/🟡/🟠/🔴) — cuando `balance.py` lo
+      escriba en `data/balance_status.json`.
+    - Nº propuestas en cuarentena — cuando exista el tier system.
+    - Nº emails sin responder en /contacto/ — cuando haya integración.
+    """
+    stats: dict = {
+        "edition_slug": _edition_slug(),
+        "public_url": (
+            "https://otundra.github.io/ibiza-housing-radar/"
+            f"ediciones/{_edition_slug()}/"
+        ),
+    }
+
+    if EXTRACTED_FILE.exists():
+        try:
+            extracted = json.loads(EXTRACTED_FILE.read_text())
+            all_proposals = [
+                p for item in extracted for p in item.get("proposals", [])
+            ]
+            actors = sorted({
+                p.get("actor", "").strip()
+                for p in all_proposals
+                if p.get("actor")
+            })
+            stats["proposals_count"] = len(all_proposals)
+            stats["actors"] = actors
+        except Exception as exc:  # noqa: BLE001
+            log.debug("No se pudieron leer stats de extracted.json: %s", exc)
+
+    return stats
+
+
+def _build_alerts_block() -> str:
+    """Bloque ⚠ con avisos proactivos. Vacío si no hay nada que reportar.
+
+    Fuentes (a medida que existan):
+    - `data/balance_status.json` para alertas de imparcialidad.
+    - `data/quarantine.json` para propuestas en cuarentena.
+    - Email inbox (futuro, cuando integremos el buzón).
+
+    Por ahora devuelve cadena vacía — el bloque solo aparecerá cuando alguna
+    de estas fuentes emita datos.
+    """
+    alerts: list[str] = []
+
+    # Balance trimestral (placeholder; activar cuando balance.py escriba status)
+    balance_status_file = ROOT / "data" / "balance_status.json"
+    if balance_status_file.exists():
+        try:
+            status = json.loads(balance_status_file.read_text())
+            if status.get("alert_level") in {"warning", "critical"}:
+                alerts.append(
+                    f"• Balance trimestral: {status.get('label', 'revisar')}"
+                )
+        except Exception:  # noqa: BLE001
+            pass
+
+    # Cuarentena (placeholder; activar cuando exista el tier system)
+    quarantine_file = ROOT / "data" / "quarantine.json"
+    if quarantine_file.exists():
+        try:
+            q = json.loads(quarantine_file.read_text())
+            count = len(q) if isinstance(q, list) else 0
+            if count > 0:
+                alerts.append(
+                    f"• {count} propuesta{'s' if count != 1 else ''} en "
+                    f"cuarentena (baja confianza)"
+                )
+        except Exception:  # noqa: BLE001
+            pass
+
+    if not alerts:
+        return ""
+
+    return "\n\n⚠ *Atención esta semana:*\n" + "\n".join(alerts)
+
+
 def _build_summary(success: bool, error: str | None = None) -> tuple[str, str]:
     from src.costs import (
         MONTHLY_HARD_CAP_EUR,
@@ -117,17 +204,32 @@ def _build_summary(success: bool, error: str | None = None) -> tuple[str, str]:
     month = datetime.now(timezone.utc).strftime("%Y-%m")
 
     if success:
+        stats = _edition_summary_stats()
+        actors_line = ""
+        counts_line = ""
+
+        if "proposals_count" in stats:
+            counts_line = f"\n• {stats['proposals_count']} propuestas extraídas"
+        if stats.get("actors"):
+            # Cap a 6 actores para no saturar el mensaje de Telegram
+            shown = stats["actors"][:6]
+            suffix = f" · +{len(stats['actors']) - 6}" if len(stats["actors"]) > 6 else ""
+            actors_line = f"\n• Actores: {', '.join(shown)}{suffix}"
+
+        alerts_block = _build_alerts_block()
+
         msg = (
-            f"*Ibiza Housing Radar — {week}*\n"
-            f"Pipeline OK. Edición publicada.\n"
-            f"Gasto {month}: *{spend_eur:.2f} €* "
-            f"(blando {MONTHLY_SOFT_CAP_EUR:.0f} € / duro {MONTHLY_HARD_CAP_EUR:.0f} €).\n"
-            f"Capa: {layer}"
+            f"📡 *Radar Vivienda Ibiza — {week}*\n"
+            f"{stats['public_url']}\n"
+            f"{counts_line}"
+            f"{actors_line}\n"
+            f"\nPipeline OK · Gasto {month}: *{spend_eur:.2f} €* · Capa: {layer}"
+            f"{alerts_block}"
         )
         return msg, "ok"
 
     msg = (
-        f"*Ibiza Housing Radar — {week}: FALLO*\n"
+        f"*Radar Vivienda Ibiza — {week}: FALLO*\n"
         f"Pipeline abortado con error:\n```\n{error}\n```\n"
         f"Gasto {month} hasta el fallo: *{spend_eur:.2f} €*.\n"
         f"Revisar workflow en GitHub Actions."

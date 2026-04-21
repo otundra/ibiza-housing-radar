@@ -12,6 +12,26 @@ Reglas:
 
 ---
 
+## 2026-04-21 (noche · Fase 0.5 cierre de sesión) — Rol operador + tiers públicos + alerta lunes
+
+- **Rol del editor redefinido como operador, no revisor experto.** El editor expresa: *"en principio yo no voy a revisar nada"*. Tras diálogo honesto sobre qué absorbe el sistema y qué no, queda claro el mínimo no delegable: responder emails de `/contacto/` en 48-72 h (0-3/semana), mirar la web los lunes 3 min tras publicar, escalar cuando llegue algo excepcional. Total estimado 15-45 min/semana reactivos. El conocimiento experto del tema NO es requisito para sostener el proyecto — el sistema (tiers + cuarentena + sanity check externo pre-lanzamiento) absorbe la validación.
+- **Modo entrenamiento de 4 semanas (ED5) descartado** por incompatible con el rol real del editor. Reemplazado por tres mecanismos complementarios:
+  - **Plan A aprobado · Tiers de confianza públicos:** cada propuesta lleva badge 🟢/🟡/🟠 visible. 🔴 va a cuarentena. Criterios ajustables, explicados al público en lenguaje llano.
+  - **Plan B aprobado · Cuarentena pública `/revision-pendiente/`:** las propuestas que no pasan el corte no se esconden, se publican con aviso de que esperan corroboración o verificación comunitaria. A 60 días sin confirmar se archivan como "no verificada". Alineado con filosofía de radical transparency.
+  - **Plan C aprobado · Editor = operador.** Cero obligación de revisar propuestas. Solo operación reactiva.
+- **Alerta Telegram del lunes mezcla A+C.** `src/report.py` enriquecido: emisión de título + URL pública + conteo de propuestas + lista de actores (cap 6) + pipeline OK/coste + bloque condicional `⚠ Atención` que solo aparece si hay cuarentena activa o alerta de balance. Se alimenta de `data/balance_status.json` y `data/quarantine.json` — invisible hasta que los módulos upstream existan. Horario 07:15 Madrid. Canal Telegram. Email anotado como tarea futura.
+- **Cinco reglas permanentes fijadas por el editor y registradas en la cabecera de [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md):**
+  1. Vigilar barreras pasadas de rosca — no sobrediseñar.
+  2. Badges y decisiones públicas explicados en lenguaje llano + ajustables.
+  3. Preguntar antes de commit cuando no haya validación explícita previa.
+  4. Códigos internos fuera de la conversación (son solo para el documento).
+  5. Rol del editor = operador, no revisor experto.
+- **Verbatim match diferenciado por tipo de cita** registrado como criterio del auditor: `statement_type=quote` exige substring literal en HTML; `statement_type=reported` relaja a nombre del actor + términos clave + sin contradicción lógica. El editor frenó la versión estricta anterior (*"¿lo que me propones tiene sentido o estamos haciendo demasiado estricta la selección?"*) y el ajuste queda como aplicación directa de la regla permanente 1.
+- **Meta-feedback del editor sobre velocidad del trabajo:** *"has ido muy rápido esta vez publicando cambios. si me notas perdido debes preguntarme antes"*. Asumido como regla permanente 3.
+- **Tareas nuevas añadidas a Fase 0.5:** PI10 (tiers), PI11 (cuarentena), PI12 (alerta lunes — parcialmente implementado hoy), PI13 (email futuro), EX5 (sanity check externo 50-100 €). ED5 marcada como ❌.
+
+---
+
 ## 2026-04-21 (noche · Fase 0.5 continuación) — PI2-A archivado append-only + ajustes auditor + tope 50 €
 
 - **PI2-A cerrada:** nuevo módulo [`src/archive.py`](src/archive.py) con `snapshot_to_archive()` que copia `ingested/classified/extracted/rescue/verification_report.json` a `data/archive/YYYY-WNN/` + `snapshot_meta.json` (timestamp, slug, gasto del mes hasta ese momento). Integrado en [`src/report.py`](src/report.py) tras `append_to_history()` — no bloqueante si falla. Primera snapshot ejecutada: `data/archive/2026-W17/` con los 5 archivos de esta semana. A partir de ahora no se pierde materia prima nunca más.

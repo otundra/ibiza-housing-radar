@@ -7,6 +7,16 @@
 
 ---
 
+## Reglas permanentes fijadas por el editor (aplicar siempre en este proyecto)
+
+1. **Vigilar barreras pasadas de rosca.** Cada filtro, check o regla nueva debe aportar valor real. Si complica sin aportar, se simplifica o se descarta. Si dudo, pregunto.
+2. **Badges y decisiones visibles al público se explican en lenguaje llano**, no técnico. Y son ajustables sin refactor — tratadas como factor crítico de la plataforma.
+3. **Pregunto antes de commit** cuando el cambio no estaba ya validado explícitamente por el editor.
+4. **Códigos internos (PI9, ED5, etc.) fuera de la conversación.** En conversación hablo con nombres de cosa. Los códigos solo viven dentro de este documento.
+5. **Rol del editor = operador, no revisor experto.** Estimación: 15-45 min/semana reactivos. No está obligado a revisar propuestas. El sistema (tiers + cuarentena + sanity check externo) absorbe la validación; el editor responde a emails, mira la web los lunes 3 min, y escala cuando algo excepcional llega.
+
+---
+
 ## Decisiones cerradas durante la revisión
 
 ### 2026-04-21 · Backfill de 12 semanas + Camino A + auditor IA
@@ -28,11 +38,41 @@
 - **Dos URLs que cubren la misma propuesta**: se guarda una `url_source` principal + lista `url_corroboration`. Jerarquía para elegir principal: (1) URL del propio actor, (2) diario local con cita entrecomillada, (3) empate → la más antigua. Las demás quedan visibles como *"también cubierto por:"*. Beneficio: si la principal cae, la red de corroboración es el respaldo natural.
 - **Tope duro mensual subido a 50 €** (antes 20). Blando sigue en 12 €. Margen para backfill + experimentación sin bloqueos. Actualizado en `src/costs.py` v3.
 
-### 2026-04-21 · Tres salvaguardas para competencia del editor
-Responde a la preocupación del editor sobre si su conocimiento del tema puede afectar seriamente al proyecto:
-- **Modo entrenamiento 4 semanas (nueva ED5)**: primeras 4 semanas tras arranque, TODAS las propuestas pasan por el editor con resumen corto + veredicto IA. Se calibran mutuamente. Luego se pasa al modo normal (solo flagged + muestreo).
-- **Sanity check externo pre-lanzamiento (nueva EX5)**: pagar 1-2 h a periodista local o académico UIB para auditar 30 propuestas del backfill antes de publicar. ~50-100 €. Escudo de validación independiente.
-- **Correcciones como feature, no como bug (refuerzo de OP1)**: las correcciones visibles con traza no son fracaso, son la regla 5 en acción. Un observatorio sin correcciones está mintiendo.
+### 2026-04-21 · Sistema de tiers + cuarentena + rol operador (reemplaza modo entrenamiento)
+El editor expresa preocupación honesta: *"no se si mi conocimiento del tema puede llegar a afectar seriamente al proyecto"*. Tras explorar alternativas, se descarta el modo entrenamiento de 4 semanas (ED5 inicialmente planteada) por ser incompatible con el rol realista del editor. Se aprueban tres mecanismos complementarios que hacen el proyecto independiente de la experticia del editor:
+
+**Plan A · Tiers de confianza públicos (APROBADO con condiciones).**
+Cada propuesta lleva badge visible calculado por el auditor IA:
+- 🟢 Alta: dos capas IA coinciden + verify OK + 2+ fuentes. Publicada sin aviso.
+- 🟡 Media: dos capas IA coinciden + verify OK + fuente única. Nota: *"Fuente única. Si tienes información, ayúdanos"*.
+- 🟠 Baja: Opus dudó o verify con warnings menores. Nota prominente: *"Baja confianza. Verificación pendiente"*.
+- 🔴 No publicada: va a cuarentena.
+
+Condiciones del editor:
+- Criterios de cada badge explicados al público en lenguaje llano (regla permanente 2).
+- Los umbrales son **ajustables** y se tratan como factor crítico de plataforma.
+
+**Plan B · Cuarentena pública (APROBADO).**
+Página `/revision-pendiente/` visible con las propuestas 🔴 no publicadas. Copy público: *"Detectadas pero no verificadas con rigor suficiente. Esperan (a) segunda fuente, (b) lector que conozca el caso, o (c) archivo como 'no verificada' tras 60 días"*. La duda se publica, no se esconde. Alineado con radical transparency.
+
+**Plan C · Rol del editor como operador, no revisor (APROBADO).**
+El editor no revisa propuestas. Su compromiso asumible:
+- **Una mirada visual de 3 min los lunes** después de publicar (la Telegram alert ayuda).
+- **Responder emails a /contacto/ en 48-72 h** (estimación 0-3/semana).
+- **Escalar cuando algo excepcional llegue** (impugnación, medio, umbral disparado).
+Total: 15-45 min/semana reactivos.
+
+**Plan externo complementario · Sanity check pre-lanzamiento (pendiente de contratar).**
+1-2 h pagadas a periodista local o académico UIB auditan 30 propuestas del backfill antes de publicar. 50-100 €. Registrado como tarea.
+
+### 2026-04-21 · Alerta Telegram de lunes — resumen corto + alertas proactivas
+Mezcla de A+C del diseño discutido. `_build_summary` en `src/report.py` enriquecido para emitir:
+- Título de edición + URL pública en GitHub Pages.
+- Conteo de propuestas extraídas + lista de actores (cap 6, +N suffix).
+- Línea de pipeline OK + gasto mes + capa.
+- Bloque `⚠ Atención esta semana` condicional (solo aparece si hay cuarentena activa o alerta de balance). Se alimenta de `data/balance_status.json` y `data/quarantine.json` — los módulos upstream se conectan cuando existan (tarea pendiente). Si no hay datos, bloque invisible.
+
+Horario: 07:15 Madrid (al terminar pipeline). Canal: Telegram. Email queda anotado como tarea futura.
 
 ### 2026-04-21 · Orden de ejecución reordenado
 Antes de retomar ED1 (criterios de admisión), se ejecutan primero las tareas que producen la materia prima y la infraestructura para validar con datos reales:
@@ -73,9 +113,8 @@ La imparcialidad es pilar. Hoy se mide a trimestre vista en `/balance/`. Hace fa
 Hoy Omisiones vive como sección 6 de la edición. ¿Es suficiente? ¿Merece página propia `/omisiones/` como tracker? ¿Debería tener peso visual en la home? Es uno de los tres diferenciales editoriales.
 **Salida:** decisión sobre peso + posible nueva página + ajuste a `DISENO-WEB.md`.
 
-### ED5 · Modo entrenamiento — primeras 4 semanas de revisión total ⏳ [NUEVO 2026-04-21]
-Durante las primeras 4 semanas tras relanzamiento, el editor revisa TODAS las propuestas (no solo flagged). Cada una llega con resumen de 2 líneas + veredicto IA sugerido. El editor aprueba, corrige o rechaza. El sistema registra cada corrección para ajustar prompts y heurísticas. Tras esas 4 semanas, se pasa al modo normal (solo flagged + muestreo 10%). Permite al editor calibrar su ojo y al sistema aprender de las correcciones humanas sin presión de producción.
-**Salida:** flag `TRAINING_MODE=true` en pipeline + UI de revisión ligera (CLI o página privada) + log de correcciones con análisis automático.
+### ED5 · Modo entrenamiento — DESCARTADA ❌
+Descartada 2026-04-21. Incompatible con el rol realista del editor (operador, no revisor). Reemplazada por sistema de tiers públicos + cuarentena + sanity check externo.
 
 ### ED4 · Horizonte temporal = fecha de inicio del proyecto ⏳
 Regla dura: cuando una propuesta dice *"primera vez documentada"*, se refiere al **observatorio**, no a la historia. El proyecto no pretende cubrir lo anterior a su arranque. Debe quedar explícito en UI y copy.
@@ -122,6 +161,27 @@ Script one-shot `src/backfill.py` que recorre Google News con operadores tempora
 **Salida:** 12 semanas de corpus real con propuestas extraídas, auditadas, verificadas y con snapshot Wayback.
 **Coste:** ~3 € API + ~1 h ejecución.
 **Prioridad ejecución:** tras PI2-A y PI9.
+
+### PI10 · Sistema de tiers de confianza públicos ⏳ [NUEVO 2026-04-21]
+Implementa Plan A aprobado. Cada propuesta publicada lleva badge 🟢/🟡/🟠 calculado por el auditor IA. Las 🔴 van a cuarentena. Criterios:
+- 🟢 Alta: dos capas IA coinciden en todos los campos críticos + verify.py pasa los 5 checks + propuesta corroborada por 2+ fuentes independientes.
+- 🟡 Media: dos capas IA coinciden + verify.py pasa + fuente única.
+- 🟠 Baja: arbitraje Opus resolvió una discrepancia, o verify.py devolvió warnings no bloqueantes.
+- 🔴 No publicada: flagged grave, verify.py bloqueante, o arbitraje no pudo resolver.
+Los umbrales son ajustables (config en `src/tiers.py` o similar). Copy visible al público explicando cada tier en lenguaje llano.
+**Salida:** módulo `src/tiers.py` + campo `confidence_tier` en schema de propuesta + plantilla visual del badge en edición + fichas + tracker.
+
+### PI11 · Cuarentena pública `/revision-pendiente/` ⏳ [NUEVO 2026-04-21]
+Implementa Plan B aprobado. Las propuestas 🔴 no entran en edición semanal; viven en página pública `/revision-pendiente/` con explicación en lenguaje llano y tabla filtrable. Regla automática: a los 60 días sin corroboración se archivan como "no verificada" en `/propuestas/?status=no_verificada`.
+**Salida:** página Jekyll + lista generada desde `data/quarantine.json` + regla de archivo 60d + integración con alerta Telegram.
+
+### PI12 · Alerta Telegram de lunes enriquecida ⏳ [PARCIAL 2026-04-21]
+Mezcla A+C decidida. Implementado base en `src/report.py` (_build_summary y helpers). Falta conectar `balance_status.json` y `quarantine.json` (cuando existan los módulos upstream). Email queda como tarea futura.
+**Salida pendiente:** activar bloque de alertas cuando PI10/PI11/balance.py emitan sus archivos status.
+
+### PI13 · Notificación por email (futuro) ⏳ [NUEVO 2026-04-21]
+Cuando el proyecto tenga buzón de correo propio, la alerta del lunes también se envía por email (para tener archivo consultable). Baja prioridad hasta que el buzón exista.
+**Salida:** envío por SMTP o servicio (Resend, Brevo) + plantilla HTML simple.
 
 ### PI9 · Sistema de auditoría IA de 5 capas ⏳ [NUEVO]
 Módulo `src/audit.py` que implementa la arquitectura de 5 capas decidida hoy:
@@ -281,15 +341,19 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | ED2 | Imparcialidad alertable | ⏳ | |
 | ED3 | Presencia de Omisiones | ⏳ | |
 | ED4 | Horizonte desde inicio | ⏳ | |
-| ED5 | Modo entrenamiento 4 semanas | ⏳ | Nuevo, salvaguarda competencia editor |
+| ED5 | Modo entrenamiento 4 semanas | ❌ | Descartada 2026-04-21, reemplazada por tiers+cuarentena |
 | FU1 | Fuentes vivas | ⏳ | |
 | FU2 | Queries Google News | ⏳ | |
 | FU3 | Hora Ibiza + Nou Diari | ⏳ | |
 | FU4 | BOIB | ⏳ | |
 | PI1 | Revisión pipeline | ⏳ | |
-| PI2-A | Archivado append-only desde hoy | 🔄 | Primera tarea a ejecutar |
+| PI2-A | Archivado append-only desde hoy | ✅ | Cerrada 2026-04-21, W17 snapshot ok |
 | PI2-B | Backfill retroactivo 12 semanas | ⏳ | Tras PI2-A y PI9 |
 | PI9 | Sistema auditoría IA 5 capas | ⏳ | Nuevo, habilita PI2-B y ED1 |
+| PI10 | Tiers de confianza públicos | ⏳ | Nuevo, Plan A aprobado |
+| PI11 | Cuarentena pública /revision-pendiente/ | ⏳ | Nuevo, Plan B aprobado |
+| PI12 | Alerta Telegram lunes enriquecida | 🔄 | Base implementada, upstream pendiente |
+| PI13 | Notificación por email (futuro) | ⏳ | Baja prioridad |
 | PI3 | Enlace entre ediciones | ⏳ | |
 | PI4 | Datos abiertos disclaimer | ⏳ | |
 | PI5 | Techos GitHub | ⏳ | |
