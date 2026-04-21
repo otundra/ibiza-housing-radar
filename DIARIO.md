@@ -12,6 +12,18 @@ Reglas:
 
 ---
 
+## 2026-04-21 (tarde · publicación) — Prototipo visitable en GitHub Pages
+
+- **Prototipo movido de `prototype/` → [`docs/prototype/`](docs/prototype/)** para que GitHub Pages lo sirva sin arrancar servidor local. Motivo: el editor pide poder revisarlo en cualquier momento (incluidas las 2 preguntas abiertas que requieren iPhone real). Pages solo publica desde `/` o `/docs` en plan gratuito → mover es la vía de coste 0.
+- **URLs públicas** (con `<meta name="robots" content="noindex,nofollow">` para no aparecer en Google): [home](https://otundra.github.io/ibiza-housing-radar/prototype/home.html) · [edition](https://otundra.github.io/ibiza-housing-radar/prototype/edition.html) · [actor](https://otundra.github.io/ibiza-housing-radar/prototype/actor.html) · [proposal](https://otundra.github.io/ibiza-housing-radar/prototype/proposal.html) · [preview logo](https://otundra.github.io/ibiza-housing-radar/prototype/logo/preview.html). Las 5 verificadas 200 tras el deploy.
+- **Jekyll copia los HTML tal cual** porque no tienen front matter YAML — los trata como archivos estáticos. Sin interferencia con el sitio Jekyll principal.
+- **Añadido `noindex,nofollow`** al `preview.html` del logo, que no lo tenía. El resto del prototipo ya lo llevaba desde la entrega original.
+- **`launch.json` actualizado** al nuevo path. El preview local sigue operativo en `127.0.0.1:4100` con `preview_start("prototype")`.
+- **Referencias actualizadas** `prototype/` → `docs/prototype/` en 5 docs del repo (CLAUDE, STATUS, DIARIO, ROADMAP, ESTUDIO) y 3 archivos de memoria.
+- **Conversación pendiente sobre publicar el resto de páginas del Bloque B.** El editor preguntó cómo abordar las ~20 páginas restantes del ROADMAP (política editorial, metodología, balance, radar, actores, propuestas, correcciones, glosario, estado, sistema, sin-dato, auditoría, costes, etc.). Propuse tres niveles: (T1) shells navegables de 2-3 h, (T2) estructura real con placeholders 1-2 d, (T3) completas con datos tras Bloque C. El editor deja la decisión en espera — ningún nivel arrancado.
+
+---
+
 ## 2026-04-21 (tarde · pausa) — Prototipo HTML Paso 1 entregado y pausado
 
 - **Paso 1 del plan de prototipo del estudio (§10) completado y verificado** — 4 HTMLs estáticos en [`docs/prototype/`](docs/prototype/) + CSS + JS vanilla. Datos reales de la edición del 20-26 abril 2026 (W17 interno). Entregables: [`styles.css`](docs/prototype/styles.css) con tokens del §5 y 9 componentes del §6; [`theme.js`](docs/prototype/theme.js) con toggle tema ○/● y `localStorage` (`rvi-theme`), fab Escríbenos con Escape, auto-captura de URL origen, scroll-spy sidebar; [`home.html`](docs/prototype/home.html) dashboard editorial; [`edition.html`](docs/prototype/edition.html) con 7 secciones + margin notes Tufte + tabla mapa; [`actor.html`](docs/prototype/actor.html) Consell d'Eivissa con sidebar sticky + horizon toggle sin JS + timeline; [`proposal.html`](docs/prototype/proposal.html) Residencias temporeros con pill "en debate" + barra progreso 8 estados + ficha 13 campos + 6 chips coalición.
