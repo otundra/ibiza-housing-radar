@@ -1,16 +1,22 @@
-"""Genera el informe semanal con Claude Opus.
+"""Compositor de la edición semanal bajo el modelo documental.
 
-Entrada: data/classified.json (solo items is_housing=True)
-Salida: docs/_editions/<YYYY>-W<WW>.md con front-matter Jekyll.
+El LLM no genera propuestas propias: solo compone la edición semanal a
+partir de noticias clasificadas + propuestas ya extraídas + rescate.
 
-Si no hay señales suficientes, escribe una edición "sin novedades" concisa.
+Principios:
+- Cero inferencia del LLM: todo lo que aparece en la edición debe estar
+  soportado por el input.
+- URL literal en cada propuesta (ya garantizada por extract.py).
+- Verbos descriptivos solamente. Lista de verbos prohibidos en el prompt
+  y verificada luego por verify.py.
+
+Modelo: Opus 4.7 con prompt caching del SYSTEM. Decisión 2026-04-20.
 """
 from __future__ import annotations
 
 import json
 import logging
 import os
-import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -23,73 +29,146 @@ from src.costs import record_call, assert_budget_available
 log = logging.getLogger("generate")
 
 ROOT = Path(__file__).resolve().parent.parent
-IN_FILE = ROOT / "data" / "classified.json"
+CLASSIFIED_FILE = ROOT / "data" / "classified.json"
+EXTRACTED_FILE = ROOT / "data" / "extracted.json"
+RESCUE_FILE = ROOT / "data" / "rescue.json"
 EDITIONS_DIR = ROOT / "docs" / "_editions"
 
 MODEL = "claude-opus-4-7"
 
-SYSTEM = """Eres el editor jefe de "Ibiza Housing Radar", un observatorio semanal sobre la crisis de vivienda en Ibiza con foco en trabajadores de temporada (mayo-octubre).
+SYSTEM = """Eres el documentalista de Ibiza Housing Radar, un observatorio semanal sobre la crisis de vivienda en Ibiza con foco en trabajadores de temporada (mayo-octubre).
 
-Tu trabajo: escribir un informe semanal en español, directo, crítico y sin adornos, con ALTA densidad informativa. Nada de lenguaje institucional ni relleno.
+TU TRABAJO ES COMPONER la edición semanal reuniendo, ordenando y presentando contenido que YA te pasamos previamente extraído. TÚ NO GENERAS PROPUESTAS PROPIAS. Tú no propones, no opinas, no rellenas. Solo documentas.
 
-El informe debe tener esta ESTRUCTURA EXACTA (Markdown con front-matter Jekyll):
+Las 5 reglas duras vinculantes del observatorio:
+1. Solo se documentan propuestas con autor identificado y URL verificable.
+2. El observatorio NO genera propuestas propias.
+3. Ningún actor queda excluido por filiación.
+4. Balance de actores auditado y publicado cada trimestre.
+5. Correcciones públicas con traza.
+
+ESTRUCTURA EXACTA del markdown de salida:
 
 ---
 layout: edition
-title: "<usa el título que te paso literal en el user prompt, sin modificarlo>"
+title: "<usa LITERAL el título que te paso en el user prompt>"
 week: "YYYY-WWW"
 date: YYYY-MM-DD
 permalink: /ediciones/YYYY-wWW/
-excerpt: "<síntesis en 1 frase de ≤160 caracteres para preview en la home>"
+excerpt: "<síntesis 1 frase ≤160 caracteres>"
+model: "pivote-documental-v1"
+proposals_formal_count: <N>
+proposals_en_movimiento_count: <N>
+actors_cited: [<lista de strings con los nombres de actores>]
+blocks_cited: [<lista de actor_type usados>]
+omissions_count: <N>
+rescued_count: <N>
 ---
 
 ## 📡 Señales detectadas
 
-Lista de bullets. Cada bullet es un hecho accionable + enlace markdown a la fuente. Sin valoraciones todavía. 4-8 bullets máximo. Ordena por relevancia, no por fecha.
+4-8 bullets, uno por señal relevante de la semana. Cada bullet:
+- Hecho concreto + enlace markdown a la fuente (URL del input, literal).
+- Sin valoración, sin "esto es preocupante", sin "urge hacer algo".
 
-## 🔍 Lectura
+## 🗓 Cronología
 
-2-3 frases. Qué está cambiando, qué NO está cambiando, dónde está la ventana de decisión esta semana. Tono directo, sin jerga.
+3 líneas describiendo el orden temporal de los hechos relevantes esta semana. Sin interpretación, sin valoración, sin "ventana de decisión". Solo ordenar.
 
-## 🛠 Propuestas
+## 🗺 Mapa de posiciones
 
-De 3 a 5 propuestas. CADA propuesta tiene esta estructura exacta:
+Tabla compacta con las posiciones expresadas por actores sobre los temas principales de la semana:
 
-### {n}. {Título corto en mayúscula inicial, sin punto final}
+| Propuesta / tema | Actor | Posición | Fuente |
+|---|---|---|---|
+| <tema> | <actor> | propone / apoya / rechaza / matiza | [↗](URL) |
 
-**Qué:** 1-2 frases explicando la medida, concreta, ejecutable.
+Solo con posiciones que aparezcan EXPLÍCITAMENTE en las noticias proporcionadas.
 
-- **Actor responsable:** quién debe aprobarla/ejecutarla
-- **Precedente:** un caso real en otra ciudad/isla/país con fecha y volumen cuando sea posible
-- **Coste estimado:** cifra razonable en euros, marca como "orientativo" cuando aplique
-- **Primer paso:** la primera acción ejecutable en <30 días
-- **Por qué ahora:** vínculo directo con las señales de esta semana
+## 📋 Propuestas en circulación
+
+Sección ABIERTA con las propuestas `formal` de esta semana (del input `extracted`). IMPORTANTE: **deduplica**. Si dos o más propuestas del input comparten objetivo + actor_type + horizon (son la misma iniciativa cubierta por distintos medios), FÚNDELAS en una sola ficha cuyo `url_source` apunte a la fuente principal (la más oficial o con más detalle) y añade al final la nota: *"Otras fuentes que cubren la misma iniciativa: [Medio A](URL A), [Medio B](URL B)"*. `proposals_formal_count` del frontmatter debe reflejar el número DESPUÉS de fusionar, no el del input crudo.
+
+Para cada propuesta (ya fusionada si aplica):
+
+### <N>. <Título corto fiel al statement_summary>
+
+**Actor que la propone:** <actor> (<actor_type>) — [fuente](<url_source>)
+
+**Qué:** <statement_summary>
+
+- **Actor que tendría que ejecutarla:** <target_actor>
+- **Estado:** <state>
+- **Horizonte:** <horizon>
+- **Viabilidad jurídica:** <viability_legal> — <viability_legal_reason o "sin evaluación pública">
+- **Viabilidad económica:** <viability_economic> — <viability_economic_reason o "sin cifra pública disponible">
+- **Apoyos públicos citados:** <supporters_cited joined or "ninguno registrado esta semana">
+- **Rechazos públicos citados:** <opponents_cited joined or "ninguno registrado esta semana">
+- **Precedentes citados:** <precedents si los hay, con URL>
+
+Si no hay propuestas formales esta semana, escribe LITERALMENTE:
+> Esta semana no se han registrado propuestas formales en circulación. Revisa las secciones "Radar" y "Omisiones" para el contexto.
+
+## 📡 Radar: señales en movimiento
+
+Propuestas `en_movimiento` (del input `extracted`): intenciones declaradas sin medida concreta todavía. Misma ficha que Propuestas en circulación, pero con la anotación clara de que no son propuesta formal aún.
+
+Si no hay: "Esta semana no hay señales en movimiento registradas."
+
+## 🗄 Rescate
+
+1-2 propuestas del input `rescue_candidates` (si existen), con ficha completa + frase corta explicando por qué se rescata (ej. "Lleva 5 semanas sin movimiento público tras anunciarse").
+
+Si no hay: omitir la sección.
+
+## 🕳 Omisiones
+
+Hechos documentados esta semana (del input `classified`) que NO tienen propuesta asociada. 1-3 bullets describiendo el vacío:
+
+- <hecho>: ningún actor ha propuesto nada al respecto esta semana.
+
+Si no se detecta ninguna omisión relevante, omitir la sección.
 
 ## 👀 A vigilar la semana que viene
 
-3-5 bullets con eventos, fechas, o decisiones pendientes concretas.
+3-5 bullets con fechas y decisiones pendientes concretas, extraídas de los hechos de la semana. No inventar.
 
 ---
 
-REGLAS DURAS:
-- Todos los enlaces markdown deben llevar a URLs REALES presentes en el input. Nunca inventes URLs.
-- Si una noticia no aporta al informe, omítela. No hay cuota de bullets.
-- No uses emojis fuera de los títulos de sección que ya van arriba.
-- No uses lenguaje corporativo ("sinergia", "empoderar", "hoja de ruta" cuando no la hay).
-- No saludes. No te despidas. No firmes.
-- Si hay menos de 3 señales útiles, dilo claramente en "Lectura" y reduce propuestas a 1-2 muy concretas o ninguna ("semana sin señal") — nunca rellenes.
-- Todas las cifras deben ser verosímiles y marcarse como estimación cuando lo sean.
+VERBOS PERMITIDOS (descriptivos): propone, reclama, rechaza, presenta, solicita, exige, pide, plantea, anuncia, dice, señala, denuncia, reitera, confirma, prevé, documenta, publica, comunica.
+
+VERBOS PROHIBIDOS (no los uses bajo ninguna circunstancia, el verificador automático bloquea la publicación si aparecen): debería, convendría, sería oportuno, hace falta, urge, proponemos, habría que, toca, corresponde, es necesario, se debe, hay que.
+
+REGLAS DURAS ADICIONALES:
+- Cada enlace markdown debe usar UNA URL del input. Jamás inventes URL.
+- Cada cifra debe estar en el input. Jamás la redondees al alza ni a la baja.
+- **DECLARA LA NATURALEZA DE CADA CIFRA** con etiqueta inline la primera vez que aparezca en el cuerpo. Opciones: `(dato oficial)` si cita resolución, BOIB, documento público; `(estimación periodística)` si el propio medio la acota como aproximada o de agencia; `(orientativa)` si es rango sin fuente primaria. Ejemplo: «unos 200 trabajadores *(estimación periodística)*». Esto aplica a señales y a propuestas por igual.
+- **MARCA CARRY-OVER**: si citas una señal publicada ANTES del lunes de la semana cubierta, añade al final del bullet o de la frase: *«(carry-over de la semana ISO XX)»*. Si no hay carry-over pero el hecho es relevante esta semana, no marques nada.
+- **DEDUPLICACIÓN** (ver sección "Propuestas en circulación"): dos ítems del input que comparten objetivo + actor_type + horizon son UNA sola propuesta. `proposals_formal_count` y `proposals_en_movimiento_count` del frontmatter cuentan propuestas DESPUÉS de fusionar.
+- **`blocks_cited` en el frontmatter**: solo incluye los `actor_type` de actores que PROPONEN algo (`formal` o `en_movimiento`). NO incluyas tipos de actor que solo aparecen en señales o en el mapa de posiciones sin proponer nada. Si no hay propuestas, `blocks_cited` es `[]`.
+- Coaliciones: reproduce los firmantes literales separados por coma. No elijas "primario".
+- Si la semana es floja (poca señal, pocas propuestas), sé honesto: mejor secciones cortas que secciones infladas.
+- No saludes, no te despidas, no firmes. El editor se encarga.
+- No uses lenguaje corporativo ("sinergia", "empoderar", "hoja de ruta").
+- No uses emojis fuera de los títulos de sección que ya vienen arriba.
 """
 
 
 USER_TEMPLATE = """Semana ISO: {iso_week}
 Fecha corte: {cutoff_date}
-Título de la edición (úsalo LITERAL en el campo `title` del front-matter, entre comillas): {edition_title}
+Título de la edición (ÚSALO LITERAL en el frontmatter `title`, entre comillas): {edition_title}
+Permalink: /ediciones/{edition_slug}/
 
-Noticias clasificadas como relevantes de vivienda en Ibiza (JSON):
-{payload}
+INPUT 1 — Señales clasificadas (toda la semana, con is_housing=true):
+{classified}
 
-Escribe el informe completo siguiendo la estructura del system prompt. Empieza por el front-matter YAML y termina con la sección "A vigilar". Nada más."""
+INPUT 2 — Propuestas ya extraídas (formal + en_movimiento):
+{extracted}
+
+INPUT 3 — Candidatas a rescate de ediciones previas (elige 1-2 máximo):
+{rescue_candidates}
+
+Escribe la edición completa siguiendo la estructura exacta del system prompt. Empieza por el frontmatter YAML y termina con la sección "A vigilar". Nada más. Nada antes. Nada después."""
 
 
 MONTHS_ES = [
@@ -110,11 +189,6 @@ def edition_slug(dt: datetime) -> str:
 
 
 def human_week_title(dt: datetime) -> str:
-    """Devuelve un título tipo 'Semana 3 - Abril 2026'.
-
-    Regla: el mes y el año se toman del jueves de la semana ISO (día 'dueño' de la semana).
-    El número es la posición del jueves dentro de su mes (1..5).
-    """
     monday = (dt - timedelta(days=dt.weekday())).replace(
         hour=0, minute=0, second=0, microsecond=0, tzinfo=None
     )
@@ -122,55 +196,6 @@ def human_week_title(dt: datetime) -> str:
     week_of_month = (thursday.day - 1) // 7 + 1
     month_name = MONTHS_ES[thursday.month]
     return f"Semana {week_of_month} - {month_name} {thursday.year}"
-
-
-def generate(items: list[dict[str, Any]], now: datetime, edition: str) -> str:
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-
-    # Reducimos el payload para no inflar tokens
-    slim = [
-        {
-            "title": it["title"],
-            "summary": it["summary"][:500],
-            "url": it["url"],
-            "source": it["source"],
-            "published": it.get("published", ""),
-            "actor": it.get("actor", ""),
-            "lever": it.get("lever", ""),
-            "headline_es": it.get("headline_es", ""),
-        }
-        for it in items
-    ]
-
-    prompt = USER_TEMPLATE.format(
-        iso_week=iso_week_string(now),
-        cutoff_date=now.strftime("%Y-%m-%d"),
-        edition_title=human_week_title(now),
-        payload=json.dumps(slim, ensure_ascii=False, indent=2),
-    )
-
-    assert_budget_available(planned_cost=1.0)
-
-    log.info("Generating edition with %s (items=%d)", MODEL, len(items))
-    resp = client.messages.create(
-        model=MODEL,
-        max_tokens=8192,
-        system=SYSTEM,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    record_call(
-        edition=edition,
-        stage="generate",
-        model=MODEL,
-        usage=resp.usage.model_dump() if hasattr(resp.usage, "model_dump") else dict(resp.usage),
-    )
-
-    text = "".join(block.text for block in resp.content if block.type == "text").strip()
-    # Sanity: debe empezar por '---'
-    if not text.startswith("---"):
-        log.warning("La salida no empezaba por front-matter. Añadiendo uno mínimo.")
-        text = minimal_frontmatter(now) + "\n\n" + text
-    return text
 
 
 def minimal_frontmatter(now: datetime) -> str:
@@ -183,8 +208,128 @@ def minimal_frontmatter(now: datetime) -> str:
         f'date: {now.strftime("%Y-%m-%d")}\n'
         f'permalink: /ediciones/{iso.year}-w{iso.week:02d}/\n'
         f'excerpt: "Informe automático — revisar salida."\n'
+        f'model: "pivote-documental-v1"\n'
         "---"
     )
+
+
+def empty_edition(now: datetime) -> str:
+    return f"""---
+layout: edition
+title: "{human_week_title(now)}"
+week: "{iso_week_string(now)}"
+date: {now.strftime('%Y-%m-%d')}
+permalink: /ediciones/{edition_slug(now)}/
+excerpt: "Semana sin señal: no se han detectado noticias relevantes sobre vivienda en Ibiza."
+model: "pivote-documental-v1"
+proposals_formal_count: 0
+proposals_en_movimiento_count: 0
+actors_cited: []
+blocks_cited: []
+omissions_count: 0
+rescued_count: 0
+---
+
+## 📡 Señales detectadas
+
+*No se han encontrado noticias relevantes esta semana sobre vivienda o trabajadores de temporada en Ibiza.*
+
+## 🗓 Cronología
+
+Silencio informativo. Puede significar ausencia real de actividad pública, ciclo de agenda política, o fallo en la ingesta. Revisar manualmente los diarios locales antes de asumir ausencia real.
+
+## 👀 A vigilar la semana que viene
+
+- Revisar manualmente Diario de Ibiza, Periódico de Ibiza y BOIB.
+- Comprobar logs del workflow en GitHub Actions.
+"""
+
+
+def slim_classified(classified: list[dict]) -> list[dict]:
+    return [
+        {
+            "title": c.get("title", ""),
+            "headline_es": c.get("headline_es", ""),
+            "url": c.get("url", ""),
+            "published": c.get("published", ""),
+            "actor": c.get("actor", ""),
+            "lever": c.get("lever", ""),
+            "proposal_type": c.get("proposal_type", ""),
+        }
+        for c in classified
+    ]
+
+
+def slim_extracted(extracted: list[dict]) -> list[dict]:
+    out = []
+    for item in extracted:
+        for prop in item.get("proposals", []):
+            slim = {
+                "actor": prop.get("actor", ""),
+                "actor_type": prop.get("actor_type", ""),
+                "statement_summary": prop.get("statement_summary", ""),
+                "url_source": prop.get("url_source", ""),
+                "palanca": prop.get("palanca", ""),
+                "target_actor": prop.get("target_actor", ""),
+                "horizon": prop.get("horizon", ""),
+                "state": prop.get("state", ""),
+                "viability_legal": prop.get("viability_legal", "no_evaluada"),
+                "viability_legal_reason": prop.get("viability_legal_reason", ""),
+                "viability_economic": prop.get("viability_economic", "no_evaluada"),
+                "viability_economic_reason": prop.get("viability_economic_reason", ""),
+                "supporters_cited": prop.get("supporters_cited", []) or [],
+                "opponents_cited": prop.get("opponents_cited", []) or [],
+                "precedents": prop.get("precedents", []) or [],
+            }
+            out.append(slim)
+    return out
+
+
+def generate(
+    classified: list[dict],
+    extracted: list[dict],
+    rescue_candidates: list[dict],
+    now: datetime,
+    edition: str,
+) -> str:
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+
+    slim_cls = slim_classified(classified)
+    slim_ext = slim_extracted(extracted)
+
+    prompt = USER_TEMPLATE.format(
+        iso_week=iso_week_string(now),
+        cutoff_date=now.strftime("%Y-%m-%d"),
+        edition_title=human_week_title(now),
+        edition_slug=edition_slug(now),
+        classified=json.dumps(slim_cls, ensure_ascii=False, indent=2),
+        extracted=json.dumps(slim_ext, ensure_ascii=False, indent=2),
+        rescue_candidates=json.dumps(rescue_candidates[:3], ensure_ascii=False, indent=2),
+    )
+
+    assert_budget_available(planned_cost=1.5)
+
+    log.info("Generando edición con %s (classified=%d, extracted=%d, rescue=%d)",
+             MODEL, len(slim_cls), len(slim_ext), len(rescue_candidates))
+
+    resp = client.messages.create(
+        model=MODEL,
+        max_tokens=8192,
+        system=[{"type": "text", "text": SYSTEM, "cache_control": {"type": "ephemeral"}}],
+        messages=[{"role": "user", "content": prompt}],
+    )
+    record_call(
+        edition=edition,
+        stage="generate",
+        model=MODEL,
+        usage=resp.usage.model_dump() if hasattr(resp.usage, "model_dump") else dict(resp.usage),
+    )
+
+    text = "".join(block.text for block in resp.content if block.type == "text").strip()
+    if not text.startswith("---"):
+        log.warning("Salida sin frontmatter. Añadiendo mínimo.")
+        text = minimal_frontmatter(now) + "\n\n" + text
+    return text
 
 
 def write_edition(text: str, now: datetime) -> Path:
@@ -194,45 +339,25 @@ def write_edition(text: str, now: datetime) -> Path:
     return path
 
 
-def empty_edition(now: datetime, edition: str) -> str:
-    return f"""---
-layout: edition
-title: "{human_week_title(now)}"
-week: "{edition}"
-date: {now.strftime('%Y-%m-%d')}
-permalink: /ediciones/{edition_slug(now)}/
-excerpt: "Semana sin señal: no se han detectado noticias relevantes sobre vivienda en Ibiza."
----
-
-## 📡 Señales detectadas
-
-*No se han encontrado noticias relevantes esta semana sobre vivienda o trabajadores de temporada en Ibiza.*
-
-## 🔍 Lectura
-
-Silencio informativo. Puede significar (a) ausencia real de actividad pública, (b) ciclo de agenda política, o (c) un bug en la ingesta. Revisar manualmente los diarios locales antes de asumir (a).
-
-## 👀 A vigilar la semana que viene
-
-- Revisar manualmente Diario de Ibiza, Periódico de Ibiza y BOIB.
-- Comprobar logs del workflow en GitHub Actions.
-"""
-
-
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s %(name)s] %(message)s")
     now = datetime.now(timezone.utc)
     edition = iso_week_string(now)
     os.environ["EDITION"] = edition
 
-    items = json.loads(IN_FILE.read_text()) if IN_FILE.exists() else []
-    log.info("Items clasificados: %d", len(items))
+    classified = json.loads(CLASSIFIED_FILE.read_text()) if CLASSIFIED_FILE.exists() else []
+    extracted = json.loads(EXTRACTED_FILE.read_text()) if EXTRACTED_FILE.exists() else []
+    rescue_candidates = json.loads(RESCUE_FILE.read_text()) if RESCUE_FILE.exists() else []
 
-    if len(items) < 3:
-        log.warning("Menos de 3 items relevantes, generando edición 'sin señal'.")
-        text = empty_edition(now, edition)
+    housing = [c for c in classified if c.get("is_housing")]
+    log.info("Input: %d clasificados housing, %d bloques extraídos, %d candidatos rescate.",
+             len(housing), len(extracted), len(rescue_candidates))
+
+    if len(housing) < 3:
+        log.warning("Menos de 3 señales; escribiendo edición 'sin señal'.")
+        text = empty_edition(now)
     else:
-        text = generate(items, now, edition=edition)
+        text = generate(housing, extracted, rescue_candidates, now, edition=edition)
 
     path = write_edition(text, now)
     log.info("Edición escrita: %s", path)

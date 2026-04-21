@@ -1,6 +1,39 @@
-# Estado al despertar — 20 abr 2026
+# Estado al despertar — 21 abr 2026
 
-## 🎯 TL;DR
+## 🏷️ REBRANDING PROVISIONAL (21-abr-2026)
+
+> Nombre público de trabajo: **Radar Vivienda Ibiza** (provisional). Wordmark tipográfico `radar))vivienda_ibiza` en monospace. Logo SVG gráfico descartado; identidad totalmente tipográfica. Dominio candidato `radaribiza.com` (compra pendiente). Repo GitHub mantiene slug `ibiza-housing-radar` hasta compra del dominio. Ver [DIARIO.md](DIARIO.md) entradas 2026-04-21.
+
+## 🎨 ESTUDIO DE DISEÑO CERRADO (21-abr-2026)
+
+> Entregable: [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) (14 secciones, ~700 líneas, benchmark con 13 referentes, 9 componentes especificados, plan de prototipo en 6 pasos).
+>
+> **13 decisiones (D1-D13) cerradas.** D1 cerrada con **V2 Split** (2026-04-21): `radar))vivienda_ibiza` en JetBrains Mono con `))` en terracota y resto en tinta. D2 resuelta con **favicon `))` vectorial** ([`prototype/logo/favicon.svg`](prototype/logo/favicon.svg)) — identidad 100% tipográfica. Preview vivo en [`prototype/logo/preview.html`](prototype/logo/preview.html).
+>
+> Dirección visual apuntada: **"mono + seams"** — mono tipográfico en más elementos + separadores tipo costura + iconografía Unicode (no emoji). Por formalizar al construir el prototipo HTML estático (Paso 1).
+>
+> Siguiente fase operativa: **Paso 1 del plan de prototipo** (B34 en ROADMAP) — HTML estático de 4 páginas con datos reales antes de migrar a Jekyll.
+
+## 🧭 PIVOTE EN MARCHA (20-abr-2026)
+
+> El proyecto ha decidido pivotar de "generador de propuestas" a **"observatorio documental"** tras el [estudio crítico](private/estudios/2026-04-20-propuestas.md) del corpus W16-W17. Todo el trabajo del pivote vive en el branch `pivote/observatorio-documental` hasta merge. El `main` queda intacto como salvaguarda.
+>
+> **Expediente estratégico completo (en el branch):**
+>
+> - [`PIVOTE.md`](PIVOTE.md) — decisión fundacional + 5 reglas duras.
+> - [`ROADMAP.md`](ROADMAP.md) — Fase 0 de relanzamiento (pipeline + 15 páginas + contenido retroactivo + SEO + distribución) + fases siguientes.
+> - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline nuevo con módulos `extract.py`, `verify.py`, `rescue.py`, `balance.py`.
+> - [`DISENO-WEB.md`](DISENO-WEB.md) — UX dual (primer visitante + profesional recurrente), 15+ páginas nuevas.
+> - [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) — sistema visual, benchmark editorial, 13 decisiones D1-D13 cerradas. **Nuevo 2026-04-21.**
+> - [`SEO.md`](SEO.md) — plan ambicioso con long-tail, schema.org, OG dinámico, Search Console.
+> - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 8 ediciones simuladas W10-W17 bajo modelo nuevo.
+> - [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) — 16 decisiones del editor resueltas.
+>
+> **Estado:** Bloque B desbloqueado tras cierre del estudio de diseño. Implementación arranca con prototipo HTML estático (B34). Todo el código del pipeline antiguo sigue operativo mientras tanto.
+
+---
+
+## 🎯 TL;DR (del modelo antiguo, aún operativo en `main`)
 
 **Todo funciona.** La web está live, la primera edición publicada, el pipeline semanal automatizado y el control de costes operativo.
 
@@ -59,7 +92,7 @@
 
 1. **Abrir la web** → <https://otundra.github.io/ibiza-housing-radar/>
 2. **Leer la W17 entera** → es el primer informe 100% generado por el pipeline. Si te sabe bien, el sistema funciona. Si hay frases raras, dime qué y retoco el system prompt del generador.
-3. **Revisar costes** → abre `private/costs.md` en tu clon local o en GitHub. Debe estar bien por debajo del tope blando (8 €).
+3. **Revisar costes** → abre `private/costs.md` en tu clon local o en GitHub. Debe estar bien por debajo del tope blando (12 €).
 
 ### Recomendable (15 min)
 
@@ -108,17 +141,13 @@ export ANTHROPIC_API_KEY=sk-ant-...
 python -m src.report
 ```
 
-## 📋 Plan de mejora
+## 📋 Plan de mejora — pivote 2026-04-20
 
-El roadmap vivo vive en [`PLAN.md`](PLAN.md): 4 fases (base, distribución, contenido diferencial, red) + deuda técnica puntual. **Principio económico: 0 € salvo IA** (~2 €/mes de la API ya en marcha). Dominio propio diferido hasta tracción.
+El roadmap de trabajo activo vive ahora en [`ROADMAP.md`](ROADMAP.md) bajo el pivote a observatorio documental. El [`PLAN.md`](PLAN.md) original se conserva como referencia histórica.
 
-**Prioridades próximas 4 semanas** (del PLAN, todas 0 €):
+**Bloqueante antes de arrancar Fase 0:** confirmar las 16 decisiones en [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) (reescritura W16-W17, dominio propio, fecha relanzamiento, autoría, distribución, etc.).
 
-1. Analítica (GoatCounter) + identidad editorial + metodología pública (Fase 1).
-2. Newsletter (Buttondown free) + envío directo a periodistas locales (Fase 2).
-3. Observatorio de precios por agregación de fuentes oficiales + crowd-sourcing ciudadano (Fase 3).
-
-**Deuda técnica recomendada en paralelo:** prompt caching en Opus (~50 % ahorro), resiliencia en `classify.py`, métricas de pipeline, notificación de fallo del cron.
+**Fase 0 incluye:** pipeline nuevo (A **cerrado 2026-04-20**), 15+ páginas web (B pendiente), contenido retroactivo 8 ediciones (C pendiente), SEO masivo (D), analítica (E), distribución newsletter (F), utilidad pública diferida (G), legal y transparencia (H). Coste API proyectado ~6-7 €/mes dentro del tope blando 12 €.
 
 ## 🐛 Si algo falla
 

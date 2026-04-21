@@ -1,0 +1,375 @@
+{
+  "_metadata": {
+    "version": "1.1",
+    "created": "2026-04-20",
+    "updated": "2026-04-20",
+    "author": "Claude Opus 4.7 con razonamiento extendido. Referencia histórica — el gold de producción se genera automáticamente por generate_gold.py (Opus thinking + validador Sonnet).",
+    "dataset": "dataset_v1.json",
+    "schema_changes_v1_1": [
+      "task_2 ahora devuelve proposal_type: formal|en_movimiento|ninguna (antes has_explicit_proposal bool)",
+      "actor_type amplía con coalicion_intersectorial y coalicion_institucional",
+      "state amplía con en_movimiento (propuestas que van a /radar/)",
+      "Caso n17: reclasificado de formal a en_movimiento",
+      "Casos n08/n09: actor_type cambia a coalicion_intersectorial/institucional con todos los firmantes nombrados"
+    ],
+    "task_coverage": ["task_1_classify", "task_2_proposal_detect", "task_3_extract"],
+    "notes": "Casos ambiguos marcados explícitamente con 'ambiguous: true' y justificación."
+  },
+  "n01": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "ayuntamiento",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "formal",
+      "proposal_actor_hint": "Cáritas Ibiza"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Cáritas Ibiza",
+        "actor_type": "tercer_sector",
+        "statement_summary": "Reclama que el desalojo no se ejecute sin alternativa habitacional acreditada para cada persona censada en los asentamientos.",
+        "url_source": "https://elpais.com/espana/2026-04-19/ibiza-desalojara-a-200-trabajadores-de-sus-asentamientos-a-las-puertas-de-la-temporada.html",
+        "palanca": "denuncia_social",
+        "target_actor": "Ayuntamiento de Ibiza",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_economic": "no_evaluada",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n02": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "trabajadores",
+      "lever": "denuncia_social"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n03": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "ayuntamiento",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Cobertura TV del hecho. Propuestas asociadas viven en otras fuentes (n01, n04)."
+  },
+  "n04": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "tercer_sector",
+      "lever": "denuncia_social"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "formal",
+      "proposal_actor_hint": "Cáritas Ibiza"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Cáritas Ibiza",
+        "actor_type": "tercer_sector",
+        "statement_summary": "Solicita que no se ejecute el desalojo de los asentamientos sin garantía previa de alojamiento alternativo y pide participar en el proceso de realojo.",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/11/preocupacion-caritas-ibiza-desalojo-asentamientos-128948679.html",
+        "palanca": "denuncia_social",
+        "target_actor": "Ayuntamiento de Ibiza",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_economic": "no_evaluada",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "_dedup_note": "Misma propuesta de Cáritas que aparece en n01. En el pipeline se consolidarían con dos url_source."
+  },
+  "n05": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "propietarios",
+      "lever": "precio"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n06": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "propietarios",
+      "lever": "denuncia_social"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Caso de subarriendo fraudulento. Candidato a aparecer como OMISIÓN en la edición."
+  },
+  "n07": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Acción del Consell ya ejecutada. No propuesta nueva."
+  },
+  "n08": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "patronal",
+      "lever": "oferta_vivienda"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "formal",
+      "proposal_actor_hint": "CAEB, PIMEEF, CCOO y UGT (coalición)"
+    },
+    "task_3_extract": [
+      {
+        "actor": "CAEB, PIMEEF, CCOO y UGT",
+        "actor_type": "coalicion_intersectorial",
+        "statement_summary": "Patronales y sindicatos mayoritarios de Ibiza se alinean públicamente a favor de crear residencias específicas para trabajadores de temporada y piden al Consell y ayuntamientos que identifiquen suelo dotacional disponible para operar antes de la temporada 2027.",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/11/2606853/patronales-sindicatos-favor-residencias-ibiza-para-trabajadores-temporada.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Consell d'Eivissa y ayuntamientos pitiusos",
+        "horizon": "temporada_2027",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_economic": "no_evaluada",
+        "supporters_cited": ["CAEB", "PIMEEF", "CCOO", "UGT"],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ]
+  },
+  "n09": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "oferta_vivienda"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "formal",
+      "proposal_actor_hint": "Consell d'Eivissa, CAEB, PIMEEF, CCOO y UGT (coalición institucional)"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Consell d'Eivissa, CAEB, PIMEEF, CCOO y UGT",
+        "actor_type": "coalicion_institucional",
+        "statement_summary": "Respaldo tripartito formalizado a la creación de residencias para temporeros. Sin identificación de suelo ni calendario de licitación; la cuestión queda en declaración de intenciones compartida entre Consell, patronales y sindicatos.",
+        "url_source": "https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Consell d'Eivissa (ejecutor principal)",
+        "horizon": "estructural",
+        "state": "en_debate",
+        "viability_legal": "no_evaluada",
+        "viability_economic": "no_evaluada",
+        "supporters_cited": ["Consell d'Eivissa", "CAEB", "PIMEEF", "CCOO", "UGT"],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "_dedup_note": "Misma propuesta conjunta que n08 con el Consell añadido. En pipeline real se consolidarían."
+  },
+  "n10": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "govern_balear",
+      "lever": "oferta_vivienda"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Convocatoria ya publicada = acción ejecutada."
+  },
+  "n11": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "govern_balear",
+      "lever": "oferta_vivienda"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_dedup_note": "Duplicado de n10."
+  },
+  "n12": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n13": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n14": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_dedup_note": "Cobertura paralela de n13."
+  },
+  "n15": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Candidato a omisión: 2 M€ recaudados sin destino finalista documentado."
+  },
+  "n16": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "judicial",
+      "lever": "normativa"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": [],
+    "_note": "Sentencia = doctrina, no propuesta."
+  },
+  "n17": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "consell",
+      "lever": "otro"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "en_movimiento",
+      "proposal_actor_hint": "Consell d'Eivissa"
+    },
+    "task_3_extract": [
+      {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Formaliza el encargo de un estudio técnico sobre viviendas vacías en Ibiza, con intención declarada de diseñar políticas de movilización a partir de sus resultados. Sin medida concreta todavía definida.",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/03/31/2600245/consell-eivissa-encarga-estudio-sobre-viviendas-vacias-isla.html",
+        "palanca": "otro",
+        "target_actor": "Consell d'Eivissa",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "alta",
+        "viability_legal_reason": "Encargo técnico dentro de competencias del Consell.",
+        "viability_economic": "no_evaluada",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "_note": "Reclasificado a en_movimiento. Aparece en /radar/, no en /propuestas/. Promovible a formal cuando se publique el estudio y el Consell anuncie medida concreta."
+  },
+  "n18": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "propietarios",
+      "lever": "precio"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n19": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "propietarios",
+      "lever": "precio"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "n20": {
+    "task_1_classify": {
+      "is_housing": true,
+      "actor": "ayuntamiento",
+      "lever": "enforcement"
+    },
+    "task_2_proposal_detect": {
+      "proposal_type": "ninguna",
+      "proposal_actor_hint": null
+    },
+    "task_3_extract": []
+  },
+  "_aggregate_stats": {
+    "total_items": 20,
+    "housing_yes": 20,
+    "housing_no": 0,
+    "proposal_type_formal": 4,
+    "proposal_type_en_movimiento": 1,
+    "proposal_type_ninguna": 15,
+    "proposals_formal_total": 4,
+    "proposals_en_movimiento_total": 1,
+    "by_palanca_formal": {
+      "denuncia_social": 2,
+      "oferta_vivienda": 2
+    },
+    "by_actor_type_formal": {
+      "tercer_sector": 2,
+      "coalicion_intersectorial": 1,
+      "coalicion_institucional": 1
+    },
+    "dedup_groups": [
+      ["n01", "n03", "n04"],
+      ["n08", "n09"],
+      ["n10", "n11"],
+      ["n13", "n14"]
+    ]
+  }
+}

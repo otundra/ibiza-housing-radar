@@ -1,0 +1,131 @@
+{
+  "_metadata": {
+    "version": "auto_v1",
+    "timestamp": "2026-04-20T17:37:15.778588+00:00",
+    "method": "Opus 4.7 extended thinking + Sonnet 4.6 validator",
+    "dataset": "dataset_v1.json"
+  },
+  "n08": {
+    "opus_response": {
+      "task_1_classify": {
+        "id": "n08",
+        "is_housing": true,
+        "actor": "patronal",
+        "lever": "oferta_vivienda"
+      },
+      "task_2_proposal_detect": {
+        "id": "n08",
+        "proposal_type": "formal",
+        "proposal_actor_hint": "CAEB, PIMEEF, CCOO, UGT"
+      },
+      "task_3_extract": [
+        {
+          "actor": "CAEB, PIMEEF, CCOO y UGT",
+          "actor_type": "coalicion_intersectorial",
+          "statement_summary": "Las patronales CAEB y PIMEEF junto a los sindicatos CCOO y UGT piden al Consell y a los ayuntamientos que identifiquen suelo dotacional para crear residencias específicas para trabajadores de temporada antes de la temporada 2027.",
+          "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/11/2606853/patronales-sindicatos-favor-residencias-ibiza-para-trabajadores-temporada.html",
+          "palanca": "oferta_vivienda",
+          "target_actor": "Consell d'Eivissa y ayuntamientos",
+          "horizon": "temporada_2027",
+          "state": "propuesta",
+          "viability_legal": "no_evaluada",
+          "viability_legal_reason": "",
+          "viability_economic": "sin_cifra_publica_disponible",
+          "viability_economic_reason": "",
+          "supporters_cited": [
+            "CAEB",
+            "PIMEEF",
+            "CCOO",
+            "UGT"
+          ],
+          "opponents_cited": [],
+          "precedents": []
+        }
+      ]
+    },
+    "validator_notes": {
+      "task_1_classify": "El actor debería incluir también a los sindicatos (CCOO y UGT), ya que la coalición es conjunta entre patronales y sindicatos, y omitir a los sindicatos no refleja el contenido literal de la noticia."
+    }
+  },
+  "n09": {
+    "opus_response": {
+      "task_1_classify": {
+        "id": "n09",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "oferta_vivienda"
+      },
+      "task_2_proposal_detect": {
+        "id": "n09",
+        "proposal_type": "en_movimiento",
+        "proposal_actor_hint": "Consell d'Eivissa"
+      },
+      "task_3_extract": [
+        {
+          "actor": "Consell d'Eivissa, CAEB, PIMEEF, CCOO y UGT",
+          "actor_type": "coalicion_institucional",
+          "statement_summary": "El Consell d'Eivissa se suma al respaldo de patronales y sindicatos a la creación de residencias para temporeros, sin identificar suelo concreto ni calendario de licitación.",
+          "url_source": "https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/",
+          "palanca": "oferta_vivienda",
+          "target_actor": "Consell d'Eivissa",
+          "horizon": "temporada_2027",
+          "state": "en_movimiento",
+          "viability_legal": "no_evaluada",
+          "viability_legal_reason": "",
+          "viability_economic": "sin_cifra_publica_disponible",
+          "viability_economic_reason": "",
+          "supporters_cited": [
+            "Consell d'Eivissa",
+            "CAEB",
+            "PIMEEF",
+            "CCOO",
+            "UGT"
+          ],
+          "opponents_cited": [],
+          "precedents": []
+        }
+      ]
+    },
+    "validator_notes": {
+      "task_3_extract": "La noticia menciona genéricamente 'patronales y sindicatos' sin identificar específicamente a CAEB, PIMEEF, CCOO ni UGT, por lo que citar esos actores concretos es una inferencia no soportada por el texto."
+    }
+  },
+  "n10": {
+    "opus_response": {
+      "task_1_classify": {
+        "id": "n10",
+        "is_housing": true,
+        "actor": "govern_balear",
+        "lever": "oferta_vivienda"
+      },
+      "task_2_proposal_detect": {
+        "id": "n10",
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "task_3_extract": [
+        {
+          "actor": "IBAVI",
+          "actor_type": "institucional_publico",
+          "statement_summary": "El IBAVI abre el plazo de solicitud para las siete viviendas de protección oficial de sa Penya con alquileres de 200-460 €/mes y requisito de 10 años de residencia en Ibiza.",
+          "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/16/2610695/plazo-para-optar-las-siete-vpo-penya-abre-este-viernes.html",
+          "palanca": "oferta_vivienda",
+          "target_actor": "IBAVI",
+          "horizon": "inmediato",
+          "state": "en_ejecucion",
+          "viability_legal": "alta",
+          "viability_legal_reason": "Convocatoria formal abierta",
+          "viability_economic": "no_evaluada",
+          "viability_economic_reason": "",
+          "supporters_cited": [],
+          "opponents_cited": [],
+          "precedents": []
+        }
+      ]
+    },
+    "validator_notes": {
+      "task_1_classify": "El actor debe ser 'ibavi' o similar, no 'govern_balear'; la noticia indica explícitamente que el IBAVI gestiona la convocatoria.",
+      "task_3_extract": "El campo 'target_actor' debería referirse a los beneficiarios/destinatarios de la oferta (solicitantes/ciudadanos), no al propio IBAVI que gestiona la convocatoria."
+    }
+  }
+}

@@ -1,4 +1,4 @@
-# Diario del proyecto — Ibiza Housing Radar
+# Diario del proyecto — Radar Ibiza (repo: ibiza-housing-radar)
 
 Registro cronológico de hitos, decisiones y cambios relevantes.
 
@@ -9,6 +9,210 @@ Reglas:
 - Solo cambios con valor de memoria futura. No entradas para commits triviales.
 - No duplicar lo que ya dice Git: aquí va el contexto, no el diff.
 - Si un cambio altera arquitectura o stack, también actualizar `CLAUDE.md` y `README.md`.
+
+---
+
+## 2026-04-21 (cierre identidad) — Variante V2 Split elegida + favicon `))` vectorial
+
+- **D1 cerrado con V2 Split:** wordmark `radar))vivienda_ibiza` en JetBrains Mono con las `))` en terracota (`#c14a2d`) como único acento cromático, resto en tinta. La variante más sobria con economía radical de color: un solo elemento colorado, el resto monocromo.
+- **D2 cerrado con favicon `))` vectorial** (glifo puro). Las dos `))` del wordmark aisladas como favicon — máxima coherencia: el elemento cromático del wordmark es la firma en pestañas y avatares. Archivo [`prototype/logo/favicon.svg`](prototype/logo/favicon.svg), dos paths Bezier cuadráticos, stroke-linecap round, stroke-width 2.4, color terracota. Escala limpio de 16 px a 512 px sin pérdida. No depende de carga de fuente.
+- **Paquete completo de marca resuelto:** nombre + wordmark + favicon forman sistema tipográfico homogéneo sin necesidad de logo gráfico. Coherente con dirección "mono + seams".
+- **Formatos pendientes de generar** (derivables del SVG en Paso 1 del prototipo): favicon-32.png, favicon-192.png (Android), apple-touch-icon.png (180×180 iOS), og-fallback.png (1200×630).
+
+---
+
+## 2026-04-21 (tarde) — Ajuste de nombre provisional y logo tipográfico
+
+- **Nombre provisional actualizado:** "Radar Ibiza" pasa a "**Radar Vivienda Ibiza**" (provisional). Formato: minúsculas, descriptivo, deja la palabra "vivienda" explícita por claridad y SEO; marca explícitamente como provisional para reevaluar antes del relanzamiento. Dominio candidato `radaribiza.com` se mantiene de momento.
+- **Logo gráfico descartado.** Las 3 direcciones SVG exploradas en prototype/logo/ (punto limpio + arcos, "I" italic + arcos, "I" + arcos asimétricos) fueron valoradas como "muy feas" por el editor y quedan desechadas. La identidad se resuelve **enteramente con tipografía** — sin monograma gráfico separable.
+- **Wordmark tipográfico** adoptado: `radar))vivienda_ibiza`. Todo en `JetBrains Mono`, minúsculas, las `))` evocan ondas de radar como glifo puro, el underscore separa *topic_location* preparando el futuro ecosistema (`radar))turismo_ibiza`, `radar))medioambiente_ibiza`, `radar))vivienda_formentera`, etc.). Refuerza la dirección visual "mono + seams" que ya estaba apuntada.
+- **Preview tipográfico** en [`prototype/logo/preview.html`](prototype/logo/preview.html) con 4 variantes a distintos tamaños (14-72 px), claro y oscuro, simulaciones de cabecera, pestaña y OG image:
+  - V1 · Mono plano — todo un color, peso medio.
+  - V2 · Split — `))` en terracota, resto en tinta.
+  - V3 · Tri — `radar` semibold, `))` terracota bold, `vivienda_ibiza` regular muted.
+  - V4 · Underline — `radar` con subrayado fino (seam).
+- **Favicon** también será tipográfico. Opciones a probar en Paso 1 del prototipo: `))` en terracota, `r))`, o iniciales `rvi`. Se evita depender de carga de fuente mediante path vectorial SVG.
+- **Tagline simplificado:** *"Observatorio documental"* (antes *"Observatorio documental de vivienda"*). La palabra "vivienda" ya está en el nombre; evitar redundancia.
+- **Docs actualizadas:** CLAUDE.md, STATUS.md, ESTUDIO-DISENO.md §4 (reescrita entera), ROADMAP.md (B38, I7 reformuladas).
+
+---
+
+## 2026-04-21 — Estudio de diseño completo + rebranding a "Radar Ibiza"
+
+- **Rebranding del proyecto a "Radar Ibiza"** (antes "Ibiza Housing Radar"). Dominio objetivo `radaribiza.com` — compra pendiente del editor. Motivos: el nombre en inglés restaba credibilidad local (target real: ibicencos + temporeros castellanohablantes + extranjeros residentes, no internacional); "Housing" sonaba corporativo y mal SEO castellano; referentes españoles del género (Civio, Datadista, Maldita) no meten la temática en el dominio. Tagline estable: *"Observatorio documental de vivienda"*. El repo GitHub mantiene slug `ibiza-housing-radar` hasta que se compre el dominio; renombrado coordinado después.
+- **Estudio de diseño completo** entregado en [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) (14 secciones, ~700 líneas). Incluye benchmark editorial comparado con 13 referentes (Solar Low-Tech, Bellingcat, The Pudding, Civio, Datadista, Tortoise, El Orden Mundial, The Intercept, ProPublica, Rest of World, TheyWorkForYou, GovTrack, OpenSecrets), sistema visual con tokens completos, 9 componentes especificados, plantilla OG, plan de prototipo en 6 pasos, 12 decisiones abiertas más D13 añadida (formulario universal).
+- **13 decisiones de diseño (D1-D13) cerradas** por el editor. 11 eligió la recomendación A, D11 optó por híbrido (automático default + dos botones manuales ○/●), D2 (logo) diferida hasta revisar SVG. Detalle en ESTUDIO-DISENO.md §11.
+- **Taxonomía de actores cerrada en 8 categorías con candado**: institucional público, partido (siempre gris neutro — regla dura), patronal, sindicato, tercer sector, académico, judicial, colectivo ciudadano. Casos fronterizos se asimilan con nota editorial documentada; abrir la 9ª requiere decisión consciente con entrada en `/correcciones/`. El color del chip de actor es **refuerzo**, nunca única información (etiqueta de texto siempre visible).
+- **Calendario editorial anclado al ciclo real de Ibiza** — opening/closing de clubs grandes (Pacha, Hï, Ushuaïa, Amnesia). Referencia interna. En 2026: 24 abril → ~12 octubre. Etiquetas públicas: `Temporada YYYY` (abr-oct) y `Pre-temporada YYYY` (oct del año anterior → abr). Sin "invierno" (ambiguo). La pre-temporada se nombra por el verano al que apunta, no por el año que acaba.
+- **Numeración de ediciones "W17" fuera de cara pública** — confundía a lectores no técnicos. URLs usan fecha ISO del lunes: `/ediciones/2026-04-20/`. Cabecera, OG, chrome operacional: rango de fechas (`Edición del 20-26 abril 2026`). "W17" solo como slug interno (archivos, logs, commits).
+- **Formulario universal "Escríbenos"** (D13) añadido al alcance. Botón flotante en esquina inferior derecha, visible en todas las páginas. Campos: mensaje obligatorio + nombre y email opcionales + auto-captura de URL origen. Backend Formspree (50 envíos/mes gratis). Abierto a correcciones, datos nuevos, pistas, testimonios, dudas, críticas y colaboraciones — no cerrado a "feedback" de producto. Anonimato permitido (muchos informantes valiosos trabajan en la sombra); el filtro real es "URL verificable" para incorporar al corpus.
+- **Nuevas tareas en ROADMAP Bloque B (derivadas del estudio):** B34 prototipo HTML estático · B35 9 componentes en Jekyll · B36 formulario Escríbenos · B37 `/sistema/` interna · B38 logo SVG final · B39 OG Puppeteer · B40 toggle modo oscuro manual. Y A17 script `update_temporadas.py`.
+- **Automatización anual para fechas de temporada** — cron GitHub Action (feb/mar/abr de cada año) que consulta news sobre las fechas de opening del año siguiente y alerta a Telegram cuando ≥3 clubs top coinciden. Editor actualiza `data/temporadas.yml` manualmente. Coste ~0,02 €/ejecución.
+- **Prototipo de logo creado** en [`prototype/logo/`](prototype/logo/) con 3 direcciones SVG (Dir 1 punto limpio + arcos / Dir 2 "I" italic centro + arcos / Dir 3 "I" + arcos asimétricos lado) + `preview.html` que los muestra a 5 tamaños reales (16/22/48/120/256 px) en modo claro y oscuro, con composición de wordmark y simulaciones de pestaña y OG. Editor decide tras revisión visual.
+- **Dirección visual "mono + seams" apuntada** — peso tipográfico mono (JetBrains Mono) en más elementos editoriales + separadores tipo costura (dashed, líneas finas) + iconografía Unicode pura (no emoji coloreado). Queda por formalizar al construir prototipo HTML estático.
+- **Memoria del proyecto actualizada** con 4 archivos en `~/.claude/projects/.../memory/`: `nombre_proyecto.md`, `taxonomia_actores.md`, `calendario_editorial.md`, `decisiones_diseno_D1-D13.md`. Todos referenciados en `MEMORY.md` como índice.
+- **Pendientes al cierre del estudio:** (1) compra dominio `radaribiza.com`, (2) elección de dirección de logo del prototipo, (3) validación de "mono + seams" al construir Paso 1 del plan, (4) barrido coordinado para renombrar repo GitHub a `radar-ibiza` cuando se compre dominio.
+
+---
+
+## 2026-04-20 — Revisión de coherencia + registro de ajustes
+
+- **Revisión sistemática de incoherencias** tras petición del editor ("revisa todo el proyecto a ver si hay incoherencias"). 5 encontradas y corregidas:
+  1. **Topes obsoletos de 8 €** en [`README.md`](README.md), [`STATUS.md`](STATUS.md), [`CLAUDE.md`](CLAUDE.md) del proyecto y [`docs/acerca.md`](docs/acerca.md) → actualizados a 12 € blando / 20 € duro + nuevas capas (verde <6 / amarilla 6-9 / naranja 9-12 / roja blanda 12-20 / dura >20).
+  2. **Coste esperado "~2 €/mes"** → actualizado a "~6-7 €/mes" (pivote documental + 3 niveles de autoevaluación).
+  3. **`src/rescue.py` docstring decía "Haiku confirma vigencia"** pero el código nunca llama a Haiku. Docstring corregida para coincidir con el código real (rescate 100% determinista basado en reglas). Nota de diseño sobre posible ampliación futura conservada.
+  4. **`ARQUITECTURA.md` tabla del reparto de modelos** listaba `quarterly_audit.py` y `model_rebench.py` como si estuvieran implementados. Añadida columna "Estado implementación" con ✅/⏸ y clarificación: `self_review.py` y `generate_gold.py` ✅; `quarterly_audit.py` ⏸ (tarea A13); `model_rebench.py` ⏸ (tarea A14); fact-check de precedentes externos en `verify.py` ⏸ (no aplica en el modelo documental actual porque el pipeline solo reproduce precedentes del input, no genera).
+  5. **`docs/acerca.md` describía el modelo antiguo** (3 secciones: señales/lectura/propuestas/a-vigilar con formato anterior al pivote). Añadido callout al inicio avisando que la reescritura completa es parte del Bloque B.
+- **Nueva infraestructura de trazabilidad: [`private/adjustments-log.md`](private/adjustments-log.md)** — registro vivo de cambios voluntarios (prompts, umbrales, modelos, reglas). Complementa `postmortems.md`:
+  - `postmortems.md` → errores con coste.
+  - `adjustments-log.md` → cambios voluntarios con hipótesis y efecto medido.
+  - Formato estándar por entrada: qué se cambió, motivo, datos que lo soportan, efecto esperado, efecto medido, reversible sí/no.
+  - 5 entradas iniciales con los cambios de hoy (tope blando 12 €, mejoras prompt generate, mejora clasificación institucional en extract, verify tolerante, inicialización del log).
+  - Sección **"Propuestas en evaluación sin aplicar"** para decisiones deferidas. Primera entrada: propuesta del editor de subir umbral de rigor de `<7` a `<8`, con criterio explícito de aplicación: *"si en 4 ediciones consecutivas el rigor observado es ≥8, se sube el umbral sin riesgo de ruido"*. Revisión prevista 2026-05-20.
+- **Banner de estado en `ROADMAP.md`** — tabla resumen al inicio con los 9 bloques y su estado (A cerrado, B-H pendientes, I parcial). Lectura rápida del progreso del Bloque 0. Links a `adjustments-log` y `postmortems` para contexto de decisiones y errores.
+- **Toda decisión futura tiene ya su sitio auditable:**
+  - Ver errores pasados → `private/postmortems.md` (con patrones transversales al principio).
+  - Ver decisiones pasadas y efecto medido → `private/adjustments-log.md`.
+  - Ver coste real y tendencias → `private/costs.md` + `data/costs.csv`.
+  - Ver calidad de cada edición → `private/self-review/YYYY-wWW.md`.
+  - Ver reparto de actores → `private/balance.md` + `docs/balance.md` (público).
+  - Ver estado operativo → `data/proposals_history.json` + `data/bench/results_v1.json`.
+- **Bloque B arranca cuando el editor confirme** — rediseño web sin coste API, 2-3 turnos para páginas principales (home reescrita, `build_index.py` documental, `/radar/`, `/propuestas/`, `/actores/`, `/balance/`, `/sin-dato/`, `/estadisticas/`, `/estado/`, `/politica-editorial/`, `/metodologia/`, `/correcciones/`, `/cita-esto/`).
+
+---
+
+## 2026-04-20 — Política de aprendizaje de errores formalizada
+
+- **Patrones transversales añadidos al principio de `private/postmortems.md`** — 4 patrones conocidos hasta la fecha con salvaguardas vinculantes. Cada error nuevo se coteja primero con estos patrones antes de añadir uno nuevo. Si encaja, la causa es repetición (agravante); si no, se documenta nuevo patrón.
+  - **P1. Flujos multi-paso sin orquestador** — corregido con `bench_full.py` y `regen_edition.py`.
+  - **P2. Verificadores demasiado estrictos** — corregido con distinción 404/410 bloquea vs 403/5xx avisa en `verify.py`.
+  - **P3. Umbrales calibrados sin datos** — pendiente de primera revisión mensual con ≥4 ediciones publicadas.
+  - **P4. Contaminación del contexto del LLM por contenido de versiones antiguas** — se resolverá en Bloque C cuando W16-W17 antiguas se eliminen y las 8 ediciones retroactivas W10-W17 se regeneren bajo modelo documental.
+- **Confirmado: política de contenido retroactivo** — W16 y W17 actuales (modelo antiguo) se **borran** al arrancar Bloque C. Originales quedan en histórico git para auditoría futura. Las 8 nuevas ediciones se generarán desde cero bajo modelo documental, sin contaminar unas a otras (orden de producción: W17 → W10 hacia atrás; publicación en orden cronológico natural W10 → W17 con commits separados).
+- **Umbral de rigor pendiente de revisión** — hoy salta alerta en `<7`. Propuesta editor: considerar subir a `<8`. Decisión deferida hasta tener 4-5 ediciones bajo modelo documental. Subirlo ahora sin datos podría saturar de alertas. Registrado como P3.
+- **Auditabilidad del sistema confirmada** — toda la información queda en archivos para revisión del editor:
+  - `private/postmortems.md` — errores + patrones + salvaguardas.
+  - `private/self-review/YYYY-wWW.md` — cada self-review archivado.
+  - `private/self-review-log.md` — agregado de los que dispararon alerta.
+  - `private/bench-log.md` — historial de ejecuciones de benchmark.
+  - `private/balance.md` — dashboard privado actualizado tras cada edición.
+  - `private/costs.md` — gasto y capa actual.
+  - `data/costs.csv` — cada llamada API registrada (append-only).
+  - `data/proposals_history.json` — histórico de propuestas documentadas.
+  - `data/bench/results_v1.json` — resultados crudos del benchmark.
+
+---
+
+## 2026-04-20 — Pipeline end-to-end + 2ª iteración con rigor subido a 7
+
+- **Primera ejecución completa del pipeline documental** — `python -m src.report` corrió de principio a fin: ingest (35 items, 2 RSS locales vacíos), classify (19 housing, 2 formal, 2 en_movimiento), extract (4 candidatos → 3 propuestas, 0 disputas Opus), rescue (vacío, primera vez), generate (Opus con prompt documental), verify (11 URLs OK, 0 verbos prohibidos), balance (dashboard público + privado), self_review (score rigor=6, resto ≥7). Coste real: ~2,25 €.
+- **Self-review detectó 8 warnings útiles** — propuestas duplicadas (residencias × 2 fuentes contadas como 2 propuestas separadas), Marí mal clasificada como `otro` en lugar de `institucional_publico`, cifras sin declarar naturaleza ("~200 trabajadores" sin marcar como estimación periodística), carry-over no marcado en señales del 11-abr, `blocks_cited` inflado con "policial" (Policía aparece en señales pero no propone). Las 3 sugerencias de Sonnet para ajustar prompt se aplicaron literal.
+- **4 mejoras del prompt de `generate.py`** — (1) deduplicación: fusionar propuestas con mismo objetivo+actor_type+horizon en una sola con fuentes secundarias listadas; (2) etiquetar naturaleza de cada cifra la primera vez que aparece (`(dato oficial)` / `(estimación periodística)` / `(orientativa)`); (3) marcar carry-over: señales anteriores al lunes de la semana cubierta se marcan con `*(carry-over de la semana ISO XX)*`; (4) `blocks_cited` solo incluye tipos de actor que PROPONEN, no los de señales.
+- **Mejora del prompt de `extract.py`** — regla específica para clasificar cargos institucionales (Consell, Govern, IBAVI, Ayuntamientos, cargos como "conseller", "director general", etc.) como `institucional_publico`, no `otro`. Eliminada la ambigüedad que llevó a Marí a `otro`.
+- **Nuevo script `scripts/regen_edition.py`** — orquestador ligero que re-ejecuta extract → rescue → generate → verify → balance → self_review sin gastar API en ingest/classify. Para iterar prompts rápido. Asume que existe `data/classified.json` de una ejecución previa.
+- **Post-mortem #2: verify bloqueó por 403 de Cadena SER** — `httpx` sin User-Agent estándar es rechazado por medios grandes (SER, El País, La Vanguardia, IB3). Verify hacía exit 1 con 403, borraba la edición y alertaba crítico (issue #2 en GitHub como fallback). Coste del falso positivo: ~1,10 €. Fix: `httpx.Client` con User-Agent Chrome + `Accept-Language` + `Accept`, y distinguir bloqueantes (404/410 — URL rota) de soft_warnings (401/403/405/429 — bloqueo de bots, URL viva). Issue cerrado. Registrado en [`private/postmortems.md`](private/postmortems.md).
+- **2ª iteración (regen_edition tras fixes)** — resultados limpios: reglas=7, rigor=**7 (subió de 6)**, balance=8, cobertura=8, claridad=9. Todos ≥7, no dispara alerta. `proposals_formal_count` cayó de 2 a 1 tras fusión (residencias es una sola propuesta). `(estimación periodística)` y `(dato oficial)` presentes en las señales. Dos señales marcadas correctamente como `*(carry-over de la semana ISO 15)*`. Marí clasificada como `institucional_publico`. Coste: ~0,80 €.
+- **7 warnings menores pendientes para próxima iteración** — Marí sin apellido/cargo explícito en el cuerpo, "patronales" y "sindicatos" usados genéricamente sin identificar CAEB/PIMEEF/UGT/CCOO, informe sectorial sin autor nombrado, aviso visual de carry-over inconsistente en mapa de posiciones, metodología de la cifra 200 de El País no explicitada, blocks_cited sin glosario, **edición W16 antigua en contexto del generador contamina** (incluye propuestas propias del modelo antiguo). Los 6 primeros son detalles a iterar. El séptimo se resuelve con el Bloque C (borrar W16-W17 antiguas al regenerar 8 ediciones retroactivas bajo modelo documental).
+- **Gasto acumulado del día: 6,11 €** (de los cuales ~1,67 € desperdiciados en dos errores documentados). Gasto mes en curso: **5,02 €** (capa 🟢 verde, <6 €). Margen tope blando: 6,98 €. Margen tope duro: 14,98 €.
+- **Bloque A del ROADMAP: cerrado**. Pipeline funcional end-to-end, verificado, con self-review que supera umbral 7/10. Siguiente: Bloque B (web rediseñada) o Bloque C (8 ediciones retroactivas).
+
+---
+
+## 2026-04-20 — Benchmark final + reparto de modelos decidido + classify/extract reescritos
+
+- **Benchmark final sobre gold auto (17 items validados)** — resultados:
+  - classify: los 3 modelos empatan al 94,1%.
+  - detect: los 3 al 94,1%.
+  - extract: Haiku y Sonnet 97,1%, Opus 70,6%.
+  - Coste total benchmark (2º run correcto): 0,59 €.
+- **Hallazgo metodológico**: Opus sin thinking cae en extract porque el gold lo generó Opus CON thinking. Opus+thinking llega a conclusiones más elaboradas que Opus sin thinking, y eso penaliza al Opus "normal" del pipeline. No es que Haiku sea intrínsecamente mejor; es que el benchmark mide "acuerdo con Opus-thinking" y los pequeños coinciden mejor con ese árbitro.
+- **Dataset v1 limitado**: solo 4-5 propuestas reales de 17 items. Acertar "vacío" es tarea fácil. Extract está poco estresado. Conclusión: ampliar dataset con más propuestas complejas para el re-benchmark mensual.
+- **Decisión del editor: opción C (belt and suspenders)** — Haiku como base en las 3 tareas de entrada; Sonnet valida cada extracción no vacía; Opus reextrae si Sonnet marca invalid. Cláusula de reevaluación al primer re-benchmark mensual: si Haiku alucina mucho (correcciones recibidas o fallback Opus >20%), promovemos extract a Sonnet como principal.
+- **Coste mensual proyectado total con reparto final: ~6-7 €/mes** (incluye pipeline operativo + self_review semanal + auditoría trimestral + re-benchmark mensual). Dentro del tope blando 12 €.
+- **Reparto documentado en [`ARQUITECTURA.md`](ARQUITECTURA.md#reparto-de-modelos--decisión-2026-04-20)** con tabla completa, razonamiento, proyección de costes y cláusula de reevaluación.
+- **`src/classify.py` reescrito** — nuevo schema con `proposal_type` (formal|en_movimiento|ninguna) y `proposal_actor_hint`. Integra detect dentro de classify para una sola llamada Haiku. Resiliencia: si Haiku devuelve menos items que el input, sigue con fallback conservador (marca items sin clasificación como no-housing). Prompt caching activado.
+- **`src/extract.py` nuevo** — pipeline de tres pasos Haiku base → Sonnet valida → Opus fallback si disputa. Output incluye metadata por propuesta (`produced_by`, `validator_verdict`, `was_disputed`). Alerta si ratio de disputas >20%. Campos del schema actualizado (coaliciones, state=en_movimiento, statement_verbatim). Principio "cero inferencia" explícito en el prompt.
+- **Coste total del día (pipeline + estudios): ~1,96 €** de los cuales 0,57 € desperdiciados por el error del gold manual (registrado en `private/postmortems.md`).
+- **Pendiente próximo turno**: `src/verify.py` (URLs + trazabilidad + verbos prohibidos), `src/rescue.py`, `src/balance.py`, `src/generate.py` (reescribir con nuevo prompt documental), `src/self_review.py`, adaptar `src/report.py`. Todo bajo el reparto decidido.
+
+---
+
+## 2026-04-20 — Primer benchmark ejecutado + post-mortem del desajuste gold
+
+- **`generate_gold.py` ejecutado con éxito** — Opus con `thinking.type=adaptive` + `output_config.effort=high` generó gold para 20 items; Sonnet validó 17; 3 discrepancias apartadas. Coste real: 0,80 € (muy por debajo de los 3 € estimados gracias a prompt caching). Discrepancias: n08 (coalición: classify pierde sindicatos por limitación del enum actor), n09 (Opus infirió nombres concretos CAEB/PIMEEF/CCOO/UGT que la noticia solo dice genéricamente — exactamente el tipo de alucinación que el pivote quiere evitar, el sistema lo atrapó), n10 (inconsistencia interna de Opus entre detect y extract). Primer uso real del sistema de gold autogenerado: funcionó como se diseñó.
+- **Fix `thinking` API desactualizada** — el formato `{"type": "enabled", "budget_tokens": N}` ya no es válido en `claude-opus-4-7`. Cambiado a `{"type": "adaptive"}` + `output_config={"effort": "high"}`. Error 400 con mensaje claro → fix en una línea. Sin coste (400 no cobra).
+- **Fix `notify.py`: no crear issues en ejecución local** — el fallback a issue GitHub disparaba en local cuando no hay `TELEGRAM_BOT_TOKEN`. Ahora solo dispara si `GITHUB_ACTIONS=true` o si `level=critical`. En local basta con el log en stdout. Issue #1 (falso positivo del primer test) cerrado.
+- **Post-mortem abierto: [`private/postmortems.md`](private/postmortems.md)** — registro público-interno de errores evitables con coste o impacto. Primera entrada: desajuste entre `generate_gold.py` (produjo `gold_auto_v1.json`) y `run_benchmark.py` (leía `gold_standard_v1.json` manual hardcoded). El primer benchmark costó 0,57 € desperdiciados antes de detectar el problema. Causa raíz: los dos scripts se diseñaron por separado sin conexión. Responsable: Claude. Lección: flujos multi-paso con coste deben orquestarse por código, no por costumbre.
+- **Prevención aplicada:**
+  1. `run_benchmark.py` prefiere gold_auto con fallback a manual + aviso visible en log.
+  2. Nuevo orquestador [`scripts/bench_full.py`](scripts/bench_full.py) — un solo comando que genera gold si falta y ejecuta benchmark contra gold_auto. Verificaciones entre pasos. Abort si falta ANTHROPIC_API_KEY.
+  3. `ESTUDIO-3-MODELOS.md` actualizado: el comando recomendado pasa a ser `python -m scripts.bench_full`. Los individuales quedan como bajo nivel.
+- **Primer benchmark con gold auto: pendiente de ejecución por el editor con el orquestador `bench_full`**.
+
+---
+
+## 2026-04-20 — Schema con coaliciones, página /radar/, gold autogenerado
+
+- **Coaliciones en el schema** — nuevos valores de `actor_type`: `coalicion_intersectorial` (patronal + sindicato) y `coalicion_institucional` (con administración o con sociedad civil organizada). Regla: cuando varios actores firman una propuesta juntos, el campo `actor` contiene los nombres literales de todos los firmantes separados por coma, sin elegir "primario". Fidelidad al consenso real firmado. Caso W15 (CAEB+PIMEEF+CCOO+UGT sobre residencias) es el ejemplo canónico.
+- **Nueva página pública `/radar/`** — señales en movimiento: todo lo que un actor con nombre ha anunciado pero aún no ha concretado (intenciones, estudios encargados, debates abiertos, anuncios sin plan). Tres niveles nuevos en el schema de la tarea `detect`: `formal` (va a `/propuestas/`), `en_movimiento` (va a `/radar/`), `ninguna` (no se extrae). Juego con la marca "Housing Radar": el proyecto literalmente tiene su radar interno de señales tempranas. Ciclo de vida: `en_movimiento` → promovida a `propuesta` cuando se concreta, con trazabilidad.
+- **Caso n17 del benchmark** (encargo de estudio de viviendas vacías del Consell) reclasificado de `formal` a `en_movimiento`. Criterio estricto: si no hay medida concreta, no es propuesta. Aparece en `/radar/` hasta que el Consell anuncie medida.
+- **Nuevo estado `en_movimiento`** añadido al enum `state`. Horizonte `temporada_2027` añadido a `horizon`.
+- **Gold standard automatizado** (`scripts/generate_gold.py`) — el editor no revisa el gold manualmente. Opus 4.7 con extended thinking genera la solución ideal para cada tarea y Sonnet 4.6 la valida. Items con consenso entran en gold; discrepancias se apartan. Coste una vez: ~3 €. Re-ejecutable en cada re-benchmark mensual. Output: `data/bench/gold_auto_v1.json` + `data/bench/gold_discrepancies.json`.
+- **Sistema de seguimiento mixto** — Telegram para alertas puntuales (benchmark completado, auditoría trimestral lista, self-review con score <7, coste cruza capa, modelo cambia ratio) + logs persistentes en repo para profundizar cuando se quiera: `private/bench-log.md`, `private/auditoria-log.md`, `private/self-review-log.md`, `data/bench/trends.csv`, `data/audit/trends.csv`. Editor no revisa nada activamente; el sistema escribe y avisa.
+- **Apunte estratégico** — el nombre del proyecto ("Ibiza Housing Radar") se reevaluará al elegir dominio propio. La página `/radar/` queda diseñada para ser independiente del nombre final del proyecto: el juego con "radar" se conserva aunque el proyecto se llame de otra forma. Registrado en [`ESTUDIOS-PENDIENTES.md #2`](ESTUDIOS-PENDIENTES.md).
+- **Documentos actualizados** — `ARQUITECTURA.md` (schema ampliado + coaliciones + niveles de propuesta), `DISENO-WEB.md` (página `/radar/` con estructura y ciclo de vida), `ROADMAP.md` (tareas B31 `/radar/`, B32 gold autogenerado, B33 sistema de seguimiento), `ESTUDIOS-PENDIENTES.md` (apunte sobre renombrar proyecto), `ESTUDIO-3-MODELOS.md` (flujo con gold auto), `data/bench/gold_standard_v1.json` (v1.1 con schema nuevo). Nuevos: `scripts/generate_gold.py`, `private/bench-log.md`, `private/auditoria-log.md`, `private/self-review-log.md`, `data/bench/trends.csv`, `data/audit/trends.csv`.
+
+---
+
+## 2026-04-20 — Refuerzo del pivote: autoevaluación, archivo de huecos, tracking potente
+
+- **Restricción estructural asumida** — el editor no es experto en vivienda ni en derecho; la revisión humana se limita a un check visual de 2-3 min tras cada publicación (Telegram OK, web carga bien, 2 URLs al azar funcionan, indicadores de transparencia verdes). El pipeline **no puede depender del editor para fact-checking experto**. De ahí el principio nuevo: **"cero inferencia del LLM"** — solo reproduce y ordena lo que está en la fuente, nunca infiere, nunca deduce. Si no hay dato, se marca "no evaluada" o "sin dato público"; si no hay URL, no publica. Esto refuerza las 5 reglas duras del pivote y las hace más estrictas.
+- **Archivo público `/sin-dato/`** — nueva página que convierte los "no evaluada" en oportunidad de enriquecimiento por el público. Tabla filtrable con todas las propuestas que tengan al menos un campo pendiente, con botón "aportar este dato" → formulario Formspree con URL obligatoria. Cada aportación verificada se incorpora con `dateModified` y traza en `/correcciones/`. Triple ventaja: oro oculto adicional (preguntas sin respuesta pública visibles), refuerzo de "cero inferencia" (mejor decir "no sé"), SEO (contenido dinámico + backlinks de aportantes).
+- **Tres niveles de autoevaluación** para compensar la revisión humana limitada:
+  1. **Semanal con Sonnet** (`src/self_review.py`): tras publicar cada edición, Sonnet puntúa 1-10 en 5 dimensiones (cumplimiento de reglas, rigor factual, balance, cobertura, claridad) y detecta warnings. Si algún score <7, Telegram urgente con link. Coste: ~0,60 €/mes.
+  2. **Trimestral con Opus** (`src/quarterly_audit.py`): cada 13 semanas, Opus lee las 13 ediciones + self-reviews + balance y genera informe público en `/auditoria/YYYY-qN/` con cumplimiento sostenido de reglas, patrones emergentes, comparativa de calidad, recomendaciones concretas, señales sistemáticamente perdidas. Coste: ~1,50 €/mes promediado.
+  3. **Re-benchmark mensual de modelos** (`src/model_rebench.py`): 10 noticias nuevas, ejecutar las 6 tareas del pipeline con los 3 modelos, detectar desviación >20% en ratio calidad/coste. Coste: ~1 €/mes.
+- **Sexto criterio del estudio de modelos: impacto real (correcciones recibidas/edición)**. Proxy directo de calidad percibida. Si el modelo barato genera más correcciones que el caro, el "ahorro" se paga en credibilidad. Se mide a partir del segundo mes cuando `/correcciones/` acumule datos; entra en el re-benchmark mensual, no en el benchmark inicial.
+- **Coste mensual proyectado total bajo pivote + autoevaluación: ~9,86 €/mes** (7,36 € operación + 3,10 € autoevaluación). Cruza el tope blando actual (8 €). **Decisión: subir tope blando a 12 €** con nueva capa 🟠 naranja 9-12 €, capa 🔴 roja blanda 12-20 €. Misma filosofía "avisa pero publica". Tope duro sigue en 20 €.
+- **Tracking de costes potente** (ampliación de `src/costs.py`): dashboard privado con coste por módulo + coste por modelo + cache hit rate + tendencia 8 semanas + estimaciones semanal/mensual/anual + alertas de desviación >30% + alertas de cache hit <70%. Dashboard público `/costes/` simplificado con agregados y capa actual. Todo con datos reales medibles.
+- **Página pública `/auditoria/YYYY-qN/`** — las auditorías trimestrales salen públicas. El proyecto se audita a sí mismo en abierto. Transparencia radical = presión sana sobre el pipeline.
+- **Página pública `/estado/`** estilo Solar Low-Tech — histórico operacional del pipeline (ejecuciones, retrasos, versiones, contadores globales). Complementa `/correcciones/` (errores editoriales) con errores operacionales.
+- **Newsletter confirmado como modelo híbrido** — gratis en Fase 0, tier Pro opcional en Fase 2. Nunca paywall al lunes.
+- **Estudio 3 modelos a ejecutar primero** — pendiente de OK del editor para arrancar curación del dataset (20-30 noticias curadas + gold standard manual). Coste del estudio: ~3-5 € una vez. Tiempo: ~6 h de trabajo de Claude + ~30 min de consulta al editor para casos ambiguos.
+- **Documentos actualizados** — [`ARQUITECTURA.md`](ARQUITECTURA.md) con 3 módulos nuevos + nuevo coste estimado + sistema de capas. [`DISENO-WEB.md`](DISENO-WEB.md) con 4 páginas nuevas (`/sin-dato/`, `/auditoria/`, `/costes/`, `/estado/`). [`ESTUDIOS-PENDIENTES.md`](ESTUDIOS-PENDIENTES.md) con 6º criterio y re-benchmark continuo. [`ROADMAP.md`](ROADMAP.md) con tareas A12-A16, B27-B30, E4-E6.
+
+---
+
+## 2026-04-20 — Decisiones del editor sobre Fase 0 del pivote
+
+- **16 decisiones resueltas** por el editor — documento [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) actualizado con cabecera nueva de "decisiones resueltas" y detalle de cada una.
+- **W16-W17 se borran** (no se reescriben). Decisión más drástica que la recomendación inicial: archivo público arranca limpio bajo modelo documental sin residuos del modelo antiguo. Originales conservadas en histórico git pre-merge.
+- **Contenido retroactivo a 2 meses, 8 ediciones (W10-W17)**, cubriendo marzo y abril 2026. Arco narrativo "de planificación pre-temporada al desalojo de asentamientos en vísperas de mayo". Veracidad alta con nota metodológica visible. Coste puntual ~13,52 € puede cruzar el tope blando de abril; asumido. Tiempo humano estimado 10-17 h. Orden de producción sugerido: hacia atrás desde W17 (más fácil con RSS reciente) hasta W10 (mayor búsqueda manual en archivos de diarios). [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) reescrito con el plan completo.
+- **Firma "Raúl S." sin foto ni email directo**, solo formulario. Apunte de pasar a nombre completo + email propio cuando haya dominio.
+- **Dominio propio confirmado, pero con estudio previo** antes de comprar. Apuntado en [`ESTUDIOS-PENDIENTES.md #2`](ESTUDIOS-PENDIENTES.md).
+- **Analítica ambiciosa** — el editor pide algo "muy potente": GoatCounter + Search Console + dashboard público de estadísticas del corpus editorial + transparencia operacional tipo Solar Low-Tech. Apuntado como [`ESTUDIOS-PENDIENTES.md #7`](ESTUDIOS-PENDIENTES.md).
+- **Newsletter de pago valorado y descartado como modelo puro**. Contradice misión, mercado demasiado pequeño, rompe citabilidad, asimetría web/email absurda, complejidad operativa. Recomendación: **modelo híbrido** (gratis base + tier Pro opcional) en Fase 2, no en Fase 0. Detalle y razones en [`ESTUDIOS-PENDIENTES.md #4`](ESTUDIOS-PENDIENTES.md).
+- **Página `/recursos/` sale de Fase 0**, se estudia en Fase 1.
+- **Balance público con prioridad alta** — se convierte en diferenciador principal del proyecto junto con el pivote documental. Se publica desde día 1 y se amplía continuamente con estadísticas del corpus.
+- **Diseño: mantener + inspiración Solar Low-Tech**. Nueva sección en [`DISENO-WEB.md`](DISENO-WEB.md) con 8 elementos a importar: indicadores de transparencia en footer, tipografía mono para datos, notas al margen, posible dithering en OG images, manifiesto visible, rechazo de JS innecesario, accesibilidad radical, página `/estado/` con histórico operacional.
+- **Redes sociales fuera de Fase 0** — se estudian en Fase 1. Se quita Bluesky y Mastodon del Bloque F.
+- **🔴 Estudio urgente: integración de 3 modelos IA** (Haiku + Sonnet + Opus). Reparto por tarea: Haiku para clasificación y vigencia; Sonnet para extracción estructurada y fact-check; Opus para composición y auditorías cualitativas. Coste estimado ~1,69 €/edición, ~6,76 €/mes. Primera semana de Fase 0 antes de contenido retroactivo. Detalle en [`ESTUDIOS-PENDIENTES.md #1`](ESTUDIOS-PENDIENTES.md).
+- **Licencia CC-BY 4.0 confirmada** para dataset de propuestas y contenido editorial.
+- **Fecha de relanzamiento propuesta: lunes 18 de mayo de 2026** — deja 4 semanas desde hoy, 2 semanas de margen sobre inicio de temporada, tiempo para los 3 estudios urgentes. Pendiente de confirmación del editor.
+- **Nuevo documento [`ESTUDIOS-PENDIENTES.md`](ESTUDIOS-PENDIENTES.md)** consolida los 8 estudios pendientes (urgentes + diferidos) con prioridad, plazo y entregable cada uno.
+- **[`ROADMAP.md`](ROADMAP.md) actualizado**: Bloque C a 8 ediciones, Bloque G ajustado (quita `/recursos/`), Bloque F ajustado (quita bots sociales), nuevo Bloque I con 5 estudios/tareas previas bloqueantes antes del lanzamiento.
+
+---
+
+## 2026-04-20 — Pivote estratégico aprobado: observatorio documental
+
+- **Decisión aprobada por el editor** — tras el estudio crítico del corpus W16-W17, se confirma el pivote de "generador de propuestas" a "observatorio documental". El LLM deja de generar propuestas y pasa a extraer, ordenar y verificar las propuestas reales que los actores con nombre formulan cada semana. Documento fundacional en [`PIVOTE.md`](PIVOTE.md).
+- **Branch aislado de trabajo** — `pivote/observatorio-documental` creado desde main el 2026-04-20. Todo el trabajo del pivote vive ahí hasta merge. `main` intacto como salvaguarda de reversibilidad.
+- **Expediente estratégico completo** — 7 documentos consolidan la decisión, el roadmap, la arquitectura técnica, el diseño web y el plan SEO: [`PIVOTE.md`](PIVOTE.md), [`ROADMAP.md`](ROADMAP.md), [`ARQUITECTURA.md`](ARQUITECTURA.md), [`DISENO-WEB.md`](DISENO-WEB.md), [`SEO.md`](SEO.md), [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md), [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md). `PLAN.md` se mantiene como referencia histórica con aviso al inicio que redirige al nuevo expediente.
+- **Cinco reglas duras del pivote** — publicables en `/politica-editorial`: (1) solo propuestas con autor identificado y URL verificable; (2) el observatorio no genera propuestas propias; (3) ningún actor excluido por filiación; (4) balance de actores auditado y público cada trimestre; (5) correcciones públicas con traza. Vinculantes y no negociables.
+- **Fase 0 ambiciosa** — relanzamiento completo con pipeline técnico nuevo (módulos `extract.py`, `verify.py`, `rescue.py`, `balance.py`), 15+ páginas web (home dual, `/politica-editorial`, `/balance`, `/actores`, `/propuestas`, `/recursos`, `/glosario`, `/como-usarlo`, `/cita-esto`, `/aportar`, `/datos-abiertos`, `/explica/*`), SEO masivo (schema.org JSON-LD, OG images por edición, sitemap, 8 páginas long-tail), contenido retroactivo de 4 ediciones simuladas (W14-W17), analítica GoatCounter, newsletter Buttondown, bots Bluesky y Mastodon. Coste API estimado ~5,85 €/mes dentro del tope blando 8 €.
+- **Regla dura de diseño visual** — los partidos políticos se muestran siempre en gris neutro, nunca con su color de marca. Decisión editorial para reforzar imparcialidad visual. Bloques no partidistas (sindicatos, patronales, tercer sector, académicos, judicial, institucional público) tipificados con paleta ampliada.
+- **16 decisiones pendientes del editor** — listadas en [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) con opciones y recomendaciones. Bloquean el arranque de ejecución. La más relevante: reescribir W16-W17 bajo nuevo modelo (recomendado) o mantener con nota; comprar dominio propio ya (recomendado) o esperar tracción; relanzar en W18 (apretado) o W20 (recomendado, 3 semanas de preparación).
 
 ---
 

@@ -1,12 +1,14 @@
 # Ibiza Housing Radar
 
-Observatorio automatizado de noticias sobre la crisis de vivienda en Ibiza, centrado en trabajadores de temporada (mayo-octubre). Cada lunes genera un informe con propuestas accionables enlazadas a las noticias que las motivan.
+Observatorio semanal de la crisis de vivienda en Ibiza, con foco en trabajadores de temporada (mayo-octubre). Cada lunes genera un informe con las señales de la semana, mapa de posiciones de los actores y propuestas reales documentadas con fuente verificable.
+
+> ⚠️ **Pivote 2026-04-20.** El proyecto está migrando de "generador de propuestas" a **"observatorio documental"**. El LLM ya no genera propuestas propias; mapea, ordena y verifica las propuestas reales que actores con nombre formulan cada semana. Detalle en [`PIVOTE.md`](PIVOTE.md) y [`ROADMAP.md`](ROADMAP.md). El trabajo del pivote vive en el branch `pivote/observatorio-documental` hasta merge. El modelo antiguo sigue operativo en `main` hasta entonces.
 
 - **Web pública:** <https://otundra.github.io/ibiza-housing-radar/>
 - **Cadencia:** informe semanal, lunes 07:00 CEST (05:00 UTC)
-- **Stack:** Python 3.12 + Anthropic API (Claude) + GitHub Actions + GitHub Pages
-- **Coste:** 0 € de infraestructura; consumo API ~2 €/mes (tope blando 8 €, tope duro 20 €)
-- **Licencia:** MIT
+- **Stack:** Python 3.12 + Anthropic API (Claude Haiku 4.5 + Sonnet 4.6 + Opus 4.7) + GitHub Actions + GitHub Pages
+- **Coste (pivote documental):** 0 € de infraestructura; API ~6-7 €/mes proyectado incluyendo autoevaluación semanal con Sonnet y auditoría trimestral con Opus. Tope blando 12 €/mes (avisa, sigue publicando), tope duro 20 €/mes (corta, protección runaway).
+- **Licencia:** MIT (código) + CC-BY 4.0 (contenido editorial).
 
 ## Qué hace
 
@@ -30,15 +32,17 @@ El workflow `weekly-report.yml` se dispara:
 
 ## Control de costes
 
-Sistema de capas en euros:
+Sistema de capas en euros (actualizado 2026-04-20 para absorber los 3 niveles de autoevaluación del pivote):
 
-- **Verde (<4 €):** silencio.
-- **Amarilla (4-6 €):** aviso por Telegram (FYI).
-- **Naranja (6-8 €):** aviso por Telegram (atención).
-- **Roja blanda (8-20 €):** aviso urgente por Telegram. **El pipeline sigue publicando**, no se pierde editorial por sobrecoste.
-- **Roja dura (>20 €):** pipeline cortado + alerta crítica. Protección runaway contra bugs o bucles.
+- **🟢 Verde (<6 €):** silencio.
+- **🟡 Amarilla (6-9 €):** aviso por Telegram (FYI).
+- **🟠 Naranja (9-12 €):** aviso por Telegram (atención).
+- **🔴 Roja blanda (12-20 €):** aviso urgente por Telegram. **El pipeline sigue publicando**, no se pierde editorial por sobrecoste.
+- **🚨 Roja dura (>20 €):** pipeline cortado + alerta crítica. Protección runaway contra bugs o bucles.
 
 Editar `MONTHLY_SOFT_CAP_EUR` y `MONTHLY_HARD_CAP_EUR` en [`src/costs.py`](src/costs.py) para ajustar.
+
+El histórico de cambios de umbrales vive en [`private/adjustments-log.md`](private/adjustments-log.md).
 
 Dashboard privado en [`private/costs.md`](private/costs.md) (no se sirve en la web). Histórico completo en `data/costs.csv`.
 
@@ -54,8 +58,12 @@ Genera `docs/_editions/<YYYY>-w<WW>.md`, actualiza `docs/index.md` (panel de la 
 
 ## Estructura
 
-Ver [CLAUDE.md](CLAUDE.md) para detalles de arquitectura, decisiones y comandos. Ver [DIARIO.md](DIARIO.md) para el diario del proyecto. Ver [PLAN.md](PLAN.md) para el roadmap estratégico hacia observatorio de referencia.
+Ver [CLAUDE.md](CLAUDE.md) para detalles de arquitectura, decisiones y comandos. Ver [DIARIO.md](DIARIO.md) para el diario del proyecto.
+
+**Roadmap activo (post-pivote):** [`ROADMAP.md`](ROADMAP.md) + documentos hermanos [`PIVOTE.md`](PIVOTE.md), [`ARQUITECTURA.md`](ARQUITECTURA.md), [`DISENO-WEB.md`](DISENO-WEB.md), [`SEO.md`](SEO.md), [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md), [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md). El antiguo [PLAN.md](PLAN.md) se conserva como referencia histórica.
 
 ## Aviso
 
-Las propuestas son sugerencias generadas por IA sobre prensa pública. No son análisis técnico ni asesoramiento jurídico, político o económico. Contrasta cifras con la fuente original antes de usarlas.
+**Modelo antiguo (en `main`):** las propuestas son sugerencias generadas por IA sobre prensa pública. No son análisis técnico ni asesoramiento jurídico, político o económico. Contrasta cifras con la fuente original antes de usarlas.
+
+**Modelo nuevo (pivote, en branch):** el observatorio ya no genera propuestas propias. Documenta propuestas reales de actores identificables con URL a la fuente primaria. Política editorial con 5 reglas duras en `/politica-editorial` tras lanzamiento. Ver [`PIVOTE.md`](PIVOTE.md).

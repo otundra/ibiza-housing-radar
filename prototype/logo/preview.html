@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>radar))vivienda_ibiza — preview tipográfico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f4ec;
+      --bg-soft: #f2ecdf;
+      --ink: #1e1916;
+      --ink-soft: #4a3f36;
+      --ink-muted: #7a6e62;
+      --rule: #e2d8c5;
+      --accent: #c14a2d;
+      --accent-soft: #e86c4a;
+      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --serif: 'Instrument Serif', Georgia, serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      padding: 48px 32px 120px;
+      line-height: 1.55;
+    }
+    header { max-width: 940px; margin: 0 auto 40px; }
+    header h1 { font-family: var(--serif); font-weight: 400; font-size: 2.4rem; margin: 0 0 14px; letter-spacing: -0.01em; }
+    header p { color: var(--ink-soft); max-width: 62ch; font-size: 17px; margin: 0; }
+    header code { font-family: var(--mono); font-size: 13px; background: var(--bg-soft); padding: 2px 6px; border-radius: 3px; border: 1px solid var(--rule); }
+    h2 {
+      font-family: var(--serif); font-weight: 400; font-size: 1.6rem;
+      margin: 52px auto 20px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule); max-width: 940px;
+    }
+    section {
+      max-width: 940px; margin: 0 auto 20px;
+      padding: 28px 32px;
+      background: #ffffff;
+      border: 1px solid var(--rule); border-radius: 10px;
+    }
+    section.dark { background: #1a1411; border-color: #362c25; color: #f2ece0; }
+    section h3 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 0 0 18px; }
+    section.dark h3 { color: #f2ece0; }
+
+    /* Wordmark base */
+    .wm {
+      font-family: var(--mono);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      color: var(--ink);
+    }
+    section.dark .wm { color: #f2ece0; }
+
+    .wm .waves { color: var(--accent); font-weight: 600; }
+    .wm .topic { color: var(--ink-muted); font-weight: 400; }
+    section.dark .wm .topic { color: #9b8f80; }
+
+    /* Variants */
+    .wm.v-mono-flat { color: inherit; }
+    .wm.v-mono-flat .waves,
+    .wm.v-mono-flat .topic { color: inherit; font-weight: inherit; }
+
+    .wm.v-split .waves { color: var(--accent); font-weight: 600; }
+    .wm.v-split .topic { color: inherit; font-weight: 400; }
+
+    .wm.v-tri .radar { font-weight: 600; }
+    .wm.v-tri .waves { color: var(--accent); font-weight: 700; }
+    .wm.v-tri .topic { color: var(--ink-muted); font-weight: 400; }
+    section.dark .wm.v-tri .topic { color: #9b8f80; }
+
+    .wm.v-under { }
+    .wm.v-under .radar { border-bottom: 1.5px solid currentColor; padding-bottom: 1px; }
+
+    /* Rows */
+    .row { display: flex; align-items: baseline; gap: 20px; padding: 14px 0; border-bottom: 1px dashed var(--rule); }
+    .row:last-child { border-bottom: 0; }
+    section.dark .row { border-bottom-color: #362c25; }
+    .lbl {
+      flex: 0 0 120px;
+      font-family: var(--mono); font-size: 11px;
+      color: var(--ink-muted);
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    section.dark .lbl { color: #9b8f80; }
+
+    /* Sizes scale */
+    .s14 { font-size: 14px; }
+    .s18 { font-size: 18px; }
+    .s24 { font-size: 24px; }
+    .s32 { font-size: 32px; }
+    .s48 { font-size: 48px; line-height: 1; }
+    .s72 { font-size: 72px; line-height: 1; }
+
+    /* OG simulation */
+    .og-sim {
+      width: 600px; max-width: 100%;
+      height: 315px;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      padding: 36px 44px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      margin: 0 auto 20px;
+    }
+    .og-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .og-head .wm { font-size: 22px; }
+    .og-head .tag { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .og-title {
+      font-family: var(--serif); font-weight: 400;
+      font-size: 38px; line-height: 1.08;
+      letter-spacing: -0.015em; max-width: 20ch;
+    }
+    .og-foot {
+      font-family: var(--mono); font-size: 11px;
+      color: var(--ink-muted); letter-spacing: 0.04em;
+    }
+
+    /* Tab simulation */
+    .tab-sim {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      padding: 8px 14px;
+      border-radius: 8px 8px 0 0;
+      font-size: 13px; color: var(--ink-soft);
+      max-width: 360px; margin-right: 16px; margin-bottom: 10px;
+    }
+    .tab-sim .wm { font-size: 11px; }
+
+    /* Header simulation */
+    .header-sim {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 22px;
+      background: rgba(248, 244, 236, .88);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+    .header-sim.dark {
+      background: rgba(26, 20, 17, 0.85);
+      border-color: #362c25;
+      color: #f2ece0;
+    }
+    .header-sim nav {
+      display: flex; gap: 18px;
+      font-size: 14px; color: var(--ink-soft);
+    }
+    .header-sim.dark nav { color: #d1c6b5; }
+
+    .legend {
+      max-width: 940px; margin: 0 auto 36px;
+      padding: 20px 28px;
+      background: var(--bg-soft);
+      border: 1px solid var(--rule); border-radius: 8px;
+      font-size: 14px; color: var(--ink-soft);
+    }
+    .legend strong { color: var(--ink); }
+    .legend ul { margin: 8px 0 0; padding-left: 20px; }
+    .legend li { margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>radar))vivienda_ibiza — preview tipográfico</h1>
+  <p>Wordmark sin monograma gráfico. Todo tipografía monospace (<code>JetBrains Mono</code>). Las dos <code>))</code> funcionan como señal de radar visual. Los underscores (<code>_</code>) separan topic + location como si fuera un módulo técnico, preparando el ecosistema futuro (<code>radar))turismo_ibiza</code>, <code>radar))medioambiente_ibiza</code>, etc.).</p>
+  <p style="margin-top: 14px; font-size: 14px; color: var(--ink-muted);"><strong>Decidido 2026-04-21:</strong> variante <strong>V2 Split</strong> + favicon <code>))</code> como glifo puro.</p>
+</header>
+
+<!-- Favicon SVG embebido como symbol reutilizable -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+  <defs>
+    <symbol id="favicon-glyph" viewBox="0 0 24 24">
+      <path d="M 7 5 Q 11 12 7 19" fill="none" stroke="#c14a2d" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M 14 5 Q 18 12 14 19" fill="none" stroke="#c14a2d" stroke-width="2.4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="legend">
+  <strong>Qué ves abajo:</strong>
+  <ul>
+    <li><strong>V1 · Mono plano</strong> — todo un solo color, peso medio. La opción más sobria.</li>
+    <li><strong>V2 · Split</strong> — <code>))</code> en terracota, resto en tinta. Destaca el gesto radar.</li>
+    <li><strong>V3 · Tri</strong> — <code>radar</code> semibold, <code>))</code> terracota bold, <code>vivienda_ibiza</code> regular muted. Jerarquiza marca, gesto, tema.</li>
+    <li><strong>V4 · Underline</strong> — <code>radar</code> subrayado (seam), resto regular. Coherente con la dirección "mono + seams".</li>
+  </ul>
+</div>
+
+<section>
+  <h3>Tamaños en modo claro — V1 Mono plano</h3>
+  <div class="row"><span class="lbl">14 px · meta</span><span class="wm v-mono-flat s14"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">18 px · cabecera</span><span class="wm v-mono-flat s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">24 px · hero</span><span class="wm v-mono-flat s24"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">32 px · og medio</span><span class="wm v-mono-flat s32"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px · og grande</span><span class="wm v-mono-flat s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">72 px · kit prensa</span><span class="wm v-mono-flat s72"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<section>
+  <h3>V2 Split — <code>))</code> en terracota</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-split s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">24 px</span><span class="wm v-split s24"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-split s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">72 px</span><span class="wm v-split s72"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<section>
+  <h3>V3 Tri — jerarquía con peso y color</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-tri s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">24 px</span><span class="wm v-tri s24"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-tri s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">72 px</span><span class="wm v-tri s72"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<section>
+  <h3>V4 Underline — <code>radar</code> con seam</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-under s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">24 px</span><span class="wm v-under s24"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-under s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<h2>Modo oscuro</h2>
+
+<section class="dark">
+  <h3>V1 Mono plano — oscuro</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-mono-flat s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-mono-flat s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<section class="dark">
+  <h3>V2 Split — oscuro</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-split s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-split s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<section class="dark">
+  <h3>V3 Tri — oscuro</h3>
+  <div class="row"><span class="lbl">18 px</span><span class="wm v-tri s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+  <div class="row"><span class="lbl">48 px</span><span class="wm v-tri s48"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span></div>
+</section>
+
+<h2>En contexto · cabecera de sitio</h2>
+
+<section>
+  <h3>Modo claro (V3 Tri)</h3>
+  <div class="header-sim">
+    <span class="wm v-tri s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span>
+    <nav>Ediciones · Propuestas · Actores · Recursos · Más ▾</nav>
+  </div>
+  <div class="header-sim dark">
+    <span class="wm v-tri s18"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span>
+    <nav>Ediciones · Propuestas · Actores · Recursos · Más ▾</nav>
+  </div>
+</section>
+
+<h2>Favicon elegido · <code>))</code> como glifo puro vectorial</h2>
+
+<section>
+  <h3>Muestra a tamaños reales (SVG path, sin depender de fuente)</h3>
+  <div class="row"><span class="lbl">16 px · favicon</span><svg width="16" height="16"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">24 px</span><svg width="24" height="24"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">32 px · tab retina</span><svg width="32" height="32"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">64 px</span><svg width="64" height="64"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">128 px · avatar RRSS</span><svg width="128" height="128"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">192 px · android</span><svg width="192" height="192"><use href="#favicon-glyph"/></svg></div>
+</section>
+
+<section class="dark">
+  <h3>Favicon sobre fondo oscuro</h3>
+  <div class="row"><span class="lbl">16 px</span><svg width="16" height="16"><use href="#favicon-glyph"/></svg></div>
+  <div class="row"><span class="lbl">64 px</span><svg width="64" height="64"><use href="#favicon-glyph"/></svg></div>
+  <p style="font-size: 13px; color: #9b8f80; margin: 14px 0 0;">El mismo color terracota <code>#c14a2d</code> aguanta sobre fondo ink. En modo oscuro del sistema, el navegador renderiza el favicon sin fondo (transparente por defecto).</p>
+</section>
+
+<h2>En contexto · pestaña del navegador con favicon real</h2>
+
+<section>
+  <div class="tab-sim"><svg width="16" height="16" style="flex-shrink:0"><use href="#favicon-glyph"/></svg><span class="wm v-split">radar<span class="waves">))</span>vivienda_ibiza</span> — Observatorio</div>
+  <p style="font-size: 13px; color: var(--ink-muted); margin: 14px 0 0;">El <code>))</code> del favicon refuerza el mismo <code>))</code> del wordmark. Máxima coherencia cromática: único elemento terracota visible en toda la cabecera.</p>
+</section>
+
+<h2>En contexto · OG image (600×315 escalada)</h2>
+
+<section style="background: transparent; border: 0; padding: 0;">
+  <p style="text-align:center;color:var(--ink-muted);font-size:13px;margin:0 0 12px;">V2 Split</p>
+  <div class="og-sim">
+    <div class="og-head">
+      <span class="wm v-split"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span>
+      <span class="tag">20-26 abril 2026</span>
+    </div>
+    <div class="og-title">La crisis de vivienda en Ibiza documentada cada lunes</div>
+    <div class="og-foot">23 propuestas · 18 actores seguidos · 6 palancas · observatorio documental</div>
+  </div>
+
+  <p style="text-align:center;color:var(--ink-muted);font-size:13px;margin:0 0 12px;">V3 Tri</p>
+  <div class="og-sim">
+    <div class="og-head">
+      <span class="wm v-tri"><span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span></span>
+      <span class="tag">20-26 abril 2026</span>
+    </div>
+    <div class="og-title">La crisis de vivienda en Ibiza documentada cada lunes</div>
+    <div class="og-foot">23 propuestas · 18 actores seguidos · 6 palancas · observatorio documental</div>
+  </div>
+</section>
+
+</body>
+</html>

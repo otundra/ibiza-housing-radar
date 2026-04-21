@@ -1,0 +1,3516 @@
+{
+  "timestamp": "2026-04-20T17:48:05.634695+00:00",
+  "dataset_version": "v1",
+  "calls": [
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n01",
+      "output": {
+        "id": "n01",
+        "is_housing": true,
+        "actor": "ayuntamiento",
+        "lever": "enforcement"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n02",
+      "output": {
+        "id": "n02",
+        "is_housing": true,
+        "actor": "trabajadores",
+        "lever": "precio"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n03",
+      "output": {
+        "id": "n03",
+        "is_housing": true,
+        "actor": "ayuntamiento",
+        "lever": "enforcement"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n04",
+      "output": {
+        "id": "n04",
+        "is_housing": true,
+        "actor": "tercer_sector",
+        "lever": "denuncia_social"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n05",
+      "output": {
+        "id": "n05",
+        "is_housing": true,
+        "actor": "otro",
+        "lever": "precio"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n06",
+      "output": {
+        "id": "n06",
+        "is_housing": true,
+        "actor": "otro",
+        "lever": "otro"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n07",
+      "output": {
+        "id": "n07",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n08",
+      "output": {
+        "id": "n08",
+        "is_housing": true,
+        "actor": "patronal",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n09",
+      "output": {
+        "id": "n09",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n10",
+      "output": {
+        "id": "n10",
+        "is_housing": true,
+        "actor": "govern_balear",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n11",
+      "output": {
+        "id": "n11",
+        "is_housing": true,
+        "actor": "govern_balear",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n12",
+      "output": {
+        "id": "n12",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n13",
+      "output": {
+        "id": "n13",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n14",
+      "output": {
+        "id": "n14",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n15",
+      "output": {
+        "id": "n15",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "fiscal"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n16",
+      "output": {
+        "id": "n16",
+        "is_housing": true,
+        "actor": "judicial",
+        "lever": "normativa"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n17",
+      "output": {
+        "id": "n17",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n18",
+      "output": {
+        "id": "n18",
+        "is_housing": true,
+        "actor": "otro",
+        "lever": "precio"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n19",
+      "output": {
+        "id": "n19",
+        "is_housing": true,
+        "actor": "otro",
+        "lever": "precio"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "classify",
+      "news_id": "n20",
+      "output": {
+        "id": "n20",
+        "is_housing": true,
+        "actor": "ayuntamiento",
+        "lever": "enforcement"
+      },
+      "input_tokens": 197,
+      "output_tokens": 43,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0004142,
+      "latency_s": 0.25152269601821897,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n01",
+      "output": {
+        "is_housing": true,
+        "actor": "ayuntamiento",
+        "lever": "enforcement"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n02",
+      "output": {
+        "is_housing": true,
+        "actor": "trabajadores",
+        "lever": "precio"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n03",
+      "output": {
+        "is_housing": true,
+        "actor": "ayuntamiento",
+        "lever": "enforcement"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n04",
+      "output": {
+        "is_housing": true,
+        "actor": "tercer_sector",
+        "lever": "denuncia_social"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n05",
+      "output": {
+        "is_housing": true,
+        "actor": "otro",
+        "lever": "precio"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n06",
+      "output": {
+        "is_housing": true,
+        "actor": "otro",
+        "lever": "otro"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n07",
+      "output": {
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n08",
+      "output": {
+        "is_housing": true,
+        "actor": "patronal",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n09",
+      "output": {
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n10",
+      "output": {
+        "is_housing": true,
+        "actor": "govern_balear",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n11",
+      "output": {
+        "is_housing": true,
+        "actor": "govern_balear",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n12",
+      "output": {
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n13",
+      "output": {
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n14",
+      "output": {
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n15",
+      "output": {
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "fiscal"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n16",
+      "output": {
+        "is_housing": true,
+        "actor": "judicial",
+        "lever": "normativa"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n17",
+      "output": {
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n18",
+      "output": {
+        "is_housing": true,
+        "actor": "otro",
+        "lever": "precio"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n19",
+      "output": {
+        "is_housing": true,
+        "actor": "otro",
+        "lever": "precio"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "classify",
+      "news_id": "n20",
+      "output": {
+        "is_housing": true,
+        "actor": "ayuntamiento",
+        "lever": "enforcement"
+      },
+      "input_tokens": 198,
+      "output_tokens": 34,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00110775,
+      "latency_s": 0.33147579431533813,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n01",
+      "output": {
+        "id": "n01",
+        "is_housing": true,
+        "actor": "ayuntamiento",
+        "lever": "enforcement"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n02",
+      "output": {
+        "id": "n02",
+        "is_housing": true,
+        "actor": "trabajadores",
+        "lever": "denuncia_social"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n03",
+      "output": {
+        "id": "n03",
+        "is_housing": true,
+        "actor": "ayuntamiento",
+        "lever": "enforcement"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n04",
+      "output": {
+        "id": "n04",
+        "is_housing": true,
+        "actor": "tercer_sector",
+        "lever": "denuncia_social"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n05",
+      "output": {
+        "id": "n05",
+        "is_housing": true,
+        "actor": "propietarios",
+        "lever": "precio"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n06",
+      "output": {
+        "id": "n06",
+        "is_housing": true,
+        "actor": "otro",
+        "lever": "denuncia_social"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n07",
+      "output": {
+        "id": "n07",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n08",
+      "output": {
+        "id": "n08",
+        "is_housing": true,
+        "actor": "patronal",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n09",
+      "output": {
+        "id": "n09",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n10",
+      "output": {
+        "id": "n10",
+        "is_housing": true,
+        "actor": "govern_balear",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n11",
+      "output": {
+        "id": "n11",
+        "is_housing": true,
+        "actor": "govern_balear",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n12",
+      "output": {
+        "id": "n12",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n13",
+      "output": {
+        "id": "n13",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n14",
+      "output": {
+        "id": "n14",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n15",
+      "output": {
+        "id": "n15",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "enforcement"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n16",
+      "output": {
+        "id": "n16",
+        "is_housing": true,
+        "actor": "judicial",
+        "lever": "normativa"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n17",
+      "output": {
+        "id": "n17",
+        "is_housing": true,
+        "actor": "consell",
+        "lever": "oferta_vivienda"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n18",
+      "output": {
+        "id": "n18",
+        "is_housing": true,
+        "actor": "propietarios",
+        "lever": "precio"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n19",
+      "output": {
+        "id": "n19",
+        "is_housing": true,
+        "actor": "propietarios",
+        "lever": "precio"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "classify",
+      "news_id": "n20",
+      "output": {
+        "id": "n20",
+        "is_housing": true,
+        "actor": "ayuntamiento",
+        "lever": "enforcement"
+      },
+      "input_tokens": 247,
+      "output_tokens": 37,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0064995,
+      "latency_s": 0.3887985944747925,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n01",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n02",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n03",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n04",
+      "output": {
+        "proposal_type": "formal",
+        "proposal_actor_hint": "Cáritas Ibiza"
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n05",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n06",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n07",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n08",
+      "output": {
+        "proposal_type": "formal",
+        "proposal_actor_hint": "Patronales (CAEB, PIMEEF) y sindicatos (CCOO, UGT)"
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n09",
+      "output": {
+        "proposal_type": "en_movimiento",
+        "proposal_actor_hint": "Consell d'Eivissa, patronales y sindicatos"
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n10",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n11",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n12",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n13",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n14",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n15",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n16",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n17",
+      "output": {
+        "proposal_type": "en_movimiento",
+        "proposal_actor_hint": "Consell d'Eivissa"
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n18",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n19",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "detect",
+      "news_id": "n20",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00035475,
+      "latency_s": 0.18439611196517944,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n01",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n02",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n03",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n04",
+      "output": {
+        "proposal_type": "formal",
+        "proposal_actor_hint": "Cáritas Ibiza"
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n05",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n06",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n07",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n08",
+      "output": {
+        "proposal_type": "formal",
+        "proposal_actor_hint": "CAEB, PIMEEF, CCOO, UGT"
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n09",
+      "output": {
+        "proposal_type": "en_movimiento",
+        "proposal_actor_hint": "Consell d'Eivissa, patronales y sindicatos"
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n10",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n11",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n12",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n13",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n14",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n15",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n16",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n17",
+      "output": {
+        "proposal_type": "en_movimiento",
+        "proposal_actor_hint": "Consell d'Eivissa"
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n18",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n19",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "detect",
+      "news_id": "n20",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 201,
+      "output_tokens": 30,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.00105765,
+      "latency_s": 0.3218494415283203,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n01",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n02",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n03",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n04",
+      "output": {
+        "proposal_type": "formal",
+        "proposal_actor_hint": "Cáritas Ibiza"
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n05",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n06",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n07",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n08",
+      "output": {
+        "proposal_type": "formal",
+        "proposal_actor_hint": "CAEB, PIMEEF, CCOO y UGT"
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n09",
+      "output": {
+        "proposal_type": "en_movimiento",
+        "proposal_actor_hint": "Consell d'Eivissa, patronales y sindicatos"
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n10",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n11",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n12",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n13",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n14",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n15",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n16",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n17",
+      "output": {
+        "proposal_type": "en_movimiento",
+        "proposal_actor_hint": "Consell d'Eivissa"
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n18",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n19",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "detect",
+      "news_id": "n20",
+      "output": {
+        "proposal_type": "ninguna",
+        "proposal_actor_hint": null
+      },
+      "input_tokens": 253,
+      "output_tokens": 31,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0061642500000000005,
+      "latency_s": 0.3379261136054993,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n01",
+      "output": {
+        "news_id": "n01",
+        "proposals": [
+          {
+            "actor": "Ayuntamiento de Ibiza",
+            "actor_type": "institucional_publico",
+            "statement_summary": "Ejecutar desalojo de 200 personas de los asentamientos de sa Joveria y Can Misses la próxima semana a dos semanas del inicio de temporada.",
+            "url_source": "https://elpais.com/espana/2026-04-19/ibiza-desalojara-a-200-trabajadores-de-sus-asentamientos-a-las-puertas-de-la-temporada.html",
+            "palanca": "enforcement",
+            "target_actor": "Cáritas, trabajadores sin alternativa",
+            "horizon": "inmediato",
+            "state": "propuesta",
+            "viability_legal": "media",
+            "viability_legal_reason": "desalojo sin alternativa habitacional acreditada genera vulnerabilidad legal",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [],
+            "opponents_cited": [
+              "Cáritas"
+            ],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n02",
+      "output": {
+        "news_id": "n02",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n03",
+      "output": {
+        "news_id": "n03",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n04",
+      "output": {
+        "news_id": "n04",
+        "proposals": [
+          {
+            "actor": "Cáritas Ibiza",
+            "actor_type": "tercer_sector",
+            "statement_summary": "Pide que no se ejecute el desalojo sin alternativa habitacional acreditada y solicita participación en el proceso de realojo.",
+            "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/11/preocupacion-caritas-ibiza-desalojo-asentamientos-128948679.html",
+            "palanca": "intermediacion",
+            "target_actor": "Ayuntamiento de Ibiza, Consell d'Eivissa",
+            "horizon": "inmediato",
+            "state": "propuesta",
+            "viability_legal": "alta",
+            "viability_legal_reason": "demanda de garantías de derechos fundamentales",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n05",
+      "output": {
+        "news_id": "n05",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n06",
+      "output": {
+        "news_id": "n06",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n07",
+      "output": {
+        "news_id": "n07",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa",
+            "actor_type": "institucional_publico",
+            "statement_summary": "Programa de enforcement contra alquiler turístico ilegal que ha reducido la oferta ilegal un 70% en un año con 2.800 anuncios retirados y 14.500 plazas liberadas.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/09/2606075/desploma-oferta-ilegal-viviendas-turisticas-ibiza.html",
+            "palanca": "enforcement",
+            "target_actor": "plataformas de alquiler, propietarios",
+            "horizon": "temporada_2026",
+            "state": "en_ejecucion",
+            "viability_legal": "alta",
+            "viability_legal_reason": "sentencias judiciales avalan criterios de restricción",
+            "viability_economic": "alta",
+            "viability_economic_reason": "genera recaudación de multas (2+ millones en 2 años)",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": [
+              "n16"
+            ]
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n08",
+      "output": {
+        "news_id": "n08",
+        "proposals": [
+          {
+            "actor": "CAEB, PIMEEF, CCOO y UGT",
+            "actor_type": "coalicion_intersectorial",
+            "statement_summary": "Piden al Consell y ayuntamientos que identifiquen suelo dotacional para crear residencias específicas para trabajadores de temporada antes de la temporada 2027.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/11/2606853/patronales-sindicatos-favor-residencias-ibiza-para-trabajadores-temporada.html",
+            "palanca": "oferta_vivienda",
+            "target_actor": "Consell d'Eivissa, ayuntamientos",
+            "horizon": "temporada_2027",
+            "state": "en_movimiento",
+            "viability_legal": "no_evaluada",
+            "viability_legal_reason": "",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "sin cuantificación presupuestaria",
+            "supporters_cited": [
+              "CAEB",
+              "PIMEEF",
+              "CCOO",
+              "UGT"
+            ],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n09",
+      "output": {
+        "news_id": "n09",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa, CAEB, PIMEEF, CCOO y UGT",
+            "actor_type": "coalicion_institucional",
+            "statement_summary": "Respaldo compartido a la creación de residencias para temporeros sin identificación de suelo concreto ni calendario de licitación.",
+            "url_source": "https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/",
+            "palanca": "oferta_vivienda",
+            "target_actor": "Consell d'Eivissa",
+            "horizon": "temporada_2027",
+            "state": "en_debate",
+            "viability_legal": "no_evaluada",
+            "viability_legal_reason": "",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "declaración de intenciones sin presupuesto especificado",
+            "supporters_cited": [
+              "Consell d'Eivissa",
+              "CAEB",
+              "PIMEEF",
+              "CCOO",
+              "UGT"
+            ],
+            "opponents_cited": [],
+            "precedents": [
+              "n08"
+            ]
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n10",
+      "output": {
+        "news_id": "n10",
+        "proposals": [
+          {
+            "actor": "IBAVI (Govern Balear)",
+            "actor_type": "institucional_publico",
+            "statement_summary": "Abre plazo de solicitud para siete viviendas de protección oficial en sa Penya con alquileres de 200-460 €/mes y requisito de 10 años de residencia continuada en Ibiza.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/16/2610695/plazo-para-optar-las-siete-vpo-penya-abre-este-viernes.html",
+            "palanca": "oferta_vivienda",
+            "target_actor": "residentes permanentes de Ibiza",
+            "horizon": "inmediato",
+            "state": "en_ejecucion",
+            "viability_legal": "alta",
+            "viability_legal_reason": "programa público regulado de vivienda protegida",
+            "viability_economic": "media",
+            "viability_economic_reason": "solo 7 viviendas, insuficiente para cubrir demanda",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n11",
+      "output": {
+        "news_id": "n11",
+        "proposals": [
+          {
+            "actor": "IBAVI (Govern Balear)",
+            "actor_type": "institucional_publico",
+            "statement_summary": "Saca a concurso siete viviendas protegidas en sa Penya con precios regulados de 200-460 €/mes y requisito de residencia continuada de 10 años.",
+            "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/16/siete-viviendas-protegidas-ibiza-alquiler-129182651.html",
+            "palanca": "oferta_vivienda",
+            "target_actor": "residentes permanentes",
+            "horizon": "inmediato",
+            "state": "en_ejecucion",
+            "viability_legal": "alta",
+            "viability_legal_reason": "programa institucional de vivienda protegida",
+            "viability_economic": "media",
+            "viability_economic_reason": "escala reducida, 7 unidades",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": [
+              "n10"
+            ]
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n12",
+      "output": {
+        "news_id": "n12",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n13",
+      "output": {
+        "news_id": "n13",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa",
+            "actor_type": "institucional_publico",
+            "statement_summary": "Programa de enforcement contra alquiler turístico ilegal con 260 expedientes sancionadores acumulados en 2 años y recaudación de 2 millones de euros en multas.",
+            "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/17/consell-retira-700-anuncios-129197215.html",
+            "palanca": "enforcement",
+            "target_actor": "infractores de alquiler turístico",
+            "horizon": "temporada_2026",
+            "state": "en_ejecucion",
+            "viability_legal": "alta",
+            "viability_legal_reason": "expedientes y sentencias judiciales avalan criterios",
+            "viability_economic": "alta",
+            "viability_economic_reason": "recauda 2+ millones de euros en sanciones",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": [
+              "n07",
+              "n14"
+            ]
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n14",
+      "output": {
+        "news_id": "n14",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa",
+            "actor_type": "institucional_publico",
+            "statement_summary": "Anuncia continuidad del programa de enforcement contra alquiler turístico ilegal en 2026 con 260 expedientes sancionadores en 2025 apoyados en denuncias ciudadanas.",
+            "url_source": "https://es.arabalears.cat/sociedad/ibiza-consolida-control-alquiler-ilegal-260-expedientes-2025_1_5709512.html",
+            "palanca": "enforcement",
+            "target_actor": "infractores de alquiler turístico",
+            "horizon": "temporada_2026",
+            "state": "propuesta",
+            "viability_legal": "alta",
+            "viability_legal_reason": "continuidad de programa con base jurisprudencial",
+            "viability_economic": "alta",
+            "viability_economic_reason": "genera recaudación de sanciones",
+            "supporters_cited": [
+              "denuncias ciudadanas"
+            ],
+            "opponents_cited": [],
+            "precedents": [
+              "n07",
+              "n13"
+            ]
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n15",
+      "output": {
+        "news_id": "n15",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n16",
+      "output": {
+        "news_id": "n16",
+        "proposals": [
+          {
+            "actor": "Tribunal Superior de Justicia de Islas Baleares",
+            "actor_type": "judicial",
+            "statement_summary": "Sentencia que avala la denegación de licencia turística a vivienda plurifamiliar, confirmando criterio restrictivo del Consell que limita licencias a unifamiliares aisladas.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/17/2610881/tsjib-avala-denegacion-licencia-turistica-vivienda-por-ser-unifamiliar-aislada.html",
+            "palanca": "normativa",
+            "target_actor": "Consell d'Eivissa",
+            "horizon": "estructural",
+            "state": "implementada",
+            "viability_legal": "alta",
+            "viability_legal_reason": "sentencia judicial con fuerza vinculante",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [
+              "Consell d'Eivissa"
+            ],
+            "opponents_cited": [],
+            "precedents": [
+              "n07"
+            ]
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n17",
+      "output": {
+        "news_id": "n17",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa",
+            "actor_type": "institucional_publico",
+            "statement_summary": "Encarga estudio técnico sobre viviendas vacías en Ibiza para cuantificar el parque y diseñar políticas de movilización con entrega de resultados preliminares antes de fin de mes.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/03/31/2600245/consell-eivissa-encarga-estudio-sobre-viviendas-vacias-isla.html",
+            "palanca": "oferta_vivienda",
+            "target_actor": "Consell d'Eivissa",
+            "horizon": "corto_plazo",
+            "state": "en_movimiento",
+            "viability_legal": "no_evaluada",
+            "viability_legal_reason": "",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "sin cuantificación de inversión",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n18",
+      "output": {
+        "news_id": "n18",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n19",
+      "output": {
+        "news_id": "n19",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "haiku",
+      "task": "extract",
+      "news_id": "n20",
+      "output": {
+        "news_id": "n20",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 191,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0011755,
+      "latency_s": 1.194681704044342,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n01",
+      "output": {
+        "news_id": "n01",
+        "proposals": [
+          {
+            "actor": "Cáritas Ibiza",
+            "actor_type": "tercer_sector",
+            "statement_summary": "Cáritas alerta de que el desalojo de los asentamientos de sa Joveria y Can Misses no debe ejecutarse sin que haya una alternativa habitacional prevista para las personas afectadas.",
+            "url_source": "https://elpais.com/espana/2026-04-19/ibiza-desalojara-a-200-trabajadores-de-sus-asentamientos-a-las-puertas-de-la-temporada.html",
+            "palanca": "intermediacion",
+            "target_actor": "Ayuntamiento de Ibiza",
+            "horizon": "inmediato",
+            "state": "propuesta",
+            "viability_legal": "no_evaluada",
+            "viability_legal_reason": "",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n02",
+      "output": {
+        "news_id": "n02",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n03",
+      "output": {
+        "news_id": "n03",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n04",
+      "output": {
+        "news_id": "n04",
+        "proposals": [
+          {
+            "actor": "Cáritas Ibiza",
+            "actor_type": "tercer_sector",
+            "statement_summary": "Cáritas Ibiza pide que el desalojo de los asentamientos de sa Joveria y Can Misses no se ejecute sin alternativa habitacional acreditada para los afectados, y solicita participar en el proceso de realojo.",
+            "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/11/preocupacion-caritas-ibiza-desalojo-asentamientos-128948679.html",
+            "palanca": "intermediacion",
+            "target_actor": "Ayuntamiento de Ibiza",
+            "horizon": "inmediato",
+            "state": "propuesta",
+            "viability_legal": "no_evaluada",
+            "viability_legal_reason": "",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n05",
+      "output": {
+        "news_id": "n05",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n06",
+      "output": {
+        "news_id": "n06",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n07",
+      "output": {
+        "news_id": "n07",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa",
+            "actor_type": "institucional_publico",
+            "statement_summary": "El Consell d'Eivissa atribuye la caída del 70% en la oferta ilegal de viviendas turísticas (2.800 anuncios retirados, 14.500 plazas liberadas) a su programa de enforcement y anuncia su continuidad.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/09/2606075/desploma-oferta-ilegal-viviendas-turisticas-ibiza.html",
+            "palanca": "enforcement",
+            "target_actor": "",
+            "horizon": "estructural",
+            "state": "en_ejecucion",
+            "viability_legal": "alta",
+            "viability_legal_reason": "El programa actúa dentro del marco de la Ley turística balear y las competencias del Consell en inspección y sanción.",
+            "viability_economic": "alta",
+            "viability_economic_reason": "Los datos citados reflejan recaudación superior a 2 M€ en sanciones, lo que sugiere autosuficiencia parcial del programa.",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n08",
+      "output": {
+        "news_id": "n08",
+        "proposals": [
+          {
+            "actor": "CAEB, PIMEEF, CCOO y UGT",
+            "actor_type": "coalicion_intersectorial",
+            "statement_summary": "Patronales y sindicatos piden al Consell d'Eivissa y a los ayuntamientos que identifiquen suelo dotacional para crear residencias específicas para trabajadores de temporada antes de la temporada 2027.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/11/2606853/patronales-sindicatos-favor-residencias-ibiza-para-trabajadores-temporada.html",
+            "palanca": "oferta_vivienda",
+            "target_actor": "Consell d'Eivissa, Ayuntamientos de Ibiza",
+            "horizon": "temporada_2027",
+            "state": "propuesta",
+            "viability_legal": "media",
+            "viability_legal_reason": "Requiere identificación y reclasificación de suelo dotacional, proceso sujeto a planeamiento urbanístico con plazos inciertos.",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [
+              "CAEB",
+              "PIMEEF",
+              "CCOO",
+              "UGT"
+            ],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n09",
+      "output": {
+        "news_id": "n09",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa, CAEB, PIMEEF, CCOO y UGT",
+            "actor_type": "coalicion_institucional",
+            "statement_summary": "El Consell d'Eivissa se suma formalmente a patronales y sindicatos en el respaldo a la creación de residencias para trabajadores de temporada, aunque sin identificar suelo concreto ni calendario de licitación.",
+            "url_source": "https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/",
+            "palanca": "oferta_vivienda",
+            "target_actor": "",
+            "horizon": "temporada_2027",
+            "state": "en_movimiento",
+            "viability_legal": "media",
+            "viability_legal_reason": "La propuesta carece de suelo identificado ni calendario, lo que la mantiene en fase declarativa sujeta a planeamiento urbanístico.",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [
+              "Consell d'Eivissa",
+              "CAEB",
+              "PIMEEF",
+              "CCOO",
+              "UGT"
+            ],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n10",
+      "output": {
+        "news_id": "n10",
+        "proposals": [
+          {
+            "actor": "IBAVI",
+            "actor_type": "institucional_publico",
+            "statement_summary": "El IBAVI abre el plazo para acceder a siete viviendas de protección oficial en sa Penya con alquileres de 200-460 €/mes, exigiendo 10 años de residencia continuada en Ibiza como requisito de acceso.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/16/2610695/plazo-para-optar-las-siete-vpo-penya-abre-este-viernes.html",
+            "palanca": "oferta_vivienda",
+            "target_actor": "Residentes de Ibiza con 10 años de empadronamiento",
+            "horizon": "inmediato",
+            "state": "en_ejecucion",
+            "viability_legal": "alta",
+            "viability_legal_reason": "Convocatoria oficial dentro del marco normativo de vivienda protegida del Govern Balear.",
+            "viability_economic": "alta",
+            "viability_economic_reason": "Las viviendas ya existen y los precios están regulados; no requiere nueva inversión para su puesta en mercado.",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n11",
+      "output": {
+        "news_id": "n11",
+        "proposals": [
+          {
+            "actor": "IBAVI",
+            "actor_type": "institucional_publico",
+            "statement_summary": "El Govern Balear, a través del IBAVI, saca a concurso siete viviendas protegidas en sa Penya de Ibiza con precios regulados entre 200 y 460 €/mes, con requisito de residencia continuada de 10 años.",
+            "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/16/siete-viviendas-protegidas-ibiza-alquiler-129182651.html",
+            "palanca": "oferta_vivienda",
+            "target_actor": "Residentes de Ibiza con 10 años de empadronamiento",
+            "horizon": "inmediato",
+            "state": "en_ejecucion",
+            "viability_legal": "alta",
+            "viability_legal_reason": "Convocatoria oficial dentro del marco normativo de vivienda protegida del Govern Balear.",
+            "viability_economic": "alta",
+            "viability_economic_reason": "Viviendas ya disponibles con precios regulados; sin nueva inversión requerida para la convocatoria.",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n12",
+      "output": {
+        "news_id": "n12",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n13",
+      "output": {
+        "news_id": "n13",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa",
+            "actor_type": "institucional_publico",
+            "statement_summary": "El Consell d'Eivissa presenta el balance de su programa de enforcement contra el alquiler turístico ilegal: 260 expedientes sancionadores, 2 millones de euros de multas recaudadas y 700 anuncios retirados en el último año.",
+            "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/17/consell-retira-700-anuncios-129197215.html",
+            "palanca": "enforcement",
+            "target_actor": "",
+            "horizon": "estructural",
+            "state": "en_ejecucion",
+            "viability_legal": "alta",
+            "viability_legal_reason": "Actuación dentro de las competencias sancionadoras del Consell en materia de turismo ilegal según la normativa balear vigente.",
+            "viability_economic": "alta",
+            "viability_economic_reason": "El programa se financia parcialmente con la propia recaudación de multas, con más de 2 M€ acumulados.",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n14",
+      "output": {
+        "news_id": "n14",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa",
+            "actor_type": "institucional_publico",
+            "statement_summary": "El Consell d'Eivissa presenta los 260 expedientes sancionadores de 2025 como éxito del programa de control del alquiler turístico ilegal y anuncia la continuidad del programa en 2026.",
+            "url_source": "https://es.arabalears.cat/sociedad/ibiza-consolida-control-alquiler-ilegal-260-expedientes-2025_1_5709512.html",
+            "palanca": "enforcement",
+            "target_actor": "",
+            "horizon": "corto_plazo",
+            "state": "en_ejecucion",
+            "viability_legal": "alta",
+            "viability_legal_reason": "Continuidad de un programa ya operativo amparado en el marco normativo turístico balear.",
+            "viability_economic": "alta",
+            "viability_economic_reason": "El programa ya cuenta con estructura operativa y recaudación de multas que contribuye a su sostenimiento.",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n15",
+      "output": {
+        "news_id": "n15",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n16",
+      "output": {
+        "news_id": "n16",
+        "proposals": [
+          {
+            "actor": "Tribunal Superior de Justicia de Islas Baleares",
+            "actor_type": "judicial",
+            "statement_summary": "El TSJIB avala la denegación de licencia de vivienda turística a un inmueble plurifamiliar, confirmando el criterio del Consell que restringe las licencias a unifamiliares aisladas y sentando doctrina sobre la aplicación del PTI.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/17/2610881/tsjib-avala-denegacion-licencia-turistica-vivienda-por-ser-unifamiliar-aislada.html",
+            "palanca": "judicial",
+            "target_actor": "Consell d'Eivissa",
+            "horizon": "estructural",
+            "state": "implementada",
+            "viability_legal": "alta",
+            "viability_legal_reason": "Sentencia firme del TSJIB que avala el criterio restrictivo del Consell y sienta doctrina aplicable a futuros casos.",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [
+              "Consell d'Eivissa"
+            ],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n17",
+      "output": {
+        "news_id": "n17",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa",
+            "actor_type": "institucional_publico",
+            "statement_summary": "El Consell d'Eivissa ha encargado un estudio técnico para cuantificar el parque de viviendas vacías en Ibiza, con resultados preliminares previstos antes de fin de mes, como paso previo al diseño de políticas de movilización.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/03/31/2600245/consell-eivissa-encarga-estudio-sobre-viviendas-vacias-isla.html",
+            "palanca": "oferta_vivienda",
+            "target_actor": "",
+            "horizon": "corto_plazo",
+            "state": "en_movimiento",
+            "viability_legal": "alta",
+            "viability_legal_reason": "El encargo de un estudio técnico es una competencia administrativa ordinaria sin obstáculos legales.",
+            "viability_economic": "alta",
+            "viability_economic_reason": "Coste limitado al encargo del estudio; no implica aún gasto de política pública.",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n18",
+      "output": {
+        "news_id": "n18",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n19",
+      "output": {
+        "news_id": "n19",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "sonnet",
+      "task": "extract",
+      "news_id": "n20",
+      "output": {
+        "news_id": "n20",
+        "proposals": []
+      },
+      "input_tokens": 219,
+      "output_tokens": 207,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.0037636500000000003,
+      "latency_s": 2.7401572108268737,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n01",
+      "output": {
+        "news_id": "n01",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n02",
+      "output": {
+        "news_id": "n02",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n03",
+      "output": {
+        "news_id": "n03",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n04",
+      "output": {
+        "news_id": "n04",
+        "proposals": [
+          {
+            "actor": "Cáritas Ibiza",
+            "actor_type": "tercer_sector",
+            "statement_summary": "Cáritas Ibiza pide que el desalojo de los asentamientos de sa Joveria y Can Misses no se ejecute sin alternativa habitacional acreditada y solicita participar en el proceso de realojo.",
+            "url_source": "https://www.diariodeibiza.es/ibiza/2026/04/11/preocupacion-caritas-ibiza-desalojo-asentamientos-128948679.html",
+            "palanca": "denuncia_social",
+            "target_actor": "Ayuntamiento de Ibiza",
+            "horizon": "inmediato",
+            "state": "propuesta",
+            "viability_legal": "no_evaluada",
+            "viability_legal_reason": "",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n05",
+      "output": {
+        "news_id": "n05",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n06",
+      "output": {
+        "news_id": "n06",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n07",
+      "output": {
+        "news_id": "n07",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n08",
+      "output": {
+        "news_id": "n08",
+        "proposals": [
+          {
+            "actor": "CAEB, PIMEEF, CCOO y UGT",
+            "actor_type": "coalicion_intersectorial",
+            "statement_summary": "Patronales (CAEB, PIMEEF) y sindicatos (CCOO, UGT) piden crear residencias específicas para trabajadores de temporada y reclaman al Consell y a los ayuntamientos identificar suelo dotacional para ejecutar el proyecto antes de la temporada 2027.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/11/2606853/patronales-sindicatos-favor-residencias-ibiza-para-trabajadores-temporada.html",
+            "palanca": "oferta_vivienda",
+            "target_actor": "Consell d'Eivissa y ayuntamientos",
+            "horizon": "temporada_2027",
+            "state": "propuesta",
+            "viability_legal": "no_evaluada",
+            "viability_legal_reason": "",
+            "viability_economic": "sin_cifra_publica_disponible",
+            "viability_economic_reason": "",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n09",
+      "output": {
+        "news_id": "n09",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa, CAEB, PIMEEF, CCOO y UGT",
+            "actor_type": "coalicion_institucional",
+            "statement_summary": "El Consell d'Eivissa, junto a patronales y sindicatos, respalda formalmente la creación de residencias para trabajadores de temporada, aunque sin identificar suelo concreto ni calendario de licitación.",
+            "url_source": "https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/",
+            "palanca": "oferta_vivienda",
+            "target_actor": "Consell d'Eivissa y ayuntamientos",
+            "horizon": "temporada_2027",
+            "state": "en_movimiento",
+            "viability_legal": "no_evaluada",
+            "viability_legal_reason": "",
+            "viability_economic": "sin_cifra_publica_disponible",
+            "viability_economic_reason": "",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n10",
+      "output": {
+        "news_id": "n10",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n11",
+      "output": {
+        "news_id": "n11",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n12",
+      "output": {
+        "news_id": "n12",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n13",
+      "output": {
+        "news_id": "n13",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n14",
+      "output": {
+        "news_id": "n14",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa",
+            "actor_type": "institucional_publico",
+            "statement_summary": "El Consell d'Eivissa anuncia la continuidad en 2026 del programa de enforcement contra el alquiler turístico ilegal, tras cerrar 2025 con 260 expedientes sancionadores.",
+            "url_source": "https://es.arabalears.cat/sociedad/ibiza-consolida-control-alquiler-ilegal-260-expedientes-2025_1_5709512.html",
+            "palanca": "enforcement",
+            "target_actor": "Consell d'Eivissa",
+            "horizon": "corto_plazo",
+            "state": "en_ejecucion",
+            "viability_legal": "alta",
+            "viability_legal_reason": "",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n15",
+      "output": {
+        "news_id": "n15",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n16",
+      "output": {
+        "news_id": "n16",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n17",
+      "output": {
+        "news_id": "n17",
+        "proposals": [
+          {
+            "actor": "Consell d'Eivissa",
+            "actor_type": "institucional_publico",
+            "statement_summary": "El Consell d'Eivissa ha encargado un estudio técnico sobre viviendas vacías en Ibiza para cuantificar el parque y diseñar políticas de movilización, con resultados preliminares previstos antes de fin de mes.",
+            "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/03/31/2600245/consell-eivissa-encarga-estudio-sobre-viviendas-vacias-isla.html",
+            "palanca": "oferta_vivienda",
+            "target_actor": "Consell d'Eivissa",
+            "horizon": "corto_plazo",
+            "state": "en_movimiento",
+            "viability_legal": "no_evaluada",
+            "viability_legal_reason": "",
+            "viability_economic": "no_evaluada",
+            "viability_economic_reason": "",
+            "supporters_cited": [],
+            "opponents_cited": [],
+            "precedents": []
+          }
+        ]
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n18",
+      "output": {
+        "news_id": "n18",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n19",
+      "output": {
+        "news_id": "n19",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    },
+    {
+      "model": "opus",
+      "task": "extract",
+      "news_id": "n20",
+      "output": {
+        "news_id": "n20",
+        "proposals": []
+      },
+      "input_tokens": 276,
+      "output_tokens": 100,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_usd": 0.01167825,
+      "latency_s": 1.1334714531898498,
+      "error": ""
+    }
+  ]
+}

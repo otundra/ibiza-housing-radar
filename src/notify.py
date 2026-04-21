@@ -116,13 +116,27 @@ def _fallback_github_issue(message: str, level: str) -> bool:
 
 
 def notify(message: str, level: str = "info") -> bool:
-    """Intenta Telegram; si falla, intenta abrir issue en GitHub.
+    """Intenta Telegram; si falla, intenta abrir issue en GitHub (solo en Actions).
 
     Devuelve True si alguno de los dos canales entregó. False si ambos fallaron.
     Nunca lanza: las notificaciones son best-effort y no deben romper el pipeline.
+
+    Política de fallback:
+    - En GitHub Actions (GITHUB_ACTIONS=true): si Telegram falla, abre issue.
+      El editor no está delante; necesitamos dejar traza en el repo.
+    - En local (sin GITHUB_ACTIONS): si Telegram falla, log y silencio. El
+      editor ya ve el output en terminal; no tiene sentido ensuciar issues.
+    - Excepción: si level=="critical" siempre se intenta fallback (es una
+      alerta crítica que no queremos perder bajo ninguna circunstancia).
     """
     if send_telegram(message, level):
         return True
+
+    in_actions = os.environ.get("GITHUB_ACTIONS", "").lower() == "true"
+    if not in_actions and level != "critical":
+        log.info("Telegram no disponible en local; alerta visible en stdout. Skip fallback a issue.")
+        return False
+
     log.warning("Telegram falló; intentando fallback a issue GitHub.")
     return _fallback_github_issue(message, level)
 

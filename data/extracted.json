@@ -1,0 +1,91 @@
+[
+  {
+    "news_id": "item-000",
+    "proposals": [
+      {
+        "actor": "Marí",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Marí anima a las víctimas de abusos en los alquileres a denunciar para permitir sancionar a quienes especulan con viviendas.",
+        "statement_verbatim": "anima a las víctimas de abusos en los alquileres en Ibiza a denunciar \"para multar a los que especulan con un sofá\"",
+        "url_source": "https://cadenaser.com/baleares/2026/04/19/mari-anima-a-las-victimas-de-abusos-en-los-alquileres-en-ibiza-a-denunciar-para-multar-a-los-que-especulan-con-un-sofa-radio-ibiza/",
+        "palanca": "enforcement",
+        "target_actor": "",
+        "horizon": "inmediato",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-001",
+    "proposals": [],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "skipped",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-002",
+    "proposals": [
+      {
+        "actor": "Consell d'Eivissa, patronales, sindicatos",
+        "actor_type": "coalicion_institucional",
+        "statement_summary": "Consell, patronales y sindicatos respaldan la creación de residencias para trabajadores temporeros.",
+        "statement_verbatim": "Consell, patronales y sindicatos respaldan la creación de residencias para temporeros",
+        "url_source": "https://lavozdeibiza.com/ibiza/consell-patronales-y-sindicatos-respaldan-la-creacion-de-residencias-para-temporeros/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_debate",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-003",
+    "proposals": [
+      {
+        "actor": "patronales, sindicatos",
+        "actor_type": "coalicion_intersectorial",
+        "statement_summary": "Patronales y sindicatos se manifiestan a favor de la creación de residencias en Ibiza para trabajadores de temporada.",
+        "statement_verbatim": "Patronales y sindicatos, a favor de las residencias en Ibiza para trabajadores de temporada",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/11/2606853/patronales-sindicatos-favor-residencias-ibiza-para-trabajadores-temporada.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_debate",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  }
+]

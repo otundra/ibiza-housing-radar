@@ -1,20 +1,44 @@
-# CLAUDE.md — Ibiza Housing Radar
+# CLAUDE.md — Radar Vivienda Ibiza (provisional · repo: ibiza-housing-radar)
 
 Instrucciones para Claude Code al trabajar en este proyecto.
 
+> 🏷️ **Rebranding 2026-04-21 (provisional).** El nombre público de trabajo es **Radar Vivienda Ibiza**. Es *provisional* — se reevaluará antes del relanzamiento público. Wordmark tipográfico: `radar))vivienda_ibiza` (todo en `JetBrains Mono`, las `))` evocan ondas de radar). Formato pensado para un futuro ecosistema: `radar))turismo_ibiza`, `radar))medioambiente_ibiza`, etc.
+>
+> **Dominio:** `radaribiza.com` sigue siendo candidato principal (objetivo corto). Si el nombre "Radar Vivienda Ibiza" se consolida, se revaluará `radarviviendaibiza.com`. El repo GitHub mantiene el slug `ibiza-housing-radar` hasta que se compre dominio. Tagline estable: *"Observatorio documental"*.
+>
+> **Logo gráfico descartado** 2026-04-21. Dirección visual elegida: **tipográfica pura**. Sin monograma SVG. El wordmark cumple la función de identidad completa. Preview vivo en [`prototype/logo/preview.html`](prototype/logo/preview.html) con 4 variantes (V1 mono plano · V2 split · V3 tri · V4 underline). Pendiente elección de variante.
+
+> ⚠️ **Pivote activo 2026-04-20.** El proyecto está migrando a "observatorio documental" (el LLM no genera propuestas, solo documenta las de actores reales con URL verificable). Todo el trabajo vive en el branch `pivote/observatorio-documental`. Antes de tocar código en ese branch, leer:
+>
+> - [`PIVOTE.md`](PIVOTE.md) — 5 reglas duras + decisión fundacional.
+> - [`ROADMAP.md`](ROADMAP.md) — Fase 0 completa.
+> - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline nuevo con módulos `extract.py`, `verify.py`, `rescue.py`, `balance.py`.
+> - [`DISENO-WEB.md`](DISENO-WEB.md) — UX dual (primer visitante + profesional recurrente).
+> - [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) — sistema visual, benchmark editorial, 13 decisiones cerradas (D1-D13).
+> - [`SEO.md`](SEO.md) — plan SEO ambicioso.
+> - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 8 ediciones simuladas W10-W17.
+> - [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) — 16 decisiones resueltas del editor.
+>
+> El contenido que sigue describe el **modelo antiguo** (aún operativo en `main` hasta merge). Las convenciones de commit, coste y estructura de repo siguen siendo válidas.
+
 ## Qué es
 
-Observatorio automatizado semanal sobre la crisis de vivienda en Ibiza con foco en trabajadores de temporada (mayo-octubre). Cada lunes genera un informe con propuestas accionables enlazadas a las noticias que las motivan. Publicado en GitHub Pages.
+Observatorio semanal documental sobre la crisis de vivienda en Ibiza con foco en trabajadores de temporada. Cada lunes mapea las propuestas que actores con nombre (instituciones, partidos, patronales, sindicatos, tercer sector, colectivos ciudadanos) formulan públicamente, con fuente verificable (URL). No genera propuestas propias.
+
+El ciclo operativo se rige por el **calendario real de la isla**: de la *opening* de las clubs grandes (finales de abril) a la *closing* (mediados de octubre). En 2026: del 24 de abril al ~12 de octubre. Fuera de temporada (octubre → abril siguiente) el observatorio sigue publicando, cubriendo la *pre-temporada* del verano que viene. Etiquetas públicas: `Temporada YYYY` / `Pre-temporada YYYY` (sin "invierno", ambiguo). Fechas exactas de temporada en `data/temporadas.yml`, alimentado por la automatización anual `src/update_temporadas.py`.
+
+Publicado en GitHub Pages.
 
 ## Stack
 
 - **Lenguaje:** Python 3.12
-- **IA:** Anthropic Claude API (Haiku 4.5 para clasificación, Opus 4.7 para generación)
+- **IA:** Anthropic Claude API (Haiku 4.5 para clasificación, Sonnet 4.6 para extracción/verificación, Opus 4.7 para generación editorial).
 - **Fuentes:** RSS de Google News + Diario de Ibiza + Periódico de Ibiza
-- **Web:** Jekyll (GitHub Pages) con tema custom (CSS editorial propio)
-- **Scheduler:** GitHub Actions cron semanal
+- **Web:** Jekyll (GitHub Pages) con tema custom (CSS editorial propio).
+- **OG images:** Puppeteer (Node.js en runner CI) renderiza plantilla HTML → PNG. Ver [ESTUDIO-DISENO.md §7](ESTUDIO-DISENO.md).
+- **Scheduler:** GitHub Actions cron semanal + tarea anual para fechas de temporada.
 - **Hosting:** 100 % GitHub (repo + Pages + Actions). 0 € de infra.
-- **Coste esperado:** ~2 USD/mes en API Anthropic. Tope duro configurable en `src/costs.py` (actual: 5 USD/mes).
+- **Coste esperado:** ~6-7 €/mes en API Anthropic. Capas de coste en `src/costs.py`: blando 12 €, duro 20 €. Ver [DIARIO.md 2026-04-20](DIARIO.md).
 
 ## Estructura
 
@@ -80,7 +104,7 @@ gh workflow run validate-key.yml
 
 4. **Commit-back desde Actions.** El workflow commitea la edición generada al mismo repo. Permite ver el histórico completo en GitHub sin servidor adicional.
 
-5. **Topes de presupuesto en euros + filosofía no-cortar-editorial.** Sistema de capas en `src/costs.py`: blando (`MONTHLY_SOFT_CAP_EUR = 8`) solo avisa por Telegram y sigue publicando; duro (`MONTHLY_HARD_CAP_EUR = 20`) corta para proteger contra runaway (bugs, bucles). No se pierde editorial por sobrecoste salvo desastre real. Alertas vía `src/notify.py` (Telegram con fallback a issue GitHub).
+5. **Topes de presupuesto en euros + filosofía no-cortar-editorial.** Sistema de capas en `src/costs.py` (actualizado 2026-04-20 para pivote documental): blando `MONTHLY_SOFT_CAP_EUR = 12` solo avisa por Telegram y sigue publicando; duro `MONTHLY_HARD_CAP_EUR = 20` corta para proteger contra runaway (bugs, bucles). Capas: verde <6, amarilla 6-9, naranja 9-12, roja blanda 12-20, roja dura >20. No se pierde editorial por sobrecoste salvo desastre real. Alertas vía `src/notify.py` (Telegram con fallback a issue GitHub **solo en Actions**, no en ejecución local salvo level=critical).
 
 6. **Modelo por fase.** Haiku para filtrar (coste marginal), Opus solo para la pieza final donde la calidad editorial sí importa. No mezclar.
 
@@ -113,6 +137,8 @@ El plan de mejora estratégico vive en [`PLAN.md`](PLAN.md): 4 fases (base / dis
 - No cambiar modelos a mitad de ejecución (rompe caché y sube coste).
 - No commitear `.env` ni claves. El `.gitignore` ya cubre `*.key` y `.env`.
 - No publicar ediciones manuales con fechas futuras (el `permalink` se confunde).
+- **No usar "W17" ni numeración de semana ISO en cara pública.** Solo como slug interno (archivos, logs, commits). En cara pública, URLs y etiquetas siempre con rango de fechas: `/ediciones/2026-04-20/`, `"Edición del 20-26 abril 2026"`.
+- **No colorear partidos políticos con su color** (regla dura de imparcialidad visual). Todos los partidos van en gris neutro (`--actor-partido`). Ver [ESTUDIO-DISENO.md §5.1](ESTUDIO-DISENO.md).
 
 ## Nivel de proactividad
 
