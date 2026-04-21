@@ -1,4 +1,4 @@
-# Diario del proyecto — Ibiza Housing Radar
+# Diario del proyecto — Radar Ibiza (repo: ibiza-housing-radar)
 
 Registro cronológico de hitos, decisiones y cambios relevantes.
 
@@ -9,6 +9,24 @@ Reglas:
 - Solo cambios con valor de memoria futura. No entradas para commits triviales.
 - No duplicar lo que ya dice Git: aquí va el contexto, no el diff.
 - Si un cambio altera arquitectura o stack, también actualizar `CLAUDE.md` y `README.md`.
+
+---
+
+## 2026-04-21 — Estudio de diseño completo + rebranding a "Radar Ibiza"
+
+- **Rebranding del proyecto a "Radar Ibiza"** (antes "Ibiza Housing Radar"). Dominio objetivo `radaribiza.com` — compra pendiente del editor. Motivos: el nombre en inglés restaba credibilidad local (target real: ibicencos + temporeros castellanohablantes + extranjeros residentes, no internacional); "Housing" sonaba corporativo y mal SEO castellano; referentes españoles del género (Civio, Datadista, Maldita) no meten la temática en el dominio. Tagline estable: *"Observatorio documental de vivienda"*. El repo GitHub mantiene slug `ibiza-housing-radar` hasta que se compre el dominio; renombrado coordinado después.
+- **Estudio de diseño completo** entregado en [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) (14 secciones, ~700 líneas). Incluye benchmark editorial comparado con 13 referentes (Solar Low-Tech, Bellingcat, The Pudding, Civio, Datadista, Tortoise, El Orden Mundial, The Intercept, ProPublica, Rest of World, TheyWorkForYou, GovTrack, OpenSecrets), sistema visual con tokens completos, 9 componentes especificados, plantilla OG, plan de prototipo en 6 pasos, 12 decisiones abiertas más D13 añadida (formulario universal).
+- **13 decisiones de diseño (D1-D13) cerradas** por el editor. 11 eligió la recomendación A, D11 optó por híbrido (automático default + dos botones manuales ○/●), D2 (logo) diferida hasta revisar SVG. Detalle en ESTUDIO-DISENO.md §11.
+- **Taxonomía de actores cerrada en 8 categorías con candado**: institucional público, partido (siempre gris neutro — regla dura), patronal, sindicato, tercer sector, académico, judicial, colectivo ciudadano. Casos fronterizos se asimilan con nota editorial documentada; abrir la 9ª requiere decisión consciente con entrada en `/correcciones/`. El color del chip de actor es **refuerzo**, nunca única información (etiqueta de texto siempre visible).
+- **Calendario editorial anclado al ciclo real de Ibiza** — opening/closing de clubs grandes (Pacha, Hï, Ushuaïa, Amnesia). Referencia interna. En 2026: 24 abril → ~12 octubre. Etiquetas públicas: `Temporada YYYY` (abr-oct) y `Pre-temporada YYYY` (oct del año anterior → abr). Sin "invierno" (ambiguo). La pre-temporada se nombra por el verano al que apunta, no por el año que acaba.
+- **Numeración de ediciones "W17" fuera de cara pública** — confundía a lectores no técnicos. URLs usan fecha ISO del lunes: `/ediciones/2026-04-20/`. Cabecera, OG, chrome operacional: rango de fechas (`Edición del 20-26 abril 2026`). "W17" solo como slug interno (archivos, logs, commits).
+- **Formulario universal "Escríbenos"** (D13) añadido al alcance. Botón flotante en esquina inferior derecha, visible en todas las páginas. Campos: mensaje obligatorio + nombre y email opcionales + auto-captura de URL origen. Backend Formspree (50 envíos/mes gratis). Abierto a correcciones, datos nuevos, pistas, testimonios, dudas, críticas y colaboraciones — no cerrado a "feedback" de producto. Anonimato permitido (muchos informantes valiosos trabajan en la sombra); el filtro real es "URL verificable" para incorporar al corpus.
+- **Nuevas tareas en ROADMAP Bloque B (derivadas del estudio):** B34 prototipo HTML estático · B35 9 componentes en Jekyll · B36 formulario Escríbenos · B37 `/sistema/` interna · B38 logo SVG final · B39 OG Puppeteer · B40 toggle modo oscuro manual. Y A17 script `update_temporadas.py`.
+- **Automatización anual para fechas de temporada** — cron GitHub Action (feb/mar/abr de cada año) que consulta news sobre las fechas de opening del año siguiente y alerta a Telegram cuando ≥3 clubs top coinciden. Editor actualiza `data/temporadas.yml` manualmente. Coste ~0,02 €/ejecución.
+- **Prototipo de logo creado** en [`prototype/logo/`](prototype/logo/) con 3 direcciones SVG (Dir 1 punto limpio + arcos / Dir 2 "I" italic centro + arcos / Dir 3 "I" + arcos asimétricos lado) + `preview.html` que los muestra a 5 tamaños reales (16/22/48/120/256 px) en modo claro y oscuro, con composición de wordmark y simulaciones de pestaña y OG. Editor decide tras revisión visual.
+- **Dirección visual "mono + seams" apuntada** — peso tipográfico mono (JetBrains Mono) en más elementos editoriales + separadores tipo costura (dashed, líneas finas) + iconografía Unicode pura (no emoji coloreado). Queda por formalizar al construir prototipo HTML estático.
+- **Memoria del proyecto actualizada** con 4 archivos en `~/.claude/projects/.../memory/`: `nombre_proyecto.md`, `taxonomia_actores.md`, `calendario_editorial.md`, `decisiones_diseno_D1-D13.md`. Todos referenciados en `MEMORY.md` como índice.
+- **Pendientes al cierre del estudio:** (1) compra dominio `radaribiza.com`, (2) elección de dirección de logo del prototipo, (3) validación de "mono + seams" al construir Paso 1 del plan, (4) barrido coordinado para renombrar repo GitHub a `radar-ibiza` cuando se compre dominio.
 
 ---
 

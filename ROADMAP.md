@@ -8,15 +8,15 @@
 
 | Bloque | Tema | Estado |
 |---|---|---|
-| A | Pipeline técnico del pivote | ✅ **cerrado** (salvo A13 auditoría trimestral y A14 re-benchmark mensual, diferidos a cuando haya ≥4 ediciones) |
-| B | Arquitectura web (home, /radar/, /propuestas/, /actores/, /balance/, /estadisticas/, /estado/, /sin-dato/, …) | ⏸ pendiente (próximo) |
+| A | Pipeline técnico del pivote | ✅ **cerrado** (salvo A13 auditoría trimestral, A14 re-benchmark mensual y A17 automatización temporadas, diferidos) |
+| B | Arquitectura web (home, /radar/, /propuestas/, /actores/, /balance/, /estadisticas/, /estado/, /sin-dato/, /sistema/, …) | 🔄 **estudio cerrado**, implementación arranca con prototipo (B34) |
 | C | Contenido retroactivo 8 ediciones (W10-W17) | ⏸ pendiente |
 | D | SEO masivo | ⏸ pendiente |
 | E | Analítica (GoatCounter, dashboard público) | ⏸ pendiente |
 | F | Distribución (newsletter Buttondown gratis) | ⏸ pendiente |
 | G | Utilidad pública (glosario, kit prensa) | ⏸ pendiente (/recursos/ diferido) |
 | H | Legal y transparencia | ⏸ pendiente |
-| I | Estudios previos bloqueantes | 🔄 parcial (estudio 3 modelos ✅ cerrado, dominio pendiente, fecha relanzamiento pendiente) |
+| I | Estudios previos bloqueantes | 🔄 parcial (estudio 3 modelos ✅ cerrado, **estudio de diseño ✅ cerrado** en [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md), dominio pendiente compra, fecha relanzamiento pendiente) |
 
 **Historia de decisiones y cambios voluntarios:** [`private/adjustments-log.md`](private/adjustments-log.md).
 **Errores registrados:** [`private/postmortems.md`](private/postmortems.md).
@@ -58,6 +58,7 @@
 - [ ] **A14.** `src/model_rebench.py` — re-benchmark mensual de modelos, 10 noticias nuevas, alerta si ratio calidad/coste cambia >20%.
 - [ ] **A15.** Ampliar `src/costs.py` con: coste por módulo, coste por modelo, cache hit rate, tendencia 8 semanas, estimación semanal/mensual/anual, alertas de desviación.
 - [ ] **A16.** Subir tope blando a 12 € (nueva capa 🟠 naranja 9-12 €) para absorber los 3 niveles de autoevaluación sin cruzar umbral cada mes.
+- [ ] **A17.** `src/update_temporadas.py` — tarea anual (GitHub Action) que consulta news sobre las fechas de opening/closing de las clubs grandes (Pacha, Hï, Ushuaïa, Amnesia) del año siguiente y alerta a Telegram cuando ≥3 coinciden. El editor actualiza manualmente `data/temporadas.yml`. Corre febrero/marzo/abril; recordatorio si 1 de abril sin alerta. Coste ~0,02 €/ejecución. Ver [memoria del proyecto · calendario_editorial](../../.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/calendario_editorial.md).
 
 ### Bloque B — Arquitectura web
 
@@ -90,6 +91,16 @@ Detalle en [DISENO-WEB.md](DISENO-WEB.md).
 - [ ] **B31.** `/radar/` — señales en movimiento (intenciones, estudios encargados, debates sin propuesta concreta). Juego con la marca del proyecto. Ciclo de vida formal: en_movimiento → propuesta → archivo o caducada. Detalle en [DISENO-WEB.md](DISENO-WEB.md#radar-nuevo--señales-en-movimiento).
 - [ ] **B32.** Generación automática del gold standard del benchmark (`scripts/generate_gold.py`): Opus con thinking + Sonnet validador. Sin revisión humana. Output: `data/bench/gold_auto_v1.json` + discrepancias aparte. Coste una vez: ~3 €. Re-ejecutable en cada re-benchmark mensual. Telegram alerta con resumen.
 - [ ] **B33.** Sistema de seguimiento: alertas Telegram puntuales + `private/bench-log.md` + `private/auditoria-log.md` + `private/self-review-log.md` + `data/bench/trends.csv` + `data/audit/trends.csv`. Tú no revisas nada activamente; el sistema escribe y avisa.
+
+**Derivados del estudio de diseño (cerrado 2026-04-21, ver [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md)):**
+
+- [ ] **B34.** Prototipo HTML estático en `prototype/` (Paso 1 del plan §10). 4 páginas (home, edición, ficha actor, ficha propuesta) con datos reales W17 y los 9 componentes nuevos. Validación en móvil real antes de migrar a Jekyll.
+- [ ] **B35.** Implementar **9 componentes nuevos** en Jekyll (partials + CSS): chrome operacional, numeración edición por fecha, tags tipográficos, card de propuesta, pill de estado + barra de progreso (8 estados), chip de actor (8 tipos), ficha actor con sidebar sticky, margin notes (Tufte), toggle Temporada/Pre-temporada/Histórico.
+- [ ] **B36.** Formulario **"Escríbenos"** flotante universal (Formspree). Botón fijo esquina inferior derecha, visible en todas las páginas salvo confirmación. Campos: mensaje (obligatorio) + nombre y email (opcionales) + auto-captura de URL origen. Honeypot anti-spam. Mono + seams.
+- [ ] **B37.** Página `/sistema/` interna con `noindex,nofollow` (documentación viva del sistema visual: paleta, tipografía, los 9 componentes renderizados). Solo para editor y colaboradores vía URL directa.
+- [ ] **B38.** **Logo SVG final** tras elección del editor entre las 3 direcciones de `prototype/logo/` (Dir 1 punto limpio / Dir 2 "I" italic centro / Dir 3 "I" + arcos lado). Pendiente D2 del estudio.
+- [ ] **B39.** Automatización **OG images con Puppeteer** (Node.js en runner CI). Plantilla `docs/assets/og-template.html` + script `scripts/gen_og.mjs`. Generación por edición, ficha actor, ficha palanca. OG fallback estática.
+- [ ] **B40.** Modo oscuro con **toggle manual ○/●** (localStorage) además del automático por `prefers-color-scheme`. Sin opción "auto" explícita (default implícito al no tocar nada).
 
 **Mejoras técnicas web:**
 
@@ -187,6 +198,8 @@ Tras las decisiones del editor 2026-04-20, estos estudios se ejecutan antes o du
 - [ ] **I3.** Confirmación de fecha de relanzamiento (propuesta: lunes 18 may 2026). Esta semana.
 - [ ] **I4.** Diseño del dashboard de estadísticas potente + página `/estadisticas/` complementaria a `/balance/`. Durante Fase 0.
 - [ ] **I5.** Implementación de elementos de [Solar Low-Tech](https://solar.lowtechmagazine.com/) — ver [DISENO-WEB.md §Inspiración](DISENO-WEB.md). Indicadores de transparencia en footer + notas al margen + manifiesto + `/estado/`. Durante Fase 0.
+- [x] **I6.** ✅ **Estudio de diseño completo** cerrado 2026-04-21. Entregable: [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md) (14 secciones, 13 decisiones D1-D13 cerradas con OK del editor, salvo D2 logo diferido). Incluye: benchmark editorial con 13 referentes, sistema visual completo con 8 tipos de actor, 9 componentes especificados, plan de prototipo en 6 pasos, decisiones sobre nombre ("Radar Ibiza"), calendario editorial (opening/closing), numeración por fecha, formulario universal "Escríbenos", automatización anual para temporadas. Derivadas en B34-B40 y A17.
+- [ ] **I7.** Logo final: el editor elige entre Dir 1/2/3 de [`prototype/logo/preview.html`](prototype/logo/preview.html). Tras elección, formalizar SVG definitivo + favicon + variantes. Pendiente D2 del estudio.
 
 ### Estudios diferidos (no bloquean Fase 0)
 
@@ -283,6 +296,21 @@ Detalle en [PLAN.md](PLAN.md) sección Monetización.
 | B | B24. Estilo coherente | alta | pendiente |
 | B | B25. Botón "cómo citar" | media | pendiente |
 | B | B26. Anterior/siguiente ediciones | alta | pendiente |
+| B | B27. `/sin-dato/` | alta | pendiente |
+| B | B28. `/auditoria/` | media | pendiente |
+| B | B29. `/costes/` público | media | pendiente |
+| B | B30. `/estado/` | alta | pendiente |
+| B | B31. `/radar/` | alta | pendiente |
+| B | B34. Prototipo HTML estático | crítica | pendiente |
+| B | B35. 9 componentes en Jekyll | crítica | pendiente |
+| B | B36. Formulario "Escríbenos" | alta | pendiente |
+| B | B37. Página `/sistema/` interna | media | pendiente |
+| B | B38. Logo SVG final | alta | **pendiente editor** |
+| B | B39. OG images con Puppeteer | alta | pendiente |
+| B | B40. Toggle modo oscuro manual | media | pendiente |
+| A | A17. `update_temporadas.py` | media | pendiente |
+| I | I6. Estudio de diseño | crítica | ✅ **cerrado 2026-04-21** |
+| I | I7. Logo final (Dir 1/2/3) | alta | **pendiente editor** |
 | C | C1. Decisión W16-W17 | crítica | **pendiente editor** |
 | C | C2. Ingest W14 | crítica | pendiente |
 | C | C3. Pipeline W14 | crítica | pendiente |

@@ -1,4 +1,18 @@
-# Estado al despertar — 20 abr 2026
+# Estado al despertar — 21 abr 2026
+
+## 🏷️ REBRANDING (21-abr-2026)
+
+> Nombre público pasa a ser **Radar Ibiza** (antes "Ibiza Housing Radar"). Dominio objetivo `radaribiza.com` — compra pendiente del editor. Repo GitHub mantiene slug `ibiza-housing-radar` hasta compra del dominio. Ver [DIARIO.md](DIARIO.md) entrada 2026-04-21 para motivos.
+
+## 🎨 ESTUDIO DE DISEÑO CERRADO (21-abr-2026)
+
+> Entregable: [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) (14 secciones, ~700 líneas, benchmark con 13 referentes, 9 componentes especificados, plan de prototipo en 6 pasos).
+>
+> **13 decisiones (D1-D13) cerradas.** D2 (logo) diferida hasta elección del editor entre las 3 direcciones SVG de [`prototype/logo/preview.html`](prototype/logo/preview.html).
+>
+> Dirección visual apuntada: **"mono + seams"** — mono tipográfico en más elementos + separadores tipo costura + iconografía Unicode (no emoji). Por formalizar al construir el prototipo HTML estático (Paso 1).
+>
+> Siguiente fase operativa: **Paso 1 del plan de prototipo** (B34 en ROADMAP) — HTML estático de 4 páginas con datos reales antes de migrar a Jekyll.
 
 ## 🧭 PIVOTE EN MARCHA (20-abr-2026)
 
@@ -10,11 +24,12 @@
 > - [`ROADMAP.md`](ROADMAP.md) — Fase 0 de relanzamiento (pipeline + 15 páginas + contenido retroactivo + SEO + distribución) + fases siguientes.
 > - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline nuevo con módulos `extract.py`, `verify.py`, `rescue.py`, `balance.py`.
 > - [`DISENO-WEB.md`](DISENO-WEB.md) — UX dual (primer visitante + profesional recurrente), 15+ páginas nuevas.
+> - [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) — sistema visual, benchmark editorial, 13 decisiones D1-D13 cerradas. **Nuevo 2026-04-21.**
 > - [`SEO.md`](SEO.md) — plan ambicioso con long-tail, schema.org, OG dinámico, Search Console.
-> - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 4 ediciones simuladas W14-W17 bajo modelo nuevo.
-> - [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) — **16 decisiones del editor que bloquean el arranque**.
+> - [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md) — 8 ediciones simuladas W10-W17 bajo modelo nuevo.
+> - [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) — 16 decisiones del editor resueltas.
 >
-> **Estado:** Fase 0 pendiente de confirmación del editor en [DECISIONES-PENDIENTES.md](DECISIONES-PENDIENTES.md). Todo el código del pipeline antiguo sigue operativo mientras tanto.
+> **Estado:** Bloque B desbloqueado tras cierre del estudio de diseño. Implementación arranca con prototipo HTML estático (B34). Todo el código del pipeline antiguo sigue operativo mientras tanto.
 
 ---
 
