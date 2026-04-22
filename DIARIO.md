@@ -12,6 +12,12 @@ Reglas:
 
 ---
 
+## 2026-04-22 (tarde) — Hipótesis de escalabilidad provincial documentada
+
+- **Posibilidad de replicar el modelo a otras provincias**: discutida y documentada en [`ROADMAP.md`](ROADMAP.md) como "Hipótesis post-tracción — Escalabilidad provincial". Condicionada a tracción demostrada en Ibiza (framework RT23 a 90 días). Arquitectura prevista: monorepo motor + `config/<provincia>.yaml` + repos de output por provincia con GitHub Pages propio. La lógica temporal específica de Ibiza (temporada/pre-temporada por ciclo de clubs) queda en su yaml y no contamina el motor común. URLs con fechas ISO son el eje universal, compatible con cualquier geografía. No hay decisión técnica que tomar ahora; queda documentado para cuando haya tracción (Q3 2026 como pronto).
+
+---
+
 ## 2026-04-22 (mañana) — Claude Design archivado, decisiones de Fase 1-2 + retirada de "pivote" como término activo
 
 **Respuestas del editor a las 3 preguntas abiertas del roadmap V2:**

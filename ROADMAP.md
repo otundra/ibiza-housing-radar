@@ -190,6 +190,25 @@ Estas tareas siguen apuntadas pero no entran en el roadmap del relanzamiento:
 - **Evento anual co-organizado**.
 - **Modelo de newsletter pago/híbrido**.
 
+### Hipótesis post-tracción — Escalabilidad provincial
+
+**Condición única:** el framework de señales de tracción a 90 días (RT23) da verde en Ibiza. Sin tracción demostrada en Ibiza, este bloque no existe.
+
+Si el modelo funciona, replicar el observatorio a otras provincias españolas (o al resto de Baleares) tiene coste técnico bajo. Piezas reutilizables sin cambios: el pipeline Python completo, el sistema de costes, Jekyll/GitHub Pages, la taxonomía de 8 actores, el wordmark por provincia (`radar))valencia_vivienda`, `radar))mallorca_vivienda`...). Lo que varía por provincia: un archivo `config/<provincia>.yaml` con feeds RSS locales, keywords de búsqueda y contexto geográfico para los prompts.
+
+La lógica de temporada/pre-temporada de Ibiza (ligada al ciclo de clubs) queda en su configuración propia y no contamina el motor ni un eventual observatorio nacional. Las ediciones usan fechas ISO en las URLs como eje universal — compatible con cualquier geografía.
+
+**Arquitectura cuando llegue el momento:**
+- Un repo `radar-motor/` con el pipeline compartido.
+- Un `config/<provincia>.yaml` por instancia (feeds, keywords, contexto, calendario propio si aplica).
+- GitHub Actions genera y empuja HTML a repos de output por provincia (`radar-ibiza/`, `radar-valencia/`...).
+- Cada repo de output sirve un GitHub Pages propio con su dominio.
+- El motor se mantiene en un solo sitio; un cambio de pipeline aplica a todas las instancias.
+
+**Estimación técnica:** 1-2 semanas de trabajo para la primera réplica; marginal por cada provincia adicional.
+
+**No hacer antes de:** tracción demostrada en Ibiza (previsto evaluar ~90 días tras relanzamiento, Q3 2026 como pronto).
+
 ---
 
 ## Fase 0 original (anexo histórico — estructura por bloques)
