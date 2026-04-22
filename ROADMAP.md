@@ -209,6 +209,20 @@ La lógica de temporada/pre-temporada de Ibiza (ligada al ciclo de clubs) queda 
 
 **No hacer antes de:** tracción demostrada en Ibiza (previsto evaluar ~90 días tras relanzamiento, Q3 2026 como pronto).
 
+### Hipótesis post-tracción — Expansión temática en Ibiza
+
+**Condición única:** misma que escalabilidad provincial — RT23 verde en Ibiza vivienda.
+
+Documento completo en [`EXPANSION-TEMATICA.md`](EXPANSION-TEMATICA.md) con evaluación detallada de 10+ temas candidatos. Resumen:
+
+- **Tier 1 (encaje casi directo):** saturación turística, agua, movilidad.
+- **Tier 2 (con adaptación):** trabajo de temporada, medio ambiente, residuos.
+- **Tier 3 (descartados o como palancas):** sanidad, educación, energía, patrimonio, seguridad, gobernanza.
+- **Recomendación de orden:** primero palancas transversales en el pipeline actual (Modelo C híbrido), graduar a vertical propio solo si la palanca demuestra demanda. Primer vertical candidato: turismo. Agua y movilidad en cola.
+- **Interacción con escalabilidad provincial:** ambas hipótesis comparten condición y arquitectura técnica (motor + config). Orden sensato: primero turismo en Ibiza (misma geografía, distinto tema), luego provincias (mismo tema, distinta geografía).
+
+**No hacer antes de:** tracción demostrada en Ibiza vivienda. Mismo horizonte que escalabilidad provincial.
+
 ---
 
 ## Fase 0 original (anexo histórico — estructura por bloques)

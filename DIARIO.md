@@ -12,9 +12,11 @@ Reglas:
 
 ---
 
-## 2026-04-22 (tarde) — Hipótesis de escalabilidad provincial documentada
+## 2026-04-22 (tarde) — Hipótesis de escalabilidad provincial y de expansión temática documentadas
 
 - **Posibilidad de replicar el modelo a otras provincias**: discutida y documentada en [`ROADMAP.md`](ROADMAP.md) como "Hipótesis post-tracción — Escalabilidad provincial". Condicionada a tracción demostrada en Ibiza (framework RT23 a 90 días). Arquitectura prevista: monorepo motor + `config/<provincia>.yaml` + repos de output por provincia con GitHub Pages propio. La lógica temporal específica de Ibiza (temporada/pre-temporada por ciclo de clubs) queda en su yaml y no contamina el motor común. URLs con fechas ISO son el eje universal, compatible con cualquier geografía. No hay decisión técnica que tomar ahora; queda documentado para cuando haya tracción (Q3 2026 como pronto).
+
+- **Posibilidad de expandir a otros temas "hermanos" de vivienda en Ibiza**: estudio profundo documentado en [`EXPANSION-TEMATICA.md`](EXPANSION-TEMATICA.md) y resumido en [`ROADMAP.md`](ROADMAP.md) como "Hipótesis post-tracción — Expansión temática en Ibiza". Misma condición de activación que la escalabilidad provincial (RT23 verde). Evaluados 10+ temas en tres tiers: Tier 1 (turismo, agua, movilidad) con encaje casi directo; Tier 2 (trabajo de temporada, medio ambiente, residuos) con adaptación; Tier 3 (sanidad, educación, energía, patrimonio, seguridad, gobernanza) descartados como verticales y reservados como palancas transversales. Recomendación de orden: primero palancas dentro del radar actual (Modelo C híbrido, coste marginal ~0,5 €/mes), graduar a vertical propio solo si la palanca demuestra demanda. Primer candidato: turismo. Interacción clave con escalabilidad provincial: misma arquitectura técnica (motor + config por instancia); el orden sensato es primero turismo en Ibiza (misma geografía, distinto tema) y luego provincias (mismo tema, distinta geografía). Decisión editorial honesta apuntada: el cuello de botella no es técnico sino de tiempo del editor para revisar múltiples lunes.
 
 ---
 
