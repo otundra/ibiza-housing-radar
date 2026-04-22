@@ -1,4 +1,4 @@
-# Arquitectura técnica — Pipeline del pivote
+# Arquitectura técnica — Pipeline documental
 
 **Fecha:** 2026-04-20
 **Origen:** [PIVOTE.md](PIVOTE.md).
@@ -192,7 +192,7 @@ week: "2026-W17"
 date: 2026-04-27
 permalink: /ediciones/2026-w17/
 excerpt: "…"
-model: "pivote-documental-v1"
+model: "documental-v1"
 proposals_count: 4
 actors_cited: ["Consell d'Eivissa", "CCOO", "Cáritas", "PSOE Ibiza", "Ayuntamiento de Ibiza"]
 blocks_cited: ["institucional_publico", "sindicato", "tercer_sector", "partido"]
@@ -504,7 +504,7 @@ Corre tras publicar (en report.py), o independiente para auditoría.
 
 ### `src/self_review.py` (nuevo — autoevaluación semanal)
 
-Corre inmediatamente después de publicar la edición. Responsabilidad: verificar que la edición recién publicada cumple los estándares del pivote y alertar si no.
+Corre inmediatamente después de publicar la edición. Responsabilidad: verificar que la edición recién publicada cumple los estándares del observatorio documental y alertar si no.
 
 Input: edición recién escrita + 3 ediciones anteriores + las 5 reglas duras literales.
 
@@ -620,7 +620,7 @@ Ubicación: `tests/` en raíz del repo. Framework: `pytest`.
 
 ## Migración desde el código actual
 
-No se mantiene backwards compatibility. El modelo antiguo quedó en el histórico git anterior al merge del pivote (2026-04-21, commit `b24a6ad`) y se puede consultar ahí si hace falta.
+No se mantiene backwards compatibility. El modelo antiguo quedó en el histórico git anterior al merge del modelo documental a `main` (2026-04-21, commit `b24a6ad`) y se puede consultar ahí si hace falta.
 
 Pasos:
 

@@ -135,7 +135,7 @@ El proyecto tiene dos públicos declarados en `DISENO-WEB.md`: primer visitante 
 ### RT4 · Techo de cobertura + banner de limitaciones hasta datos propios ⏳
 El PLAN estratégico reconoce que el observatorio es "refrito de prensa" y que los datos propios (Vía A agregación oficial + Vía B crowd-sourcing de precios) son el diferencial que convertirá el proyecto en fuente primaria. Hasta que esas vías estén operativas (previsto Fase 2, 3-6 meses tras el relanzamiento), el proyecto sigue siendo lectura estructurada de prensa local, con un techo de impacto limitado.
 
-El pivote resuelve dos problemas reales (alucinación del LLM, sesgo en la generación de propuestas) pero **no** resuelve el techo de cobertura ni el problema de valor diferencial. Si el copy público del relanzamiento vende "observatorio de referencia" y el producto real es "lectura estructurada de prensa local con tracker de propuestas", el lector profesional nota el gap a la segunda semana.
+El modelo documental resuelve dos problemas reales (alucinación del LLM, sesgo en la generación de propuestas) pero **no** resuelve el techo de cobertura ni el problema de valor diferencial. Si el copy público del relanzamiento vende "observatorio de referencia" y el producto real es "lectura estructurada de prensa local con tracker de propuestas", el lector profesional nota el gap a la segunda semana.
 
 **Acción en dos partes:**
 
@@ -157,7 +157,7 @@ Hoy no hay carpeta `tests/` y no hay ningún test automatizado. Un cambio en `cl
 **Salida esperada:** carpeta `tests/` con cobertura mínima + entrada en `.github/workflows/` para ejecutar tests en cada PR.
 
 ### RT6 · Balance — rediseño completo tras 3 meses de datos ⏳
-El fix aplicado hoy en `src/balance.py` es un parche temporal: silencia las alertas mientras el histórico sea menor de 20 propuestas. La regla vinculante del pivote (regla 4) es *"si un bloque supera 50% durante dos trimestres consecutivos"*. Eso requiere comparar la ventana actual con la anterior, no solo mirar la actual.
+El fix aplicado hoy en `src/balance.py` es un parche temporal: silencia las alertas mientras el histórico sea menor de 20 propuestas. La regla 4 vinculante del observatorio es *"si un bloque supera 50% durante dos trimestres consecutivos"*. Eso requiere comparar la ventana actual con la anterior, no solo mirar la actual.
 
 **Acción diferida a 3 meses:** cuando el histórico tenga al menos 3 meses de datos (esperado julio 2026), rediseñar `balance.py` para:
 1. Guardar snapshot semanal del balance en `data/balance_snapshots/YYYY-wWW.json`.
@@ -178,7 +178,7 @@ Aplicado fix temporal 2026-04-21: `docs/acerca.md` mantiene un callout de *"pág
 **Salida esperada:** dos páginas Jekyll coherentes, enlazadas desde el pie de edición y desde el menú.
 
 ### RT9 · Prototipo de páginas mínimas que las reglas duras exigen ⏳
-Las 5 reglas duras del pivote asumen que existen tres páginas públicas: `/politica-editorial/` (texto de las reglas), `/metodologia/` (cómo funciona el pipeline y sesgos declarados), `/correcciones/` (log público de enmiendas). Hoy ninguna existe. El pipeline emite ediciones que hacen afirmaciones editoriales fuertes ("las 5 reglas duras", "balance auditado", "correcciones públicas") sin soporte público.
+Las 5 reglas duras del observatorio asumen que existen tres páginas públicas: `/politica-editorial/` (texto de las reglas), `/metodologia/` (cómo funciona el pipeline y sesgos declarados), `/correcciones/` (log público de enmiendas). Hoy ninguna existe. El pipeline emite ediciones que hacen afirmaciones editoriales fuertes ("las 5 reglas duras", "balance auditado", "correcciones públicas") sin soporte público.
 
 **Acción mínima:** crear stubs Jekyll de las tres páginas con contenido textual suficiente para no ser páginas vacías. Fuente de contenido: el prototipo ya construido (`docs/prototype/metodo.html` para metodología). Para política editorial, extraer las 5 reglas del `PIVOTE.md`. Para correcciones, página vacía con formato estándar listo para la primera enmienda.
 
@@ -222,10 +222,17 @@ El sistema de tiers 🟢🟡🟠🔴 se aprobó rápido el 2026-04-21 noche. El 
 
 **Salida:** documento `ESTUDIO-TIERS.md` con árbol de decisión cerrado + copy público ejemplo + mockups de cómo se ven en ficha de propuesta + tabla + dashboard + plan de test con usuarios (complementa RT3). Antes de implementar PI10.
 
-### RT16 · Propuesta visual de Claude Design — incorporación al estudio ⏳ [MEDIA]
-El editor probó Claude Design 2026-04-21 y recibió una propuesta visual interesante que quiere incorporar. Pendiente de que el editor comparta los archivos/screenshots/link para que Claude Code pueda analizarlos y compararlos contra el estudio de diseño actual ([`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md), 13 decisiones D1-D13 ya cerradas).
+### RT16 · Experimento de Claude Design — estudio en fase de Diseño ⏳ [MEDIA]
+El editor probó Claude Design 2026-04-21 y generó un experimento de exploración visual. **Entregado el 2026-04-22** y archivado en [`private/claude-design-experiment/`](../../private/claude-design-experiment/) con README propio explicando su estado.
 
-**Acción:** editor comparte los entregables de Claude Design; Claude Code los revisa, los confronta con las decisiones D1-D13, identifica qué se mantiene, qué se sustituye, qué se integra como evolución, qué se descarta. Impacto mayor probable en home, edición, cards de propuesta, ficha de actor.
+**Condiciones explícitas del editor:** el paquete es un experimento, usa datos antiguos (pre-modelo documental), no tiene en cuenta ninguna de las decisiones ya cerradas (D1-D13 del estudio de diseño, taxonomía de actores, 5 reglas duras, regla complementaria de automatización, nombre del wordmark `radar))ibiza_vivienda`, etc.). **No es referencia de nada hasta que el editor lo indique explícitamente.** Se estudia únicamente en la fase de Diseño (Fase 4 del roadmap V2).
+
+**Proceso cuando toque:**
+1. Claude Code abre el paquete.
+2. Compara contra [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) (D1-D13 cerradas) y contra todas las decisiones posteriores.
+3. Identifica qué elementos visuales pueden incorporarse como evolución sin contradecir las reglas fijadas.
+4. Marca explícitamente qué del experimento no encaja y por qué (taxonomía cerrada, partidos en gris neutro, modelo documental vs propuestas del observatorio, etc.).
+5. Presenta propuesta de integración para decisión del editor.
 
 **Salida:** documento comparativo + propuesta de integración + actualización del estudio de diseño con el conjunto final + ajuste de los 9 componentes si aplica.
 
@@ -252,9 +259,9 @@ Con 15+ páginas nuevas, la navegación es crítica. El editor pide explícitame
 - Glosario eivissenc con topónimos y cargos oficiales + regla de preservar mayúsculas interiores (Can Toni, Sa Penya).
 - Variante catalán: estándar IEC (no balear), alineado con IB3 Notícies, Ara Balears, Vilaweb.
 
-**Decisión pendiente:** ¿se activa trilingüe desde el backfill (las 12 ediciones retroactivas salen en 3 idiomas desde el relanzamiento, coste +3-4 € puntuales) o solo desde el empuje público (backfill en ES y ediciones nuevas trilingües)? La primera da consistencia de corpus; la segunda ahorra coste puntual.
+**Decisión del editor 2026-04-22:** el trilingüe se activa **desde el backfill**. Las 12 ediciones retroactivas salen en 3 idiomas desde el relanzamiento. Coste puntual adicional +3-4 € absorbido por el tope duro subido a 50 €. Consistencia de corpus desde el día 1.
 
-**Salida:** pipeline de traducción operativo + chrome trilingüe + SEO multilingüe + decisión sobre backfill trilingüe. Entregable en Fase 4 antes de Fase 5.
+**Salida:** pipeline de traducción operativo + chrome trilingüe + SEO multilingüe + backfill trilingüe ejecutado. Entregable en Fase 4 antes de Fase 5.
 
 ### RT19 · Seguimiento visual de evolución de problemáticas y soluciones ⏳ [DIFERENCIAL]
 **Petición del editor 2026-04-21 noche:** una vista pública que permita seguir de forma muy visual y rápida cómo evolucionan las problemáticas de vivienda y sus propuestas de solución en Ibiza. El objetivo es alimentar el empuje hacia mejorar la vivienda: si algo está traccionando, que se destaque — manteniendo imparcialidad.
@@ -287,9 +294,9 @@ Coincide con LG1 (anonimato legal) pero la tarea pide un estudio formal antes de
 
 **Salida:** documento `ESTUDIO-TITULAR-LEGAL.md` con tabla comparativa + recomendación firme + plan de implementación en días. Decisión del editor + arranque de trámite. Bloquea empuje público: sin titular declarado legalmente, abrir al público es riesgo.
 
-### RT21 · Vía A de precios — nombre público y presupuesto ⏳
+### RT21 · Módulo de precios — nombre provisional y presupuesto ⏳
 Antes de implementar la vía A (RT12 estudio de fuentes), cerrar:
-- **Nombre público del módulo.** Propuesta: **"Observatorio de precios"** con URL `/precios/`. Alternativas consideradas: "Radar de precios" (refuerza marca pero se solapa con el nombre principal), "Precios vivienda Ibiza" (SEO puro, menos elegante), "Termómetro de precios". El editor elige.
+- **Nombre público del módulo — provisional 2026-04-22: "Termómetro de precios"** con URL `/precios/`. **Pendiente de revisión** — el editor pide apuntar que el nombre hay que revisarlo cuando el módulo esté más maduro, el proyecto más asentado, o cuando se decida el dominio. Alternativas en reserva: "Observatorio de precios" (descriptivo clásico), "Radar de precios" (refuerza marca principal), "Precios vivienda Ibiza" (SEO puro).
 - **Presupuesto operativo proyectado.** Coste de scraping/descarga mensual (la mayoría de fuentes son PDF/CSV descargables, pero IBESTAT tiene API, el Ministerio de Vivienda publica CSV). Coste de almacenamiento (no supera ~5 MB). Coste de mantenimiento cuando cambia un formato de origen (estimar ~2-3 h cada 6 meses). Coste API si se usa Claude para normalizar entre fuentes (probablemente no hace falta — las fuentes oficiales ya vienen estructuradas).
 - **Estructura de URLs.** `/precios/` índice, `/precios/ibiza/`, `/precios/formentera/`, `/precios/serie-historica/`, `/precios/fuentes/`? O todo en una sola página con filtros.
 - **Modelo de actualización.** Cron mensual que descarga, normaliza, publica. Alerta si alguna fuente cambia formato.
@@ -310,9 +317,9 @@ Antes de implementar la vía A (RT12 estudio de fuentes), cerrar:
 - Complejidad técnica adicional encima de la del backfill.
 - Si se hace mal, genera falsos positivos ruidosos (normativa urbanística no relacionada con vivienda).
 
-**Recomendación honesta:** subir a Fase 2, **con estudio de factibilidad técnica previo** de 2-4 horas que determine (a) si el buscador BOIB permite scraping ético con cumplimiento de robots.txt, (b) qué tasa de falsos positivos tiene una búsqueda filtrada, (c) si se implementa con código propio o con un filtro Google News suficiente. Si el estudio da verde, entra en Fase 2; si da amarillo o rojo, queda en Fase 3 como estaba.
+**Decisión del editor 2026-04-22: Fase 2 confirmada.** El editor considera importante que la base legal esté presente desde el relanzamiento — es el diferencial más claro frente a "refrito de prensa". Se mantiene el estudio de factibilidad técnica previo de 2-4 horas (robots.txt del buscador BOIB, tasa de falsos positivos de búsqueda filtrada, decisión entre scraping ético vs filtro Google News) como primera tarea dentro de Fase 2.
 
-**Salida:** estudio de factibilidad + decisión del editor + ubicación definitiva en el roadmap.
+**Salida:** estudio de factibilidad + implementación del watcher + integración con el corpus del backfill + entrada del BOIB como fuente primaria oficial desde el relanzamiento.
 
 ### RT23 · Framework de señales de tracción a 90 días post-relanzamiento ⏳ [DIFERIDO POST-LANZAMIENTO]
 Para decidir si el proyecto escala a "dedicar energía seria" o se mantiene como side-project experimental, se definen señales medibles que se evalúan 90 días después del relanzamiento.
@@ -652,13 +659,13 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ⏳ | **P-1 · FILOSOFÍA · añadir a PIVOTE.md como regla complementaria** |
 | **RT14** | **Estudio preciso de costes del auditor IA** | ⏳ | **P-1 · BLOQUEA PI9 · backfill + mantenimiento** |
 | **RT15** | **Re-estudio profundo del sistema de tiers** | ⏳ | **P-1 · ALTA · antes de implementar PI10** |
-| **RT16** | **Propuesta visual de Claude Design** | ⏳ | **P-1 · requiere archivos del editor** |
+| **RT16** | **Experimento Claude Design — archivado** | 🔄 | **P-1 · archivo en `private/claude-design-experiment/` · no es referencia · se estudia en fase Diseño** |
 | **RT17** | **Navegación exhaustiva mobile-first** | ⏳ | **P-1 · ALTA · NAVEGACION.md propio** |
-| **RT18** | **Trilingüe ES/CA/EN antes del SEO** | ⏳ | **P-1 · ALTA · entra en Fase 4** |
+| **RT18** | **Trilingüe ES/CA/EN desde el backfill** | ⏳ | **P-1 · ALTA · editor confirmó 22-abr: activar desde el backfill** |
 | **RT19** | **Seguimiento visual de evolución de problemáticas** | ⏳ | **P-1 · DIFERENCIAL · formato por decidir** |
 | **RT20** | **Estudio titular legal con detenimiento** | ⏳ | **P-1 · ALTA · bloquea empuje público** |
-| **RT21** | **Vía A precios — nombre y presupuesto** | ⏳ | **P-1 · antes de implementación** |
-| **RT22** | **BOIB watcher — ubicación Fase 2 vs Fase 3** | ⏳ | **P-1 · estudio de factibilidad 2-4 h + decisión** |
+| **RT21** | **Precios — "Termómetro de precios" provisional** | ⏳ | **P-1 · nombre por revisar cuando proyecto más asentado** |
+| **RT22** | **BOIB watcher — Fase 2 confirmado** | ⏳ | **P-1 · editor confirmó 22-abr · base legal presente desde relanzamiento** |
 | **RT23** | **Framework de señales de tracción a 90 días** | ⏳ | **P-1 · DIFERIDO POST-LANZAMIENTO** |
 | **RT24** | **Escenarios de lanzamiento y horizonte** | ⏳ | **P-1 · A soft mayo-junio / B rodaje 1 año** |
 | ED1 | Criterio OK propuestas | ⏳ | |

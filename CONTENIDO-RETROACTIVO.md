@@ -29,7 +29,7 @@ Las 12 ediciones alimentan simultáneamente:
 
 ## Decisión del editor
 
-**Borramos las 2 ediciones actuales (W16-W17 en modelo antiguo)** — se eliminan del repo. Las originales quedan en el histórico git anterior al merge del pivote (2026-04-21) para auditoría. El archivo público arranca 100% bajo modelo documental.
+**Borramos las 2 ediciones actuales (W16-W17 en modelo antiguo)** — se eliminan del repo. Las originales quedan en el histórico git anterior al merge del modelo documental (2026-04-21) para auditoría. El archivo público arranca 100% bajo modelo documental.
 
 **Producimos 8 ediciones retroactivas** cubriendo marzo (W10-W13) y abril (W14-W17). Cada una con nota metodológica visible.
 
@@ -60,7 +60,7 @@ Las 12 ediciones conforman un arco narrativo extendido: **"del cierre de la temp
 
 Cada edición retroactiva lleva un callout visible en cabecera:
 
-> *Edición procesada a posteriori sobre el archivo público de prensa de la semana indicada, bajo el modelo documental del pivote 2026-04-20. Las fechas de los hechos, URLs de las fuentes y declaraciones son reales y verificables. La fecha de publicación en el observatorio es posterior a la semana cubierta. Política editorial y metodología: [/politica-editorial/], [/metodologia/].*
+> *Edición procesada a posteriori sobre el archivo público de prensa de la semana indicada, bajo el modelo documental del observatorio (activo desde 2026-04-20). Las fechas de los hechos, URLs de las fuentes y declaraciones son reales y verificables. La fecha de publicación en el observatorio es posterior a la semana cubierta. Política editorial y metodología: [/politica-editorial/], [/metodologia/].*
 
 **No se inventan:**
 
@@ -72,7 +72,7 @@ Cada edición retroactiva lleva un callout visible en cabecera:
 **Se declara con total transparencia:**
 
 - Que las ediciones se produjeron el mismo día o los días siguientes al 2026-04-20.
-- Que el pipeline técnico y el modelo editorial son los del pivote.
+- Que el pipeline técnico y el modelo editorial son los del observatorio documental.
 - Que el repositorio git contiene la traza completa de cuándo se crearon los archivos.
 
 **Riesgo reputacional:** bajo. Cualquier auditor que quiera reconstruir nuestras semanas encuentra las mismas noticias en los mismos diarios. El único "tiempo no lineal" es el momento en que se empaqueta la edición.
@@ -257,7 +257,7 @@ Si el reparto está muy desequilibrado, antes del relanzamiento se revisan:
 2. **Alucinación del extractor.** El LLM puede inferir propuestas donde no las hay si el texto es ambiguo. Mitigación: regla dura "URL obligatoria y statement_verbatim atribuible" en `extract.py`.
 3. **Semanas "vacías".** Puede haber alguna semana con pocas noticias relevantes. Mitigación: plantilla "semana sin señal" ya existente + omisiones honestas.
 4. **Coste temporal.** 10-17 h es bloque de trabajo significativo. Mitigación: ejecutar en paralelo a tareas de Bloque A-B.
-5. **Percepción de "falsificación".** Mitigación: nota metodológica visible en cada edición retroactiva + entrada pública en `/correcciones/` describiendo el proceso del pivote.
+5. **Percepción de "falsificación".** Mitigación: nota metodológica visible en cada edición retroactiva + entrada pública en `/correcciones/` describiendo el proceso de la transición al modelo documental.
 6. **Cruce de tope blando 8 €.** No afecta al pipeline (no corta). Solo notifica. Asumible puntualmente.
 
 ---

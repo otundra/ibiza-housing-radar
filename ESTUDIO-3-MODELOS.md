@@ -27,7 +27,7 @@ Solo las **3 tareas de input** del pipeline. La composición editorial (tarea 6)
 |---|---|---|---|
 | 1 | `classify` | Etiqueta cada noticia con `is_housing`, `actor`, `lever` | Filtra ruido y enrutan al resto del pipeline |
 | 2 | `detect` | Decide si la noticia contiene propuesta explícita de actor con nombre | Gatekeeper de la extracción; evita falsos positivos en el tracker de propuestas |
-| 3 | `extract` | Extrae la ficha estructurada completa de cada propuesta | Corazón del pivote; aquí es donde el modelo puede alucinar más |
+| 3 | `extract` | Extrae la ficha estructurada completa de cada propuesta | Corazón del modelo documental; aquí es donde el modelo puede alucinar más |
 
 Tareas NO evaluadas en este benchmark:
 
@@ -204,7 +204,7 @@ Tras la decisión, se actualiza [`ARQUITECTURA.md`](ARQUITECTURA.md) con los mod
 
 ## 10. Re-benchmark continuo
 
-Tras el benchmark inicial, el módulo `src/model_rebench.py` (del pivote, [ROADMAP.md tarea A14](ROADMAP.md)) ejecuta una versión ligera de este proceso **cada 4 semanas**:
+Tras el benchmark inicial, el módulo `src/model_rebench.py` (planificado en [ROADMAP.md tarea A14](ROADMAP.md)) ejecuta una versión ligera de este proceso **cada 4 semanas**:
 
 - Dataset: 10 noticias nuevas del mes.
 - Gold standard: generado con Opus + razonamiento extendido (validación del editor opcional).
@@ -224,7 +224,7 @@ Adicionalmente, a partir del segundo mes, se incorpora el **sexto criterio (impa
 | Auditoría trimestral con Opus | ~1,50 €/mes promediado |
 | **Total anual del sistema de afinado** | **~36 €/año** |
 
-Un coste manejable frente al retorno: un 10% de ahorro en el coste base del pipeline (que es ~80 €/año bajo el pivote) supera el coste del sistema que lo produce. Y además lo que ganamos no es solo ahorro — es **confianza** en la decisión, porque se mide.
+Un coste manejable frente al retorno: un 10% de ahorro en el coste base del pipeline (que es ~80 €/año bajo el modelo documental) supera el coste del sistema que lo produce. Y además lo que ganamos no es solo ahorro — es **confianza** en la decisión, porque se mide.
 
 ---
 

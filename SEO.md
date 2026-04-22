@@ -9,7 +9,7 @@
 ## Principios
 
 1. **SEO es pilar fundamental, no añadido.** Cada decisión de producto se evalúa por su impacto en descubribilidad.
-2. **Contenido denso > contenido optimizado**. Google premia hoy el E-E-A-T (experiencia, pericia, autoridad, confianza). El pivote documental es exactamente lo que Google quiere.
+2. **Contenido denso > contenido optimizado**. Google premia hoy el E-E-A-T (experiencia, pericia, autoridad, confianza). El modelo documental es exactamente lo que Google quiere.
 3. **Long-tail antes que keywords amplias**. "Vivienda Ibiza" es impagable (empresas inmobiliarias, portales). "Qué es sa Joveria Ibiza" es ganable.
 4. **Velocidad sí importa**. Jekyll estático ya es rápido; no romper eso añadiendo JS innecesario.
 5. **Verificabilidad genera backlinks**. Cada propuesta documentada con URL es material citable. Los citadores nos enlazan.

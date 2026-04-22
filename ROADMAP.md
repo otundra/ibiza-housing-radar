@@ -194,11 +194,11 @@ Estas tareas siguen apuntadas pero no entran en el roadmap del relanzamiento:
 
 ## Fase 0 original (anexo histórico — estructura por bloques)
 
-**Nota:** la estructura de abajo (Bloques A-I) es la planificación original del pivote (2026-04-20). La **estructura activa** es el Roadmap V2 de arriba. Los bloques se mantienen como referencia para ver qué se movió dónde.
+**Nota:** la estructura de abajo (Bloques A-I) es la planificación original del modelo documental (2026-04-20). La **estructura activa** es el Roadmap V2 de arriba. Los bloques se mantienen como referencia para ver qué se movió dónde.
 
 ---
 
-## Contexto original del pivote
+## Contexto original del modelo documental
 
 **Principio base:** lanzar en Fase 0 todo lo que se pueda para que el relanzamiento del proyecto sea fuerte, coherente y memorable. Coste 0 externo salvo API Anthropic. Reversible vía branch aislado.
 
@@ -206,7 +206,7 @@ Estas tareas siguen apuntadas pero no entran en el roadmap del relanzamiento:
 
 | Bloque | Tema | Estado |
 |---|---|---|
-| A | Pipeline técnico del pivote | ✅ **cerrado** (salvo A8 tests básicos, A13 auditoría trimestral, A14 re-benchmark mensual, A15 dashboard costes ampliado y A17 automatización temporadas — todos pendientes/diferidos) |
+| A | Pipeline técnico del modelo documental | ✅ **cerrado** (salvo A8 tests básicos, A13 auditoría trimestral, A14 re-benchmark mensual, A15 dashboard costes ampliado y A17 automatización temporadas — todos pendientes/diferidos) |
 | B | Arquitectura web (home, /radar/, /propuestas/, /actores/, /balance/, /estadisticas/, /estado/, /sin-dato/, /sistema/, …) | ⏸ **en pausa** (21-abr tarde). Prototipo (B34) entregado y en revisión; hold a petición del editor para estudiar arquitectura antes de Paso 2 |
 | C | Contenido retroactivo 8 ediciones (W10-W17) | ⏸ pendiente |
 | D | SEO masivo | ⏸ pendiente |
@@ -229,7 +229,7 @@ Estas tareas siguen apuntadas pero no entran en el roadmap del relanzamiento:
 
 **Entregables mínimos:**
 
-1. Pipeline técnico del pivote operativo.
+1. Pipeline técnico del modelo documental operativo.
 2. 4 ediciones retroactivas publicadas (W14-W17) bajo el nuevo modelo.
 3. 15+ páginas web nuevas o reescritas.
 4. SEO técnico completo + keywords por edición.
@@ -238,7 +238,7 @@ Estas tareas siguen apuntadas pero no entran en el roadmap del relanzamiento:
 7. Política editorial pública con las 5 reglas duras.
 8. Balance inicial retrospectivo publicado.
 
-### Bloque A — Pipeline técnico del pivote
+### Bloque A — Pipeline técnico del modelo documental
 
 - [ ] **A1.** Reescribir `SYSTEM` prompt de `src/generate.py` con la nueva estructura documental (señales / cronología / mapa de posiciones / propuestas documentadas / rescate / omisiones / a vigilar).
 - [ ] **A2.** Ampliar schema de `src/classify.py` con campos `has_explicit_proposal`, `proposal_actor`, `proposal_actor_type`, `proposal_text`, `proposal_url`, `proposal_state`, `proposal_target_actor`, `proposal_horizon`, `proposal_viability_legal`, `proposal_viability_economic`.
@@ -327,7 +327,7 @@ Detalle en [CONTENIDO-RETROACTIVO.md](CONTENIDO-RETROACTIVO.md). Decisión edito
 - [ ] **C10.** Producir W10 (2-8 mar) — la más antigua, más trabajo manual.
 - [ ] **C11.** Verificación manual de todas las URLs (8 ediciones).
 - [ ] **C12.** Publicar balance retrospectivo inicial 2 meses en `/balance/`.
-- [ ] **C13.** Nota metodológica visible en cada edición retroactiva: "Edición procesada a posteriori sobre archivo público de prensa, bajo modelo documental del pivote 2026-04-20. Fechas y fuentes reales; fecha de publicación en el observatorio posterior a la semana cubierta."
+- [ ] **C13.** Nota metodológica visible en cada edición retroactiva: "Edición procesada a posteriori sobre archivo público de prensa, bajo el modelo documental del observatorio (activo desde 2026-04-20). Fechas y fuentes reales; fecha de publicación en el observatorio posterior a la semana cubierta."
 - [ ] **C14.** Commits individuales por edición en orden cronológico (W10 primero, W17 último) para progresión limpia en git log.
 
 ### Bloque D — SEO masivo (pilar fundamental)
@@ -419,7 +419,7 @@ Tras las decisiones del editor 2026-04-20, estos estudios se ejecutan antes o du
 
 ## Fase 1 — Consolidación (4-8 semanas tras Fase 0)
 
-Objetivo: validar el pivote con datos reales y empezar a construir tracción.
+Objetivo: validar el modelo documental con datos reales y empezar a construir tracción.
 
 - [ ] Envío personalizado a lista curada de periodistas con cada edición.
 - [ ] Seguimiento semanal de GoatCounter y ajustes SEO según las búsquedas reales.

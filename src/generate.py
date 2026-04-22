@@ -56,7 +56,7 @@ week: "YYYY-WWW"
 date: YYYY-MM-DD
 permalink: /ediciones/YYYY-wWW/
 excerpt: "<síntesis 1 frase ≤160 caracteres>"
-model: "pivote-documental-v1"
+model: "documental-v1"
 proposals_formal_count: <N>
 proposals_en_movimiento_count: <N>
 actors_cited: [<lista de strings con los nombres de actores>]
@@ -208,7 +208,7 @@ def minimal_frontmatter(now: datetime) -> str:
         f'date: {now.strftime("%Y-%m-%d")}\n'
         f'permalink: /ediciones/{iso.year}-w{iso.week:02d}/\n'
         f'excerpt: "Informe automático — revisar salida."\n'
-        f'model: "pivote-documental-v1"\n'
+        f'model: "documental-v1"\n'
         "---"
     )
 
@@ -221,7 +221,7 @@ week: "{iso_week_string(now)}"
 date: {now.strftime('%Y-%m-%d')}
 permalink: /ediciones/{edition_slug(now)}/
 excerpt: "Semana sin señal: no se han detectado noticias relevantes sobre vivienda en Ibiza."
-model: "pivote-documental-v1"
+model: "documental-v1"
 proposals_formal_count: 0
 proposals_en_movimiento_count: 0
 actors_cited: []

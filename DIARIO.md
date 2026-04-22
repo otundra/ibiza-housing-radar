@@ -12,6 +12,29 @@ Reglas:
 
 ---
 
+## 2026-04-22 (mañana) — Claude Design archivado, decisiones de Fase 1-2 + retirada de "pivote" como término activo
+
+**Respuestas del editor a las 3 preguntas abiertas del roadmap V2:**
+
+- **Claude Design recibido y archivado** en [`private/claude-design-experiment/`](private/claude-design-experiment/). El editor lo envió como ZIP (`Ibiza vivienda.zip`, 58 KB) con HTML + JSX + CSS + data.js + prompt. Advertencia explícita: es un experimento con datos antiguos (pre-modelo documental), no tiene en cuenta ninguna de las decisiones D1-D13 ni las 5 reglas duras, **no es referencia de nada** hasta que el editor lo indique. Se estudia únicamente en la fase de Diseño (Fase 4 del roadmap V2). README propio dentro de la carpeta explicando estas condiciones. Tarea RT16 actualizada a "🔄 archivado, no es referencia".
+- **Trilingüe desde el backfill.** Las 12 ediciones retroactivas salen en ES/CA/EN desde el relanzamiento. Coste puntual +3-4 € absorbido por el tope duro de 50 €. Consistencia de corpus desde el día 1. Tarea RT18 actualizada.
+- **Termómetro de precios — nombre provisional.** El módulo de precios lleva ese nombre de momento, con nota explícita de revisión cuando el proyecto esté más asentado. Alternativas en reserva: Observatorio de precios, Radar de precios, Precios vivienda Ibiza. Tarea RT21 actualizada.
+
+**BOIB watcher — Fase 2 confirmado.** El editor prioriza tener la base legal presente desde el relanzamiento como diferencial claro frente al "refrito de prensa". Se mantiene el estudio de factibilidad técnica previo de 2-4 horas (robots.txt, falsos positivos, scraping vs filtro Google News) como primera tarea dentro de Fase 2. Tarea RT22 confirmada.
+
+**Framework de señales de tracción a 90 días (RT23) aprobado** como mecanismo para decidir si el proyecto escala, se replantea o se mantiene como experimental. Se evaluará 90 días tras el relanzamiento.
+
+**Retirada del término "pivote" como adjetivo activo del proyecto.** A petición del editor 2026-04-22. Cambios:
+
+- El término "pivote" se reserva para describir el **evento histórico** del 2026-04-20 (cambio de modelo). No se usa como adjetivo del proyecto vigente.
+- El proyecto se refiere a sí mismo como **"observatorio documental"** o por su nombre (`radar))ibiza_vivienda`).
+- Documentos activos actualizados: [CLAUDE.md](CLAUDE.md), [README.md](README.md), [STATUS.md](STATUS.md), [ROADMAP.md](ROADMAP.md), [ARQUITECTURA.md](ARQUITECTURA.md), [SEO.md](SEO.md), [DISENO-WEB.md](DISENO-WEB.md), [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md), [CONTENIDO-RETROACTIVO.md](CONTENIDO-RETROACTIVO.md), [ESTUDIOS-PENDIENTES.md](ESTUDIOS-PENDIENTES.md), [ESTUDIO-3-MODELOS.md](ESTUDIO-3-MODELOS.md), [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md).
+- Documentos históricos intactos: entradas previas del DIARIO (registran el evento en su momento), [DECISIONES-PENDIENTES.md](DECISIONES-PENDIENTES.md) (acta del momento), logs privados.
+- [PIVOTE.md](PIVOTE.md) conserva el nombre de archivo (rompería enlaces renombrarlo) pero lleva nota de cabecera explicando que el término es histórico.
+- Identificador interno `model: "pivote-documental-v1"` renombrado a `model: "documental-v1"` en `src/generate.py` (SYSTEM + frontmatter mínimo + edición vacía) y en la W17 ya publicada. Identificador técnico, no visible al público.
+
+---
+
 ## 2026-04-21 (noche · roadmap V2 y decisiones fundacionales) — 7 fases, 12 tareas nuevas, nombre cerrado, regla complementaria
 
 Cierre de sesión larga de revisión técnica y estratégica. El editor pide crear el mejor roadmap posible con las tareas nuevas de la revisión + las originales del bloque fundacional. Responde a las 7 preguntas de Claude con decisiones y plantea meta-preguntas que obligan a repensar el proyecto.

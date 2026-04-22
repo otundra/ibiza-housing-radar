@@ -34,7 +34,7 @@ El workflow `weekly-report.yml` se dispara:
 
 ## Control de costes
 
-Sistema de capas en euros (actualizado 2026-04-20 para absorber los 3 niveles de autoevaluación del pivote):
+Sistema de capas en euros (actualizado 2026-04-20 para absorber los 3 niveles de autoevaluación):
 
 - **🟢 Verde (<6 €):** silencio.
 - **🟡 Amarilla (6-9 €):** aviso por Telegram (FYI).
@@ -62,7 +62,7 @@ Genera `docs/_editions/<YYYY>-w<WW>.md`, actualiza `docs/index.md` (panel de la 
 
 Ver [CLAUDE.md](CLAUDE.md) para detalles de arquitectura, decisiones y comandos. Ver [DIARIO.md](DIARIO.md) para el diario del proyecto.
 
-**Roadmap activo (post-pivote):** [`ROADMAP.md`](ROADMAP.md) + documentos hermanos [`PIVOTE.md`](PIVOTE.md), [`ARQUITECTURA.md`](ARQUITECTURA.md), [`DISENO-WEB.md`](DISENO-WEB.md), [`SEO.md`](SEO.md), [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md), [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md). El antiguo [PLAN.md](PLAN.md) se conserva como referencia histórica.
+**Roadmap activo:** [`ROADMAP.md`](ROADMAP.md) (estructura V2 en 7 fases ejecutables) + documentos hermanos [`PIVOTE.md`](PIVOTE.md) (documento fundacional del modelo documental), [`ARQUITECTURA.md`](ARQUITECTURA.md), [`DISENO-WEB.md`](DISENO-WEB.md), [`SEO.md`](SEO.md), [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md), [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md), [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md). El antiguo [PLAN.md](PLAN.md) se conserva como referencia histórica.
 
 ## Aviso
 

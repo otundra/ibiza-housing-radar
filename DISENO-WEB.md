@@ -529,7 +529,7 @@ Si OK, se incorpora al registro con `dateModified` y entrada en `/correcciones/`
 
 Contenido generado por Opus. Editor puede añadir nota humana breve al principio de cada auditoría si tiene contexto relevante.
 
-Primera auditoría: Q3 2026 (tras 13 ediciones del pivote).
+Primera auditoría: Q3 2026 (tras 13 ediciones bajo el modelo documental).
 
 ### `/costes/` (nuevo — dashboard público simplificado)
 

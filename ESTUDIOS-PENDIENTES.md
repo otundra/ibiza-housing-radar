@@ -1,7 +1,7 @@
 # Estudios pendientes antes o durante Fase 0
 
 **Fecha:** 2026-04-20
-**Origen:** decisiones del editor 2026-04-20 tras presentación del expediente del pivote.
+**Origen:** decisiones del editor 2026-04-20 tras presentación del expediente del cambio de modelo (documento fundacional en [PIVOTE.md](PIVOTE.md)).
 **Uso:** cada punto es un estudio específico que necesita trabajo analítico propio antes de tomar la decisión final. Ninguno bloquea el arranque del pipeline técnico y del contenido retroactivo, pero algunos condicionan el lanzamiento público.
 
 ---

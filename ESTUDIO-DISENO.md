@@ -92,7 +92,7 @@ Asumidos sin más debate:
 
 ### 2.3 Tres patrones diferenciadores (oro para nosotros)
 
-Los que **solo 1-2 referentes** hacen y tienen alto encaje con nuestro pivote documental:
+Los que **solo 1-2 referentes** hacen y tienen alto encaje con nuestro modelo documental:
 
 1. **Chrome operacional honesto de Solar Low-Tech.** Footer con métricas reales: tamaño del HTML, coste API del mes, build time, fecha de última ejecución. Nadie en nuestra categoría lo hace. Refuerza la tesis documental. Coste: 0 €. → Ver [§6.1](#61-chrome-operacional-footer).
 2. **Doble horizonte temporal de OpenSecrets** aplicado a fichas de actor. Toggle "Temporada actual" vs "Histórico". Resuelve dos públicos con un componente. → Ver [§6.9](#69-toggle-histórico).
@@ -102,7 +102,7 @@ Los que **solo 1-2 referentes** hacen y tienen alto encaje con nuestro pivote do
 
 ## 3. Principios rectores de diseño
 
-Destilados del benchmark + 5 reglas duras del pivote. Si un componente nuevo no cumple estos principios, se rechaza.
+Destilados del benchmark + 5 reglas duras del observatorio. Si un componente nuevo no cumple estos principios, se rechaza.
 
 1. **Credibilidad por restricción.** Menos color, menos animación, menos decoración. Densidad tipográfica > imagen.
 2. **Un único color de acento** (terracota). Las variaciones por tipo de actor son tonos neutros matizados, no nuevos primarios.

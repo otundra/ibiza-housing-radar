@@ -32,7 +32,7 @@
 
 ## 🧭 MODELO DOCUMENTAL ACTIVO (merge a `main` el 21-abr-2026)
 
-> El pivote a **"observatorio documental"** está consolidado en `main` desde el 2026-04-21 mediodía (commit `b24a6ad`). Es el único modelo vigente. Origen: [estudio crítico](private/estudios/2026-04-20-propuestas.md) sobre el corpus W16-W17.
+> La transición al **modelo documental** está consolidada en `main` desde el 2026-04-21 mediodía (commit `b24a6ad`). Es el único modelo vigente. Origen: [estudio crítico](private/estudios/2026-04-20-propuestas.md) sobre el corpus W16-W17.
 >
 > **Expediente estratégico completo:**
 >
@@ -157,9 +157,9 @@ export ANTHROPIC_API_KEY=sk-ant-...
 python -m src.report
 ```
 
-## 📋 Plan de mejora — pivote 2026-04-20
+## 📋 Plan de mejora — modelo documental
 
-El roadmap de trabajo activo vive ahora en [`ROADMAP.md`](ROADMAP.md) bajo el pivote a observatorio documental. El [`PLAN.md`](PLAN.md) original se conserva como referencia histórica.
+El roadmap de trabajo activo vive en [`ROADMAP.md`](ROADMAP.md) (estructura V2 en 7 fases ejecutables). El [`PLAN.md`](PLAN.md) original se conserva como referencia histórica.
 
 **Bloqueante antes de arrancar Fase 0:** confirmar las 16 decisiones en [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md) (reescritura W16-W17, dominio propio, fecha relanzamiento, autoría, distribución, etc.).
 
