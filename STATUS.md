@@ -18,13 +18,13 @@
 
 ## 🏷️ REBRANDING PROVISIONAL (21-abr-2026)
 
-> Nombre público de trabajo: **Radar Vivienda Ibiza** (provisional). Wordmark tipográfico `radar))vivienda_ibiza` en monospace. Logo SVG gráfico descartado; identidad totalmente tipográfica. Dominio candidato `radaribiza.com` (compra pendiente). Repo GitHub mantiene slug `ibiza-housing-radar` hasta compra del dominio. Ver [DIARIO.md](DIARIO.md) entradas 2026-04-21.
+> Wordmark tipográfico cerrado 2026-04-21 noche: **`radar))ibiza_vivienda`** (formato `lugar_tema`, monospace). Logo SVG gráfico descartado; identidad 100% tipográfica. Dominio candidato `radaribiza.com` (compra pendiente según evolución del proyecto). Repo GitHub mantiene slug `ibiza-housing-radar`. Ver [DIARIO.md](DIARIO.md) entradas 2026-04-21.
 
 ## 🎨 ESTUDIO DE DISEÑO CERRADO (21-abr-2026)
 
 > Entregable: [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) (14 secciones, ~700 líneas, benchmark con 13 referentes, 9 componentes especificados, plan de prototipo en 6 pasos).
 >
-> **13 decisiones (D1-D13) cerradas.** D1 cerrada con **V2 Split** (2026-04-21): `radar))vivienda_ibiza` en JetBrains Mono con `))` en terracota y resto en tinta. D2 resuelta con **favicon `))` vectorial** ([`docs/prototype/logo/favicon.svg`](docs/prototype/logo/favicon.svg)) — identidad 100% tipográfica. Preview vivo en [`docs/prototype/logo/preview.html`](docs/prototype/logo/preview.html).
+> **13 decisiones (D1-D13) cerradas.** D1 cerrada con **V2 Split** (2026-04-21): wordmark en JetBrains Mono con `))` en terracota y resto en tinta. El orden del wordmark se fijó el mismo día en **`radar))ibiza_vivienda`** (formato `lugar_tema`). D2 resuelta con **favicon `))` vectorial** ([`docs/prototype/logo/favicon.svg`](docs/prototype/logo/favicon.svg)) — identidad 100% tipográfica. Preview vivo en [`docs/prototype/logo/preview.html`](docs/prototype/logo/preview.html).
 >
 > Dirección visual apuntada: **"mono + seams"** — mono tipográfico en más elementos + separadores tipo costura + iconografía Unicode (no emoji). Por formalizar al construir el prototipo HTML estático (Paso 1).
 >

@@ -53,6 +53,18 @@ Cualquier error verificado de hecho o atribución se corrige con nota visible, f
 
 ---
 
+## Regla complementaria — Automatización máxima + veracidad pública
+
+**Fijada 2026-04-21 noche.** El editor opera el proyecto como infraestructura automatizada; **no audita contenido manualmente**. El sistema se audita a sí mismo mediante un auditor IA de 5 capas + tiers de confianza públicos (🟢🟡🟠🔴) + cuarentena pública + log de auditoría abierto por propuesta.
+
+Cualquier visitante que pregunte *"¿y quién revisa?"* encuentra la respuesta en abierto: código fuente completo, log literal por propuesta en `data/audit/`, tier calculado en cada ficha, correcciones públicas, balance auditado, auditorías trimestrales. **Esa transparencia radical es la respuesta, no una persona humana revisando.**
+
+El rol del editor es mejorar el método, no auditar el corpus. Responde correos del formulario, escala excepciones reales, refina criterios cuando los datos lo piden. El pipeline funciona como un tren autónomo; el editor cuida la vía, no lee cada vagón.
+
+Esta regla define cómo se construye cada módulo del pipeline: cualquier diseño que requiera revisión humana continua queda fuera.
+
+---
+
 ## Antes / después
 
 | Dimensión | Modelo antiguo (W16-W17) | Modelo nuevo (desde el pivote) |

@@ -2,9 +2,9 @@
 
 Instrucciones para Claude Code al trabajar en este proyecto.
 
-> 🏷️ **Rebranding 2026-04-21 (provisional).** El nombre público de trabajo es **Radar Vivienda Ibiza**. Es *provisional* — se reevaluará antes del relanzamiento público. Wordmark tipográfico: `radar))vivienda_ibiza` (todo en `JetBrains Mono`, las `))` evocan ondas de radar). Formato pensado para un futuro ecosistema: `radar))turismo_ibiza`, `radar))medioambiente_ibiza`, etc.
+> 🏷️ **Nombre 2026-04-21 (provisional).** Wordmark tipográfico cerrado: **`radar))ibiza_vivienda`** (formato `lugar_tema`, todo en `JetBrains Mono`, las `))` evocan ondas de radar). El editor cierra esta forma por lectura natural en español. Futuros verticales del mismo ecosistema: `radar))ibiza_turismo`, `radar))ibiza_medioambiente`, `radar))formentera_vivienda`.
 >
-> **Dominio:** `radaribiza.com` sigue siendo candidato principal (objetivo corto). Si el nombre "Radar Vivienda Ibiza" se consolida, se revaluará `radarviviendaibiza.com`. El repo GitHub mantiene el slug `ibiza-housing-radar` hasta que se compre dominio. Tagline estable: *"Observatorio documental"*.
+> **Dominio:** `radaribiza.com` sigue siendo candidato principal. Compra pendiente según evolución del proyecto. Repo GitHub mantiene el slug `ibiza-housing-radar` hasta decisión de dominio. Tagline estable: *"Observatorio documental"*.
 >
 > **Logo gráfico descartado** 2026-04-21. Dirección visual elegida: **tipográfica pura**. Sin monograma SVG. El wordmark cumple la función de identidad completa. Preview vivo en [`docs/prototype/logo/preview.html`](docs/prototype/logo/preview.html) con 4 variantes (V1 mono plano · V2 split · V3 tri · V4 underline). Pendiente elección de variante.
 

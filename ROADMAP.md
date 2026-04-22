@@ -1,7 +1,205 @@
-# Roadmap — Ibiza Housing Radar post-pivote
+# Roadmap — radar))ibiza_vivienda
 
-**Fecha:** 2026-04-20
-**Origen:** [PIVOTE.md](PIVOTE.md).
+**Fecha original:** 2026-04-20 · **Reestructurado en fases ejecutables:** 2026-04-21 noche
+**Origen:** [PIVOTE.md](PIVOTE.md), [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md).
+**Principio base:** relanzamiento sólido, sostenido por infraestructura automatizada (el editor opera, no audita). Coste ≤12 €/mes bajo tope blando, ≤50 €/mes bajo tope duro. Reversibilidad vía histórico git.
+
+---
+
+## Roadmap V2 — 7 fases ejecutables (estructura activa)
+
+Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas (RT1-RT24 en la revisión fundacional + bloques originales A-I) en 7 fases con ruta crítica, paralelos y dependencias. Supuestos base:
+
+- **Ritmo:** ~15 h/semana del editor, sostenible.
+- **Objetivo de lanzamiento:** soft launch mediados de mayo / junio 2026 si no entra en mayo. Escenario B (rodaje privado 6-12 meses) es válido si al terminar Fase 6 el estado no está maduro. Ver tarea RT24.
+- **Prioridad:** calidad antes que velocidad. Error reputacional temprano es más caro que retraso.
+- **Marca:** `radar))ibiza_vivienda` (cerrado 2026-04-21).
+
+### Panorama
+
+| Fase | Nombre | Duración estimada | Objetivo |
+|---|---|---|---|
+| 1 | Cimientos firmes | 2-3 semanas | Pipeline listo para absorber el backfill sin romperse |
+| 2 | Backfill, corpus y fuentes primarias | 1-2 semanas | 12 (o 6) semanas auditadas + datos propios operativos |
+| 3 | Afinado de ingesta y criterios | 1 semana | Fuentes validadas empíricamente con el corpus real |
+| 4 | Web completa + trilingüe | 2-3 semanas | 15+ páginas en ES/CA/EN antes del SEO |
+| 5 | SEO y distribución | 1-2 semanas | Descubribilidad multilingüe + canales activos |
+| 6 | Pre-empuje | 1 semana | Sanity check externo + ensayo final |
+| 7 | Empuje público + medición 90 días | continuo | Lanzamiento + evaluación con framework de señales |
+
+**Total estimado:** 9-12 semanas a ritmo sostenible.
+
+### Fase 1 — Cimientos firmes
+
+**Ruta crítica en serie:**
+
+1. **Estudio preciso de costes del auditor IA** (RT14). Tabla por capa + proyección mensual + plan si cruza topes. Bloquea construir PI9.
+2. **Tests básicos del pipeline** (RT5). 5-6 h. Sin esto, cualquier cambio en auditor/tiers es ciego.
+3. **Re-estudio profundo del sistema de tiers** (RT15). Árbol de decisión cerrado, copy público, mockups. Antes de implementar.
+4. **Auditor IA de 5 capas** (PI9). Construido sobre tests y costes ya cerrados.
+5. **Prueba empírica del backfill** (RT1). 1 semana antigua (W10). Mide 5 números reales antes de comprometer 12.
+
+**En paralelo (hilos independientes):**
+
+- **Estudio Vía A de precios** (RT12 + RT21). Matriz de fuentes, nombre público ("Observatorio de precios"), presupuesto, recomendación de cronograma.
+- **Estudio titular legal** (RT20 + LG1 + LG2). Tabla comparativa + recomendación + plan de implementación.
+- **Estudio de factibilidad BOIB** (RT22). 2-4 h. Decide si sube a Fase 2 o queda en Fase 3.
+- **Regla fundacional automatización + veracidad pública** (RT13) documentada en PIVOTE ✅ hecha 2026-04-21.
+
+**Decisiones cerradas en Fase 1:**
+- Rol del editor = operador sin revisión de contenido (RT2 resuelto: opción B actual, opción C cuando haya tracción).
+- Nombre del wordmark: `radar))ibiza_vivienda` ✅ cerrado.
+
+**Salida de la fase:** pipeline robusto con tests y auditor IA operativo, datos empíricos del backfill, decisión sobre Vía A y BOIB, titular legal en trámite.
+
+### Fase 2 — Backfill, corpus y fuentes primarias
+
+**Ruta crítica en serie:**
+
+1. **Backfill real** (PI2-B). Ajustado según prueba empírica de Fase 1. 12, 6 o 4 semanas.
+2. **Sistema de tiers de confianza** (PI10). Implementado sobre datos del backfill. Ajustes si el re-estudio (RT15) ha cambiado algo.
+3. **Cuarentena pública** `/revision-pendiente/` (PI11).
+4. **Alerta Telegram enriquecida completa** (PI12). Ahora hay datos upstream.
+
+**En paralelo:**
+
+- **Implementación Vía A de precios** si Fase 1 dio verde. Scripts de agregación mensual + publicación inicial de 3-6 meses de datos. Página `/precios/`.
+- **BOIB watcher** si el estudio de factibilidad dio verde. Si no, queda para Fase 3.
+
+**Salida:** 12 ediciones retroactivas publicadas, tiers operativos, cuarentena pública, posiblemente datos propios de precios y BOIB.
+
+### Fase 3 — Afinado de ingesta y criterios
+
+**Tareas en paralelo (todas independientes):**
+
+- **Matriz de queries Google News** (FU2) con recall/precision empírico + catalán.
+- **BOIB watcher** si no entró en Fase 2.
+- **Reevaluar Hora Ibiza + Nou Diari** (FU3) con datos reales del backfill.
+- **Health check de fuentes** (FU1) + script `sources_health.py` + proceso de revisión trimestral.
+- **Criterio formal de admisión de propuestas** (ED1) validado empíricamente.
+- **Imparcialidad alertable** con umbrales cerrados (ED2).
+- **Horizonte temporal** fijado en UI y copy (ED4).
+- **Auditoría registro completo de costes** (PI7). Verificar que `costs.csv` captura 100%.
+
+**Salida:** sources vivas, criterios validados, alertas de imparcialidad operativas.
+
+### Fase 4 — Web completa + trilingüe
+
+**Ruta crítica en serie:**
+
+1. **Incorporar propuesta visual de Claude Design** (RT16). Requiere archivos del editor; comparar con D1-D13, decidir qué se mantiene/sustituye/integra.
+2. **Wireframes low-fi de todas las páginas** (UX1) con la propuesta visual ya integrada.
+3. **Documento de navegación** (RT17) — propio, `NAVEGACION.md`. Top-nav con subniveles, sidebars contextuales, sitemap visual siempre accesible, breadcrumbs, internal linking denso, CTAs exploración, mobile-first.
+4. **Decisión dos públicos** (UX3): home dual / toggle / dos landings.
+5. **Test de usabilidad de tiers y navegación** con 3 personas (RT3 + EX1). Iterar antes de construir todas las páginas.
+6. **Construcción de páginas en Jekyll** (todo el Bloque B original + las nuevas):
+   - Política editorial (con las 5 reglas + regla complementaria de automatización).
+   - Metodología (convertir prototipo `/metodo/` a Jekyll, con propuesta visual de Claude Design).
+   - Correcciones (vacía con formato).
+   - Propuestas (tracker filtrable).
+   - Actores (directorio con fichas).
+   - Radar (señales en movimiento).
+   - Revisión-pendiente (cuarentena, ya en Fase 2).
+   - Sin dato (con formulario).
+   - Balance accesible doble capa (UX5).
+   - Cómo usarlo (UX4 + RT11).
+   - Glosario.
+   - Contacto (Formspree universal).
+   - Cita esto (kit de prensa).
+   - Datos abiertos (CSV descargable) con disclaimer (PI4).
+   - Financiación (FI1).
+   - Aviso legal (con titular resuelto).
+   - 404.
+   - Auditoría (vacía para trimestrales).
+   - Costes público.
+   - Estado (histórico operacional).
+   - Precios (si Vía A entró).
+   - Omisiones (ED3) — página propia si se decide.
+7. **Seguimiento visual de evolución de problemáticas** (RT19) — estudio de formato + mockup + implementación si hay datos suficientes.
+8. **Enlace entre ediciones y evolución individual de propuestas** (PI3, el "grafo de oro").
+9. **Plantilla de semana flaca** (UX6).
+10. **Split `/acerca/` + `/metodo/`** (RT8, RT9). `/acerca/` corta + `/metodo/` con detalle técnico.
+11. **Copy final de la home** (RT11).
+12. **Componentes del estudio** finalizados en Jekyll (9 + los derivados de Claude Design).
+13. **Trilingüe ES/CA/EN operativo** (RT18). Pipeline de traducción + chrome trilingüe + glosario eivissenc. Antes del SEO.
+14. **OG images con Puppeteer** (Bloque D5).
+15. **Modo oscuro manual + automático** (Bloque B40).
+
+**Decisión operativa importante:** activar trilingüe desde el backfill (las 12 ediciones retroactivas salen en 3 idiomas, coste +3-4 € puntuales, corpus consistente) o solo desde el empuje público (ahorro marginal, hueco en el corpus). **Recomendación Claude: desde el backfill si el presupuesto lo permite.**
+
+**Salida:** web completa en 3 idiomas, navegable, responsive, accesible, coherente con el modelo documental y la nueva propuesta visual.
+
+### Fase 5 — SEO y distribución
+
+**Ruta crítica en serie:**
+
+1. **Dominio propio configurado** si el editor lo decide (Q3). Migración 301 desde GitHub Pages.
+2. **Meta tags + schema.org + Open Graph + Twitter Cards** en las 15+ páginas × 3 idiomas.
+3. **Sitemap, robots.txt, RSS completo por idioma, canonicals + hreflang.**
+4. **Google Search Console + Bing Webmaster** con el dominio y los 3 idiomas.
+5. **Core Web Vitals auditadas**.
+6. **Páginas `/explica/` long-tail** (8 páginas × 3 idiomas). Sa Joveria, Can Misses, IBAVI, Consell d'Eivissa, Llei habitatge, alquiler turístico, vivienda temporera, VPO Ibiza.
+7. **Newsletter Buttondown** + envío automático del lunes 10:00. Formulario de suscripción.
+8. **Página de estadísticas** con GoatCounter + Search Console.
+9. **Lista curada de 15-25 contactos directos** (periodistas, gabinetes, tercer sector, sindicatos, patronales, académicos).
+
+**Salida:** web indexable en 3 idiomas, canales de distribución listos.
+
+### Fase 6 — Pre-empuje
+
+1. **Sanity check externo** con periodista local o académico UIB. 30 propuestas del backfill auditadas. 50-100 €.
+2. **Test de usabilidad final** con 3 personas reales si no se completó en Fase 4.
+3. **Banner de fase de rodaje** colocado (RT4): *"Observatorio en rodaje · N ediciones documentadas · próximo hito: X"*.
+4. **Aviso legal operativo** con titular definitivo (RT20 cerrada).
+5. **Estrategia de lanzamiento cerrada** (EX3). Recomendación: soft con envío privado a lista curada el lunes del relanzamiento.
+6. **Backup automático del repo** a GitLab o Codeberg (EX4).
+7. **Página de financiación** (FI1) con canales pasivos Ko-fi / GitHub Sponsors.
+8. **Plan de respuesta a rectificaciones de actor** (OP1).
+9. **Dashboard público de costes** (`/costes/`).
+10. **Página `/estado/`** con histórico operacional.
+11. **Health de feeds** (OP2).
+12. **Evaluación del escenario A vs B** (RT24). Con el estado real a la vista, decidir si se lanza o se mantiene rodaje privado.
+
+**Salida:** todo listo para el lunes del relanzamiento o decisión formal de diferir a Escenario B.
+
+### Fase 7 — Empuje público + medición 90 días
+
+**Día 1:** edición publica automáticamente, email manual a lista curada, vigilancia constante de Search Console + GoatCounter la primera semana.
+
+**Primeras 4 semanas:** responder correos del formulario (48-72 h), recoger feedback real, ajustar tono si hace falta.
+
+**Evaluación a 90 días con framework de tracción** (RT23):
+- **Verde** → activar Vía B crowd-sourcing precios, bots sociales, envío personalizado semanal, consejo editorial, primer grant.
+- **Amarillo** → revisión de ángulo, tono, distribución.
+- **Rojo** → pasar a modo experimental, pipeline sigue, sin inversión de energía nueva. Reevaluar a 180 días.
+
+### Diferido con criterio claro
+
+Estas tareas siguen apuntadas pero no entran en el roadmap del relanzamiento:
+
+- **Balance rediseño con persistencia trimestral** (RT6) — activar a los 3 meses de datos, ~julio 2026.
+- **Auditoría trimestral con Opus** — primera cuando haya 13 ediciones (Q4 2026 si todo va bien).
+- **Re-benchmark mensual de modelos**.
+- **Automatización anual de fechas de temporada**.
+- **Notificación de alerta por email** (PI13) — cuando haya buzón propio.
+- **Página `/recursos/`** (para afectados) — Fase 1 post-lanzamiento.
+- **Bots Bluesky + Mastodon** — tras medición de 90 días.
+- **Consejo editorial honorífico**.
+- **Observatorio de precios Vía B** (crowd-sourcing ciudadano) — si Vía A se consolida.
+- **BOIB watcher como servicio activo** — si no entró en Fase 2.
+- **Evento anual co-organizado**.
+- **Modelo de newsletter pago/híbrido**.
+
+---
+
+## Fase 0 original (anexo histórico — estructura por bloques)
+
+**Nota:** la estructura de abajo (Bloques A-I) es la planificación original del pivote (2026-04-20). La **estructura activa** es el Roadmap V2 de arriba. Los bloques se mantienen como referencia para ver qué se movió dónde.
+
+---
+
+## Contexto original del pivote
+
 **Principio base:** lanzar en Fase 0 todo lo que se pueda para que el relanzamiento del proyecto sea fuerte, coherente y memorable. Coste 0 externo salvo API Anthropic. Reversible vía branch aislado.
 
 ## Estado a 2026-04-20

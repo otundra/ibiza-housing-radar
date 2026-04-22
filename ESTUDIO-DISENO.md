@@ -1,4 +1,4 @@
-# Estudio de diseño — Radar Vivienda Ibiza (provisional)
+# Estudio de diseño — radar))ibiza_vivienda
 
 **Fecha:** 2026-04-20 · **Cerrado con OK del editor:** 2026-04-21
 **Autor:** Claude Opus 4.7 + Raúl Serrano
@@ -7,7 +7,9 @@
 
 > Este estudio **no reemplaza** a [DISENO-WEB.md](DISENO-WEB.md) (arquitectura de información, mapa del sitio, contenido por página). Lo complementa añadiendo identidad, tokens de sistema, spec de componentes y criterio de prototipado.
 
-> 🏷️ **Rebranding 2026-04-21 (provisional).** Nombre público de trabajo: **Radar Vivienda Ibiza**. Es provisional — se reevaluará antes del relanzamiento. Wordmark tipográfico: `radar))vivienda_ibiza`. Dominio candidato `radaribiza.com`. Repo GitHub mantiene slug `ibiza-housing-radar` hasta compra del dominio. Tagline: *"Observatorio documental"*.
+> 🏷️ **Nombre 2026-04-21.** Wordmark tipográfico cerrado: **`radar))ibiza_vivienda`** (formato `lugar_tema`). Dominio candidato `radaribiza.com`. Repo GitHub mantiene slug `ibiza-housing-radar`. Tagline: *"Observatorio documental"*.
+>
+> ⚠️ **Nota sobre los prototipos HTML.** Los prototipos bajo `docs/prototype/` aún muestran el orden anterior (`radar))vivienda_ibiza`). Se actualizan cuando se reanude el bloque de Diseño, coordinado con la propuesta visual de Claude Design (tarea RT16 en la revisión fundacional).
 
 > 🎯 **Dirección visual confirmada:** **"mono + seams"** — peso tipográfico mono (JetBrains Mono) en más elementos editoriales + separadores tipo costura (dashed, líneas finas). Iconografía: Unicode puro, no emoji coloreado.
 >

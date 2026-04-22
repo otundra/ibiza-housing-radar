@@ -12,6 +12,48 @@ Reglas:
 
 ---
 
+## 2026-04-21 (noche · roadmap V2 y decisiones fundacionales) — 7 fases, 12 tareas nuevas, nombre cerrado, regla complementaria
+
+Cierre de sesión larga de revisión técnica y estratégica. El editor pide crear el mejor roadmap posible con las tareas nuevas de la revisión + las originales del bloque fundacional. Responde a las 7 preguntas de Claude con decisiones y plantea meta-preguntas que obligan a repensar el proyecto.
+
+**Respuesta honesta de Claude sobre el potencial del proyecto:**
+- Hoy es "ordenar noticias con método". Sin datos propios + tracker de evolución + distribución relacional, se queda en herramienta útil pero no referente.
+- Tres palancas que elevan: observatorio de precios (Vía A + Vía B), tracker de propuestas con estados públicos, lista curada de 20-30 contactos que reciben edición directa.
+- Framework de señales de tracción a 90 días post-relanzamiento decide si se escala o se mantiene como side-project experimental. Verde/amarillo/rojo con 6 métricas medibles.
+- Escenario B (rodaje privado 1 año) es legítimo y barato (84 € en API + tiempo voluntario). Se mantiene como opción si al terminar Fase 6 el estado no está maduro.
+
+**Decisiones cerradas hoy:**
+
+- **Nombre del wordmark: `radar))ibiza_vivienda`** (formato `lugar_tema`). Actualizado en [CLAUDE.md](CLAUDE.md), [STATUS.md](STATUS.md), [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md), [docs/acerca.md](docs/acerca.md). ID1 cerrada. Prototipo HTML pendiente de actualización cuando se retome Diseño (coordinado con RT16 Claude Design).
+- **Regla complementaria a las 5 duras del pivote:** automatización máxima + niveles de veracidad públicos. El editor opera, no audita. El sistema se audita a sí mismo (auditor IA + tiers + cuarentena + log abierto). Añadida a [PIVOTE.md](PIVOTE.md) como regla complementaria.
+- **Rol del editor:** opción B (sin muestreo humano del 10%) durante rodaje + opción C (revisor externo pagado) cuando haya tracción.
+- **Trilingüe ES/CA/EN activo antes del SEO:** sube de "diferido" a Fase 4 de la nueva estructura. Web multilingüe desde el lanzamiento.
+- **Escenarios de lanzamiento:** A soft launch mayo-junio, B rodaje 1 año. La naturalidad decide al terminar Fase 6.
+
+**12 tareas nuevas añadidas al inicio de [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md) (P-1):**
+
+- RT13 — Regla fundacional: automatización + veracidad pública (✅ documentada en PIVOTE).
+- RT14 — Estudio preciso de costes del auditor IA (backfill + mantenimiento). Bloquea PI9.
+- RT15 — Re-estudio profundo del sistema de tiers. Antes de implementar PI10.
+- RT16 — Propuesta visual de Claude Design incorporada al estudio de diseño. Requiere archivos del editor.
+- RT17 — Navegación exhaustiva mobile-first con sitemap visual siempre accesible. Documento `NAVEGACION.md` propio.
+- RT18 — Trilingüe ES/CA/EN activado en Fase 4 antes del SEO.
+- RT19 — Seguimiento visual de evolución de problemáticas y soluciones. Diferencial editorial.
+- RT20 — Estudio titular legal con detenimiento. Bloquea empuje público.
+- RT21 — Vía A precios: nombre público ("Observatorio de precios") y presupuesto operativo.
+- RT22 — BOIB watcher: decisión de ubicación Fase 2 vs Fase 3 con estudio de factibilidad previo.
+- RT23 — Framework de señales de tracción a 90 días post-lanzamiento.
+- RT24 — Escenarios de lanzamiento A (soft mayo-junio) y B (rodaje 1 año).
+
+**Nuevo Roadmap V2 en 7 fases ejecutables** añadido al inicio de [ROADMAP.md](ROADMAP.md). La estructura original de Bloques A-I queda como anexo histórico para referencia. Duración estimada 9-12 semanas a ritmo 15 h/semana. Fases: (1) Cimientos firmes, (2) Backfill + fuentes primarias, (3) Afinado ingesta, (4) Web completa + trilingüe, (5) SEO + distribución, (6) Pre-empuje, (7) Empuje público + medición 90 días.
+
+**Pendiente de confirmación del editor:**
+- Archivos / screenshots de la propuesta visual de Claude Design (RT16).
+- Decisión operativa: activar trilingüe desde el backfill (corpus consistente) o solo desde empuje público (ahorra unos euros puntuales).
+- Decisión final BOIB: subir a Fase 2 o mantener en Fase 3, tras estudio de factibilidad.
+
+---
+
 ## 2026-04-21 (post-revisión · decisiones del editor) — /acerca/ reescrita + 2 tareas nuevas (RT11 home, RT12 precios)
 
 - **`docs/acerca.md` reescrita** (opción A, breve ~250 palabras). Qué es el observatorio + quién lo edita + licencias + financiación + contacto + avisos. El detalle técnico (reglas duras, pipeline, modelos, sesgos) se delega a la futura `/metodo/`. Copy sin prometer nada que no tenga ya; banner de "página en reescritura" retirado.

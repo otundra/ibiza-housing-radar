@@ -196,6 +196,166 @@ Esa decisión se toma cuando se reanude la etapa de Diseño, tras cerrar los hal
 
 **Salida esperada:** copy final de la home cerrado, componentes del dashboard revisados contra las decisiones D1-D13 del estudio de diseño, `build_index.py` emite el copy definitivo.
 
+### RT13 · Regla fundacional — automatización máxima + niveles de veracidad públicos ⏳ [FILOSOFÍA]
+**Decisión del editor 2026-04-21 noche:** la filosofía del proyecto se fija como **automatización máxima con transparencia radical sobre niveles de veracidad**. El editor opera, no audita contenido. El sistema se audita a sí mismo mediante auditor IA de 5 capas + tiers públicos 🟢🟡🟠🔴 + cuarentena + log de auditoría abierto. Cualquier visitante que pregunte *"¿y quién revisa?"* puede ver en abierto: el código, el log literal por propuesta, el tier calculado, las correcciones, el balance, las auditorías trimestrales.
+
+Esta regla define cómo se construye cada módulo posterior y cómo se escribe la política editorial. Todo lo que requiera revisión humana continua del editor queda fuera del diseño del pipeline (el editor solo revisa en excepcional, como respuesta a escalados).
+
+**Salida:** regla fundacional documentada explícitamente en `PIVOTE.md` (como regla complementaria a las 5) y desarrollada en la política editorial pública con copy en lenguaje llano. Referencia explícita al rol del editor como operador no revisor, y al log de auditoría como mecanismo de transparencia.
+
+### RT14 · Estudio preciso de costes del auditor IA ⏳ [BLOQUEA PI9]
+Antes de construir el auditor de 5 capas hay que cerrar el presupuesto real. Variables: coste por capa en € (extract Haiku, audit ciego Sonnet, comparador Python, arbitraje Opus si disputa, queue de revisión), frecuencia esperada de disputas (arbitraje Opus), tamaño medio de payload por propuesta, rate de propuestas por semana, coste del backfill completo de 12 semanas, coste operativo semanal de mantenimiento en régimen normal, coste por propuesta flagged que vaya a cuarentena.
+
+Cruzar con el tope blando (12 €/mes) y duro (50 €/mes). Si la proyección excede, identificar qué capa se simplifica (candidato obvio: reducir el muestreo aleatorio si ya se eliminó la revisión humana; reducir arbitraje Opus a casos de disputa crítica).
+
+**Salida:** documento `ESTUDIO-COSTES-AUDITOR.md` con tabla detallada por capa + proyección mensual + comportamiento bajo carga de backfill + plan de contingencia si cruza topes.
+
+### RT15 · Re-estudio profundo del sistema de tiers de confianza ⏳ [ALTA]
+El sistema de tiers 🟢🟡🟠🔴 se aprobó rápido el 2026-04-21 noche. El editor pide re-estudio serio antes de implementar. Preguntas abiertas:
+- **Cálculo.** ¿Qué combinaciones de señales del auditor asignan cada color exactamente? Árbol de decisión determinista, no heurística.
+- **Umbrales ajustables.** ¿Dónde viven las reglas en el código? ¿Cómo se cambian sin refactor? ¿Qué pasa si cambian retroactivamente con el corpus existente?
+- **Comunicación al público en llano.** Copy para cada tier ("alta confianza, dos fuentes coincidentes" vs "fuente única, si conoces el caso ayúdanos"). Test con lector no técnico.
+- **Dos públicos.** ¿Se muestran a todos o solo a lector en modo profesional? ¿Se puede filtrar por tier?
+- **Interacción con cuarentena.** 🔴 va a cuarentena pero puede promoverse si aparece segunda fuente. ¿Cómo se comunica esa historia al lector?
+- **Historia del tier.** Un tier puede cambiar con el tiempo (una propuesta 🟡 se vuelve 🟢 cuando aparece corroboración). ¿Se muestra esa evolución? ¿Cómo?
+- **Sesgo de tier por tipo de actor.** Verificar empíricamente si el sistema asigna sistemáticamente peor tier a ciertos actores (colectivos ciudadanos con menos cobertura mediática). Si sí, mitigar.
+
+**Salida:** documento `ESTUDIO-TIERS.md` con árbol de decisión cerrado + copy público ejemplo + mockups de cómo se ven en ficha de propuesta + tabla + dashboard + plan de test con usuarios (complementa RT3). Antes de implementar PI10.
+
+### RT16 · Propuesta visual de Claude Design — incorporación al estudio ⏳ [MEDIA]
+El editor probó Claude Design 2026-04-21 y recibió una propuesta visual interesante que quiere incorporar. Pendiente de que el editor comparta los archivos/screenshots/link para que Claude Code pueda analizarlos y compararlos contra el estudio de diseño actual ([`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md), 13 decisiones D1-D13 ya cerradas).
+
+**Acción:** editor comparte los entregables de Claude Design; Claude Code los revisa, los confronta con las decisiones D1-D13, identifica qué se mantiene, qué se sustituye, qué se integra como evolución, qué se descarta. Impacto mayor probable en home, edición, cards de propuesta, ficha de actor.
+
+**Salida:** documento comparativo + propuesta de integración + actualización del estudio de diseño con el conjunto final + ajuste de los 9 componentes si aplica.
+
+### RT17 · Navegación exhaustiva mobile-first ⏳ [ALTA]
+Con 15+ páginas nuevas, la navegación es crítica. El editor pide explícitamente 2026-04-21 noche que el usuario pueda cruzar secciones con soltura y criterio. Elementos a diseñar:
+- **Top-nav con subniveles por sección** (menús desplegables con las sub-páginas de cada área).
+- **Sidebars contextuales** en páginas con muchos sub-apartados (método, política editorial, metodología, datos abiertos) para que el lector tenga la estructura siempre presente.
+- **Sitemap visual siempre accesible** — como elemento de navegación global, no una página solitaria. Puede ser un modal invocable desde cualquier página, o un footer expandido. La idea es que nunca se pierda el mapa completo.
+- **Breadcrumbs** en cada página interna.
+- **Internal linking denso:** edición ↔ actor ↔ propuesta ↔ explica ↔ glosario ↔ edición, con links contextuales dentro del cuerpo.
+- **CTAs de exploración al final de cada vista** (no solo al inicio).
+- **Mobile-first:** todas las decisiones de navegación se prueban primero en móvil. Menú hamburguesa con subniveles, sitemap modal, sidebars plegables.
+
+**Salida:** documento `NAVEGACION.md` propio (no sub-sección de otro) con mapa de enlaces, patrones, estados, heurísticas, prototipos mobile y desktop, reglas de UX. Se hace después de UX1 (wireframes) y antes de la construcción de las páginas.
+
+### RT18 · Trilingüe ES/CA/EN — activar antes del SEO ⏳ [ALTA]
+**Decisión del editor 2026-04-21 noche:** el trilingüe debe estar operativo antes de activar el SEO serio. Implica que entra en Fase 4 (web completa), no diferido como estaba.
+
+**Implicaciones:**
+- Pipeline se complica: generate ES (Opus) + translate CA (Sonnet) + translate EN (Sonnet) + validador de consistencia (mismas URLs, mismas cifras, mismo nº de bullets).
+- Web multilingüe desde el lanzamiento: carpetas `/ca/` y `/en/`, diccionario `_data/i18n.yml`, selector de idioma global, `<html lang>` correcto por página, hreflang en cada una.
+- SEO multilingüe: 3 feeds RSS (`feed.xml`, `feed.ca.xml`, `feed.en.xml`), title/description optimizados por idioma (no solo traducidos), JSON-LD con `inLanguage`, sitemap con `xhtml:link rel="alternate"`.
+- Coste operativo +1,15 €/mes (de ~6-7 a ~8 €/mes). Dentro del tope blando 12 €/mes con margen.
+- Glosario eivissenc con topónimos y cargos oficiales + regla de preservar mayúsculas interiores (Can Toni, Sa Penya).
+- Variante catalán: estándar IEC (no balear), alineado con IB3 Notícies, Ara Balears, Vilaweb.
+
+**Decisión pendiente:** ¿se activa trilingüe desde el backfill (las 12 ediciones retroactivas salen en 3 idiomas desde el relanzamiento, coste +3-4 € puntuales) o solo desde el empuje público (backfill en ES y ediciones nuevas trilingües)? La primera da consistencia de corpus; la segunda ahorra coste puntual.
+
+**Salida:** pipeline de traducción operativo + chrome trilingüe + SEO multilingüe + decisión sobre backfill trilingüe. Entregable en Fase 4 antes de Fase 5.
+
+### RT19 · Seguimiento visual de evolución de problemáticas y soluciones ⏳ [DIFERENCIAL]
+**Petición del editor 2026-04-21 noche:** una vista pública que permita seguir de forma muy visual y rápida cómo evolucionan las problemáticas de vivienda y sus propuestas de solución en Ibiza. El objetivo es alimentar el empuje hacia mejorar la vivienda: si algo está traccionando, que se destaque — manteniendo imparcialidad.
+
+Esto es **un diferencial editorial real** y se solapa solo parcialmente con otras tareas:
+- Complementa PI3 (grafo de evolución de cada propuesta individual).
+- Se relaciona con UX7 (sección "avances o éxitos") pero más visual y agregado.
+- Distinto de `/balance/` (que mide reparto de actores, no progreso de propuestas).
+
+**Posibles formatos (por estudiar):**
+- **Heatmap de propuestas × estado × tiempo.** Eje X: semanas. Eje Y: propuestas. Celdas coloreadas por estado (propuesta/debatida/aprobada/en ejecución/implementada/descartada).
+- **Sankey del flujo** propuesta → debate → implementación. Muestra qué % de propuestas avanzan y dónde se atascan.
+- **Timeline agregado por problemática** (residencias temporeros, desalojos, alquiler turístico, etc.) con hitos marcados.
+- **Kanban público** con propuestas en columnas por estado, filtrable.
+- **Combinación** — vista principal tipo timeline + drill-down a fichas individuales.
+
+**Requisito duro de imparcialidad:** el "destacar si tracciona" no puede sesgar por ideología. Las propuestas del PP que avanzan se destacan igual que las de Més. El algoritmo de "tracción" es estado + apoyos citados + cobertura mediática, no alineación editorial.
+
+**Salida:** documento `ESTUDIO-SEGUIMIENTO-VISUAL.md` con comparativa de formatos + decisión + mockup + algoritmo de "tracción" imparcial + implementación (probablemente post-backfill para tener datos suficientes que mostrar).
+
+### RT20 · Estudio del titular legal con detenimiento ⏳ [ALTA · BLOQUEA EMPUJE PÚBLICO]
+Coincide con LG1 (anonimato legal) pero la tarea pide un estudio formal antes de decidir. Opciones a comparar con datos reales:
+- **(a) Servicio de representación legal externa.** Empresa especializada actúa como titular declarado en el aviso legal. Editor queda como "responsable editorial" sin aparición legal. Coste típico 50-150 €/año. Ejemplos: ProPrivacy España, Easylegal, pequeños gestores. Rápido.
+- **(b) Asociación sin ánimo de lucro.** Constitución con 3 personas (60-300 € inicial + ~100-200 €/año gestoría). Más robusto, abre puertas a grants. Requiere aliados.
+- **(c) SL de 1 €** (forma societaria especial 2022). Fiscalmente más complejo, menos alineado con misión no lucrativa, pero da protección patrimonial clara.
+- **(d) Fundación paraguas con aliados existentes.** Si Cáritas Ibiza, GEN-GOB, sindicato local, UIB acepta albergar el proyecto bajo su paraguas. Cero coste, máximo prestigio, pero pérdida de autonomía editorial potencial.
+- **(e) Pseudónimo + buzón virtual.** Riesgo legal real: LSSI exige titular identificable; pseudónimo solo funciona si hay una figura legal detrás.
+
+**Cruzar variables:** coste, complejidad fiscal, flexibilidad editorial, tiempo de montaje, riesgo real de inspección LSSI, escalabilidad si el proyecto crece. Añadir plan de implementación concreto de la opción recomendada.
+
+**Salida:** documento `ESTUDIO-TITULAR-LEGAL.md` con tabla comparativa + recomendación firme + plan de implementación en días. Decisión del editor + arranque de trámite. Bloquea empuje público: sin titular declarado legalmente, abrir al público es riesgo.
+
+### RT21 · Vía A de precios — nombre público y presupuesto ⏳
+Antes de implementar la vía A (RT12 estudio de fuentes), cerrar:
+- **Nombre público del módulo.** Propuesta: **"Observatorio de precios"** con URL `/precios/`. Alternativas consideradas: "Radar de precios" (refuerza marca pero se solapa con el nombre principal), "Precios vivienda Ibiza" (SEO puro, menos elegante), "Termómetro de precios". El editor elige.
+- **Presupuesto operativo proyectado.** Coste de scraping/descarga mensual (la mayoría de fuentes son PDF/CSV descargables, pero IBESTAT tiene API, el Ministerio de Vivienda publica CSV). Coste de almacenamiento (no supera ~5 MB). Coste de mantenimiento cuando cambia un formato de origen (estimar ~2-3 h cada 6 meses). Coste API si se usa Claude para normalizar entre fuentes (probablemente no hace falta — las fuentes oficiales ya vienen estructuradas).
+- **Estructura de URLs.** `/precios/` índice, `/precios/ibiza/`, `/precios/formentera/`, `/precios/serie-historica/`, `/precios/fuentes/`? O todo en una sola página con filtros.
+- **Modelo de actualización.** Cron mensual que descarga, normaliza, publica. Alerta si alguna fuente cambia formato.
+
+**Salida:** nombre cerrado + presupuesto cuantificado + estructura de URLs + plan de ejecución. Entrada al `ESTUDIO-PRECIOS.md` que contempla RT12.
+
+### RT22 · BOIB watcher — decisión de ubicación en el roadmap ⏳
+**Pregunta del editor 2026-04-21 noche** sobre si la ubicación actual del BOIB watcher (Fase 3 afinado + diferido como servicio activo) es la correcta. Análisis honesto:
+
+**Pro subirlo a Fase 2** (junto al backfill):
+- BOIB es **fuente primaria pura** (no prensa): leyes, decretos, resoluciones, convocatorias IBAVI. Diferencial claro.
+- Si está operativo en el relanzamiento, el corpus cubre normativa oficial desde el día 1.
+- Refuerza la narrativa de "observatorio serio con datos primarios" que el editor busca.
+- Se integra naturalmente con el tracker de evolución de propuestas (si una propuesta se aprueba por BOIB, el tracker detecta el salto automático).
+
+**Contra subirlo a Fase 2:**
+- BOIB no tiene RSS robusto. Requiere scraping del buscador o búsqueda Google News filtrada por `site:caib.es/boib`.
+- Complejidad técnica adicional encima de la del backfill.
+- Si se hace mal, genera falsos positivos ruidosos (normativa urbanística no relacionada con vivienda).
+
+**Recomendación honesta:** subir a Fase 2, **con estudio de factibilidad técnica previo** de 2-4 horas que determine (a) si el buscador BOIB permite scraping ético con cumplimiento de robots.txt, (b) qué tasa de falsos positivos tiene una búsqueda filtrada, (c) si se implementa con código propio o con un filtro Google News suficiente. Si el estudio da verde, entra en Fase 2; si da amarillo o rojo, queda en Fase 3 como estaba.
+
+**Salida:** estudio de factibilidad + decisión del editor + ubicación definitiva en el roadmap.
+
+### RT23 · Framework de señales de tracción a 90 días post-relanzamiento ⏳ [DIFERIDO POST-LANZAMIENTO]
+Para decidir si el proyecto escala a "dedicar energía seria" o se mantiene como side-project experimental, se definen señales medibles que se evalúan 90 días después del relanzamiento.
+
+**Verde (escalar, dedicar energía seria):**
+- ≥ 1 cita de prensa local como fuente (no como curiosidad anecdótica).
+- ≥ 25 suscriptores reales al newsletter (no familia, no conocidos directos del editor).
+- ≥ 1 mención institucional identificable (Cáritas, UIB, sindicato, Consell, ayuntamiento).
+- ≥ 500 impresiones/mes en Search Console para búsquedas relacionadas con vivienda + Ibiza.
+- ≥ 5 aportes serios vía formulario universal (correcciones, datos, testimonios, pistas).
+- ≥ 1 uso identificable de los datos abiertos (CSV descargado) en análisis de terceros.
+
+**Amarilla (replantear ángulo):** 1-2 de las 6 anteriores se cumplen. Tráfico orgánico 50-200/mes. Formulario con 1-2 mensajes al mes.
+
+**Roja (mantener como side-project experimental o aparcar):** 0 citas de prensa a 3 meses, <10 suscriptores, tráfico <50/mes, formulario en silencio.
+
+Tres escenarios de acción según color:
+- **Verde →** se activan Vía B crowd-sourcing precios, bots sociales, envío personalizado semanal a periodistas, consejo editorial honorífico, primera aplicación a grant.
+- **Amarilla →** conversación abierta sobre qué no funciona (¿tono?, ¿distribución?, ¿cobertura?), ajuste de prompt, ampliación de fuentes, cambio de marca si procede.
+- **Roja →** el proyecto queda como corpus experimental. El pipeline sigue generando ediciones porque el coste es trivial (~7 €/mes), pero no se invierte más energía en UX, distribución o expansión. Se reevalúa a 180 días.
+
+**Salida:** documento `SEÑALES-TRACCION.md` con umbrales formales + plan de acción por color + ritual de evaluación a 90 días. Revisión automática cada 90 días en adelante.
+
+### RT24 · Escenarios de lanzamiento y horizonte ⏳
+**Decisión del editor 2026-04-21 noche:** el proyecto admite dos escenarios válidos y la naturalidad del proceso decide cuál aplica. No se fuerza ninguno.
+
+**Escenario A — Soft launch mayo-junio + extensión si señales tibias.**
+- Relanzamiento suave: web abierta, newsletter activo, envío manual a lista curada de 15-25 contactos. Sin nota de prensa, sin ruido.
+- Medición a 90 días con el framework de señales (RT23).
+- Verde → se escala con las fases post-lanzamiento del roadmap.
+- Amarilla/Roja → se extiende rodaje privado 3-6 meses más antes de reintentar empuje.
+
+**Escenario B — Rodaje privado largo.**
+- Web existe con `noindex,nofollow`. El editor opera el pipeline semanal sin buscar audiencia.
+- 6-12 meses para acumular corpus sólido, afinar criterios empíricamente, pulir metodología.
+- Relanzamiento formal en primavera 2027 con mucha más confianza.
+- Coste: ~84 € en API durante el año + tiempo voluntario del editor.
+- Sentido: si durante la preparación del relanzamiento A aparece que el método aún necesita afinarse, se migra a B sin drama.
+
+**Criterio de decisión del escenario:** al terminar Fase 6 (pre-empuje), mirar el estado real del proyecto con honestidad — métodos afinados, corpus consistente, autoría limpia, datos propios operativos o no, tiers funcionando, banner de rodaje con copy creíble. Si todo está en verde, Escenario A. Si algo cruje, Escenario B sin pena.
+
+**Salida:** sección explícita en el roadmap + revisión formal del escenario al terminar Fase 6 + mismo ritual cada 3 meses si se está en Escenario B.
+
 ### RT12 · Vía A de precios — estudio en profundidad antes del relanzamiento ⏳ [ALTA]
 Adelantar la [Vía A del observatorio de precios](PLAN.md) (agregación mensual de informes públicos) al pre-relanzamiento es la palanca más fuerte para convertir el proyecto de "lectura estructurada de prensa local" a **fuente primaria con datos propios**. Coste 0 €, sin riesgo legal (son informes públicos descargables), sin scraping contra TOS. El PLAN la dejaba en Fase 2 (3-6 meses post-relanzamiento); el editor 2026-04-21 noche acepta adelantarla y pide estudio profundo antes de comprometer trabajo.
 
@@ -420,9 +580,8 @@ Si un RSS deja de publicar, si baja la frecuencia, si Google News cambia su form
 
 ## P4 — Identidad, legal, financiación
 
-### ID1 · Nombre definitivo — `radar))ibiza_vivienda` vs `radar))vivienda_ibiza` ⏳
-Editor prefiere la primera. Claude debe dar opinión argumentada desde SEO, legibilidad, escalabilidad a futuros verticales (`radar))ibiza_turismo`, `radar))ibiza_medioambiente`).
-**Salida:** recomendación + decisión + actualización de todos los docs.
+### ID1 · Nombre definitivo — `radar))ibiza_vivienda` ✅
+**Cerrada 2026-04-21 noche.** El editor cierra el wordmark en **`radar))ibiza_vivienda`** (formato `lugar_tema`) por sentir que se lee más natural en español. Futuros verticales: `radar))ibiza_turismo`, `radar))ibiza_medioambiente`, `radar))formentera_vivienda`. Documentos actualizados: CLAUDE.md, STATUS.md, ESTUDIO-DISENO.md. El prototipo HTML queda por actualizar cuando se retome Diseño (coordinado con RT16 Claude Design).
 
 ### LG1 · Anonimato legal del editor ⏳
 Investigar cómo mantener el nombre del editor oculto en:
@@ -488,8 +647,20 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | **RT8** | **Banner temporal en `/acerca/` + split acerca/metodo** | 🔄 | **Fix temporal aplicado, reescritura cuando se retome Diseño** |
 | **RT9** | **Prototipo de páginas mínimas (política editorial, metodología, correcciones)** | ⏳ | **P-1 · cuando se retome Diseño** |
 | **RT10** | **LG1 + LG2 promovidas a alta — anonimato legal pre-relanzamiento** | ⏳ | **P-1 · antes de empuje público** |
-| **RT11** | **Copy y tono de la home — decisión editorial** | ⏳ | **P-1 · en la etapa de Diseño, depende de RT3 y RT12** |
+| **RT11** | **Copy y tono de la home — decisión editorial** | ⏳ | **P-1 · en la etapa de Diseño, depende de RT3, RT12 y RT16** |
 | **RT12** | **Vía A de precios — estudio en profundidad** | ⏳ | **P-1 · ALTA · adelantarla al pre-relanzamiento si el estudio da viable** |
+| **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ⏳ | **P-1 · FILOSOFÍA · añadir a PIVOTE.md como regla complementaria** |
+| **RT14** | **Estudio preciso de costes del auditor IA** | ⏳ | **P-1 · BLOQUEA PI9 · backfill + mantenimiento** |
+| **RT15** | **Re-estudio profundo del sistema de tiers** | ⏳ | **P-1 · ALTA · antes de implementar PI10** |
+| **RT16** | **Propuesta visual de Claude Design** | ⏳ | **P-1 · requiere archivos del editor** |
+| **RT17** | **Navegación exhaustiva mobile-first** | ⏳ | **P-1 · ALTA · NAVEGACION.md propio** |
+| **RT18** | **Trilingüe ES/CA/EN antes del SEO** | ⏳ | **P-1 · ALTA · entra en Fase 4** |
+| **RT19** | **Seguimiento visual de evolución de problemáticas** | ⏳ | **P-1 · DIFERENCIAL · formato por decidir** |
+| **RT20** | **Estudio titular legal con detenimiento** | ⏳ | **P-1 · ALTA · bloquea empuje público** |
+| **RT21** | **Vía A precios — nombre y presupuesto** | ⏳ | **P-1 · antes de implementación** |
+| **RT22** | **BOIB watcher — ubicación Fase 2 vs Fase 3** | ⏳ | **P-1 · estudio de factibilidad 2-4 h + decisión** |
+| **RT23** | **Framework de señales de tracción a 90 días** | ⏳ | **P-1 · DIFERIDO POST-LANZAMIENTO** |
+| **RT24** | **Escenarios de lanzamiento y horizonte** | ⏳ | **P-1 · A soft mayo-junio / B rodaje 1 año** |
 | ED1 | Criterio OK propuestas | ⏳ | |
 | ED2 | Imparcialidad alertable | ⏳ | |
 | ED3 | Presencia de Omisiones | ⏳ | |
@@ -523,7 +694,7 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | UX8 | Construir entera | ⏳ | |
 | OP1 | Rectificación actor | ⏳ | |
 | OP2 | Health feeds | ⏳ | |
-| ID1 | Nombre definitivo | ⏳ | |
+| ID1 | Nombre definitivo `radar))ibiza_vivienda` | ✅ | Cerrada 2026-04-21 noche |
 | LG1 | Anonimato legal | ⏳ | |
 | LG2 | Portfolio sin nombre | ⏳ | |
 | FI1 | Financiación | ⏳ | |
