@@ -122,4 +122,47 @@ Ambas hipótesis (expansión temática + escalabilidad provincial) comparten **l
 
 ## 7. Decisión
 
-**Nada que decidir ahora.** Documento vivo. Revisar cuando RT23 dé verde en la evaluación de 90 días post-relanzamiento.
+**Nada que decidir ahora.** Documento vivo. Revisar cuando el framework de señales de tracción a 90 días (tarea `RT23` del roadmap) dé verde en la evaluación post-relanzamiento.
+
+---
+
+## 8. Revisión 2026-04-22 (tarde) — tarea previa bloqueante: definir el problema turístico
+
+Tras una primera exploración del corpus actual (W17, 19 noticias housing) se detectó solapamiento altísimo vivienda-turismo (~75% de las noticias housing tienen componente turístico directo o indirecto). El asistente propuso avanzar con instrumentación preparatoria (extender el schema de clasificación con campos `tourism_connection`, `tourism_lever`, `tourism_actors` y tracking CSV append-only).
+
+**El editor rechazó la instrumentación** con dos argumentos:
+
+1. **En vivienda el problema está formulado con una frase clara:** *"gente que trabaja en Ibiza no puede alojarse a precio digno"*. En turismo no existe una frase equivalente; hay seis formulaciones candidatas distintas, cada una con actores y palancas propias.
+2. **Instrumentar sin problema definido dispersa el foco.** El riesgo no es técnico sino editorial.
+
+### Las seis formulaciones candidatas del problema turístico
+
+| Formulación | Quién la enuncia | Palancas que activa |
+|---|---|---|
+| *"La isla está saturada, hay demasiada gente en verano"* | Colectivos ciudadanos, GEN-GOB, parte del Consell | Capacidad, cruceros, límites aéreos |
+| *"El alquiler turístico vacía el mercado residencial"* | Sindicatos, Cáritas, colectivos → solapa con vivienda | VT/VTR, inspección, moratoria |
+| *"El modelo económico es monodependiente y precariza el trabajo"* | Sindicatos, académicos UIB | Condiciones laborales, diversificación |
+| *"El turismo destruye territorio y recursos (agua, posidonia, costa)"* | GEN-GOB, Amics de la Terra | Ecotasa, protección, vertidos |
+| *"El ocio descontrolado degrada la convivencia"* | Vecinos de Sant Antoni, Platja d'en Bossa | Licencias, horarios, ruido |
+| *"La ecotasa no se redistribuye con justicia"* | Partidos, patronales | Fiscalidad, destino fondos |
+
+### Decisión del editor
+
+**No instrumentar. No expandir. No hacer nada técnico sobre turismo ahora.** Citando textualmente:
+
+> *"De momento no es más que añadir diluir el foco. Centrémonos en vivienda y si algo grita naturalmente ya lo oiremos como quien dice."*
+
+Regla editorial derivada y guardada en memoria (`feedback_esperar_demanda_organica.md`):
+
+1. No se abre un nuevo eje temático sin **formulación clara del problema** (equivalente en nitidez a la de vivienda).
+2. No se abre un nuevo eje temático sin **demanda orgánica manifiesta** (señales externas: búsquedas, emails, palancas que aparecen solas en el corpus, prensa que lo pide). No por proactividad interna.
+
+Aplica a cualquier expansión del proyecto: temas, provincias, idiomas, secciones.
+
+### Qué sí se puede hacer si cuando llegue el momento hay demanda
+
+Si en algún momento el debate turístico "grita naturalmente" y se confirma demanda sostenida, el trabajo previo bloqueante **no es técnico sino editorial**: cerrar cuál de las seis formulaciones (o una séptima no contemplada aquí) justifica el vertical, y qué queda fuera. Sin esa frase cerrada, no se instrumenta. Con esa frase cerrada, el Modelo C (palancas transversales en el pipeline actual) es el primer paso natural — no un vertical separado desde el día uno.
+
+### Reposicionamiento del resto del documento
+
+Las secciones 1-7 anteriores se conservan como estudio registrado del momento en que se planteó la expansión. Son **referencia histórica de análisis**, no plan activo. La parte viva de este documento es este bloque 8 y la regla de demanda orgánica.

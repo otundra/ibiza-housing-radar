@@ -12,6 +12,17 @@ Reglas:
 
 ---
 
+## 2026-04-22 (tarde · cierre) — Regla editorial: no expandir foco sin problema definido y demanda orgánica
+
+- **Exploración del corpus W17 (19 noticias housing) para la palanca turismo** devolvió solapamiento muy alto vivienda-turismo (~75% de noticias housing tocan turismo directa o indirectamente, dominadas por el evento sa Joveria). El asistente propuso instrumentar preparatoriamente (extender schema con campos `tourism_connection`, `tourism_lever`, `tourism_actors` + tracking CSV). **Editor rechaza la propuesta.**
+- **Razonamiento del editor:** en vivienda el problema está formulado con una frase clara (*"gente que trabaja en Ibiza no puede alojarse a precio digno"*). En turismo hay al menos seis formulaciones candidatas distintas (saturación, alquiler turístico, modelo monodependiente, destrucción de recursos, ocio descontrolado, ecotasa mal redistribuida), cada una con actores y palancas propias. Instrumentar sin problema formulado dispersa el foco editorial. El cuello de botella real es el tiempo de revisión de los lunes, no la capacidad técnica del pipeline.
+- **Decisión:** no se instrumenta turismo. Centrarse en vivienda y escuchar si algo "grita naturalmente" (cita literal: *"de momento no es más que añadir diluir el foco, centrémonos en vivienda y si algo grita naturalmente ya lo oiremos como quien dice"*).
+- **Regla editorial general derivada** (aplica a cualquier expansión del proyecto — temas, provincias, idiomas, secciones): no abrir un nuevo eje sin (a) formulación clara del problema, (b) demanda orgánica manifiesta en señales externas (búsquedas, emails, palancas que aparecen solas en el corpus, prensa que las pide). No por proactividad interna. Guardada en memoria como `feedback_esperar_demanda_organica.md`.
+- **Documentación:** [`EXPANSION-TEMATICA.md`](EXPANSION-TEMATICA.md) actualizado con sección 8 que recoge las seis formulaciones candidatas, la decisión del editor y la regla. Las secciones 1-7 pasan a ser referencia histórica del análisis; la parte viva es el bloque 8.
+- **Feedback adicional del editor apuntado a memoria** (`feedback_referencias_con_contexto.md`): no mencionar identificadores internos del proyecto (`RT23`, `PI9`, `D11`, `W17`, etc.) sin glosar qué son la primera vez en cada respuesta o documento introductorio. Rompe el flujo de lectura y obliga a ir a buscar. Siglas del dominio público (BOIB, IBAVI, GEN-GOB, CCOO, PIMEEF...) sí son válidas sin glosar.
+
+---
+
 ## 2026-04-22 (tarde) — Hipótesis de escalabilidad provincial y de expansión temática documentadas
 
 - **Posibilidad de replicar el modelo a otras provincias**: discutida y documentada en [`ROADMAP.md`](ROADMAP.md) como "Hipótesis post-tracción — Escalabilidad provincial". Condicionada a tracción demostrada en Ibiza (framework RT23 a 90 días). Arquitectura prevista: monorepo motor + `config/<provincia>.yaml` + repos de output por provincia con GitHub Pages propio. La lógica temporal específica de Ibiza (temporada/pre-temporada por ciclo de clubs) queda en su yaml y no contamina el motor común. URLs con fechas ISO son el eje universal, compatible con cualquier geografía. No hay decisión técnica que tomar ahora; queda documentado para cuando haya tracción (Q3 2026 como pronto).
