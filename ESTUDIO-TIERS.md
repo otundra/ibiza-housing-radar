@@ -1,7 +1,7 @@
 # Estudio del sistema de tiers de confianza
 
-**Fecha:** 2026-04-23
-**Estado:** 🟡 primer pase — secciones 1-3 redactadas (contexto + señales + árbol de decisión). Secciones 4-11 pendientes de segundo pase.
+**Fecha:** 2026-04-23 (primer pase) · 2026-04-23 tarde (segundo pase)
+**Estado:** 🟡 casi cerrado — secciones 1-7, 9, 10 redactadas; §8 al 50 % (diseño sí, medición empírica pendiente del backfill); §11 es una lista de 5 preguntas al editor que cierran el estudio al contestarlas.
 **Origen:** tarea de la revisión fundacional, ficha RT15 en [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md:238). Bloquea la función `compute_tier()` real dentro del auditor y la página pública con el badge de cada propuesta.
 **Dependencia cerrada:** [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md) define qué señales produce el auditor. Este estudio decide cómo combinarlas en un color.
 
@@ -284,16 +284,531 @@ Estas dos validaciones se hacen ejecutando `compute_tier()` sobre el backfill pi
 
 ---
 
-## Secciones pendientes (segundo pase)
+## 4 · Umbrales ajustables
 
-- **§4 · Umbrales ajustables.** Dónde viven (archivo `src/tiers.py` o `data/tiers.yml`), cómo se cambian sin refactor, política de cambios retroactivos sobre corpus publicado (¿se recalculan tiers antiguos o se congelan?).
-- **§5 · Copy público llano por tier.** Texto exacto que ve el lector junto al badge. Testeable. Versión ES, luego CA/EN en la fase trilingüe.
-- **§6 · Interacción con cuarentena y promoción.** Cómo se mueve una propuesta de 🔴 a 🟡 cuando aparece segunda fuente, cómo se comunica esa historia, qué pasa con el enlace permanente.
-- **§7 · Historia del tier.** Un tier puede cambiar con el tiempo; se muestra la evolución en la ficha, se registra en el log append-only, se genera un micro-timeline.
-- **§8 · Sesgo por tipo de actor.** Medición sobre backfill, decisión sobre mitigación (relajación del techo de fuente única en casos concretos, o aceptación explícita del sesgo con nota metodológica).
-- **§9 · Mockups.** Ficha de propuesta, lista de edición, dashboard `/auditor/`, cuarentena `/revision-pendiente/`.
-- **§10 · Plan de test con usuarios.** Enganche con el test de usabilidad previsto (ficha RT3 de la revisión fundacional). Dos públicos: periodista local vs temporero/ciudadano. Métrica: comprensión del código de colores a los 5 segundos.
-- **§11 · Decisiones que necesito del editor.** Lista cerrada de preguntas que solo puede responder Raúl (si los colores se muestran a todos los visitantes o solo en modo profesional, si el techo de fuente única se relaja con whitelist refuerza, si el default del paso 6 es 🟠 o 🔴).
+### 4.1 Dónde viven las reglas — tres opciones
+
+**Opción 1 · Constantes en `src/tiers.py`.** Umbrales como variables de módulo al principio del archivo. Cambio = editar código + commit + push. Pros: versionado en git, sin parser externo. Contras: cambio obliga a despliegue; un editor no técnico no los toca directamente.
+
+**Opción 2 · YAML externo `data/tiers.yml`.** Umbrales declarativos en YAML. `src/tiers.py` los lee al arrancar. Cambio = editar YAML + commit. Pros: legible, separación datos/código, encaja con la capa 5bis del auditor (Opus propone bloque YAML mensual, editor firma). Contras: dos lugares coherentes; un typo en YAML rompe el cálculo.
+
+**Opción 3 · Híbrido.** Constantes por defecto en código + override opcional en YAML. Arranque sin YAML; override donde aporta. Pros: flexibilidad. Contras: complejidad conceptual.
+
+**Recomendación: opción 2 (YAML).** Encaja con la capa 5bis ya definida en [`ESTUDIO-COSTES-AUDITOR.md §4 · Capa 5bis`](ESTUDIO-COSTES-AUDITOR.md). Los umbrales son datos editoriales, no lógica. El coste del typo se mitiga con un validador al cargar (aborta el pipeline con error claro; mejor que calcular mal en silencio). `src/tiers.py` queda mínimo: solo el árbol.
+
+### 4.2 Qué va al YAML
+
+```yaml
+# data/tiers.yml — umbrales ajustables del sistema de tiers
+umbrales_verify:
+  verbatim_quote_min: 0.95        # cita textual: ratio mínimo
+  verbatim_reported_min: 0.60     # estilo indirecto: mínimo bloqueante
+  verbatim_reported_verde: 0.80   # estilo indirecto: mínimo para 🟢
+
+techos:
+  fuente_unica: amarillo
+  arbitraje_opus_resolvio: amarillo
+  whitelist_debilita: amarillo
+  viability_sin_cifra_declarada_alta: amarillo
+  sin_wayback_en_dominio_inestable: naranja
+
+dominios_estables:
+  - "boib.caib.es"
+  - "caib.es"
+  - "conselldeivissa.es"
+  - "diariodeibiza.es"
+  - "periodicodeibiza.es"
+  - "ibestat.cat"
+
+politica_cambio_retroactivo: congelar   # congelar | recalcular | hibrido
+default_paso_6: naranja
+```
+
+Lo que **no** va al YAML: las reglas de taxonomía (qué campo es crítico vs menor, qué señales computan el consenso). Forman parte del árbol, no son ajuste operativo. Viven en `src/tiers.py`.
+
+### 4.3 Política de cambios retroactivos
+
+Si mañana se baja `verbatim_reported_verde` de 0.80 a 0.75, ¿qué pasa con las propuestas ya publicadas?
+
+- **Congelar.** Tier calculado una sola vez al publicar, inmutable en log. Cambios futuros afectan solo a nuevas. Pros: estabilidad, ediciones no mutan a espaldas del lector. Contras: umbrales antiguos se acumulan como legado.
+- **Recalcular.** Cada cambio re-ejecuta `compute_tier()` sobre todo el corpus con las señales guardadas. Ficha muestra siempre el tier con la política vigente. Pros: coherencia. Contras: historia del tier se borra por ajustes que no son información real.
+- **Híbrido.** Log guarda `tier_al_publicar` inmutable y `tier_vigente` recalculable. Ficha muestra vigente con nota si difiere. Pros: lo mejor de ambos. Contras: dos tiers visibles confunden.
+
+**Recomendación: congelar.** Motivos:
+
+- Coherente con el principio editorial del proyecto: las ediciones no se reescriben, se corrigen con nota fechada.
+- Un tier es un juicio en un momento dado con los criterios vigentes entonces. Cambiarlo silenciosamente hacia atrás es ucronía.
+- Si un cambio de umbral descubre un error sistemático en propuestas pasadas, la vía correcta es el **protocolo de correcciones 72 h** — una entrada por propuesta afectada en [`/correcciones/`](docs/correcciones.md). Eso es información pública. El recálculo masivo silencioso no lo es.
+
+En YAML: `politica_cambio_retroactivo: congelar`.
+
+---
+
+## 5 · Copy público llano por tier
+
+Nivel lector temporero o ciudadano sin contexto técnico. Sin *auditor*, *heurística*, *ratio*, *consenso IA*. Conceptos traducidos a acciones observables.
+
+### 5.1 Texto corto junto al badge en la ficha
+
+```
+🟢 Alta confianza
+   Dos medios lo recogen y la revisión automática no encontró pegas.
+
+🟡 Confianza media
+   Un solo medio lo recoge, o hubo alguna duda durante la revisión.
+   Si conoces el caso, ayúdanos: [formulario de contacto].
+
+🟠 Confianza baja
+   La revisión automática dejó avisos. Publicamos porque tiene interés,
+   pero fíjate bien en el enlace de origen antes de citarla.
+
+🔴 No publicada — en revisión
+   Detectada pero no pasa los controles mínimos.
+   Esperamos segunda fuente o a que alguien nos confirme.
+```
+
+### 5.2 Texto largo en `/metodologia/#tiers`
+
+```
+Cada propuesta publicada lleva un color que resume la confianza que
+tenemos en ella en el momento de publicar. Lo calculamos automática-
+mente con reglas fijas; no las decide una persona caso a caso.
+
+🟢 Alta confianza. Dos medios distintos recogen la misma propuesta,
+la URL de origen está viva, la cita del actor aparece literal en el
+artículo, y la revisión automática la ha procesado sin discusión
+interna.
+
+🟡 Confianza media. Cumple los controles mínimos pero falta algo de
+redundancia: fuente única, o una cifra declarada sin respaldo, o una
+discusión interna entre capas de la revisión que se resolvió con una
+tercera pasada. Se publica, con aviso.
+
+🟠 Confianza baja. Publicable pero con reservas. Hay avisos no
+bloqueantes — por ejemplo no hay copia guardada en Wayback Machine,
+o el medio no está en la lista de fuentes estables. El lector debe
+ir al enlace original antes de citar.
+
+🔴 No publicada. La propuesta existe en la prensa pero no supera los
+controles: URL caída, cita que no se encuentra en el artículo, o la
+revisión automática no se pone de acuerdo ni tras arbitraje. Va a
+/revision-pendiente/ y se archiva a los 60 días si nada cambia.
+
+Los controles son los mismos para todos los actores: partidos
+políticos, sindicatos, patronales, asambleas vecinales, tercer
+sector. No se pondera la reputación del actor ni del medio que lo
+recoge más allá de una lista dura de fuentes aceptadas (ver
+/metodologia/#fuentes).
+
+Los umbrales concretos viven en data/tiers.yml, públicos y
+auditables. Los cambios se anotan en /correcciones/ y no se aplican
+hacia atrás.
+```
+
+### 5.3 Palabras prohibidas en copy público (traducciones)
+
+| En el código | En cara pública |
+|---|---|
+| heurística | regla automática |
+| ratio, umbral | cuánto coincide / nivel mínimo |
+| consenso IA, capa 1/2 | revisión automática |
+| árbol de decisión | reglas fijas |
+| whitelist | lista de fuentes aceptadas |
+| verbatim match | cita literal, cita textual |
+| verify, cross-source | segunda fuente, verificación técnica |
+| arbitraje Opus | tercera pasada de revisión |
+| log, append-only | registro público |
+| schema, endpoint | — (no aparece en cara pública) |
+
+### 5.4 Prueba de comprensión antes de publicar
+
+- Leer los tres textos cortos a alguien sin contexto técnico y preguntar *"¿qué significa este color?"* — tiene que contestar en 10 segundos con frase propia.
+- El texto largo no debe obligar a ir a otra página para entender un término. Si menciona "Wayback Machine" o "fuentes estables", lo explica ahí mismo o con tooltip.
+
+---
+
+## 6 · Interacción con cuarentena y promoción
+
+### 6.1 Qué pasa cuando algo es 🔴
+
+La propuesta se escribe en el registro del auditor igual que las demás, con `tier.value = "rojo"` y `tier.reason` explicando la causa. **No entra en la edición semanal.** Aparece en [`/revision-pendiente/`](docs/revision-pendiente.md) con: actor, resumen corto, URL, motivo del rojo, fecha de detección y fecha prevista de archivo (detección + 60 días).
+
+### 6.2 Cómo se promueve de 🔴 a 🟡 / 🟠
+
+Tres caminos:
+
+1. **Llega segunda fuente antes de los 60 días.** El pipeline detecta en la ingesta de una semana siguiente una propuesta equivalente (mismo actor + misma palanca + mismo target_actor) en URL de dominio distinto. El auditor recalcula: si el verbatim ahora coincide y los demás checks pasan, el tier sube a 🟡 o 🟠 según el árbol. La propuesta entra en la edición de la semana en que llegó la segunda fuente.
+2. **Corrección manual vía formulario.** Un lector notifica que la URL funcionaba, que la cita correcta es otra, o que hay segunda fuente no detectada. El editor (no audita contenido pero sí valida si la corrección es procesable) decide: actualizar la lista de fuentes aceptadas si era problema de dominio no listado; añadir la segunda fuente al registro y relanzar; o rechazar la corrección con nota fechada.
+3. **Propuesta evoluciona públicamente.** El actor convierte una declaración suelta en propuesta formal publicada en BOIB o pleno municipal. El pipeline la detecta como propuesta nueva, con `state = formal`. El registro antiguo queda como antecedente enlazado.
+
+### 6.3 Cómo se cuenta al lector
+
+En la edición semanal, cuando una propuesta sube de 🔴 a 🟡, lleva una mini-nota lateral:
+
+> *Estuvo en /revision-pendiente/ entre 3 y 10 de mayo. Entra en edición esta semana tras aparecer segunda fuente en Periódico de Ibiza.*
+
+En [`/revision-pendiente/`](docs/revision-pendiente.md), la propuesta promovida no se borra: queda marcada como "resuelta — ver edición del 10 de mayo" con enlace. Histórico íntegro.
+
+### 6.4 Reglas de promoción
+
+- El tier solo puede **subir** por aparición de nueva evidencia (segunda fuente, URL recuperada, corrección aceptada).
+- El tier puede **bajar a cuarentena** solo por corrección verificada de un error de hecho (vía protocolo de 72 h, [D2](DECISIONES.md)). Una bajada técnica por recálculo de umbrales **no** la hace: `politica_cambio_retroactivo = congelar` en §4.
+- Nunca se modifica el tier asignado en el log original. Los cambios son entradas nuevas en `tier.history[]`, append-only.
+
+### 6.5 Archivo a 60 días
+
+Si una propuesta 🔴 no recibe segunda fuente en 60 días, se mueve a `/propuestas/?status=no_verificada` con nota:
+
+> *Detectada el 3 de mayo de 2026, mantenida en revisión 60 días. Sin segunda fuente ni corrección aceptada. Archivada como no verificada el 2 de julio de 2026.*
+
+No se elimina. El archivo es público. Si años después alguien aporta segunda fuente, el auditor puede desarchivarla.
+
+---
+
+## 7 · Historia del tier
+
+### 7.1 Cómo se registra
+
+En el registro de auditoría, `tier` pasa de objeto único a estructura con `current` + `history[]` append-only:
+
+```json
+{
+  "proposal_id": "...",
+  "tier": {
+    "current": "amarillo",
+    "history": [
+      {
+        "value": "rojo",
+        "at": "2026-05-03T07:00:00Z",
+        "reason": "fuente única + whitelist debilita"
+      },
+      {
+        "value": "amarillo",
+        "at": "2026-05-10T07:00:00Z",
+        "reason": "segunda fuente en periodicodeibiza.es, whitelist neutro"
+      }
+    ]
+  }
+}
+```
+
+`current` es derivado del último elemento de `history`. Se calcula al leer; no se serializa redundantemente (evita desincronización).
+
+### 7.2 Cómo se muestra en la ficha pública
+
+Si `history.length > 1`, línea debajo del badge:
+
+```
+🟡 Confianza media
+   Historia: 🔴 (3 may) → 🟡 (10 may)  [ver detalle]
+```
+
+Click en "ver detalle" abre sección `#historia-tier` de la ficha con narrativa:
+
+> *Detectada el 3 de mayo con fuente única (Diario de Ibiza). Marcada 🔴 en revisión. El 10 de mayo apareció también en Periódico de Ibiza, lo que permitió promoverla a 🟡. Sin cambios desde entonces.*
+
+### 7.3 Cuándo NO mostrar historia
+
+Si `history.length = 1`, no hay nada que contar: la propuesta nació en su tier y sigue ahí. Sin sección de historia, sin ruido visual.
+
+### 7.4 Relación con `/correcciones/`
+
+Son dos cosas distintas aunque ambas queden registradas:
+
+- **Cambio de tier por evolución natural** (segunda fuente, promoción desde cuarentena) = información nueva. Entra en `tier.history[]`. **No** en `/correcciones/`.
+- **Cambio de tier por error verificado** (una 🟢 que resulta ser apócrifa, cae a 🔴) = corrección. Entra en `/correcciones/` **y** añade entrada a `tier.history[]`. Las dos cosas.
+
+La distinción importa: `/correcciones/` es el log de errores admitidos; `tier.history[]` es el log de evolución de la certidumbre. Mezclar los dos confunde al lector.
+
+---
+
+## 8 · Sesgo por tipo de actor (diseño, medición pendiente)
+
+### 8.1 Hipótesis
+
+El árbol tiene una regla dura: nunca 🟢 con fuente única. Por diseño, la redundancia es la base de la confianza. Pero la cobertura mediática no se reparte igual entre actores:
+
+- **Actores con megáfono propio** (instituciones, partidos grandes, sindicatos mayoritarios, patronales) consiguen casi siempre ≥2 medios.
+- **Actores con menos presencia mediática** (colectivos vecinales, asambleas, sindicatos minoritarios, tercer sector pequeño) quedan con frecuencia en fuente única aunque la propuesta sea impecable.
+
+**Resultado esperado sin mitigación:** distribución desigual de 🟢 por tipo de actor. Los primeros acaparan verdes; los segundos viven en amarillos crónicos. El color "Alta confianza" deja de comunicar solo fiabilidad y pasa a comunicar también "actor con megáfono". Riesgo: el sistema proyecta estructura de poder mediático como si fuera fiabilidad factual.
+
+### 8.2 Método de medición
+
+Se hace **tras el backfill de 12 semanas**. Hoy no hay datos suficientes.
+
+Con las ~36 propuestas del backfill, calcular:
+
+```
+distribucion_tiers[actor_type] = {
+  "verde":    n_verde    / n_total,
+  "amarillo": n_amarillo / n_total,
+  "naranja":  n_naranja  / n_total,
+  "rojo":     n_rojo     / n_total
+}
+```
+
+8 categorías de actor del proyecto (taxonomía cerrada): institución, partido, sindicato, patronal, tercer sector, colectivo ciudadano, académico, otro.
+
+**Test:** comparar proporción de 🟢 por categoría contra el promedio global. Si alguna categoría tiene una tasa de 🟢 más del 30 % por debajo del promedio global, y n ≥ 5 propuestas, sesgo confirmado.
+
+**Umbrales de alerta:**
+
+| Tasa de 🟢 en la categoría | Acción |
+|---|---|
+| ≥ 65 % del promedio global | OK, sin acción |
+| 50 % — 65 % | Nota metodológica pública + revisión en 3 meses |
+| < 50 % | Mitigación obligatoria |
+
+### 8.3 Mitigaciones candidatas
+
+**M1 — Relajar el techo de fuente única si el dominio está en la lista de fuentes aceptadas como "refuerza".** Permite 🟢 con una sola URL si es el dominio oficial del actor (p. ej. nota de prensa en `conselldeivissa.es`). Riesgo: un comunicado propio no es prensa independiente. Mitigación del riesgo: **restringir M1 a actores con `actor_type ∈ {colectivo ciudadano, tercer sector, sindicato minoritario, asamblea}`** — los que sufren el sesgo. No se aplica a instituciones ni partidos grandes (ellos consiguen redundancia solos y un comunicado propio sin rebote mediático es sospechoso).
+
+**M2 — Aceptar el sesgo con nota metodológica pública.** El color sigue siendo lo que es. La página `/metodologia/` explica en lenguaje llano que el sistema premia la redundancia mediática y eso favorece a actores con más capacidad comunicativa. Honesto pero no resuelve.
+
+**M3 — Tier adicional "🟢 con fuente única oficial".** Variante visual (🟢ᵃ o doble anillo). Semántica: "alta confianza, respaldo documental único". Riesgo: complica la comunicación, añade ruido visual, obliga a explicar 4 colores + variante. Coste pedagógico alto.
+
+**M4 — Ampliar la recogida de fuentes.** Si el problema es que el pipeline no detecta segundas fuentes cuando existen (blogs locales, boletines asociativos, canales Telegram), ampliar `ingest.py`. No es mitigación del tier, es mejora de recogida. Más limpia conceptualmente, más cara.
+
+### 8.4 Decisión diferida
+
+Las 4 mitigaciones se evalúan **tras la medición**. Preliminar:
+
+- **M1 solo para las 4 categorías señaladas** + **M2 como nota metodológica siempre** parece el mejor equilibrio.
+- **M3 descartado** por coste pedagógico.
+- **M4 como mejora de largo plazo**, no bloquea lanzamiento.
+
+### 8.5 Qué falta para cerrar §8
+
+- Backfill de 12 semanas ejecutado.
+- Script `scripts/tier_bias_audit.py` que calcule la tabla de distribución por `actor_type` desde `data/audit/*.json`. ~2 h de desarrollo.
+- Reunión de decisión con el editor con los datos del backfill en la mano.
+
+Tarea registrada en el roadmap como **medición empírica del sesgo de tiers por tipo de actor** (ver §11 y la ficha RT25 de la revisión fundacional).
+
+---
+
+## 9 · Mockups textuales
+
+Esquemas ASCII. Los HTML de verdad se hacen al reanudar el prototipo en la Fase 4 del roadmap (decisión Q5 en §11).
+
+### 9.1 Badge en ficha de propuesta
+
+```
+┌──────────────────────────────────────────────────────┐
+│  Consell d'Eivissa propone limitar a 30 000 las      │
+│  licencias turísticas                                │
+│                                                      │
+│  🟢 Alta confianza                                   │
+│  Dos medios lo recogen y la revisión automática no  │
+│  encontró pegas.                                     │
+│                                                      │
+│  Actor: Consell d'Eivissa (institución)              │
+│  Estado: propuesta formal en pleno                   │
+│  Horizonte: 2027 (tras reforma normativa)            │
+│  Fuentes: diariodeibiza.es · periodicodeibiza.es     │
+│                                                      │
+│  [Ver cita textual]  [Historia del tier]             │
+└──────────────────────────────────────────────────────┘
+```
+
+### 9.2 Lista de edición semanal
+
+```
+Edición del 4-10 mayo 2026
+
+───────────────────────────────────────────────────────
+🟢  Consell d'Eivissa · Limitar licencias turísticas a 30 000
+    Institución · formal
+───────────────────────────────────────────────────────
+🟡  CCOO · Convenio de hostelería + cláusula vivienda
+    Sindicato · negociación · fuente única: Diario de Ibiza
+───────────────────────────────────────────────────────
+🟠  PIMEEF · Revisión IBI segunda residencia
+    Patronal · declarativa · sin copia en Wayback
+───────────────────────────────────────────────────────
+
+Ver /revision-pendiente/ para las propuestas detectadas
+pero no publicadas esta semana.
+```
+
+### 9.3 Página `/revision-pendiente/` (cuarentena)
+
+```
+REVISIÓN PENDIENTE                     /revision-pendiente/
+
+Propuestas detectadas por el pipeline que no superan los
+controles mínimos para entrar en edición semanal. Esperamos
+segunda fuente, corrección aceptada, o archivo a 60 días.
+
+─── Activas (5) ─────────────────────────────────────────
+
+🔴 Asamblea PCI Ibiza · Cesión de suelo municipal
+   Detectada 3 may 2026. Fuente: blog independiente (dominio
+   no reconocido). Esperando segunda fuente hasta 2 jul 2026.
+   [Si conoces otra fuente, avísanos]
+
+🔴 Asociación Sa Llavor · Comedor social en Sant Antoni
+   Detectada 6 may 2026. URL fuente devuelve 404 desde el día
+   siguiente. Esperando URL recuperada o duplicado.
+
+─── Resueltas este mes (3) ──────────────────────────────
+
+✅ Sindicato temporeros · Exigencia alojamiento empleador
+   En /revision-pendiente/ del 12 al 19 abr. Promovida a 🟡
+   tras segunda fuente. Ver edición del 20 abr.
+
+─── Archivadas a 60 días (1) ────────────────────────────
+
+📁 Colectivo X · Propuesta Y
+   Sin segunda fuente en 60 días. Archivada 30 jun 2026.
+   Sigue consultable en /propuestas/?status=no_verificada.
+```
+
+### 9.4 Dashboard `/auditor/`
+
+```
+AUDITORÍA EN ABIERTO                            /auditor/
+
+Últimas 4 semanas — del 13 abr al 10 may 2026
+
+Distribución de tiers:
+  🟢 Alta confianza ........ 12 propuestas (60 %)
+  🟡 Media ................   5 (25 %)
+  🟠 Baja .................   2 (10 %)
+  🔴 Cuarentena ...........   1 (5 %)
+
+Ratio de discusión interna del pipeline: 18 %
+Propuestas con aviso: 2
+Cuarentena abierta: 3 propuestas
+Última tercera pasada Opus: 2 may 2026 (2 errores detectados)
+Coste del auditor este mes: 0,21 €
+
+Ver /auditor/distribucion-por-actor/ para el reparto por
+tipo de actor (auditoría de sesgo).
+
+Ver /correcciones/ para el log completo de enmiendas.
+```
+
+### 9.5 Badge pequeño para home / vista previa densa
+
+```
+🟢  Consell · Licencias turísticas 30 000
+🟡  CCOO · Convenio hostelería + vivienda
+🟠  PIMEEF · IBI segunda residencia
+```
+
+Sin texto del tier al lado en la vista más densa; el color + símbolo ya comunican. Hover o click lleva a la ficha completa con explicación.
+
+---
+
+## 10 · Plan de test con usuarios
+
+### 10.1 Enganche con el roadmap
+
+La revisión fundacional ya tiene ficha abierta para validar la UX de los tiers con dos públicos (ficha RT3). Este estudio define el **contenido operativo del test**. Tras ejecutarlo, RT3 cierra y sus resultados afectan a §5 (copy) y §11 (Q1 de visibilidad).
+
+### 10.2 Participantes (n = 5)
+
+- **2 periodistas locales** o gestores de comunicación de tercer sector (público profesional, lector recurrente esperado).
+- **2 trabajadores de temporada** sin contexto técnico (primer visitante realista, usuario objetivo del proyecto).
+- **1 ciudadano sin vínculo con el tema**, como control (cómo se entiende desde frío).
+
+Contacto por red personal del editor. Incentivo: café o 15 €. Sin incentivo, pocos detalles críticos.
+
+### 10.3 Material
+
+- Maqueta con 3 ediciones reales del backfill que cubran los 4 tiers.
+- **Versión A** (tiers visibles a todos con leyenda discreta) y **versión B** (tiers ocultos por defecto con toggle "ver nivel de confianza"). Impresas o en laptop.
+- Hoja de preguntas neutras (sin inducir respuesta).
+
+### 10.4 Tareas del test (15 min por persona)
+
+1. *"Ojea esta edición durante 60 segundos. ¿Qué crees que cuenta?"*
+2. *"Te voy a señalar esto [el badge 🟢]. ¿Qué significa?"* (sin explicar).
+3. *"Ahora lee esta mini-explicación [texto corto de §5.1]. ¿Cambia tu respuesta?"*
+4. *"Si estuvieras citando una de estas propuestas en un artículo o conversación, ¿cuál de los colores te haría parar a verificar antes?"*
+5. *"¿Prefieres ver el color siempre o solo si lo activas?"*
+6. *"¿Te distrae, ayuda o te es indiferente?"*
+
+### 10.5 Métricas
+
+- **Comprensión a los 5 segundos** (pregunta 2): el tier transmite algo legible sin leer explicación. Umbral: ≥ 3 de 5 contestan algo coherente.
+- **Efecto en la confianza** (pregunta 4): el lector actúa distinto según el color. Umbral: ≥ 3 de 5 declaran parar en 🟠 o 🔴.
+- **Preferencia de visibilidad** (pregunta 5): mayoría pide siempre visible o bajo toggle. Decide la versión A o B por defecto.
+
+### 10.6 Salida
+
+- Notas cortas del test.
+- Decisión de UI: tiers visibles a todos / toggle / solo modo profesional / mixto (ver Q1 en §11).
+- Ajustes al copy del §5 si alguna palabra confunde.
+
+### 10.7 Lo que falta
+
+- Ejecutar el test con personas reales. **Esto no lo puede hacer el asistente.** Es trabajo del editor con su red personal.
+- Tiempo estimado: 1,5 h de investigación de campo + 30 min de análisis + 30 min de ajustes de copy. Total ~3 h.
+- Momento: antes de cerrar §11 Q1 y antes de lanzar tiers en abierto.
+
+---
+
+## 11 · Decisiones que necesito del editor
+
+Cinco preguntas. Contestarlas cierra el estudio y desbloquea la construcción de `src/tiers.py` real + el deployment del badge público.
+
+### Q1 — ¿Tiers visibles a todos o solo en modo profesional?
+
+Los temporeros y el ciudadano sin contexto pueden no entender el código de colores y percibirlo como ruido. Tres opciones:
+
+- **Todos:** 4 colores siempre visibles con leyenda discreta. Máxima transparencia, potencial ruido.
+- **Toggle:** botón *"ver nivel de confianza"* apagado por defecto. Solo profesionales lo activan. Menos ruido, pero esconde la transparencia radical del proyecto a la vista por defecto.
+- **Mixto:** 🟢 sin badge (asumido), 🟡/🟠/🔴 con badge (aviso). La norma es *"confía por defecto, salvo aviso"*. Reduce ruido manteniendo avisos donde importan.
+
+**Recomendación del asistente: mixto.** Coherente con la filosofía del proyecto (lo que pasa los controles se publica sin aspavientos; lo que no, se señaliza). Valida luego en el test UX (§10) si esta intuición se confirma.
+
+### Q2 — ¿Techo de fuente única se relaja con whitelist "refuerza"?
+
+Contexto en §8. Opciones:
+
+- **No relajar nunca:** integridad de la regla, sesgo aceptado con nota metodológica pública.
+- **Relajar solo para 4 categorías** (colectivo, tercer sector, sindicato minoritario, asamblea) cuando el dominio es oficial del actor: compensa el sesgo, riesgo acotado.
+- **Relajar para todos:** simplifica la regla pero quita seguridad.
+
+**Recomendación del asistente: decidir después del backfill.** Hasta entonces, regla dura en vigor. Tras la medición, si el sesgo supera el umbral del 30 %, aplicar relajación solo a las 4 categorías. Ver ficha RT25 en el roadmap.
+
+### Q3 — ¿Default del paso 6 del árbol es 🟠 o 🔴?
+
+El árbol tiene un caso por defecto para combinaciones raras. Hoy propuesto en 🟠 (entra con aviso):
+
+- **🟠 default:** publica con aviso; obliga a revisar el árbol para tapar el caso.
+- **🔴 default:** cuarentena; más conservador, puede acumular propuestas bien formadas que caen en casos raros.
+
+**Recomendación del asistente: 🟠 default + alerta Telegram cada vez que se dispara.** Así se detectan casos raros rápido sin perder editorial.
+
+### Q4 — ¿Política de cambios retroactivos es "congelar"?
+
+Contexto en §4.3. Opciones: congelar / recalcular / híbrido.
+
+**Recomendación del asistente: congelar.** Coherente con el principio de ediciones no reescribibles. Correcciones vía `/correcciones/`.
+
+### Q5 — ¿Mockups visuales HTML ahora o en Fase 4?
+
+- **Ahora:** romper la pausa activa del prototipo del Bloque B, extender con página de tiers. Coste: 2-3 h.
+- **Fase 4:** dejar los mockups textuales del §9 como referencia conceptual; los HTML se integran cuando se retome Diseño.
+
+**Recomendación del asistente: Fase 4.** La pausa del prototipo está por una razón (arquitectura primero, ver [`STATUS.md`](STATUS.md)). Los textuales bastan para validar el árbol y el copy.
+
+---
+
+## Resumen — qué falta para cerrar el estudio
+
+| Pendiente | Qué se necesita | Dónde queda apuntado en el roadmap |
+|---|---|---|
+| Cerrar Q1-Q5 (§11) | Respuesta del editor | RT26 (nueva) |
+| Medición empírica del sesgo por actor (§8) | Backfill 12 semanas ejecutado + `scripts/tier_bias_audit.py` (~2 h de código) | RT25 (nueva) |
+| Test UX con 5 personas (§10) | Trabajo de campo del editor (~3 h) | RT3 (ficha existente), ahora apunta a §10 de este estudio |
+| Validación preliminar de distribución 70/20/8/2 | Backfill piloto de una semana (W10, 2-8 marzo 2026) del plan del auditor mínimo viable | RT1 (ficha existente), ahora con línea explícita sobre tiers |
+| Mockups visuales HTML (§9) | Reanudar Bloque B (prototipo) en Fase 4 del roadmap V2 | Implícito en B34-B40 (Bloque B del roadmap original) |
+| `src/tiers.py` y `data/tiers.yml` reales | Q1-Q5 cerradas (bloquean implementación) | PI10 (sistema de tiers públicos) |
 
 ---
 

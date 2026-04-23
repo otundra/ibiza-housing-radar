@@ -124,6 +124,8 @@ El plan del backfill (12 semanas W06-W17, Camino A) está estimado en ~3,50 € 
 
 **Salida esperada:** informe corto en `private/estudios/backfill-prueba-W10.md` con los 5 números + recomendación al editor + ajuste del plan en `CONTENIDO-RETROACTIVO.md`.
 
+**Medición adicional para cerrar el estudio de tiers (ver [`ESTUDIO-TIERS.md §3.8`](ESTUDIO-TIERS.md)):** sobre las 3-5 propuestas extraídas de la W10, calcular la distribución preliminar de tiers 🟢/🟡/🟠/🔴 y validar que encaja con la expectativa 70/20/8/2. Si la distribución real difiere >20 puntos del target, los umbrales del árbol necesitan ajuste antes del backfill grande. Resultados se anotan en el mismo informe.
+
 **Prioridad de ejecución:** ANTES del backfill grande.
 
 ### RT2 · Rol editor operador vs muestreo 10% — resolver contradicción ✅ CERRADA 2026-04-23
@@ -145,7 +147,7 @@ El sistema de tiers públicos 🟢/🟡/🟠 con cuarentena 🔴 fue aprobado pa
 
 El proyecto tiene dos públicos declarados en `DISENO-WEB.md`: primer visitante vs profesional recurrente. Los tiers sirven al segundo y potencialmente confunden al primero. No hay evidencia de cómo se percibe realmente porque no se ha probado.
 
-**Acción:** antes de lanzar los tiers en abierto, hacer un test rápido de usabilidad con 2-3 personas de cada público (1 periodista local, 1 temporero, 1 ciudadano sin contexto técnico). Mostrar una edición con los badges de tier y preguntar: *"¿qué te dice esto?"*, *"¿cambia cómo confías en la propuesta?"*, *"¿te ayuda o te distrae?"*. Con tres conversaciones de 10 min por público se afina el copy o se decide si los tiers se muestran solo al público profesional (y al temporero se le muestra ya filtrado sin tier visible).
+**Acción:** antes de lanzar los tiers en abierto, ejecutar el test definido en [`ESTUDIO-TIERS.md §10`](ESTUDIO-TIERS.md) — n = 5 (2 periodistas + 2 temporeros + 1 ciudadano control), versión A (tiers visibles a todos) vs versión B (toggle), 6 preguntas neutras, métricas de comprensión a 5 segundos + efecto en la confianza + preferencia de visibilidad. Tiempo total ~3 h (1,5 h campo + 30 min análisis + 30 min ajustes de copy). Salida: decisión de UI y ajustes a §5 de ese estudio. **Depende del editor con su red personal — el asistente no ejecuta esto.**
 
 **Salida esperada:** notas cortas del test + decisión de UI (tier visible para todos / solo para lector que elige "modo profesional" / tier invisible pero filtro silencioso en el backend) + copy ajustado al resultado.
 
@@ -678,6 +680,37 @@ Mirror automático a GitLab o Codeberg. Cero coste, seguro ante cualquier incide
 Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 30 propuestas del backfill antes de hacer público el sitio. Coste estimado 50-100 €. Sirve para (a) detectar sesgos que el editor y la IA no ven por proximidad al tema, (b) validar que el tono y la neutralidad funcionan para lector profesional local, (c) tener un escudo de validación independiente documentado en `/metodologia/`.
 **Salida:** selección de revisor + informe escrito + ajustes previos a lanzamiento + mención pública en metodología (con consentimiento del revisor).
 
+### RT25 · Medición empírica del sesgo de tiers por tipo de actor ⏳ [ALTA — depende del backfill]
+
+Deriva de [`ESTUDIO-TIERS.md §8`](ESTUDIO-TIERS.md). La regla dura "nunca 🟢 con fuente única" protege la fiabilidad pero puede proyectar el desequilibrio mediático (quién tiene megáfono propio) como si fuera fiabilidad factual. Actores con menos presencia en prensa local (colectivos vecinales, asambleas, sindicatos minoritarios, tercer sector pequeño) quedan en 🟡 crónicos aunque sus propuestas sean impecables.
+
+**Acción (tras el backfill de 12 semanas):**
+
+1. Construir `scripts/tier_bias_audit.py` (~2 h) que lee `data/audit/*.json` y calcula la distribución de tiers 🟢/🟡/🟠/🔴 por `actor_type` (8 categorías de la taxonomía).
+2. Ejecutar sobre el corpus del backfill (~36 propuestas).
+3. Comparar tasa de 🟢 por categoría contra el promedio global.
+4. **Umbral de alerta:** si alguna categoría queda > 30 % por debajo del promedio y n ≥ 5, aplicar mitigación M1 de §8 (relajar el techo de fuente única en las 4 categorías señaladas, cuando el dominio es oficial del actor).
+5. Aplicar M2 (nota metodológica pública) independientemente del resultado — honestidad.
+6. Actualizar `data/tiers.yml` si M1 entra en vigor + documentar en [`ESTUDIO-TIERS.md §8.5`](ESTUDIO-TIERS.md).
+
+**Salida:** informe en `private/estudios/tier-bias-audit-post-backfill.md` + `data/tiers.yml` ajustado si aplica + nota metodológica redactada + [`ESTUDIO-TIERS.md §8`](ESTUDIO-TIERS.md) cerrada.
+
+**Prerrequisito:** backfill 12 semanas completo (PI2-B).
+
+### RT26 · Cierre de las 5 decisiones abiertas del estudio de tiers ⏳ [ALTA — bloquea PI10]
+
+Deriva de [`ESTUDIO-TIERS.md §11`](ESTUDIO-TIERS.md). Cinco preguntas que solo puede cerrar el editor. Contestarlas consolida el estudio y desbloquea la construcción de `src/tiers.py` real + el deployment del badge público.
+
+- **Q1.** ¿Tiers visibles a todos / toggle / mixto (🟢 silencioso + 🟡🟠🔴 con badge)? Recomendación: mixto, validar luego en el test con usuarios.
+- **Q2.** ¿Techo de fuente única se relaja con whitelist=refuerza? Recomendación: decidir tras backfill con los datos de RT25 en la mano.
+- **Q3.** ¿Default del paso 6 del árbol es 🟠 o 🔴? Recomendación: 🟠 + alerta Telegram al dispararse.
+- **Q4.** ¿Política de cambios retroactivos = "congelar"? Recomendación: sí.
+- **Q5.** ¿Mockups visuales HTML ahora o en Fase 4? Recomendación: Fase 4 (mantiene la pausa del prototipo del Bloque B).
+
+**Salida:** respuestas registradas en [`ESTUDIO-TIERS.md §11`](ESTUDIO-TIERS.md) + cierre definitivo del estudio + actualización de [`data/tiers.yml`](data/tiers.yml) con los valores cerrados + desbloqueo de PI10.
+
+**Momento:** cuando el editor tenga tiempo para revisar §1-7 y §9-10 del estudio con detenimiento. No urgente hasta que el backfill piloto (RT1) confirme que el árbol funciona empíricamente.
+
 ---
 
 ## Leyenda de estados
@@ -705,7 +738,7 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | **RT12** | **Vía A de precios — estudio en profundidad** | ⏳ | **P-1 · ALTA · adelantarla al pre-relanzamiento si el estudio da viable** |
 | **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ⏳ | **P-1 · FILOSOFÍA · añadir a PIVOTE.md como regla complementaria** |
 | **RT14** | **Estudio preciso de costes del auditor IA** | ✅ | **Cerrada 2026-04-23. Entregable: ESTUDIO-COSTES-AUDITOR.md. Régimen estable ~2,4 €/mes; backfill ~5,4 € one-shot. Desbloquea PI9** |
-| **RT15** | **Re-estudio profundo del sistema de tiers** | 🟡 | **Hito 2 del frame · primer pase cerrado 2026-04-23 en [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) (secciones 1-3) · segundo pase pendiente (4-11) · bloquea solo PI10** |
+| **RT15** | **Re-estudio profundo del sistema de tiers** | 🟡 | **Hito 2 del frame · estudio en [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) casi cerrado 2026-04-23 (§§1-7, 9, 10 redactadas; §8 al 50 %; §11 = 5 preguntas al editor) · cierre = RT26 · medición de sesgo post-backfill = RT25 · bloquea solo PI10** |
 | **RT16** | **Experimento Claude Design — archivado** | 🔄 | **P-1 · archivo en `private/claude-design-experiment/` · no es referencia · se estudia en fase Diseño** |
 | **RT17** | **Navegación exhaustiva mobile-first** | ⏳ | **P-1 · ALTA · NAVEGACION.md propio** |
 | **RT18** | **Trilingüe ES/CA/EN desde el backfill** | ⏳ | **P-1 · ALTA · editor confirmó 22-abr: activar desde el backfill** |
@@ -715,6 +748,8 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | **RT22** | **BOIB watcher — Fase 2 confirmado** | ⏳ | **P-1 · editor confirmó 22-abr · base legal presente desde relanzamiento** |
 | **RT23** | **Framework de señales de tracción a 90 días** | ⏳ | **P-1 · DIFERIDO POST-LANZAMIENTO** |
 | **RT24** | **Escenarios de lanzamiento y horizonte** | ⏳ | **P-1 · A soft mayo-junio / B rodaje 1 año** |
+| **RT25** | **Medición empírica del sesgo de tiers por tipo de actor** | ⏳ | **ALTA · depende del backfill 12 sem (PI2-B) · cierra §8 de [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) · puede activar mitigación M1 en `data/tiers.yml`** |
+| **RT26** | **Cierre de las 5 decisiones abiertas del estudio de tiers** | ⏳ | **ALTA · editor contesta Q1-Q5 de §11 de [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) · desbloquea `src/tiers.py` real y PI10 · no urgente hasta que RT1 confirme el árbol** |
 | ED1 | Criterio OK propuestas | ⏳ | |
 | ED2 | Imparcialidad alertable | ⏳ | |
 | ED3 | Presencia de Omisiones | ⏳ | |

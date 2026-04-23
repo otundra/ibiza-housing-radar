@@ -13,15 +13,19 @@ Reglas:
 
 ---
 
-## 2026-04-23 [sesion] — Apertura del estudio de tiers (primer pase) + refuerzo de la regla de no citar códigos internos
+## 2026-04-23 [sesion] — Estudio de tiers casi cerrado (primer + segundo pase) + refuerzo de la regla de no citar códigos internos
 
-Turno corto tras el cierre del experimento de aprendizaje. Dos ítems:
+Turno largo tras el cierre del experimento de aprendizaje. Tres ítems:
 
-- **Primer pase del re-estudio del sistema de tiers de confianza** en [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) (ficha RT15 de la revisión fundacional). Secciones 1-3 redactadas: punto de partida (qué se aprobó rápido el 21-abr y qué falta), 10 señales computables del auditor (consenso IA, arbitraje Opus, 5 checks de verificación técnica, cruce de fuentes, whitelist, viabilidad, tipo de declaración), y árbol de decisión determinista en 6 pasos (bloqueantes → techos duros → camino 🟢 → 🟡 → 🟠 → default). Propiedades pendientes de validar empíricamente sobre el backfill piloto: distribución esperada ~70/20/8/2 y ausencia de sesgo estructural contra actores con menos cobertura mediática. Secciones 4-11 pendientes (umbrales ajustables, copy público llano, promoción desde cuarentena, historia del tier, sesgo por actor, mockups, test de usuarios, preguntas al editor).
+- **Primer pase del re-estudio del sistema de tiers de confianza** en [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md). Secciones 1-3 redactadas: punto de partida (qué se aprobó rápido el 21-abr y qué falta), 10 señales computables del auditor (consenso IA, arbitraje Opus, 5 checks de verificación técnica, cruce de fuentes, whitelist, viabilidad, tipo de declaración), y árbol de decisión determinista en 6 pasos (bloqueantes → techos duros → camino 🟢 → 🟡 → 🟠 → default).
+
+- **Segundo pase del mismo estudio** en el mismo turno tras OK del editor. Secciones redactadas: §4 umbrales ajustables (YAML en `data/tiers.yml` + política de cambios retroactivos = congelar), §5 copy público llano por tier con tabla de palabras prohibidas → traducciones, §6 interacción con cuarentena y tres caminos de promoción, §7 historia del tier con `tier.history[]` append-only y regla de cuándo se muestra, §8 al 50 % (diseño del método de medición de sesgo por tipo de actor + 4 mitigaciones candidatas; la medición empírica se posterga hasta tener el backfill de 12 semanas), §9 mockups textuales (ficha, lista, cuarentena, dashboard, home), §10 plan de test con usuarios (n=5, 6 preguntas, métricas), §11 lista de 5 preguntas al editor (Q1 visibilidad, Q2 relajación del techo de fuente única, Q3 default del paso 6, Q4 política de cambios retroactivos, Q5 mockups visuales ahora o en Fase 4).
+
+- **Tareas nuevas en el roadmap** para lo que no se puede cerrar aún: **RT25** (medición empírica del sesgo por tipo de actor tras backfill 12 semanas, con `scripts/tier_bias_audit.py` y posible activación de mitigación M1 en el YAML) y **RT26** (cierre de las 5 decisiones abiertas del estudio, editor contesta Q1-Q5). Fichas existentes actualizadas: **RT1** (backfill piloto W10) ahora incluye línea sobre medir distribución preliminar 🟢/🟡/🟠/🔴 y validar expectativa 70/20/8/2 antes del backfill grande. **RT3** (test UX de tiers) ahora apunta al §10 del estudio como plan operativo. Reflejadas en la tabla de seguimiento de la revisión fundacional y en el Hito 2 de la Fase 1 del roadmap.
 
 - **Refuerzo de la regla de no citar identificadores internos al editor sin nombrar primero la cosa.** Tercera recaída en dos días (listé *"RT15 · Sistema de tiers de confianza"* con el código como etiqueta principal; el editor: *"tras mil veces decirlo, no menciones códigos tipo RT1 sin explicar que son. no miro los codigos"*). Acciones: (a) regla añadida a [`CLAUDE.md`](CLAUDE.md) sección *"Qué NO hacer"* con redacción dura ("próxima recaída es fallo grave"), (b) memoria `feedback_referencias_con_contexto.md` reforzada con tolerancia cero — el código no va delante ni como etiqueta principal ni siquiera con glosa detrás; nombrar por el nombre de la cosa, ID opcional entre paréntesis al final solo si aporta trazabilidad.
 
-**Próximo paso previsto:** segundo pase del estudio de tiers (secciones 4-11) cuando el editor decida abrir el Hito 2 como frente activo.
+**Estado del estudio al cierre del turno:** solo pendiente contestar las 5 preguntas del editor (RT26) y ejecutar la medición de sesgo tras backfill (RT25). Lo demás está redactado y es base suficiente para que el auditor mínimo viable siga escribiendo `signals` sin bloqueo.
 
 ---
 
