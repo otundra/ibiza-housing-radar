@@ -314,6 +314,42 @@ La opción C entra en consideración solo si tras 3-6 meses de operación el aud
 
 Ruta ajustada al ritmo sostenible del editor (~15 h/semana, según roadmap).
 
+### 10.0 · Partición en mínimo viable + iteración (decisión 2026-04-23)
+
+El plan semanal siguiente sigue siendo la referencia completa, pero su ejecución se parte en dos bloques — ver [D1](DECISIONES.md). Motivo: reducir la carga cognitiva del editor mientras aprende el sistema y llegar antes al punto *"funciona y lo entiendo"*. El mínimo viable entrega el 80 % de la transparencia (doble-ojo automático + log público + protocolo de corrección); la iteración posterior es confort y optimización.
+
+**Mínimo viable — 2 semanas (Hito 1 del frame de tres hitos grandes, [D6](DECISIONES.md)):**
+
+- **Semana 1** completa tal cual: capa 2 ciega Sonnet + `src/audit_compare.py` determinista. Sin cambios.
+- **Semana 2** con alcance ajustado: heurísticas sin IA (cruce de fuentes, verbatim match, whitelist `actor_domains.yml` V1) + `compute_tier()` **como hueco reservado** que escribe `tier: { value: null, reason: "pendiente estudio", signals: {...} }` ([D5](DECISIONES.md)). Las señales se calculan y guardan desde el día uno; el badge de color no se combina hasta que RT15 cierre y defina el árbol de decisión.
+- **Semana 3 reducida:** log de auditoría en `data/audit/YYYY-wWW/{proposal_id}.json` con el campo **`corrections`** append-only ([D2](DECISIONES.md)) + integración con `report.py` + activación de la página `/correcciones/` como stub mínimo. **Se omiten en esta fase:** página `/revision-pendiente/` (cuarentena navegable), dashboard `/auditor/`, formalización de capa 4 Opus como paso separado.
+- **Semana 4** tal cual: prueba empírica sobre la semana W10 (2-8 marzo 2026).
+
+**Iteración posterior — 2-3 semanas (Hito 1 cerrado, hitos 2-3 pueden empezar):**
+
+- Formalización explícita de la capa 4 Opus (hoy fallback implícito en `extract.py`).
+- Página `/revision-pendiente/` con la cuarentena navegable.
+- Dashboard público `/auditor/` con las métricas del canal 1 (§12.1).
+- Capa 5bis: repaso IA mensual de cuarentena con Opus + bloque YAML de ajustes firmado por el editor vía Telegram.
+- Conexión de `compute_tier()` real cuando RT15 cierre, leyendo del bloque `signals` ya acumulado sin migrar logs antiguos.
+
+**Schema del log en el mínimo viable:**
+
+```json
+{
+  "proposal_id": "...",
+  "tier": { "value": null, "reason": "pendiente estudio", "signals": {...} },
+  "corrections": [],
+  "layers": { "haiku": {...}, "sonnet_blind": {...}, "compare": {...}, "heuristics": {...} },
+  "verify": {...},
+  "timestamps": {...}
+}
+```
+
+El campo `corrections` es append-only: cada petición de enmienda añade una nota fechada con origen (email/formulario), cuerpo y resolución. El JSON original de la propuesta nunca se modifica. Canal de correcciones: email al buzón del proyecto (**diferido hasta cierre del nombre**) **+** formulario en `/contacto/` con backend webhook → issue GitHub → notificación Telegram.
+
+**Tests diferidos ([D4](DECISIONES.md)):** RT5 *"tests básicos del pipeline"* absorbe la cobertura de `audit.py` junto con `extract.py`, `verify.py`, `balance.py` y `rescue.py` en un solo bloque, con fixtures reales del backfill. La validación durante construcción es empírica (Semana 4 sobre W10).
+
 ### Semana 1 — Capa 2 y comparador
 
 - **`src/audit.py`**: función `run_blind_audit()` que llama Sonnet con `EXTRACT_SYSTEM` sobre el mismo payload de capa 1. 3-4 h.
@@ -432,6 +468,11 @@ Los tres canales se construyen en orden de prioridad: canal 1 en semana 3 del pl
 | Coste backfill 12 semanas | ~5,4 € (one-shot), corregido desde la estimación inicial de 3,5 € |
 | Política de concurrencia de gastos | Estimar antes, proceder si beneficia al progreso. Topes absolutos: blando 12 €, duro 50 €. |
 | Plan | 4 semanas, ~35 h desarrollo |
+| **Partición del plan (2026-04-23)** | **Mínimo viable 2 sem + iteración 2-3 sem — ver [D1](DECISIONES.md) y §10.0** |
+| **Log público + protocolo de correcciones 72 h (2026-04-23)** | **Campo `corrections` append-only + `/correcciones/` + email (diferido) + formulario (webhook→issue GH) — ver [D2](DECISIONES.md)** |
+| **Whitelist V1 antes del backfill (2026-04-23)** | **15-20 actores conocidos curados en `data/actor_domains.yml`, refinamiento post-backfill — ver [D3](DECISIONES.md)** |
+| **Tests del auditor diferidos a RT5 (2026-04-23)** | **Cobertura en un solo bloque con fixtures reales; validación durante construcción = prueba empírica W10 — ver [D4](DECISIONES.md)** |
+| **Re-estudio de tiers en paralelo (2026-04-23)** | **Auditor se construye con hueco `tier: { value: null, signals: {...} }`; RT15 deja de bloquear — ver [D5](DECISIONES.md)** |
 
 ---
 

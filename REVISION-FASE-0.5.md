@@ -83,6 +83,20 @@ Antes de retomar ED1 (criterios de admisión), se ejecutan primero las tareas qu
 4. **ED1** (criterios validados con corpus real).
 5. Resto de P0/P1 en orden original.
 
+### 2026-04-23 · Partición del auditor + log opción (d) + marco de tres hitos grandes
+
+Sesión de rediseño del plan del auditor con el editor tras abrir el arranque de PI9. El editor expresa que no siente llevar las riendas con 34 tareas abiertas en paralelo y pide honestidad sobre el alcance. Resultado: reencuadre de la Fase 1 bajo un marco de tres hitos grandes, partición del auditor y cierre de decisiones de protocolo.
+
+- **Partición del auditor en mínimo viable + iteración** ([D1](DECISIONES.md)). PI9 se parte en PI9-MVP (2 sem: capa 2 ciega + heurísticas + log con correcciones + integración, ver sección §10.0 del estudio de costes) y PI9-Iteración (2-3 sem: Opus formalizado + cuarentena + dashboard + capa 5bis). Reduce escalada de complejidad; entrega el 80 % de la transparencia en el MVP.
+- **Log público desde día uno + protocolo formal de correcciones en 72 h** ([D2](DECISIONES.md)). Opción (d) elegida entre cuatro evaluadas. Campo `corrections` append-only en cada JSON, canales email + formulario, backend webhook → issue GitHub → notificación Telegram, página pública `/correcciones/`. El email queda **diferido hasta cierre del nombre** (cadena apuntada en memoria del proyecto). Alerta legal activa: el estudio del titular (RT20/LG1) sigue abierto; cuando cierre, hereda el log existente sin migración.
+- **Whitelist V1 antes del backfill** ([D3](DECISIONES.md)). 15-20 actores conocidos curados ya, refinamiento de dominios reales con los datos del backfill. Misses no bloquean publicación, repaso mensual IA propone ampliaciones.
+- **Tests del auditor diferidos a RT5** ([D4](DECISIONES.md)). Cobertura en un solo bloque con fixtures reales del backfill. Validación durante construcción del auditor = prueba empírica sobre W10.
+- **Re-estudio del sistema de tiers en paralelo** ([D5](DECISIONES.md)). RT15 deja de bloquear el auditor. El auditor MVP escribe `signals` en el log con hueco `tier: { value: null, reason: "pendiente estudio", signals: {...} }`; cuando RT15 cierre, la función `compute_tier()` lee del bloque sin migrar logs antiguos. RT15 pasa a bloquear solo PI10 (visualización pública).
+- **Marco de tres hitos grandes como frame de la Fase 1** ([D6](DECISIONES.md)). Hito 1: auditor MVP publicado con una edición real. Hito 2: sistema de tiers cerrado e integrado (en paralelo). Hito 3: titular legal resuelto (en paralelo, bloquea empuje público). Las 34 tareas restantes quedan en cola; no se abren en paralelo.
+- **Rastro de decisiones pequeñas** ([D7](DECISIONES.md)). Anotadas en `DIARIO.md` como líneas cortas; resumen al `/cierre` con opción de revertir por git.
+
+Memoria del asistente actualizada con `feedback_vigilancia_legal_activa.md` (alerta legal como conducta continua), `idea_version_premium.md` (monetización como opción abierta) y `nombre_proyecto.md` (cadena de dependencias email ← nombre ← estructura final).
+
 ---
 
 ## Cómo leer esta lista
@@ -502,18 +516,33 @@ Mezcla A+C decidida. Implementado base en `src/report.py` (_build_summary y help
 Cuando el proyecto tenga buzón de correo propio, la alerta del lunes también se envía por email (para tener archivo consultable). Baja prioridad hasta que el buzón exista.
 **Salida:** envío por SMTP o servicio (Resend, Brevo) + plantilla HTML simple.
 
-### PI9 · Sistema de auditoría IA de 5 capas ⏳ [diseño cerrado 2026-04-23, construcción pendiente]
-Módulo `src/audit.py` que implementa la arquitectura decidida el 21-abr y afinada el 23-abr:
-1. Extract Haiku (ya existe en `src/extract.py`).
-2. Audit ciego Sonnet (re-extracción sin ver la primera, batch único).
-3. Comparador determinístico Python + 5 checks de verify.py + heurísticas sin IA (cross-source, single-source penalty, verbatim substring con umbrales diferenciados por `statement_type`, domain-actor whitelist en `data/actor_domains.yml`, viability sanity).
-4. Arbitraje Opus para discrepancias críticas (~15 % de propuestas).
-5. Editor revisa solo los flagged (sin muestreo 10 %, cerrado 2026-04-23).
-5bis. **Repaso IA mensual de cuarentena** (Opus lee cuarentena + logs + whitelist, propone ajustes YAML, editor firma con OK por Telegram en 5 min).
+### PI9 · Sistema de auditoría IA — partido en mínimo viable + iteración ⏳ [partición 2026-04-23, [D1](DECISIONES.md)]
+Módulo `src/audit.py` que implementa la arquitectura decidida el 21-abr, afinada el 23-abr y **partida en dos bloques de construcción** el 23-abr:
 
-Log completo por propuesta en `data/audit/YYYY-wWW/{proposal_id}.json` con output literal de cada capa, timestamps y decisión final. Panel de éxito en tres canales: página pública `/auditor/`, parte Telegram consolidado del lunes, página `/reportes/` con narrativa (mensual→trimestral→semestral). Detalle en [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md).
-**Salida:** módulo + tests + documentación en `ARQUITECTURA.md` + integración en el flujo normal y en `backfill.py`.
-**Coste por ejecución semanal:** ~0,25 €. Por backfill completo: ~2,70 €.
+**PI9-MVP · Auditor mínimo viable (2 semanas · Hito 1 del frame de tres hitos, [D6](DECISIONES.md)):**
+1. **Extract Haiku** (ya existe en `src/extract.py`).
+2. **Audit ciego Sonnet** (re-extracción sin ver la primera, batch único).
+3. **Comparador determinista** Python + 5 checks de `verify.py` + tres heurísticas sin IA (cross-source, verbatim substring con umbrales diferenciados por `statement_type`, domain-actor whitelist V1 de 15-20 actores en `data/actor_domains.yml` — ver [D3](DECISIONES.md)).
+4. **Capa 4 Opus como fallback actual** (no formalizada como paso separado todavía).
+5. **Log público por propuesta** en `data/audit/YYYY-wWW/{proposal_id}.json` con campo `corrections` append-only ([D2](DECISIONES.md)) + hueco reservado `tier: { value: null, reason: "pendiente estudio", signals: {...} }` ([D5](DECISIONES.md)).
+6. **Protocolo formal de correcciones en 72 h** + página pública `/correcciones/` con el protocolo en lenguaje llano + canal email (diferido hasta cierre del nombre) + canal formulario con backend webhook → issue GitHub → notificación Telegram ([D2](DECISIONES.md)).
+7. **Integración con `report.py`** y prueba empírica sobre la semana W10 (2-8 marzo 2026) antes del backfill completo.
+
+Sin Opus formalizado como capa separada, sin página `/revision-pendiente/`, sin dashboard `/auditor/`, sin capa 5bis, sin tests unitarios propios (diferidos a RT5 con fixtures reales del backfill, ver [D4](DECISIONES.md)).
+
+**PI9-Iteración · Completar las 5 capas + vitrina pública (2-3 semanas, puede solaparse con Fase 2):**
+- Formalización explícita de **capa 4 Opus** como paso auditor separado.
+- **Capa 5bis** — repaso IA mensual de cuarentena (Opus lee cuarentena + logs + whitelist, propone ajustes YAML, editor firma con OK por Telegram en 5 min).
+- Página pública `/revision-pendiente/` con la cuarentena navegable.
+- Dashboard público `/auditor/` — canal 1 del panel de éxito (§12.1 del estudio de costes).
+- Parte Telegram consolidado del lunes — canal 2.
+- Página `/reportes/` con narrativa mensual → trimestral → semestral — canal 3.
+- Conexión de `compute_tier()` real cuando RT15 cierre, leyendo del bloque `signals` del log.
+
+Detalle completo en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md).
+
+**Salida PI9-MVP:** `src/audit.py` + `src/audit_compare.py` + `src/audit_heuristics.py` + `data/actor_domains.yml` V1 + log público en `data/audit/` + página `/correcciones/` + integración en `report.py`.
+**Coste por ejecución semanal:** ~0,15 € en MVP (sin capa 5bis ni auditoría Opus mensual). Completo con iteración: ~0,25 €/semana + ~0,4 €/mes de capa 5bis.
 
 ### PI3 · Enlace entre ediciones y evolución de propuestas ⏳
 Esto es donde hay *oro oculto*: una propuesta que nace W15, se debate W17, se rechaza W19. Hoy el tracker enlaza débilmente. Debería haber:
@@ -661,7 +690,7 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | **RT2** | **Rol editor vs muestreo 10% — decidir** | ✅ | **Cerrada 2026-04-23: opción 2 (eliminar muestreo). Añadida capa 5bis IA. Ver ESTUDIO-COSTES-AUDITOR** |
 | **RT3** | **Tiers UX — validar con dos públicos** | ⏳ | **P-1 · antes de lanzar tiers** |
 | **RT4** | **Techo cobertura + banner limitaciones + Vía A adelantada** | ⏳ | **P-1 · antes del relanzamiento** |
-| **RT5** | **Tests básicos del pipeline** | ⏳ | **P-1 · antes del backfill grande** |
+| **RT5** | **Tests básicos del pipeline** | ⏳ | **P-1 · absorbe cobertura de `audit.py`, `verify.py`, `balance.py`, `extract.py`, `rescue.py` con fixtures reales del backfill ([D4](DECISIONES.md))** |
 | **RT6** | **Balance — rediseño con persistencia (tras 3 meses)** | ⏳ | **P-1 · diferido a ~julio 2026** |
 | **RT7** | **build_index.py adaptado al schema documental** | ✅ | **Cerrada 2026-04-21 noche** |
 | **RT8** | **Banner temporal en `/acerca/` + split acerca/metodo** | 🔄 | **Fix temporal aplicado, reescritura cuando se retome Diseño** |
@@ -671,7 +700,7 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | **RT12** | **Vía A de precios — estudio en profundidad** | ⏳ | **P-1 · ALTA · adelantarla al pre-relanzamiento si el estudio da viable** |
 | **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ⏳ | **P-1 · FILOSOFÍA · añadir a PIVOTE.md como regla complementaria** |
 | **RT14** | **Estudio preciso de costes del auditor IA** | ✅ | **Cerrada 2026-04-23. Entregable: ESTUDIO-COSTES-AUDITOR.md. Régimen estable ~2,4 €/mes; backfill ~5,4 € one-shot. Desbloquea PI9** |
-| **RT15** | **Re-estudio profundo del sistema de tiers** | ⏳ | **P-1 · ALTA · antes de implementar PI10** |
+| **RT15** | **Re-estudio profundo del sistema de tiers** | ⏳ | **Hito 2 del frame · en paralelo a la construcción del auditor MVP ([D5](DECISIONES.md)) · bloquea solo PI10** |
 | **RT16** | **Experimento Claude Design — archivado** | 🔄 | **P-1 · archivo en `private/claude-design-experiment/` · no es referencia · se estudia en fase Diseño** |
 | **RT17** | **Navegación exhaustiva mobile-first** | ⏳ | **P-1 · ALTA · NAVEGACION.md propio** |
 | **RT18** | **Trilingüe ES/CA/EN desde el backfill** | ⏳ | **P-1 · ALTA · editor confirmó 22-abr: activar desde el backfill** |
@@ -693,7 +722,8 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | PI1 | Revisión pipeline | ⏳ | |
 | PI2-A | Archivado append-only desde hoy | ✅ | Cerrada 2026-04-21, W17 snapshot ok |
 | PI2-B | Backfill retroactivo 12 semanas | ⏳ | Tras PI2-A y PI9 |
-| PI9 | Sistema auditoría IA 5 capas | ⏳ | Nuevo, habilita PI2-B y ED1 |
+| PI9-MVP | Auditor mínimo viable (2 sem) | ⏳ | Hito 1 del frame · capa 2 ciega + heurísticas + log con correcciones + protocolo 72 h ([D1](DECISIONES.md), [D2](DECISIONES.md), [D3](DECISIONES.md)) |
+| PI9-Iteración | Iteración posterior del auditor (2-3 sem) | ⏳ | Tras cierre del Hito 1 · Opus formalizado + cuarentena + dashboard + capa 5bis |
 | PI10 | Tiers de confianza públicos | ⏳ | Nuevo, Plan A aprobado |
 | PI11 | Cuarentena pública /revision-pendiente/ | ⏳ | Nuevo, Plan B aprobado |
 | PI12 | Alerta Telegram lunes enriquecida | 🔄 | Base implementada, upstream pendiente |

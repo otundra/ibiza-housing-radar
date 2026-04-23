@@ -31,27 +31,40 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 
 ### Fase 1 — Cimientos firmes
 
-**Ruta crítica en serie:**
+**Frame de trabajo reordenado 2026-04-23 ([D6](DECISIONES.md)):** la Fase 1 se organiza en tres hitos grandes. El editor decide puntos de entrada y de cierre de cada hito; Claude lleva los pequeños dentro. Las 34 tareas restantes de la Revisión Fase 0.5 quedan en cola y se abren al cerrar el hito anterior.
 
-1. **Estudio preciso de costes del auditor IA** (RT14). Tabla por capa + proyección mensual + plan si cruza topes. Bloquea construir PI9.
-2. **Revisión profunda de arquitectura de archivos y gestión del conocimiento del proyecto** (nuevo). Auditar la lógica interna, estructura y formato de todos los documentos del proyecto (CLAUDE.md, ROADMAP, REVISION-FASE-0.5, DIARIO, STATUS, docs de decisiones, memoria de sesión…) con el objetivo de: (a) que cada nueva conversación arranque con visión clara y rápida del proyecto sin perder detalle; (b) que un estudio completo al inicio de chat sea óptimo en tokens sin sacrificar profundidad; (c) que la gestión de tareas y el feedback del editor de cada sesión se acumulen y organicen de forma útil para el desarrollo; (d) optimizar el consumo de tokens en lecturas de contexto sin perder ni un ápice de calidad o detalle.
-3. **Tests básicos del pipeline** (RT5). 5-6 h. Sin esto, cualquier cambio en auditor/tiers es ciego.
-3. **Re-estudio profundo del sistema de tiers** (RT15). Árbol de decisión cerrado, copy público, mockups. Antes de implementar.
-4. **Auditor IA de 5 capas** (PI9). Construido sobre tests y costes ya cerrados.
-5. **Prueba empírica del backfill** (RT1). 1 semana antigua (W10). Mide 5 números reales antes de comprometer 12.
+**Cerradas o diferidas:**
+- **Estudio preciso de costes del auditor IA** (RT14). ✅ Cerrado 2026-04-23. Entregable: [ESTUDIO-COSTES-AUDITOR.md](ESTUDIO-COSTES-AUDITOR.md).
+- **Revisión profunda de arquitectura documental** (nuevo). Diferida a Fase 7 post-lanzamiento. Hasta entonces, aplicar las tres reglas baratas de [D0](DECISIONES.md).
+
+**Hito 1 · Auditor mínimo viable publicado con una edición real (activo):**
+
+1. **Auditor MVP** — PI9 partido en mínimo viable + iteración ([D1](DECISIONES.md)). 2 semanas: capa 2 ciega Sonnet + comparador determinista + tres heurísticas sin IA (cruce de fuentes / verbatim match / whitelist V1, ver [D3](DECISIONES.md)) + log público con campo `corrections` append-only y protocolo de correcciones en 72 h ([D2](DECISIONES.md)) + integración con `report.py`. Hueco reservado para tiers ([D5](DECISIONES.md)). Sin Opus formalizado, sin cuarentena navegable, sin dashboard. Detalle en [ESTUDIO-COSTES-AUDITOR.md §10.0](ESTUDIO-COSTES-AUDITOR.md).
+2. **Prueba empírica** (RT1). Corrida del auditor MVP sobre la semana W10 (2-8 marzo 2026) antes del backfill completo.
+3. **Iteración posterior del auditor** (2-3 semanas, puede solaparse con Fase 2): formalización explícita de capa 4 Opus + página `/revision-pendiente/` + dashboard público `/auditor/` + capa 5bis (repaso mensual IA de cuarentena).
+
+**Hito 2 · Sistema de tiers cerrado e integrado (en paralelo al Hito 1, bloquea PI10):**
+
+- **Re-estudio profundo del sistema de tiers** (RT15). Árbol de decisión cerrado, copy público, mockups. Corre en paralelo a la construcción del auditor MVP ([D5](DECISIONES.md)). Su cierre solo conecta la función `compute_tier()` real — el auditor MVP ya escribe las `signals` en el log, sin migración de logs antiguos.
+
+**Hito 3 · Titular legal resuelto (en paralelo, bloquea empuje público):**
+
+- **Estudio titular legal** (RT20 + LG1 + LG2). Ver bloque *"En paralelo"*.
 
 **En paralelo (hilos independientes):**
 
 - **Estudio Vía A de precios** (RT12 + RT21). Matriz de fuentes, nombre público ("Observatorio de precios"), presupuesto, recomendación de cronograma.
-- **Estudio titular legal** (RT20 + LG1 + LG2). Tabla comparativa + recomendación + plan de implementación.
+- **Estudio titular legal** (RT20 + LG1 + LG2). Tabla comparativa + recomendación + plan de implementación. Es el Hito 3 del frame.
 - **Estudio de factibilidad BOIB** (RT22). 2-4 h. Decide si sube a Fase 2 o queda en Fase 3.
 - **Regla fundacional automatización + veracidad pública** (RT13) documentada en PIVOTE ✅ hecha 2026-04-21.
+
+**Tests del pipeline diferidos a RT5 ([D4](DECISIONES.md)):** cobertura en un solo bloque con fixtures reales del backfill (incluye `audit.py`, `verify.py`, `balance.py`, `extract.py`, `rescue.py`). Se ejecuta cuando haya fixtures utilizables (Fase 2). El auditor MVP se valida durante construcción con la prueba empírica sobre W10.
 
 **Decisiones cerradas en Fase 1:**
 - Rol del editor = operador sin revisión de contenido (RT2 resuelto: opción B actual, opción C cuando haya tracción).
 - Nombre del wordmark: `radar))ibiza_vivienda` ✅ cerrado.
 
-**Salida de la fase:** pipeline robusto con tests y auditor IA operativo, datos empíricos del backfill, decisión sobre Vía A y BOIB, titular legal en trámite.
+**Salida de la fase:** auditor mínimo operativo + prueba empírica validada + sistema de tiers cerrado en paralelo + titular legal en trámite. Pipeline con auditor MVP listo para absorber el backfill en Fase 2.
 
 ### Fase 2 — Backfill, corpus y fuentes primarias
 

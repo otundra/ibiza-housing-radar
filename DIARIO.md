@@ -13,6 +13,34 @@ Reglas:
 
 ---
 
+## 2026-04-23 [arquitectura] — Partición del auditor en mínimo viable + iteración, opción (d) del log, marco de tres hitos grandes
+
+Sesión completa de rediseño del plan del auditor con el editor, abierta tras el cierre del estudio de costes. Contexto: el plan de 4 semanas con las 5 capas desde el día uno estaba aprobado, pero al arrancar el editor expresó *"no siento que llevo las riendas"* con las 34 tareas de la Revisión Fase 0.5 abiertas en paralelo. Reencuadre completo del alcance del auditor, del frame de trabajo de la Fase 1 y del protocolo de correcciones.
+
+**Decisiones cerradas ([D1](DECISIONES.md) a [D7](DECISIONES.md)):**
+
+- **Partición del auditor en mínimo viable + iteración** ([D1](DECISIONES.md)). PI9 se parte en dos bloques. MVP (2 sem): capa 2 ciega Sonnet + comparador determinista + tres heurísticas (cruce de fuentes, verbatim match, whitelist V1) + log público con protocolo de correcciones + integración con el pipeline. Sin Opus formalizado como capa, sin cuarentena navegable, sin dashboard, sin repaso mensual IA. Iteración posterior (2-3 sem): Opus explícito, página `/revision-pendiente/`, dashboard `/auditor/`, capa 5bis. Motivo: el 80 % de la transparencia ya está en el MVP; la iteración es confort y optimización, no defensa. Reduce la escalada de complejidad para el editor mientras aprende el sistema.
+
+- **Log público desde el día uno + protocolo formal de correcciones en 72 h** ([D2](DECISIONES.md)). Opción (d) elegida entre cuatro alternativas evaluadas (público tal cual / retraso 30 días / privado con métricas públicas / público + protocolo). Campo `corrections` append-only en cada JSON. Canales email (diferido hasta cierre del nombre) + formulario con backend webhook → issue GitHub → notificación Telegram. Página pública `/correcciones/` con el protocolo en lenguaje llano. Alerta legal apuntada: el estudio del titular (RT20/LG1) sigue abierto; cuando cierre, hereda el log existente sin migración. El protocolo de correcciones es el escudo legal real — demuestra buena fe y due process, más defendible que retrasar o privatizar.
+
+- **Whitelist V1 antes del backfill** ([D3](DECISIONES.md)). 15-20 actores conocidos (Consell, Govern, IBAVI, ayuntamientos, partidos, sindicatos, patronales, tercer sector, colectivos) curados en `data/actor_domains.yml` antes del backfill. Refinamiento de dominios reales con los datos del propio backfill como calibración. Actor no reconocido durante backfill: el sistema lo anota como `whitelist_miss: true`, no bloquea publicación por sí solo, el repaso mensual IA propone ampliaciones.
+
+- **Tests del auditor diferidos a RT5** ([D4](DECISIONES.md)). No montar `tests/` ni pytest solo para el auditor. La tarea de cobertura del pipeline (RT5) absorbe `audit.py` + `verify.py` + `balance.py` + `extract.py` + `rescue.py` en un solo bloque con fixtures reales del backfill. Validación durante construcción del auditor = corrida empírica sobre la semana W10 (2-8 marzo 2026).
+
+- **Re-estudio del sistema de tiers en paralelo** ([D5](DECISIONES.md)). Opción (b) elegida. El auditor se construye con hueco reservado `tier: { value: null, reason: "pendiente estudio", signals: {...} }`; las señales se acumulan desde el día uno y cuando RT15 cierre, la función `compute_tier()` lee del bloque sin migrar logs antiguos. RT15 deja de bloquear el auditor y pasa a bloquear solo PI10 (visualización pública de tiers).
+
+- **Marco de tres hitos grandes como frame de la Fase 1** ([D6](DECISIONES.md)). Hito 1: auditor MVP publicado con una edición real (activo). Hito 2: sistema de tiers cerrado e integrado (en paralelo). Hito 3: titular legal resuelto (en paralelo, bloquea empuje público). El editor decide puntos de entrada y de cierre de cada hito; Claude lleva los pequeños dentro y pide OK por bloque. Las 33 tareas restantes quedan en cola; no se abren en paralelo en la cabeza del editor.
+
+- **Rastro de decisiones pequeñas + resumen al `/cierre`** ([D7](DECISIONES.md)). Decisiones autónomas de Claude dentro de un hito se anotan en el diario como línea corta (fecha, qué, por qué). Al cierre de sesión, resumen agrupado *"decisiones pequeñas de esta sesión"*. El editor deja correr, revierte o pide detalle.
+
+**Memoria del asistente actualizada** (fuera del repo): `feedback_vigilancia_legal_activa.md` (alerta legal como conducta continua — Claude avisa en el mismo turno cualquier cambio que mueva exposición legal), `idea_version_premium.md` (hipótesis de monetización pendiente de validar si el producto alcanza calidad fiable, no proponer proactivamente), `nombre_proyecto.md` (cadena de dependencias `email ← nombre ← estructura final` añadida).
+
+**Pendiente inmediato del Hito 1:**
+- Diseño sobre papel del módulo `src/audit.py` (estructura de funciones, contratos de datos, orden de fases) — revisar antes de escribir código.
+- Mockup estático de la página `/correcciones/` en el prototipo (mockup sin backend activo; el backend real espera al cierre del nombre y del estudio del titular).
+
+---
+
 ## 2026-04-23 [docs] — Propagación del cierre del estudio del auditor a REVISION-FASE-0.5
 
 Sincronización pendiente detectada por el editor: el cierre de [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md) del 23-abr (tarde) actualizó el propio estudio y el DIARIO, pero no propagó las decisiones a los documentos vivos donde vivían como abiertas. Una sesión paralela abrió `REVISION-FASE-0.5.md`, leyó que RT2 seguía ⏳ y que la capa 5 del auditor aún listaba el muestreo del 10 %, y se atascó. Causa raíz: al hacer el commit `063dc50`, se trató el estudio como autocontenido cuando cerraba decisiones que tenían estado abierto en otros docs. El comando [`/cierre`](.claude/commands/cierre.md) existe precisamente para forzar este paso en el futuro; no estaba disponible cuando se hizo el commit anterior (se creó en `d532531`, posterior).

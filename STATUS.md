@@ -2,6 +2,14 @@
 
 > **Regla:** ≤ 100 líneas. Solo estado vigente. Lo histórico vive en [`DIARIO.md`](DIARIO.md); lo fundacional en [`CLAUDE.md`](CLAUDE.md) y [`PIVOTE.md`](PIVOTE.md). Ver [D0](DECISIONES.md).
 
+## 🧭 Marco de trabajo de la Fase 1 (desde 2026-04-23, [D6](DECISIONES.md))
+
+Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va en cola.
+
+1. **Hito 1 · Auditor mínimo viable publicado con una edición real** ← activo.
+2. **Hito 2 · Sistema de tiers cerrado e integrado** (en paralelo).
+3. **Hito 3 · Titular legal resuelto** (en paralelo, bloquea empuje público).
+
 ## 🟢 Activo
 
 - **Pipeline documental semanal** en `main`. Cron lunes 05:00 UTC. Última edición: W17 (20-26 abril 2026).
@@ -17,7 +25,8 @@
 ## 🟡 En curso
 
 - **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21, 34 tareas. Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) + memoria [`revision_fase_0_5.md`](.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/revision_fase_0_5.md).
-- **Auditor IA de costes** cerrado como estudio ([`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md), 2026-04-23). Pendiente construir PI9 en Fase 1.
+- **Hito 1 — Auditor mínimo viable** (2 sem). PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). Pendiente inmediato: diseño sobre papel del módulo + mockup estático de `/correcciones/` en el prototipo.
+- **Hito 2 — Re-estudio del sistema de tiers** (RT15). En paralelo al auditor MVP ([D5](DECISIONES.md)).
 
 ## 🏷️ Identidad (provisional 2026-04-21)
 
@@ -25,14 +34,16 @@
 - **Dominio candidato:** `radaribiza.com` (compra pendiente).
 - **Repo:** slug `ibiza-housing-radar` mantenido hasta decisión de dominio.
 
-## 🎯 Próximo hito operativo
+## 🎯 Próximos hitos
 
 - **Lunes 27 abr 07:00 CEST** — próxima edición automática (W18).
+- **Arranque Hito 1 — Auditor MVP:** diseño sobre papel → construcción 2 sem → prueba empírica sobre W10 (2-8 marzo 2026).
 
 ## 📍 Puntos de entrada al retomar
 
 | Vengo a… | Abrir primero |
 |---|---|
+| Arrancar el auditor mínimo | [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md) + [D1](DECISIONES.md), [D2](DECISIONES.md), [D3](DECISIONES.md) |
 | Retomar diseño visual | memoria `prototipo_paso1_en_pausa.md` + [`ESTUDIO-DISENO.md §10`](ESTUDIO-DISENO.md) + entradas DIARIO 2026-04-21 |
 | Cerrar Revisión Fase 0.5 | [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) |
 | Tocar pipeline | [`ARQUITECTURA.md`](ARQUITECTURA.md) + [`src/`](src/) |
