@@ -77,6 +77,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 - **BOIB watcher** si no entró en Fase 2.
 - **Reevaluar Hora Ibiza + Nou Diari** (FU3) con datos reales del backfill.
 - **Health check de fuentes** (FU1) + script `sources_health.py` + proceso de revisión trimestral.
+- **Resiliencia a cambios de modelo Anthropic** (nuevo). Auditar si el pipeline está hardcodeado a versiones concretas (Haiku 4.5, Sonnet 4.6, Opus 4.7); crear script `models_health.py` que detecte deprecaciones o versiones nuevas consultando la API de Anthropic; alerta Telegram si un modelo activo deja de estar disponible o aparece una versión mayor; protocolo documentado para actualizar la versión de un modelo y volver a ejecutar el estudio de costes (RT14) sobre el nuevo. Objetivo: que un cambio de Anthropic nunca rompa el pipeline en silencio y que subir a una versión nueva sea un proceso testeable en menos de 1 hora.
 - **Criterio formal de admisión de propuestas** (ED1) validado empíricamente.
 - **Imparcialidad alertable** con umbrales cerrados (ED2).
 - **Horizonte temporal** fijado en UI y copy (ED4).
