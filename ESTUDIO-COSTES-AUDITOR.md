@@ -13,8 +13,9 @@ El auditor de 5 capas añade **entre 0,08 € y 0,20 € al mes** sobre el pipel
 
 **Lectura corta:**
 
-- **Mes típico con auditor encendido:** ~2 €/mes. Muy por debajo del tope blando (12 €).
-- **Mes con backfill completo + auditoría trimestral + re-benchmark:** ~7,7 €/mes. Dentro de capa amarilla, nunca cerca del tope duro (50 €).
+- **Mes típico con auditor encendido (régimen estable desde mes 4):** ~2,4 €/mes. Muy por debajo del tope blando (12 €).
+- **Meses 1-3 post-lanzamiento con auditoría Opus mensual de calibración:** ~5,7 €/mes. En verde cómoda.
+- **Mes pico realista** (mayo 2026 con backfill + auditoría mensual + re-bench): ~10 €/mes. Capa naranja (9-12 €), nunca cerca del tope duro (50 €). Justificado: calibrar rápido el auditor antes de acumular errores.
 - **Delta neto del auditor sobre lo ya construido:** +0,2 €/mes. La mayor parte del pipeline ya existe (Haiku extrae, Sonnet valida, Opus fallback); lo que se añade es (a) re-extracción ciega con Sonnet en lugar de simple validación, (b) comparador determinista Python, (c) heurísticas sin IA, (d) log de auditoría por propuesta.
 - **Sensibilidad:** si las disputas se disparan al 40 % (Haiku mal calibrado) o las propuestas/semana se triplican en temporada alta, el coste mensual sube a ~3 €/mes. No hay escenario realista que acerque el gasto al tope blando.
 
@@ -140,11 +141,22 @@ Asumimos 3 propuestas/semana (media razonable calibrada con W17). La sección 8 
 
 ### Capa 5 — Revisión humana
 
-- **Qué hace (diseño propuesto, ver §7 para la decisión abierta):**
+- **Qué hace (cerrado 2026-04-23):**
   - Editor lee el correo Telegram del lunes con resumen del auditor. Si aparece alguna propuesta flagged 🟠 o 🔴, el editor decide: publicar en cuarentena, corregir, descartar.
-  - **No hay muestreo aleatorio del 10 % de auto-aprobadas.** Esa práctica entra en contradicción directa con la regla fundacional del proyecto (editor opera, no audita). Ver §7.
+  - **No hay muestreo aleatorio del 10 % de auto-aprobadas** (decisión del editor 2026-04-23). Contradice la regla fundacional del proyecto. La red la hacen capas 2-4 + heurísticas + log público + cuarentena pública + formulario externo.
 - **Coste API:** **0 €**.
 - **Tiempo editor:** estimado 5-10 min/semana en régimen normal (solo correo Telegram + decisión sobre 0-2 flagged/mes).
+
+### Capa 5bis — Repaso IA mensual de cuarentena (cerrada 2026-04-23)
+
+- **Qué hace:** una vez al mes, Opus 4.7 lee todas las propuestas que quedaron en cuarentena ese mes + sus logs de auditoría completos + la whitelist `data/actor_domains.yml` + los umbrales vigentes en `src/audit_heuristics.py`. Devuelve dos salidas:
+  - **Diagnóstico narrativo corto** (~300 palabras) describiendo patrones detectados. Ejemplo: *"en 4 de 8 casos el verbatim match falló porque el texto estaba en catalán y la heurística solo pesa castellano; en 2 casos la whitelist no tenía el subdominio `.cat` del Consell"*.
+  - **Bloque YAML de ajustes propuestos** ejecutables sin edición manual. Ejemplo: añadir entradas a la whitelist, mover umbrales, proponer refinado de prompt.
+- **Aplicación de los ajustes:** nunca automática. El editor recibe por Telegram el diagnóstico y el bloque YAML, y responde OK/rechazo. Solo tras OK explícito se aplican los ajustes al repo (commit `config(audit): ajustes mensuales aprobados por editor`). Esto mantiene a la IA como proponente y al editor como custodio del método.
+- **Coste API:** ~0,3-0,5 €/mes (Opus leyendo 10-30 propuestas + contexto).
+- **Tiempo editor:** ~5 min/mes (leer diagnóstico + decisión). Reducción de 30 min a 5 min respecto a hacerlo manual.
+- **Por qué IA y no editor humano:** coherencia con la regla fundacional del proyecto — el editor cuida la vía, no lee cada vagón. El repaso de patrones en cuarentena es trabajo analítico delegable; la decisión de aplicar ajustes no lo es.
+- **Riesgo a vigilar:** IA afinando su propio sistema = ciclo cerrado. Mitigación: (a) los ajustes nunca se aplican sin OK humano, (b) la auditoría mensual/trimestral con Opus sobre el corpus general (§5) es independiente del repaso de cuarentena y puede detectar si los umbrales auto-ajustados están rebajando calidad. Si la auditoría general empieza a encontrar errores sistemáticos en propuestas auto-aprobadas, hay que congelar los ajustes del repaso mensual y revisar.
 
 ---
 
@@ -156,11 +168,20 @@ Asumimos 3 propuestas/semana (media razonable calibrada con W17). La sección 8 
 | Capa 2 auditor — Sonnet ciego | +0,08 | Delta neto sobre validator actual |
 | Capa 3 auditor — Python + verify.py + heurísticas | 0,00 | Sin API |
 | Capa 4 auditor — Opus disputas (~2/mes) | 0,12 | Ya existía como `extract_fallback`; ahora formalizado como capa 4 |
-| Capa 5 — editor | 0,00 | Sin muestreo humano (recomendación §7) |
-| **Subtotal pipeline + auditor operativo** | **~1,95** | 🟢 Zona verde holgada |
+| Capa 5 — editor | 0,00 | Sin muestreo humano (decisión editor 2026-04-23) |
+| Capa 5bis — repaso IA mensual cuarentena (Opus) | +0,40 | Opus lee cuarentena mensual, propone ajustes, editor firma |
+| **Subtotal pipeline + auditor operativo** | **~2,35** | 🟢 Zona verde holgada |
 | Re-benchmark mensual (10 noticias × 3 modelos) | +0,30 | Una vez al mes |
-| Auditoría trimestral Opus (prorrateada 1/3) | +1,00 | Una edición de cada ~13 |
-| **Subtotal con todos los añadidos periódicos** | **~3,25** | 🟢 Zona verde cómoda |
+| Auditoría Opus — **mensual los 3 primeros meses** (calibración rápida) | +3,00 | Solo may-jul 2026 |
+| Auditoría Opus trimestral (desde mes 4, prorrateada 1/3) | +1,00 | Una edición de cada ~13 desde agosto |
+| **Subtotal con añadidos — meses 1-3 post-lanzamiento** | **~5,65** | 🟢 Zona verde cómoda |
+| **Subtotal con añadidos — mes 4 en adelante** | **~3,65** | 🟢 Zona verde holgada |
+
+**Nota sobre la auditoría Opus mensual los 3 primeros meses (decisión 2026-04-23):** los 3 meses iniciales se audita cada edición del primer lunes de mes con Opus sobre una muestra de 10-15 propuestas recientes. Objetivo: calibrar umbrales del auditor con datos reales rápido, antes de que los problemas se acumulen. A partir del mes 4 vuelve a cadencia trimestral estándar. Coste extra del bloque de 3 meses: ~6 € totales (~2 €/mes × 3). Trazable en `costs.csv` como fase `monthly_audit`.
+
+**Revisión de cadencias al mes 4 y al mes 7 (apuntado 2026-04-23):**
+- **Mes 4 (agosto 2026):** revisar si la auditoría mensual del arranque se cierra como estaba previsto, se extiende unos meses más, o se fija como cadencia permanente. Criterio: ¿los ajustes mensuales siguen aportando señal nueva o ya saturan?
+- **Mes 7 (noviembre 2026):** revisar si los reportes trimestrales conviene mantenerlos, sustituirlos por semestrales, o combinarlos. Criterio: valor informativo real, no costumbre. Evitar duplicación entre canales.
 
 **Comparación con topes:**
 
@@ -189,16 +210,17 @@ El backfill retroactivo de 12 semanas (semanas de febrero a abril de 2026) cubre
 
 **Corrección importante:** la estimación en caliente del 21-abr ("~3,50 €") no incluía `generate` retroactivo ni `self_review`. El número real está en **~5,4 €**. Sigue siendo perfectamente absorbible: ejecutar el backfill en un mes con bajo consumo coloca el total mensual en 🟡 amarilla, lejos del tope blando.
 
-**Mes pico realista (mayo 2026, con backfill):**
+**Mes pico realista (mayo 2026, con backfill + auditoría mensual de arranque):**
 
 | Componente | €/mes |
 |---|---|
-| Régimen normal con auditor + self-review semanal | 1,95 |
+| Régimen normal con auditor + self-review + capa 5bis IA | 2,35 |
 | Backfill completo (one-shot) | 5,43 |
 | Re-benchmark mensual | 0,30 |
-| **Total mayo 2026 proyectado** | **~7,7 €** |
+| Auditoría Opus mensual de calibración (solo meses 1-3) | 2,00 |
+| **Total mayo 2026 proyectado** | **~10,1 €** |
 
-Capa 🟡 amarilla. Sin cruce del tope blando.
+Capa 🟠 naranja. Sin cruce del tope blando (12 €), lejísimos del duro (50 €). Es un mes excepcional por acumulación de arranque, no un régimen. Desde agosto 2026 el mes típico vuelve a ~2,4 €.
 
 ---
 
@@ -331,7 +353,7 @@ Ruta ajustada al ritmo sostenible del editor (~15 h/semana, según roadmap).
 - **No revisar manualmente el 10 % de auto-aprobadas.** Rompe la regla fundacional. Si falta confianza, se sube el rigor de capa 2 o se añade una auditoría trimestral más exigente, no se mete al editor.
 - **No activar prompt caching en capa 2.** Con batch único por semana no hay reuso dentro del TTL. Solo complica la lectura del código.
 - **No usar Opus en capa 2 por defecto.** Sonnet está calibrado para este trabajo. Opus solo arbitra disputas.
-- **No ejecutar el backfill en un mes con otros gastos acumulados** (trimestral + trilingüe activado a la vez): puede llevar el total a 🟠 naranja. Separar en ventanas temporales distintas cuando sea posible.
+- **No concatenar gastos grandes sin aviso previo, pero no evitarlos por sistema.** Si mayo 2026 acumula backfill + trilingüe + auditoría mensual + re-bench, el total puede llegar a 🟠 naranja (9-12 €). Está dentro de los topes y del presupuesto de arranque del proyecto. La regla sana es: hacer la estimación antes de apretar el botón, registrar la previsión, y proceder si beneficia al lanzamiento. Solo se separa en ventanas distintas si la suma proyectada roza el tope blando sin aportar valor al progreso.
 - **No auditar cada idioma por separado si se activa trilingüe.** La auditoría corre sobre el original (ES). Las traducciones son paso de salida, no de verificación.
 - **No reducir capa 4 (Opus arbitraje) para ahorrar.** Es el último filtro antes de publicar. El ahorro máximo son ~0,1 €/mes. Ridículo comparado con el coste reputacional de una propuesta mal extraída publicada como 🟢.
 
@@ -348,7 +370,44 @@ El auditor funciona si, a los 6 meses de operación:
 5. **Flagged 🟠 promedio = 0-2/mes.** Si > 5, el editor empieza a ser revisor de facto — señal para rediseñar heurísticas.
 6. **Cero incidentes reputacionales** por propuesta 🟢 retirada por error de hecho.
 
-Los 6 indicadores se publican en el dashboard interno de auditor (simple página markdown regenerada mensualmente; no es prioritario construirlo ahora, pero sí registrar las métricas desde el inicio).
+### 12.1 · Dónde se ven los indicadores — tres canales complementarios
+
+Los 6 indicadores anteriores se materializan en tres canales con funciones distintas; ninguno sustituye a los otros. Los tres se alimentan del mismo log en `data/audit/`, sin duplicación de cálculo.
+
+**Canal 1 · Página pública `/auditor/`** (eje principal, coherente con la filosofía del log público).
+
+- URL permanente, regenerada automáticamente tras cada edición del lunes.
+- Contenido: distribución de tiers últimas 4 semanas, ratio de disputas, flagged/mes, cuarentena actual con links a cada caso, coste del auditor/mes, fecha y resultado de la última auditoría Opus.
+- Es la respuesta visible a *"¿quién revisa?"*. No una página de "nuestras métricas"; una página donde cualquier visitante comprueba que el sistema funciona en abierto.
+- Encaja con el resto de páginas de transparencia del proyecto: `/costes/`, `/estado/`, `/balance/`, `/correcciones/`.
+- Implementación: script `src/audit_dashboard.py` que regenera `docs/auditor.md` desde `data/audit/*.json`. Parte del plan de la semana 3.
+
+**Canal 2 · Alertas Telegram — parte único del lunes** (consolidado, sin sobrealertar).
+
+- **Un solo mensaje por semana**, los lunes tras generar la edición. Agrupa todas las señales fuera de rango verde de los últimos 7 días. Si todo está verde, silencio: sin parte.
+- Triggers que entran en el parte si ocurren (afinar con datos reales de los 3 primeros meses):
+  - Ratio de disputas semanal > 25 %.
+  - Flagged en la edición > 3.
+  - Auditoría Opus mensual encuentra > 2 errores no detectados por capas 1-4.
+  - Cuarentena supera 10 propuestas abiertas.
+  - Coste mensual del auditor > 1 €.
+- **Excepción — alertas críticas sueltas:** tope duro cruzado, pipeline roto, API key caducada. Esos sí disparan mensaje inmediato independiente del parte del lunes. No se mezclan con el parte rutinario.
+- Infra: `src/notify.py` ya existe, se reutiliza. Lógica nueva en `src/audit_weekly_brief.py`: recoge señales, genera un mensaje si hay algo, silencio si no.
+
+**Canal 3 · Reportes periódicos + página `/reportes/`** (narrativa, contexto, tendencias).
+
+- **Cadencias:**
+  - **Mensual** durante los 3 primeros meses post-lanzamiento (may-jul 2026). Calibración rápida con Opus.
+  - **Trimestral** a partir del mes 4 (desde agosto 2026).
+  - **Semestral** a partir del mes 7 (desde noviembre 2026) en adición a los trimestrales — mayor horizonte narrativo, comparación año a año una vez haya datos.
+- **Revisión de cadencias** (apuntado 2026-04-23):
+  - **Al cumplirse el mes 4** (agosto 2026), revisar si la auditoría mensual del arranque se extiende, se fija como cadencia permanente, o se cierra según lo previsto. Decisión basada en si los ajustes mensuales de los 3 primeros meses siguen aportando señal o ya saturan.
+  - **Al cumplirse el mes 7** (noviembre 2026), revisar si los reportes trimestrales siguen siendo útiles con horizonte semestral encima o conviene sustituirlos por los semestrales. Evitar duplicación innecesaria; elegir cadencia por valor informativo real, no por costumbre.
+- **Página `/reportes/`:** índice permanente con todos los reportes bajo URLs propias (`/reportes/2026-05/`, `/reportes/2026-q3/`, `/reportes/2026-h2/`...). Formato markdown, estilo editorial, comparables entre sí.
+- **Envío por Telegram:** headline de una línea + link al reporte publicado. No el texto entero.
+- **Qué contienen los reportes que la página `/auditor/` no tiene:** comparación con el periodo anterior, narrativa de ajustes hechos (umbrales, heurísticas, whitelist), lecturas de patrones detectados por el repaso IA mensual de cuarentena.
+
+Los tres canales se construyen en orden de prioridad: canal 1 en semana 3 del plan, canal 2 en semana 3 también reutilizando `notify.py`, canal 3 al cierre del primer mes post-lanzamiento (junio 2026 si el relanzamiento es mayo).
 
 ---
 
@@ -359,14 +418,19 @@ Los 6 indicadores se publican en el dashboard interno de auditor (simple página
 | Capa 2 modelo | Sonnet 4.6 (no Haiku por correlación, no Opus por coste) |
 | Capa 2 forma | Re-extracción ciega batch único, usando `EXTRACT_SYSTEM` existente |
 | Capa 4 modelo y disparo | Opus 4.7 solo en disputas críticas (diff en `actor`, `target_actor`, `palanca`, `state`, `verbatim<0,60`) |
-| Capa 5 muestreo humano | **Eliminado.** Editor solo mira flagged. Coherente con regla fundacional |
+| Capa 5 muestreo humano | **Eliminado** (editor 2026-04-23). Solo flagged. Coherente con regla fundacional |
+| Capa 5bis repaso mensual de cuarentena | **Delegada a IA** (editor 2026-04-23). Opus mensual lee cuarentena + logs y propone ajustes YAML; editor firma con OK en 5 min. ~0,4 €/mes |
 | Prompt caching en capas auditor | Desactivado (batch único semanal, no hay reuso) |
 | Heurísticas sin IA | 5 implementadas: cross-source, single-source penalty, verbatim match, whitelist dominio-actor, viability sanity |
 | Log de auditoría | `data/audit/YYYY-wWW/{proposal_id}.json` por propuesta, append-only, público |
 | Cuarentena | Página pública `/revision-pendiente/` para tier 🔴 y flagged |
+| Auditoría Opus | **Mensual** los 3 primeros meses post-lanzamiento (editor 2026-04-23), luego trimestral. Revisión de cadencia al mes 4 |
+| Reportes periódicos | Mensual (meses 1-3), trimestral (desde mes 4), semestral (desde mes 7). Revisión de cadencia al mes 7 |
+| Panel de éxito del auditor | 3 canales: página pública `/auditor/` (eje), parte Telegram del lunes consolidado (un solo mensaje/semana, silencio si todo verde), página `/reportes/` con narrativa (mensual → trimestral → semestral) |
 | Coste mensual auditor régimen normal | ~0,20 € (delta sobre pipeline existente) |
-| Coste total mensual pipeline + auditor | ~2,0 €/mes típico, ~3,3 €/mes con añadidos periódicos |
+| Coste total mensual pipeline + auditor | ~5,65 €/mes en meses 1-3 (con auditoría Opus mensual); ~3,65 €/mes desde mes 4 |
 | Coste backfill 12 semanas | ~5,4 € (one-shot), corregido desde la estimación inicial de 3,5 € |
+| Política de concurrencia de gastos | Estimar antes, proceder si beneficia al progreso. Topes absolutos: blando 12 €, duro 50 €. |
 | Plan | 4 semanas, ~35 h desarrollo |
 
 ---

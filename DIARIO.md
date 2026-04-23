@@ -12,6 +12,22 @@ Reglas:
 
 ---
 
+## 2026-04-23 (tarde) — Cierre del estudio del auditor: capa 5bis delegada a IA, Telegram consolidado, reportes mensuales → trimestrales → semestrales
+
+Segunda vuelta sobre [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md) tras feedback del editor. Decisiones cerradas:
+
+- **Muestreo humano del 10 % de auto-aprobadas: eliminado.** Contradecía la regla fundacional (editor opera, no audita). La red de seguridad la cubren capas 2-4 + heurísticas + log público + cuarentena pública + formulario externo.
+- **Capa 5bis (repaso mensual de cuarentena) delegada a Opus.** Lee cuarentena + logs + whitelist + umbrales y devuelve diagnóstico narrativo + bloque YAML de ajustes propuestos. Nunca se aplica sin OK explícito del editor por Telegram. Coste ~0,4 €/mes. Tiempo editor: 5 min/mes (vs 30 min si lo hace a mano). Alternativa más alineada con *"el editor cuida la vía, no lee cada vagón"*. Riesgo de ciclo cerrado mitigado con (a) OK humano obligatorio antes de aplicar ajustes, (b) la auditoría Opus general sobre el corpus es independiente y detectaría desvíos sistémicos.
+- **Alertas Telegram consolidadas en un solo parte del lunes.** Sin sobrealertar: si hay varias señales fuera de rango, van juntas. Si todo verde, silencio total. Excepción solo para alertas críticas (tope duro cruzado, pipeline roto), que siguen sueltas e inmediatas.
+- **Reportes con cadencia escalonada + página `/reportes/`.** Mensuales los primeros 3 meses (may-jul 2026, calibración rápida), trimestrales desde el mes 4 (agosto 2026), semestrales desde el mes 7 (noviembre 2026) en adición. Envío por Telegram con headline + link; texto completo en `/reportes/YYYY-MM/`, `/reportes/YYYY-qN/`, `/reportes/YYYY-hN/` como archivos markdown permanentes.
+- **Revisión de cadencias apuntada explícitamente:** al mes 4 se decide si el mensual se extiende, se fija permanente o se cierra. Al mes 7 se decide si el trimestral sigue, pasa a semestral puro o se combina. Criterio en ambos casos: valor informativo real, no costumbre.
+- **Números actualizados** con la capa 5bis IA incluida: régimen estable desde mes 4 ≈ 2,4 €/mes. Meses 1-3 con auditoría Opus mensual de arranque ≈ 5,7 €/mes. Mes pico mayo 2026 (backfill + auditoría mensual + re-bench + capa 5bis) ≈ 10,1 €/mes — capa naranja, sin cruce de tope blando (12 €), lejísimos del duro (50 €).
+- **Feedback del editor apuntado en memoria** (`feedback_esperar_ok_antes_de_editar.md`): en modo de intercambio de feedback sobre documentos, proponer → esperar OK → ejecutar. No aplicar ediciones al repo sin el "sí" del editor aunque la propuesta parezca obvia. Ocurrió en esta sesión; el editor lo corrigió y queda como regla.
+
+Con esto el estudio del auditor queda cerrado. Siguiente paso del roadmap: construcción del módulo `src/audit.py` (semana 1 del plan — auditoría ciega con Sonnet + comparador determinista + tests con dataset W17).
+
+---
+
 ## 2026-04-23 — Dos tareas nuevas añadidas al ROADMAP + ESTUDIO-COSTES-AUDITOR.md commiteado
 
 - **Tarea: revisión profunda de arquitectura de archivos y gestión del conocimiento** — añadida como ítem 2 de la ruta crítica de Fase 1 (entre el estudio de costes del auditor y los tests básicos). Objetivo: que cada nueva conversación arranque con visión clara del proyecto; que un estudio completo al inicio de chat sea óptimo en tokens; que el feedback del editor y la gestión de tareas se acumulen y organicen de forma útil; optimizar consumo de tokens sin perder calidad ni detalle.
