@@ -179,6 +179,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 
 Estas tareas siguen apuntadas pero no entran en el roadmap del relanzamiento:
 
+- **Revisión profunda de arquitectura documental y gestión del conocimiento** — ejecutar reorganización completa descrita en [`ESTUDIO-GESTION-CONOCIMIENTO.md`](ESTUDIO-GESTION-CONOCIMIENTO.md) §3 y §7 (INDEX.md, DIARIO troceado, front-matter YAML, consolidación `estudios/`, migración histórica de decisiones, contrato de arranque formalizado). **Condición:** observatorio lanzado + primera evaluación 90 días + Revisión Fase 0.5 cerrada. Releer estudio antes de ejecutar; probable que parte esté obsoleta. Reglas baratas ya aplicadas 2026-04-23 (ver DIARIO y DECISIONES D0).
 - **Balance rediseño con persistencia trimestral** (RT6) — activar a los 3 meses de datos, ~julio 2026.
 - **Auditoría trimestral con Opus** — primera cuando haya 13 ediciones (Q4 2026 si todo va bien).
 - **Re-benchmark mensual de modelos**.
