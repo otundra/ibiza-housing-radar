@@ -26,7 +26,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 - **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21, 34 tareas. Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) + memoria [`revision_fase_0_5.md`](.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/revision_fase_0_5.md).
 - **Hito 1 — Auditor mínimo viable** (2 sem). PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). Pendiente inmediato: diseño sobre papel del módulo + mockup estático de `/correcciones/` en el prototipo.
-- **Hito 2 — Re-estudio del sistema de tiers** (RT15). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) casi cerrado 2026-04-23: §§1-7, 9, 10 redactadas; §8 al 50 % (sesgo por actor, medición pendiente del backfill); §11 = 5 preguntas al editor. Cierre definitivo = RT26 (editor contesta). Medición de sesgo = RT25 (post-backfill). Test UX con n=5 = RT3. En paralelo al auditor MVP ([D5](DECISIONES.md)).
+- **Hito 2 — Re-estudio del sistema de tiers** ✅ **cerrado 2026-04-23** (RT15, RT26). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo con 5 decisiones operativas en [D9](DECISIONES.md). Queda como pendiente de datos la medición empírica del sesgo por actor (RT25, post-backfill). Implementación de `src/tiers.py` + `data/tiers.yml` pasa a PI10 (sin bloquear auditor MVP).
 
 ## 🏷️ Identidad (provisional 2026-04-21)
 
@@ -44,7 +44,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 | Vengo a… | Abrir primero |
 |---|---|
 | Arrancar el auditor mínimo | [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md) + [D1](DECISIONES.md), [D2](DECISIONES.md), [D3](DECISIONES.md) |
-| Cerrar el estudio de tiers | Leer [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) y contestar las 5 preguntas de §11 (RT26 en la revisión fundacional) |
+| Implementar el sistema de tiers | [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) cerrado. Siguiente: `src/tiers.py` + `data/tiers.yml` con los valores de [D9](DECISIONES.md) + badge en Jekyll + `/metodologia/#tiers` (tarea PI10) |
 | Retomar diseño visual | memoria `prototipo_paso1_en_pausa.md` + [`ESTUDIO-DISENO.md §10`](ESTUDIO-DISENO.md) + entradas DIARIO 2026-04-21 |
 | Cerrar Revisión Fase 0.5 | [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) |
 | Tocar pipeline | [`ARQUITECTURA.md`](ARQUITECTURA.md) + [`src/`](src/) |

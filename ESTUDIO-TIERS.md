@@ -1,8 +1,8 @@
 # Estudio del sistema de tiers de confianza
 
-**Fecha:** 2026-04-23 (primer pase) · 2026-04-23 tarde (segundo pase)
-**Estado:** 🟡 casi cerrado — secciones 1-7, 9, 10 redactadas; §8 al 50 % (diseño sí, medición empírica pendiente del backfill); §11 es una lista de 5 preguntas al editor que cierran el estudio al contestarlas.
-**Origen:** tarea de la revisión fundacional, ficha RT15 en [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md:238). Bloquea la función `compute_tier()` real dentro del auditor y la página pública con el badge de cada propuesta.
+**Fecha:** 2026-04-23 (primer pase) · 2026-04-23 tarde (segundo pase) · 2026-04-23 noche (5 decisiones cerradas, ver [D9](DECISIONES.md))
+**Estado:** ✅ **cerrado** salvo §8.5 (medición empírica del sesgo por tipo de actor), que depende de tener el backfill de 12 semanas ejecutado. Ficha de seguimiento de esa medición en RT25 de la revisión fundacional.
+**Origen:** tarea de la revisión fundacional, ficha RT15 en [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md:238). Desbloquea la función `compute_tier()` real dentro del auditor y la página pública con el badge de cada propuesta (PI10).
 **Dependencia cerrada:** [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md) define qué señales produce el auditor. Este estudio decide cómo combinarlas en un color.
 
 ---
@@ -797,18 +797,30 @@ Contexto en §4.3. Opciones: congelar / recalcular / híbrido.
 
 **Recomendación del asistente: Fase 4.** La pausa del prototipo está por una razón (arquitectura primero, ver [`STATUS.md`](STATUS.md)). Los textuales bastan para validar el árbol y el copy.
 
+### 11.6 Decisiones cerradas 2026-04-23 (OK del editor en bloque, registradas en [D9](DECISIONES.md))
+
+| Pregunta | Decisión cerrada |
+|---|---|
+| Q1 — Visibilidad | **Mixto.** 🟢 sin badge (asumido). 🟡 / 🟠 / 🔴 con badge + copy de aviso. |
+| Q2 — Techo de fuente única | **Decidir tras backfill.** Regla dura en vigor hasta entonces. Si la medición empírica (RT25) detecta sesgo > 30 % en alguna categoría con n ≥ 5, aplicar M1 solo a colectivos ciudadanos, tercer sector, sindicatos minoritarios y asambleas, y solo si el dominio es oficial del actor. |
+| Q3 — Default del paso 6 del árbol | **🟠 + alerta Telegram** cada vez que se dispara el default. Permite detectar casos raros sin perder editorial. |
+| Q4 — Política de cambios retroactivos | **Congelar.** Tier calculado una vez al publicar, inmutable en log. Cambios de umbrales afectan solo a nuevas. Correcciones vía `/correcciones/`. |
+| Q5 — Mockups visuales HTML | **Fase 4.** Los textuales del §9 bastan. Los HTML se integran al reanudar el prototipo del Bloque B. |
+
+Con estas cinco decisiones, el estudio queda cerrado operativamente. El único bloque pendiente de datos es §8.5 (medición empírica del sesgo) que se resuelve con el script `scripts/tier_bias_audit.py` ejecutado sobre el corpus del backfill (RT25). Todo lo demás es implementable hoy en `src/tiers.py` + `data/tiers.yml` bajo la tarea PI10.
+
 ---
 
-## Resumen — qué falta para cerrar el estudio
+## Resumen — qué falta para cerrar el estudio (actualizado 2026-04-23 noche)
 
 | Pendiente | Qué se necesita | Dónde queda apuntado en el roadmap |
 |---|---|---|
-| Cerrar Q1-Q5 (§11) | Respuesta del editor | RT26 (nueva) |
-| Medición empírica del sesgo por actor (§8) | Backfill 12 semanas ejecutado + `scripts/tier_bias_audit.py` (~2 h de código) | RT25 (nueva) |
-| Test UX con 5 personas (§10) | Trabajo de campo del editor (~3 h) | RT3 (ficha existente), ahora apunta a §10 de este estudio |
-| Validación preliminar de distribución 70/20/8/2 | Backfill piloto de una semana (W10, 2-8 marzo 2026) del plan del auditor mínimo viable | RT1 (ficha existente), ahora con línea explícita sobre tiers |
+| ~~Cerrar Q1-Q5 (§11)~~ ✅ | ~~Respuesta del editor~~ | Cerrado 2026-04-23 en [D9](DECISIONES.md). RT26 ✅ |
+| Medición empírica del sesgo por actor (§8.5) | Backfill 12 semanas ejecutado + `scripts/tier_bias_audit.py` (~2 h de código) | RT25 en la revisión fundacional |
+| Test UX con 5 personas (§10) | Trabajo de campo del editor (~3 h) | RT3 (ficha existente), apunta a §10 de este estudio |
+| Validación preliminar de distribución 70/20/8/2 | Backfill piloto de una semana (2-8 marzo 2026) del plan del auditor mínimo viable | RT1 (ficha existente), con línea sobre tiers |
 | Mockups visuales HTML (§9) | Reanudar Bloque B (prototipo) en Fase 4 del roadmap V2 | Implícito en B34-B40 (Bloque B del roadmap original) |
-| `src/tiers.py` y `data/tiers.yml` reales | Q1-Q5 cerradas (bloquean implementación) | PI10 (sistema de tiers públicos) |
+| `src/tiers.py` y `data/tiers.yml` reales | ✅ Decisiones cerradas, se puede implementar | PI10 (sistema de tiers públicos) — Fase 2 del roadmap V2 |
 
 ---
 

@@ -13,6 +13,22 @@ Reglas:
 
 ---
 
+## 2026-04-23 [arquitectura] — Cierre del estudio de tiers de confianza con 5 decisiones operativas
+
+Tras el segundo pase del estudio del mismo día, el editor da OK en bloque a las cinco recomendaciones del asistente sobre las preguntas abiertas (§11 del estudio). Registrado como [D9](DECISIONES.md) y en [`ESTUDIO-TIERS.md §11.6`](ESTUDIO-TIERS.md):
+
+- **Visibilidad de los tiers = mixto.** 🟢 se publica sin badge visual (asumido). 🟡 / 🟠 / 🔴 llevan badge + copy de aviso. Coherente con la filosofía editorial ("confía por defecto, señala excepciones").
+- **Techo de fuente única = decidir tras backfill.** Regla dura en vigor hasta entonces. La medición empírica (RT25) decide si se relaja la regla solo para colectivos ciudadanos, tercer sector, sindicatos minoritarios y asambleas cuando el dominio es oficial del actor, y solo si el sesgo detectado supera el umbral.
+- **Default del paso 6 del árbol = 🟠 + alerta Telegram.** Combinaciones raras de señales se publican con aviso, no cuarentena. Alerta al canal del editor para ampliar el árbol cuando se repita.
+- **Política de cambios retroactivos = congelar.** El tier se calcula una vez al publicar y queda inmutable en el log. Cambios de umbrales afectan solo a propuestas nuevas. Si un cambio destapa errores en pasadas, corrección vía `/correcciones/`.
+- **Mockups visuales HTML = Fase 4.** Los mockups textuales de §9 del estudio bastan para validar el árbol y el copy. Los HTML se integran cuando se retome el prototipo del Bloque B.
+
+**Efectos en el roadmap:** RT15 ✅ y RT26 ✅ cerradas en la tabla de progreso; Hito 2 de la Fase 1 queda cerrado conceptualmente (falta medición empírica de sesgo = RT25, que depende del backfill, y la implementación técnica = PI10). El auditor mínimo viable sigue su curso escribiendo `signals` en el log, y `compute_tier()` real se conecta cuando se construya PI10 sin migrar logs antiguos.
+
+**Decisión del asistente al cierre:** no se crea `data/tiers.yml` todavía. El YAML nace junto a `src/tiers.py` dentro de la tarea PI10, no como documento conceptual aislado. El estudio lo deja especificado con ejemplo completo (§4.2) para que la construcción sea copiar-pegar con ajustes.
+
+---
+
 ## 2026-04-23 [sesion] — Estudio de tiers casi cerrado (primer + segundo pase) + refuerzo de la regla de no citar códigos internos
 
 Turno largo tras el cierre del experimento de aprendizaje. Tres ítems:

@@ -43,12 +43,13 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 2. **Prueba empírica** (RT1). Corrida del auditor MVP sobre la semana W10 (2-8 marzo 2026) antes del backfill completo.
 3. **Iteración posterior del auditor** (2-3 semanas, puede solaparse con Fase 2): formalización explícita de capa 4 Opus + página `/revision-pendiente/` + dashboard público `/auditor/` + capa 5bis (repaso mensual IA de cuarentena).
 
-**Hito 2 · Sistema de tiers cerrado e integrado (en paralelo al Hito 1, bloquea PI10):**
+**Hito 2 · Sistema de tiers cerrado e integrado (cerrado conceptualmente 2026-04-23, pendiente implementación + validación empírica):**
 
-- **Re-estudio profundo del sistema de tiers** (RT15). Estudio [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) casi cerrado 2026-04-23: §§1-7, 9 y 10 completas (contexto, 10 señales, árbol determinista de 6 pasos, umbrales ajustables en `data/tiers.yml` con política de congelar, copy público llano, promoción desde cuarentena, historia del tier con `tier.history[]`, mockups textuales, plan de test con n=5). §8 al 50 % (sesgo por tipo de actor: diseño del método + mitigaciones candidatas; medición pendiente del backfill). §11 es la lista de 5 preguntas al editor (Q1-Q5) que cierran el estudio al contestarse.
-- **Cierre del estudio** (RT26). Editor contesta Q1-Q5. Desbloquea `src/tiers.py` real, `data/tiers.yml` con los valores cerrados, y PI10 (badge público).
-- **Medición empírica del sesgo** (RT25). Tras backfill de 12 semanas (PI2-B). Script `scripts/tier_bias_audit.py` (~2 h) + análisis + activación opcional de mitigación M1 en `data/tiers.yml`. Cierra §8 del estudio.
-- **Test de usabilidad con 5 personas** (RT3). Cierra la decisión de Q1 (visibilidad) con datos de campo; ~3 h de trabajo del editor con su red personal.
+- **Re-estudio profundo del sistema de tiers** (RT15) ✅ **cerrada 2026-04-23**. Entregable [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo: 11 secciones + 5 decisiones operativas cerradas ([D9](DECISIONES.md)) — visibilidad mixta (🟢 sin badge, 🟡🟠🔴 con aviso), política de cambios retroactivos congelar, default paso 6 = 🟠 + alerta Telegram, Q2 diferida a datos del backfill, mockups HTML para Fase 4.
+- **Cierre editorial** (RT26) ✅ cerrada 2026-04-23 con OK en bloque del editor.
+- **Implementación pendiente (entra en PI10):** `src/tiers.py` con `compute_tier(signals)` + `data/tiers.yml` con los umbrales operativos + plantilla visual del badge en Jekyll + `/metodologia/#tiers` con el copy de §5 del estudio. No bloquea Hito 1; se hace como sub-tarea dentro de la iteración posterior del auditor o en Fase 2.
+- **Medición empírica del sesgo** (RT25). Tras backfill de 12 semanas (PI2-B). Script `scripts/tier_bias_audit.py` (~2 h) + análisis + activación opcional de mitigación M1 en `data/tiers.yml`. Cierra §8.5 del estudio.
+- **Test de usabilidad con 5 personas** (RT3). Valida en campo la decisión de visibilidad mixta (Q1). ~3 h de trabajo del editor con su red personal. Recomendable antes del empuje público.
 - **Validación empírica preliminar del árbol** sobre backfill piloto W10 (RT1) — queda dentro del Hito 1; aquí solo se anota que confirma que los umbrales por defecto funcionan antes del backfill grande.
 
 **Hito 3 · Titular legal resuelto (en paralelo, bloquea empuje público):**

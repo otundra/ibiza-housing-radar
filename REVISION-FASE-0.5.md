@@ -237,13 +237,17 @@ Entregable: [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md) cerrado 202
 
 **Siguiente paso:** construir `src/audit.py` (semana 1 del plan del estudio).
 
-### RT15 · Re-estudio profundo del sistema de tiers de confianza 🟡 [ALTA — primer pase cerrado 2026-04-23]
+### RT15 · Re-estudio profundo del sistema de tiers de confianza ✅ CERRADA 2026-04-23
 
-**Entregable abierto:** [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md). Primer pase cerrado 2026-04-23 con secciones 1-3 (punto de partida + 10 señales computables del auditor + árbol de decisión determinista en 6 pasos, con ejemplos). Secciones 4-11 pendientes de segundo pase: umbrales ajustables, copy público llano por tier, interacción con cuarentena y promoción, historia del tier, sesgo por tipo de actor, mockups, plan de test con usuarios, preguntas al editor.
+**Entregable:** [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md), 11 secciones redactadas + §11.6 con las 5 decisiones cerradas por el editor ([D9](DECISIONES.md)).
 
-**Estado operativo:** no bloquea el auditor mínimo viable (ver [D5](DECISIONES.md) — el auditor escribe `signals` con `tier.value = null` hasta que `compute_tier()` exista). Bloquea solo la publicación del badge en las fichas (PI10 en esta revisión) y la página pública con la distribución de tiers.
+**Resumen del cierre:** árbol determinista de 6 pasos (bloqueantes → techos → 🟢 → 🟡 → 🟠 → default 🟠), 10 señales computables del auditor, umbrales ajustables en `data/tiers.yml` con política de congelar, copy público llano (tabla de palabras prohibidas con traducciones), interacción con cuarentena (tres caminos de promoción, archivo a 60 días), historia del tier con `tier.history[]` append-only, plan de test con n=5, mockups textuales para ficha/lista/cuarentena/dashboard/home.
 
-**Preguntas originales a cerrar en el segundo pase:**
+**Único bloque dependiente de datos:** §8.5 (medición empírica del sesgo por tipo de actor). Se resuelve con el backfill de 12 semanas ejecutado (ficha RT25 de esta revisión). Si se confirma el sesgo, activa mitigación M1 (relajación del techo de fuente única solo en 4 categorías de actor) escrita en `data/tiers.yml`.
+
+**Desbloqueos:** PI10 (sistema de tiers público) listo para construirse sobre `src/tiers.py` + `data/tiers.yml`. El auditor mínimo viable sigue escribiendo `signals` en el log, y `compute_tier()` real se conecta ahora sin migrar logs antiguos.
+
+**Preguntas originales del primer pase (ahora todas cerradas en §11.6 del estudio):**
 - **Cálculo.** ¿Qué combinaciones de señales del auditor asignan cada color exactamente? Árbol de decisión determinista, no heurística.
 - **Umbrales ajustables.** ¿Dónde viven las reglas en el código? ¿Cómo se cambian sin refactor? ¿Qué pasa si cambian retroactivamente con el corpus existente?
 - **Comunicación al público en llano.** Copy para cada tier ("alta confianza, dos fuentes coincidentes" vs "fuente única, si conoces el caso ayúdanos"). Test con lector no técnico.
@@ -697,19 +701,17 @@ Deriva de [`ESTUDIO-TIERS.md §8`](ESTUDIO-TIERS.md). La regla dura "nunca 🟢 
 
 **Prerrequisito:** backfill 12 semanas completo (PI2-B).
 
-### RT26 · Cierre de las 5 decisiones abiertas del estudio de tiers ⏳ [ALTA — bloquea PI10]
+### RT26 · Cierre de las 5 decisiones abiertas del estudio de tiers ✅ CERRADA 2026-04-23
 
-Deriva de [`ESTUDIO-TIERS.md §11`](ESTUDIO-TIERS.md). Cinco preguntas que solo puede cerrar el editor. Contestarlas consolida el estudio y desbloquea la construcción de `src/tiers.py` real + el deployment del badge público.
+El editor dio OK en bloque a las cinco recomendaciones del asistente. Registrado en [D9](DECISIONES.md) y en [`ESTUDIO-TIERS.md §11.6`](ESTUDIO-TIERS.md):
 
-- **Q1.** ¿Tiers visibles a todos / toggle / mixto (🟢 silencioso + 🟡🟠🔴 con badge)? Recomendación: mixto, validar luego en el test con usuarios.
-- **Q2.** ¿Techo de fuente única se relaja con whitelist=refuerza? Recomendación: decidir tras backfill con los datos de RT25 en la mano.
-- **Q3.** ¿Default del paso 6 del árbol es 🟠 o 🔴? Recomendación: 🟠 + alerta Telegram al dispararse.
-- **Q4.** ¿Política de cambios retroactivos = "congelar"? Recomendación: sí.
-- **Q5.** ¿Mockups visuales HTML ahora o en Fase 4? Recomendación: Fase 4 (mantiene la pausa del prototipo del Bloque B).
+- **Q1 Visibilidad = mixto** (🟢 sin badge, 🟡🟠🔴 con badge + aviso).
+- **Q2 Techo de fuente única = decidir tras backfill** (mitigación M1 solo si RT25 confirma sesgo > 30 % en alguna categoría con n ≥ 5; aplicable solo a colectivos ciudadanos, tercer sector, sindicatos minoritarios y asambleas).
+- **Q3 Default del paso 6 = 🟠 + alerta Telegram** al dispararse.
+- **Q4 Política de cambios retroactivos = congelar** (correcciones vía `/correcciones/`).
+- **Q5 Mockups visuales HTML = Fase 4** (mantiene pausa del prototipo del Bloque B).
 
-**Salida:** respuestas registradas en [`ESTUDIO-TIERS.md §11`](ESTUDIO-TIERS.md) + cierre definitivo del estudio + actualización de [`data/tiers.yml`](data/tiers.yml) con los valores cerrados + desbloqueo de PI10.
-
-**Momento:** cuando el editor tenga tiempo para revisar §1-7 y §9-10 del estudio con detenimiento. No urgente hasta que el backfill piloto (RT1) confirme que el árbol funciona empíricamente.
+Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: `src/tiers.py` con `compute_tier(signals)` + `data/tiers.yml` con los valores cerrados + plantilla del badge + `/metodologia/#tiers` con el copy de §5.
 
 ---
 
@@ -738,7 +740,7 @@ Deriva de [`ESTUDIO-TIERS.md §11`](ESTUDIO-TIERS.md). Cinco preguntas que solo 
 | **RT12** | **Vía A de precios — estudio en profundidad** | ⏳ | **P-1 · ALTA · adelantarla al pre-relanzamiento si el estudio da viable** |
 | **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ⏳ | **P-1 · FILOSOFÍA · añadir a PIVOTE.md como regla complementaria** |
 | **RT14** | **Estudio preciso de costes del auditor IA** | ✅ | **Cerrada 2026-04-23. Entregable: ESTUDIO-COSTES-AUDITOR.md. Régimen estable ~2,4 €/mes; backfill ~5,4 € one-shot. Desbloquea PI9** |
-| **RT15** | **Re-estudio profundo del sistema de tiers** | 🟡 | **Hito 2 del frame · estudio en [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) casi cerrado 2026-04-23 (§§1-7, 9, 10 redactadas; §8 al 50 %; §11 = 5 preguntas al editor) · cierre = RT26 · medición de sesgo post-backfill = RT25 · bloquea solo PI10** |
+| **RT15** | **Re-estudio profundo del sistema de tiers** | ✅ | **Cerrada 2026-04-23. Entregable [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo. 5 decisiones operativas cerradas en [D9](DECISIONES.md) (mixto / congelar / 🟠 default / Q2 tras backfill / HTML en Fase 4). §8.5 medición empírica = RT25. Desbloquea PI10.** |
 | **RT16** | **Experimento Claude Design — archivado** | 🔄 | **P-1 · archivo en `private/claude-design-experiment/` · no es referencia · se estudia en fase Diseño** |
 | **RT17** | **Navegación exhaustiva mobile-first** | ⏳ | **P-1 · ALTA · NAVEGACION.md propio** |
 | **RT18** | **Trilingüe ES/CA/EN desde el backfill** | ⏳ | **P-1 · ALTA · editor confirmó 22-abr: activar desde el backfill** |
@@ -749,7 +751,7 @@ Deriva de [`ESTUDIO-TIERS.md §11`](ESTUDIO-TIERS.md). Cinco preguntas que solo 
 | **RT23** | **Framework de señales de tracción a 90 días** | ⏳ | **P-1 · DIFERIDO POST-LANZAMIENTO** |
 | **RT24** | **Escenarios de lanzamiento y horizonte** | ⏳ | **P-1 · A soft mayo-junio / B rodaje 1 año** |
 | **RT25** | **Medición empírica del sesgo de tiers por tipo de actor** | ⏳ | **ALTA · depende del backfill 12 sem (PI2-B) · cierra §8 de [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) · puede activar mitigación M1 en `data/tiers.yml`** |
-| **RT26** | **Cierre de las 5 decisiones abiertas del estudio de tiers** | ⏳ | **ALTA · editor contesta Q1-Q5 de §11 de [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) · desbloquea `src/tiers.py` real y PI10 · no urgente hasta que RT1 confirme el árbol** |
+| **RT26** | **Cierre de las 5 decisiones abiertas del estudio de tiers** | ✅ | **Cerrada 2026-04-23 con OK en bloque del editor. Ver [D9](DECISIONES.md) y [`ESTUDIO-TIERS.md §11.6`](ESTUDIO-TIERS.md). Desbloquea PI10.** |
 | ED1 | Criterio OK propuestas | ⏳ | |
 | ED2 | Imparcialidad alertable | ⏳ | |
 | ED3 | Presencia de Omisiones | ⏳ | |
