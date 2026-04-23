@@ -121,3 +121,12 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Docs afectados:** [`ESTUDIO-TIERS.md §11`](ESTUDIO-TIERS.md) (decisiones registradas + estudio pasa a ✅ cerrado salvo §8 empírico dependiente de RT25). [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md): RT15 → ✅, RT26 → ✅. [`ROADMAP.md`](ROADMAP.md): Fase 1 Hito 2 refleja cierre. [`STATUS.md`](STATUS.md): actualizado.
 - **Pendiente de implementación** (no bloquea D9 como decisión, entra en PI10): crear `src/tiers.py` con `compute_tier(signals)` + `data/tiers.yml` con los umbrales operativos + plantilla visual del badge en Jekyll + página `/metodologia/#tiers` con el copy de §5.
 - **Estado:** vigente
+
+### D10 — Tres niveles de arranque de sesión + índice vivo de comandos
+
+- **Fecha:** 2026-04-23
+- **Tema:** docs
+- **Decisión:** adoptar tres comandos de arranque escalonados — `/arranque` (Tier 1, default: STATUS + DECISIONES + DIARIO reciente), `/arranque-fase` (Tier 2: añade PLAN, ARQUITECTURA y el estudio del área), `/arranque-auditoria` (Tier 3: escaneo completo). Más un índice vivo `COMANDOS.md` en raíz que lista todos los slash commands del proyecto y los globales; todo comando nuevo entra en la tabla en el mismo commit que lo crea.
+- **Por qué:** el editor pidió romper el patrón de *"escanea todo el proyecto"* cada vez que abre sesión. Un único modo profundo desperdicia contexto en sesiones pequeñas; tres escalones encajan con la intensidad real del trabajo. El índice hace descubrible el sistema tanto al editor humano como al asistente al arrancar (vía puntero en `CLAUDE.md`). Encaja con [D0](#d0--adoptar-tres-reglas-baratas-de-gestión-documental) como otra convención durable sobre cómo se trabaja en el proyecto.
+- **Docs afectados:** `.claude/commands/arranque.md`, `.claude/commands/arranque-fase.md`, `.claude/commands/arranque-auditoria.md`, `COMANDOS.md`, `CLAUDE.md` (sección renombrada a *"Slash commands del proyecto"*), `.claude/commands/cierre.md` (separador visual del bloque añadido).
+- **Estado:** vigente

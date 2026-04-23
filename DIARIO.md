@@ -13,6 +13,21 @@ Reglas:
 
 ---
 
+## 2026-04-23 [docs] — Sistema de arranque de sesión en tres niveles + índice vivo de comandos
+
+El editor expuso el patrón recurrente al abrir sesión: *"no tienes todo el contexto y te tengo que decir escanéalo todo"*. Respuesta: tres escalones de arranque con coste escalado + índice vivo.
+
+- **`/arranque` (Tier 1, default).** Lee STATUS, DECISIONES y últimas entradas del DIARIO; síntesis de 200 palabras y pregunta *"¿qué hacemos?"*. Cubre el 80 % de sesiones (continuaciones, tareas pequeñas).
+- **`/arranque-fase` (Tier 2).** Añade PLAN, ARQUITECTURA y el estudio del área (costes del auditor, tiers de confianza, diseño, contenido retroactivo, gestión documental). Para pausas mayores a una semana o cambios de foco.
+- **`/arranque-auditoria` (Tier 3).** Escaneo completo de capa fundacional + todos los estudios + módulos de `src/` cuando toque. Uso escaso (aprox. 15-20 mil tokens).
+- **[`COMANDOS.md`](COMANDOS.md) en raíz.** Índice vivo con todos los slash commands del proyecto + los globales. Regla: todo comando nuevo entra en la tabla en el mismo commit que lo crea.
+- **Puntero en [`CLAUDE.md`](CLAUDE.md).** Sección *"Cierre de sesión"* ampliada a *"Slash commands del proyecto"* con enlace al índice, para que el contexto auto-cargado recuerde que existen.
+- **Regla nueva en memoria.** Si una tarea pide más contexto del cargado, el asistente avisa en el mismo turno con opción concreta (*"¿leo X?"*, *"¿lanzo `/arranque-fase`?"*) antes de ejecutar. Memoria `feedback_avisar_si_falta_contexto.md`.
+- **Separador visual del bloque `/cierre`.** Nueva convención: el comando abre y cierra con línea de guiones para distinguirlo visualmente del resto de la conversación ([`.claude/commands/cierre.md`](.claude/commands/cierre.md)).
+- **Registrado como [D10](DECISIONES.md).**
+
+---
+
 ## 2026-04-23 [arquitectura] — Cierre del estudio de tiers de confianza con 5 decisiones operativas
 
 Tras el segundo pase del estudio del mismo día, el editor da OK en bloque a las cinco recomendaciones del asistente sobre las preguntas abiertas (§11 del estudio). Registrado como [D9](DECISIONES.md) y en [`ESTUDIO-TIERS.md §11.6`](ESTUDIO-TIERS.md):
