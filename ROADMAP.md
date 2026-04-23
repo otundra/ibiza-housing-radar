@@ -34,7 +34,8 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 **Ruta crítica en serie:**
 
 1. **Estudio preciso de costes del auditor IA** (RT14). Tabla por capa + proyección mensual + plan si cruza topes. Bloquea construir PI9.
-2. **Tests básicos del pipeline** (RT5). 5-6 h. Sin esto, cualquier cambio en auditor/tiers es ciego.
+2. **Revisión profunda de arquitectura de archivos y gestión del conocimiento del proyecto** (nuevo). Auditar la lógica interna, estructura y formato de todos los documentos del proyecto (CLAUDE.md, ROADMAP, REVISION-FASE-0.5, DIARIO, STATUS, docs de decisiones, memoria de sesión…) con el objetivo de: (a) que cada nueva conversación arranque con visión clara y rápida del proyecto sin perder detalle; (b) que un estudio completo al inicio de chat sea óptimo en tokens sin sacrificar profundidad; (c) que la gestión de tareas y el feedback del editor de cada sesión se acumulen y organicen de forma útil para el desarrollo; (d) optimizar el consumo de tokens en lecturas de contexto sin perder ni un ápice de calidad o detalle.
+3. **Tests básicos del pipeline** (RT5). 5-6 h. Sin esto, cualquier cambio en auditor/tiers es ciego.
 3. **Re-estudio profundo del sistema de tiers** (RT15). Árbol de decisión cerrado, copy público, mockups. Antes de implementar.
 4. **Auditor IA de 5 capas** (PI9). Construido sobre tests y costes ya cerrados.
 5. **Prueba empírica del backfill** (RT1). 1 semana antigua (W10). Mide 5 números reales antes de comprometer 12.
