@@ -54,13 +54,13 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 Observatorio documental. LLM no genera propuestas: documenta las de actores con nombre, con URL verificable. Consolidado en `main` desde 2026-04-21. Docs de referencia en cabecera de [`CLAUDE.md`](CLAUDE.md).
 
-## 🗂 Docs vivos en raíz (20)
+## 🗂 Docs vivos en raíz (22)
 
 Fundacionales: `CLAUDE.md`, `PIVOTE.md`, `README.md`, `DECISIONES.md`.
 Planificación: `ROADMAP.md`, `REVISION-FASE-0.5.md`, `DECISIONES-PENDIENTES.md`.
 Producto: `ARQUITECTURA.md`, `DISENO-WEB.md`, `SEO.md`, `CONTENIDO-RETROACTIVO.md`.
 Estudios: `ESTUDIO-DISENO.md`, `ESTUDIO-COSTES-AUDITOR.md`, `ESTUDIO-3-MODELOS.md`, `ESTUDIO-GESTION-CONOCIMIENTO.md`, `ESTUDIOS-PENDIENTES.md`, `EXPANSION-TEMATICA.md`, `REPORTE-BENCHMARK.md`.
-Estado/memoria: `STATUS.md` (este), `DIARIO.md`, `PLAN.md` (histórico).
+Estado/memoria: `STATUS.md` (este), `DIARIO.md`, `PLAN.md` (histórico), `APRENDIZAJE.md` (experimental, [D8](DECISIONES.md)).
 
 ## ⚠️ Avisos vigentes
 

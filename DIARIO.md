@@ -13,6 +13,23 @@ Reglas:
 
 ---
 
+## 2026-04-23 [docs] — Experimento APRENDIZAJE.md: feedback formativo al cierre (solo-ibiza)
+
+Nuevo archivo [`APRENDIZAJE.md`](APRENDIZAJE.md) en la raíz como log experimental de feedback formativo sobre cómo el editor desarrolla el proyecto. Cada `/cierre` (Paso 6 añadido) evalúa si hay algo concreto observable (decisiones, alcance, priorización, comunicación, docs, coste, proceso, verificación); si lo hay, una entrada con formato fijo (Observación / Patrón / Mejor próxima vez). Si no, *"sin feedback hoy"* y no fuerza.
+
+**Diseño decidido en esta sesión** ([D8](DECISIONES.md)):
+
+- **Primera propuesta:** archivo global `~/.claude/APRENDIZAJE.md` + Paso 6 en la plantilla + replicado en los 4 proyectos. El editor redujo a **solo este proyecto** y pidió reversibilidad explícita antes de aprobar.
+- **Entregado:** `APRENDIZAJE.md` local + Paso 6 en [`.claude/commands/cierre.md`](.claude/commands/cierre.md) con sección *"Cómo desactivar"* (dos pasos, ~30 seg).
+- **Revertidos en la misma sesión:** el `~/.claude/APRENDIZAJE.md` global, la sección *"Aprendizaje transversal"* de `~/.claude/CLAUDE.md`, y el Paso 6 de `~/Documents/GitHub/.claude-template/commands/cierre.template.md` (los proyectos futuros creados desde plantilla no heredan el experimento).
+- **Mantenidas como mejora independiente del experimento** en la plantilla: `(si existe)` en la tabla de docs opcionales del cierre y la regla de *"NO toqué"* basada en existencia real (evita ruido en proyectos con menos docs).
+
+**Principio registrado:** reversibilidad explícita y alcance mínimo son **prerrequisitos** de cualquier experimento operativo, no características opcionales. Primera entrada en `APRENDIZAJE.md` refleja la observación.
+
+**Cómo desactivar si deja de aportar:** `git rm APRENDIZAJE.md` + quitar Paso 6 de `.claude/commands/cierre.md`. Commit único `chore(cierre): retira experimento de feedback formativo`.
+
+---
+
 ## 2026-04-23 [arquitectura] — Partición del auditor en mínimo viable + iteración, opción (d) del log, marco de tres hitos grandes
 
 Sesión completa de rediseño del plan del auditor con el editor, abierta tras el cierre del estudio de costes. Contexto: el plan de 4 semanas con las 5 capas desde el día uno estaba aprobado, pero al arrancar el editor expresó *"no siento que llevo las riendas"* con las 34 tareas de la Revisión Fase 0.5 abiertas en paralelo. Reencuadre completo del alcance del auditor, del frame de trabajo de la Fase 1 y del protocolo de correcciones.
