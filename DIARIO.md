@@ -13,6 +13,18 @@ Reglas:
 
 ---
 
+## 2026-04-23 [sesion] — Apertura del estudio de tiers (primer pase) + refuerzo de la regla de no citar códigos internos
+
+Turno corto tras el cierre del experimento de aprendizaje. Dos ítems:
+
+- **Primer pase del re-estudio del sistema de tiers de confianza** en [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) (ficha RT15 de la revisión fundacional). Secciones 1-3 redactadas: punto de partida (qué se aprobó rápido el 21-abr y qué falta), 10 señales computables del auditor (consenso IA, arbitraje Opus, 5 checks de verificación técnica, cruce de fuentes, whitelist, viabilidad, tipo de declaración), y árbol de decisión determinista en 6 pasos (bloqueantes → techos duros → camino 🟢 → 🟡 → 🟠 → default). Propiedades pendientes de validar empíricamente sobre el backfill piloto: distribución esperada ~70/20/8/2 y ausencia de sesgo estructural contra actores con menos cobertura mediática. Secciones 4-11 pendientes (umbrales ajustables, copy público llano, promoción desde cuarentena, historia del tier, sesgo por actor, mockups, test de usuarios, preguntas al editor).
+
+- **Refuerzo de la regla de no citar identificadores internos al editor sin nombrar primero la cosa.** Tercera recaída en dos días (listé *"RT15 · Sistema de tiers de confianza"* con el código como etiqueta principal; el editor: *"tras mil veces decirlo, no menciones códigos tipo RT1 sin explicar que son. no miro los codigos"*). Acciones: (a) regla añadida a [`CLAUDE.md`](CLAUDE.md) sección *"Qué NO hacer"* con redacción dura ("próxima recaída es fallo grave"), (b) memoria `feedback_referencias_con_contexto.md` reforzada con tolerancia cero — el código no va delante ni como etiqueta principal ni siquiera con glosa detrás; nombrar por el nombre de la cosa, ID opcional entre paréntesis al final solo si aporta trazabilidad.
+
+**Próximo paso previsto:** segundo pase del estudio de tiers (secciones 4-11) cuando el editor decida abrir el Hito 2 como frente activo.
+
+---
+
 ## 2026-04-23 [docs] — Retirado el experimento APRENDIZAJE.md
 
 Abortado a petición del editor tras una sola sesión de uso. Motivo: no aportó señal útil (ambas entradas eran auto-reflexión del asistente, no feedback para el editor) y el coste al cierre no compensa. La reversibilidad diseñada en [D8](DECISIONES.md) funcionó — desmontaje en minutos. Quitado: archivo `APRENDIZAJE.md`, Paso 6 del `/cierre`, bullet de feedback en el reporte final, menciones en `CLAUDE.md` y `STATUS.md`. [D8](DECISIONES.md) marcada revocada. Lección para futuras propuestas del asistente: el ejemplo en el prompt original era ambiguo — "cómo el editor desarrolla el proyecto" se puede leer como auto-reflexión o como feedback al editor; sin definición clara del sujeto el mecanismo no funciona. Si se vuelve a intentar, definir primero qué tipo concreto de feedback (carga, rumbo, alcance, etc.) y con formato de 2 líneas máximo.

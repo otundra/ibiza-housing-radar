@@ -45,7 +45,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 
 **Hito 2 · Sistema de tiers cerrado e integrado (en paralelo al Hito 1, bloquea PI10):**
 
-- **Re-estudio profundo del sistema de tiers** (RT15). Árbol de decisión cerrado, copy público, mockups. Corre en paralelo a la construcción del auditor MVP ([D5](DECISIONES.md)). Su cierre solo conecta la función `compute_tier()` real — el auditor MVP ya escribe las `signals` en el log, sin migración de logs antiguos.
+- **Re-estudio profundo del sistema de tiers** (RT15). Árbol de decisión cerrado, copy público, mockups. Corre en paralelo a la construcción del auditor MVP ([D5](DECISIONES.md)). Primer pase cerrado 2026-04-23 en [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) (secciones 1-3: contexto + 10 señales + árbol determinista de 6 pasos). Segundo pase pendiente (4-11: umbrales ajustables, copy público llano, mockups, test de usuarios, preguntas al editor). Su cierre solo conecta la función `compute_tier()` real — el auditor MVP ya escribe las `signals` en el log, sin migración de logs antiguos.
 
 **Hito 3 · Titular legal resuelto (en paralelo, bloquea empuje público):**
 

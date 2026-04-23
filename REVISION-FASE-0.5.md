@@ -235,8 +235,13 @@ Entregable: [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md) cerrado 202
 
 **Siguiente paso:** construir `src/audit.py` (semana 1 del plan del estudio).
 
-### RT15 · Re-estudio profundo del sistema de tiers de confianza ⏳ [ALTA]
-El sistema de tiers 🟢🟡🟠🔴 se aprobó rápido el 2026-04-21 noche. El editor pide re-estudio serio antes de implementar. Preguntas abiertas:
+### RT15 · Re-estudio profundo del sistema de tiers de confianza 🟡 [ALTA — primer pase cerrado 2026-04-23]
+
+**Entregable abierto:** [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md). Primer pase cerrado 2026-04-23 con secciones 1-3 (punto de partida + 10 señales computables del auditor + árbol de decisión determinista en 6 pasos, con ejemplos). Secciones 4-11 pendientes de segundo pase: umbrales ajustables, copy público llano por tier, interacción con cuarentena y promoción, historia del tier, sesgo por tipo de actor, mockups, plan de test con usuarios, preguntas al editor.
+
+**Estado operativo:** no bloquea el auditor mínimo viable (ver [D5](DECISIONES.md) — el auditor escribe `signals` con `tier.value = null` hasta que `compute_tier()` exista). Bloquea solo la publicación del badge en las fichas (PI10 en esta revisión) y la página pública con la distribución de tiers.
+
+**Preguntas originales a cerrar en el segundo pase:**
 - **Cálculo.** ¿Qué combinaciones de señales del auditor asignan cada color exactamente? Árbol de decisión determinista, no heurística.
 - **Umbrales ajustables.** ¿Dónde viven las reglas en el código? ¿Cómo se cambian sin refactor? ¿Qué pasa si cambian retroactivamente con el corpus existente?
 - **Comunicación al público en llano.** Copy para cada tier ("alta confianza, dos fuentes coincidentes" vs "fuente única, si conoces el caso ayúdanos"). Test con lector no técnico.
@@ -700,7 +705,7 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | **RT12** | **Vía A de precios — estudio en profundidad** | ⏳ | **P-1 · ALTA · adelantarla al pre-relanzamiento si el estudio da viable** |
 | **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ⏳ | **P-1 · FILOSOFÍA · añadir a PIVOTE.md como regla complementaria** |
 | **RT14** | **Estudio preciso de costes del auditor IA** | ✅ | **Cerrada 2026-04-23. Entregable: ESTUDIO-COSTES-AUDITOR.md. Régimen estable ~2,4 €/mes; backfill ~5,4 € one-shot. Desbloquea PI9** |
-| **RT15** | **Re-estudio profundo del sistema de tiers** | ⏳ | **Hito 2 del frame · en paralelo a la construcción del auditor MVP ([D5](DECISIONES.md)) · bloquea solo PI10** |
+| **RT15** | **Re-estudio profundo del sistema de tiers** | 🟡 | **Hito 2 del frame · primer pase cerrado 2026-04-23 en [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) (secciones 1-3) · segundo pase pendiente (4-11) · bloquea solo PI10** |
 | **RT16** | **Experimento Claude Design — archivado** | 🔄 | **P-1 · archivo en `private/claude-design-experiment/` · no es referencia · se estudia en fase Diseño** |
 | **RT17** | **Navegación exhaustiva mobile-first** | ⏳ | **P-1 · ALTA · NAVEGACION.md propio** |
 | **RT18** | **Trilingüe ES/CA/EN desde el backfill** | ⏳ | **P-1 · ALTA · editor confirmó 22-abr: activar desde el backfill** |

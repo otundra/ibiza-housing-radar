@@ -159,6 +159,7 @@ El plan de mejora estratégico vive en [`PLAN.md`](PLAN.md): 4 fases (base / dis
 - No publicar ediciones manuales con fechas futuras (el `permalink` se confunde).
 - **No usar "W17" ni numeración de semana ISO en cara pública.** Solo como slug interno (archivos, logs, commits). En cara pública, URLs y etiquetas siempre con rango de fechas: `/ediciones/2026-04-20/`, `"Edición del 20-26 abril 2026"`.
 - **No colorear partidos políticos con su color** (regla dura de imparcialidad visual). Todos los partidos van en gris neutro (`--actor-partido`). Ver [ESTUDIO-DISENO.md §5.1](ESTUDIO-DISENO.md).
+- **No citar identificadores internos del proyecto al editor sin nombrar primero la cosa.** Códigos tipo `RT15`, `PI9`, `D11`, `W17`, `B34`, `FU2`, `ED1`, `UX3`, etc. no se entienden por sí solos. En chat, resúmenes, propuestas: di el **nombre de la cosa** ("el sistema de tiers de confianza", "el estudio de costes del auditor", "la semana del 20-26 abril"). El código va entre paréntesis al final y solo si aporta trazabilidad, nunca como etiqueta principal. Las siglas de dominio público (BOIB, IBAVI, GOIB, GEN-GOB, CCOO, PIMEEF…) sí se usan sin glosar. El editor lo ha señalado 3+ veces — próxima recaída es fallo grave.
 
 ## Nivel de proactividad
 
