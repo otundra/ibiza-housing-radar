@@ -13,6 +13,12 @@ Reglas:
 
 ---
 
+## 2026-04-23 [docs] — Retirado el experimento APRENDIZAJE.md
+
+Abortado a petición del editor tras una sola sesión de uso. Motivo: no aportó señal útil (ambas entradas eran auto-reflexión del asistente, no feedback para el editor) y el coste al cierre no compensa. La reversibilidad diseñada en [D8](DECISIONES.md) funcionó — desmontaje en minutos. Quitado: archivo `APRENDIZAJE.md`, Paso 6 del `/cierre`, bullet de feedback en el reporte final, menciones en `CLAUDE.md` y `STATUS.md`. [D8](DECISIONES.md) marcada revocada. Lección para futuras propuestas del asistente: el ejemplo en el prompt original era ambiguo — "cómo el editor desarrolla el proyecto" se puede leer como auto-reflexión o como feedback al editor; sin definición clara del sujeto el mecanismo no funciona. Si se vuelve a intentar, definir primero qué tipo concreto de feedback (carga, rumbo, alcance, etc.) y con formato de 2 líneas máximo.
+
+---
+
 ## 2026-04-23 [sesion] — Cierre del turno: mockup de /correcciones/, paso 0 del /cierre, regla de lenguaje llano
 
 Cierre de la misma sesión que abrió la partición del auditor. Tres ítems cortos tras los commits `ae10613` (partición del auditor) y los tres commits paralelos de la otra conversación sobre el experimento `APRENDIZAJE.md` (entrada siguiente).

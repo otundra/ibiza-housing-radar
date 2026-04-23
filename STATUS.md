@@ -60,7 +60,7 @@ Fundacionales: `CLAUDE.md`, `PIVOTE.md`, `README.md`, `DECISIONES.md`.
 Planificación: `ROADMAP.md`, `REVISION-FASE-0.5.md`, `DECISIONES-PENDIENTES.md`.
 Producto: `ARQUITECTURA.md`, `DISENO-WEB.md`, `SEO.md`, `CONTENIDO-RETROACTIVO.md`.
 Estudios: `ESTUDIO-DISENO.md`, `ESTUDIO-COSTES-AUDITOR.md`, `ESTUDIO-3-MODELOS.md`, `ESTUDIO-GESTION-CONOCIMIENTO.md`, `ESTUDIOS-PENDIENTES.md`, `EXPANSION-TEMATICA.md`, `REPORTE-BENCHMARK.md`.
-Estado/memoria: `STATUS.md` (este), `DIARIO.md`, `PLAN.md` (histórico), `APRENDIZAJE.md` (experimental, [D8](DECISIONES.md)).
+Estado/memoria: `STATUS.md` (este), `DIARIO.md`, `PLAN.md` (histórico).
 
 ## ⚠️ Avisos vigentes
 

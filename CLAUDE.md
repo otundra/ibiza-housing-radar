@@ -128,8 +128,6 @@ Tres reglas baratas que frenan la entropía hasta la revisión profunda post-lan
 
 Usar `/cierre` (ver [`.claude/commands/cierre.md`](.claude/commands/cierre.md)) para cerrar sesiones con checklist fijo: auditoría de cambios, actualización dirigida de docs, commits atómicos, push y reporte de qué se tocó y qué no.
 
-**Paso 6 — feedback formativo experimental ([D8](DECISIONES.md)):** tras el reporte, si hay algo concreto observable sobre cómo el editor desarrolla el proyecto, añadir una entrada a [`APRENDIZAJE.md`](APRENDIZAJE.md) (raíz). Si no hay nada concreto, *"sin feedback hoy"* y fuera. Solo en este proyecto, no global. Desactivable en ~30 seg: `git rm APRENDIZAJE.md` + quitar Paso 6 de `.claude/commands/cierre.md`.
-
 ## Diario del proyecto
 
 Cuando haya un cambio relevante (hito, decisión, fix estructural, no-commits triviales), añadir una entrada a [`DIARIO.md`](DIARIO.md) con formato viñetas: tema en **negrita** + línea breve combinando qué/por qué/impacto. Cabecera obligatoria con fecha ISO + `[tema]` (regla 1).
