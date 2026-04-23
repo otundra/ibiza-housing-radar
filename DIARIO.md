@@ -12,6 +12,14 @@ Reglas:
 
 ---
 
+## 2026-04-23 — Dos tareas nuevas añadidas al ROADMAP + ESTUDIO-COSTES-AUDITOR.md commiteado
+
+- **Tarea: revisión profunda de arquitectura de archivos y gestión del conocimiento** — añadida como ítem 2 de la ruta crítica de Fase 1 (entre el estudio de costes del auditor y los tests básicos). Objetivo: que cada nueva conversación arranque con visión clara del proyecto; que un estudio completo al inicio de chat sea óptimo en tokens; que el feedback del editor y la gestión de tareas se acumulen y organicen de forma útil; optimizar consumo de tokens sin perder calidad ni detalle.
+- **Tarea: resiliencia a cambios de modelo Anthropic** — añadida a Fase 3 junto al health check de fuentes. Cubre: detección de deprecaciones o versiones nuevas, alerta Telegram si un modelo activo desaparece, protocolo documentado para actualizar versión y re-ejecutar estudio de costes (RT14). Modelo: `models_health.py` espejo de `sources_health.py`.
+- **`ESTUDIO-COSTES-AUDITOR.md` commiteado** — estaba sin trackear desde la sesión del 22-abr. Documento cerrado: auditor de 5 capas añade entre 0,08 € y 0,20 €/mes; backfill retroactivo 12 semanas ~5,4 € one-shot; cuello de botella real sigue siendo `generate` con Opus (~85 % del gasto por edición). Decisión: construir el auditor con las 5 capas completas sin recortes.
+
+---
+
 ## 2026-04-22 (tarde · cierre) — Regla editorial: no expandir foco sin problema definido y demanda orgánica
 
 - **Exploración del corpus W17 (19 noticias housing) para la palanca turismo** devolvió solapamiento muy alto vivienda-turismo (~75% de noticias housing tocan turismo directa o indirectamente, dominadas por el evento sa Joveria). El asistente propuso instrumentar preparatoriamente (extender schema con campos `tourism_connection`, `tourism_lever`, `tourism_actors` + tracking CSV). **Editor rechaza la propuesta.**
