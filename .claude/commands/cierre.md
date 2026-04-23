@@ -45,7 +45,25 @@ Formato corto (viñetas, sin adornos):
 - **Commits creados:** N commits, primera línea de cada uno.
 - **Push:** OK / no aplicable / falló (con motivo).
 - **NO toqué:** docs que podrían haber necesitado actualización pero no toqué + razón en una línea. Esto sirve para que el editor detecte omisiones.
+- **Feedback formativo:** una línea — "anotado en APRENDIZAJE.md" / "sin feedback hoy" (ver Paso 6).
 - **Dudas abiertas:** si hubo algo que no supe resolver solo.
+
+## 6. Feedback formativo (experimental)
+
+Tras el reporte, evalúa si en la sesión ha habido algo concreto observable sobre **cómo** el editor desarrolla proyectos: decisiones, alcance, priorización, comunicación, delegación, docs, coste, proceso, verificación.
+
+- **Si SÍ hay algo concreto**, añade UNA entrada a [`~/.claude/APRENDIZAJE.md`](~/.claude/APRENDIZAJE.md) con el formato fijo:
+  ```
+  ## YYYY-MM-DD · <proyecto> · [etiqueta]
+  **Observación:** hecho concreto de la sesión.
+  **Patrón:** qué tendencia refleja.
+  **Mejor próxima vez:** acción específica.
+  ```
+- **Si el patrón ya está anotado**, no crees entrada nueva. Añade una línea bajo la existente: `— reincidencia YYYY-MM-DD (<proyecto>): <1 línea>`.
+- **Si NO hay nada concreto, no fuerces.** Reporta *"sin feedback hoy"* y fuera. Una entrada genérica es peor que ninguna.
+- **Sin adulación, crítico y útil.** El feedback sirve si es accionable. Si no estás seguro, no escribas.
+
+El archivo global vive en su propio repo (`github.com/otundra/claude-config`). Commitea ese cambio allí por separado — nunca en el repo de este proyecto.
 
 ## Reglas duras
 
