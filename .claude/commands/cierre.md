@@ -4,6 +4,12 @@ description: Cierra la sesión con checklist fijo — actualiza docs, commit at�
 
 Estás cerrando una sesión de trabajo en `ibiza-housing-radar`. Ejecuta este checklist **en orden**, sin saltarte pasos. Al final da un reporte corto al editor.
 
+## 0. Chequeo de concurrencia
+
+- Ejecuta `git fetch origin main --quiet` y compara `HEAD` local con `origin/main`.
+- Si `origin/main` tiene commits que la rama local no tiene (otra sesión commiteó mientras trabajabas): **para aquí**, avisa al editor con la lista de commits remotos nuevos, y pregunta si sigue esta sesión o si hay que cerrar la otra primero. No sigas con el paso 1 hasta tener respuesta.
+- Si remoto y local coinciden (o solo la local va por delante): sigue con el paso 1.
+
 ## 1. Inventario de cambios
 
 - `git status` + `git diff --stat` para ver qué se tocó en disco.
@@ -25,9 +31,11 @@ Revisa uno a uno y decide si tocar. No tocar por tocar; tocar si hay algo nuevo 
 
 **Regla:** si dudas si tocar un doc, pregunta al editor antes de editarlo. No ejecutes ediciones dudosas por tu cuenta (regla `feedback_esperar_ok_antes_de_editar.md`).
 
+**Paraleliza.** Cuando vayas a editar varios docs con cambios independientes, lanza las llamadas a Edit en paralelo (un solo mensaje con varias herramientas). Secuencia solo cuando una edición depende del resultado de otra.
+
 ## 3. Commits atómicos
 
-- Un commit por cambio lógico. No bundles.
+- Un commit por **cambio lógico**, no por archivo. Si una decisión cerrada toca 4 docs, va en un solo commit bien titulado (ej. `docs(auditor): propagación de D1-D7`). Separa solo cuando son decisiones lógicamente distintas. No bundlees decisiones distintas en el mismo commit.
 - Formato: `tipo(ámbito): descripción en español`. Tipos: `docs`, `feat`, `fix`, `config`, `refactor`, `chore`, `pipeline`, `report`.
 - Co-author: `Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>`.
 - Nunca `git add -A` ciego; añade archivos explícitos.
