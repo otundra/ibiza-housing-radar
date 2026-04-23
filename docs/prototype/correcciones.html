@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Correcciones — radar))vivienda_ibiza</title>
+  <meta name="description" content="Protocolo público de correcciones del observatorio. Si crees que hemos documentado mal una propuesta, escríbenos. Respondemos en 72 horas.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/svg+xml" href="logo/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('rvi-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="home.html" class="wm" aria-label="Radar Vivienda Ibiza — Portada">
+      <span class="radar">radar</span><span class="waves">))</span><span class="topic">vivienda_ibiza</span>
+    </a>
+    <nav class="site-nav" aria-label="Principal">
+      <a href="home.html">Portada</a>
+      <a href="edition.html">Ediciones</a>
+      <a href="proposal.html">Propuestas</a>
+      <a href="actor.html">Actores</a>
+      <a href="balance.html">Balance</a>
+      <a href="metodo.html">Método</a>
+    </nav>
+    <div class="theme-toggle" role="group" aria-label="Tema claro u oscuro">
+      <button type="button" data-theme-set="light" aria-label="Modo claro" title="Modo claro">○</button>
+      <button type="button" data-theme-set="dark"  aria-label="Modo oscuro" title="Modo oscuro">●</button>
+    </div>
+  </div>
+</header>
+
+<main id="contenido" class="page page--reading">
+
+  <header class="edition-header">
+    <span class="edition-id edition-id--kicker">Correcciones · protocolo público de enmienda</span>
+    <h1>Correcciones</h1>
+    <p class="lede">Este observatorio documenta propuestas de vivienda hechas públicamente por actores con nombre. Si crees que hemos documentado mal una propuesta — cita incorrecta, actor mal identificado, URL que no corresponde, contexto omitido — escríbenos. <strong>Respondemos en 72 horas.</strong> El texto original se conserva; la corrección queda junto, fechada y firmada.</p>
+    <ul class="tags" aria-label="Etiquetas">
+      <li><a href="#">[transparencia]</a></li>
+      <li><a href="#">[due_process]</a></li>
+      <li><a href="#">[correccion]</a></li>
+    </ul>
+  </header>
+
+  <section class="edition-section" aria-label="Aviso">
+    <p class="u-muted" style="font-size:13px;padding:12px;border:1px dashed var(--border);border-radius:8px"><strong>Mockup en rodaje.</strong> Esta página es maqueta del protocolo. Los canales (email y formulario) se activan cuando el observatorio cierre su nombre público y su titular legal. El texto del protocolo es firme y se publicará tal cual.</p>
+  </section>
+
+  <section id="como-funciona" class="edition-section">
+    <h2>Cómo funciona <span class="section-kicker">cuatro pasos, sin letra pequeña</span></h2>
+    <ol class="pipeline-steps" aria-label="Pasos del protocolo">
+      <li>
+        <span class="step-name">1. Recibimos</span>
+        <span class="step-desc">Tu mensaje entra por email o por el formulario de abajo. Se registra automáticamente con fecha y hora.</span>
+      </li>
+      <li>
+        <span class="step-name">2. Contrastamos</span>
+        <span class="step-desc">Revisamos la propuesta afectada en el registro público del sistema de revisión (<a href="#">/auditor/</a>) y contra la noticia original. Comprobamos cita, actor, enlace y contexto.</span>
+      </li>
+      <li>
+        <span class="step-name">3. Anotamos</span>
+        <span class="step-desc">Si procede corrección, la anotamos junto al texto original con fecha y resolución. Puedes ver el antes y el después en la misma ficha. <strong>El texto original no se borra.</strong></span>
+      </li>
+      <li>
+        <span class="step-name">4. Respondemos</span>
+        <span class="step-desc">En las 72 horas siguientes te contestamos con la resolución: corrección aplicada, corrección parcial, o por qué no procede.</span>
+      </li>
+    </ol>
+  </section>
+
+  <section id="canales" class="edition-section">
+    <h2>Canales <span class="section-kicker">dos vías, mismo protocolo</span></h2>
+    <div class="download-block" style="flex-direction:column;align-items:flex-start;gap:10px">
+      <span><strong>Email:</strong> <em>pendiente de activación</em> (se abre cuando el proyecto cierre su nombre definitivo y su titular legal).</span>
+      <span><strong>Formulario:</strong> más abajo en esta misma página. Registra la petición automáticamente y nos notifica en el momento.</span>
+    </div>
+  </section>
+
+  <section id="formulario" class="edition-section">
+    <h2>Formulario de corrección <span class="section-kicker">mockup</span></h2>
+    <p class="u-muted" style="font-size:13px">Estos campos son los que pediremos cuando el canal esté activo. Hoy el botón no envía a nada.</p>
+
+    <form id="corrections-form" novalidate style="display:flex;flex-direction:column;gap:16px;max-width:640px;margin-top:18px">
+      <div>
+        <label for="c-url">URL de la propuesta afectada <span aria-hidden="true">*</span></label>
+        <input id="c-url" name="propuesta_url" type="url" required placeholder="https://...">
+      </div>
+
+      <div>
+        <label for="c-problema">Qué crees que está mal <span aria-hidden="true">*</span></label>
+        <textarea id="c-problema" name="problema" required rows="4" placeholder="Describe el error: cita incorrecta, actor mal identificado, URL rota, contexto omitido…"></textarea>
+      </div>
+
+      <div>
+        <label for="c-fuente">Fuente alternativa o contexto <span class="u-muted" style="font-weight:400">(opcional)</span></label>
+        <textarea id="c-fuente" name="fuente_alternativa" rows="3" placeholder="Si puedes, añade un enlace a la fuente que demuestra el error o el contexto que nos ayuda a verificar."></textarea>
+      </div>
+
+      <div>
+        <label for="c-contacto">Cómo contactarte <span aria-hidden="true">*</span></label>
+        <input id="c-contacto" name="email" type="email" required placeholder="tu@email.com">
+      </div>
+
+      <p class="fab-nota">Solo usamos tu email para responderte a esta corrección. No entra en ninguna lista, no se comparte con nadie.</p>
+
+      <button type="button" disabled aria-disabled="true" title="Canal pendiente de activación" style="opacity:0.55;cursor:not-allowed">Enviar <span class="u-muted" style="font-weight:400">(pendiente)</span></button>
+    </form>
+  </section>
+
+  <section id="transparencia" class="edition-section">
+    <h2>Transparencia radical <span class="section-kicker">todo queda en abierto</span></h2>
+    <p>Cada corrección aplicada se registra en dos sitios públicos:</p>
+    <ul class="nohace-list">
+      <li><strong>Ficha de la propuesta corregida:</strong> la corrección aparece junto al texto original con fecha y resolución. Puedes ver el antes y el después en la misma página.</li>
+      <li><strong>Registro público (<a href="#">/auditor/</a>):</strong> cada propuesta guarda todas las correcciones recibidas, en orden y sin borrar nada de lo anterior. Cada una aparece con fecha, quién la pidió y cómo se resolvió.</li>
+    </ul>
+    <p class="u-muted" style="font-size:13px;margin-top:12px">No editamos en silencio. El histórico completo está en el repo público: <a href="https://github.com/otundra/ibiza-housing-radar">github.com/otundra/ibiza-housing-radar</a>.</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <aside class="chrome-ops" aria-label="Estado operativo del observatorio">
+    <div class="chrome-ops-inner">
+      <h2>Estado operativo</h2>
+      <ul>
+        <li><span class="ops-label">Edición actual</span> <span class="ops-val">20-26 abril 2026</span></li>
+        <li><span class="ops-label">Propuestas documentadas</span> <span class="ops-val">23</span></li>
+        <li><span class="ops-label">Actores seguidos</span> <span class="ops-val">18</span></li>
+        <li><span class="ops-label">Coste API mes</span> <span class="ops-val status-amber">6,22 € / 12 €</span></li>
+        <li><span class="ops-label">Última publicación</span> <span class="ops-val">hace 1 día</span></li>
+        <li><span class="ops-label">Pipeline</span> <span class="ops-val status-ok">OK</span></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="site-footer-std">
+    <p>© 2026 Radar Vivienda Ibiza (provisional) · CC BY 4.0 · Observatorio documental.</p>
+    <nav aria-label="Enlaces del pie">
+      <a href="metodo.html">Método</a>
+      <a href="#">Política editorial</a>
+      <a href="correcciones.html" aria-current="page">Correcciones</a>
+      <a href="balance.html">Balance de actores</a>
+      <a href="#">Cítanos</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="fab-escribenos" aria-label="Contacto">
+  <button type="button" id="fab-toggle" class="fab-escribenos-btn" aria-expanded="false" aria-controls="fab-panel">
+    <span class="ico" aria-hidden="true">))</span>
+    Escríbenos
+  </button>
+  <div class="fab-panel" id="fab-panel" role="dialog" aria-label="Formulario de contacto">
+    <button type="button" id="fab-close" class="fab-close" aria-label="Cerrar">×</button>
+    <h2>Escríbenos</h2>
+    <p>Recibimos correcciones, datos nuevos, pistas, testimonios, dudas, críticas y colaboraciones. Si vienes con una corrección concreta, el <a href="correcciones.html">formulario específico</a> tiene más estructura.</p>
+    <form action="https://formspree.io/f/placeholder" method="POST" novalidate>
+      <div>
+        <label for="msg">Tu mensaje</label>
+        <textarea id="msg" name="message" required placeholder="Cuéntanos lo que quieras compartir…"></textarea>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <label for="nombre">Nombre (opcional)</label>
+          <input id="nombre" name="name" type="text" autocomplete="name">
+        </div>
+        <div>
+          <label for="email">Email (opcional)</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+        </div>
+      </div>
+      <p class="fab-nota">Si aportas un dato, adjunta URL a fuente primaria. Sin fuente verificable no lo incorporamos, pero lo leemos igual.</p>
+      <input type="hidden" name="page_url" value="">
+      <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<script src="theme.js" defer></script>
+</body>
+</html>
