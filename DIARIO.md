@@ -9,6 +9,20 @@ Reglas:
 - Solo cambios con valor de memoria futura. No entradas para commits triviales.
 - No duplicar lo que ya dice Git: aquí va el contexto, no el diff.
 - Si un cambio altera arquitectura o stack, también actualizar `CLAUDE.md` y `README.md`.
+- **Cabecera obligatoria con fecha ISO + etiqueta temática** (desde 2026-04-23, [D0](DECISIONES.md)). Formato: `## YYYY-MM-DD [tema]`. Temas: `[pipeline]`, `[diseno]`, `[editorial]`, `[arquitectura]`, `[docs]`, `[costes]`, `[legal]`, `[feedback]`, `[sesion]`. Entradas anteriores al 2026-04-23 sin etiqueta se mantienen tal cual.
+
+---
+
+## 2026-04-23 [docs] — Tres reglas baratas de gestión documental + comando /cierre + estudio congelado
+
+Conversación con el editor sobre la tarea roadmap *"Revisión profunda de arquitectura documental y gestión del conocimiento"*. Valoración: 20 docs en raíz, ~7.850 líneas, DIARIO 100 KB, triple registro de decisiones, STATUS desincronizado, sin contrato de arranque. Diagnóstico y plan completo congelados en [`ESTUDIO-GESTION-CONOCIMIENTO.md`](ESTUDIO-GESTION-CONOCIMIENTO.md) para revisar post-lanzamiento; no se ejecuta la reorganización completa ahora porque hay frentes abiertos (Revisión Fase 0.5, prototipo pausado) y churn documental arriesga merges sucios. Cambios aplicados hoy:
+
+- **Regla 1 — DIARIO con fecha ISO + `[tema]`.** Cabecera obligatoria en entradas nuevas. Registrada arriba y en CLAUDE.md del proyecto.
+- **Regla 2 — [`DECISIONES.md`](DECISIONES.md) fuente única.** Append-only, una fila por decisión con ID `D{N}`. Migración histórica de D1-D13 y DECISIONES-PENDIENTES queda para la revisión post-lanzamiento.
+- **Regla 3 — STATUS.md ≤ 100 líneas.** Reducido de 181 a 58 líneas. Solo estado vigente; lo histórico se apoya en DIARIO/CLAUDE/PIVOTE.
+- **Comando `/cierre`** en [`.claude/commands/cierre.md`](.claude/commands/cierre.md). Checklist fijo para cerrar sesiones sin perder pasos: inventario de cambios, auditoría cruzada de docs vivos, commits atómicos, push y reporte de qué se tocó y qué no.
+- **Tarea post-lanzamiento añadida al ROADMAP** (Fase 7 "Diferido con criterio claro"): ejecutar la reorganización completa cuando el observatorio esté lanzado, 90 días evaluados y Revisión Fase 0.5 cerrada. Releer el estudio antes, porque parte estará obsoleta.
+- **Decisión registrada:** [D0](DECISIONES.md).
 
 ---
 
