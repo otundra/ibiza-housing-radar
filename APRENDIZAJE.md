@@ -34,6 +34,14 @@ Commit único: `chore(cierre): retira experimento de feedback formativo`.
 
 <!-- Más reciente arriba. -->
 
+## 2026-04-23 · [comunicación]
+
+**Observación:** el editor me corrigió 2026-04-23 por usar identificadores internos (`PI2-A`, `RT14`, `RT5`, `RT15`, `PI9`, `D1`, etc.) en la conversación, cuando ya existe desde hace días una memoria específica que lo prohíbe (`feedback_referencias_con_contexto.md`). Cita literal: *"lo he dicho varias veces y no lo estás aplicando"*. Me obligó a rehacer la respuesta entera.
+
+**Patrón:** tener una regla guardada en memoria no garantiza que se aplique en el momento. El consumo pasivo de memoria al inicio de la respuesta no basta; tiendo a filtrar por *"lo que parece relevante para el contenido"* y dejo fuera reglas de estilo comunicativo, que aplican transversalmente a cualquier respuesta. Reincidencia directa sobre memoria explícita.
+
+**Mejor próxima vez:** antes de redactar cualquier respuesta larga en este proyecto, pasar un filtro explícito por las memorias `feedback_*` de estilo de comunicación (especialmente `feedback_referencias_con_contexto.md` y `feedback_lenguaje_llano_publico.md`). Revisar lo escrito una vez antes de enviar buscando códigos internos sin glosar y tecnicismos en copy público. Tratar esas reglas como constantes de formato, no como sugerencias contextuales.
+
 ## 2026-04-23 · [proceso]
 
 **Observación:** propuse de entrada un sistema con alcance triple (global `~/.claude/` + plantilla + los 4 proyectos del usuario) y la ruta de desactivación no estaba en la propuesta. El editor redujo a solo-ibiza y pidió explícitamente *"que sea fácil de quitar si no quiero más"* antes de aprobar. Me obligó a revertir lo que ya había aplicado en global y en la plantilla.

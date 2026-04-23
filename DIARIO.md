@@ -13,6 +13,25 @@ Reglas:
 
 ---
 
+## 2026-04-23 [sesion] — Cierre del turno: mockup de /correcciones/, paso 0 del /cierre, regla de lenguaje llano
+
+Cierre de la misma sesión que abrió la partición del auditor. Tres ítems cortos tras los commits `ae10613` (partición del auditor) y los tres commits paralelos de la otra conversación sobre el experimento `APRENDIZAJE.md` (entrada siguiente).
+
+- **Mockup estático de la página de correcciones** entregado en [`docs/prototype/correcciones.html`](docs/prototype/correcciones.html). Copy del protocolo firme (las cuatro fases, canales, formulario visual), botón del formulario deshabilitado con suffix *"(pendiente)"*, banner *"mockup en rodaje"* al inicio. Canales (email y formulario) esperan al cierre del nombre del observatorio y del titular legal. Deriva de [D2](DECISIONES.md). Link en la navegación principal se deja para el Paso 2 del prototipo.
+
+- **Regla general de lenguaje llano en cara pública** guardada como memoria del asistente (`feedback_lenguaje_llano_publico.md`). El editor pidió evitar `JSON`, `append-only`, `log`, `diff`, `trazar`, `schema`, `endpoint`, `pipeline` en textos visibles al público y traducirlos a español común. La regla 2 de `CLAUDE.md` ya tenía esta norma para *badges*; esta generalización cubre cualquier copy público. La sintaxis técnica sigue en docs internos (arquitectura, estudios), no en la web.
+
+- **Comando `/cierre` mejorado**: añadido paso 0 de chequeo de concurrencia (`git fetch` + comparación local vs remoto al arrancar, para detectar otra sesión que haya commiteado a la vez), nota de paralelización en paso 2 (Edits independientes en tool calls paralelos), aclaración en paso 3 (un commit puede tocar varios archivos si es la misma decisión lógica). Disparado por el incidente de hoy con dos sesiones concurrentes editando archivos a la vez — la otra cerró sin conflicto por coincidencia, no por diseño.
+
+**Decisiones pequeñas tomadas autónomamente en este turno** ([D7](DECISIONES.md)):
+- Nombre del archivo del mockup: `correcciones.html` (español, precedente `metodo.html`).
+- Wordmark del mockup en `radar))vivienda_ibiza` (orden antiguo) para no romper consistencia con los otros prototipos pausados; migración al wordmark oficial `radar))ibiza_vivienda` se hará cuando arranque el Paso 2 del prototipo.
+- Botón del formulario deshabilitado con suffix visual *"(pendiente)"* en vez de `alert()`.
+- Footer del mockup se auto-enlaza (`href="correcciones.html"` con `aria-current="page"`); los otros prototipos mantienen `href="#"` hasta el Paso 2.
+- Regla de lenguaje llano guardada como memoria, sin propagación a `CLAUDE.md` (no hubo OK explícito del editor para generalizar la regla 2). Queda apuntado.
+
+---
+
 ## 2026-04-23 [docs] — Experimento APRENDIZAJE.md: feedback formativo al cierre (solo-ibiza)
 
 Nuevo archivo [`APRENDIZAJE.md`](APRENDIZAJE.md) en la raíz como log experimental de feedback formativo sobre cómo el editor desarrolla el proyecto. Cada `/cierre` (Paso 6 añadido) evalúa si hay algo concreto observable (decisiones, alcance, priorización, comunicación, docs, coste, proceso, verificación); si lo hay, una entrada con formato fijo (Observación / Patrón / Mejor próxima vez). Si no, *"sin feedback hoy"* y no fuerza.
