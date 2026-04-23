@@ -116,9 +116,21 @@ gh workflow run validate-key.yml
 
 6. **Modelo por fase.** Haiku para filtrar (coste marginal), Opus solo para la pieza final donde la calidad editorial sí importa. No mezclar.
 
+## Reglas de gestión documental (desde 2026-04-23, ver [D0](DECISIONES.md))
+
+Tres reglas baratas que frenan la entropía hasta la revisión profunda post-lanzamiento (ver [`ESTUDIO-GESTION-CONOCIMIENTO.md`](ESTUDIO-GESTION-CONOCIMIENTO.md)):
+
+1. **DIARIO con fecha ISO + etiqueta temática.** Cada entrada nueva lleva cabecera `## YYYY-MM-DD [tema]`. Temas válidos: `[pipeline]`, `[diseno]`, `[editorial]`, `[arquitectura]`, `[docs]`, `[costes]`, `[legal]`, `[feedback]`, `[sesion]` (cierre general).
+2. **DECISIONES.md fuente única.** Toda decisión nueva entra en [`DECISIONES.md`](DECISIONES.md) con ID `D{N}`. Otros docs referencian por ID (*"ver D7"*), no duplican contenido.
+3. **STATUS.md ≤ 100 líneas.** Si crece, podar a DIARIO o borrar lo que ya viva en otro sitio.
+
+## Cierre de sesión
+
+Usar `/cierre` (ver [`.claude/commands/cierre.md`](.claude/commands/cierre.md)) para cerrar sesiones con checklist fijo: auditoría de cambios, actualización dirigida de docs, commits atómicos, push y reporte de qué se tocó y qué no.
+
 ## Diario del proyecto
 
-Cuando haya un cambio relevante (hito, decisión, fix estructural, no-commits triviales), añadir una entrada a [`DIARIO.md`](DIARIO.md) con formato viñetas: tema en **negrita** + línea breve combinando qué/por qué/impacto.
+Cuando haya un cambio relevante (hito, decisión, fix estructural, no-commits triviales), añadir una entrada a [`DIARIO.md`](DIARIO.md) con formato viñetas: tema en **negrita** + línea breve combinando qué/por qué/impacto. Cabecera obligatoria con fecha ISO + `[tema]` (regla 1).
 
 ## Convenciones de commits
 
