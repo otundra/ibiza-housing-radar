@@ -193,9 +193,13 @@ Regla operativa: **el reparto de modelos se revisa cada trimestre** con datos re
 
 ---
 
-## 6. Fecha concreta del relanzamiento
+## 6. Fecha concreta del relanzamiento — SUPERADA 2026-04-23 por [D11](DECISIONES.md)
 
-**Contexto:** el editor no dio fecha explícita, solo "cuando tengamos cerrado el proyecto". La fecha depende de la velocidad de cierre de Fase 0.
+**Fecha cerrada:** lunes 13 jul 2026 (opción A del análisis de 2026-04-23 noche). Red de seguridad: lunes 12 oct 2026 (cierre de temporada 2026) si al llegar finales de junio el producto no está maduro. Escenario C (pre-temporada abr 2027) archivado como contingencia.
+
+La propuesta original del lunes 18 may 2026 (apuntada el 20-abr) quedó obsoleta cuando se abrió la Revisión Fase 0.5 y el roadmap V2 pasó a 9-12 semanas calendario. El análisis completo y los supuestos que tiene que cumplir el 13 jul viven en [D11](DECISIONES.md) y en la sección *"Cómo leer las estimaciones de tiempo"* de [ROADMAP.md](ROADMAP.md). El resto de esta sección se mantiene como contexto histórico.
+
+**Contexto original:** el editor no dio fecha explícita, solo "cuando tengamos cerrado el proyecto". La fecha depende de la velocidad de cierre de Fase 0.
 
 **Estimaciones realistas:**
 

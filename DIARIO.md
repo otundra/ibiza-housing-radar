@@ -28,6 +28,22 @@ El editor expuso el patrón recurrente al abrir sesión: *"no tienes todo el con
 
 ---
 
+## 2026-04-23 [docs] — Modelo de tiempos del proyecto + fecha de relanzamiento lunes 13 jul 2026
+
+El editor avisó que no tomaba en cuenta las estimaciones del proyecto porque mezclaban tres cosas bajo la misma etiqueta: *"2 semanas"* significaba a veces calendario, a veces esfuerzo técnico que el asistente desbroza en una tarde, a veces esfuerzo real del editor a ritmo sostenible. Convención nueva registrada en [D11](DECISIONES.md):
+
+- **Calendario** = semanas de reloj real. Marca la fecha de lanzamiento.
+- **Esfuerzo editor** = horas reales del editor. Ritmo sostenible asumido = 15 h/sem. Cuello de botella.
+- **Esfuerzo Claude** = horas del asistente. No colapsa calendario, porque decisión/revisión del editor es el límite real.
+
+Formato corto en docs: *"N sem calendario / ~M h editor"*. Sección *"Cómo leer las estimaciones de tiempo"* añadida al principio de [`ROADMAP.md`](ROADMAP.md).
+
+**Fecha de relanzamiento cerrada:** lunes 13 jul 2026 (opción A de las tres analizadas). Recomendación del asistente era B (12 oct, cierre de temporada) por narrativa y holgura, pero el editor eligió A porque A cabe si los supuestos se cumplen (15 h/sem sostenido, sin imprevistos mayores, sin re-alcances, prueba empírica del auditor pasa a la primera). Escenario B queda como red de seguridad automática: si el ritmo no acompaña, el banner de rodaje absorbe el deslizamiento sin re-planificar.
+
+**Docs propagados:** [`DECISIONES.md`](DECISIONES.md) D11, [`ROADMAP.md`](ROADMAP.md) (sección nueva + fecha objetivo en cabecera), [`STATUS.md`](STATUS.md) (próximos hitos con fecha 13 jul), [`ESTUDIOS-PENDIENTES.md`](ESTUDIOS-PENDIENTES.md) §6 marcada como superada. Las estimaciones existentes del roadmap se reinterpretan como calendario hasta que se reescriban gradualmente con la convención nueva.
+
+---
+
 ## 2026-04-23 [arquitectura] — Cierre del estudio de tiers de confianza con 5 decisiones operativas
 
 Tras el segundo pase del estudio del mismo día, el editor da OK en bloque a las cinco recomendaciones del asistente sobre las preguntas abiertas (§11 del estudio). Registrado como [D9](DECISIONES.md) y en [`ESTUDIO-TIERS.md §11.6`](ESTUDIO-TIERS.md):

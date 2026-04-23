@@ -1,8 +1,22 @@
 # Roadmap — radar))ibiza_vivienda
 
-**Fecha original:** 2026-04-20 · **Reestructurado en fases ejecutables:** 2026-04-21 noche
+**Fecha original:** 2026-04-20 · **Reestructurado en fases ejecutables:** 2026-04-21 noche · **Fecha objetivo de relanzamiento:** lunes 13 jul 2026 (ver [D11](DECISIONES.md))
 **Origen:** [PIVOTE.md](PIVOTE.md), [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md).
 **Principio base:** relanzamiento sólido, sostenido por infraestructura automatizada (el editor opera, no audita). Coste ≤12 €/mes bajo tope blando, ≤50 €/mes bajo tope duro. Reversibilidad vía histórico git.
+
+---
+
+## Cómo leer las estimaciones de tiempo
+
+Desde 2026-04-23 ([D11](DECISIONES.md)) toda estimación del proyecto se expresa con tres números distintos, nunca uno solo:
+
+- **Calendario** — semanas de reloj real. Es lo único que marca la fecha de lanzamiento.
+- **Esfuerzo editor** — horas reales del editor. A ritmo sostenible el proyecto asume 15 h/sem. Incluye decisión, revisión, commits, gestión y testeo.
+- **Esfuerzo Claude** — horas del asistente. No colapsa calendario: el cuello de botella es la decisión/revisión del editor. 40 h del asistente en un día no acelera la fecha si el editor no puede absorberlo al mismo ritmo.
+
+Formato corto en docs: *"N sem calendario / ~M h editor"*. El esfuerzo del asistente se omite salvo que aporte contexto (p. ej. cuando un módulo es mayoritariamente trabajo de Claude). Las estimaciones anteriores a D11 se reinterpretan como calendario hasta reescribirse.
+
+**Aplicado al relanzamiento del lunes 13 jul 2026:** ~12 sem calendario desde 2026-04-23 / ~180 h editor totales distribuidas en las 7 fases. Supuestos que tienen que cumplirse: 15 h/sem sostenido, sin imprevistos personales mayores de 1 semana, cero re-alcances grandes, prueba empírica del auditor MVP pasa a la primera. Si alguno falla, el calendario se desliza 1-3 semanas hacia jul-ago; el banner de rodaje absorbe el deslizamiento sin re-planificar. Red de seguridad: escenario B (12 oct 2026, cierre de temporada) si al llegar finales de junio el producto no está maduro.
 
 ---
 
