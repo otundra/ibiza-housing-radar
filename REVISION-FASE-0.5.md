@@ -27,10 +27,11 @@
   - Capa 2: auditoría ciega independiente (Sonnet).
   - Capa 3: comparador determinístico Python + verify.py (5 checks: URL 200, dominio-actor, verbatim en HTML, fecha coherente, Wayback archive).
   - Capa 4: arbitraje Opus solo para discrepancias (~15%).
-  - Capa 5: editor revisa solo lo flagged + muestreo aleatorio 10% de auto-aprobadas.
+  - Capa 5: editor revisa solo lo flagged. ~~Muestreo aleatorio 10% de auto-aprobadas~~ **eliminado el 2026-04-23** (rompía la regla fundacional).
+  - **Capa 5bis (añadida 2026-04-23):** repaso IA mensual de cuarentena. Opus lee cuarentena + logs + whitelist + umbrales y propone ajustes YAML; editor firma con OK por Telegram en 5 min. ~0,4 €/mes.
 - **Heurísticas sin IA:** cross-source confirmation, single-source penalty, verbatim substring match obligatorio, domain-actor whitelist, viability sanity checks.
 - **Log de auditoría completo** (`data/audit/YYYY-wWW/{proposal_id}.json`) con todas las capas, timestamps y decisiones — transparencia radical como escudo legal.
-- **Coste cerrado:** ~3,50 € totales (backfill + auditor + pieza retroactiva Opus). Dentro del tope blando mensual con margen.
+- **Coste cerrado:** ~~~3,50 € totales~~ **corregido 2026-04-23**: backfill 12 semanas ~5,4 € (one-shot, incluye generate retro Opus + self-review), régimen estable ~2,4 €/mes desde mes 4, meses 1-3 de arranque ~5,7 €/mes con auditoría Opus mensual de calibración. Detalle completo en [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md).
 - **Tiempo editor estimado:** ~4 h (antes 15 h).
 
 ### 2026-04-21 · Ajustes al auditor IA y al presupuesto
@@ -111,17 +112,19 @@ El plan del backfill (12 semanas W06-W17, Camino A) está estimado en ~3,50 € 
 
 **Prioridad de ejecución:** ANTES del backfill grande.
 
-### RT2 · Rol editor operador vs muestreo 10% — resolver contradicción ⏳
-El plan actual del auditor IA de 5 capas asume que el editor revisa (a) propuestas marcadas `flagged` (~15%) y (b) un muestreo aleatorio del 10% de las auto-aprobadas. Simultáneamente, el editor se define a sí mismo como **operador, no revisor**: *"en principio yo no voy a revisar nada"* (DIARIO 2026-04-21 noche). Ambas afirmaciones no pueden ser ciertas a la vez.
+### RT2 · Rol editor operador vs muestreo 10% — resolver contradicción ✅ CERRADA 2026-04-23
 
-Opciones:
-1. **Aceptar que el editor revise el 10%.** Implica ~20 min/semana adicionales cuando el histórico esté lleno. Compatible con "operador" si se presenta como rutina de 10 min los martes, no como "revisión experta".
-2. **Eliminar el muestreo humano** y confiar enteramente en el auditor IA. Mayor riesgo de error silencioso; implica reforzar la capa 2 (Sonnet auditor ciego) + capa 3 (comparador determinístico) hasta que sean la única red de seguridad.
-3. **Contratar el 10% externamente** (periodista local, académico UIB, otro revisor humano ajeno al editor). Coste recurrente ~20-50 €/mes; resuelve el conflicto manteniendo una capa humana real.
+**Decisión del editor (2026-04-23):** opción 2 — **eliminar el muestreo humano del 10 %**. Coherente con la regla fundacional (editor opera, no audita). La red de seguridad la cubren:
 
-Hoy no está decidido cuál de las tres se aplica. El plan se lee como opción 1 pero la conversación apunta a opción 2. Hay que elegir antes de publicar la política editorial pública, porque esa decisión condiciona qué se le promete al lector sobre el control de calidad.
+- Capas 2-4 del auditor IA (ciego Sonnet + comparador determinista + heurísticas + arbitraje Opus).
+- Log público de auditoría por propuesta en `data/audit/`.
+- Cuarentena pública `/revision-pendiente/`.
+- Formulario externo *"¿falta algo?"* de escrutinio ciudadano.
+- **Capa 5bis nueva:** repaso IA mensual de cuarentena por Opus, que propone ajustes al sistema (umbrales, whitelist, prompts) que el editor firma con OK en 5 min.
 
-**Salida esperada:** decisión cerrada del editor (1, 2 o 3) + texto en `/politica-editorial/` que describa el control de calidad real en lenguaje llano.
+**Descartadas:** opción 1 (rompe la regla) y opción 3 (200-600 €/año sin aportar cuando el sistema IA ya cubre la red). La opción 3 queda en reserva solo si a los 3-6 meses la auditoría trimestral detecta tasa de error silencioso > 5 %.
+
+Estudio completo en [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md) (cierre 2026-04-23). Entrada de diario: [DIARIO.md 2026-04-23 (tarde)](DIARIO.md).
 
 ### RT3 · Tiers de confianza — validar UX con los dos públicos ⏳
 El sistema de tiers públicos 🟢/🟡/🟠 con cuarentena 🔴 fue aprobado para reemplazar el modo entrenamiento. La intuición: el periodista entiende lo que significa "fuente única" y lo valora; el primer visitante (temporero, ciudadano) puede no entender el código de colores o directamente percibirlo como ruido.
@@ -203,12 +206,20 @@ Esta regla define cómo se construye cada módulo posterior y cómo se escribe l
 
 **Salida:** regla fundacional documentada explícitamente en `PIVOTE.md` (como regla complementaria a las 5) y desarrollada en la política editorial pública con copy en lenguaje llano. Referencia explícita al rol del editor como operador no revisor, y al log de auditoría como mecanismo de transparencia.
 
-### RT14 · Estudio preciso de costes del auditor IA ⏳ [BLOQUEA PI9]
-Antes de construir el auditor de 5 capas hay que cerrar el presupuesto real. Variables: coste por capa en € (extract Haiku, audit ciego Sonnet, comparador Python, arbitraje Opus si disputa, queue de revisión), frecuencia esperada de disputas (arbitraje Opus), tamaño medio de payload por propuesta, rate de propuestas por semana, coste del backfill completo de 12 semanas, coste operativo semanal de mantenimiento en régimen normal, coste por propuesta flagged que vaya a cuarentena.
+### RT14 · Estudio preciso de costes del auditor IA ✅ CERRADA 2026-04-23
 
-Cruzar con el tope blando (12 €/mes) y duro (50 €/mes). Si la proyección excede, identificar qué capa se simplifica (candidato obvio: reducir el muestreo aleatorio si ya se eliminó la revisión humana; reducir arbitraje Opus a casos de disputa crítica).
+Entregable: [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md) cerrado 2026-04-23 con 14 secciones + tabla por capa + proyección mensual + plan de implementación en 4 semanas.
 
-**Salida:** documento `ESTUDIO-COSTES-AUDITOR.md` con tabla detallada por capa + proyección mensual + comportamiento bajo carga de backfill + plan de contingencia si cruza topes.
+**Conclusiones principales:**
+- Delta neto del auditor sobre el pipeline existente: +0,2 €/mes en régimen estable. No hay presión presupuestaria que limite su diseño.
+- Régimen estable desde mes 4: ~2,4 €/mes total pipeline + auditor.
+- Meses 1-3 post-lanzamiento con auditoría Opus mensual de calibración: ~5,7 €/mes.
+- Backfill 12 semanas one-shot: ~5,4 € (corregido desde la estimación inicial de 3,5 € — no incluía generate retro ni self-review).
+- Mes pico realista (mayo 2026 con backfill + auditoría mensual + re-bench): ~10,1 €/mes, capa 🟠 naranja, sin cruce de tope blando (12 €).
+
+**Decisiones derivadas cerradas el mismo 2026-04-23:** eliminar muestreo 10 % (cierra RT2), añadir capa 5bis IA, Telegram consolidado, reportes escalonados mensual→trimestral→semestral, revisiones de cadencia al mes 4 y mes 7. Detalle en el estudio, entrada cronológica en [DIARIO.md 2026-04-23 (tarde)](DIARIO.md).
+
+**Siguiente paso:** construir `src/audit.py` (semana 1 del plan del estudio).
 
 ### RT15 · Re-estudio profundo del sistema de tiers de confianza ⏳ [ALTA]
 El sistema de tiers 🟢🟡🟠🔴 se aprobó rápido el 2026-04-21 noche. El editor pide re-estudio serio antes de implementar. Preguntas abiertas:
@@ -491,14 +502,16 @@ Mezcla A+C decidida. Implementado base en `src/report.py` (_build_summary y help
 Cuando el proyecto tenga buzón de correo propio, la alerta del lunes también se envía por email (para tener archivo consultable). Baja prioridad hasta que el buzón exista.
 **Salida:** envío por SMTP o servicio (Resend, Brevo) + plantilla HTML simple.
 
-### PI9 · Sistema de auditoría IA de 5 capas ⏳ [NUEVO]
-Módulo `src/audit.py` que implementa la arquitectura de 5 capas decidida hoy:
-1. Extract Haiku (ya existe).
-2. Audit ciego Sonnet (re-extracción sin ver la primera).
-3. Comparador determinístico Python + 5 checks de verify.py + heurísticas sin IA (cross-source, verbatim substring, domain-actor whitelist, viability sanity).
-4. Arbitraje Opus para discrepancias.
-5. Queue de revisión humana (flagged + 10% aleatorio de aprobadas).
-Log completo por propuesta en `data/audit/YYYY-wWW/{proposal_id}.json` con output literal de cada capa, timestamps y decisión final.
+### PI9 · Sistema de auditoría IA de 5 capas ⏳ [diseño cerrado 2026-04-23, construcción pendiente]
+Módulo `src/audit.py` que implementa la arquitectura decidida el 21-abr y afinada el 23-abr:
+1. Extract Haiku (ya existe en `src/extract.py`).
+2. Audit ciego Sonnet (re-extracción sin ver la primera, batch único).
+3. Comparador determinístico Python + 5 checks de verify.py + heurísticas sin IA (cross-source, single-source penalty, verbatim substring con umbrales diferenciados por `statement_type`, domain-actor whitelist en `data/actor_domains.yml`, viability sanity).
+4. Arbitraje Opus para discrepancias críticas (~15 % de propuestas).
+5. Editor revisa solo los flagged (sin muestreo 10 %, cerrado 2026-04-23).
+5bis. **Repaso IA mensual de cuarentena** (Opus lee cuarentena + logs + whitelist, propone ajustes YAML, editor firma con OK por Telegram en 5 min).
+
+Log completo por propuesta en `data/audit/YYYY-wWW/{proposal_id}.json` con output literal de cada capa, timestamps y decisión final. Panel de éxito en tres canales: página pública `/auditor/`, parte Telegram consolidado del lunes, página `/reportes/` con narrativa (mensual→trimestral→semestral). Detalle en [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md).
 **Salida:** módulo + tests + documentación en `ARQUITECTURA.md` + integración en el flujo normal y en `backfill.py`.
 **Coste por ejecución semanal:** ~0,25 €. Por backfill completo: ~2,70 €.
 
@@ -645,7 +658,7 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | Código | Tarea | Estado | Notas |
 |---|---|---|---|
 | **RT1** | **Backfill empírico W10 antes de las 12** | ⏳ | **P-1 · antes del backfill grande** |
-| **RT2** | **Rol editor vs muestreo 10% — decidir** | ⏳ | **P-1 · antes de política editorial pública** |
+| **RT2** | **Rol editor vs muestreo 10% — decidir** | ✅ | **Cerrada 2026-04-23: opción 2 (eliminar muestreo). Añadida capa 5bis IA. Ver ESTUDIO-COSTES-AUDITOR** |
 | **RT3** | **Tiers UX — validar con dos públicos** | ⏳ | **P-1 · antes de lanzar tiers** |
 | **RT4** | **Techo cobertura + banner limitaciones + Vía A adelantada** | ⏳ | **P-1 · antes del relanzamiento** |
 | **RT5** | **Tests básicos del pipeline** | ⏳ | **P-1 · antes del backfill grande** |
@@ -657,7 +670,7 @@ Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 
 | **RT11** | **Copy y tono de la home — decisión editorial** | ⏳ | **P-1 · en la etapa de Diseño, depende de RT3, RT12 y RT16** |
 | **RT12** | **Vía A de precios — estudio en profundidad** | ⏳ | **P-1 · ALTA · adelantarla al pre-relanzamiento si el estudio da viable** |
 | **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ⏳ | **P-1 · FILOSOFÍA · añadir a PIVOTE.md como regla complementaria** |
-| **RT14** | **Estudio preciso de costes del auditor IA** | ⏳ | **P-1 · BLOQUEA PI9 · backfill + mantenimiento** |
+| **RT14** | **Estudio preciso de costes del auditor IA** | ✅ | **Cerrada 2026-04-23. Entregable: ESTUDIO-COSTES-AUDITOR.md. Régimen estable ~2,4 €/mes; backfill ~5,4 € one-shot. Desbloquea PI9** |
 | **RT15** | **Re-estudio profundo del sistema de tiers** | ⏳ | **P-1 · ALTA · antes de implementar PI10** |
 | **RT16** | **Experimento Claude Design — archivado** | 🔄 | **P-1 · archivo en `private/claude-design-experiment/` · no es referencia · se estudia en fase Diseño** |
 | **RT17** | **Navegación exhaustiva mobile-first** | ⏳ | **P-1 · ALTA · NAVEGACION.md propio** |

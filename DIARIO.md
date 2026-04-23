@@ -13,6 +13,22 @@ Reglas:
 
 ---
 
+## 2026-04-23 [docs] — Propagación del cierre del estudio del auditor a REVISION-FASE-0.5
+
+Sincronización pendiente detectada por el editor: el cierre de [`ESTUDIO-COSTES-AUDITOR.md`](ESTUDIO-COSTES-AUDITOR.md) del 23-abr (tarde) actualizó el propio estudio y el DIARIO, pero no propagó las decisiones a los documentos vivos donde vivían como abiertas. Una sesión paralela abrió `REVISION-FASE-0.5.md`, leyó que RT2 seguía ⏳ y que la capa 5 del auditor aún listaba el muestreo del 10 %, y se atascó. Causa raíz: al hacer el commit `063dc50`, se trató el estudio como autocontenido cuando cerraba decisiones que tenían estado abierto en otros docs. El comando [`/cierre`](.claude/commands/cierre.md) existe precisamente para forzar este paso en el futuro; no estaba disponible cuando se hizo el commit anterior (se creó en `d532531`, posterior).
+
+Cambios aplicados:
+
+- **RT2 marcada cerrada** (`REVISION-FASE-0.5.md` §RT2 + tabla de seguimiento). Decisión: opción 2 (eliminar muestreo humano 10 %).
+- **RT14 marcada cerrada** (`REVISION-FASE-0.5.md` §RT14 + tabla). Entregable: el propio `ESTUDIO-COSTES-AUDITOR.md`. Desbloquea PI9.
+- **Decisión fundacional del auditor actualizada** en `REVISION-FASE-0.5.md` sección "2026-04-21 · Backfill de 12 semanas + Camino A + auditor IA": capa 5 sin muestreo + capa 5bis IA añadida + coste corregido con link al estudio.
+- **Descripción del PI9 actualizada** en `REVISION-FASE-0.5.md`: 5 capas + 5bis, heurísticas con referencias a `actor_domains.yml`, panel de éxito en tres canales.
+- **STATUS.md no se toca**: ya refleja el cierre en la línea del auditor de costes.
+
+Regla aprendida (se apunta como memoria futura): al cerrar un estudio que resuelve decisiones, **buscar todos los docs vivos donde esas decisiones aparecen como abiertas y propagar** antes de commit. El comando `/cierre` cubre esto; aplicarlo desde ahora.
+
+---
+
 ## 2026-04-23 [docs] — Tres reglas baratas de gestión documental + comando /cierre + estudio congelado
 
 Conversación con el editor sobre la tarea roadmap *"Revisión profunda de arquitectura documental y gestión del conocimiento"*. Valoración: 20 docs en raíz, ~7.850 líneas, DIARIO 100 KB, triple registro de decisiones, STATUS desincronizado, sin contrato de arranque. Diagnóstico y plan completo congelados en [`ESTUDIO-GESTION-CONOCIMIENTO.md`](ESTUDIO-GESTION-CONOCIMIENTO.md) para revisar post-lanzamiento; no se ejecuta la reorganización completa ahora porque hay frentes abiertos (Revisión Fase 0.5, prototipo pausado) y churn documental arriesga merges sucios. Cambios aplicados hoy:
