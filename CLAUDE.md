@@ -124,9 +124,12 @@ Tres reglas baratas que frenan la entropía hasta la revisión profunda post-lan
 2. **DECISIONES.md fuente única.** Toda decisión nueva entra en [`DECISIONES.md`](DECISIONES.md) con ID `D{N}`. Otros docs referencian por ID (*"ver D7"*), no duplican contenido.
 3. **STATUS.md ≤ 100 líneas.** Si crece, podar a DIARIO o borrar lo que ya viva en otro sitio.
 
-## Cierre de sesión
+## Slash commands del proyecto
 
-Usar `/cierre` (ver [`.claude/commands/cierre.md`](.claude/commands/cierre.md)) para cerrar sesiones con checklist fijo: auditoría de cambios, actualización dirigida de docs, commits atómicos, push y reporte de qué se tocó y qué no.
+Índice vivo en [`COMANDOS.md`](COMANDOS.md) (raíz). Si no aparece ahí, no existe. Al crear un comando nuevo en `.claude/commands/`, añadirlo a la tabla de `COMANDOS.md` en el mismo commit.
+
+- **Arranque de sesión:** `/arranque` (default, Tier 1), `/arranque-fase` (tras pausa larga o cambio de área, Tier 2), `/arranque-auditoria` (escaneo completo, Tier 3). Criterio de uso y qué lee cada uno en [`COMANDOS.md`](COMANDOS.md).
+- **Cierre de sesión:** `/cierre` (ver [`.claude/commands/cierre.md`](.claude/commands/cierre.md)) con checklist fijo: auditoría de cambios, actualización dirigida de docs, commits atómicos, push y reporte de qué se tocó y qué no.
 
 ## Diario del proyecto
 
