@@ -4,6 +4,8 @@ description: Cierra la sesión con checklist fijo — actualiza docs, commit at�
 
 Estás cerrando una sesión de trabajo en `ibiza-housing-radar`. Ejecuta este checklist **en orden**, sin saltarte pasos. Al final da un reporte corto al editor.
 
+**Separador visual del bloque.** Empieza la primera respuesta de este comando con una línea horizontal (`---`) como primera línea del mensaje. Termina el reporte final del paso 5 con otra línea horizontal igual. Esto delimita visualmente el bloque de cierre dentro de la conversación.
+
 ## 0. Chequeo de concurrencia
 
 - Ejecuta `git fetch origin main --quiet` y compara `HEAD` local con `origin/main`.
