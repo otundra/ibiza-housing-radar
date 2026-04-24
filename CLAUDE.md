@@ -156,7 +156,7 @@ Tres reglas baratas que frenan la entropía hasta la revisión profunda post-lan
 ## Lenguaje en el chat del proyecto (desde 2026-04-24)
 
 - **Un punto menos de lenguaje técnico.** Al hablar con el editor en el chat, traducir tecnicismos evitables al español común (flujo, registro, estructura, diferencias, envío…). La palabra técnica se mantiene en documentos internos de arquitectura, estudios y código; en la conversación se traduce. Alcance: solo este proyecto. Detalle en la memoria del asistente `feedback_lenguaje_llano_chat.md`.
-- **Cero códigos sueltos en el chat.** Siempre empezar por el **nombre de la cosa**; el identificador (tipo `RT15`, `PI9`, `D11`, `W17`, `Q3`…) va entre paréntesis al final y solo si aporta trazabilidad. Nunca como etiqueta principal, nunca como primer elemento de una línea. 4 recaídas acumuladas a 2026-04-24 — próxima recaída = fallo grave. Excepción: siglas del dominio público del sector (BOIB, IBAVI, GOIB, CCOO, PIMEEF…) sí se usan sin glosar. Detalle en `feedback_referencias_con_contexto.md`.
+- **Cero códigos sueltos en el chat.** Siempre empezar por el **nombre de la cosa**; el identificador (tipo `RT15`, `PI9`, `D11`, `W17`, `Q3`…) va entre paréntesis al final y solo si aporta trazabilidad. Nunca como etiqueta principal, nunca como primer elemento de una línea. 5 recaídas acumuladas a 2026-04-24 — tolerancia cero sin excepciones. Excepción: siglas del dominio público del sector (BOIB, IBAVI, GOIB, CCOO, PIMEEF…) sí se usan sin glosar. Detalle en `feedback_referencias_con_contexto.md`.
 
 ## Diario del proyecto
 
