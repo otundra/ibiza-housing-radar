@@ -318,6 +318,8 @@ Ruta ajustada al ritmo sostenible del editor (~15 h/semana, según roadmap).
 
 El plan semanal siguiente sigue siendo la referencia completa, pero su ejecución se parte en dos bloques — ver [D1](DECISIONES.md). Motivo: reducir la carga cognitiva del editor mientras aprende el sistema y llegar antes al punto *"funciona y lo entiendo"*. El mínimo viable entrega el 80 % de la transparencia (doble-ojo automático + log público + protocolo de corrección); la iteración posterior es confort y optimización.
 
+> 📐 **Plano de obra derivado (2026-04-24).** [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md) traduce esta partición a contratos de código: firmas de funciones, schema JSON exacto del registro con 11 señales, algoritmos de las tres heurísticas, whitelist V1 cerrada con 20 actores, puntos exactos de integración con `report.py`, plantilla mínima de `/correcciones/` y calendario partido en 4 semanas con entregables. Referencia durante la construcción; se archiva al cerrar el Hito 1.
+
 **Mínimo viable — 2 semanas (Hito 1 del frame de tres hitos grandes, [D6](DECISIONES.md)):**
 
 - **Semana 1** completa tal cual: capa 2 ciega Sonnet + `src/audit_compare.py` determinista. Sin cambios.

@@ -554,6 +554,7 @@ Detalle completo en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.
 
 **Salida PI9-MVP:** `src/audit.py` + `src/audit_compare.py` + `src/audit_heuristics.py` + `data/actor_domains.yml` V1 + log público en `data/audit/` + página `/correcciones/` + integración en `report.py`.
 **Coste por ejecución semanal:** ~0,15 € en MVP (sin capa 5bis ni auditoría Opus mensual). Completo con iteración: ~0,25 €/semana + ~0,4 €/mes de capa 5bis.
+**Plano de obra cerrado 2026-04-24:** [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md) (11 secciones — contratos de módulos, schema del registro con 11 señales, whitelist V1 cerrada de 20 actores, algoritmos de las tres heurísticas, calendario partido en 4 semanas). Documento de referencia durante la construcción; se archiva al cerrar el Hito 1.
 
 ### PI3 · Enlace entre ediciones y evolución de propuestas ⏳
 Esto es donde hay *oro oculto*: una propuesta que nace W15, se debate W17, se rechaza W19. Hoy el tracker enlaza débilmente. Debería haber:
