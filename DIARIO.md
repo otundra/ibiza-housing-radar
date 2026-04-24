@@ -13,6 +13,13 @@ Reglas:
 
 ---
 
+## 2026-04-24 [docs] — Reglas fundacionales migradas de PIVOTE.md a CLAUDE.md
+
+- **Migración de las 5 reglas duras y la regla complementaria** a `CLAUDE.md §Reglas fundacionales`. El contenido operativo vive ahora en el documento principal; PIVOTE.md queda como archivo histórico con redirect. Motivo: consolidar el modelo documental en un solo sitio y que borrar PIVOTE.md en el futuro no rompa nada.
+- **18 archivos actualizados** para apuntar a `CLAUDE.md#reglas-fundacionales`. Entradas históricas del diario intactas. El único enlace activo que queda a PIVOTE.md es el de CLAUDE.md línea 49 (aposta, contexto histórico del cambio de modelo).
+
+---
+
 ## 2026-04-24 [docs] — Rediseño del sistema de arranque: fuera el intermedio, dentro el total con inventario veraz y el comando transversal de ampliar
 
 Segundo turno del mismo día, continuación natural del anterior. Cuatro cambios conceptuales al cómo arranca la sesión, registrados en [D13](DECISIONES.md).
