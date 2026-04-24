@@ -1,4 +1,4 @@
-# Estado operativo — actualizado 2026-04-24
+# Estado operativo — actualizado 2026-04-24 tarde
 
 > **Regla:** ≤ 100 líneas. Solo estado vigente. Lo histórico vive en [`DIARIO.md`](DIARIO.md); lo fundacional en [`CLAUDE.md`](CLAUDE.md) (sección *Reglas fundacionales*). Ver [D0](DECISIONES.md).
 
@@ -26,7 +26,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 ## 🟡 En curso
 
 - **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21, 34 tareas. Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) + memoria [`revision_fase_0_5.md`](.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/revision_fase_0_5.md).
-- **Hito 1 — Auditor mínimo viable** (2 sem). PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). Pendiente inmediato: diseño sobre papel del módulo + mockup estático de `/correcciones/` en el prototipo.
+- **Hito 1 — Auditor mínimo viable** (2 sem). PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). **Diseño del módulo cerrado 2026-04-24** en [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md) (11 secciones + whitelist V1 cerrada de 20 actores + schema del registro + calendario 4 semanas). Siguiente: arrancar Semana 1 (capa 2 Sonnet ciega + comparador determinista) tras OK del editor.
 - **Hito 2 — Re-estudio del sistema de tiers** ✅ **cerrado 2026-04-23** (RT15, RT26). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo con 5 decisiones operativas en [D9](DECISIONES.md). Queda como pendiente de datos la medición empírica del sesgo por actor (RT25, post-backfill). Implementación de `src/tiers.py` + `data/tiers.yml` pasa a PI10 (sin bloquear auditor MVP).
 
 ## 🏷️ Identidad (provisional 2026-04-21)
@@ -38,15 +38,16 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 ## 🎯 Próximos hitos
 
 - **Lunes 27 abr 07:00 CEST** — próxima edición automática (W18).
-- **Arranque Hito 1 — Auditor MVP:** diseño sobre papel → construcción (2 sem calendario / ~30 h editor) → prueba empírica sobre W10 (2-8 marzo 2026).
-- **Viernes 8 may 2026** — revisar activación de avisos 2 y 3 del sistema de monitorización de decisiones ([D14](DECISIONES.md)). Decidir si sumar aviso por patrón en autoevaluación (dos semanas con nota <7 en misma dimensión) + aviso por acumulación de 5 decisiones pequeñas autónomas del asistente sin resumen.
+- **Arranque Hito 1 — Auditor MVP:** diseño cerrado → construcción (4 sem calendario según plano) → prueba empírica sobre W10 (2-8 marzo 2026). Semanas 1-4 detalladas en [`DISENO-AUDITOR-MVP.md §9`](DISENO-AUDITOR-MVP.md). Arranca cuando el editor dé OK al plano.
+- **Viernes 8 may 2026** — revisar activación de avisos 2 y 3 del sistema de monitorización de decisiones ([D14](DECISIONES.md)). Decidir si sumar aviso por patrón en autoevaluación (dos semanas con nota <7 en misma dimensión) + aviso por acumulación de 5 decisiones pequeñas autónomas del asistente sin resumen. **Pregunta abierta del editor (2026-04-24):** ¿las caducidades del registro de decisiones pueden ser por hito además de por fecha? Evaluar en la misma revisión.
+- **Antes del relanzamiento público (may-jun 2026)** — revisar exposición legal de la página de correcciones (`/correcciones/`). El protocolo de 72 h queda publicado antes de tener buzón operativo; riesgo acotado mientras la web no tiene tráfico pero hay que cerrarlo antes de abrir al público. Anclado al Hito 3 legal. Detalle en [`DISENO-AUDITOR-MVP.md §7`](DISENO-AUDITOR-MVP.md).
 - **Lunes 13 jul 2026** — fecha objetivo de relanzamiento público ([D11](DECISIONES.md)). ~12 sem calendario desde 2026-04-23, ~180 h editor totales. Red de seguridad: lunes 12 oct 2026 (cierre de temporada) si al llegar junio el producto no está maduro.
 
 ## 📍 Puntos de entrada al retomar
 
 | Vengo a… | Abrir primero |
 |---|---|
-| Arrancar el auditor mínimo | [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md) + [D1](DECISIONES.md), [D2](DECISIONES.md), [D3](DECISIONES.md) |
+| Arrancar el auditor mínimo | [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md) (plano de obra) + [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md) + [D1](DECISIONES.md), [D2](DECISIONES.md), [D3](DECISIONES.md) |
 | Implementar el sistema de tiers | [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) cerrado. Siguiente: `src/tiers.py` + `data/tiers.yml` con los valores de [D9](DECISIONES.md) + badge en Jekyll + `/metodologia/#tiers` (tarea PI10) |
 | Retomar diseño visual | memoria `prototipo_paso1_en_pausa.md` + [`ESTUDIO-DISENO.md §10`](ESTUDIO-DISENO.md) + entradas DIARIO 2026-04-21 |
 | Cerrar Revisión Fase 0.5 | [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) |
@@ -58,10 +59,10 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 Observatorio documental. LLM no genera propuestas: documenta las de actores con nombre, con URL verificable. Consolidado en `main` desde 2026-04-21. Docs de referencia en cabecera de [`CLAUDE.md`](CLAUDE.md).
 
-## 🗂 Docs vivos en raíz (23)
+## 🗂 Docs vivos en raíz (24)
 
 Fundacionales: `CLAUDE.md`, `README.md`, `DECISIONES.md`.
-Planificación: `ROADMAP.md`, `REVISION-FASE-0.5.md`, `DECISIONES-PENDIENTES.md`.
+Planificación: `ROADMAP.md`, `REVISION-FASE-0.5.md`, `DECISIONES-PENDIENTES.md`, `DISENO-AUDITOR-MVP.md`.
 Producto: `ARQUITECTURA.md`, `DISENO-WEB.md`, `SEO.md`, `CONTENIDO-RETROACTIVO.md`.
 Estudios: `ESTUDIO-DISENO.md`, `ESTUDIO-COSTES-AUDITOR.md`, `ESTUDIO-TIERS.md`, `ESTUDIO-3-MODELOS.md`, `ESTUDIO-GESTION-CONOCIMIENTO.md`, `ESTUDIOS-PENDIENTES.md`, `EXPANSION-TEMATICA.md`, `REPORTE-BENCHMARK.md`.
 Estado/memoria: `STATUS.md` (este), `DIARIO.md`, `PLAN.md` (histórico).

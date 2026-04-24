@@ -13,6 +13,18 @@ Reglas:
 
 ---
 
+## 2026-04-24 [arquitectura] — Plano de obra del auditor mínimo viable
+
+Tras cerrar el sistema de monitorización y confirmar con el editor arrancar Hito 1, se redacta el documento de diseño del módulo de auditoría. No es un estudio nuevo: el estudio de costes ya estaba cerrado desde 2026-04-22 con todas las decisiones económicas y de alcance. El plano traduce ese estudio a contratos de código: qué archivos nuevos, qué funciones, qué estructura exacta del registro de auditoría, qué señales de confianza se capturan desde el primer día aunque la fórmula llegue más tarde, qué whitelist arranca cerrada, qué hueco deja para la iteración posterior.
+
+- **Nuevo documento [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md) (~500 líneas, 11 secciones).** Módulos a crear (`src/audit.py`, `src/audit_compare.py`, `src/audit_heuristics.py`, `data/actor_domains.yml`). Estructura completa del registro JSON con 11 señales de confianza (9 se rellenan en el mínimo viable, 2 se dejan en null a la espera de la fórmula de asignación). Tres heurísticas deterministas (confirmación por fuente cruzada, coincidencia literal, dominio en lista blanca). Lista blanca V1 cerrada con 20 actores en 6 de las 8 categorías de la taxonomía. Integración al flujo actual como paso nuevo entre extract y generate. Plantilla mínima de la página de correcciones con protocolo 72 h publicado. Calendario partido en 4 semanas con entregables por semana.
+- **Por qué el diseño ahora y no durante el estudio.** El estudio de costes resolvió el *qué y cuánto* (alcance de capas, fórmulas de coste, dimensionado del backfill, ratio de disputas). El plano resuelve el *cómo*: contratos de funciones, forma del registro, puntos exactos de integración, criterios de éxito. Separarlos permitió no mezclar discusión económica con discusión técnica, y deja el estudio como referencia estable para revisiones futuras.
+- **Riesgos explícitos dejados por escrito.** La página de correcciones queda publicada con protocolo de 72 h antes de que el buzón sea operativo; el editor acepta el riesgo acotado mientras la web no tiene tráfico, con apunte de revisión legal antes del relanzamiento público (anclado al Hito 3 legal). La fórmula de asignación de tiers se deja explícitamente fuera del mínimo viable: las señales se capturan y se guardan, pero el badge público no aparece hasta cerrar el estudio correspondiente (queda el estudio cerrado pero la integración pasa a iteración posterior).
+- **Pregunta abierta del editor registrada.** ¿Pueden las caducidades del registro de decisiones ser por hito además de por fecha? (Por ejemplo: *"revisar al cerrar Hito 1"* en lugar de una fecha ISO.) Recomendación del asistente: dejar apuntado para la revisión del sistema de monitorización fijada al 2026-05-08, no implementar ahora. Añadido al apunte de esa fecha.
+- **Estado al cierre del turno.** Plano entregado, estado operativo sincronizado (hito 1 en curso con diseño cerrado, calendario de 4 semanas apuntado, puntos de entrada actualizados), diario al día. La construcción empieza cuando el editor dé visto bueno al plano.
+
+---
+
 ## 2026-04-24 [docs] — Sistema de monitorización de decisiones del proyecto
 
 El editor pidió panel único, alertas a Telegram y normas permanentes sobre las decisiones del proyecto — *"ligero pero potente"*. Diagnóstico previo identificó cuatro capas de vigilancia ya montadas (costes, autoevaluación semanal, verificación por capas, balance trimestral) pero dispersas. Decisión: no duplicar, agregar. Registrada como [D14](DECISIONES.md).
