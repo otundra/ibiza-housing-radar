@@ -13,6 +13,24 @@ Reglas:
 
 ---
 
+## 2026-04-24 [docs] — Sistema de monitorización de decisiones del proyecto
+
+El editor pidió panel único, alertas a Telegram y normas permanentes sobre las decisiones del proyecto — *"ligero pero potente"*. Diagnóstico previo identificó cuatro capas de vigilancia ya montadas (costes, autoevaluación semanal, verificación por capas, balance trimestral) pero dispersas. Decisión: no duplicar, agregar. Registrada como [D14](DECISIONES.md).
+
+- **Formato del registro ampliado con dos campos obligatorios.** `Próxima revisión` (fecha ISO o `permanente`) y `Criterio de revocación` (qué señal rompería la decisión). En D0-D13 se añadió retroactivamente solo `Próxima revisión`; el criterio no se redactó hacia atrás porque la mayoría caen como permanentes o están cerca de hito natural. Estado de D10 corregido a superada parcialmente por D13 (tiers de arranque sustituidos por los 4 modos + ampliar); el índice de comandos que introdujo D10 sigue vigente.
+- **Regla permanente en el documento de instrucciones.** Cuarta regla de gestión documental: toda decisión nueva exige los dos campos. Sin ellos, no entra al registro. Cierra el círculo sin depender de memoria.
+- **Tarea automática semanal** (`src/decisions_watch.py`, enganchada al workflow lunes 05:00 UTC). Avisa por Telegram si alguna decisión tiene revisión vencida o próxima (≤7 días). Reutiliza `src/notify.py` sin infra nueva.
+- **Refuerzo en el arranque de Claude.** Cualquier modo de arranque cita las decisiones vencidas en primera línea si las detecta al leer el registro. Triple red con Telegram y tablero.
+- **Tablero interno único** en `private/panel.md` (nuevo, vía `src/panel.py`). Agrega gasto del mes, estado de verificación, autoevaluación, decisiones con revisión pendiente, última edición. No genera datos propios: solo agrega lo que otros módulos ya escriben. Primer tablero generado hoy; siguiente revisión fechada es la propia D14 el 2026-05-08.
+
+**Pendientes apuntados (revisar 2026-05-08):** panel público en `/estado/` diferido hasta ver una semana del interno funcionando. Aviso por patrón estructural en autoevaluación (dos semanas seguidas con nota <7 en misma dimensión). Aviso por acumulación de 5 decisiones pequeñas autónomas del asistente sin resumen al editor.
+
+**Coste real:** 0 € de API. Todo el trabajo es pegamento sobre capas ya existentes. Reversibilidad completa en <15 min (criterio de revocación explícito en D14).
+
+Archivos tocados: registro de decisiones (14 decisiones con campo retroactivo + D14 nueva + estado de D10 corregido), documento de instrucciones del proyecto (regla 4 nueva), estado operativo (recordatorio 2026-05-08), dos módulos Python nuevos, workflow semanal ampliado con dos pasos, tablero interno nuevo, y este diario.
+
+---
+
 ## 2026-04-24 [docs] — Reglas fundacionales migradas de PIVOTE.md a CLAUDE.md
 
 - **Migración de las 5 reglas duras y la regla complementaria** a `CLAUDE.md §Reglas fundacionales`. El contenido operativo vive ahora en el documento principal; PIVOTE.md queda como archivo histórico con redirect. Motivo: consolidar el modelo documental en un solo sitio y que borrar PIVOTE.md en el futuro no rompa nada.

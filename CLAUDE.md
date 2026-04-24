@@ -136,13 +136,14 @@ gh workflow run validate-key.yml
 
 6. **Modelo por fase.** Haiku para filtrar (coste marginal), Opus solo para la pieza final donde la calidad editorial sí importa. No mezclar.
 
-## Reglas de gestión documental (desde 2026-04-23, ver [D0](DECISIONES.md))
+## Reglas de gestión documental (desde 2026-04-23, ver [D0](DECISIONES.md); regla 4 desde 2026-04-24, ver [D14](DECISIONES.md))
 
-Tres reglas baratas que frenan la entropía hasta la revisión profunda post-lanzamiento (ver [`ESTUDIO-GESTION-CONOCIMIENTO.md`](ESTUDIO-GESTION-CONOCIMIENTO.md)):
+Cuatro reglas baratas que frenan la entropía hasta la revisión profunda post-lanzamiento (ver [`ESTUDIO-GESTION-CONOCIMIENTO.md`](ESTUDIO-GESTION-CONOCIMIENTO.md)):
 
 1. **DIARIO con fecha ISO + etiqueta temática.** Cada entrada nueva lleva cabecera `## YYYY-MM-DD [tema]`. Temas válidos: `[pipeline]`, `[diseno]`, `[editorial]`, `[arquitectura]`, `[docs]`, `[costes]`, `[legal]`, `[feedback]`, `[sesion]` (cierre general).
 2. **DECISIONES.md fuente única.** Toda decisión nueva entra en [`DECISIONES.md`](DECISIONES.md) con ID `D{N}`. Otros docs referencian por ID (*"ver D7"*), no duplican contenido.
 3. **STATUS.md ≤ 100 líneas.** Si crece, podar a DIARIO o borrar lo que ya viva en otro sitio.
+4. **Cada decisión nueva lleva dos campos obligatorios.** `Próxima revisión` (fecha ISO o `permanente`) y `Criterio de revocación` (qué señal rompería la decisión). Sin ellos, la decisión no entra al registro. El sistema de monitorización lee `Próxima revisión`: tarea automática semanal que avisa por Telegram con las decisiones vencidas o próximas (≤7 días), y en cada arranque de Claude se citan las vencidas en primera línea antes de responder al prompt. Ver [D14](DECISIONES.md).
 
 ## Slash commands del proyecto
 

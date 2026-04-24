@@ -38,6 +38,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 - **Lunes 27 abr 07:00 CEST** — próxima edición automática (W18).
 - **Arranque Hito 1 — Auditor MVP:** diseño sobre papel → construcción (2 sem calendario / ~30 h editor) → prueba empírica sobre W10 (2-8 marzo 2026).
+- **Viernes 8 may 2026** — revisar activación de avisos 2 y 3 del sistema de monitorización de decisiones ([D14](DECISIONES.md)). Decidir si sumar aviso por patrón en autoevaluación (dos semanas con nota <7 en misma dimensión) + aviso por acumulación de 5 decisiones pequeñas autónomas del asistente sin resumen.
 - **Lunes 13 jul 2026** — fecha objetivo de relanzamiento público ([D11](DECISIONES.md)). ~12 sem calendario desde 2026-04-23, ~180 h editor totales. Red de seguridad: lunes 12 oct 2026 (cierre de temporada) si al llegar junio el producto no está maduro.
 
 ## 📍 Puntos de entrada al retomar

@@ -45,18 +45,33 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Check decisions reviews
+        # Avisa por Telegram si alguna decisión del proyecto tiene "Próxima
+        # revisión" vencida o próxima (≤7 días). No bloquea el pipeline.
+        run: |
+          python -m src.decisions_watch
+        continue-on-error: true
+
       - name: Run pipeline
         run: |
           python -m src.report
+
+      - name: Regenerate internal panel
+        # Regenera private/panel.md agregando señales del mes (coste,
+        # autoevaluación, verificación, decisiones pendientes, última edición).
+        # No genera datos, solo agrega. No bloquea el pipeline.
+        run: |
+          python -m src.panel
+        continue-on-error: true
 
       - name: Commit edition and costs
         run: |
           git config user.name "ibiza-radar-bot"
           git config user.email "bot@users.noreply.github.com"
 
-          # Añade la edición nueva, índice, dashboard privado de costes y CSV de costes.
+          # Añade edición, índice, dashboard de costes, tablero interno y CSV de costes.
           # docs/costs.md ya no existe (el dashboard se mueve a private/ fuera de Jekyll).
-          git add docs/_editions/ docs/index.md private/costs.md data/costs.csv 2>/dev/null || true
+          git add docs/_editions/ docs/index.md private/costs.md private/panel.md data/costs.csv 2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "Sin cambios para commitear"
