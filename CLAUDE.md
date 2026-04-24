@@ -128,8 +128,14 @@ Tres reglas baratas que frenan la entropía hasta la revisión profunda post-lan
 
 Índice vivo en [`COMANDOS.md`](COMANDOS.md) (raíz). Si no aparece ahí, no existe. Al crear un comando nuevo en `.claude/commands/`, añadirlo a la tabla de `COMANDOS.md` en el mismo commit.
 
-- **Arranque de sesión:** `/arranque` (default, Tier 1), `/arranque-fase` (tras pausa larga o cambio de área, Tier 2), `/arranque-auditoria` (escaneo completo, Tier 3). Criterio de uso y qué lee cada uno en [`COMANDOS.md`](COMANDOS.md).
+- **Arranque por defecto (sin comando, desde 2026-04-24).** Al empezar una sesión sin invocar ningún comando, leer en silencio `STATUS.md`, `DECISIONES.md` y las primeras 120 líneas de `DIARIO.md`, y **responder directo al prompt del editor sin sacar informe**. El informe ordenado + 1-3 recomendaciones + pregunta *"¿qué hacemos?"* solo se dispara cuando el editor escribe `/arranque` explícito.
+- **Arranque de sesión:** `/arranque` (Tier 1, ligero), `/arranque-fase` (tras pausa larga o cambio de área, Tier 2), `/arranque-auditoria` (escaneo completo, Tier 3). Criterio de uso y qué lee cada uno en [`COMANDOS.md`](COMANDOS.md).
 - **Cierre de sesión:** `/cierre` (ver [`.claude/commands/cierre.md`](.claude/commands/cierre.md)) con checklist fijo: auditoría de cambios, actualización dirigida de docs, commits atómicos, push y reporte de qué se tocó y qué no.
+
+## Lenguaje en el chat del proyecto (desde 2026-04-24)
+
+- **Un punto menos de lenguaje técnico.** Al hablar con el editor en el chat, traducir tecnicismos evitables al español común (flujo, registro, estructura, diferencias, envío…). La palabra técnica se mantiene en documentos internos de arquitectura, estudios y código; en la conversación se traduce. Alcance: solo este proyecto. Detalle en la memoria del asistente `feedback_lenguaje_llano_chat.md`.
+- **Cero códigos sueltos en el chat.** Siempre empezar por el **nombre de la cosa**; el identificador (tipo `RT15`, `PI9`, `D11`, `W17`, `Q3`…) va entre paréntesis al final y solo si aporta trazabilidad. Nunca como etiqueta principal, nunca como primer elemento de una línea. 4 recaídas acumuladas a 2026-04-24 — próxima recaída = fallo grave. Excepción: siglas del dominio público del sector (BOIB, IBAVI, GOIB, CCOO, PIMEEF…) sí se usan sin glosar. Detalle en `feedback_referencias_con_contexto.md`.
 
 ## Diario del proyecto
 
@@ -162,7 +168,7 @@ El plan de mejora estratégico vive en [`PLAN.md`](PLAN.md): 4 fases (base / dis
 - No publicar ediciones manuales con fechas futuras (el `permalink` se confunde).
 - **No usar "W17" ni numeración de semana ISO en cara pública.** Solo como slug interno (archivos, logs, commits). En cara pública, URLs y etiquetas siempre con rango de fechas: `/ediciones/2026-04-20/`, `"Edición del 20-26 abril 2026"`.
 - **No colorear partidos políticos con su color** (regla dura de imparcialidad visual). Todos los partidos van en gris neutro (`--actor-partido`). Ver [ESTUDIO-DISENO.md §5.1](ESTUDIO-DISENO.md).
-- **No citar identificadores internos del proyecto al editor sin nombrar primero la cosa.** Códigos tipo `RT15`, `PI9`, `D11`, `W17`, `B34`, `FU2`, `ED1`, `UX3`, etc. no se entienden por sí solos. En chat, resúmenes, propuestas: di el **nombre de la cosa** ("el sistema de tiers de confianza", "el estudio de costes del auditor", "la semana del 20-26 abril"). El código va entre paréntesis al final y solo si aporta trazabilidad, nunca como etiqueta principal. Las siglas de dominio público (BOIB, IBAVI, GOIB, GEN-GOB, CCOO, PIMEEF…) sí se usan sin glosar. El editor lo ha señalado 3+ veces — próxima recaída es fallo grave.
+- **No citar identificadores internos del proyecto al editor sin nombrar primero la cosa.** Regla dura tratada como sección propia arriba (*Lenguaje en el chat del proyecto*). Códigos tipo `RT15`, `PI9`, `D11`, `W17`, `Q3`, `B34`, `FU2`, `ED1`, `UX3` nunca van como etiqueta principal ni como primer elemento de una línea. 4 recaídas acumuladas a 2026-04-24 — próxima = fallo grave.
 
 ## Nivel de proactividad
 
