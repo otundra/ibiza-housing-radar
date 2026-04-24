@@ -209,6 +209,8 @@ Ejemplo inventado pero plausible para validar que el diseño cubre todos los cam
 
 ## 6 · Preguntas pendientes antes de tocar código
 
+> **Cerradas 2026-04-24** en bloque con las cuatro recomendaciones aceptadas. Ver [D14](DECISIONES.md).
+
 Cuatro decisiones para cerrar con el editor.
 
 ### Q1 — Umbrales iniciales: ¿código o YAML?

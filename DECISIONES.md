@@ -170,3 +170,16 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Convención de escritura:** en adelante, las estimaciones en ROADMAP, REVISION-FASE-0.5 y fichas del proyecto usan el formato *"N sem calendario / ~M h editor"* como mínimo; el esfuerzo Claude se omite salvo que aporte (p. ej. cuando un módulo es mayoritariamente trabajo del asistente). Las estimaciones existentes se reinterpretan como calendario hasta que se reescriban gradualmente.
 - **Docs afectados:** `ROADMAP.md` (sección nueva al principio *"Cómo leer las estimaciones de tiempo"* + fecha objetivo del relanzamiento en Fase 7), `STATUS.md` (próximos hitos con fecha 13 jul), `ESTUDIOS-PENDIENTES.md` (§6 marcada como superada por esta decisión).
 - **Estado:** vigente
+
+### D14 — Cierre de las cuatro preguntas operativas del diseño sobre papel del auditor
+
+- **Fecha:** 2026-04-24
+- **Tema:** arquitectura
+- **Decisión:** cerradas en bloque las cuatro preguntas abiertas del turno 3 de [`DISENO-AUDITOR.md §6`](DISENO-AUDITOR.md), aceptando las cuatro recomendaciones del asistente:
+  - **Q1 — Umbrales en YAML desde el día uno.** Archivo `data/audit_thresholds.yml` con los números de las heurísticas (ratio de coincidencia literal que cuenta como *match* / *minor*, número de fuentes que cuentan como cruce, etc.). La semana 4 del hito se usa para calibrar con la prueba empírica sobre la semana W10 sin tocar Python.
+  - **Q2 — Si Sonnet no responde, publica solo con Haiku y marca la señal `sonnet_missing`.** El módulo futuro de tiers decidirá si eso baja el nivel de confianza. Si los fallos son sistemáticos, `self_review` alerta por Telegram. No se cuarentena automáticamente por fallo de auditoría ciega.
+  - **Q3 — En `compare="minor"`, ficha canónica = Haiku.** Los diffs detectados por Sonnet quedan registrados en `layers.compare.diffs` pero no corrigen la publicación. Sonnet actúa como vigía, no como editor; la corrección fina queda reservada al fallback Opus en los casos `major`.
+  - **Q4 — Expedientes `data/audit/YYYY-wWW/*.json` públicos en el repo.** Coherente con [D2](#d2--log-del-auditor-público-desde-el-día-uno--protocolo-formal-de-correcciones-en-72-h).
+- **Por qué:** las cuatro recomendaciones eran coherentes entre sí y coherentes con decisiones previas — Q1 y Q3 mantienen el auditor como mínimo viable sin sofisticación prematura, Q2 evita que un fallo de API corte editorial, Q4 encadena con la transparencia radical de D2. El editor aceptó en bloque tras leer las cuatro con su recomendación. Las dos más relevantes son Q1 (desacopla calibración de código, hace la semana 4 del hito útil de verdad) y Q3 (fija el rol del auditor como vigía, impidiendo que se convierta en segunda pasada editorial cara).
+- **Docs afectados:** `DISENO-AUDITOR.md` (§6 marcada cerrada), `DECISIONES.md` (esta entrada), `DIARIO.md`.
+- **Estado:** vigente

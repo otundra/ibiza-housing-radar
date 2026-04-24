@@ -25,7 +25,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 ## 🟡 En curso
 
 - **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21, 34 tareas. Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) + memoria [`revision_fase_0_5.md`](.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/revision_fase_0_5.md).
-- **Hito 1 — Auditor mínimo viable** (2 sem). PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). Pendiente inmediato: diseño sobre papel del módulo + mockup estático de `/correcciones/` en el prototipo.
+- **Hito 1 — Auditor mínimo viable** (2 sem). PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). **Diseño sobre papel completo 2026-04-24** en [`DISENO-AUDITOR.md`](DISENO-AUDITOR.md) con las cuatro decisiones operativas cerradas en [D14](DECISIONES.md). Mockup estático de `/correcciones/` ya entregado 2026-04-23. Pendiente inmediato: abrir el editor de Python y empezar por la semana 1 del plan (auditoría ciega Sonnet + comparador determinista).
 - **Hito 2 — Re-estudio del sistema de tiers** ✅ **cerrado 2026-04-23** (RT15, RT26). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo con 5 decisiones operativas en [D9](DECISIONES.md). Queda como pendiente de datos la medición empírica del sesgo por actor (RT25, post-backfill). Implementación de `src/tiers.py` + `data/tiers.yml` pasa a PI10 (sin bloquear auditor MVP).
 
 ## 🏷️ Identidad (provisional 2026-04-21)
@@ -44,7 +44,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 | Vengo a… | Abrir primero |
 |---|---|
-| Arrancar el auditor mínimo | [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md) + [D1](DECISIONES.md), [D2](DECISIONES.md), [D3](DECISIONES.md) |
+| Arrancar el auditor mínimo | [`DISENO-AUDITOR.md`](DISENO-AUDITOR.md) (diseño cerrado) + [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md) + [D1](DECISIONES.md), [D2](DECISIONES.md), [D3](DECISIONES.md), [D14](DECISIONES.md) |
 | Implementar el sistema de tiers | [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) cerrado. Siguiente: `src/tiers.py` + `data/tiers.yml` con los valores de [D9](DECISIONES.md) + badge en Jekyll + `/metodologia/#tiers` (tarea PI10) |
 | Retomar diseño visual | memoria `prototipo_paso1_en_pausa.md` + [`ESTUDIO-DISENO.md §10`](ESTUDIO-DISENO.md) + entradas DIARIO 2026-04-21 |
 | Cerrar Revisión Fase 0.5 | [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) |

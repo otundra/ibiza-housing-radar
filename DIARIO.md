@@ -13,6 +13,21 @@ Reglas:
 
 ---
 
+## 2026-04-24 [arquitectura] — Diseño sobre papel del auditor cerrado en tres turnos móviles + cuatro decisiones operativas
+
+Cerrado `DISENO-AUDITOR.md` con las seis piezas previstas en tres turnos cortos desde móvil: contrato de los tres módulos nuevos, estructura del expediente que queda por propuesta, árbol de decisión (bloqueantes, disputa, publica), encaje en el flujo actual, ejemplo trazado de una propuesta sindical plausible, y cuatro preguntas operativas que quedaban por cerrar. Registrado en [D14](DECISIONES.md).
+
+- **Q1 · Umbrales de heurísticas en YAML** (`data/audit_thresholds.yml`) desde el día uno, para que la semana 4 del hito se pueda calibrar sin tocar Python.
+- **Q2 · Fallo de la auditoría ciega no corta editorial.** Publica con solo Haiku y marca `sonnet_missing`. Si es sistemático, avisa `self_review`.
+- **Q3 · Ficha canónica en diferencias menores = Haiku.** Sonnet actúa como vigía que registra el diff, no como segunda pasada editorial.
+- **Q4 · Expedientes públicos en el repo.** Coherente con [D2](DECISIONES.md).
+
+Efecto en el hito: desbloqueado el paso de "diseño sobre papel" a "abrir editor de Python". La construcción del auditor mínimo viable puede arrancar cuando el editor lo decida, siguiendo el plan de cuatro semanas de [§10 del estudio de costes](ESTUDIO-COSTES-AUDITOR.md).
+
+Decisiones autónomas del asistente en los tres turnos (rastro según [D7](DECISIONES.md)): documento nuevo `DISENO-AUDITOR.md` en vez de ampliar el estudio de costes; nombres de funciones, campos y archivos en inglés para alinearse con el resto de `src/`; ejemplo del turno 3 inventado plausible (CCOO + PIMEEF pidiendo bolsa de alquiler) en lugar de sacarlo de W17 real, para controlar los campos que se iluminan.
+
+---
+
 ## 2026-04-24 [docs] — Rediseño del sistema de arranque: fuera el intermedio, dentro el total con inventario veraz y el comando transversal de ampliar
 
 Segundo turno del mismo día, continuación natural del anterior. Cuatro cambios conceptuales al cómo arranca la sesión, registrados en [D13](DECISIONES.md).
