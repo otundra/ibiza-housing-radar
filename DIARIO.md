@@ -13,6 +13,19 @@ Reglas:
 
 ---
 
+## 2026-04-24 [docs] — Arranque por defecto sin informe, recomendaciones 1-3 en los tres arranques, lenguaje llano en chat y refuerzo de cero códigos sueltos
+
+Cuatro cambios en cómo el asistente arranca y habla en este proyecto, registrados en [D12](DECISIONES.md) tras un turno en el que el editor señaló dos fricciones a la vez: el arranque explícito sacaba informe aunque él ya traía la tarea definida, y cuarta recaída del patrón de códigos sueltos (*"sigues mencionando códigos RT26/Q1-Q5 sin explicar que son, lo he dicho mil veces y sigues haciendolo"*).
+
+- **Arranque por defecto sin informe.** Al abrir sesión sin invocar ningún comando, el asistente lee los tres documentos clave en silencio (estado, decisiones, diario reciente) y responde directo al prompt del editor. El informe ordenado, las recomendaciones y la pregunta *"¿qué hacemos?"* solo se disparan cuando el editor escribe `/arranque` explícito.
+- **Recomendaciones 1-3 en los tres comandos de arranque.** Paso nuevo tras la síntesis y antes de la pregunta de cierre, en los tres niveles. Entre 1 y 3 recomendaciones según haya (sin forzar las tres), una línea cada una, nombre de la cosa primero, verbo de acción + por qué corto + identificador opcional entre paréntesis al final.
+- **Lenguaje llano en el chat del proyecto.** Nueva memoria del asistente (`feedback_lenguaje_llano_chat.md`) y sección nueva en el documento de instrucciones del proyecto: bajar un punto el nivel técnico al hablar con el editor. Traducciones de ejemplo: *flujo* en vez de *pipeline*, *registro* en vez de *log*, *estructura* en vez de *schema*, *diferencias* en vez de *diff*, *envío* en vez de *payload*. La palabra técnica sigue siendo precisa en documentos internos de arquitectura, estudios y código; en la conversación se traduce. Alcance solo este proyecto.
+- **Cero códigos sueltos en chat — tolerancia cero.** Refuerzo de la regla ya existente con redacción más dura tras la cuarta recaída. Siempre el nombre de la cosa primero; el identificador va entre paréntesis al final y solo si aporta trazabilidad. Nunca como etiqueta principal, nunca como primer elemento de una línea. Memoria `feedback_referencias_con_contexto.md` reescrita con las cuatro fechas de recaída y la regla ejecutiva definitiva. Próxima recaída = fallo grave.
+
+Archivos tocados: el documento de instrucciones del proyecto, el índice de comandos, los tres archivos de arranque, el registro de decisiones (D12 nueva), este diario, y dos memorias del asistente (una endurecida, otra nueva).
+
+---
+
 ## 2026-04-23 [docs] — Sistema de arranque de sesión en tres niveles + índice vivo de comandos
 
 El editor expuso el patrón recurrente al abrir sesión: *"no tienes todo el contexto y te tengo que decir escanéalo todo"*. Respuesta: tres escalones de arranque con coste escalado + índice vivo.

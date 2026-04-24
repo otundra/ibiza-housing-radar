@@ -131,6 +131,19 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Docs afectados:** `.claude/commands/arranque.md`, `.claude/commands/arranque-fase.md`, `.claude/commands/arranque-auditoria.md`, `COMANDOS.md`, `CLAUDE.md` (sección renombrada a *"Slash commands del proyecto"*), `.claude/commands/cierre.md` (separador visual del bloque añadido).
 - **Estado:** vigente
 
+### D12 — Arranque por defecto sin informe + recomendaciones 1-3 en los tres arranques + lenguaje llano en chat + cero códigos sueltos (refuerzo)
+
+- **Fecha:** 2026-04-24
+- **Tema:** docs
+- **Decisión:** cuatro cambios sobre cómo el asistente arranca y habla en este proyecto.
+  - **(a) Arranque por defecto sin informe.** Al abrir sesión sin invocar ningún comando, el asistente lee `STATUS.md`, `DECISIONES.md` y las primeras 120 líneas de `DIARIO.md` en silencio y responde directo al prompt del editor. El informe ordenado + 1-3 recomendaciones + pregunta *"¿qué hacemos?"* solo se dispara cuando el editor escribe `/arranque` explícito.
+  - **(b) Recomendaciones 1-3 en los tres arranques.** Los comandos `/arranque`, `/arranque-fase` y `/arranque-auditoria` incorporan un paso nuevo tras la síntesis y antes de la pregunta de cierre: entre 1 y 3 recomendaciones de siguiente paso concreto, una línea cada una, nombre de la cosa primero, verbo de acción + por qué corto + identificador opcional entre paréntesis al final. Si solo hay una o dos naturales, no forzar tres.
+  - **(c) Lenguaje llano en el chat del proyecto.** En las conversaciones con el editor dentro de este proyecto, bajar un punto el nivel técnico: traducir tecnicismos evitables al español común (flujo, registro, estructura, diferencias, envío…). La palabra técnica se mantiene en documentos internos de arquitectura, estudios y código. Alcance solo este proyecto.
+  - **(d) Cero códigos sueltos en el chat (refuerzo con tolerancia cero).** Siempre empezar por el nombre de la cosa; el identificador va entre paréntesis al final y solo si aporta trazabilidad. Nunca como etiqueta principal, nunca como primer elemento de una línea. Cuarta recaída acumulada a 2026-04-24 — próxima = fallo grave.
+- **Por qué:** el editor señaló 2026-04-24 dos problemas en el mismo turno. Primero, que el arranque explícito saca informe incluso cuando él ya traía la tarea definida, lo que añade fricción en sesiones de continuidad; el modo por defecto silencioso resuelve eso y deja el comando explícito para cuando sí quiere panorámica. Segundo, cuarta recaída del patrón de códigos sueltos (*"sigues mencionando códigos RT26/Q1-Q5 sin explicar que son, lo he dicho mil veces y sigues haciendolo"*), más el pedido paralelo de *"bajar un punto el lenguaje técnico"* en la conversación del proyecto. Las cuatro piezas son coherentes entre sí: bajan la fricción de lectura del editor al hablar con el asistente.
+- **Docs afectados:** `CLAUDE.md` (sección *Slash commands* con regla del modo por defecto + sección nueva *Lenguaje en el chat del proyecto* + refuerzo en *Qué NO hacer*), `COMANDOS.md` (tabla y criterio de arranque con cuatro modos), `.claude/commands/arranque.md` (Paso 3 recomendaciones + nota del modo por defecto), `.claude/commands/arranque-fase.md` (Paso 4 recomendaciones), `.claude/commands/arranque-auditoria.md` (Paso 6 recomendaciones), memorias del asistente `feedback_referencias_con_contexto.md` (endurecida) y `feedback_lenguaje_llano_chat.md` (nueva), `MEMORY.md` (índice actualizado).
+- **Estado:** vigente
+
 ### D11 — Modelo de tiempos del proyecto: calendario / esfuerzo editor / esfuerzo Claude + fecha de relanzamiento lunes 13 jul 2026
 
 - **Fecha:** 2026-04-23
