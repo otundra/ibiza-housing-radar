@@ -173,3 +173,73 @@ ingest → classify → extract ─┬─► audit (Sonnet ciego)
 - `balance.py`, `generate.py`, `archive.py` — invariantes.
 
 Esto limita la superficie de cambio a código nuevo + dos archivos existentes tocados. Cabe en las dos semanas calendario del hito.
+
+---
+
+## 5 · Ejemplo trazado
+
+Ejemplo inventado pero plausible para validar que el diseño cubre todos los campos.
+
+**Noticia de partida.** "CCOO Ibiza y PIMEEF exigen al Consell una bolsa de alquiler público para trabajadores de temporada" — Diario de Ibiza, 19 abr 2026.
+
+### Paso a paso
+
+1. **`ingest`** — la noticia entra en `ingested.json`.
+2. **`classify` (Haiku)** — `is_housing=true`, `actor_guess="sindicato"`, `has_explicit_proposal=true`.
+3. **`extract` primaria (Haiku)** — ficha: actor *CCOO*, palanca *bolsa de alquiler público*, tipo *exigencia*, viabilidad *requiere activación IBAVI*, cita literal, URL del Diario.
+4. **`audit` ciega (Sonnet)** — ficha con matiz: co-firmante PIMEEF que Haiku se saltó. Resto idéntico.
+5. **`compare`** — `severity="minor"`. Diff registrado en `actor` (Haiku: *CCOO* / Sonnet: *CCOO + PIMEEF*). Cita y palanca idénticas.
+6. **`heuristics`** — cuatro señales:
+   - *cross_source* → `{hit: true, n_sources: 2}` (Periódico de Ibiza también lo cubre).
+   - *verbatim_match* → `{ratio: 0.91}` (cita casi literal).
+   - *whitelist_hit* → `{matches: false, expected: ["ccoo.cat", "pimeef.org"], actual: "diariodeibiza.es"}`. La noticia viene de medio, no del actor. Ausencia normal, cross_source compensa.
+   - *viability_sanity* → `{plausible: true}`.
+7. **Árbol de decisión** — sin bloqueantes; `minor` no escala. Publica. Ficha canónica = Haiku; el diff del co-firmante queda registrado pero no corrige (ver [Q3](#q3)).
+8. **`verify`** — url viva, actor trazable, sin verbos prohibidos.
+9. **`write_audit_log`** — expediente a `data/audit/2026-w17/2026-w17-ccoo-alquiler-01.json`.
+10. **`balance` + `generate` + `archive`** — sin cambios.
+
+### Cómo cambia si...
+
+- **URL muerta** → `status: "quarantined", reason: "url_ok=false"`. Expediente se guarda igual.
+- **`compare="major"`** → llamada al Opus fallback existente; salida en `signals.arbitraje_opus`.
+- **`compare="mismatch"`** → cuarentena directa sin pasar por Opus.
+
+---
+
+## 6 · Preguntas pendientes antes de tocar código
+
+Cuatro decisiones para cerrar con el editor.
+
+### Q1 — Umbrales iniciales: ¿código o YAML?
+
+Las heurísticas necesitan números: ratio de coincidencia literal que cuenta como *match* vs *minor*, cuántas fuentes cuentan como cruce, etc.
+
+- **A · Hard-coded en el módulo.** Simple. Para cambiar hay que tocar código.
+- **B · En `data/audit_thresholds.yml` desde el día uno.** El editor afina tras la prueba empírica sobre W10 sin tocar Python.
+
+**Recomiendo B.** La semana 4 del hito es precisamente para calibrar.
+
+### Q2 — Si Sonnet no responde (timeout/error)
+
+- **A · Cuarentena automática.** Sin dos extracciones no hay auditoría.
+- **B · Publica solo con Haiku, marca señal `sonnet_missing`.** El módulo futuro de tiers decidirá si eso baja el color.
+
+**Recomiendo B.** Si los fallos son sistemáticos, `self_review` alerta por Telegram.
+
+### Q3 — En `minor`, ¿ficha canónica Haiku o Sonnet?
+
+En el ejemplo: Sonnet detectó un co-firmante que Haiku se saltó. ¿Qué se publica?
+
+- **A · Siempre Haiku.** El diff se registra, no corrige. Sonnet es vigía, no editor.
+- **B · Siempre Sonnet.** Más fino, más caro.
+- **C · Lo decide el comparador.** Complicado.
+
+**Recomiendo A.** Si queremos corrección fina, subimos a Opus (ya arbitra en `major`).
+
+### Q4 — ¿Los expedientes son públicos en el repo?
+
+- **A · Públicos en GitHub** (cualquiera los ve).
+- **B · Privados en el repo, solo `/correcciones/` expone lo necesario.**
+
+**Recomiendo A.** Coherente con [D2](DECISIONES.md) (registro público desde el día uno).
