@@ -129,7 +129,8 @@ Tres reglas baratas que frenan la entropía hasta la revisión profunda post-lan
 Índice vivo en [`COMANDOS.md`](COMANDOS.md) (raíz). Si no aparece ahí, no existe. Al crear un comando nuevo en `.claude/commands/`, añadirlo a la tabla de `COMANDOS.md` en el mismo commit.
 
 - **Arranque por defecto (sin comando, desde 2026-04-24).** Al empezar una sesión sin invocar ningún comando, leer en silencio `STATUS.md`, `DECISIONES.md` y las primeras 120 líneas de `DIARIO.md`, y **responder directo al prompt del editor sin sacar informe**. El informe ordenado + 1-3 recomendaciones + pregunta *"¿qué hacemos?"* solo se dispara cuando el editor escribe `/arranque` explícito.
-- **Arranque de sesión:** `/arranque` (Tier 1, ligero), `/arranque-fase` (tras pausa larga o cambio de área, Tier 2), `/arranque-auditoria` (escaneo completo, Tier 3). Criterio de uso y qué lee cada uno en [`COMANDOS.md`](COMANDOS.md).
+- **Arranques con informe:** `/arranque` (ligero, ≈200 palabras), `/arranque-auditoria` (profundo, mapa de estudios + código, ≈700 palabras), `/arranque-total` (completo, todo el proyecto sin huecos, uso escaso). Criterio y qué lee cada uno en [`COMANDOS.md`](COMANDOS.md).
+- **Ampliación transversal:** `/ampliar [área o descripción]` carga documentos de un área concreta del proyecto sin sacar informe. Usable tras cualquier arranque para subir de nivel de contexto sin repetir síntesis, o como carga puntual al empezar.
 - **Cierre de sesión:** `/cierre` (ver [`.claude/commands/cierre.md`](.claude/commands/cierre.md)) con checklist fijo: auditoría de cambios, actualización dirigida de docs, commits atómicos, push y reporte de qué se tocó y qué no.
 
 ## Lenguaje en el chat del proyecto (desde 2026-04-24)

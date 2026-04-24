@@ -144,6 +144,21 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Docs afectados:** `CLAUDE.md` (sección *Slash commands* con regla del modo por defecto + sección nueva *Lenguaje en el chat del proyecto* + refuerzo en *Qué NO hacer*), `COMANDOS.md` (tabla y criterio de arranque con cuatro modos), `.claude/commands/arranque.md` (Paso 3 recomendaciones + nota del modo por defecto), `.claude/commands/arranque-fase.md` (Paso 4 recomendaciones), `.claude/commands/arranque-auditoria.md` (Paso 6 recomendaciones), memorias del asistente `feedback_referencias_con_contexto.md` (endurecida) y `feedback_lenguaje_llano_chat.md` (nueva), `MEMORY.md` (índice actualizado).
 - **Estado:** vigente
 
+### D13 — Rediseño del sistema de arranque: se elimina el intermedio, se añade el total con inventario veraz y el comando transversal `/ampliar`
+
+- **Fecha:** 2026-04-24
+- **Tema:** docs
+- **Decisión:** el sistema de arranque pasa a cuatro modos más un comando transversal.
+  - **(a) Sin comando** — modo por defecto silencioso (confirmado en D12).
+  - **(b) `/arranque`** — ligero, informe de ~200 palabras + recomendaciones + pregunta.
+  - **(c) `/arranque-auditoria`** — profundo, mapa de estudios + código (como antes).
+  - **(d) `/arranque-total`** — nuevo. Escaneo completo del proyecto sin huecos. Al arrancar, el asistente hace inventario silencioso de las carpetas, contrasta con el mapa que ya tiene cargado del documento de instrucciones, lee cabeceras solo de archivos nuevos o raros, presenta al editor **solo la lista de exclusiones razonadas** (nunca el inventario completo con conteos), y tras confirmación del editor lee todo lo acordado en profundidad. Sin reglas codificadas en el archivo del comando. Uso escaso (2-3 veces al año).
+  - **(e) `/ampliar [área o descripción]`** — nuevo, transversal. Carga documentos de un área concreta del proyecto sin sacar informe. Dos formas: palabra clave con mapeo interno (*diseño*, *auditor*, *tiers*, *costes*, *legal*, *pipeline*, *contenido*, *seo*, *modelos*, *docs*, *web*) o descripción libre interpretada por el asistente. Salida = una línea confirmando qué se leyó y sigue atendiendo la tarea.
+  - **(f) Se elimina `/arranque-fase`** (el intermedio tier 2 añadido en D10). Queda absorbido entre el ligero y `/ampliar`, que cubren los mismos casos con menos ceremonia.
+- **Por qué:** el editor señaló 2026-04-24 dos cosas. Primero, que raramente tenía claro cuándo usar el intermedio — las sesiones son o pequeñas (ligero basta) o grandes (profundo hace falta), y el caso intermedio (*"hoy toco diseño una mañana"*) se cubre mejor con un comando de ampliación explícito que con un tier completo. Segundo, que el arranque profundo no escanea literalmente todo el proyecto — se queda fuera el README, las ediciones publicadas, los prototipos, las tareas automáticas, los comandos del propio proyecto, etc. — y para los pocos casos donde hace falta ver todo hacía falta un nivel más. La versión calibrada del total (contraste con el mapa conocido del documento de instrucciones + cabeceras solo de novedades) evita leer cabeceras de 80 archivos cada vez sin perder veracidad donde importa.
+- **Docs afectados:** `.claude/commands/arranque-total.md` (nuevo), `.claude/commands/ampliar.md` (nuevo), `.claude/commands/arranque-fase.md` (eliminado), `.claude/commands/arranque.md` (referencias al intermedio reemplazadas por ampliar/total), `.claude/commands/arranque-auditoria.md` (paso 1 reescrito sin referencia al intermedio), `CLAUDE.md` (sección *Slash commands del proyecto* reescrita), `COMANDOS.md` (tabla + criterio de arranque + convención de nombres actualizados).
+- **Estado:** vigente
+
 ### D11 — Modelo de tiempos del proyecto: calendario / esfuerzo editor / esfuerzo Claude + fecha de relanzamiento lunes 13 jul 2026
 
 - **Fecha:** 2026-04-23

@@ -13,6 +13,21 @@ Reglas:
 
 ---
 
+## 2026-04-24 [docs] — Rediseño del sistema de arranque: fuera el intermedio, dentro el total con inventario veraz y el comando transversal de ampliar
+
+Segundo turno del mismo día, continuación natural del anterior. Cuatro cambios conceptuales al cómo arranca la sesión, registrados en [D13](DECISIONES.md).
+
+- **Se elimina `/arranque-fase` (el intermedio).** El editor señaló que raramente tenía claro cuándo usarlo: las sesiones son o pequeñas (el ligero basta) o grandes (el profundo hace falta); el caso intermedio (*"hoy toco diseño una mañana"*) se cubre mejor con un comando de ampliación puntual que con un arranque completo.
+- **Nuevo `/arranque-total`.** Escaneo del proyecto sin huecos para los pocos casos donde hace falta tener literalmente todo sobre la mesa (pivote, auditoría integral, reestructura documental profunda). Flujo calibrado: inventario silencioso de carpetas → contraste con el mapa conocido del documento de instrucciones → lectura de cabeceras **solo de archivos nuevos o raros** → presentación al editor de **solo la lista de exclusiones razonadas** → confirmación en una línea → lectura en profundidad. Sin reglas codificadas que se puedan desincronizar; cero mantenimiento del archivo del comando. Uso esperado: 2-3 veces al año como mucho.
+- **Nuevo `/ampliar [área o descripción]`.** Comando transversal para cargar documentos de un área concreta del proyecto sin sacar informe. Usable tras cualquier arranque (para subir de nivel sin repetir síntesis) o como carga puntual al empezar. Dos formas: palabra clave (*diseño, auditor, tiers, costes, legal, pipeline, contenido, seo, modelos, docs, web*) o descripción libre que el asistente interpreta.
+- **Los dos arranques anteriores (ligero y profundo) siguen iguales.** Solo se limpian referencias al intermedio eliminado.
+
+**Por qué la versión calibrada del total (cabeceras de novedades) y no la ambiciosa (cabeceras de todo):** leer cabeceras de los ~80 archivos del proyecto cada vez cuesta lo suyo. Como al arrancar ya tengo cargado el mapa de estructura del documento de instrucciones, el 90 % de las decisiones de exclusión están resueltas sin releer nada. Solo hace falta leer cabeceras de lo que aparece en la estructura real pero no en el mapa, que suele ser un puñado de archivos. Relación coste/beneficio mucho mejor.
+
+Docs tocados: dos comandos nuevos, uno eliminado, dos actualizados (ligero y profundo), el documento de instrucciones del proyecto, el índice de comandos, y este diario + el registro de decisiones.
+
+---
+
 ## 2026-04-24 [docs] — Arranque por defecto sin informe, recomendaciones 1-3 en los tres arranques, lenguaje llano en chat y refuerzo de cero códigos sueltos
 
 Cuatro cambios en cómo el asistente arranca y habla en este proyecto, registrados en [D12](DECISIONES.md) tras un turno en el que el editor señaló dos fricciones a la vez: el arranque explícito sacaba informe aunque él ya traía la tarea definida, y cuarta recaída del patrón de códigos sueltos (*"sigues mencionando códigos RT26/Q1-Q5 sin explicar que son, lo he dicho mil veces y sigues haciendolo"*).
