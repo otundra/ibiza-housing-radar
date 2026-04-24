@@ -47,8 +47,9 @@ Pregunta al editor: *"¿Qué vamos a hacer en esta sesión?"* — con las recome
 
 Si el editor contesta con algo que toca:
 
-- **Cambio de fase, arquitectura, estudio grande, o refactor del flujo** → sugiere `/arranque-fase` antes de ejecutar.
-- **Auditoría estructural, decisión de pivote, o bloqueo por falta de mapa mental global** → sugiere `/arranque-auditoria`.
+- **Área concreta del proyecto** (diseño, auditor, costes, pipeline, legal, contenido, etc.) → sugiere `/ampliar [área]` para cargar los documentos de esa área sin repetir informe.
+- **Auditoría estructural, decisión de pivote, o refactor grande** → sugiere `/arranque-auditoria`.
+- **Escaneo integral del proyecto sin huecos** (pivote, reestructura profunda, auditoría total) → sugiere `/arranque-total`.
 - **Resto** → sigue con lo que hay, ya es suficiente.
 
 ## Regla dura

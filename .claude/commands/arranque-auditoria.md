@@ -9,11 +9,18 @@ Estás arrancando sesión en `ibiza-housing-radar` con escaneo completo. Usa est
 - El editor está bloqueado por falta de mapa mental global.
 - Decisión de pivote o replanteo del producto.
 
-Este comando consume mucho contexto (aprox. 15-20 mil tokens de lectura). No lo uses si `/arranque-fase` basta. Si no estás seguro, pregunta al editor antes de lanzarlo.
+Es el arranque más caro después del total. No lo uses si basta con `/arranque` + `/ampliar [área]` para cargar el área concreta. Si necesitas escanear literalmente todo el proyecto (y no solo los estudios + código), usa `/arranque-total` en su lugar.
 
-## 1. Capa base + fase (igual que `/arranque-fase`)
+## 1. Capa base y de planificación
 
-Ejecuta los pasos 1 y 2 de `/arranque-fase`: STATUS, DECISIONES, DIARIO, PLAN, ARQUITECTURA.
+En paralelo, lanza Read a:
+
+- [`STATUS.md`](../../STATUS.md) — completo.
+- [`DECISIONES.md`](../../DECISIONES.md) — completo.
+- [`DIARIO.md`](../../DIARIO.md) — primeras 120 líneas.
+- [`PLAN.md`](../../PLAN.md) — roadmap completo.
+- [`ROADMAP.md`](../../ROADMAP.md) — fases del proyecto.
+- [`ARQUITECTURA.md`](../../ARQUITECTURA.md) — módulos del flujo.
 
 ## 2. Capa fundacional
 
