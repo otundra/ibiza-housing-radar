@@ -74,7 +74,7 @@ Entradas más recientes arriba.
 - **Efecto esperado:** alertas solo cuando haya desviación real respecto al coste proyectado, no por el ruido de la autoevaluación.
 - **Efecto medido:** gasto del primer día tras aplicar: 5,02 € (capa 🟢 verde). El modelo de costes se valida en la primera revisión mensual cuando haya datos de 4 ediciones.
 - **Reversible:** sí; volver a 8 € si tras 2 meses el coste real estabilizado queda bajo 7 €/mes sin desviaciones.
-- **Revisión prevista:** 2026-05-20 con ≥4 ediciones publicadas y dato estable.
+- **Revisión prevista:** tras ≥4 ediciones publicadas con dato estable. Sin fecha ([D15](../DECISIONES.md)).
 
 ---
 

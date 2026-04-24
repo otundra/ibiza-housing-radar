@@ -644,8 +644,8 @@ segunda fuente, corrección aceptada, o archivo a 60 días.
 ─── Activas (5) ─────────────────────────────────────────
 
 🔴 Asamblea PCI Ibiza · Cesión de suelo municipal
-   Detectada 3 may 2026. Fuente: blog independiente (dominio
-   no reconocido). Esperando segunda fuente hasta 2 jul 2026.
+   Detectada hace 12 días. Fuente: blog independiente (dominio
+   no reconocido). Esperando segunda fuente (archivo a 60 días).
    [Si conoces otra fuente, avísanos]
 
 🔴 Asociación Sa Llavor · Comedor social en Sant Antoni

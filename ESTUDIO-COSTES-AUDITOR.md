@@ -172,8 +172,8 @@ Asumimos 3 propuestas/semana (media razonable calibrada con W17). La sección 8 
 | Capa 5bis — repaso IA mensual cuarentena (Opus) | +0,40 | Opus lee cuarentena mensual, propone ajustes, editor firma |
 | **Subtotal pipeline + auditor operativo** | **~2,35** | 🟢 Zona verde holgada |
 | Re-benchmark mensual (10 noticias × 3 modelos) | +0,30 | Una vez al mes |
-| Auditoría Opus — **mensual los 3 primeros meses** (calibración rápida) | +3,00 | Solo may-jul 2026 |
-| Auditoría Opus trimestral (desde mes 4, prorrateada 1/3) | +1,00 | Una edición de cada ~13 desde agosto |
+| Auditoría Opus — **mensual los 3 primeros meses** (calibración rápida) | +3,00 | Solo durante la fase inicial post-lanzamiento |
+| Auditoría Opus trimestral (desde el mes 4, prorrateada 1/3) | +1,00 | Una edición de cada ~13 a partir del mes 4 |
 | **Subtotal con añadidos — meses 1-3 post-lanzamiento** | **~5,65** | 🟢 Zona verde cómoda |
 | **Subtotal con añadidos — mes 4 en adelante** | **~3,65** | 🟢 Zona verde holgada |
 
@@ -435,17 +435,17 @@ Los 6 indicadores anteriores se materializan en tres canales con funciones disti
 **Canal 3 · Reportes periódicos + página `/reportes/`** (narrativa, contexto, tendencias).
 
 - **Cadencias:**
-  - **Mensual** durante los 3 primeros meses post-lanzamiento (may-jul 2026). Calibración rápida con Opus.
-  - **Trimestral** a partir del mes 4 (desde agosto 2026).
-  - **Semestral** a partir del mes 7 (desde noviembre 2026) en adición a los trimestrales — mayor horizonte narrativo, comparación año a año una vez haya datos.
-- **Revisión de cadencias** (apuntado 2026-04-23):
-  - **Al cumplirse el mes 4** (agosto 2026), revisar si la auditoría mensual del arranque se extiende, se fija como cadencia permanente, o se cierra según lo previsto. Decisión basada en si los ajustes mensuales de los 3 primeros meses siguen aportando señal o ya saturan.
-  - **Al cumplirse el mes 7** (noviembre 2026), revisar si los reportes trimestrales siguen siendo útiles con horizonte semestral encima o conviene sustituirlos por los semestrales. Evitar duplicación innecesaria; elegir cadencia por valor informativo real, no por costumbre.
-- **Página `/reportes/`:** índice permanente con todos los reportes bajo URLs propias (`/reportes/2026-05/`, `/reportes/2026-q3/`, `/reportes/2026-h2/`...). Formato markdown, estilo editorial, comparables entre sí.
+  - **Mensual** durante los 3 primeros meses post-lanzamiento. Calibración rápida con Opus.
+  - **Trimestral** a partir del mes 4.
+  - **Semestral** a partir del mes 7 en adición a los trimestrales — mayor horizonte narrativo, comparación año a año una vez haya datos.
+- **Revisión de cadencias** (apuntado 2026-04-23, sin fechas por [D15](DECISIONES.md)):
+  - **Al cumplirse el mes 4**, revisar si la auditoría mensual del arranque se extiende, se fija como cadencia permanente, o se cierra según lo previsto. Decisión basada en si los ajustes mensuales de los 3 primeros meses siguen aportando señal o ya saturan.
+  - **Al cumplirse el mes 7**, revisar si los reportes trimestrales siguen siendo útiles con horizonte semestral encima o conviene sustituirlos por los semestrales. Evitar duplicación innecesaria; elegir cadencia por valor informativo real, no por costumbre.
+- **Página `/reportes/`:** índice permanente con todos los reportes bajo URLs propias por año/mes, año/trimestre y año/semestre (por ejemplo `/reportes/YYYY-MM/`, `/reportes/YYYY-qN/`, `/reportes/YYYY-hN/`). Formato markdown, estilo editorial, comparables entre sí.
 - **Envío por Telegram:** headline de una línea + link al reporte publicado. No el texto entero.
 - **Qué contienen los reportes que la página `/auditor/` no tiene:** comparación con el periodo anterior, narrativa de ajustes hechos (umbrales, heurísticas, whitelist), lecturas de patrones detectados por el repaso IA mensual de cuarentena.
 
-Los tres canales se construyen en orden de prioridad: canal 1 en semana 3 del plan, canal 2 en semana 3 también reutilizando `notify.py`, canal 3 al cierre del primer mes post-lanzamiento (junio 2026 si el relanzamiento es mayo).
+Los tres canales se construyen en orden de prioridad: canal 1 y canal 2 durante la fase 3 del plano ([`DISENO-AUDITOR-MVP.md §9`](DISENO-AUDITOR-MVP.md)) reutilizando `notify.py`; canal 3 al cierre del primer mes post-lanzamiento.
 
 ---
 
