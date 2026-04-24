@@ -1,7 +1,7 @@
 # Decisiones resueltas — 2026-04-20
 
 **Estado:** RESUELTAS por el editor el 2026-04-20.
-**Origen:** [PIVOTE.md](PIVOTE.md), [ROADMAP.md](ROADMAP.md).
+**Origen:** [CLAUDE.md](CLAUDE.md#reglas-fundacionales), [ROADMAP.md](ROADMAP.md).
 **Nota:** Los estudios pendientes derivados viven en [`ESTUDIOS-PENDIENTES.md`](ESTUDIOS-PENDIENTES.md).
 
 ## Resumen rápido de lo decidido

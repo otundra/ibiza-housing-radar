@@ -2,7 +2,7 @@
 
 Observatorio semanal de la crisis de vivienda en Ibiza, con foco en trabajadores de temporada (mayo-octubre). Cada lunes genera un informe con las señales de la semana, mapa de posiciones de los actores y propuestas reales documentadas con fuente verificable.
 
-> 🧭 **Modelo activo: observatorio documental** (desde el 2026-04-21, merge a `main`). El LLM no genera propuestas propias; documenta las que actores con nombre formulan cada semana, con URL verificable. Detalle en [`PIVOTE.md`](PIVOTE.md) y [`ROADMAP.md`](ROADMAP.md).
+> 🧭 **Modelo activo: observatorio documental** (desde el 2026-04-21, merge a `main`). El LLM no genera propuestas propias; documenta las que actores con nombre formulan cada semana, con URL verificable. Detalle en [`CLAUDE.md`](CLAUDE.md#reglas-fundacionales) y [`ROADMAP.md`](ROADMAP.md).
 
 - **Web pública:** <https://otundra.github.io/ibiza-housing-radar/>
 - **Cadencia:** informe semanal, lunes 07:00 CEST (05:00 UTC)
@@ -62,8 +62,8 @@ Genera `docs/_editions/<YYYY>-w<WW>.md`, actualiza `docs/index.md` (panel de la 
 
 Ver [CLAUDE.md](CLAUDE.md) para detalles de arquitectura, decisiones y comandos. Ver [DIARIO.md](DIARIO.md) para el diario del proyecto.
 
-**Roadmap activo:** [`ROADMAP.md`](ROADMAP.md) (estructura V2 en 7 fases ejecutables) + documentos hermanos [`PIVOTE.md`](PIVOTE.md) (documento fundacional del modelo documental), [`ARQUITECTURA.md`](ARQUITECTURA.md), [`DISENO-WEB.md`](DISENO-WEB.md), [`SEO.md`](SEO.md), [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md), [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md), [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md). El antiguo [PLAN.md](PLAN.md) se conserva como referencia histórica.
+**Roadmap activo:** [`ROADMAP.md`](ROADMAP.md) (estructura V2 en 7 fases ejecutables) + documentos hermanos [`ARQUITECTURA.md`](ARQUITECTURA.md), [`DISENO-WEB.md`](DISENO-WEB.md), [`SEO.md`](SEO.md), [`CONTENIDO-RETROACTIVO.md`](CONTENIDO-RETROACTIVO.md), [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md), [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md). El antiguo [PLAN.md](PLAN.md) se conserva como referencia histórica.
 
 ## Aviso
 
-El observatorio no genera propuestas propias. Documenta propuestas reales de actores identificables con URL a la fuente primaria. Política editorial con 5 reglas duras en `/politica-editorial` tras el relanzamiento público. Ver [`PIVOTE.md`](PIVOTE.md).
+El observatorio no genera propuestas propias. Documenta propuestas reales de actores identificables con URL a la fuente primaria. Política editorial con 5 reglas duras en `/politica-editorial` tras el relanzamiento público. Ver [`CLAUDE.md`](CLAUDE.md#reglas-fundacionales).

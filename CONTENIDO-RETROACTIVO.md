@@ -1,7 +1,7 @@
 # Contenido retroactivo — 12 ediciones de febrero a abril 2026
 
 **Fecha del plan:** 2026-04-20 · **Ampliado:** 2026-04-21 (de 8 → 12 semanas)
-**Origen:** [PIVOTE.md](PIVOTE.md), [ROADMAP.md](ROADMAP.md) bloque C, decisiones del editor 2026-04-20 y 2026-04-21.
+**Origen:** [CLAUDE.md](CLAUDE.md#reglas-fundacionales), [ROADMAP.md](ROADMAP.md) bloque C, decisiones del editor 2026-04-20 y 2026-04-21.
 **Alcance:** producir 12 ediciones coherentes que cubran los últimos 3 meses (semanas ISO W06-W17 de 2026) bajo el modelo documental nuevo. Relanzamiento con 3 meses de rodaje visible.
 
 ---

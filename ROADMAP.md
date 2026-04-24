@@ -1,7 +1,7 @@
 # Roadmap — radar))ibiza_vivienda
 
 **Fecha original:** 2026-04-20 · **Reestructurado en fases ejecutables:** 2026-04-21 noche · **Fecha objetivo de relanzamiento:** lunes 13 jul 2026 (ver [D11](DECISIONES.md))
-**Origen:** [PIVOTE.md](PIVOTE.md), [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md).
+**Origen:** [CLAUDE.md](CLAUDE.md#reglas-fundacionales), [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md).
 **Principio base:** relanzamiento sólido, sostenido por infraestructura automatizada (el editor opera, no audita). Coste ≤12 €/mes bajo tope blando, ≤50 €/mes bajo tope duro. Reversibilidad vía histórico git.
 
 ---
@@ -75,7 +75,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 - **Estudio Vía A de precios** (RT12 + RT21). Matriz de fuentes, nombre público ("Observatorio de precios"), presupuesto, recomendación de cronograma.
 - **Estudio titular legal** (RT20 + LG1 + LG2). Tabla comparativa + recomendación + plan de implementación. Es el Hito 3 del frame.
 - **Estudio de factibilidad BOIB** (RT22). 2-4 h. Decide si sube a Fase 2 o queda en Fase 3.
-- **Regla fundacional automatización + veracidad pública** (RT13) documentada en PIVOTE ✅ hecha 2026-04-21.
+- **Regla fundacional automatización + veracidad pública** (RT13) documentada en CLAUDE.md ✅ hecha 2026-04-21.
 
 **Tests del pipeline diferidos a RT5 ([D4](DECISIONES.md)):** cobertura en un solo bloque con fixtures reales del backfill (incluye `audit.py`, `verify.py`, `balance.py`, `extract.py`, `rescue.py`). Se ejecuta cuando haya fixtures utilizables (Fase 2). El auditor MVP se valida durante construcción con la prueba empírica sobre W10.
 
@@ -475,7 +475,7 @@ Tras las decisiones del editor 2026-04-20, estos estudios se ejecutan antes o du
 
 ### Bloque H — Legal y transparencia
 
-- [ ] **H1.** `/politica-editorial` publicada con las 5 reglas duras del [PIVOTE](PIVOTE.md).
+- [ ] **H1.** `/politica-editorial` publicada con las 5 reglas duras del observatorio ([CLAUDE.md](CLAUDE.md#reglas-fundacionales)).
 - [ ] **H2.** `/metodologia` reescrita bajo el nuevo modelo: modelos Haiku + Opus, pipeline en una página, sesgos declarados, política de verificación.
 - [ ] **H3.** `/correcciones` inicializada vacía, con formato estándar.
 - [ ] **H4.** `/aviso-legal` mínimo: titular del sitio, contacto, jurisdicción.

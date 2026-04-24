@@ -54,7 +54,7 @@ Implicación: este estudio no bloquea el arranque del auditor. Solo bloquea la *
 
 El árbol de decisión tiene que respetar cuatro reglas ya cerradas:
 
-1. **Automatización máxima — el editor no audita contenido.** El color se calcula solo con señales del auditor. Nada de "el editor marca esta como 🟢 manualmente" ([PIVOTE.md](PIVOTE.md) §regla complementaria).
+1. **Automatización máxima — el editor no audita contenido.** El color se calcula solo con señales del auditor. Nada de "el editor marca esta como 🟢 manualmente" ([CLAUDE.md](CLAUDE.md#reglas-fundacionales) §regla complementaria).
 2. **Coherencia con la cuarentena.** 🔴 significa "no entra en edición semanal", va a `/revision-pendiente/`. 🟠 **sí** entra en edición con aviso visible. Esa frontera no es negociable: si una propuesta se publica en la edición, es porque algo la empuja al menos a 🟠.
 3. **Coherencia con el protocolo de correcciones 72 h.** El color puede cambiar tras publicación si llega información nueva (segunda fuente que corrobora, error verificado que la destruye). El sistema tiene que permitir ese cambio sin reescribir la edición original ([DECISIONES.md D2](DECISIONES.md)).
 4. **Regla dura de fuente única.** Nunca 🟢 con una sola URL. Ya está en la calibración del auditor ([ESTUDIO-COSTES-AUDITOR.md §4 · Capa 3](ESTUDIO-COSTES-AUDITOR.md:119)). Este estudio la mantiene y la refuerza.

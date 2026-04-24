@@ -54,7 +54,7 @@ El editor responde con una línea. *"OK"*, *"ese archivado méte­lo"*, *"mete l
 En paralelo, lanza Read de todos los archivos que hayan quedado dentro:
 
 - **Capa base:** `STATUS.md`, `DECISIONES.md`, `DIARIO.md`.
-- **Planificación y fundacionales:** `PIVOTE.md`, `ROADMAP.md`, `PLAN.md`, `ARQUITECTURA.md`, `REVISION-FASE-0.5.md`, `DECISIONES-PENDIENTES.md`, `DISENO-WEB.md`, `SEO.md`, `CONTENIDO-RETROACTIVO.md`, `README.md`.
+- **Planificación y fundacionales:** `ROADMAP.md`, `PLAN.md`, `ARQUITECTURA.md`, `REVISION-FASE-0.5.md`, `DECISIONES-PENDIENTES.md`, `DISENO-WEB.md`, `SEO.md`, `CONTENIDO-RETROACTIVO.md`, `README.md`.
 - **Todos los estudios (activos y cerrados):** `ESTUDIO-DISENO.md`, `ESTUDIO-TIERS.md`, `ESTUDIO-COSTES-AUDITOR.md`, `ESTUDIO-3-MODELOS.md`, `ESTUDIO-GESTION-CONOCIMIENTO.md`, `ESTUDIOS-PENDIENTES.md`, `EXPANSION-TEMATICA.md`, `REPORTE-BENCHMARK.md`.
 - **Código del proyecto:** todos los archivos de `src/`.
 - **Web:** `docs/_config.yml`, plantillas (`docs/_layouts/`), includes (`docs/_includes/`), CSS principal, páginas Jekyll.

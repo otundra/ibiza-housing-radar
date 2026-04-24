@@ -228,7 +228,7 @@ Capa 🟠 naranja. Sin cruce del tope blando (12 €), lejísimos del duro (50 �
 
 El plan del 21-abr describía capa 5 como *"editor revisa solo los flagged + muestreo aleatorio del 10 % de auto-aprobadas"*. Ese diseño entra en contradicción directa con dos cosas:
 
-1. **Regla fundacional del PIVOTE (21-abr noche):** *"el editor opera el proyecto como infraestructura automatizada; no audita contenido manualmente"*.
+1. **Regla fundacional (21-abr noche, ver [CLAUDE.md](CLAUDE.md#reglas-fundacionales)):** *"el editor opera el proyecto como infraestructura automatizada; no audita contenido manualmente"*.
 2. **Rol editor = operador (DIARIO 21-abr):** *"en principio yo no voy a revisar nada"*.
 
 Muestrear el 10 % son ~20 min/semana. No son muchos, pero son **reales y recurrentes**, y contaminan el rol que el proyecto ha cerrado públicamente.
@@ -478,7 +478,7 @@ Los tres canales se construyen en orden de prioridad: canal 1 en semana 3 del pl
 
 ## 14 · Enlaces
 
-- [PIVOTE.md](PIVOTE.md) — regla fundacional automatización + veracidad.
+- [CLAUDE.md](CLAUDE.md#reglas-fundacionales) — regla fundacional automatización + veracidad.
 - [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md) — decisión del 21-abr sobre auditor de 5 capas.
 - [ROADMAP.md](ROADMAP.md) — fase 1, ruta crítica.
 - [ARQUITECTURA.md](ARQUITECTURA.md) — pipeline completo.

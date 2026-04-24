@@ -10,7 +10,7 @@ Instrucciones para Claude Code al trabajar en este proyecto.
 
 > 🧭 **Modelo activo: observatorio documental.** Desde el 2026-04-21 (merge del modelo documental a `main`) es el único vigente. El LLM no genera propuestas; documenta las que actores con nombre formulan cada semana, con URL verificable. Documentos de referencia:
 >
-> - [`PIVOTE.md`](PIVOTE.md) — 5 reglas duras + decisión fundacional.
+> - [Reglas fundacionales](#reglas-fundacionales) — 5 reglas duras + regla complementaria (en este documento).
 > - [`ROADMAP.md`](ROADMAP.md) — Fase 0 completa.
 > - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline con módulos `extract.py`, `verify.py`, `rescue.py`, `balance.py`, `archive.py`, `self_review.py`.
 > - [`DISENO-WEB.md`](DISENO-WEB.md) — UX dual (primer visitante + profesional recurrente).
@@ -27,6 +27,26 @@ Observatorio semanal documental sobre la crisis de vivienda en Ibiza con foco en
 El ciclo operativo se rige por el **calendario real de la isla**: de la *opening* de las clubs grandes (finales de abril) a la *closing* (mediados de octubre). En 2026: del 24 de abril al ~12 de octubre. Fuera de temporada (octubre → abril siguiente) el observatorio sigue publicando, cubriendo la *pre-temporada* del verano que viene. Etiquetas públicas: `Temporada YYYY` / `Pre-temporada YYYY` (sin "invierno", ambiguo). Fechas exactas de temporada en `data/temporadas.yml`, alimentado por la automatización anual `src/update_temporadas.py`.
 
 Publicado en GitHub Pages.
+
+## Reglas fundacionales
+
+**Tesis:** el observatorio mapea lo que ya se propone en la isla, con trazabilidad total. El valor editorial está en ahorrarle al lector la prensa cruzada y poner encima el mapa completo. El LLM no propone; solo ordena, verifica y resume lo dicho por actores con nombre, organización y URL.
+
+### Las 5 reglas duras
+
+Publicadas en `/politica-editorial`. Vinculantes y no negociables:
+
+1. **Solo se documentan propuestas con autor identificado y URL verificable.** Nada de memoria del LLM. Nada de "se comenta que". Sin fuente primaria enlazable, la propuesta no entra.
+2. **El observatorio no genera propuestas propias.** Mapea, cruza, ordena, resume y rescata lo ya dicho por terceros. El LLM no firma propuestas.
+3. **Ningún actor queda excluido por filiación.** Toda propuesta que cumpla los criterios se documenta, venga del PP, del PSOE, de Vox, de Més, de CCOO, de CAEB, de Cáritas o de un colectivo vecinal.
+4. **Balance de actores auditado y publicado cada trimestre.** Página pública `/balance` con reparto absoluto y relativo. Si un bloque supera el 50 % durante dos trimestres consecutivos, nota metodológica visible y revisión de criterios.
+5. **Correcciones públicas con traza.** Cualquier error verificado se corrige con nota visible, fecha y motivo en `/correcciones`. La edición original se marca "corregida" con enlace a la nota.
+
+### Regla complementaria — Automatización máxima + veracidad pública
+
+*Fijada 2026-04-21.* El editor opera el proyecto como infraestructura automatizada; **no audita contenido manualmente**. El sistema se audita a sí mismo: auditor IA de 5 capas + tiers de confianza públicos (🟢🟡🟠🔴) + cuarentena pública + log de auditoría abierto por propuesta. Todo módulo cuyo diseño requiera revisión humana continua queda fuera del pipeline.
+
+> 📜 Contexto histórico del cambio de modelo (2026-04-20): [`PIVOTE.md`](PIVOTE.md) (archivo histórico).
 
 ## Stack
 
@@ -169,7 +189,7 @@ El plan de mejora estratégico vive en [`PLAN.md`](PLAN.md): 4 fases (base / dis
 - No publicar ediciones manuales con fechas futuras (el `permalink` se confunde).
 - **No usar "W17" ni numeración de semana ISO en cara pública.** Solo como slug interno (archivos, logs, commits). En cara pública, URLs y etiquetas siempre con rango de fechas: `/ediciones/2026-04-20/`, `"Edición del 20-26 abril 2026"`.
 - **No colorear partidos políticos con su color** (regla dura de imparcialidad visual). Todos los partidos van en gris neutro (`--actor-partido`). Ver [ESTUDIO-DISENO.md §5.1](ESTUDIO-DISENO.md).
-- **No citar identificadores internos del proyecto al editor sin nombrar primero la cosa.** Regla dura tratada como sección propia arriba (*Lenguaje en el chat del proyecto*). Códigos tipo `RT15`, `PI9`, `D11`, `W17`, `Q3`, `B34`, `FU2`, `ED1`, `UX3` nunca van como etiqueta principal ni como primer elemento de una línea. 4 recaídas acumuladas a 2026-04-24 — próxima = fallo grave.
+- **No citar identificadores internos del proyecto al editor sin nombrar primero la cosa.** Regla dura tratada como sección propia arriba (*Lenguaje en el chat del proyecto*). Códigos tipo `RT15`, `PI9`, `D11`, `W17`, `Q3`, `B34`, `FU2`, `ED1`, `UX3` nunca van como etiqueta principal ni como primer elemento de una línea. 5 recaídas acumuladas a 2026-04-24 — tolerancia cero sin excepciones.
 
 ## Nivel de proactividad
 

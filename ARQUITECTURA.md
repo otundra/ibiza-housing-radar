@@ -1,7 +1,7 @@
 # Arquitectura técnica — Pipeline documental
 
 **Fecha:** 2026-04-20
-**Origen:** [PIVOTE.md](PIVOTE.md).
+**Origen:** [CLAUDE.md](CLAUDE.md#reglas-fundacionales).
 **Alcance:** diseño del pipeline Python nuevo, schema de datos, módulos, flujos de control, tests. No entra en diseño web (ver [DISENO-WEB.md](DISENO-WEB.md)).
 
 ---

@@ -1,11 +1,13 @@
-# Documento fundacional — modelo documental del observatorio
+# Documento fundacional — registro histórico
+
+> ⚠️ **Las reglas operativas viven en [`CLAUDE.md § Reglas fundacionales`](CLAUDE.md#reglas-fundacionales).** Este archivo se conserva como registro histórico del cambio de modelo del 2026-04-20. No editar — solo consultar.
 
 **Fecha de decisión:** 2026-04-20
 **Merge a `main`:** 2026-04-21 12:04 CEST (commit `b24a6ad`)
-**Rango:** documento fundacional. Todo lo que siga (ROADMAP, ARQUITECTURA, DISEÑO, SEO, CONTENIDO RETROACTIVO) deriva de las decisiones aquí.
-**Estado:** consolidado en `main`. Modelo documental único del proyecto.
+**Migración a CLAUDE.md:** 2026-04-24
+**Estado:** archivo histórico.
 
-> 📎 **Nota sobre el término "pivote".** Este documento conserva el nombre `PIVOTE.md` y usa la palabra "pivote" a lo largo del texto porque fue el término que describió el evento del 2026-04-20 (cambio de modelo de "generador de propuestas" a "observatorio documental"). **A partir del 2026-04-22, el término no se usa como adjetivo activo del proyecto.** El proyecto se refiere a sí mismo como "observatorio documental" o simplemente por su nombre (`radar))ibiza_vivienda`). El archivo `PIVOTE.md` se mantiene por continuidad de enlaces y como registro histórico del cambio.
+> 📎 **Nota sobre el término "pivote".** Este documento conserva el nombre `PIVOTE.md` y usa la palabra "pivote" a lo largo del texto porque fue el término que describió el evento del 2026-04-20 (cambio de modelo de "generador de propuestas" a "observatorio documental"). **A partir del 2026-04-22, el término no se usa como adjetivo activo del proyecto.** El proyecto se refiere a sí mismo como "observatorio documental" o simplemente por su nombre (`radar))ibiza_vivienda`). El archivo `PIVOTE.md` se mantiene por continuidad de referencias y como registro histórico del cambio.
 
 ---
 

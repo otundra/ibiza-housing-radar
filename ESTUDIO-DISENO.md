@@ -2,7 +2,7 @@
 
 **Fecha:** 2026-04-20 · **Cerrado con OK del editor:** 2026-04-21
 **Autor:** Claude Opus 4.7 + Raúl Serrano
-**Origen:** [PIVOTE.md](PIVOTE.md), [DISENO-WEB.md](DISENO-WEB.md), [ROADMAP.md](ROADMAP.md).
+**Origen:** [CLAUDE.md](CLAUDE.md#reglas-fundacionales), [DISENO-WEB.md](DISENO-WEB.md), [ROADMAP.md](ROADMAP.md).
 **Alcance:** estudio previo al Bloque B del Roadmap. Consolida identidad de marca, sistema visual, componentes clave, benchmark comparado con 13 referentes, plan de prototipo y decisiones del editor. Al cerrarse este documento, el Bloque B puede ejecutarse sin decisiones de diseño pendientes. D2 resuelta con wordmark tipográfico; variante tipográfica concreta (V1-V4) pendiente de elección.
 
 > Este estudio **no reemplaza** a [DISENO-WEB.md](DISENO-WEB.md) (arquitectura de información, mapa del sitio, contenido por página). Lo complementa añadiendo identidad, tokens de sistema, spec de componentes y criterio de prototipado.
@@ -448,7 +448,7 @@ Nueve componentes nuevos o formalizados. Cada uno tiene: qué resuelve, referenc
 
 **Qué resuelve:** visualiza el ciclo de vida de una palanca/propuesta. Importa GovTrack.
 
-**Estados definidos** (cerrados en [PIVOTE.md](PIVOTE.md) + ampliados):
+**Estados definidos** (cerrados en [CLAUDE.md](CLAUDE.md#reglas-fundacionales) + ampliados):
 
 1. `propuesta` — actor la ha verbalizado públicamente.
 2. `registrada` — tiene expediente formal (registro de entrada, BOIB, pleno).
@@ -990,7 +990,7 @@ Al completar el Bloque B del Roadmap, estas casillas deben estar marcadas:
 
 ### Primarios
 
-- [PIVOTE.md](PIVOTE.md) — 5 reglas duras.
+- [CLAUDE.md](CLAUDE.md#reglas-fundacionales) — 5 reglas duras.
 - [DISENO-WEB.md](DISENO-WEB.md) — arquitectura de información, mapa del sitio.
 - [ROADMAP.md](ROADMAP.md) — Bloque B tareas.
 - [DECISIONES-PENDIENTES.md](DECISIONES-PENDIENTES.md) — decisiones cerradas 2026-04-20.

@@ -91,7 +91,7 @@ Permite auditar qué está vivo, qué podar, y qué reemplaza a qué.
 
 - Mover todos los `ESTUDIO-*.md` de raíz a `estudios/`.
 - `ESTUDIOS-PENDIENTES.md` se convierte en índice de esa carpeta.
-- Raíz queda limpia: solo docs de primer nivel (CLAUDE, STATUS, ROADMAP, ARQUITECTURA, DIARIO, DECISIONES, INDEX, PIVOTE, README).
+- Raíz queda limpia: solo docs de primer nivel (CLAUDE, STATUS, ROADMAP, ARQUITECTURA, DIARIO, DECISIONES, INDEX, README).
 
 ### 3.7 Memoria `.claude` = solo feedback + punteros
 

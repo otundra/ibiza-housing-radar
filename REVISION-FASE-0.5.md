@@ -199,7 +199,7 @@ Aplicado fix temporal 2026-04-21: `docs/acerca.md` mantiene un callout de *"pág
 ### RT9 · Prototipo de páginas mínimas que las reglas duras exigen ⏳
 Las 5 reglas duras del observatorio asumen que existen tres páginas públicas: `/politica-editorial/` (texto de las reglas), `/metodologia/` (cómo funciona el pipeline y sesgos declarados), `/correcciones/` (log público de enmiendas). Hoy ninguna existe. El pipeline emite ediciones que hacen afirmaciones editoriales fuertes ("las 5 reglas duras", "balance auditado", "correcciones públicas") sin soporte público.
 
-**Acción mínima:** crear stubs Jekyll de las tres páginas con contenido textual suficiente para no ser páginas vacías. Fuente de contenido: el prototipo ya construido (`docs/prototype/metodo.html` para metodología). Para política editorial, extraer las 5 reglas del `PIVOTE.md`. Para correcciones, página vacía con formato estándar listo para la primera enmienda.
+**Acción mínima:** crear stubs Jekyll de las tres páginas con contenido textual suficiente para no ser páginas vacías. Fuente de contenido: el prototipo ya construido (`docs/prototype/metodo.html` para metodología). Para política editorial, extraer las 5 reglas de [`CLAUDE.md#reglas-fundacionales`](CLAUDE.md#reglas-fundacionales). Para correcciones, página vacía con formato estándar listo para la primera enmienda.
 
 Esto se hace **cuando se reanude el bloque Diseño** (pausado por esta revisión). No antes.
 
@@ -220,7 +220,7 @@ Esa decisión se toma cuando se reanude la etapa de Diseño, tras cerrar los hal
 
 Esta regla define cómo se construye cada módulo posterior y cómo se escribe la política editorial. Todo lo que requiera revisión humana continua del editor queda fuera del diseño del pipeline (el editor solo revisa en excepcional, como respuesta a escalados).
 
-**Salida:** regla fundacional documentada explícitamente en `PIVOTE.md` (como regla complementaria a las 5) y desarrollada en la política editorial pública con copy en lenguaje llano. Referencia explícita al rol del editor como operador no revisor, y al log de auditoría como mecanismo de transparencia.
+**Salida:** regla fundacional documentada en [`CLAUDE.md#reglas-fundacionales`](CLAUDE.md#reglas-fundacionales) y desarrollada en la política editorial pública con copy en lenguaje llano. Referencia explícita al rol del editor como operador no revisor, y al log de auditoría como mecanismo de transparencia.
 
 ### RT14 · Estudio preciso de costes del auditor IA ✅ CERRADA 2026-04-23
 
@@ -738,7 +738,7 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | **RT10** | **LG1 + LG2 promovidas a alta — anonimato legal pre-relanzamiento** | ⏳ | **P-1 · antes de empuje público** |
 | **RT11** | **Copy y tono de la home — decisión editorial** | ⏳ | **P-1 · en la etapa de Diseño, depende de RT3, RT12 y RT16** |
 | **RT12** | **Vía A de precios — estudio en profundidad** | ⏳ | **P-1 · ALTA · adelantarla al pre-relanzamiento si el estudio da viable** |
-| **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ⏳ | **P-1 · FILOSOFÍA · añadir a PIVOTE.md como regla complementaria** |
+| **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ⏳ | **P-1 · FILOSOFÍA · migrada a CLAUDE.md#reglas-fundacionales** |
 | **RT14** | **Estudio preciso de costes del auditor IA** | ✅ | **Cerrada 2026-04-23. Entregable: ESTUDIO-COSTES-AUDITOR.md. Régimen estable ~2,4 €/mes; backfill ~5,4 € one-shot. Desbloquea PI9** |
 | **RT15** | **Re-estudio profundo del sistema de tiers** | ✅ | **Cerrada 2026-04-23. Entregable [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo. 5 decisiones operativas cerradas en [D9](DECISIONES.md) (mixto / congelar / 🟠 default / Q2 tras backfill / HTML en Fase 4). §8.5 medición empírica = RT25. Desbloquea PI10.** |
 | **RT16** | **Experimento Claude Design — archivado** | 🔄 | **P-1 · archivo en `private/claude-design-experiment/` · no es referencia · se estudia en fase Diseño** |

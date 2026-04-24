@@ -26,7 +26,7 @@ En paralelo, lanza Read a:
 
 En paralelo:
 
-- [`PIVOTE.md`](../../PIVOTE.md) — cinco reglas duras + decisión fundacional del modelo documental.
+- [`CLAUDE.md § Reglas fundacionales`](../../CLAUDE.md#reglas-fundacionales) — cinco reglas duras + regla complementaria.
 - [`DISENO-WEB.md`](../../DISENO-WEB.md) — UX dual (primer visitante + profesional recurrente).
 - [`SEO.md`](../../SEO.md) — plan SEO.
 - [`CONTENIDO-RETROACTIVO.md`](../../CONTENIDO-RETROACTIVO.md) — ediciones retroactivas bajo modelo documental.

@@ -6,7 +6,7 @@ Estrategia para convertir el proyecto en un observatorio de referencia sobre viv
 
 > 📜 **Documento histórico.** Tras el [estudio crítico](private/estudios/2026-04-20-propuestas.md) de las propuestas W16-W17, el proyecto pivotó a "observatorio documental" el 2026-04-20 y el merge a `main` se consolidó el 2026-04-21. Este PLAN.md se conserva como referencia histórica. **El roadmap de trabajo activo vive en:**
 >
-> - [`PIVOTE.md`](PIVOTE.md) — decisión fundacional, 5 reglas duras.
+> - [`CLAUDE.md`](CLAUDE.md#reglas-fundacionales) — 5 reglas duras + regla complementaria.
 > - [`ROADMAP.md`](ROADMAP.md) — Fase 0 completa + fases siguientes.
 > - [`ARQUITECTURA.md`](ARQUITECTURA.md) — pipeline técnico.
 > - [`DISENO-WEB.md`](DISENO-WEB.md) — arquitectura de información y UX.

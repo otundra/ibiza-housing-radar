@@ -1,7 +1,7 @@
 # Diseño web — Arquitectura de información y UX
 
 **Fecha:** 2026-04-20
-**Origen:** [PIVOTE.md](PIVOTE.md), [ROADMAP.md](ROADMAP.md).
+**Origen:** [CLAUDE.md](CLAUDE.md#reglas-fundacionales), [ROADMAP.md](ROADMAP.md).
 **Alcance:** rediseño de la web para servir a dos públicos con intenciones distintas sin penalizar a ninguno. Arquitectura de información completa, detalle página por página, componentes reutilizables.
 
 ---
@@ -189,7 +189,7 @@ Las 5 reglas duras están aquí: [política editorial].
 
 ### `/politica-editorial/`
 
-Contenido fijo con las 5 reglas duras del PIVOTE. Fecha de última revisión visible. Cambios trazables (si se modifica alguna regla se registra en `/correcciones`).
+Contenido fijo con las 5 reglas duras del observatorio (ver [CLAUDE.md](CLAUDE.md#reglas-fundacionales)). Fecha de última revisión visible. Cambios trazables (si se modifica alguna regla se registra en `/correcciones`).
 
 ### `/metodologia/`
 

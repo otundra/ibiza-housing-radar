@@ -1,7 +1,7 @@
 # SEO — Plan de ataque ambicioso
 
 **Fecha:** 2026-04-20
-**Origen:** [PIVOTE.md](PIVOTE.md), [DISENO-WEB.md](DISENO-WEB.md).
+**Origen:** [CLAUDE.md](CLAUDE.md#reglas-fundacionales), [DISENO-WEB.md](DISENO-WEB.md).
 **Objetivo estratégico:** que cuando alguien en Ibiza escriba en Google cualquier pregunta sobre vivienda, alquiler, desahucio, temporeros o alquiler turístico, aparezcamos en la primera página. Y que cuando aparezca, el snippet vale un click.
 
 ---

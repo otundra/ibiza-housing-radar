@@ -1,6 +1,6 @@
 # Estado operativo — actualizado 2026-04-23
 
-> **Regla:** ≤ 100 líneas. Solo estado vigente. Lo histórico vive en [`DIARIO.md`](DIARIO.md); lo fundacional en [`CLAUDE.md`](CLAUDE.md) y [`PIVOTE.md`](PIVOTE.md). Ver [D0](DECISIONES.md).
+> **Regla:** ≤ 100 líneas. Solo estado vigente. Lo histórico vive en [`DIARIO.md`](DIARIO.md); lo fundacional en [`CLAUDE.md`](CLAUDE.md) (sección *Reglas fundacionales*). Ver [D0](DECISIONES.md).
 
 ## 🧭 Marco de trabajo de la Fase 1 (desde 2026-04-23, [D6](DECISIONES.md))
 
@@ -58,7 +58,7 @@ Observatorio documental. LLM no genera propuestas: documenta las de actores con 
 
 ## 🗂 Docs vivos en raíz (23)
 
-Fundacionales: `CLAUDE.md`, `PIVOTE.md`, `README.md`, `DECISIONES.md`.
+Fundacionales: `CLAUDE.md`, `README.md`, `DECISIONES.md`.
 Planificación: `ROADMAP.md`, `REVISION-FASE-0.5.md`, `DECISIONES-PENDIENTES.md`.
 Producto: `ARQUITECTURA.md`, `DISENO-WEB.md`, `SEO.md`, `CONTENIDO-RETROACTIVO.md`.
 Estudios: `ESTUDIO-DISENO.md`, `ESTUDIO-COSTES-AUDITOR.md`, `ESTUDIO-TIERS.md`, `ESTUDIO-3-MODELOS.md`, `ESTUDIO-GESTION-CONOCIMIENTO.md`, `ESTUDIOS-PENDIENTES.md`, `EXPANSION-TEMATICA.md`, `REPORTE-BENCHMARK.md`.
