@@ -8,9 +8,9 @@ Viven en [`.claude/commands/`](.claude/commands/) dentro de este repo.
 
 | Comando | Cuándo usarlo | Archivo |
 |---|---|---|
-| `/arranque` | Inicio de cualquier sesión. Default. Lee STATUS + DECISIONES + últimas entradas del diario y devuelve síntesis de 200 palabras. | [arranque.md](.claude/commands/arranque.md) |
-| `/arranque-fase` | Tras pausa de más de una semana, al cambiar de área (pipeline ↔ diseño ↔ editorial ↔ legal), o si la tarea toca un estudio grande. Añade PLAN + ARQUITECTURA + el estudio del área. | [arranque-fase.md](.claude/commands/arranque-fase.md) |
-| `/arranque-auditoria` | Auditorías estructurales, refactors grandes, decisiones de pivote o bloqueos por falta de mapa global. Escaneo completo — caro en contexto. | [arranque-auditoria.md](.claude/commands/arranque-auditoria.md) |
+| `/arranque` | Inicio de sesión con informe. Lee STATUS + DECISIONES + últimas entradas del diario, entrega síntesis de ~200 palabras + 1-3 recomendaciones de siguiente paso + pregunta *"¿qué hacemos?"*. **Solo cuando el editor lo pide explícitamente.** Sin comando, el modo por defecto lee los mismos docs en silencio y responde directo al prompt. | [arranque.md](.claude/commands/arranque.md) |
+| `/arranque-fase` | Tras pausa de más de una semana, al cambiar de área (pipeline ↔ diseño ↔ editorial ↔ legal), o si la tarea toca un estudio grande. Añade PLAN + ARQUITECTURA + el estudio del área. Incluye 1-3 recomendaciones antes del cierre. | [arranque-fase.md](.claude/commands/arranque-fase.md) |
+| `/arranque-auditoria` | Auditorías estructurales, refactors grandes, decisiones de pivote o bloqueos por falta de mapa global. Escaneo completo — caro en contexto. Incluye 1-3 recomendaciones de alcance antes del cierre. | [arranque-auditoria.md](.claude/commands/arranque-auditoria.md) |
 | `/cierre` | Cierre de sesión con checklist fijo: auditoría de cambios, actualización de docs vivos, commits atómicos, push y reporte. | [cierre.md](.claude/commands/cierre.md) |
 
 ## Globales (fuera del proyecto)
@@ -24,13 +24,14 @@ Viven en `~/.claude/commands/` y aplican a todos los proyectos.
 
 ## Criterio de arranque
 
-Los tres `arranque*` son escalones. Usa el mínimo que cubra la sesión:
+Cuatro modos, en orden ascendente de contexto. Usa el mínimo que cubra la sesión:
 
-- **Default → `/arranque`.** Vale para el 80 % de sesiones: continuaciones, tareas pequeñas, preguntas de 1-3 turnos.
-- **Pausa larga o cambio de área → `/arranque-fase`.** Añade plan y estudio del área sin escanear el resto.
-- **Auditoría o refactor grande → `/arranque-auditoria`.** Lee toda la capa fundacional + estudios + código relevante. Solo cuando haga falta de verdad.
+- **Sin comando (default, desde 2026-04-24).** Al abrir sesión sin invocar nada, el asistente lee STATUS + DECISIONES + DIARIO (120 líneas) en silencio y responde directo al prompt del editor. Sin informe, sin recomendaciones, sin pregunta. Vale cuando el editor entra con una tarea ya definida.
+- **Con `/arranque` explícito → Tier 1.** Misma lectura que el modo por defecto, pero entrega informe de ~200 palabras + 1-3 recomendaciones + pregunta *"¿qué hacemos?"*. Úsalo cuando el editor pide panorámica antes de decidir.
+- **`/arranque-fase` → Tier 2.** Pausa larga o cambio de área. Añade plan y estudio del área sin escanear el resto. Incluye 1-3 recomendaciones antes del cierre.
+- **`/arranque-auditoria` → Tier 3.** Auditoría o refactor grande. Lee toda la capa fundacional + estudios + código relevante. Solo cuando haga falta de verdad. Incluye 1-3 recomendaciones de alcance.
 
-Si el editor ha dicho la tarea y no cuadra con el comando que ya se lanzó, el modelo propone escalar antes de ejecutar nada.
+Si el editor ha dicho la tarea y no cuadra con el modo que está en curso, el asistente propone escalar antes de ejecutar nada.
 
 ## Reglas para esta tabla
 

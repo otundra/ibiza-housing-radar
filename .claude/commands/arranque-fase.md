@@ -39,14 +39,24 @@ Además de lo de `/arranque`, añade:
 
 - **Fase y hito:** nombre del hito activo + los siguientes 2 hitos según PLAN o STATUS.
 - **Mapa del estudio leído:** secciones cerradas, secciones abiertas, preguntas pendientes al editor.
-- **Arquitectura tocada:** qué módulos del pipeline entran en juego si la tarea los requiere (nombres con glosa, ej. *"módulo de extracción de propuestas (`extract.py`)"*).
-- **Tareas abiertas en la auditoría fundacional** (si la sesión roza la Revisión Fase 0.5): resumen + estado.
+- **Arquitectura tocada:** qué módulos del flujo entran en juego si la tarea los requiere (nombres con glosa, ej. *"módulo de extracción de propuestas (`extract.py`)"*).
+- **Tareas abiertas en la auditoría fundacional** (si la sesión roza la revisión abierta el 21 de abril): resumen + estado.
 
 Longitud objetivo: 350-450 palabras. Más denso que Tier 1, pero sigue sin ser una redacción.
 
-## 4. Cierre
+## 4. Recomendaciones (1-3, según haya)
 
-Pregunta al editor qué vamos a hacer. Con la síntesis delante ya tiene un mapa ordenado para concretar.
+Con el mapa de fase delante, ofrece **1 a 3 recomendaciones** de siguiente paso concreto antes de la pregunta de cierre. No fuerces hasta tres si solo hay una o dos naturales.
+
+Mismas reglas de redacción que en `/arranque`:
+
+- Una línea por recomendación.
+- Nombre de la cosa primero; el código va entre paréntesis al final y solo si aporta trazabilidad.
+- Verbo de acción + por qué corto.
+
+## 5. Cierre
+
+Pregunta al editor qué vamos a hacer. Con la síntesis y las recomendaciones delante ya tiene un mapa ordenado para concretar.
 
 ## Regla dura
 

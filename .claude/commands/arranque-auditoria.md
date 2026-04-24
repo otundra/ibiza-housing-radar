@@ -55,16 +55,22 @@ Si la tarea es de auditoría documental sin tocar código, sáltate este paso.
 Formato más ampliado. Estructura:
 
 - **Resumen ejecutivo** (5 líneas): qué es el proyecto hoy, dónde está en el ciclo editorial, qué bloquea qué.
-- **Mapa de estudios:** tabla con columnas `Estudio · Estado · Decisiones cerradas · Preguntas abiertas`.
-- **Decisiones vivas y tensiones:** decisiones del registro `D{N}` que podrían chocar entre sí o con la auditoría que vamos a hacer.
+- **Mapa de estudios:** tabla con columnas `Estudio · Estado · Decisiones cerradas · Preguntas abiertas`. En cada celda, nombre de la cosa primero; los códigos internos solo al final entre paréntesis y solo si aportan.
+- **Decisiones vivas y tensiones:** decisiones del registro que podrían chocar entre sí o con la auditoría que vamos a hacer. Citar por nombre, no por código suelto.
 - **Riesgos y deudas:** lo que el editor ha señalado como frágil, pospuesto o sin dueño.
 - **Qué NO tocar:** reglas duras del proyecto + pausas + decisiones cerradas que acotan el trabajo.
 
 Longitud objetivo: 600-900 palabras. Es una sesión pesada; el editor espera un mapa real.
 
-## 6. Cierre
+## 6. Recomendaciones (1-3, según haya)
 
-Pregunta al editor el alcance exacto de la auditoría. Con todo el contexto delante, afina antes de proponer cambios y antes de tocar nada.
+Con el mapa completo delante, ofrece **1 a 3 recomendaciones** de alcance o enfoque para la auditoría antes de la pregunta de cierre. A este nivel las recomendaciones pueden ser de tipo más estratégico (*"arrancar por la capa fundacional", "revisar primero las tensiones entre decisiones cerradas", "priorizar el módulo X por ser el más frágil"*).
+
+Mismas reglas de redacción: una línea por recomendación, nombre de la cosa primero, verbo de acción + por qué corto.
+
+## 7. Cierre
+
+Pregunta al editor el alcance exacto de la auditoría. Con todo el contexto y las recomendaciones delante, afina antes de proponer cambios y antes de tocar nada.
 
 ## Regla dura
 
