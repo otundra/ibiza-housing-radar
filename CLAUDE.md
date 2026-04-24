@@ -76,6 +76,8 @@ Publicadas en `/politica-editorial`. Vinculantes y no negociables:
 │   ├── build_index.py          # Regenera docs/index.md
 │   ├── costs.py                # Tracking + dashboard + capas de tope mensual
 │   ├── notify.py               # Alertas Telegram + fallback issue GitHub
+│   ├── panel.py                # Tablero interno privado (agrega señales — D14)
+│   ├── decisions_watch.py      # Aviso semanal de decisiones vencidas o próximas (D14)
 │   ├── report.py               # Orquestador end-to-end
 │   └── sources.yaml            # Feeds + keywords + ventana temporal
 ├── data/
@@ -95,7 +97,8 @@ Publicadas en `/politica-editorial`. Vinculantes y no negociables:
 │   ├── ediciones.md            # Página /ediciones/ con archivo completo
 │   └── acerca.md
 ├── private/                    # Fuera de Jekyll, no servido por GitHub Pages
-│   └── costs.md                # Dashboard privado de costes (regenerado por costs.py)
+│   ├── costs.md                # Dashboard privado de costes (regenerado por costs.py)
+│   └── panel.md                # Tablero interno (regenerado cada lunes por panel.py — D14)
 ├── .github/workflows/
 │   ├── weekly-report.yml       # Cron lunes 05:00 UTC
 │   └── validate-key.yml        # Test manual de la API key
