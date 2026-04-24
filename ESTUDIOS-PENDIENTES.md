@@ -106,7 +106,7 @@ Regla operativa: **el reparto de modelos se revisa cada trimestre** con datos re
 
 **Entregable:** documento `ESTUDIO-DOMINIO.md` con shortlist de 3-5 candidatos, comprobación de disponibilidad, recomendación con justificación. El editor compra.
 
-**Plazo:** antes del relanzamiento público de Fase 0 (~11 may 2026).
+**Plazo:** antes de abrir al público. Sin fecha ([D15](DECISIONES.md)).
 
 **Apunte editor 2026-04-20:** cuando se elija dominio, **reevaluar también el nombre del proyecto** ("Ibiza Housing Radar"). Puede que quede corto, largo, o que no encaje con el dominio elegido. Mantener página `/radar/` funciona independientemente del nombre final del proyecto (el juego semántico con "radar" se conserva aunque el proyecto cambie de nombre).
 
@@ -193,11 +193,11 @@ Regla operativa: **el reparto de modelos se revisa cada trimestre** con datos re
 
 ---
 
-## 6. Fecha concreta del relanzamiento — SUPERADA 2026-04-23 por [D11](DECISIONES.md)
+## 6. Fecha concreta del relanzamiento — SUPERADA 2026-04-24 por [D15](DECISIONES.md)
 
-**Fecha cerrada:** lunes 13 jul 2026 (opción A del análisis de 2026-04-23 noche). Red de seguridad: lunes 12 oct 2026 (cierre de temporada 2026) si al llegar finales de junio el producto no está maduro. Escenario C (pre-temporada abr 2027) archivado como contingencia.
+**Sin fecha de relanzamiento.** 2026-04-24 el proyecto elimina calendario público y fecha de lanzamiento ([D15](DECISIONES.md)). El avance se organiza por hitos, no por fechas. Esta sección queda archivada como contexto histórico.
 
-La propuesta original del lunes 18 may 2026 (apuntada el 20-abr) quedó obsoleta cuando se abrió la Revisión Fase 0.5 y el roadmap V2 pasó a 9-12 semanas calendario. El análisis completo y los supuestos que tiene que cumplir el 13 jul viven en [D11](DECISIONES.md) y en la sección *"Cómo leer las estimaciones de tiempo"* de [ROADMAP.md](ROADMAP.md). El resto de esta sección se mantiene como contexto histórico.
+**Fechas propuestas (todas descartadas).** La propuesta original del 20-abr apuntaba lunes 18 may 2026. Luego la Revisión Fase 0.5 amplió alcance y el 23-abr se fijó como opción cerrada lunes 13 jul 2026 (con red de seguridad 12 oct 2026, cierre de temporada, y escenario C en pre-temporada abr 2027 como contingencia), registrado en [D11](DECISIONES.md). El 24-abr, tras una sesión de limpieza, el editor constató que ninguna de las fechas planteadas era real ni útil y eliminó la idea de fecha del proyecto. [D11](DECISIONES.md) queda como superada por [D15](DECISIONES.md).
 
 **Contexto original:** el editor no dio fecha explícita, solo "cuando tengamos cerrado el proyecto". La fecha depende de la velocidad de cierre de Fase 0.
 

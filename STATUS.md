@@ -26,7 +26,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 ## 🟡 En curso
 
 - **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21, 34 tareas. Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) + memoria [`revision_fase_0_5.md`](.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/revision_fase_0_5.md).
-- **Hito 1 — Auditor mínimo viable** (2 sem). PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). **Diseño del módulo cerrado 2026-04-24** en [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md) (11 secciones + whitelist V1 cerrada de 20 actores + schema del registro + calendario 4 semanas). Siguiente: arrancar Semana 1 (capa 2 Sonnet ciega + comparador determinista) tras OK del editor.
+- **Hito 1 — Auditor mínimo viable.** PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). **Diseño del módulo cerrado 2026-04-24** en [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md) (11 secciones + whitelist V1 cerrada de 20 actores + schema del registro + 4 fases de construcción). Siguiente: arrancar Fase 1 (capa 2 Sonnet ciega + comparador determinista) tras OK del editor. Sin calendario ni fecha ([D15](DECISIONES.md)).
 - **Hito 2 — Re-estudio del sistema de tiers** ✅ **cerrado 2026-04-23** (RT15, RT26). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo con 5 decisiones operativas en [D9](DECISIONES.md). Queda como pendiente de datos la medición empírica del sesgo por actor (RT25, post-backfill). Implementación de `src/tiers.py` + `data/tiers.yml` pasa a PI10 (sin bloquear auditor MVP).
 
 ## 🏷️ Identidad (provisional 2026-04-21)
@@ -37,11 +37,12 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 ## 🎯 Próximos hitos
 
-- **Lunes 27 abr 07:00 CEST** — próxima edición automática (W18).
-- **Arranque Hito 1 — Auditor MVP:** diseño cerrado → construcción (4 sem calendario según plano) → prueba empírica sobre W10 (2-8 marzo 2026). Semanas 1-4 detalladas en [`DISENO-AUDITOR-MVP.md §9`](DISENO-AUDITOR-MVP.md). Arranca cuando el editor dé OK al plano.
-- **Viernes 8 may 2026** — revisar activación de avisos 2 y 3 del sistema de monitorización de decisiones ([D14](DECISIONES.md)). Decidir si sumar aviso por patrón en autoevaluación (dos semanas con nota <7 en misma dimensión) + aviso por acumulación de 5 decisiones pequeñas autónomas del asistente sin resumen. **Pregunta abierta del editor (2026-04-24):** ¿las caducidades del registro de decisiones pueden ser por hito además de por fecha? Evaluar en la misma revisión.
-- **Antes del relanzamiento público (may-jun 2026)** — revisar exposición legal de la página de correcciones (`/correcciones/`). El protocolo de 72 h queda publicado antes de tener buzón operativo; riesgo acotado mientras la web no tiene tráfico pero hay que cerrarlo antes de abrir al público. Anclado al Hito 3 legal. Detalle en [`DISENO-AUDITOR-MVP.md §7`](DISENO-AUDITOR-MVP.md).
-- **Lunes 13 jul 2026** — fecha objetivo de relanzamiento público ([D11](DECISIONES.md)). ~12 sem calendario desde 2026-04-23, ~180 h editor totales. Red de seguridad: lunes 12 oct 2026 (cierre de temporada) si al llegar junio el producto no está maduro.
+Sin calendario ni fecha de lanzamiento ([D15](DECISIONES.md)). El avance se organiza por hitos; los rangos de reloj solo aplican al cron semanal, que es automático.
+
+- **Próxima edición automática** — lunes siguiente según el cron semanal. Etiqueta pública según rango de fechas reales.
+- **Arranque Hito 1 — Auditor MVP:** diseño cerrado → construcción en 4 fases (capa 2 + comparador / heurísticas + whitelist / log + integración / prueba empírica). Detalle en [`DISENO-AUDITOR-MVP.md §9`](DISENO-AUDITOR-MVP.md). Arranca cuando el editor dé OK al plano. Prueba empírica sobre W10 (2-8 marzo 2026, dato histórico).
+- **Antes de abrir al público** — revisar exposición legal de la página de correcciones (`/correcciones/`). El protocolo de 72 h queda publicado antes de tener buzón operativo; riesgo acotado mientras la web no tiene tráfico pero hay que cerrarlo antes de abrir al público. Anclado al Hito 3 legal. Detalle en [`DISENO-AUDITOR-MVP.md §7`](DISENO-AUDITOR-MVP.md).
+- **Revisión del sistema de monitorización** ([D14](DECISIONES.md)) — tras 2-4 ediciones del sistema funcionando. Decidir si sumar aviso por patrón en autoevaluación + aviso por acumulación de 5 decisiones pequeñas autónomas del asistente sin resumen.
 
 ## 📍 Puntos de entrada al retomar
 

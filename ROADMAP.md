@@ -1,22 +1,18 @@
 # Roadmap — radar))ibiza_vivienda
 
-**Fecha original:** 2026-04-20 · **Reestructurado en fases ejecutables:** 2026-04-21 noche · **Fecha objetivo de relanzamiento:** lunes 13 jul 2026 (ver [D11](DECISIONES.md))
+**Fecha original:** 2026-04-20 · **Reestructurado en fases ejecutables:** 2026-04-21 noche.
 **Origen:** [CLAUDE.md](CLAUDE.md#reglas-fundacionales), [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md).
 **Principio base:** relanzamiento sólido, sostenido por infraestructura automatizada (el editor opera, no audita). Coste ≤12 €/mes bajo tope blando, ≤50 €/mes bajo tope duro. Reversibilidad vía histórico git.
 
+> ⚠️ **Sin calendario ni fecha de lanzamiento ([D15](DECISIONES.md), 2026-04-24).** Este roadmap describe el **orden** de las fases y su alcance, no *cuándo* ocurren. Las estimaciones de esfuerzo relativo (horas del editor) se mantienen como orientación; no son compromisos de calendario. El editor abre cada fase cuando lo decide.
+
 ---
 
-## Cómo leer las estimaciones de tiempo
+## Cómo leer las estimaciones
 
-Desde 2026-04-23 ([D11](DECISIONES.md)) toda estimación del proyecto se expresa con tres números distintos, nunca uno solo:
+Desde 2026-04-24 ([D15](DECISIONES.md)) el proyecto no tiene calendario ni fecha de lanzamiento. Las estimaciones del roadmap se expresan como **esfuerzo relativo del editor** (horas aproximadas de trabajo concentrado), nunca como fecha. Formato corto: *"~M h editor"*. Las estimaciones previas que hablaban de semanas de calendario se reinterpretan como horas de trabajo cuando son convertibles; si no, se descartan.
 
-- **Calendario** — semanas de reloj real. Es lo único que marca la fecha de lanzamiento.
-- **Esfuerzo editor** — horas reales del editor. A ritmo sostenible el proyecto asume 15 h/sem. Incluye decisión, revisión, commits, gestión y testeo.
-- **Esfuerzo Claude** — horas del asistente. No colapsa calendario: el cuello de botella es la decisión/revisión del editor. 40 h del asistente en un día no acelera la fecha si el editor no puede absorberlo al mismo ritmo.
-
-Formato corto en docs: *"N sem calendario / ~M h editor"*. El esfuerzo del asistente se omite salvo que aporte contexto (p. ej. cuando un módulo es mayoritariamente trabajo de Claude). Las estimaciones anteriores a D11 se reinterpretan como calendario hasta reescribirse.
-
-**Aplicado al relanzamiento del lunes 13 jul 2026:** ~12 sem calendario desde 2026-04-23 / ~180 h editor totales distribuidas en las 7 fases. Supuestos que tienen que cumplirse: 15 h/sem sostenido, sin imprevistos personales mayores de 1 semana, cero re-alcances grandes, prueba empírica del auditor MVP pasa a la primera. Si alguno falla, el calendario se desliza 1-3 semanas hacia jul-ago; el banner de rodaje absorbe el deslizamiento sin re-planificar. Red de seguridad: escenario B (12 oct 2026, cierre de temporada) si al llegar finales de junio el producto no está maduro.
+**Superado.** La decisión anterior ([D11](DECISIONES.md), 2026-04-23) introducía un modelo de tres números (calendario / esfuerzo editor / esfuerzo Claude) + fecha objetivo de relanzamiento del lunes 13 jul 2026. Ese modelo queda fuera por decisión del editor: ninguna fecha era real. Se mantiene como histórica en [D11](DECISIONES.md) y la sección §6 de [ESTUDIOS-PENDIENTES.md](ESTUDIOS-PENDIENTES.md).
 
 ---
 
@@ -461,7 +457,7 @@ Tras las decisiones del editor 2026-04-20, estos estudios se ejecutan antes o du
 
 - [ ] **I1.** 🔴 **URGENTE** — Estudio integración 3 modelos (Haiku + Sonnet + Opus) + benchmark + código actualizado. Primera semana.
 - [ ] **I2.** Estudio dominio propio: shortlist de nombres, disponibilidad, registrador, plan migración. 2ª semana.
-- [ ] **I3.** Confirmación de fecha de relanzamiento (propuesta: lunes 18 may 2026). Esta semana.
+- [x] **I3.** ~~Confirmación de fecha de relanzamiento~~ — superado por [D15](DECISIONES.md). Sin fecha de relanzamiento en el proyecto.
 - [ ] **I4.** Diseño del dashboard de estadísticas potente + página `/estadisticas/` complementaria a `/balance/`. Durante Fase 0.
 - [ ] **I5.** Implementación de elementos de [Solar Low-Tech](https://solar.lowtechmagazine.com/) — ver [DISENO-WEB.md §Inspiración](DISENO-WEB.md). Indicadores de transparencia en footer + notas al margen + manifiesto + `/estado/`. Durante Fase 0.
 - [x] **I6.** ✅ **Estudio de diseño completo** cerrado 2026-04-21. Entregable: [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md) (14 secciones, 13 decisiones D1-D13 cerradas con OK del editor, salvo D2 logo diferido). Incluye: benchmark editorial con 13 referentes, sistema visual completo con 8 tipos de actor, 9 componentes especificados, plan de prototipo en 6 pasos, decisiones sobre nombre ("Radar Ibiza"), calendario editorial (opening/closing), numeración por fecha, formulario universal "Escríbenos", automatización anual para temporadas. Derivadas en B34-B40 y A17.

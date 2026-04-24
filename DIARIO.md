@@ -13,6 +13,21 @@ Reglas:
 
 ---
 
+## 2026-04-24 [docs] — Sin calendario público ni fecha de lanzamiento. El ritmo lo marca el editor
+
+Tras redactar el plano del auditor con su calendario de 4 semanas fechadas (28 abr – 25 may) y tras haber fijado el 23-abr lunes 13 jul 2026 como fecha objetivo de relanzamiento ([D11](DECISIONES.md)), el editor cortó en seco: *"vamos a olvidarnos de las fechas, no son reales. no hay fechas de lanzamiento, ni nada por el estilo"*. Registrado como [D15](DECISIONES.md) y aplicado de golpe.
+
+- **Decisión paraguas.** El proyecto no tiene fecha de lanzamiento público, calendario de fases con rango día-día, ni objetivos del tipo *"relanzamos el lunes X"*. Todo se organiza por **hitos** (qué queda cerrado) y por **esfuerzo relativo** cuando aporta (*"~10 h de trabajo del editor"*), nunca por fecha futura.
+- **Por qué.** Ninguna de las fechas propuestas era real. Mantenerlas forzaba un sistema (panel con decisiones vencidas, avisador semanal) que apuntaba a metas imaginarias y creaba sensación falsa de atraso en cada mirador del lunes. Más honesto borrar la ficción que mantenerla.
+- **Efecto en el registro de decisiones.** [D11](DECISIONES.md) queda superada por [D15](DECISIONES.md) (se mantiene como histórica). Las *"Próximas revisiones"* de [D1](DECISIONES.md), [D3](DECISIONES.md), [D4](DECISIONES.md), [D6](DECISIONES.md), [D9](DECISIONES.md) y [D14](DECISIONES.md) se reescriben como eventos o hitos (*"al cerrar el Hito 1"*, *"tras el backfill"*, *"tras 2-4 ediciones"*), no como fechas ISO. La pregunta abierta del editor de la mañana (*"¿pueden las caducidades ser por hito?"*) queda resuelta: sí, y son el único formato aceptado salvo *"permanente"*.
+- **Efecto en los documentos vivos.** [STATUS.md](STATUS.md) pierde el bloque de próximos hitos con fecha (lunes 27 abr, viernes 8 may, lunes 13 jul, lunes 12 oct). El plano del auditor pasa de *"Semanas 1-4 (fechas)"* a *"Fases 1-4"* sin calendario en [`DISENO-AUDITOR-MVP.md §9`](DISENO-AUDITOR-MVP.md). [ROADMAP.md](ROADMAP.md) cabecera y sección de estimaciones reescritas; [ESTUDIOS-PENDIENTES.md §6](ESTUDIOS-PENDIENTES.md) archivada como histórica.
+- **Efecto en el código de monitorización.** No toco código. El avisador semanal (`src/decisions_watch.py`) seguirá leyendo *"Próxima revisión"*: como casi ninguna decisión tendrá fecha ISO parseable, quedará silencioso — comportamiento correcto (no hay nada que avisar). El tablero interno (`private/panel.md`) mostrará las revisiones pendientes como texto libre en vez de con orden temporal en la próxima regeneración. Si con 2-4 ediciones el sistema no dispara nada, [D14](DECISIONES.md) contempla simplificar o desmantelar.
+- **Qué sí se mantiene.** Fechas históricas (cuándo se tomó una decisión, cuándo salió una edición, rangos reales de semanas publicadas como la W10 del 2-8 mar 2026, fechas de commits). El calendario editorial de *temporada/pre-temporada* sigue anclado a *opening/closing* reales de Ibiza: es dato observable, no objetivo de lanzamiento.
+
+Archivos tocados: registro de decisiones (D11 superada + D15 nueva + 6 *Próximas revisiones* reescritas + D14 con criterio de revocación ajustado), estado operativo, plano del auditor, roadmap, estudios pendientes, y este diario.
+
+---
+
 ## 2026-04-24 [arquitectura] — Plano de obra del auditor mínimo viable
 
 Tras cerrar el sistema de monitorización y confirmar con el editor arrancar Hito 1, se redacta el documento de diseño del módulo de auditoría. No es un estudio nuevo: el estudio de costes ya estaba cerrado desde 2026-04-22 con todas las decisiones económicas y de alcance. El plano traduce ese estudio a contratos de código: qué archivos nuevos, qué funciones, qué estructura exacta del registro de auditoría, qué señales de confianza se capturan desde el primer día aunque la fórmula llegue más tarde, qué whitelist arranca cerrada, qué hueco deja para la iteración posterior.

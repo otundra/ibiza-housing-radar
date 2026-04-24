@@ -41,7 +41,7 @@ Este documento es el **plano de obra** del auditor mínimo viable. El estudio de
 - **Buzón de email del proyecto** queda diferido hasta el cierre del nombre del observatorio (D2). En `/correcciones/` se anuncia *"próximamente"* con ruta alternativa (issue en GitHub).
 - **Estudio legal del titular** es Hito 3 (D6). La exposición del protocolo se revisa al cerrar ese hito. Apuntado también en STATUS.md.
 
-**Cierre del Hito 1:** prueba empírica sobre la semana W10 (2-8 marzo 2026) con el auditor activo y log visible, sin fallos bloqueantes. D1 revisa el MVP el 2026-05-15 con esos datos.
+**Cierre del Hito 1:** prueba empírica sobre la semana W10 (2-8 marzo 2026) con el auditor activo y log visible, sin fallos bloqueantes. D1 revisa el MVP tras esa prueba. Sin fecha de calendario ([D15](DECISIONES.md)).
 
 ---
 
@@ -172,7 +172,7 @@ def check_whitelist(proposal: Proposal, actor_domains: dict) -> dict:
 
 ### 2.4 · `data/actor_domains.yml` — Whitelist V1
 
-**Propósito.** Mapear cada actor conocido a sus dominios oficiales + lista curada de medios de cobertura aceptada. Leído por `check_whitelist`. Curado manualmente en V1 (D3); refinamiento post-backfill (D3 próxima revisión 2026-06-15).
+**Propósito.** Mapear cada actor conocido a sus dominios oficiales + lista curada de medios de cobertura aceptada. Leído por `check_whitelist`. Curado manualmente en V1 ([D3](DECISIONES.md)); refinamiento post-backfill.
 
 **Esquema.**
 
@@ -314,7 +314,7 @@ Vacío al crear el archivo. Cada aviso externo añade una entrada:
 
 ```json
 {
-  "received_at": "2026-05-15T09:30:00Z",
+  "received_at": "YYYY-MM-DDTHH:MM:SSZ",
   "origin": "email" | "form" | "issue_github" | "otro",
   "reporter_public": "Asociación X (nombre público) | anónimo",
   "body": "descripción breve de la alegación",
@@ -438,7 +438,7 @@ Los 20 actores principales del dominio público de la vivienda en Ibiza, con sus
 
 ```yaml
 # data/actor_domains.yml
-# V1 — 2026-04-24. Refinamiento con datos reales del backfill (próxima revisión D3: 2026-06-15).
+# V1 — 2026-04-24. Refinamiento con datos reales del backfill (próxima revisión D3: post-backfill).
 
 meta:
   version: 1
@@ -519,7 +519,7 @@ actors:
 
 **Total: 20 actores, 8 categorías cubiertas de las 8 de la taxonomía.** Las categorías 7 y 8 (colectivos ad-hoc, asambleas, expertos individuales) no tienen actores fijos y se tratarán caso a caso con la regla `whitelist_miss: true`.
 
-**Dominios que quedan por confirmar durante el backfill:** `ibavi.caib.es` (algunos informes usan `ibavi.es` directo), `goib.es` vs `caib.es` (duplicación oficial conocida), `.cat` vs `.es` para algunos consells. El refinamiento va a la revisión de D3 el 2026-06-15.
+**Dominios que quedan por confirmar durante el backfill:** `ibavi.caib.es` (algunos informes usan `ibavi.es` directo), `goib.es` vs `caib.es` (duplicación oficial conocida), `.cat` vs `.es` para algunos consells. El refinamiento va a la revisión de [D3](DECISIONES.md) tras el backfill.
 
 ---
 
@@ -648,16 +648,16 @@ Junto a los enlaces existentes (`/acerca/`, `/politica-editorial/` cuando esté,
 
 ### 7.3 · Apuntado para revisión legal futura
 
-**Compromiso operativo de las 72 h.** El protocolo se publica antes de que el formulario y el buzón estén operativos. Durante ese margen, la ruta alternativa es el issue en GitHub (visible públicamente). El editor indicó el 2026-04-24 que la exposición es baja porque la web no será visible públicamente hasta el rodaje tras el relanzamiento del 13 jul 2026 (D11). Aun así:
+**Compromiso operativo de las 72 h.** El protocolo se publica antes de que el formulario y el buzón estén operativos. Durante ese margen, la ruta alternativa es el issue en GitHub (visible públicamente). El editor indicó el 2026-04-24 que la exposición es baja porque la web no será visible públicamente hasta mucho después del arranque (sin fecha, [D15](DECISIONES.md)). Aun así:
 
-- Se revisa formalmente al **cerrar el estudio legal del titular** (Hito 3, D2, fecha por fijar cuando arranque ese hito).
-- Se revisa también **antes del relanzamiento público** (apuntado en STATUS.md).
+- Se revisa formalmente al **cerrar el estudio legal del titular** ([D2](DECISIONES.md), Hito 3).
+- Se revisa también **antes de abrir al público** (apuntado en STATUS.md).
 
 ---
 
 ## 8 · Fuera del mínimo viable (iteración posterior)
 
-D1 dejó estas piezas fuera del MVP. Arrancan tras cerrar el Hito 1 (2 semanas calendario / ~15 h editor adicionales).
+D1 dejó estas piezas fuera del MVP. Arrancan tras cerrar el Hito 1 (~15 h de trabajo del editor adicionales; sin calendario, [D15](DECISIONES.md)).
 
 | Pieza | Qué es | Cuándo entra |
 |---|---|---|
@@ -678,21 +678,21 @@ D1 dejó estas piezas fuera del MVP. Arrancan tras cerrar el Hito 1 (2 semanas c
 
 ---
 
-## 9 · Calendario detallado por semanas
+## 9 · Fases de construcción
 
-Referencia completa: [ESTUDIO-COSTES-AUDITOR.md §10](ESTUDIO-COSTES-AUDITOR.md). Resumen compacto con entregables verificables.
+Cuatro fases en cascada. Cada una se cierra cuando sus entregables están verificados; la siguiente arranca cuando el editor lo indica. **Sin calendario ni rango de días** ([D15](DECISIONES.md)); las estimaciones de horas son esfuerzo relativo del editor, no compromiso de reloj. Referencia completa: [ESTUDIO-COSTES-AUDITOR.md §10](ESTUDIO-COSTES-AUDITOR.md).
 
-### Semana 1 (28 abr – 4 may) — Capa 2 + comparador (7-10 h editor)
+### Fase 1 — Capa 2 + comparador (~7-10 h de trabajo del editor)
 
 **Entregables.**
 
 - [ ] `src/audit.py` con `run_blind_audit()` operativa. Batch único Sonnet con `EXTRACT_SYSTEM`.
 - [ ] `src/audit_compare.py` con `compare_extractions()`. Comparación campo a campo, severidad.
-- [ ] Prueba manual: corrida sobre las 3 propuestas de W17. Log muestra bloque `layers.haiku` + `layers.sonnet_blind` + `layers.compare`.
+- [ ] Prueba manual: corrida sobre las 3 propuestas de W17 (ya publicada). Log muestra bloque `layers.haiku` + `layers.sonnet_blind` + `layers.compare`.
 
 **Sin integración aún** con `src/report.py`. Se prueba vía REPL o script adhoc.
 
-### Semana 2 (5 may – 11 may) — Heurísticas + whitelist + hueco tier (8-12 h editor)
+### Fase 2 — Heurísticas + whitelist + hueco tier (~8-12 h de trabajo del editor)
 
 **Entregables.**
 
@@ -702,7 +702,7 @@ Referencia completa: [ESTUDIO-COSTES-AUDITOR.md §10](ESTUDIO-COSTES-AUDITOR.md)
 - [ ] Función `compute_tier(signals)` en `src/audit.py` que devuelve siempre `{value: null, reason: "pendiente_estudio", signals: {...}}`.
 - [ ] Prueba manual: corrida sobre W17 con las 11 señales pobladas. Validar que todas calculan correctamente.
 
-### Semana 3 (12 may – 18 may) — Log + integración + página /correcciones/ (8-12 h editor)
+### Fase 3 — Log + integración + página /correcciones/ (~8-12 h de trabajo del editor)
 
 **Entregables.**
 
@@ -710,18 +710,18 @@ Referencia completa: [ESTUDIO-COSTES-AUDITOR.md §10](ESTUDIO-COSTES-AUDITOR.md)
 - [ ] Integración de `audit_proposals()` en `src/report.py` entre `extract` y `generate`.
 - [ ] `docs/correcciones.md` publicada, enlazada desde el footer.
 - [ ] Ajuste en `src/self_review.py` con señal `auditor_disputes_ratio`.
-- [ ] Corrida end-to-end en edición piloto: W18 (lunes 11 may) con el auditor activo en modo silencioso (log se escribe; la edición no visibiliza tier todavía).
+- [ ] Corrida end-to-end en una edición piloto (la que toque tras cerrar la fase) con el auditor activo en modo silencioso (log se escribe; la edición no visibiliza tier todavía).
 
-### Semana 4 (19 may – 25 may) — Prueba empírica sobre W10 (5-8 h editor)
+### Fase 4 — Prueba empírica sobre W10 (~5-8 h de trabajo del editor)
 
 **Entregables.**
 
-- [ ] Backfill solo de la semana W10 (2-8 marzo 2026). Una semana sola, no las 12.
+- [ ] Backfill solo de la semana W10 (2-8 marzo 2026, dato histórico). Una semana sola, no las 12.
 - [ ] Medir: coste real vs proyección, ratio de disputas, tiempo, tamaño del log, distribución de señales.
 - [ ] Ajustar umbrales de heurísticas si los tiers quedan mal calibrados (revisar bloque `signals` de las propuestas).
 - [ ] Decisión go / no-go para el backfill completo de 12 semanas.
 
-**Cierre del Hito 1.** Se cumple cuando el criterio de éxito de §10 se da en la corrida sobre W10. D1 revisa el MVP el 2026-05-15 con los datos reales de W10 + W18.
+**Cierre del Hito 1.** Se cumple cuando el criterio de éxito de §10 se da en la corrida sobre W10. [D1](DECISIONES.md) revisa el MVP con esos datos + los de la edición piloto de la Fase 3.
 
 ---
 
@@ -751,8 +751,8 @@ El MVP se considera cerrado si, tras la prueba empírica sobre W10, se cumplen l
 - [`src/extract.py`](src/extract.py) — capas 1 y 4 preexistentes.
 - [`src/verify.py`](src/verify.py) — 5 checks que alimentan capa 3.
 - [`src/costs.py`](src/costs.py) — registro y topes.
-- [`src/self_review.py`](src/self_review.py) — autoevaluación (se ajusta en semana 3).
+- [`src/self_review.py`](src/self_review.py) — autoevaluación (se ajusta en la Fase 3).
 
 ---
 
-*Documento vivo. Se archiva como histórico al cerrar el Hito 1 (estimación: 2026-05-15 según D1).*
+*Documento vivo. Se archiva como histórico al cerrar el Hito 1. Sin fecha estimada ([D15](DECISIONES.md)).*
