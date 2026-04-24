@@ -91,3 +91,85 @@ Cada propuesta publicada deja un expediente. Un archivo por propuesta en `data/a
 - **`verify`** — las tres verificaciones clásicas del proyecto. Ya existen; el auditor solo las recoge aquí.
 - **`corrections`** — vacío al nacer. Cada petición externa añade un objeto con fecha, origen, cuerpo y resolución. El JSON original nunca se toca.
 - **`timestamps`** — cuándo ocurrió cada paso. Sirve para medir tiempos reales y detectar cuellos de botella.
+
+---
+
+## 3 · Árbol de decisión: qué publica, qué escala, qué se cuarentena
+
+Tres preguntas en orden. La primera que responde "sí" corta el árbol.
+
+### 3.1 · ¿Hay bloqueante?
+
+Cuatro motivos bloquean la publicación y mandan la propuesta a cuarentena:
+
+1. **Estructuras incompatibles** — el comparador devuelve `mismatch` (actor o palanca distintos entre Haiku y Sonnet). No es un desacuerdo fino: es que una de las dos no entendió la noticia.
+2. **URL muerta** — `verify.url_ok == false`.
+3. **Actor no identificable** — `verify.actor_traceable == false`.
+4. **Verbos prohibidos en la cita** — `verify.forbidden_verbs` no vacío.
+
+Una propuesta bloqueada se escribe igual en `data/audit/YYYY-wWW/{id}.json` con `status: "quarantined"` y motivo explícito. No aparece en la edición publicada. Queda disponible para el protocolo de correcciones y para el repaso mensual futuro.
+
+### 3.2 · ¿Hay disputa entre las dos extracciones?
+
+Si el comparador devuelve `major` (diferencias en viabilidad, tipo o cita, sin llegar a ser incompatibles), se escala al fallback de Opus que **ya existe** en `extract.py` hoy. En mínimo viable no hay capa 4 separada; se reutiliza.
+
+Opus recibe las dos fichas y la noticia original. Tres salidas posibles:
+
+- **Resuelve a favor de Haiku** → ficha canónica = Haiku. Publica.
+- **Resuelve a favor de Sonnet** → ficha canónica = Sonnet. Publica.
+- **Resuelve que ninguna es correcta** → cuarentena con motivo `opus_rejected_both`.
+
+La salida de Opus se guarda en `signals.arbitraje_opus` del registro para alimentar el futuro nivel de confianza.
+
+### 3.3 · Resto de casos → publica
+
+Si el comparador devuelve `match` o `minor`, la ficha canónica es la de Haiku (por coste). Las diferencias menores quedan registradas en `layers.compare.diffs` pero no bloquean.
+
+### 3.4 · Las cuatro heurísticas corren siempre
+
+Independientemente de si hay bloqueante, disputa o publicación directa. Sus señales se guardan en `tier.signals` aunque la propuesta vaya a cuarentena. El módulo futuro de tiers las necesitará tanto para colorear las publicadas como para proponer rescates desde cuarentena.
+
+---
+
+## 4 · Encaje en el flujo general
+
+El pipeline actual, de izquierda a derecha:
+
+```
+ingest → classify → extract → verify → balance → generate → archive
+```
+
+Con auditor mínimo viable:
+
+```
+ingest → classify → extract ─┬─► audit (Sonnet ciego)
+                             │
+                             ├─► compare (Haiku vs Sonnet)
+                             │
+                             ├─► heuristics (4 señales sin IA)
+                             │
+                             └─► [si major] opus_fallback (ya existe)
+                                        │
+                                   verify → write_audit_log → balance → generate → archive
+```
+
+### 4.1 · Módulos nuevos
+
+- **`src/audit.py`** — llama a Sonnet ciego y escribe el expediente final (`write_audit_log`).
+- **`src/audit_compare.py`** — compara fichas.
+- **`src/audit_heuristics.py`** — calcula las cuatro señales.
+- **`data/actor_domains.yml`** — whitelist inicial de 15-20 actores con sus dominios oficiales ([D3](DECISIONES.md)).
+- **`data/audit/YYYY-wWW/`** — carpeta nueva donde se escriben los expedientes.
+
+### 4.2 · Módulos existentes que hay que tocar
+
+- **`src/report.py`** (orquestador) — añade las llamadas al auditor entre `extract` y `verify`, y la escritura del expediente al final de cada propuesta. Es el cambio más largo, pero es pegado de llamadas, no lógica nueva.
+- **`src/self_review.py`** — añade dos chequeos de salud semanales: ratio de disputas (sano entre 8 % y 25 %, según [§12](ESTUDIO-COSTES-AUDITOR.md)) y ratio de cuarentena. Si alguno se dispara, alerta por Telegram.
+
+### 4.3 · Qué NO se toca en mínimo viable
+
+- `extract.py` — el fallback Opus que ya tiene se reutiliza tal cual; no se extrae a capa propia todavía.
+- `verify.py` — se llama en otro orden, pero la lógica interna no cambia.
+- `balance.py`, `generate.py`, `archive.py` — invariantes.
+
+Esto limita la superficie de cambio a código nuevo + dos archivos existentes tocados. Cabe en las dos semanas calendario del hito.
