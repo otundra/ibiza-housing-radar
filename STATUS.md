@@ -1,4 +1,4 @@
-# Estado operativo — actualizado 2026-04-24 tarde
+# Estado operativo — actualizado 2026-04-25
 
 > **Regla:** ≤ 100 líneas. Solo estado vigente. Lo histórico vive en [`DIARIO.md`](DIARIO.md); lo fundacional en [`CLAUDE.md`](CLAUDE.md) (sección *Reglas fundacionales*). Ver [D0](DECISIONES.md).
 
@@ -26,7 +26,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 ## 🟡 En curso
 
 - **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21, 34 tareas. Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) + memoria [`revision_fase_0_5.md`](.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/revision_fase_0_5.md).
-- **Hito 1 — Auditor mínimo viable.** PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). **Diseño del módulo cerrado 2026-04-24** en [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md) (11 secciones + whitelist V1 cerrada de 20 actores + schema del registro + 4 fases de construcción). Siguiente: arrancar Fase 1 (capa 2 Sonnet ciega + comparador determinista) tras OK del editor. Sin calendario ni fecha ([D15](DECISIONES.md)).
+- **Hito 1 — Auditor mínimo viable.** PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). Diseño del módulo cerrado 2026-04-24 en [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md). **Construcción en marcha:** Fase 1 (segunda lectura ciega + comparador) y **Fase 2** (heurísticas deterministas + whitelist V1 cerrada + caché HTTP local + bloque `signals` con `compute_tier()` stub) **cerradas 2026-04-25**. Coste acumulado validación: 0,042 €. Pendiente: Fase 3 (registro JSON append-only + integración con `src/report.py` + página de correcciones), Fase 4 (calibración con la semana W10 del 2-8 marzo 2026). Sin calendario ni fecha ([D15](DECISIONES.md)).
 - **Hito 2 — Re-estudio del sistema de tiers** ✅ **cerrado 2026-04-23** (RT15, RT26). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo con 5 decisiones operativas en [D9](DECISIONES.md). Queda como pendiente de datos la medición empírica del sesgo por actor (RT25, post-backfill). Implementación de `src/tiers.py` + `data/tiers.yml` pasa a PI10 (sin bloquear auditor MVP).
 
 ## 🏷️ Identidad (provisional 2026-04-21)
@@ -40,7 +40,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 Sin calendario ni fecha de lanzamiento ([D15](DECISIONES.md)). El avance se organiza por hitos; los rangos de reloj solo aplican al cron semanal, que es automático.
 
 - **Próxima edición automática** — lunes siguiente según el cron semanal. Etiqueta pública según rango de fechas reales.
-- **Arranque Hito 1 — Auditor MVP:** diseño cerrado → construcción en 4 fases (capa 2 + comparador / heurísticas + whitelist / log + integración / prueba empírica). Detalle en [`DISENO-AUDITOR-MVP.md §9`](DISENO-AUDITOR-MVP.md). Arranca cuando el editor dé OK al plano. Prueba empírica sobre W10 (2-8 marzo 2026, dato histórico).
+- **Hito 1 — Auditor MVP en construcción.** Fases 1 y 2 cerradas 2026-04-25 (segunda lectura ciega + comparador + heurísticas + whitelist V1 + bloque `signals` con stub de tier). Pendiente: Fase 3 (registro JSON + integración con `src/report.py` + página de correcciones), Fase 4 (prueba empírica sobre la semana del 2-8 marzo 2026). Detalle en [`DISENO-AUDITOR-MVP.md §9`](DISENO-AUDITOR-MVP.md).
 - **Antes de abrir al público** — revisar exposición legal de la página de correcciones (`/correcciones/`). El protocolo de 72 h queda publicado antes de tener buzón operativo; riesgo acotado mientras la web no tiene tráfico pero hay que cerrarlo antes de abrir al público. Anclado al Hito 3 legal. Detalle en [`DISENO-AUDITOR-MVP.md §7`](DISENO-AUDITOR-MVP.md).
 - **Revisión del sistema de monitorización** ([D14](DECISIONES.md)) — tras 2-4 ediciones del sistema funcionando. Decidir si sumar aviso por patrón en autoevaluación + aviso por acumulación de 5 decisiones pequeñas autónomas del asistente sin resumen.
 

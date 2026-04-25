@@ -682,25 +682,36 @@ D1 dejó estas piezas fuera del MVP. Arrancan tras cerrar el Hito 1 (~15 h de tr
 
 Cuatro fases en cascada. Cada una se cierra cuando sus entregables están verificados; la siguiente arranca cuando el editor lo indica. **Sin calendario ni rango de días** ([D15](DECISIONES.md)); las estimaciones de horas son esfuerzo relativo del editor, no compromiso de reloj. Referencia completa: [ESTUDIO-COSTES-AUDITOR.md §10](ESTUDIO-COSTES-AUDITOR.md).
 
-### Fase 1 — Capa 2 + comparador (~7-10 h de trabajo del editor)
+### Fase 1 — Capa 2 + comparador (~7-10 h de trabajo del editor) ✅ cerrada 2026-04-25
 
 **Entregables.**
 
-- [ ] `src/audit.py` con `run_blind_audit()` operativa. Batch único Sonnet con `EXTRACT_SYSTEM`.
-- [ ] `src/audit_compare.py` con `compare_extractions()`. Comparación campo a campo, severidad.
-- [ ] Prueba manual: corrida sobre las 3 propuestas de W17 (ya publicada). Log muestra bloque `layers.haiku` + `layers.sonnet_blind` + `layers.compare`.
+- [x] `src/audit.py` con `run_blind_audit()` operativa. Batch único Sonnet con `EXTRACT_SYSTEM`.
+- [x] `src/audit_compare.py` con `compare_extractions()`. Comparación campo a campo, severidad.
+- [x] Prueba manual: corrida sobre 4 propuestas (3 de W17 + 1 adicional) vía `scripts/test_audit_phase1.py`. Comparador clasifica los desajustes en `critical`/`minor`/`none` correctamente. Coste real 0,042 €.
 
 **Sin integración aún** con `src/report.py`. Se prueba vía REPL o script adhoc.
 
-### Fase 2 — Heurísticas + whitelist + hueco tier (~8-12 h de trabajo del editor)
+**Apuntes registrados al cierre** (no bloquean Fase 1; mitigación prevista en fases siguientes):
+
+1. *Desajustes cosméticos en nombres de actor* (Sonnet usa nombre largo, Haiku usa el corto) → mitigación en Fase 2 vía whitelist + alias.
+2. *Número distinto de propuestas entre Haiku y Sonnet* → mitigación en Fase 3 vía señal `layers.compare.count_mismatch`.
+3. *Sonnet desviándose ocasionalmente del actor declarado en el hint* → mitigación en iteración posterior al Hito 1 vía capa 4 Opus formalizada como árbitro.
+
+### Fase 2 — Heurísticas + whitelist + hueco tier (~8-12 h de trabajo del editor) ✅ cerrada 2026-04-25
 
 **Entregables.**
 
-- [ ] `src/audit_heuristics.py` con las 3 heurísticas.
-- [ ] `data/actor_domains.yml` curado (§5).
-- [ ] Caché HTTP local en `.cache/http/` (TTL 30 días). Añadir a `.gitignore`.
-- [ ] Función `compute_tier(signals)` en `src/audit.py` que devuelve siempre `{value: null, reason: "pendiente_estudio", signals: {...}}`.
-- [ ] Prueba manual: corrida sobre W17 con las 11 señales pobladas. Validar que todas calculan correctamente.
+- [x] `src/audit_heuristics.py` con las 3 heurísticas (`check_cross_source`, `check_verbatim_match`, `check_whitelist`).
+- [x] `data/actor_domains.yml` curado (§5).
+- [x] Caché HTTP local en `.cache/http/` (TTL 30 días). Añadido a `.gitignore`.
+- [x] Función `compute_tier(signals)` en `src/audit.py` que devuelve siempre `{value: null, reason: "pendiente_estudio", signals: {...}}`. Extra: `build_signals()` helper para construir el bloque a partir del comparador + heurísticas.
+- [x] Prueba manual `scripts/test_audit_phase2.py` sobre las 3 propuestas de W17. 11 señales pobladas en cada una. Cross-source clasifica `[1, 2, 2]`. Whitelist clasifica `[debilita, debilita, neutro]`. Verbatim ratio = 1.0 cuando la propuesta apunta a su propia URL fuente.
+
+**Apuntes para Fase 4 (calibración con W10):**
+
+1. *Huecos en la whitelist V1*: `cadenaser.com` y `lavozdeibiza.com` no figuran en `medios_cobertura_aceptada`; coaliciones largas tipo `"Consell d'Eivissa, patronales, sindicatos"` no casan con la entrada simple `Consell d'Eivissa`. Refinamiento post-backfill ([D3](DECISIONES.md)).
+2. *Ruido en `verbatim_match`*: cross-checks (verbatim de A contra body de B) devuelven ratios 0.65-0.93 por solapamiento de vocabulario común. Calibrar umbrales o cambiar a métrica más estricta (longest-match sobre `len(needle)`) en Fase 4.
 
 ### Fase 3 — Log + integración + página /correcciones/ (~8-12 h de trabajo del editor)
 

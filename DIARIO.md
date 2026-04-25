@@ -13,6 +13,41 @@ Reglas:
 
 ---
 
+## 2026-04-25 [arquitectura] — Auditor MVP fase 2 cerrada (heurísticas + whitelist + bloque signals)
+
+Encadenado a la fase 1 en el mismo turno. Tres comprobaciones deterministas sin IA + lista blanca de actores + hueco para los tiers.
+
+- **Tres archivos nuevos.** `src/audit_heuristics.py` con las tres heurísticas: cruce de fuentes (cuántos dominios distintos cubren la propuesta en la misma semana), coincidencia textual del verbatim contra el cuerpo de la URL fuente (con caché HTTP local en `.cache/http/`, TTL 30 días) y encaje dominio-actor contra la whitelist. `data/actor_domains.yml` con la whitelist V1 cerrada en 20 actores y 12 medios. `scripts/test_audit_phase2.py` para corrida manual sin API.
+- **Extensiones a `src/audit.py`.** Helper `build_signals()` que combina comparador + heurísticas (+ verify cuando esté disponible) en las 11 señales del registro de auditoría. Función `compute_tier(signals)` como hueco — siempre devuelve `value=null`, `reason='pendiente_estudio'`, y conserva el bloque signals para que la fórmula real (PI10) lo lea cuando se conecte el estudio de tiers.
+- **Caché HTTP en `.gitignore`.** Carpeta `.cache/` añadida. La primera corrida real bajó tres páginas (~820 KB) y a partir de ahora reutiliza el cuerpo durante 30 días sin pegar al medio.
+- **Validación con datos reales.** Las 3 propuestas de la última edición pasaron la corrida con las 11 señales pobladas en cada una. Cruce de fuentes dio `[1, 2, 2]` (la propuesta de Marí en cadenaser.com queda single-source; las dos coaliciones por residencias temporeros tienen dos diarios cubriendo). Encaje con whitelist dio `[debilita, debilita, neutro]`. Coincidencia textual real entre verbatim y cuerpo del artículo dio ratio 1.000 cuando la propuesta apunta a su propia URL fuente, y 0.65-0.93 en cross-checks (verbatim de A contra cuerpo de B).
+- **Dos apuntes para la Fase 4 (calibración con la semana W10 del 2-8 marzo 2026).**
+   1. *Huecos esperables de la whitelist V1.* `cadenaser.com` y `lavozdeibiza.com` no están en la lista de medios aceptados; coaliciones largas (`"Consell d'Eivissa, patronales, sindicatos"`) no casan con la entrada simple del actor. Refinamiento previsto en la revisión post-backfill ([D3](DECISIONES.md)).
+   2. *Ruido en la coincidencia textual.* La métrica actual (suma de `matching_blocks` de `SequenceMatcher` dividida por la longitud del verbatim) es generosa: cross-checks de verbatim de A contra cuerpo de B sacan ratios 0.65-0.93 sólo por solapamiento de vocabulario común (`Ibiza`, `alquileres`, `residencias`). Calibrar umbrales o cambiar a *longest contiguous match / len(needle)* tras ver la distribución sobre 12 propuestas reales de W10.
+- **Coste real de Fase 2.** 0 € de API. Tres descargas HTTP de páginas públicas. Caché ya escrita en `.cache/http/` para futuras corridas.
+
+Siguiente paso natural: Fase 3 (registro JSON append-only en `data/audit/YYYY-wWW/`, integración del paso `audit` entre `extract` y `generate` en `src/report.py`, página `/correcciones/` mínima publicada).
+
+---
+
+## 2026-04-25 [arquitectura] — Auditor MVP fase 1 cerrada (segunda lectura ciega + comparador)
+
+Primer trozo del auditor mínimo viable construido y verificado de extremo a extremo sobre datos reales. El plano de obra (DISENO-AUDITOR-MVP.md §9) parte la construcción en cuatro fases; esta entrada cierra la primera. Sin integración aún con el pipeline principal — el auditor todavía no se enchufa al cron semanal.
+
+- **Tres archivos nuevos.** `src/audit.py` con `run_blind_audit()` lanza una llamada batch a Sonnet 4.6 con el mismo prompt y mismo payload que ya usa Haiku en `src/extract.py`, sin ver la salida de la primera lectura. `src/audit_compare.py` con `compare_extractions()` compara las dos fichas campo a campo y clasifica los desajustes en `critical` / `minor` / `none` siguiendo el árbol del plano (5 campos críticos, 4 menores, umbral textual sobre `statement_verbatim` con `SequenceMatcher`). `scripts/test_audit_phase1.py` permite probar manualmente con dos modos: `--dry-run` (sin API, valida el comparador con casos sintéticos) y modo real con cuota.
+- **Ajuste sobre el plano.** El árbol de severidad citaba campos `viability_political`, `viability_tecnica` y `statement_type` que no existen en la ficha real que emite `EXTRACT_SYSTEM`. El comparador usa los campos reales (`viability_legal`, `viability_economic`, `actor_type`) y deja documentado el ajuste en su propio docstring. `statement_type` entrará cuando se añada a la ficha en una fase posterior.
+- **Validación con datos reales.** Corrida sobre 4 propuestas de la última edición con tipo `formal` o `en_movimiento`. Coste real 0,042 € (4 propuestas + 4 llamadas), muy por debajo de la proyección del estudio de costes. Resultado del comparador: 1 ficha idéntica, 2 desajustes críticos legítimos (los dos modelos discrepan de verdad sobre el actor), 1 caso de número distinto de propuestas entre las dos lecturas.
+- **Tres apuntes registrados para fases siguientes** (no bloquean el cierre; cada uno tiene mitigación prevista en el plano).
+   1. **Desajustes cosméticos en nombres de actor.** Sonnet emite el nombre con prefijo institucional completo (*"Patronales y sindicatos de Ibiza"*) donde Haiku usa la forma corta. Disparan severidad `critical` aunque el actor es el mismo. Mitigación: **Fase 2 vía whitelist de dominios + alias de actor** (`data/actor_domains.yml`), que normalizará nombres antes de comparar.
+   2. **Número distinto de propuestas entre las dos lecturas.** En 1 de las 4 noticias, Haiku encontró 1 propuesta y Sonnet encontró 0 (porque la noticia citaba un actor distinto al *hint* de la ficha; ambos modelos siguieron la regla bien, pero llegaron a partes distintas del titular). Mitigación: **Fase 3 vía señal explícita en el registro de auditoría** (`layers.compare.count_mismatch`), de modo que `compute_tier()` real (PI10) pueda penalizar.
+   3. **Sonnet desviándose ocasionalmente del actor declarado.** En 1 caso, Sonnet emitió una ficha con un actor que no aparecía en el *hint*. Con un prompt idéntico, una segunda lectura ciega no garantiza que respete los mismos contratos. Mitigación: **iteración posterior al Hito 1** vía capa 4 Opus formalizada como árbitro (hoy es fallback implícito en `src/extract.py`).
+- **Documentos sincronizados.** Plano del auditor con las marcas `[x]` en los tres entregables de Fase 1 (§9). Estado operativo movido a *"Fase 1 cerrada, Fase 2 en curso"*. Esta entrada del diario.
+- **Coste acumulado del cierre de fase.** Validación + corrida de prueba: 0,046 USD ≈ 0,042 €. Capa de costes en verde holgada; el dashboard interno (`private/costs.md`) y el tablero (`private/panel.md`) lo recogen al regenerarse.
+
+Siguiente paso, ya en marcha en este turno: arrancar Fase 2 (heurísticas deterministas + whitelist V1 + caché HTTP local + hueco para `compute_tier()`).
+
+---
+
 ## 2026-04-24 [docs] — Sin calendario público ni fecha de lanzamiento. El ritmo lo marca el editor
 
 Tras redactar el plano del auditor con su calendario de 4 semanas fechadas (28 abr – 25 may) y tras haber fijado el 23-abr lunes 13 jul 2026 como fecha objetivo de relanzamiento ([D11](DECISIONES.md)), el editor cortó en seco: *"vamos a olvidarnos de las fechas, no son reales. no hay fechas de lanzamiento, ni nada por el estilo"*. Registrado como [D15](DECISIONES.md) y aplicado de golpe.
