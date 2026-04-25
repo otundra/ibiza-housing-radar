@@ -4,6 +4,12 @@ Tras escribir la edición, Sonnet revisa la edición nueva + 3 anteriores
 y puntúa 5 dimensiones. Si alguna <7, alerta Telegram con link al log.
 
 Modelo: Sonnet 4.6. Coste: ~0,15 €/edición. Decisión 2026-04-20.
+
+Desde Fase 3 del auditor MVP (DISENO-AUDITOR-MVP.md §6.4): además de la
+edición, el revisor recibe un bloque ``auditor`` con el ratio de
+disputas Haiku↔Sonnet de la semana. Si el ratio está fuera del rango
+saludable [0.08, 0.25] (ESTUDIO-COSTES-AUDITOR.md §12.1), Sonnet lo
+anota como aviso y el editor lo ve en la alerta del lunes.
 """
 from __future__ import annotations
 
@@ -26,8 +32,14 @@ ROOT = Path(__file__).resolve().parent.parent
 EDITIONS_DIR = ROOT / "docs" / "_editions"
 OUT_DIR = ROOT / "private" / "self-review"
 LOG_PATH = ROOT / "private" / "self-review-log.md"
+AUDIT_DIR = ROOT / "data" / "audit"
 
 MODEL = "claude-sonnet-4-6"
+
+# Rango saludable del ratio de disputas Haiku↔Sonnet (ESTUDIO-COSTES-AUDITOR §12.1).
+# Por debajo del mínimo: capa 2 puede estar copiando capa 1 (sospechoso).
+# Por encima del máximo: divergencia anormal entre modelos (degradación o prompt mal calibrado).
+DISPUTE_RATIO_HEALTHY = (0.08, 0.25)
 
 SYSTEM = """Eres un revisor interno de Ibiza Housing Radar, un observatorio documental de vivienda en Ibiza.
 
@@ -45,6 +57,13 @@ Recibes la edición recién publicada y las 3 ediciones anteriores como contexto
 - "balance": diversidad de actores citados en la edición. Distribución entre tipos (público, privado, sindical, tercer sector, etc.).
 - "cobertura": ¿cubre los hechos importantes de la semana con las fuentes dadas? ¿Deja fuera algo relevante de la ingesta?
 - "claridad": legibilidad sin perder densidad. Estructura clara, bullets concretos, tono consistente.
+
+También recibes un bloque "auditor" con métricas de la auditoría interna de la semana (segunda lectura ciega Haiku↔Sonnet). Tienes que interpretar la señal "ratio_disputas":
+
+- "ratio_disputas" es la fracción de propuestas con desacuerdo Haiku↔Sonnet de severidad crítica o menor.
+- "rango_saludable" indica el intervalo [min, max] esperable. "en_rango" es true si ratio cae dentro.
+- Si en_rango es false, el rigor de la edición está en duda — añade un warning concreto y baja la nota de "rigor" a 6 o menos. Razón típica: prompt degradado, modelo cambiado, o noticias inusualmente confusas.
+- Si "propuestas_flagged" > 0, son propuestas que el auditor marcó para revisión manual; cítalas en warnings con su id.
 
 Devuelve JSON con:
 {
@@ -69,14 +88,70 @@ def latest_editions(n: int = 4) -> list[Path]:
     return files[:n]
 
 
+def auditor_signal(edition_id: str) -> dict:
+    """Resume el ratio de disputas Haiku↔Sonnet de la edición.
+
+    Lee los registros JSON escritos por ``src/audit.py`` en
+    ``data/audit/{edition}/`` y agrega el bloque que se inyecta al
+    payload del revisor (DISENO-AUDITOR-MVP.md §6.4). Si no hay logs,
+    devuelve dict vacío de manera compatible (el revisor lo ignora).
+
+    El edition_id de self_review llega como ``YYYY-WNN`` (mayúscula); los
+    logs del auditor se escriben con ``YYYY-wNN`` (minúscula) — se
+    normaliza a la baja.
+    """
+    edition_dir = AUDIT_DIR / edition_id.lower()
+    if not edition_dir.exists():
+        return {}
+
+    files = sorted(edition_dir.glob("*.json"))
+    if not files:
+        return {}
+
+    auditadas = 0
+    disputadas = 0
+    flagged: list[str] = []
+    for f in files:
+        try:
+            record = json.loads(f.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        auditadas += 1
+        compare = (record.get("layers") or {}).get("compare") or {}
+        if compare.get("severity") in ("critical", "minor"):
+            disputadas += 1
+        tier_value = (record.get("tier") or {}).get("value")
+        if tier_value in ("naranja", "rojo"):
+            pid = record.get("proposal_id") or f.stem
+            flagged.append(pid)
+
+    if auditadas == 0:
+        return {}
+
+    ratio = round(disputadas / auditadas, 3)
+    minimo, maximo = DISPUTE_RATIO_HEALTHY
+    return {
+        "propuestas_auditadas": auditadas,
+        "propuestas_disputadas": disputadas,
+        "ratio_disputas": ratio,
+        "rango_saludable": [minimo, maximo],
+        "en_rango": minimo <= ratio <= maximo,
+        "propuestas_flagged": len(flagged),
+        "flagged_ids": flagged,
+    }
+
+
 def review(edition_path: Path, edition_id: str) -> dict:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
     prevs = [p for p in latest_editions(4) if p != edition_path][:3]
-    payload = {
+    auditor = auditor_signal(edition_id)
+    payload: dict = {
         "edicion_nueva": edition_path.read_text(),
         "ediciones_anteriores": [p.read_text() for p in prevs],
     }
+    if auditor:
+        payload["auditor"] = auditor
 
     assert_budget_available(planned_cost=0.2)
 
