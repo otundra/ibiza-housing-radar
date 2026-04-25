@@ -1,32 +1,52 @@
-"""Auditor — capa 2 ciega + bloque ``signals`` para tiers.
+"""Auditor MVP — orquestador completo + registro JSON append-only.
 
-- Capa 2 (``run_blind_audit``): segunda lectura independiente con Sonnet 4.6
-  sobre el mismo prompt y payload que pasa por capa 1 (Haiku) en
-  ``src/extract.py``. Alimenta el comparador campo a campo de
+Tres bloques principales:
+
+- ``run_blind_audit`` (capa 2). Segunda lectura ciega con Sonnet 4.6 sobre
+  el mismo prompt y payload que pasa por capa 1 (Haiku) en
+  ``src/extract.py``. Alimenta el comparador determinista de
   ``src/audit_compare.py``.
-- Bloque ``signals`` (``build_signals``): combina comparador + heurísticas
-  (``src/audit_heuristics.py``) + verify (cuando esté disponible) en las 11
-  señales del registro de auditoría (plano §3.2).
-- Stub ``compute_tier``: en el MVP siempre devuelve ``value=None`` con
-  ``reason='pendiente_estudio'`` y deja ``signals`` listo para que la
-  fórmula real (PI10) lea el bloque cuando el estudio de tiers se
-  conecte.
+- ``build_signals`` + ``compute_tier``. Bloque ``signals`` (11 señales del
+  registro de auditoría, plano §3.2) y stub de ``compute_tier`` que en el
+  MVP siempre devuelve ``value=None`` con ``reason='pendiente_estudio'``.
+- ``audit_proposals`` + ``write_audit_log``. Orquestador del MVP completo:
+  capa 2 ciega (un único batch Sonnet) + comparador + heurísticas
+  (``src/audit_heuristics.py``) + signals + escritura del JSON por
+  propuesta en ``data/audit/{edition}/{proposal_id}.json`` (append-only;
+  si el archivo existe, error sin sobreescribir).
 
-Plano: DISENO-AUDITOR-MVP.md §2.1 + §9 (fases 1-2).
-Capas restantes (registro JSON, integración con ``report.py``, prueba
-empírica W10) llegan en fases 3-4.
+Invocación independiente como paso del pipeline::
+
+    ANTHROPIC_API_KEY=... python -m src.audit             # con API
+    python -m src.audit --dry-run                         # sin API
+
+Plano: DISENO-AUDITOR-MVP.md §2.1 + §3.1 + §6.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import logging
+import os
 import re
+import sys
+import time
+from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
+from src.audit_compare import compare_extractions
+from src.audit_heuristics import load_actor_domains, run_heuristics
 from src.costs import assert_budget_available, record_call
-from src.extract import EXTRACT_SYSTEM, MODEL_VALIDATOR, _call, _try_json
+from src.extract import EXTRACT_SYSTEM, MODEL_BASE, MODEL_VALIDATOR, _call, _try_json
 
 log = logging.getLogger("audit")
+
+ROOT = Path(__file__).resolve().parent.parent
+EXTRACTED_FILE = ROOT / "data" / "extracted.json"
+CLASSIFIED_FILE = ROOT / "data" / "classified.json"
+ACTOR_DOMAINS_FILE = ROOT / "data" / "actor_domains.yml"
+AUDIT_DIR = ROOT / "data" / "audit"
 
 SEVERITY_TO_CONSENSO = {
     "none": "completo",
@@ -34,6 +54,10 @@ SEVERITY_TO_CONSENSO = {
     "critical": "disputa",
 }
 
+
+# ---------------------------------------------------------------------------
+# Capa 2 — segunda lectura ciega (Sonnet)
+# ---------------------------------------------------------------------------
 
 def run_blind_audit(client, items: list[dict], edition: str) -> dict[str, list[dict]]:
     """Capa 2: lectura ciega con Sonnet sobre el mismo envío que Haiku.
@@ -81,6 +105,10 @@ def run_blind_audit(client, items: list[dict], edition: str) -> dict[str, list[d
         out[nid] = record.get("proposals", []) or []
     return out
 
+
+# ---------------------------------------------------------------------------
+# Bloque signals + stub de tier
+# ---------------------------------------------------------------------------
 
 def build_signals(
     proposal: dict,
@@ -149,3 +177,309 @@ def compute_tier(signals: dict) -> dict:
         "reason": "pendiente_estudio",
         "signals": dict(signals or {}),
     }
+
+
+# ---------------------------------------------------------------------------
+# Registro JSON append-only
+# ---------------------------------------------------------------------------
+
+def write_audit_log(record: dict, edition: str) -> Path:
+    """Escribe un registro JSON en ``data/audit/{edition}/{proposal_id}.json``.
+
+    Append-only: si el archivo existe, lanza ``FileExistsError`` sin
+    sobreescribir. La intención es que el archivo histórico del auditor
+    nunca se corrompa; las correcciones se añaden al bloque
+    ``corrections`` del propio JSON, no al archivo desde fuera.
+
+    Plano §3.1.
+    """
+    proposal_id = record.get("proposal_id")
+    if not proposal_id:
+        raise ValueError("record sin proposal_id; no se puede escribir el log.")
+    week_dir = AUDIT_DIR / edition
+    week_dir.mkdir(parents=True, exist_ok=True)
+    path = week_dir / f"{proposal_id}.json"
+    if path.exists():
+        raise FileExistsError(f"audit log ya existe (no se sobreescribe): {path}")
+    path.write_text(
+        json.dumps(record, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    return path
+
+
+# ---------------------------------------------------------------------------
+# Orquestador
+# ---------------------------------------------------------------------------
+
+def _items_for_blind(
+    extracted: list[dict],
+    classified: list[dict],
+) -> list[dict]:
+    """Reconstruye el formato (id/title/summary/url/hint) de los items que
+    hay que volver a leer ciegamente con Sonnet.
+
+    El cruce extracted ↔ classified se hace por URL (cada propuesta lleva
+    ``url_source`` que coincide con la ``url`` del clasificado). Así
+    evitamos asumir que los índices ``item-NNN`` empatan con la posición
+    en classified.json (que no siempre lo hacen porque ``extract.py``
+    enumera tras filtrar).
+    """
+    by_url = {n.get("url"): n for n in classified if n.get("url")}
+    items: list[dict] = []
+    for it in extracted:
+        proposals = it.get("proposals") or []
+        if not proposals:
+            continue
+        nid = it.get("news_id")
+        url = (proposals[0].get("url_source") or "").strip()
+        n = by_url.get(url)
+        if n is None:
+            log.warning(
+                "news_id %s (url=%s) sin entrada en classified — se omite de capa 2.",
+                nid, url,
+            )
+            continue
+        items.append({
+            "id": nid,
+            "title": n.get("title", ""),
+            "summary": n.get("summary", "") or "",
+            "url": n.get("url", ""),
+            "proposal_actor_hint": n.get("proposal_actor_hint"),
+        })
+    return items
+
+
+def _build_audit_record(
+    *,
+    proposal_id: str,
+    edition: str,
+    proposal_haiku: dict,
+    proposal_blind: dict | None,
+    compare_result: dict,
+    heuristics_result: dict,
+    timings: dict,
+) -> dict:
+    """Construye el dict JSON del registro de auditoría según §3.1.
+
+    El bloque ``verify`` queda mínimo en el MVP: ``verify.py`` corre sobre
+    la edición markdown completa, no por propuesta, así que aquí sólo
+    rellenamos lo que ya saben las heurísticas (``url_ok`` desde el fetch
+    de ``check_verbatim_match`` y ``traza_dominio_actor`` desde la
+    whitelist). ``wayback_snapshot``, ``fecha_coherente`` y verbos
+    prohibidos quedan vacíos hasta que se conecte una capa de verify por
+    propuesta (iteración posterior, plano §8).
+    """
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+    signals = build_signals(
+        proposal_haiku, compare_result, heuristics_result, verify_result=None,
+    )
+    tier = compute_tier(signals)
+
+    verbatim = (heuristics_result or {}).get("verbatim_match") or {}
+
+    verify_block = {
+        "url_ok": verbatim.get("url_ok"),
+        "http_status": None,
+        "checked_at": now,
+        "wayback_snapshot": None,
+        "traza_dominio_actor": signals.get("traza_dominio_actor"),
+        "fecha_coherente": None,
+        "verbos_prohibidos_detectados": [],
+    }
+
+    return {
+        "proposal_id": proposal_id,
+        "week": edition,
+        "created_at": now,
+        "tier": tier,
+        "corrections": [],
+        "layers": {
+            "haiku": {
+                "model": MODEL_BASE,
+                "extracted_at": now,
+                "proposal": proposal_haiku,
+            },
+            "sonnet_blind": {
+                "model": MODEL_VALIDATOR,
+                "extracted_at": now,
+                "proposal": proposal_blind,
+            },
+            "compare": compare_result,
+            "heuristics": heuristics_result,
+        },
+        "verify": verify_block,
+        "timestamps": timings,
+    }
+
+
+def audit_proposals(
+    client,
+    extracted: list[dict],
+    classified: list[dict],
+    actor_domains: dict,
+    edition: str,
+    *,
+    dry_run: bool = False,
+) -> list[dict]:
+    """Auditor MVP de extremo a extremo sobre las propuestas extraídas.
+
+    Pasos por cada propuesta:
+
+    1. Capa 2 ciega (un único batch Sonnet sobre todos los news_items con
+       propuestas). En ``--dry-run`` se reusa la ficha de Haiku como
+       lectura ciega: el comparador siempre devuelve ``severity=none``.
+    2. ``compare_extractions`` (Haiku vs blind).
+    3. ``run_heuristics`` (cross_source + verbatim_match + whitelist).
+    4. ``build_signals`` + ``compute_tier`` (stub).
+    5. ``write_audit_log`` (append-only en ``data/audit/{edition}/``).
+
+    Devuelve la lista de registros (mismos que se escriben a disco). Si
+    un archivo ya existía y no se pudo escribir, se loguea aviso y el
+    registro queda en memoria pero no se persiste (sin tocar el JSON
+    histórico).
+    """
+    items_with_props = [it for it in extracted if it.get("proposals")]
+    if not items_with_props:
+        log.info("Auditor: no hay propuestas extraídas — nada que auditar.")
+        return []
+
+    sonnet_ms_total = 0
+    if dry_run:
+        log.info("dry-run: capa 2 reusa fichas Haiku como blind, severity=none.")
+        blind_by_id: dict[str, list[dict]] = {
+            it.get("news_id"): list(it.get("proposals") or [])
+            for it in items_with_props
+        }
+    else:
+        items_blind = _items_for_blind(extracted, classified)
+        if items_blind:
+            t0 = time.perf_counter()
+            blind_by_id = run_blind_audit(client, items_blind, edition)
+            sonnet_ms_total = int((time.perf_counter() - t0) * 1000)
+        else:
+            blind_by_id = {}
+
+    total_props = sum(len(it.get("proposals") or []) for it in items_with_props)
+    sonnet_share = sonnet_ms_total // max(1, total_props)
+
+    records: list[dict] = []
+    counter = 0
+    for it in items_with_props:
+        nid = it.get("news_id")
+        proposals_haiku = it.get("proposals") or []
+        proposals_blind = blind_by_id.get(nid, [])
+
+        for i, proposal_haiku in enumerate(proposals_haiku):
+            counter += 1
+            proposal_id = f"{edition}-{counter:03d}"
+
+            proposal_blind = proposals_blind[i] if i < len(proposals_blind) else None
+
+            t0 = time.perf_counter()
+            compare_result = compare_extractions(proposal_haiku, proposal_blind or {})
+            heuristics_result = run_heuristics(proposal_haiku, classified, actor_domains)
+            heuristics_ms = int((time.perf_counter() - t0) * 1000)
+
+            timings = {
+                "haiku_ms": None,
+                "sonnet_blind_ms": sonnet_share,
+                "heuristics_ms": heuristics_ms,
+                "verify_ms": 0,
+                "total_ms": sonnet_share + heuristics_ms,
+            }
+
+            record = _build_audit_record(
+                proposal_id=proposal_id,
+                edition=edition,
+                proposal_haiku=proposal_haiku,
+                proposal_blind=proposal_blind,
+                compare_result=compare_result,
+                heuristics_result=heuristics_result,
+                timings=timings,
+            )
+
+            try:
+                path = write_audit_log(record, edition)
+                log.info("auditoría: %s", path.relative_to(ROOT))
+            except FileExistsError as exc:
+                log.warning("salto sin sobreescribir: %s", exc)
+
+            records.append(record)
+
+    return records
+
+
+# ---------------------------------------------------------------------------
+# Entry point como paso del pipeline
+# ---------------------------------------------------------------------------
+
+def _default_edition() -> str:
+    iso = datetime.now(timezone.utc).isocalendar()
+    return f"{iso.year}-w{iso.week:02d}"
+
+
+def main() -> int:
+    logging.basicConfig(level=logging.INFO, format="[%(levelname)s %(name)s] %(message)s")
+
+    parser = argparse.ArgumentParser(
+        description="Auditor MVP — capas 2-3 + bloque signals + log JSON.",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Salta capa 2 Sonnet (no consume API); usa Haiku como blind.",
+    )
+    parser.add_argument(
+        "--edition",
+        default=None,
+        help="Etiqueta de la edición (formato YYYY-wWW). Por defecto, semana actual UTC.",
+    )
+    args = parser.parse_args()
+
+    if not EXTRACTED_FILE.exists():
+        log.error("falta %s — corre extract antes.", EXTRACTED_FILE)
+        return 1
+    if not CLASSIFIED_FILE.exists():
+        log.error("falta %s — corre classify antes.", CLASSIFIED_FILE)
+        return 1
+    if not ACTOR_DOMAINS_FILE.exists():
+        log.error("falta %s — necesario para la heurística whitelist.", ACTOR_DOMAINS_FILE)
+        return 1
+
+    extracted = json.loads(EXTRACTED_FILE.read_text(encoding="utf-8"))
+    classified = json.loads(CLASSIFIED_FILE.read_text(encoding="utf-8"))
+    actor_domains = load_actor_domains(ACTOR_DOMAINS_FILE)
+
+    edition = args.edition or _default_edition()
+
+    client = None
+    if not args.dry_run:
+        try:
+            import anthropic
+            client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+        except KeyError:
+            log.error("ANTHROPIC_API_KEY no definida — usa --dry-run para correr sin API.")
+            return 1
+
+    records = audit_proposals(
+        client, extracted, classified, actor_domains, edition,
+        dry_run=args.dry_run,
+    )
+
+    n_critical = sum(
+        1 for r in records if (r["layers"]["compare"] or {}).get("severity") == "critical"
+    )
+    n_minor = sum(
+        1 for r in records if (r["layers"]["compare"] or {}).get("severity") == "minor"
+    )
+    log.info(
+        "Auditor: %d propuestas auditadas (críticas=%d, menores=%d).",
+        len(records), n_critical, n_minor,
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
