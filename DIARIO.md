@@ -13,6 +13,20 @@ Reglas:
 
 ---
 
+## 2026-04-25 [editorial] — Auditoría de tecnicismos en cara pública: 9 fixes aplicados
+
+Tarea de relleno mientras esperamos al cron del lunes. Revisión página a página de todo lo que el lector ve (home, /balance/, /ediciones/, /correcciones/, edición W17, footer) cazando jerga técnica prohibida por las dos reglas de lenguaje del proyecto. Se aplicaron los 9 fixes detectados + las 2 notas, en cuatro commits atómicos. La cara pública queda libre de códigos crudos, números de semana ISO y referencias internas.
+
+- **Fix crítico 1 — footer reescrito.** El texto anterior "Las propuestas son sugerencias generadas por IA" contradecía la regla 2 (el observatorio NO genera propuestas). Sustituido por "Documenta propuestas formuladas por actores con nombre y fuente verificable". También fuera "Automatización con Claude API"; entra "Sin tracking de terceros" para alinear con `/acerca/`.
+- **Fix crítico 2 — códigos taxonómicos traducidos.** Nuevo módulo `src/labels.py` con cuatro mapas (actor_type, palanca, state, horizon) desde snake_case a frases legibles ("en_debate" → "En debate", "coalicion_institucional" → "Coalición institucional", "oferta_vivienda" → "Oferta de vivienda", "enforcement" → "Aplicación de norma"). Lo importan `build_index.py`, `balance.py` y `generate.py`. Idempotente: si llega texto ya legible pasa intacto. Toda la home, todo `/balance/` (público y privado) y la edición W17 quedan limpios.
+- **Fix crítico 3 — números de semana ISO fuera de etiquetas visibles.** Eliminado el `<span>{{ e.week }}</span>` del listado `/ediciones/` que imprimía "2026-W17" debajo de cada item. La fecha (2026-04-20) y el título ("Semana 4 - Abril 2026") ya transmiten el periodo. La numeración ISO queda como metadata interna (frontmatter, slug de URL, logs). Carry-over de la edición W17 también se reformula con rango de fechas humano.
+- **Fix crítico 4 — enlace muerto y ruta interna fuera de `/balance/`.** Retirado el enlace a `/metodologia/` (página inexistente) y la mención a `data/proposals_history.json` (jerga técnica). Sección Metodología simplificada a una frase con anuncio de página dedicada en preparación.
+- **Fixes de estilo.** "pipeline lee la prensa" → "sistema automático lee" en el bloque sobre el proyecto de la home. "URL caída" → "enlace caído" en `/correcciones/`. Emojis fuera de todos los H2 de la edición W17 ("📡 Señales detectadas" → "Señales detectadas", etc.).
+- **Generación futura blindada.** El SYSTEM prompt de `generate.py` se actualiza para emitir labels en el cuerpo (`<state_label>`, `<horizon_label>`, `<actor_type_label>`) y mantener códigos solo en el frontmatter (`blocks_cited`). Carry-over con rango de fechas humano (lunes-domingo de la semana anterior). Regla emoji endurecida: "no uses emojis en ningún lugar del documento". Próximas ediciones nacerán ya limpias.
+- **Verificado en navegador.** Home, `/balance/`, `/ediciones/`, edición W17 y `/correcciones/` revisados con preview Jekyll vivo. Sin códigos crudos visibles, sin enlaces rotos, sin errores de consola. Todas las páginas conservan layout y enlaces internos.
+- **No tocado.** Los 8 prototipos en `docs/prototype/` ya tenían `<meta name="robots" content="noindex,nofollow">` desde antes — Nota A del audit cumplida sin acción. Reescritura editorial profunda de copia (titulares, "Cada lunes...", tono general) queda para más adelante: depende de cerrar tiers de confianza y la decisión de Vía A en la revisión Fase 0.5, que están en cola del Hito 1.
+- **Coste.** 0 € de API. Trabajo enteramente local + Jekyll.
+
 ## 2026-04-25 [pipeline] — Salud de fuentes RSS con alertas proactivas (OP2)
 
 Cerrado OP2 de la revisión Fase 0.5 mientras esperamos al cron del lunes que validará la Fase 3 del auditor. El pipeline ya no es ciego ante caídas o degradación silenciosa de los RSS: si una fuente deja de publicar, baja la frecuencia o cambia de estructura, el editor recibe un aviso consolidado por Telegram.
