@@ -25,6 +25,12 @@ from typing import Any
 import anthropic
 
 from src.costs import record_call, assert_budget_available
+from src.labels import (
+    actor_type_label,
+    horizon_label,
+    palanca_label,
+    state_label,
+)
 
 log = logging.getLogger("generate")
 
@@ -65,17 +71,17 @@ omissions_count: <N>
 rescued_count: <N>
 ---
 
-## 📡 Señales detectadas
+## Señales detectadas
 
 4-8 bullets, uno por señal relevante de la semana. Cada bullet:
 - Hecho concreto + enlace markdown a la fuente (URL del input, literal).
 - Sin valoración, sin "esto es preocupante", sin "urge hacer algo".
 
-## 🗓 Cronología
+## Cronología
 
 3 líneas describiendo el orden temporal de los hechos relevantes esta semana. Sin interpretación, sin valoración, sin "ventana de decisión". Solo ordenar.
 
-## 🗺 Mapa de posiciones
+## Mapa de posiciones
 
 Tabla compacta con las posiciones expresadas por actores sobre los temas principales de la semana:
 
@@ -85,7 +91,7 @@ Tabla compacta con las posiciones expresadas por actores sobre los temas princip
 
 Solo con posiciones que aparezcan EXPLÍCITAMENTE en las noticias proporcionadas.
 
-## 📋 Propuestas en circulación
+## Propuestas en circulación
 
 Sección ABIERTA con las propuestas `formal` de esta semana (del input `extracted`). IMPORTANTE: **deduplica**. Si dos o más propuestas del input comparten objetivo + actor_type + horizon (son la misma iniciativa cubierta por distintos medios), FÚNDELAS en una sola ficha cuyo `url_source` apunte a la fuente principal (la más oficial o con más detalle) y añade al final la nota: *"Otras fuentes que cubren la misma iniciativa: [Medio A](URL A), [Medio B](URL B)"*. `proposals_formal_count` del frontmatter debe reflejar el número DESPUÉS de fusionar, no el del input crudo.
 
@@ -93,13 +99,13 @@ Para cada propuesta (ya fusionada si aplica):
 
 ### <N>. <Título corto fiel al statement_summary>
 
-**Actor que la propone:** <actor> (<actor_type>) — [fuente](<url_source>)
+**Actor que la propone:** <actor> (<actor_type_label>) — [fuente](<url_source>)
 
 **Qué:** <statement_summary>
 
 - **Actor que tendría que ejecutarla:** <target_actor>
-- **Estado:** <state>
-- **Horizonte:** <horizon>
+- **Estado:** <state_label>
+- **Horizonte:** <horizon_label>
 - **Viabilidad jurídica:** <viability_legal> — <viability_legal_reason o "sin evaluación pública">
 - **Viabilidad económica:** <viability_economic> — <viability_economic_reason o "sin cifra pública disponible">
 - **Apoyos públicos citados:** <supporters_cited joined or "ninguno registrado esta semana">
@@ -109,19 +115,19 @@ Para cada propuesta (ya fusionada si aplica):
 Si no hay propuestas formales esta semana, escribe LITERALMENTE:
 > Esta semana no se han registrado propuestas formales en circulación. Revisa las secciones "Radar" y "Omisiones" para el contexto.
 
-## 📡 Radar: señales en movimiento
+## Radar: señales en movimiento
 
 Propuestas `en_movimiento` (del input `extracted`): intenciones declaradas sin medida concreta todavía. Misma ficha que Propuestas en circulación, pero con la anotación clara de que no son propuesta formal aún.
 
 Si no hay: "Esta semana no hay señales en movimiento registradas."
 
-## 🗄 Rescate
+## Rescate
 
 1-2 propuestas del input `rescue_candidates` (si existen), con ficha completa + frase corta explicando por qué se rescata (ej. "Lleva 5 semanas sin movimiento público tras anunciarse").
 
 Si no hay: omitir la sección.
 
-## 🕳 Omisiones
+## Omisiones
 
 Hechos documentados esta semana (del input `classified`) que NO tienen propuesta asociada. 1-3 bullets describiendo el vacío:
 
@@ -129,7 +135,7 @@ Hechos documentados esta semana (del input `classified`) que NO tienen propuesta
 
 Si no se detecta ninguna omisión relevante, omitir la sección.
 
-## 👀 A vigilar la semana que viene
+## A vigilar la semana que viene
 
 3-5 bullets con fechas y decisiones pendientes concretas, extraídas de los hechos de la semana. No inventar.
 
@@ -142,15 +148,16 @@ VERBOS PROHIBIDOS (no los uses bajo ninguna circunstancia, el verificador autom�
 REGLAS DURAS ADICIONALES:
 - Cada enlace markdown debe usar UNA URL del input. Jamás inventes URL.
 - Cada cifra debe estar en el input. Jamás la redondees al alza ni a la baja.
+- **ETIQUETAS LEGIBLES EN EL CUERPO**: usa siempre los campos `<actor_type_label>`, `<state_label>`, `<horizon_label>` del input para el cuerpo de la edición. Los códigos crudos (`actor_type`, `state`, `horizon`) son solo para el frontmatter (`blocks_cited`).
 - **DECLARA LA NATURALEZA DE CADA CIFRA** con etiqueta inline la primera vez que aparezca en el cuerpo. Opciones: `(dato oficial)` si cita resolución, BOIB, documento público; `(estimación periodística)` si el propio medio la acota como aproximada o de agencia; `(orientativa)` si es rango sin fuente primaria. Ejemplo: «unos 200 trabajadores *(estimación periodística)*». Esto aplica a señales y a propuestas por igual.
-- **MARCA CARRY-OVER**: si citas una señal publicada ANTES del lunes de la semana cubierta, añade al final del bullet o de la frase: *«(carry-over de la semana ISO XX)»*. Si no hay carry-over pero el hecho es relevante esta semana, no marques nada.
+- **MARCA CARRY-OVER**: si citas una señal publicada ANTES del lunes de la semana cubierta, añade al final del bullet o de la frase el rango de fechas (lunes a domingo) de la semana anterior: *«(carry-over de la semana del DD-DD de [mes])»*. Ejemplo: si la edición cubre el 20-26 de abril y citas una noticia del 11 de abril, escribe *«(carry-over de la semana del 6-12 de abril)»*. Nunca uses "semana ISO" ni números de semana técnicos en el cuerpo. Si no hay carry-over, no marques nada.
 - **DEDUPLICACIÓN** (ver sección "Propuestas en circulación"): dos ítems del input que comparten objetivo + actor_type + horizon son UNA sola propuesta. `proposals_formal_count` y `proposals_en_movimiento_count` del frontmatter cuentan propuestas DESPUÉS de fusionar.
-- **`blocks_cited` en el frontmatter**: solo incluye los `actor_type` de actores que PROPONEN algo (`formal` o `en_movimiento`). NO incluyas tipos de actor que solo aparecen en señales o en el mapa de posiciones sin proponer nada. Si no hay propuestas, `blocks_cited` es `[]`.
+- **`blocks_cited` en el frontmatter**: solo incluye los `actor_type` (códigos crudos) de actores que PROPONEN algo (`formal` o `en_movimiento`). NO incluyas tipos de actor que solo aparecen en señales o en el mapa de posiciones sin proponer nada. Si no hay propuestas, `blocks_cited` es `[]`.
 - Coaliciones: reproduce los firmantes literales separados por coma. No elijas "primario".
 - Si la semana es floja (poca señal, pocas propuestas), sé honesto: mejor secciones cortas que secciones infladas.
 - No saludes, no te despidas, no firmes. El editor se encarga.
 - No uses lenguaje corporativo ("sinergia", "empoderar", "hoja de ruta").
-- No uses emojis fuera de los títulos de sección que ya vienen arriba.
+- No uses emojis en ningún lugar del documento.
 """
 
 
@@ -230,18 +237,18 @@ omissions_count: 0
 rescued_count: 0
 ---
 
-## 📡 Señales detectadas
+## Señales detectadas
 
 *No se han encontrado noticias relevantes esta semana sobre vivienda o trabajadores de temporada en Ibiza.*
 
-## 🗓 Cronología
+## Cronología
 
 Silencio informativo. Puede significar ausencia real de actividad pública, ciclo de agenda política, o fallo en la ingesta. Revisar manualmente los diarios locales antes de asumir ausencia real.
 
-## 👀 A vigilar la semana que viene
+## A vigilar la semana que viene
 
 - Revisar manualmente Diario de Ibiza, Periódico de Ibiza y BOIB.
-- Comprobar logs del workflow en GitHub Actions.
+- Comprobar registros de la ejecución semanal en GitHub Actions.
 """
 
 
@@ -264,15 +271,23 @@ def slim_extracted(extracted: list[dict]) -> list[dict]:
     out = []
     for item in extracted:
         for prop in item.get("proposals", []):
+            actor_type = prop.get("actor_type", "")
+            palanca = prop.get("palanca", "")
+            horizon = prop.get("horizon", "")
+            state = prop.get("state", "")
             slim = {
                 "actor": prop.get("actor", ""),
-                "actor_type": prop.get("actor_type", ""),
+                "actor_type": actor_type,
+                "actor_type_label": actor_type_label(actor_type),
                 "statement_summary": prop.get("statement_summary", ""),
                 "url_source": prop.get("url_source", ""),
-                "palanca": prop.get("palanca", ""),
+                "palanca": palanca,
+                "palanca_label": palanca_label(palanca),
                 "target_actor": prop.get("target_actor", ""),
-                "horizon": prop.get("horizon", ""),
-                "state": prop.get("state", ""),
+                "horizon": horizon,
+                "horizon_label": horizon_label(horizon),
+                "state": state,
+                "state_label": state_label(state),
                 "viability_legal": prop.get("viability_legal", "no_evaluada"),
                 "viability_legal_reason": prop.get("viability_legal_reason", ""),
                 "viability_economic": prop.get("viability_economic", "no_evaluada"),
