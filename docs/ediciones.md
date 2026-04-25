@@ -24,7 +24,6 @@ permalink: /ediciones/
             <p class="archive-item-excerpt">{{ e.excerpt }}</p>
           {% endif %}
           <p class="archive-item-meta">
-            <span>{{ e.week }}</span>
             <a href="{{ e.url | relative_url }}" class="archive-item-link">Leer informe →</a>
           </p>
         </li>

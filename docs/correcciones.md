@@ -20,7 +20,7 @@ Mientras esos dos canales no están operativos, puedes escribir respondiendo a c
 ## Qué hacemos con tu aviso
 
 1. **Lo anotamos en el registro público de la propuesta afectada.** Nada se edita en silencio — cada aviso queda fechado, con su origen y su resolución.
-2. **Respondemos en 72 horas.** Si es un error claro (URL caída, cita mal transcrita), corregimos en ese plazo. Si el asunto es más dudoso, te respondemos con lo que hemos visto y decidimos juntos.
+2. **Respondemos en 72 horas.** Si es un error claro (enlace caído, cita mal transcrita), corregimos en ese plazo. Si el asunto es más dudoso, te respondemos con lo que hemos visto y decidimos juntos.
 3. **Publicamos la corrección con traza visible.** La edición original queda marcada como *corregida*, con enlace a esta nota.
 
 ## Qué NO hacemos
