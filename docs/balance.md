@@ -6,7 +6,7 @@ permalink: /balance/
 
 # Balance de actores citados
 
-*Última actualización: 2026-04-21. Recalculado automáticamente tras cada edición.*
+*Última actualización: 2026-04-25. Recalculado automáticamente tras cada edición.*
 
 Total de propuestas documentadas: **3**.
 
@@ -16,16 +16,16 @@ Total de propuestas documentadas: **3**.
 
 | Categoría | N | % |
 |---|---|---|
-| institucional_publico | 1 | 33.3% |
-| coalicion_institucional | 1 | 33.3% |
-| coalicion_intersectorial | 1 | 33.3% |
+| Institucional público | 1 | 33.3% |
+| Coalición institucional | 1 | 33.3% |
+| Coalición intersectorial | 1 | 33.3% |
 
 ### Por palanca
 
 | Categoría | N | % |
 |---|---|---|
-| oferta_vivienda | 2 | 66.7% |
-| enforcement | 1 | 33.3% |
+| Oferta de vivienda | 2 | 66.7% |
+| Aplicación de norma | 1 | 33.3% |
 
 ## Últimos 365 días — 3 propuestas
 
@@ -33,16 +33,16 @@ Total de propuestas documentadas: **3**.
 
 | Categoría | N | % |
 |---|---|---|
-| institucional_publico | 1 | 33.3% |
-| coalicion_institucional | 1 | 33.3% |
-| coalicion_intersectorial | 1 | 33.3% |
+| Institucional público | 1 | 33.3% |
+| Coalición institucional | 1 | 33.3% |
+| Coalición intersectorial | 1 | 33.3% |
 
 ### Por palanca
 
 | Categoría | N | % |
 |---|---|---|
-| oferta_vivienda | 2 | 66.7% |
-| enforcement | 1 | 33.3% |
+| Oferta de vivienda | 2 | 66.7% |
+| Aplicación de norma | 1 | 33.3% |
 
 ## Fase de rodaje
 
@@ -50,6 +50,6 @@ El observatorio está en fase de rodaje (3 propuestas documentadas). Los umbrale
 
 ## Metodología
 
-El balance se calcula sobre el archivo de propuestas documentadas 
-en `data/proposals_history.json`. Cada propuesta cuenta una vez por 
-edición en la que aparece. Detalle técnico en [/metodologia/](/metodologia/).
+El balance se calcula sobre todas las propuestas documentadas 
+desde el lanzamiento. Cada propuesta cuenta una vez por edición en 
+la que aparece. La página de método está en preparación.

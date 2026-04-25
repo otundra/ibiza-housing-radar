@@ -14,6 +14,8 @@ import re
 from pathlib import Path
 from typing import Any
 
+from src.labels import horizon_label, state_label
+
 ROOT = Path(__file__).resolve().parent.parent
 EDITIONS_DIR = ROOT / "docs" / "_editions"
 INDEX_FILE = ROOT / "docs" / "index.md"
@@ -87,12 +89,14 @@ def clean_actor(actor: str) -> str:
     """Deja solo el nombre del actor para mostrar en el card de la home.
 
     Los valores del markdown vienen como:
-      "Consell d'Eivissa, patronales, sindicatos (coalicion_institucional) — [fuente](URL)"
-    En el card queremos solo los nombres, sin el tipo técnico ni el enlace.
+      "Consell d'Eivissa, patronales, sindicatos (Coalición institucional) — [fuente](URL)"
+    En el card queremos solo los nombres, sin el tipo entre paréntesis ni el
+    enlace. La regex final cubre tanto la forma legible (con espacios) como
+    los códigos heredados (con guion bajo) por si quedan ediciones antiguas.
     """
     s = actor
     s = re.sub(r"\s*—\s*\[fuente\]\([^)]+\).*$", "", s)
-    s = re.sub(r"\s*\([^)]*_[^)]*\)\s*", "", s)  # quita (coalicion_institucional), (institucional_publico), etc.
+    s = re.sub(r"\s*\([^)]+\)\s*$", "", s)
     return s.strip()
 
 
@@ -273,9 +277,9 @@ def render_index(editions: list[dict[str, Any]]) -> str:
             if p["actor"]:
                 out.append(f'<dt>Propone</dt><dd>{p["actor"]}</dd>')
             if p["estado"]:
-                out.append(f'<dt>Estado</dt><dd>{p["estado"]}</dd>')
+                out.append(f'<dt>Estado</dt><dd>{state_label(p["estado"])}</dd>')
             if p["horizonte"]:
-                out.append(f'<dt>Horizonte</dt><dd>{p["horizonte"]}</dd>')
+                out.append(f'<dt>Horizonte</dt><dd>{horizon_label(p["horizonte"])}</dd>')
             out.append('</dl>')
             out.append(f'<a class="dash-propuesta-link" href="{link}">Ver ficha y fuentes →</a>')
             out.append('</article>')
@@ -327,7 +331,7 @@ def render_index(editions: list[dict[str, Any]]) -> str:
     # ---------- SOBRE EL PROYECTO ----------
     out.append('<section class="dash-about">')
     out.append('<div class="dash-about-inner">')
-    out.append('<p><strong>Observatorio documental.</strong> Cada lunes un pipeline lee la prensa local (Diario de Ibiza, Periódico de Ibiza, Google News), identifica propuestas que actores con nombre han formulado públicamente esa semana, las contrasta con fuente primaria y publica la edición. No genera propuestas propias.</p>')
+    out.append('<p><strong>Observatorio documental.</strong> Cada lunes un sistema automático lee la prensa local (Diario de Ibiza, Periódico de Ibiza, Google News), identifica propuestas que actores con nombre han formulado públicamente esa semana, las contrasta con fuente primaria y publica la edición. No genera propuestas propias.</p>')
     out.append(f'<p>Editado por Raúl S. Coste operativo ~6-7 €/mes proyectado, con topes automáticos. <a href="{baseurl}/acerca/">Sobre el proyecto →</a></p>')
     out.append('</div>')
     out.append('</section>')

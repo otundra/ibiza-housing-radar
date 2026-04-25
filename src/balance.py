@@ -20,7 +20,21 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
+from src.labels import (
+    ACTOR_TYPE_LABELS,
+    HORIZON_LABELS,
+    PALANCA_LABELS,
+    STATE_LABELS,
+)
+
 log = logging.getLogger("balance")
+
+FIELD_TO_LABELS: dict[str, dict[str, str]] = {
+    "actor_type": ACTOR_TYPE_LABELS,
+    "palanca": PALANCA_LABELS,
+    "horizon": HORIZON_LABELS,
+    "state": STATE_LABELS,
+}
 
 ROOT = Path(__file__).resolve().parent.parent
 HISTORY_FILE = ROOT / "data" / "proposals_history.json"
@@ -64,7 +78,11 @@ def count_dimension(props: list[dict], field: str) -> dict[str, int]:
     return dict(Counter((p.get(field) or "desconocido") for p in props))
 
 
-def render_table(title: str, counts: dict[str, int]) -> list[str]:
+def render_table(
+    title: str,
+    counts: dict[str, int],
+    mapping: dict[str, str] | None = None,
+) -> list[str]:
     total = sum(counts.values())
     lines = [f"### {title}", ""]
     if total == 0:
@@ -75,7 +93,8 @@ def render_table(title: str, counts: dict[str, int]) -> list[str]:
     lines.append("|---|---|---|")
     for k in sorted(counts, key=lambda x: -counts[x]):
         pct = counts[k] / total * 100
-        lines.append(f"| {k} | {counts[k]} | {pct:.1f}% |")
+        display_k = mapping.get(k, k) if mapping else k
+        lines.append(f"| {display_k} | {counts[k]} | {pct:.1f}% |")
     lines.append("")
     return lines
 
@@ -113,7 +132,7 @@ def build_private(history: list[dict]) -> str:
             ("state", "Por estado"),
         ]:
             counts = count_dimension(filtered, field)
-            lines.extend(render_table(title, counts))
+            lines.extend(render_table(title, counts, FIELD_TO_LABELS.get(field)))
 
         alerts = alert_if_concentrated(count_dimension(filtered, "actor_type"))
         if alerts and days >= 60:
@@ -151,7 +170,7 @@ def build_public(history: list[dict]) -> str:
         ("palanca", "Por palanca"),
     ]:
         counts = count_dimension(filtered_90, field)
-        lines.extend(render_table(title, counts))
+        lines.extend(render_table(title, counts, FIELD_TO_LABELS.get(field)))
 
     filtered_365 = filter_window(history, 365)
     lines.append(f"## Últimos 365 días — {len(filtered_365)} propuestas")
@@ -161,7 +180,7 @@ def build_public(history: list[dict]) -> str:
         ("palanca", "Por palanca"),
     ]:
         counts = count_dimension(filtered_365, field)
-        lines.extend(render_table(title, counts))
+        lines.extend(render_table(title, counts, FIELD_TO_LABELS.get(field)))
 
     # Mostramos alertas solo cuando hay muestra suficiente. Con corpus corto,
     # cualquier concentración es artefacto estadístico, no señal editorial.
@@ -190,9 +209,9 @@ def build_public(history: list[dict]) -> str:
 
     lines.append("## Metodología")
     lines.append("")
-    lines.append("El balance se calcula sobre el archivo de propuestas documentadas ")
-    lines.append("en `data/proposals_history.json`. Cada propuesta cuenta una vez por ")
-    lines.append("edición en la que aparece. Detalle técnico en [/metodologia/](/metodologia/).")
+    lines.append("El balance se calcula sobre todas las propuestas documentadas ")
+    lines.append("desde el lanzamiento. Cada propuesta cuenta una vez por edición en ")
+    lines.append("la que aparece. La página de método está en preparación.")
     lines.append("")
 
     return "\n".join(lines)

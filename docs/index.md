@@ -63,8 +63,8 @@ El 11 de abril Consell, patronales y sindicatos expresan su respaldo a la creaci
 - Desmantelamiento inminente del asentamiento de sa Joveria, descrito como el mayor asentamiento chabolista de Ibiza, con dispositivo conjunto de Policía Local y Policía Nacional ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/20/sa-joveria-asentamiento-chabolas-ibiza-129308028.html), [Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/20/policia-local-policia-nacional-desalojo-129314111.html)).
 - El PAÍS cifra en unos 200 trabajadores *(estimación periodística)* los afectados por los desalojos de asentamientos previstos a las puertas de la temporada ([EL PAÍS](https://elpais.com/espana/2026-04-19/ibiza-desalojara-a-200-trabajadores-de-sus-asentamientos-a-las-puertas-de-la-temporada.html)).
 - Trabajadores desalojados de sa Joveria declaran que abandonarán Ibiza si no encuentran alojamiento: «Somos trabajadores pero si no tenemos dónde dormir nos iremos de Ibiza» ([Noudiari](https://www.noudiari.es/local-ibiza/desalojo-de-sa-joveria-somos-trabajadores-pero-si-no-tenemos-donde-dormir-nos-iremos-de-ibiza/)).
-- El Ayuntamiento de Ibiza anuncia vigilancia «permanente y preventiva» para evitar nuevos asentamientos tras los desalojos ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/11/ibiza-mantiene-vigilancia-permanente-preventiva-128963940.html)) *(carry-over de la semana ISO 15)*.
-- Cáritas Ibiza expresa preocupación por el desalojo de los asentamientos de sa Joveria y Can Misses ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/11/preocupacion-caritas-ibiza-desalojo-asentamientos-128948679.html)) *(carry-over de la semana ISO 15)*.
+- El Ayuntamiento de Ibiza anuncia vigilancia «permanente y preventiva» para evitar nuevos asentamientos tras los desalojos ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/11/ibiza-mantiene-vigilancia-permanente-preventiva-128963940.html)) *(carry-over de la semana del 6-12 de abril)*.
+- Cáritas Ibiza expresa preocupación por el desalojo de los asentamientos de sa Joveria y Can Misses ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/11/preocupacion-caritas-ibiza-desalojo-asentamientos-128948679.html)) *(carry-over de la semana del 6-12 de abril)*.
 - Catalina Barceló, directora general de Economía y Estadística del Govern balear, señala que la vivienda es «el principal reto económico de las Pitiusas» ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/19/catalina-barcelo-directora-general-economia-129261459.html)).
 - Sorteo de siete viviendas protegidas en Ibiza *(dato oficial)* con alquileres entre 200 y 460 euros mensuales ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/16/siete-viviendas-protegidas-ibiza-alquiler-129182651.html)).
 - Informe sectorial advierte de «escalada de precios preocupante» y «presión única» en el alquiler en Baleares ([Periódico de Ibiza](https://www.periodicodeibiza.es/noticias/baleares/2026/04/14/2608769/vivienda-alquiler-advierten-baleares-continua-escalada-precios-preocupante-sufre-presion-unica.html)).
@@ -86,8 +86,8 @@ El 11 de abril Consell, patronales y sindicatos expresan su respaldo a la creaci
 <p class="dash-propuesta-que">Consell, patronales y sindicatos respaldan la creación de residencias para trabajadores temporeros.</p>
 <dl class="dash-propuesta-meta">
 <dt>Propone</dt><dd>Consell d'Eivissa, patronales, sindicatos</dd>
-<dt>Estado</dt><dd>en_debate</dd>
-<dt>Horizonte</dt><dd>corto_plazo</dd>
+<dt>Estado</dt><dd>En debate</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
 </dl>
 <a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w17/#1-residencias-para-trabajadores-de-temporada-en-ibiza">Ver ficha y fuentes →</a>
 </article>
@@ -113,7 +113,7 @@ El 11 de abril Consell, patronales y sindicatos expresan su respaldo a la creaci
 
 <section class="dash-about">
 <div class="dash-about-inner">
-<p><strong>Observatorio documental.</strong> Cada lunes un pipeline lee la prensa local (Diario de Ibiza, Periódico de Ibiza, Google News), identifica propuestas que actores con nombre han formulado públicamente esa semana, las contrasta con fuente primaria y publica la edición. No genera propuestas propias.</p>
+<p><strong>Observatorio documental.</strong> Cada lunes un sistema automático lee la prensa local (Diario de Ibiza, Periódico de Ibiza, Google News), identifica propuestas que actores con nombre han formulado públicamente esa semana, las contrasta con fuente primaria y publica la edición. No genera propuestas propias.</p>
 <p>Editado por Raúl S. Coste operativo ~6-7 €/mes proyectado, con topes automáticos. <a href="{{ site.baseurl }}/acerca/">Sobre el proyecto →</a></p>
 </div>
 </section>
