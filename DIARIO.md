@@ -13,6 +13,22 @@ Reglas:
 
 ---
 
+## 2026-04-25 [arquitectura] — Auditor MVP fase 3 cerrada (registro JSON + integración + página /correcciones/)
+
+Tercer trozo del auditor mínimo construido sobre lo que dejaron las fases 1 y 2 esta misma sesión. El plano (DISENO-AUDITOR-MVP.md §9) parte la fase 3 en cinco entregables; los cuatro que dependen del editor cierran ahora. El quinto (corrida end-to-end en edición piloto) se dispara solo cuando el cron lunes ejecute la próxima vez — código y docs listos para que ocurra sin intervención.
+
+- **`write_audit_log()` y `audit_proposals()` en `src/audit.py`.** Escriben JSON append-only en `data/audit/YYYY-wWW/{proposal_id}.json` con el esquema completo del registro de auditoría (§3.1 del plano). Si el archivo ya existe, lanzan `FileExistsError`; el orquestador lo registra con aviso y sigue. El identificador de propuesta viene de `extracted.json` (formato estable `YYYY-wWW-NNN` desde la edición de la W17). Cruce extraído ↔ clasificado por URL, no por índice (evita desfase tras los filtros previos).
+- **Paso `audit` integrado en `src/report.py`.** Entre `rescue` y `generate`. La edición se sigue componiendo igual; el auditor solo escribe en paralelo. Si el módulo falla, el plano §6.2 lo deja como modo silencioso del MVP — no aborta el pipeline. Visible en el orden del orquestador: ingest → classify → extract → rescue → audit → generate → verify → ...
+- **Señal `auditor_disputes_ratio` en `src/self_review.py`.** Función nueva `auditor_signal()` lee los JSON de la semana, calcula `propuestas_disputadas / propuestas_auditadas`, lo compara con el rango saludable [0.08, 0.25] de [`ESTUDIO-COSTES-AUDITOR.md §12.1`](ESTUDIO-COSTES-AUDITOR.md), y mete el bloque entero en el envío al revisor Sonnet. Prompt del sistema actualizado: si `en_rango: false`, el revisor anota un aviso concreto y baja la nota de `rigor` a 6 o menos. Si hay propuestas marcadas para revisión manual, las cita por id.
+- **Página `/correcciones/` mínima en `docs/correcciones.md`.** Layout `page`, permalink limpio, protocolo de 72 h, registro público vacío de momento. Buzón `correcciones@radaribiza.com` y formulario quedan etiquetados *próximamente*. Enlace al inicio del bloque de pie en `docs/_includes/footer.html`. Verificado con la previsualización Jekyll en :4000.
+- **Buzón aplazado al cierre del Hito 3 legal.** El editor preguntó por dejar `correcciones@radaribiza.com` operativo en el momento. Se aplazó con tres bloqueos: el dominio `radaribiza.com` no está comprado, el nombre `radar))ibiza_vivienda` sigue siendo provisional ([D2](DECISIONES.md)), y abrir un buzón antes de cerrar el estudio legal del titular añade exposición que no toca asumir. Se queda en *próximamente* hasta que se cierre el Hito 3.
+- **Prueba sin coste de extremo a extremo.** `python -m src.audit --dry-run` reusa la salida de Haiku como capa 2 ficticia y escribe los 3 JSON con el esquema completo. Re-ejecutar dispara el `FileExistsError` esperado. Validación: archivos creados, esquema completo, regla de no sobreescribir respetada.
+- **Coste real de Fase 3.** 0 € de API (corrida sin llamadas reales con datos en disco). La primera ejecución real con cron del lunes debería sumar ~0,01-0,02 € a la línea `audit_blind` del registro de costes (proyección §6.1).
+
+Siguiente paso natural: Fase 4 (prueba empírica sobre la semana W10 del 2-8 marzo 2026 para calibrar umbrales antes del backfill completo de 12 semanas).
+
+---
+
 ## 2026-04-25 [arquitectura] — Auditor MVP fase 2 cerrada (heurísticas + whitelist + bloque signals)
 
 Encadenado a la fase 1 en el mismo turno. Tres comprobaciones deterministas sin IA + lista blanca de actores + hueco para los tiers.

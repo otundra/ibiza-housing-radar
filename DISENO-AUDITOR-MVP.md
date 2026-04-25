@@ -713,15 +713,15 @@ Cuatro fases en cascada. Cada una se cierra cuando sus entregables están verifi
 1. *Huecos en la whitelist V1*: `cadenaser.com` y `lavozdeibiza.com` no figuran en `medios_cobertura_aceptada`; coaliciones largas tipo `"Consell d'Eivissa, patronales, sindicatos"` no casan con la entrada simple `Consell d'Eivissa`. Refinamiento post-backfill ([D3](DECISIONES.md)).
 2. *Ruido en `verbatim_match`*: cross-checks (verbatim de A contra body de B) devuelven ratios 0.65-0.93 por solapamiento de vocabulario común. Calibrar umbrales o cambiar a métrica más estricta (longest-match sobre `len(needle)`) en Fase 4.
 
-### Fase 3 — Log + integración + página /correcciones/ (~8-12 h de trabajo del editor)
+### Fase 3 — Log + integración + página /correcciones/ (~8-12 h de trabajo del editor) ✅ construcción cerrada 2026-04-25
 
 **Entregables.**
 
-- [ ] `src/audit.py::write_audit_log()` escribe JSON en `data/audit/YYYY-wWW/`.
-- [ ] Integración de `audit_proposals()` en `src/report.py` entre `extract` y `generate`.
-- [ ] `docs/correcciones.md` publicada, enlazada desde el footer.
-- [ ] Ajuste en `src/self_review.py` con señal `auditor_disputes_ratio`.
-- [ ] Corrida end-to-end en una edición piloto (la que toque tras cerrar la fase) con el auditor activo en modo silencioso (log se escribe; la edición no visibiliza tier todavía).
+- [x] `src/audit.py::write_audit_log()` escribe JSON en `data/audit/YYYY-wWW/`.
+- [x] Integración de `audit_proposals()` en `src/report.py` entre `extract` y `generate`.
+- [x] `docs/correcciones.md` publicada, enlazada desde el footer.
+- [x] Ajuste en `src/self_review.py` con señal `auditor_disputes_ratio`.
+- [ ] Corrida end-to-end en una edición piloto (la que toque tras cerrar la fase) con el auditor activo en modo silencioso (log se escribe; la edición no visibiliza tier todavía). Se dispara automáticamente en la próxima ejecución del cron lunes.
 
 ### Fase 4 — Prueba empírica sobre W10 (~5-8 h de trabajo del editor)
 
