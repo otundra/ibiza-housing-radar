@@ -633,7 +633,7 @@ Editor propone construir todas las páginas aunque en la Fase 1 pública solo se
 Qué pasa si un partido/institución escribe diciendo *"esa cita no es mía"* o *"el contexto es otro"*. Hoy hay `/correcciones/` pero sin SLA ni proceso.
 **Salida:** protocolo + plantillas + tiempos + quién decide.
 
-### OP2 · Health de feeds — alertas proactivas 🔄
+### OP2 · Health de feeds — alertas proactivas ✅
 Si un RSS deja de publicar, si baja la frecuencia, si Google News cambia su formato → alerta Telegram.
 
 **Implementación 2026-04-25 (alcance acotado):**
@@ -650,6 +650,8 @@ Si un RSS deja de publicar, si baja la frecuencia, si Google News cambia su form
 **Fuera de scope hoy** (registrados como OP3, OP4, OP5 más abajo).
 
 **Salida:** módulo `sources_health.py` + integración en `ingest.py` + alertas consolidadas vía Telegram.
+
+**Estado:** ✅ cerrada 2026-04-25. Pendiente solo la calibración de umbrales (50 % de caída, ≥5 runs como base, etc.) cuando haya 4-8 semanas de `feed_health.json` acumulado del cron real.
 
 ### OP3 · Auto-recuperación de feeds caídos ⏳
 Si un feed cae, probar URLs alternativas automáticamente (espejo del medio, query alternativa de Google News, RSS de respaldo) antes de marcarlo como muerto. Hoy OP2 solo notifica; el editor decide qué hacer manualmente.
@@ -756,7 +758,7 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | **RT1** | **Backfill empírico W10 antes de las 12** | ⏳ | **P-1 · antes del backfill grande** |
 | **RT2** | **Rol editor vs muestreo 10% — decidir** | ✅ | **Cerrada 2026-04-23: opción 2 (eliminar muestreo). Añadida capa 5bis IA. Ver ESTUDIO-COSTES-AUDITOR** |
 | **RT3** | **Tiers UX — validar con dos públicos** | ⏳ | **P-1 · antes de lanzar tiers** |
-| **RT4** | **Techo cobertura + banner limitaciones + Vía A adelantada** | ⏳ | **P-1 · antes del relanzamiento** |
+| **RT4** | **Techo cobertura + banner limitaciones + Vía A adelantada** | ⏳ | **P-1 · antes del relanzamiento. Banner de fase de rodaje aplicado en la home 2026-04-25 (parte mínima del audit de tecnicismos). Reescritura editorial profunda + Vía A de precios siguen pendientes** |
 | **RT5** | **Tests básicos del pipeline** | ⏳ | **P-1 · absorbe cobertura de `audit.py`, `verify.py`, `balance.py`, `extract.py`, `rescue.py` con fixtures reales del backfill ([D4](DECISIONES.md))** |
 | **RT6** | **Balance — rediseño con persistencia (tras 3 meses)** | ⏳ | **P-1 · diferido a ~julio 2026** |
 | **RT7** | **build_index.py adaptado al schema documental** | ✅ | **Cerrada 2026-04-21 noche** |
@@ -812,7 +814,7 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | UX7 | Avances/éxitos | ⏳ | |
 | UX8 | Construir entera | ⏳ | |
 | OP1 | Rectificación actor | ⏳ | |
-| OP2 | Health feeds — alertas proactivas | 🔄 | Implementación 2026-04-25: `sources_health.py` + integración `ingest.py` |
+| OP2 | Health feeds — alertas proactivas | ✅ | Cerrada 2026-04-25. Calibración de umbrales pendiente de datos del cron (4-8 sem) |
 | OP3 | Auto-recuperación de feeds caídos | ⏳ | Pendiente datos reales (3-4 caídas) que orienten qué espejos sirven |
 | OP4 | Dashboard visual de estado de feeds | ⏳ | Decisión UX (privado/público) cuando haya 4-8 sem de `feed_health.json` |
 | OP5 | Alerta al primer fallo aislado | ⏳ | BAJA · esperar señal real de demanda antes de bajar umbral |
