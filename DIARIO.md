@@ -13,6 +13,32 @@ Reglas:
 
 ---
 
+## 2026-04-25 [pipeline] — Salud de fuentes RSS con alertas proactivas (OP2)
+
+Cerrado OP2 de la revisión Fase 0.5 mientras esperamos al cron del lunes que validará la Fase 3 del auditor. El pipeline ya no es ciego ante caídas o degradación silenciosa de los RSS: si una fuente deja de publicar, baja la frecuencia o cambia de estructura, el editor recibe un aviso consolidado por Telegram.
+
+- **Módulo nuevo `src/sources_health.py`.** Dos funciones: `record_run()` añade la ejecución actual al histórico append-only `data/feed_health.json` (solo escribe cuando `GITHUB_ACTIONS=true`; las corridas locales solo evalúan en memoria), y `evaluate_alerts()` pura sin I/O devuelve mensajes humanos para Telegram.
+- **Cuatro reglas de alerta calibrables.** Fuente caída (2 ejecuciones seguidas con fallo), estructura cambiada (bozo cuando antes era ok), bajada de noticias (>50 % vs media de los 4 runs anteriores) y vacío inesperado (ok pero 0 entradas con base ≥5). Validadas con histórico sintético — las 4 disparan correctamente, el caso sano devuelve `[]`. Umbrales se ajustarán cuando haya 4-8 semanas de `feed_health.json` real.
+- **Integración mínima en `src/ingest.py`.** Recolecta métricas por feed (estado, totales, kept, en ventana, excepción) durante la iteración existente y al terminar llama a sources_health. Las alertas se consolidan en un único mensaje por ejecución vía `notify.py` con `level=warning`. Cualquier fallo del módulo se loguea pero no bloquea la edición — la editorial es prioritaria.
+- **Tres ideas registradas como tareas a futuro en `REVISION-FASE-0.5.md`.** OP3 auto-recuperación de feeds caídos (probar URLs alternativas; pendiente datos reales de qué espejos sirven), OP4 dashboard visual del estado de feeds (decisión de UX pendiente, privado vs público), OP5 alerta al primer fallo aislado (bajar umbral solo si llega ruido real). Las tres con condición de revisión clara — no implementar preventivamente.
+- **Coste y disparo.** 0 € de API. La primera escritura real del histórico ocurre el lunes 05:00 UTC en el cron.
+
+Siguiente paso natural: tras la corrida del cron del lunes (que estrenará OP2 y validará Fase 3 del auditor), abrir Fase 4 del auditor sobre la semana W10 del 2-8 marzo 2026.
+
+---
+
+## 2026-04-25 [editorial] — Banner de fase de rodaje en home + refinamientos en /acerca/ (RT4, RT8)
+
+Cierre de la parte mecánica de RT4 (techo de cobertura + banner de limitaciones) y RT8 (banner temporal en /acerca/). Lo que queda abierto en ambas es decisión editorial profunda que depende de inputs ausentes (RT3 test de usabilidad, tiers en producción, Vía A de precios): se cierra hoy solo lo que no requiere esos inputs.
+
+- **Banner persistente en la home.** Nuevo `docs/_includes/banner_rodaje.html` con copy que se compromete públicamente: *"Hoy todavía no es fuente primaria: el módulo de precios con datos propios llegará en una fase posterior"*. Layout `home.html` lo inyecta antes del contenido. Estilos en `assets/css/main.css` reusando tokens existentes (`--accent`, `--accent-bg`, `--max-dash`) — sin variables nuevas. Verificado en el preview Jekyll: render correcto en escritorio y móvil, claro y oscuro.
+- **Tres pequeñas ediciones a `/acerca/` alineadas con el banner.** Sección nueva *"En fase de rodaje"* entre la intro y el bloque de Método. Aviso del pie reescrito: *"Este observatorio documenta — no opina ni propone"* (más nítido que el genérico anterior). Promesa muerta a `/financiacion/` reemplazada por *"Si esto cambia, se publicará aquí con detalle"* — sin enlazar páginas que no existen.
+- **Por qué la parte mecánica cierra y la decisión editorial profunda no.** El banner protege contra el malentendido del primer visitante: alguien que lo ve sin contexto no debe creer que es fuente primaria de precios. Eso ya se entrega. La pieza editorial que falta (separar `/acerca/` en quién-lo-edita y `/método/` en cómo-funciona, reescribir copy de la home con los tiers visibles, ajustar tono al lector profesional) depende de inputs futuros y se aborda cuando se retome Diseño.
+
+Archivos tocados: `docs/_includes/banner_rodaje.html` (nuevo), `docs/_layouts/home.html`, `docs/assets/css/main.css`, `docs/acerca.md`.
+
+---
+
 ## 2026-04-25 [arquitectura] — Auditor MVP fase 3 cerrada (registro JSON + integración + página /correcciones/)
 
 Tercer trozo del auditor mínimo construido sobre lo que dejaron las fases 1 y 2 esta misma sesión. El plano (DISENO-AUDITOR-MVP.md §9) parte la fase 3 en cinco entregables; los cuatro que dependen del editor cierran ahora. El quinto (corrida end-to-end en edición piloto) se dispara solo cuando el cron lunes ejecute la próxima vez — código y docs listos para que ocurra sin intervención.
