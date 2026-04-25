@@ -461,6 +461,46 @@ pre code { background: transparent; padding: 0; border: 0; color: inherit; }
 }
 
 /* =============================================================
+   BANNER DE RODAJE (home) — aviso de fase y limitaciones
+   ============================================================= */
+
+.banner-rodaje {
+  max-width: var(--max-dash);
+  margin: 24px auto 0;
+  padding: 16px 20px;
+  background: var(--accent-bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.banner-rodaje-titulo {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.banner-rodaje-cuerpo {
+  margin: 0;
+}
+
+.banner-rodaje a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.banner-rodaje a:hover { color: var(--accent-soft); }
+
+@media (max-width: 600px) {
+  .banner-rodaje { margin: 16px 12px 0; padding: 14px 16px; }
+}
+
+/* =============================================================
    DASHBOARD (home) — panel editorial de la última edición
    ============================================================= */
 
