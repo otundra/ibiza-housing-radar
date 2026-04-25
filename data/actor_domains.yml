@@ -1,0 +1,80 @@
+# data/actor_domains.yml
+# Whitelist V1 de actores y dominios — auditor MVP fase 2.
+# V1 — 2026-04-24 (ver DISENO-AUDITOR-MVP.md §5).
+# Próxima revisión D3: post-backfill (refinamiento con datos empíricos).
+
+meta:
+  version: 1
+  last_updated: 2026-04-24
+  criterio: 20 actores principales del dominio público vivienda Ibiza
+  nota: refinamiento de subdominios (.cat, caib.es vs goib.es) con datos empíricos del backfill
+
+# Medios de cobertura general aceptada (cualquier actor sobre cualquier tema vivienda).
+# Un dominio aquí NO confirma autoría del actor, solo traza legítima de la cobertura.
+medios_cobertura_aceptada:
+  - diariodeibiza.es
+  - periodicodeibiza.es
+  - ultimahora.es
+  - ibizaactualidad.com
+  - noudiari.es
+  - ib3tv.com
+  - ib3.org
+  - europapress.es
+  - efe.com
+  - rtve.es
+  - elpais.com
+  - elmundo.es
+
+actors:
+  # Categoría 1 — Instituciones públicas (8 actores)
+  Consell d'Eivissa:
+    oficial: [conselldeivissa.es, conselldeivissa.cat]
+  Govern Balear:
+    oficial: [caib.es, goib.es, caib.cat]
+  IBAVI:
+    oficial: [ibavi.es, ibavi.caib.es]
+  Ajuntament d'Eivissa:
+    oficial: [eivissa.es, eivissa.cat]
+  Ajuntament de Santa Eulària:
+    oficial: [santaeulalia.net, santaeularia.eu]
+  Ajuntament de Sant Antoni:
+    oficial: [santantoni.net]
+  Ajuntament de Sant Josep:
+    oficial: [santjosep.org]
+  Ajuntament de Sant Joan:
+    oficial: [santjoandelabritja.com]
+
+  # Categoría 2 — Partidos políticos (4 actores)
+  # UI: gris neutro, regla dura de imparcialidad visual (ver ESTUDIO-DISENO §5.1)
+  PP Balears:
+    oficial: [ppbalears.es]
+  PSOE Balears:
+    oficial: [psib-psoe.com, psoe-ibiza.es]
+  Vox Balears:
+    oficial: [voxbalears.es, voxespana.es]
+  Més per Mallorca:
+    oficial: [mesperillesbalears.cat]
+
+  # Categoría 3 — Sindicatos (2 actores)
+  CCOO Illes Balears:
+    oficial: [ccoo-illesbalears.cat, ccoo.es]
+  UGT Illes Balears:
+    oficial: [ugt-ib.org, ugt.es]
+
+  # Categoría 4 — Patronales (2 actores)
+  CAEB:
+    oficial: [caeb.es]
+  PIMEEF:
+    oficial: [pimeef.com]
+
+  # Categoría 5 — Tercer sector (2 actores)
+  Cáritas Ibiza:
+    oficial: [caritas-ibiza.org, caritas.es]
+  Creu Roja Illes Balears:
+    oficial: [creurojaib.org, cruzroja.es]
+
+  # Categoría 6 — Colectivos ciudadanos (2 actores)
+  Sindicat de Llogaters Eivissa:
+    oficial: [sindicatdellogaters.org]
+  PAH Eivissa:
+    oficial: [afectadosporlahipoteca.com]

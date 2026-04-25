@@ -18,6 +18,9 @@ data/cache/
 data/raw/
 !data/.gitkeep
 
+# Caché HTTP local del auditor (TTL 30 días, se reconstruye solo)
+.cache/
+
 # Sistema
 .DS_Store
 Thumbs.db

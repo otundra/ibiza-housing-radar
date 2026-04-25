@@ -1,23 +1,38 @@
-"""Auditor — capa 2 ciega.
+"""Auditor — capa 2 ciega + bloque ``signals`` para tiers.
 
-Segunda lectura independiente del mismo material que pasa por la capa 1
-(Haiku) en src/extract.py. La capa 2 usa Sonnet 4.6 con el mismo prompt
-EXTRACT_SYSTEM, sin ver la salida de Haiku. Sirve de doble-ojo automático
-para alimentar el comparador campo a campo (src/audit_compare.py).
+- Capa 2 (``run_blind_audit``): segunda lectura independiente con Sonnet 4.6
+  sobre el mismo prompt y payload que pasa por capa 1 (Haiku) en
+  ``src/extract.py``. Alimenta el comparador campo a campo de
+  ``src/audit_compare.py``.
+- Bloque ``signals`` (``build_signals``): combina comparador + heurísticas
+  (``src/audit_heuristics.py``) + verify (cuando esté disponible) en las 11
+  señales del registro de auditoría (plano §3.2).
+- Stub ``compute_tier``: en el MVP siempre devuelve ``value=None`` con
+  ``reason='pendiente_estudio'`` y deja ``signals`` listo para que la
+  fórmula real (PI10) lea el bloque cuando el estudio de tiers se
+  conecte.
 
-Plano: DISENO-AUDITOR-MVP.md §2.1 + §9 (fase 1).
-Capas restantes (heurísticas, lista blanca, registro JSON, integración con
-report.py, hueco para tiers) llegan en fases 2 y 3 del plano.
+Plano: DISENO-AUDITOR-MVP.md §2.1 + §9 (fases 1-2).
+Capas restantes (registro JSON, integración con ``report.py``, prueba
+empírica W10) llegan en fases 3-4.
 """
 from __future__ import annotations
 
 import json
 import logging
+import re
+from typing import Any
 
 from src.costs import assert_budget_available, record_call
 from src.extract import EXTRACT_SYSTEM, MODEL_VALIDATOR, _call, _try_json
 
 log = logging.getLogger("audit")
+
+SEVERITY_TO_CONSENSO = {
+    "none": "completo",
+    "minor": "parcial",
+    "critical": "disputa",
+}
 
 
 def run_blind_audit(client, items: list[dict], edition: str) -> dict[str, list[dict]]:
@@ -65,3 +80,72 @@ def run_blind_audit(client, items: list[dict], edition: str) -> dict[str, list[d
             continue
         out[nid] = record.get("proposals", []) or []
     return out
+
+
+def build_signals(
+    proposal: dict,
+    compare_result: dict,
+    heuristics_result: dict,
+    verify_result: dict | None = None,
+) -> dict[str, Any]:
+    """Construye el bloque ``signals`` con las 11 señales del registro.
+
+    Plano §3.2. En el MVP varias señales (``fecha_coherente``,
+    ``wayback_snapshot``) sólo se rellenan si el caller pasa
+    ``verify_result``; sin él quedan ``None`` para que la fórmula real las
+    detecte como pendientes. ``url_ok`` se intenta rellenar primero desde
+    verify y, si no, desde el ``url_ok`` que devuelve la heurística de
+    verbatim al hacer fetch.
+    """
+    severity = (compare_result or {}).get("severity")
+    cross = (heuristics_result or {}).get("cross_source") or {}
+    verbatim = (heuristics_result or {}).get("verbatim_match") or {}
+    whitelist = (heuristics_result or {}).get("whitelist") or {}
+    verify = verify_result or {}
+
+    url_ok: bool | None = verify.get("url_ok")
+    if url_ok is None:
+        url_ok = verbatim.get("url_ok")
+
+    viability_econ = str(proposal.get("viability_economic") or "")
+    viability_con_cifra = bool(re.search(r"\d", viability_econ))
+
+    whitelist_match = whitelist.get("match")
+    traza_dominio_actor: bool | None = None
+    if whitelist_match in ("refuerza", "neutro"):
+        traza_dominio_actor = True
+    elif whitelist_match == "debilita":
+        traza_dominio_actor = False
+
+    statement_type = (proposal.get("statement_type") or "reported")
+
+    return {
+        "ia_consenso": SEVERITY_TO_CONSENSO.get(severity, "desconocido"),
+        "arbitraje": "no_hubo",
+        "url_ok": url_ok,
+        "traza_dominio_actor": traza_dominio_actor,
+        "fecha_coherente": verify.get("fecha_coherente"),
+        "verbatim_match_ratio": verbatim.get("ratio"),
+        "wayback_snapshot": verify.get("wayback_snapshot"),
+        "n_fuentes_independientes": cross.get("n_fuentes_independientes", 1),
+        "whitelist_match": whitelist_match,
+        "viability_con_cifra": viability_con_cifra,
+        "statement_type": statement_type,
+    }
+
+
+def compute_tier(signals: dict) -> dict:
+    """Hueco reservado en el MVP — siempre devuelve ``value=None``.
+
+    En la iteración posterior ([D9](DECISIONES.md), PI10), esta función
+    leerá el bloque ``signals`` y devolverá un color real (🟢🟡🟠🔴). El
+    estudio de tiers (`ESTUDIO-TIERS.md`) ya cierra el árbol de decisión;
+    sólo falta conectarlo al ``compute_tier()`` real.
+
+    Plano: §2.1.
+    """
+    return {
+        "value": None,
+        "reason": "pendiente_estudio",
+        "signals": dict(signals or {}),
+    }
