@@ -633,9 +633,35 @@ Editor propone construir todas las páginas aunque en la Fase 1 pública solo se
 Qué pasa si un partido/institución escribe diciendo *"esa cita no es mía"* o *"el contexto es otro"*. Hoy hay `/correcciones/` pero sin SLA ni proceso.
 **Salida:** protocolo + plantillas + tiempos + quién decide.
 
-### OP2 · Health de feeds — alertas proactivas ⏳
+### OP2 · Health de feeds — alertas proactivas 🔄
 Si un RSS deja de publicar, si baja la frecuencia, si Google News cambia su formato → alerta Telegram.
-**Salida:** módulo `sources_health.py` + alertas.
+
+**Implementación 2026-04-25 (alcance acotado):**
+- Módulo nuevo `src/sources_health.py` con dos funciones: `record_run(metrics)` que añade una línea al histórico `data/feed_health.json` (append-only), y `evaluate_alerts(history)` que compara la última ejecución con las anteriores y devuelve la lista de problemas detectados.
+- Modificación pequeña a `src/ingest.py`: recolectar métricas por feed durante la iteración (estado, entradas totales, entradas que pasan keywords, entradas dentro de la ventana, excepción si la hubo). Al terminar la ingesta, llamar a `sources_health.record_run()` y, si hay alertas, mandar un único mensaje consolidado vía `notify.py` con `level="warning"`.
+- Histórico solo se escribe en GitHub Actions (`GITHUB_ACTIONS=true`) — las ejecuciones locales no contaminan los datos de salud.
+
+**Reglas de alerta:**
+- **Feed muerto:** dos ejecuciones seguidas con estado distinto a *ok*.
+- **Frecuencia caída:** la media de noticias dentro de la ventana cae más de un 50 % respecto a las cuatro ejecuciones anteriores.
+- **Feed vacío inesperado:** estado *ok* pero cero entradas, cuando la base de runs anteriores era ≥5.
+- **Estructura cambiada:** estado malformado (`bozo` de feedparser) cuando antes estaba bien.
+
+**Fuera de scope hoy** (registrados como OP3, OP4, OP5 más abajo).
+
+**Salida:** módulo `sources_health.py` + integración en `ingest.py` + alertas consolidadas vía Telegram.
+
+### OP3 · Auto-recuperación de feeds caídos ⏳
+Si un feed cae, probar URLs alternativas automáticamente (espejo del medio, query alternativa de Google News, RSS de respaldo) antes de marcarlo como muerto. Hoy OP2 solo notifica; el editor decide qué hacer manualmente.
+**Salida:** estrategia + lista de fallbacks por feed + lógica de prueba en `ingest.py`. Pendiente hasta tener datos reales (3-4 caídas) que digan qué fuentes fallan más y qué espejos serían útiles.
+
+### OP4 · Dashboard visual del estado de feeds ⏳
+Página interna o pública con la salud de cada feed (uptime, frecuencia media, última ejecución exitosa, gráfico de noticias/semana). Decisión de UX: ¿privada en `private/` o pública en `/metodologia/feeds/`? Lo segundo refuerza honestidad pero expone fragilidades. Decidir cuando haya 4-8 semanas de `feed_health.json` acumulado.
+**Salida:** decisión de ubicación + diseño + script `build_feeds_dashboard.py` que regenera la página.
+
+### OP5 · Alerta al primer fallo aislado ⏳ [BAJA]
+Hoy OP2 espera dos ejecuciones consecutivas con fallo antes de avisar (baja ruido por caídas temporales del medio). Si el editor empieza a notar que pierde 5-7 días de cobertura por esperar el segundo fallo, valorar bajar el umbral a 1 fallo + canal silencioso (Telegram con icono distinto, sin acción urgente).
+**Salida:** ajuste de umbral en `evaluate_alerts()` + diferenciación de niveles de severidad. Esperar señal real de demanda — no implementar preventivamente.
 
 ---
 
@@ -786,7 +812,10 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | UX7 | Avances/éxitos | ⏳ | |
 | UX8 | Construir entera | ⏳ | |
 | OP1 | Rectificación actor | ⏳ | |
-| OP2 | Health feeds | ⏳ | |
+| OP2 | Health feeds — alertas proactivas | 🔄 | Implementación 2026-04-25: `sources_health.py` + integración `ingest.py` |
+| OP3 | Auto-recuperación de feeds caídos | ⏳ | Pendiente datos reales (3-4 caídas) que orienten qué espejos sirven |
+| OP4 | Dashboard visual de estado de feeds | ⏳ | Decisión UX (privado/público) cuando haya 4-8 sem de `feed_health.json` |
+| OP5 | Alerta al primer fallo aislado | ⏳ | BAJA · esperar señal real de demanda antes de bajar umbral |
 | ID1 | Nombre definitivo `radar))ibiza_vivienda` | ✅ | Cerrada 2026-04-21 noche |
 | LG1 | Anonimato legal | ⏳ | |
 | LG2 | Portfolio sin nombre | ⏳ | |
