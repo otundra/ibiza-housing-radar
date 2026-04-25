@@ -1,8 +1,14 @@
 """Orquestador end-to-end del pipeline documental.
 
 Flujo:
-    ingest → classify → extract → rescue → generate → verify →
+    ingest → classify → extract → rescue → audit → generate → verify →
         (si OK) append_history → balance → self_review → build_index → costs
+
+El paso ``audit`` (DISENO-AUDITOR-MVP.md §6.2) escribe un JSON por propuesta
+en ``data/audit/{edition}/`` con la 2ª lectura ciega + comparador +
+heurísticas + bloque ``signals``. En el MVP, el badge público (tier) queda
+en ``null``; el bloque se rellena para que ``compute_tier()`` real (PI10)
+sólo tenga que leerlo.
 
 Si `verify` encuentra fallos bloqueantes, se ELIMINA la edición recién
 generada y se aborta la publicación con alerta crítica. El editor verá
@@ -245,6 +251,7 @@ def main() -> int:
         run("classify")
         run("extract")
         run("rescue")
+        run("audit")
         run("generate")
 
         # Verificar la edición antes de publicar. Si falla, la borramos.
