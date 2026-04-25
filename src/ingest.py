@@ -105,20 +105,40 @@ def ingest() -> list[dict[str, Any]]:
     cutoff = datetime.now(timezone.utc) - timedelta(days=lookback_days)
 
     raw_items: list[dict[str, Any]] = []
+    feed_metrics: list[dict[str, Any]] = []
 
     for feed_cfg in cfg["feeds"]:
         name = feed_cfg["name"]
         url = feed_cfg["url"]
         log.info("Fetching %s", name)
+
+        metric: dict[str, Any] = {
+            "name": name,
+            "status": "ok",
+            "entries_total": 0,
+            "entries_kept": 0,
+            "entries_in_window": 0,
+            "exception": None,
+        }
+
         try:
             parsed = feedparser.parse(url)
         except Exception as e:  # pragma: no cover
             log.warning("Feed failed %s: %s", name, e)
+            metric["status"] = "error"
+            metric["exception"] = str(e)[:200]
+            feed_metrics.append(metric)
             continue
 
         if getattr(parsed, "bozo", False) and not parsed.entries:
             log.warning("Feed empty or malformed: %s", name)
+            metric["status"] = "malformed"
+            bozo_exc = getattr(parsed, "bozo_exception", None)
+            metric["exception"] = (str(bozo_exc) if bozo_exc else "bozo")[:200]
+            feed_metrics.append(metric)
             continue
+
+        metric["entries_total"] = len(parsed.entries)
 
         for entry in parsed.entries:
             title = strip_html(entry.get("title", ""))
@@ -131,9 +151,13 @@ def ingest() -> list[dict[str, Any]]:
             if not matches_keywords(haystack, keywords):
                 continue
 
+            metric["entries_kept"] += 1
+
             pub = parse_entry_date(entry)
             if pub and pub < cutoff:
                 continue
+
+            metric["entries_in_window"] += 1
 
             raw_items.append({
                 "title": title,
@@ -142,6 +166,22 @@ def ingest() -> list[dict[str, Any]]:
                 "source": name,
                 "published": pub.isoformat() if pub else None,
             })
+
+        feed_metrics.append(metric)
+
+    # Salud de feeds — registro append-only + alertas proactivas (OP2).
+    # El histórico solo se escribe en GitHub Actions; las llamadas locales
+    # solo evalúan en memoria. Cualquier fallo aquí no rompe el pipeline.
+    try:
+        from src import sources_health
+        history = sources_health.record_run(feed_metrics)
+        alerts = sources_health.evaluate_alerts(history)
+        if alerts:
+            from src.notify import notify
+            body = "Salud de fuentes RSS — alertas:\n" + "\n".join(f"- {a}" for a in alerts)
+            notify(body, level="warning")
+    except Exception as exc:  # noqa: BLE001
+        log.warning("Health de feeds falló (no bloquea pipeline): %s", exc)
 
     # Paralelizamos la resolución de URLs (Google News redirect)
     log.info("Resolving %d URLs in parallel...", len(raw_items))
