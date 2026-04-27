@@ -116,3 +116,4 @@ ts,edition,stage,model,input_tokens,output_tokens,cache_read_tokens,cache_write_
 2026-04-27T09:45:06+00:00,2026-w18,audit_blind,claude-sonnet-4-6,1743,1005,0,0,0.020304
 2026-04-27T09:46:13+00:00,2026-W18,generate,claude-opus-4-7,13682,5124,0,3143,0.648461
 2026-04-27T09:46:46+00:00,2026-W18,self_review,claude-sonnet-4-6,8101,876,0,0,0.037443
+2026-04-27T10:29:08+00:00,2026-W18,self_review,claude-sonnet-4-6,8018,711,0,0,0.034719

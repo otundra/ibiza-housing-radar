@@ -13,3 +13,7 @@ Registro automático de cada ejecución de `src/self_review.py` tras publicar un
 ## 2026-W17 · 2026-04-20 18:16 UTC
 - Scores bajos: rigor=6
 - Detalle: [2026-w17.md](private/self-review/2026-w17.md)
+
+## 2026-W18 · 2026-04-27 10:29 UTC
+- Scores bajos: balance=6
+- Detalle: [2026-w18.md](private/self-review/2026-w18.md)
