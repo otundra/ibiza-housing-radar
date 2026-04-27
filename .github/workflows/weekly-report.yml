@@ -83,9 +83,12 @@ jobs:
           # data/audit/ contiene los logs JSON del auditor MVP por edición — los
           # lee self_review en la siguiente corrida para incluir el bloque
           # "auditor" (ratio de disputas Haiku↔Sonnet).
-          git add docs/_editions/ docs/index.md private/costs.md private/panel.md data/costs.csv 2>/dev/null || true
+          # data/proposals_history.json es el histórico acumulado de propuestas
+          # (la fuente de la página /propuestas/). Se va engordando cada semana.
+          # data/feed_health.json es el histórico de salud de feeds (sources_health).
+          git add docs/_editions/ docs/index.md docs/propuestas.md private/costs.md private/panel.md data/costs.csv 2>/dev/null || true
           git add private/self-review/ private/self-review-log.md 2>/dev/null || true
-          git add data/audit/ 2>/dev/null || true
+          git add data/audit/ data/proposals_history.json data/feed_health.json 2>/dev/null || true
           git add data/PIPELINE_FAILED.flag 2>/dev/null || true
           # Si la marca de fallo ya no existe (recuperación), también hay que
           # registrar su borrado en el commit. -u fuerza staging del archivo eliminado.
