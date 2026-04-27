@@ -13,6 +13,17 @@ Reglas:
 
 ---
 
+## 2026-04-27 [pipeline] — Formato unificado de notificaciones Telegram + fix de auditoría interna perdida
+
+Tras la corrida W18 llegaron tres avisos por Telegram (éxito del pipeline, score bajo de la autoevaluación) sin separación visual entre ellos, el aviso de score bajo era críptico (no explicaba qué era ni qué hacer) y solo el resumen final llevaba el coste mensual — los demás avisos no llevaban coste de ninguna clase. Resuelto centralizando el formato en `src/notify.py`: cada mensaje sale con cabecera de separador + cuerpo + pie común con coste de edición y mes acumulado.
+
+- **Cabecera y pie unificados.** `notify._wrap_message()` envuelve cualquier mensaje con un separador `━━━━━━━━━━━━━━━━━━` al inicio y un pie `Edición YYYY-WNN: X,XX € · Mes YYYY-MM: X,XX €` al final. El pie se calcula con `edition_spend_eur(slug)` y `current_month_spend_eur()`. Si el cálculo falla (CSV ausente en local, datos vacíos, etc.) el pie se omite — la notificación sigue saliendo.
+- **Aviso de éxito final más limpio.** Como el pie ya trae los costes, `report.py` deja de meterlos en el cuerpo del mensaje. El cuerpo queda con identidad + URL pública + recuento de propuestas + actores + capa de color. Resultado: una sola línea de costes (en el pie), sin duplicación.
+- **Aviso de score bajo autoexplicativo.** El mensaje de `self_review.py` cuando alguna nota cae bajo umbral 7 ahora explica qué es la autoevaluación (segunda lectura interna con Sonnet 4.6), la escala (1-10), incluye una descripción corta de cada dimensión afectada (rigor → "cifras o generalizaciones sin trazabilidad"; balance → "actores concentrados") y termina con acción concreta. Antes el editor recibía solo "rigor: 5, balance: 6" sin contexto.
+- **Fix de auditoría interna perdida.** Detectado al comprobar local: el archivo `private/self-review/2026-w18.md` que el bot generó en el runner **no estaba en el repo**. Causa: el `git add` del workflow `weekly-report.yml` solo incluía `private/costs.md` y `private/panel.md`, no la carpeta `private/self-review/` ni el log `private/self-review-log.md`. Bug existente desde el primer self-review. Añadidos al commit-back. Toda la auditoría interna queda accesible en local desde la próxima corrida.
+- **Coste.** 0 € de API. Cambios de presentación y configuración del workflow.
+- **Próximo cron lunes** estrenará el formato. El detalle del self-review W18 ya no se va a perder cuando el cron vuelva a correr (aunque el de esta semana ya se perdió: solo lo vimos en el aviso truncado de Telegram).
+
 ## 2026-04-27 [pipeline] — Sistema de auto-recuperación en tres capas tras incidente W18
 
 El cron del lunes a las 05:00 UTC abortó con dos fallos en cadena: clasificador truncó la respuesta JSON al procesar 67 noticias (la opening de los clubs disparó volumen) y, al arreglarlo, salió a la luz un segundo fallo oculto (parámetro `temperature` deprecado en Opus 4.7). Tras dos relanzamientos manuales la edición W18 publicó (~0,70 € de coste). El incidente expuso que la promesa editorial *"cada lunes una edición"* dependía de que el editor estuviese delante del Telegram. Resuelto con sistema de auto-recuperación en tres capas. Detalle en [D16](DECISIONES.md).
