@@ -1,4 +1,4 @@
-# Estado operativo — actualizado 2026-04-25
+# Estado operativo — actualizado 2026-04-27
 
 > **Regla:** ≤ 100 líneas. Solo estado vigente. Lo histórico vive en [`DIARIO.md`](DIARIO.md); lo fundacional en [`CLAUDE.md`](CLAUDE.md) (sección *Reglas fundacionales*). Ver [D0](DECISIONES.md).
 
@@ -12,7 +12,8 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 ## 🟢 Activo
 
-- **Pipeline documental semanal** en `main`. Cron lunes 05:00 UTC. Última edición: W17 (20-26 abril 2026).
+- **Pipeline documental semanal** en `main`. Cron lunes 05:00 UTC. Última edición: W18 (27 abr - 3 may 2026), publicada tras incidente de dos fallos en cadena (ver [DIARIO 2026-04-27](DIARIO.md)).
+- **Sistema de auto-recuperación operativo** desde 2026-04-27 ([D16](DECISIONES.md)). Tres capas: reintentos automáticos del SDK (`max_retries=5`), workflow `auto-retry.yml` que relanza tras push de fix, y marca persistente `data/PIPELINE_FAILED.flag` que dispara aviso de recuperación al volver a publicar. Coste cero. Validación pendiente con el próximo incidente real.
 - **Web live** → <https://otundra.github.io/ibiza-housing-radar/>
 - **Control de costes operativo.** Topes blando 12 € / duro 50 €. Dashboard en [`private/costs.md`](private/costs.md).
 - **Snapshot append-only** en `data/archive/YYYY-WNN/` desde W17.

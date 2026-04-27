@@ -13,6 +13,21 @@ Reglas:
 
 ---
 
+## 2026-04-27 [pipeline] — Sistema de auto-recuperación en tres capas tras incidente W18
+
+El cron del lunes a las 05:00 UTC abortó con dos fallos en cadena: clasificador truncó la respuesta JSON al procesar 67 noticias (la opening de los clubs disparó volumen) y, al arreglarlo, salió a la luz un segundo fallo oculto (parámetro `temperature` deprecado en Opus 4.7). Tras dos relanzamientos manuales la edición W18 publicó (~0,70 € de coste). El incidente expuso que la promesa editorial *"cada lunes una edición"* dependía de que el editor estuviese delante del Telegram. Resuelto con sistema de auto-recuperación en tres capas. Detalle en [D16](DECISIONES.md).
+
+- **Fix 1 — techo del clasificador.** `max_tokens` de 4.096 → 16.384 en `src/classify.py`. Cubre ediciones con hasta ~180 noticias sin riesgo de truncado. Solo se cobra lo emitido, no el techo.
+- **Fix 2 — parser tolerante a respuestas cortadas.** Función `_salvage_truncated_array` en classify: si llega JSON cortado, recorta al último cierre de objeto válido y procesa lo recuperable. La red de seguridad ya existente cubre los items perdidos con fallback conservador.
+- **Fix 3 — quitar `temperature` de Opus 4.7.** La API ya no admite ese parámetro en Opus 4.7. Quitado de `src/generate.py`. No afecta al output (modelo usa su default).
+- **Capa 1 — reintentos automáticos transitorios.** `max_retries=5` en los 5 clientes Anthropic (classify, extract, audit, generate, self_review). El SDK reintenta con back-off exponencial ante 408/409/429/5xx y errores de conexión. Cubre saturación temporal de la API sin que el editor se entere.
+- **Capa 2 — auto-relanzar tras push de fix.** Workflow nuevo [`auto-retry.yml`](.github/workflows/auto-retry.yml) se dispara con cada push a `src/**` en main. Tres guardias antes de relanzar: (a) marca de fallo viva, (b) edición de la semana actual no publicada, (c) cooldown de 5 min desde último intento. Si las tres se cumplen, dispara `weekly-report.yml`.
+- **Capa 3 — marca persistente + check de recuperación + coste por edición.** Marca `data/PIPELINE_FAILED.flag` se escribe al fallar y se borra al recuperar; viaja con el commit-back. El siguiente run la lee al arrancar y, si publica bien, el aviso lleva prefijo *"✅ Recuperado tras fallo de [edición]"*. Workflow ahora corre el commit con `if: always()` para que la marca sobreviva a abortos. Aviso de éxito incluye dos costes: edición concreta + mes acumulado.
+- **Coste de la edición W18.** ~0,70 € (clasificar 0,03 € + extraer 0,02 € + auditor 0,02 € + generate Opus con caché 0,60 € + self-review 0,03 €). Mes 2026-04 acumulado en capa 🟢 verde.
+- **Coste del nuevo sistema.** 0 € de API. Todo es lógica de orquestación.
+- **Trazabilidad de costes mejorada.** Hasta hoy, las llamadas de classify/extract/extract_validate se etiquetaban como `adhoc` en `data/costs.csv` porque `report.py` no propagaba la variable `EDITION`. A partir de W19 todas las llamadas de un lunes irán etiquetadas con la semana, lo que permite agregar coste real por edición. La función `edition_spend_eur(slug)` en `costs.py` lo calcula con matching case-insensitive (tolerante al formato histórico mixto W17/w17).
+- **Pendiente.** Validar el flujo completo en el próximo incidente real: (a) que un fallo deje marca correctamente, (b) que un push tras alerta dispare auto-retry, (c) que el aviso de recuperación llegue. Decisión D16 con criterios de revocación claros si aparecen bucles o enmascaramiento.
+
 ## 2026-04-25 [editorial] — Auditoría de tecnicismos en cara pública: 9 fixes aplicados
 
 Tarea de relleno mientras esperamos al cron del lunes. Revisión página a página de todo lo que el lector ve (home, /balance/, /ediciones/, /correcciones/, edición W17, footer) cazando jerga técnica prohibida por las dos reglas de lenguaje del proyecto. Se aplicaron los 9 fixes detectados + las 2 notas, en cuatro commits atómicos. La cara pública queda libre de códigos crudos, números de semana ISO y referencias internas.

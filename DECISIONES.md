@@ -202,6 +202,17 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Criterio de revocación:** si el proyecto llega a un nivel de madurez en que fijar un objetivo público ancla positivamente (por ejemplo, *"lanzamiento alineado con cierre de temporada"*) y hay compromiso externo que lo justifique, reabrir.
 - **Estado:** vigente
 
+### D16 — Sistema de auto-recuperación del pipeline en tres capas
+
+- **Fecha:** 2026-04-27
+- **Tema:** arquitectura
+- **Decisión:** ningún lunes se queda sin edición. El pipeline se cubre con tres capas de recuperación: (1) reintentos automáticos del SDK Anthropic ante errores transitorios (`max_retries=5` para 408/409/429/5xx y conexión, con back-off exponencial), aplicado en los 5 módulos que llaman a la API; (2) workflow nuevo `auto-retry.yml` que se dispara con cada push a `src/**` en main y, si detecta marca de fallo viva + edición no publicada + cooldown de 5 min, relanza `weekly-report.yml`; (3) marca persistente `data/PIPELINE_FAILED.flag` que sobrevive entre runs vía commit-back, lleva edición + error + timestamp del fallo y sirve de señal para identificar la recuperación. Cuando un run termina bien tras un fallo previo, el aviso de Telegram lleva prefijo *"✅ Recuperado tras fallo de [edición]"* y borra la marca. El aviso de éxito ahora incluye dos costes: edición concreta y mes acumulado.
+- **Por qué:** el incidente del 2026-04-27 (W18) reveló dos fallos en cadena: techo bajo en el clasificador (truncado JSON con 67 noticias) tapaba un segundo fallo (parámetro `temperature` deprecado en Opus 4.7). Hasta arreglar y relanzar manualmente, la promesa editorial *"cada lunes una edición"* dependía de que el editor estuviese delante del Telegram. Con el sistema de tres capas: los fallos transitorios se autoresuelven sin que el editor se entere; los estructurales avisan claro, y el sistema vuelve a publicar solo cuando se empuja el fix. Coste cero (no consume API extra).
+- **Docs afectados:** `src/costs.py` (`edition_spend_eur`), `src/report.py` (propagación EDITION + marca + recuperación + coste por edición), `src/classify.py` `src/extract.py` `src/generate.py` `src/audit.py` `src/self_review.py` (max_retries=5), `.github/workflows/weekly-report.yml` (`if: always()` + commit-back de la marca), `.github/workflows/auto-retry.yml` (nuevo).
+- **Próxima revisión:** tras 2-4 ediciones del sistema funcionando con incidentes reales (no sintéticos)
+- **Criterio de revocación:** (a) si el auto-relanzar dispara bucles (>2 relanzamientos por incidente único), (b) si los reintentos automáticos enmascaran fallos reales que requieren intervención humana, (c) si la marca persistente queda atascada en estado fallido por bug en el flujo de borrado.
+- **Estado:** vigente
+
 ### D14 — Sistema de monitorización de decisiones del proyecto
 
 - **Fecha:** 2026-04-24
