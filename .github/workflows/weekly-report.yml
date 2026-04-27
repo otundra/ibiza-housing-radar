@@ -78,7 +78,10 @@ jobs:
           # docs/costs.md ya no existe (el dashboard se mueve a private/ fuera de Jekyll).
           # data/PIPELINE_FAILED.flag se incluye para que la marca de fallo sobreviva
           # entre runs (la lee el siguiente run para detectar recuperación).
+          # private/self-review/ y private/self-review-log.md sí se commitean: son
+          # auditoría interna del editor (no servidos por Jekyll, fuera de la web).
           git add docs/_editions/ docs/index.md private/costs.md private/panel.md data/costs.csv 2>/dev/null || true
+          git add private/self-review/ private/self-review-log.md 2>/dev/null || true
           git add data/PIPELINE_FAILED.flag 2>/dev/null || true
           # Si la marca de fallo ya no existe (recuperación), también hay que
           # registrar su borrado en el commit. -u fuerza staging del archivo eliminado.
