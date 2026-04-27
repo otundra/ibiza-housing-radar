@@ -202,6 +202,28 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Criterio de revocación:** si el proyecto llega a un nivel de madurez en que fijar un objetivo público ancla positivamente (por ejemplo, *"lanzamiento alineado con cierre de temporada"*) y hay compromiso externo que lo justifique, reabrir.
 - **Estado:** vigente
 
+### D20 — Página global `/propuestas/` con vista agregada del histórico
+
+- **Fecha:** 2026-04-27
+- **Tema:** editorial
+- **Decisión:** crear página pública `/propuestas/` que muestra **todas** las propuestas documentadas en el histórico, agrupadas por estado actual (implementada, en ejecución, aprobada, en debate, en movimiento, propuesta, descartada, pendiente judicial, desconocido). Cada tarjeta incluye actor + tipo, resumen, palanca, horizonte, edición de origen y enlace a la fuente. Sin filtros JavaScript en V1 (anclas + secciones agrupadas son suficientes para escanear). Generada por `src/build_proposals.py` que lee `data/proposals_history.json` y emite `docs/propuestas.md`. Integrada en el cron del lunes tras `build_index`. Enlace añadido al menú principal.
+- **Por qué:** sin esta página el "mapa" del observatorio se queda dentro de cada edición semanal aislada — el lector no podía ver el conjunto de propuestas documentadas. Es exactamente lo que diferencia al observatorio de cualquier diario: la agregación. Demanda explícita del editor 2026-04-27 al revisar W18.
+- **Docs afectados:** `src/build_proposals.py` (nuevo), `docs/propuestas.md` (nuevo, generado), `docs/_includes/header.html` (enlace añadido), `docs/assets/css/main.css` (estilos `.prop-*`), `src/report.py` (paso `build_proposals` tras `build_index`), `.github/workflows/weekly-report.yml` (commit-back de `data/proposals_history.json` + `data/feed_health.json` que también faltaban).
+- **Próxima revisión:** tras 4-6 ediciones con datos acumulados (~mediados de junio 2026)
+- **Criterio de revocación:** (a) si el lector no encuentra valor en la vista agregada (medible solo cuando haya tráfico real), (b) si la lista crece demasiado (>200 propuestas) y la agrupación por estado no basta para escanear — entonces añadir filtros por palanca/actor o paginación, (c) si los estados resultan inestables y las tarjetas saltan de grupo entre semanas confundiendo al lector.
+- **Estado:** vigente
+
+### D18 — Política de actualización retroactiva de ediciones publicadas
+
+- **Fecha:** 2026-04-27
+- **Tema:** editorial
+- **Decisión:** las ediciones publicadas se tratan según tres categorías. (1) **Contenido editorial** (texto del análisis, redacción, citas, cita de actores en prosa): NO se toca. La regla fundacional 5 cubre los errores: corrección visible en `/correcciones/` con fecha y motivo, edición original marcada como "corregida" con enlace a la nota. Romper "lo que dijimos cuando lo dijimos" rompe la promesa documental. (2) **Metadata estructurada** (tipología de actor, etiquetas de bloque, palanca, estado de propuesta, frontmatter en general): SÍ se actualiza retroactivamente y sin marca pública, siempre que no altere el texto del cuerpo. Cambios silenciosos a la estructura para coherencia agregada (taxonomía consistente entre ediciones). (3) **Presentación visual** (CSS, plantillas Jekyll, layout, navegación, footer): SÍ se actualiza libremente. La presentación no afecta al texto histórico.
+- **Por qué:** sin esta separación, dos demandas contradictorias chocan: la promesa documental ("registro fiel a la fecha") exige no tocar, pero la promesa de calidad agregada (taxonomía consistente, navegación coherente entre ediciones) exige actualizar. La separación las concilia porque cada una opera sobre un sustrato distinto (texto vs. estructura vs. presentación). El editor planteó la pregunta en sesión 2026-04-27 al detectar inconsistencia de tipología del actor "Marí" entre W17 y W18.
+- **Docs afectados:** `CLAUDE.md` (sección nueva *Política de actualización retroactiva*, pendiente), `APRENDIZAJES.md` (sugerencia 1 del W18 sobre heredar tipología pasa a aplicarse retroactivamente cuando se ejecute).
+- **Próxima revisión:** tras 3-4 actualizaciones retroactivas reales (medir si la separación es operativa)
+- **Criterio de revocación:** (a) si una actualización de metadata cambia la lectura efectiva del texto del cuerpo (no debería; si pasa, indica mala separación), (b) si el público interpreta un cambio retroactivo de metadata como una corrección encubierta y eso erosiona la confianza, (c) si la complejidad operativa de mantener las tres categorías separadas no compensa el beneficio.
+- **Estado:** vigente
+
 ### D17 — Ritual de aprendizaje semanal + temperature=0 en self-review
 
 - **Fecha:** 2026-04-27

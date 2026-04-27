@@ -13,6 +13,16 @@ Reglas:
 
 ---
 
+## 2026-04-27 [editorial] — Página `/propuestas/`, política de actualización retroactiva (D18) y tercer bug del commit-back
+
+Tres piezas que cierran un hueco del observatorio: hasta hoy no había vista global del histórico de propuestas. El lector solo veía cada edición aislada; la agregación se quedaba dentro de `data/proposals_history.json` sin salida pública. Resuelto con la página `/propuestas/` (D20) y, de paso, política clara para actualizaciones retroactivas (D18) y un tercer bug encontrado en el commit-back.
+
+- **Página `/propuestas/` (D20).** Vista global del histórico, agrupada por estado (implementada → en ejecución → aprobada → en debate → en movimiento → propuesta → descartada → judicial → desconocido). Cada tarjeta lleva actor + tipo, resumen, palanca, horizonte, edición de origen y fuente original. Generada por [`src/build_proposals.py`](src/build_proposals.py) que lee `data/proposals_history.json`. Integrada en el cron tras `build_index`. Enlace en menú principal. CSS mínimo (`.prop-*`) en `main.css`. Sin filtros JS en V1 — agrupación por estado es suficiente para escanear con los ~3-30 elementos esperados a corto plazo. Validada con preview Jekyll local: layout limpio, navegación con anclas funciona, sin errores de consola.
+- **Política de actualización retroactiva (D18).** Tres categorías con políticas distintas para no romper la promesa documental: contenido editorial (texto del análisis) **no se toca** (regla 5 cubre correcciones); metadata estructurada (tipologías, etiquetas, estados) **se actualiza retroactivamente sin marca pública**; presentación visual (CSS, layout) **libre**. Sienta el principio que rige cómo aplicar futuras mejoras al histórico sin contradecir el modelo documental.
+- **Tercer bug del commit-back.** El workflow no incluía `data/proposals_history.json` ni `data/feed_health.json` en el `git add`. Por eso el histórico de propuestas se quedó congelado en W17 (3 entradas) aunque el cron W18 publicó 7 propuestas nuevas. Mismo patrón exacto que los dos bugs anteriores (self-review y audit). **Consecuencia visible:** la página `/propuestas/` arranca con solo las 3 propuestas históricas; las del W18 entrarán en el repo cuando el próximo cron actualice el JSON. Si el editor quiere acelerar, se puede regenerar localmente desde la edición W18 publicada.
+- **Tareas apuntadas en ROADMAP** ([Diferido con criterio claro](ROADMAP.md)). Rediseño de la sección "Cronología" en las ediciones (hoy un párrafo denso de prosa) y rediseño de la sección "Radar: señales en movimiento" (hoy ~30 líneas de viñetas verticales por propuesta, espesa de leer). Ambas se ejecutan juntas porque tocan la misma plantilla y prompt.
+- **Coste.** 0 € de API. Todo es estructura, plantilla, CSS y script de lookup.
+
 ## 2026-04-27 [pipeline] — Formato unificado de notificaciones Telegram + fix de auditoría interna perdida
 
 Tras la corrida W18 llegaron tres avisos por Telegram (éxito del pipeline, score bajo de la autoevaluación) sin separación visual entre ellos, el aviso de score bajo era críptico (no explicaba qué era ni qué hacer) y solo el resumen final llevaba el coste mensual — los demás avisos no llevaban coste de ninguna clase. Resuelto centralizando el formato en `src/notify.py`: cada mensaje sale con cabecera de separador + cuerpo + pie común con coste de edición y mes acumulado.

@@ -220,6 +220,8 @@ Estas tareas siguen apuntadas pero no entran en el roadmap del relanzamiento:
 - **BOIB watcher como servicio activo** — si no entró en Fase 2.
 - **Evento anual co-organizado**.
 - **Modelo de newsletter pago/híbrido**.
+- **Rediseño de la sección "Cronología" en las ediciones semanales.** Hoy es un párrafo denso de prosa con todas las fechas embebidas; difícil de escanear, no se ve la estructura de los hechos. Apuntado por el editor 2026-04-27 al revisar W18. Solución probable: bullet por evento con fecha al inicio (p.ej. `Sáb 18 — Ayuntamiento de Ibiza prepara desalojos…`), agrupados por día. Cambio en el prompt de `generate.py` y plantilla `_layouts/edition.html` si hace falta. **Condición:** ejecutar tras cerrar la sección "Movimientos esta semana" (D19 cuando se cierre), porque ambas reformas tocan la misma plantilla.
+- **Rediseño de la sección "Radar: señales en movimiento" en las ediciones semanales.** Hoy lista cada propuesta con 9 campos (actor, qué, destinatario, estado, horizonte, viabilidad jurídica, viabilidad económica, apoyos, rechazos, precedentes) en formato vertical denso. Con 3-4 propuestas son 30+ líneas de viñetas seguidas, espesas de leer. Apuntado por el editor 2026-04-27 al revisar W18. Soluciones a estudiar: (a) tabla compacta con 4-5 columnas, (b) ficha jerarquizada con esenciales arriba y técnicos colapsados, (c) eliminar campos siempre vacíos ("ninguno registrado esta semana", "no evaluada"). **Condición:** ejecutar junto al rediseño de la cronología (misma plantilla, mismo prompt).
 
 ### Hipótesis post-tracción — Escalabilidad provincial
 
