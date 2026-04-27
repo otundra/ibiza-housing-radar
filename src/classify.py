@@ -58,6 +58,21 @@ Recibirás una lista JSON de noticias (título + resumen). Devuelves un JSON con
 Responde EXCLUSIVAMENTE con el JSON, sin texto previo ni posterior, empezando por `[`."""
 
 
+def _salvage_truncated_array(text: str) -> list[Any] | None:
+    # Si la respuesta del modelo llega cortada a mitad de un objeto, intenta
+    # recortar al último cierre de objeto válido ("},") y cerrar el array
+    # con "]" para no perder los items que sí llegaron completos.
+    last = text.rfind("},")
+    if last == -1:
+        return None
+    candidate = text[: last + 1] + "]"
+    try:
+        result = json.loads(candidate)
+    except json.JSONDecodeError:
+        return None
+    return result if isinstance(result, list) else None
+
+
 def classify(items: list[dict[str, Any]], edition: str) -> list[dict[str, Any]]:
     if not items:
         return []
@@ -75,7 +90,7 @@ def classify(items: list[dict[str, Any]], edition: str) -> list[dict[str, Any]]:
     log.info("Classifying %d items with %s", len(items), MODEL)
     resp = client.messages.create(
         model=MODEL,
-        max_tokens=4096,
+        max_tokens=16384,
         system=[{"type": "text", "text": SYSTEM, "cache_control": {"type": "ephemeral"}}],
         messages=[{
             "role": "user",
@@ -99,8 +114,15 @@ def classify(items: list[dict[str, Any]], edition: str) -> list[dict[str, Any]]:
     try:
         labels = json.loads(text)
     except json.JSONDecodeError as e:
-        log.error("Respuesta no era JSON:\n%s", text[:500])
-        raise
+        salvaged = _salvage_truncated_array(text)
+        if salvaged is None:
+            log.error("Respuesta no era JSON:\n%s", text[:500])
+            raise
+        log.warning(
+            "Respuesta truncada (%s); recuperados %d items completos del array.",
+            e, len(salvaged),
+        )
+        labels = salvaged
 
     if not isinstance(labels, list):
         raise ValueError(f"Clasificador devolvió no-lista: {type(labels).__name__}")
