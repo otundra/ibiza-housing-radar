@@ -1,0 +1,72 @@
+name: Auto-retry on fix
+
+# Capa 2 del sistema de auto-recuperación. Se dispara con cada push a `src/`
+# en main. Si detecta que (a) hay marca de fallo viva del run anterior y
+# (b) la edición de la semana actual aún no se publicó, relanza
+# weekly-report.yml automáticamente. Así el editor solo tiene que empujar
+# el fix; el sistema vuelve a publicar solo y mandará el aviso de
+# recuperación cuando termine bien.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+
+permissions:
+  contents: read
+  actions: write  # para disparar weekly-report.yml vía gh
+
+concurrency:
+  group: auto-retry
+  cancel-in-progress: false
+
+jobs:
+  maybe-retry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Check if retry needed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Guardia 1: si no hay marca de fallo, no hay nada que recuperar.
+          if [ ! -f data/PIPELINE_FAILED.flag ]; then
+            echo "Sin marca de fallo. Push tras edición sana — no relanzar."
+            exit 0
+          fi
+
+          # Guardia 2: si la edición de la semana actual ya existe en el
+          # repo, ya se publicó (manualmente o tras otro relanzamiento).
+          # No queremos sobreescribirla ni duplicar.
+          WEEK_SLUG=$(date -u +'%G-w%V')
+          if [ -f "docs/_editions/${WEEK_SLUG}.md" ]; then
+            echo "Edición ${WEEK_SLUG} ya publicada. No relanzar."
+            exit 0
+          fi
+
+          # Guardia 3: cooldown. Si el último intento de weekly-report fue
+          # hace menos de 5 minutos, no relanzar (el push puede ser parte
+          # de una serie rápida de fixes; mejor dejar al humano decidir).
+          LAST_RUN_TIME=$(gh run list \
+            --workflow=weekly-report.yml \
+            --limit=1 \
+            --json createdAt \
+            --jq '.[0].createdAt' || echo "")
+          if [ -n "$LAST_RUN_TIME" ]; then
+            NOW_EPOCH=$(date -u +%s)
+            LAST_EPOCH=$(date -u -d "$LAST_RUN_TIME" +%s 2>/dev/null || echo 0)
+            DIFF=$(( NOW_EPOCH - LAST_EPOCH ))
+            if [ "$DIFF" -lt 300 ]; then
+              echo "Último intento hace ${DIFF}s (<300s). Cooldown — no relanzar."
+              exit 0
+            fi
+          fi
+
+          echo "Marca viva + edición ${WEEK_SLUG} no publicada → relanzar weekly-report.yml"
+          gh workflow run weekly-report.yml
