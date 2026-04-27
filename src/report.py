@@ -323,6 +323,7 @@ def main() -> int:
         run("balance")
         run("self_review")
         run("build_index")
+        run("build_proposals")
         run("costs")
 
     except Exception as exc:  # noqa: BLE001
