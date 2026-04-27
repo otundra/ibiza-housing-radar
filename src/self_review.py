@@ -160,6 +160,12 @@ def review(edition_path: Path, edition_id: str) -> dict:
     resp = client.messages.create(
         model=MODEL,
         max_tokens=2048,
+        # temperature=0 reduce la varianza entre lecturas. Sonnet 4.6 sigue
+        # admitiendo este parámetro (Opus 4.7 ya no). Sin esto, dos lecturas
+        # de la misma edición pueden dar notas con ±2-3 puntos de diferencia.
+        # Reduce ruido pero no lo elimina; los warnings cualitativos siempre
+        # son la fuente más fiable.
+        temperature=0,
         system=[{"type": "text", "text": SYSTEM, "cache_control": {"type": "ephemeral"}}],
         messages=[{"role": "user", "content": json.dumps(payload, ensure_ascii=False)}],
     )
