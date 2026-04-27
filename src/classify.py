@@ -77,7 +77,10 @@ def classify(items: list[dict[str, Any]], edition: str) -> list[dict[str, Any]]:
     if not items:
         return []
 
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    # max_retries=5: el SDK reintenta automáticamente ante 408/409/429/5xx y
+    # errores de conexión con back-off exponencial. Default es 2; subimos a 5
+    # para cubrir picos de saturación de la API sin que el lunes se pierda.
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=5)
 
     # Payload ligero para ahorrar tokens
     payload = [

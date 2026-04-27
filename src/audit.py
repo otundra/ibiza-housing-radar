@@ -458,7 +458,9 @@ def main() -> int:
     if not args.dry_run:
         try:
             import anthropic
-            client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+            # max_retries=5: reintentos automáticos ante errores transitorios de
+            # la API (408/409/429/5xx, conexión). Cubre saturación sin perder edición.
+            client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=5)
         except KeyError:
             log.error("ANTHROPIC_API_KEY no definida — usa --dry-run para correr sin API.")
             return 1

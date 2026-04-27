@@ -255,7 +255,9 @@ def run(items_with_proposals: list[dict], edition: str) -> list[ExtractionResult
         if "id" not in it:
             it["id"] = f"item-{i:03d}"
 
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    # max_retries=5: reintentos automáticos ante errores transitorios de la API
+    # (408/409/429/5xx, conexión). Cubre picos de saturación sin perder edición.
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=5)
 
     # Paso 1: Haiku extrae todos en un batch
     haiku_extractions = extract_with_haiku(client, items_with_proposals, edition)

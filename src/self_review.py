@@ -142,7 +142,9 @@ def auditor_signal(edition_id: str) -> dict:
 
 
 def review(edition_path: Path, edition_id: str) -> dict:
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    # max_retries=5: reintentos automáticos ante errores transitorios de la API
+    # (408/409/429/5xx, conexión). Cubre picos de saturación sin perder edición.
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=5)
 
     prevs = [p for p in latest_editions(4) if p != edition_path][:3]
     auditor = auditor_signal(edition_id)
