@@ -162,6 +162,17 @@ Cuatro reglas baratas que frenan la entropía hasta la revisión profunda post-l
 - **Un punto menos de lenguaje técnico.** Al hablar con el editor en el chat, traducir tecnicismos evitables al español común (flujo, registro, estructura, diferencias, envío…). La palabra técnica se mantiene en documentos internos de arquitectura, estudios y código; en la conversación se traduce. Alcance: solo este proyecto. Detalle en la memoria del asistente `feedback_lenguaje_llano_chat.md`.
 - **Cero códigos sueltos en el chat.** Siempre empezar por el **nombre de la cosa**; el identificador (tipo `RT15`, `PI9`, `D11`, `W17`, `Q3`…) va entre paréntesis al final y solo si aporta trazabilidad. Nunca como etiqueta principal, nunca como primer elemento de una línea. 5 recaídas acumuladas a 2026-04-24 — tolerancia cero sin excepciones. Excepción: siglas del dominio público del sector (BOIB, IBAVI, GOIB, CCOO, PIMEEF…) sí se usan sin glosar. Detalle en `feedback_referencias_con_contexto.md`.
 
+## Ritual de aprendizaje semanal (desde 2026-04-27)
+
+El observatorio mejora semana a semana revisando lo que el self-review propone cada lunes. El registro vive en [`APRENDIZAJES.md`](APRENDIZAJES.md). El ritual lo lleva Claude, no el editor:
+
+1. **Cada arranque de sesión** (silencioso, sin informe). Si existe un self-review nuevo desde la última sesión, leerlo (`private/self-review/{edicion}.md`) y cruzar con `APRENDIZAJES.md` para identificar sugerencias nuevas y warnings recurrentes.
+2. **Traer informe al editor en el primer turno** cuando haya novedad: lista corta de sugerencias del self-review nuevo + propuesta de decisión por cada una (aplicar / descartar con motivo / dejar en seguimiento). El editor responde en una palabra a cada una; si discrepa, se abre sesión específica.
+3. **Aplicar lo aceptado.** Cambio mínimo al prompt del generador (o al pipeline donde toque), commit citando la edición que originó la sugerencia, mover la fila en `APRENDIZAJES.md` a estado *aplicada* con enlace al commit.
+4. **Warnings de una edición** quedan solo en el self-review de esa edición. Si se repiten en 2+ ediciones consecutivas, ascienden a `APRENDIZAJES.md` con su propia fila y propuesta.
+
+Este ritual cubre la promesa de "mejorar semana a semana" sin ritual extra para el editor: solo decide sí/no a las propuestas que Claude trae al arrancar.
+
 ## Diario del proyecto
 
 Cuando haya un cambio relevante (hito, decisión, fix estructural, no-commits triviales), añadir una entrada a [`DIARIO.md`](DIARIO.md) con formato viñetas: tema en **negrita** + línea breve combinando qué/por qué/impacto. Cabecera obligatoria con fecha ISO + `[tema]` (regla 1).

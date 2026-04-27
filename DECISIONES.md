@@ -202,6 +202,17 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Criterio de revocación:** si el proyecto llega a un nivel de madurez en que fijar un objetivo público ancla positivamente (por ejemplo, *"lanzamiento alineado con cierre de temporada"*) y hay compromiso externo que lo justifique, reabrir.
 - **Estado:** vigente
 
+### D17 — Ritual de aprendizaje semanal + temperature=0 en self-review
+
+- **Fecha:** 2026-04-27
+- **Tema:** pipeline
+- **Decisión:** (1) Adoptar ritual semanal de aprendizaje: cada arranque de sesión, Claude revisa el self-review más reciente, cruza con `APRENDIZAJES.md` y trae informe corto al editor con propuesta de decisión por sugerencia (aplicar / descartar con motivo / dejar en seguimiento). El editor decide en una palabra; aplicado se commitea citando la edición de origen. (2) Aplicar `temperature=0` en la llamada de `src/self_review.py` para reducir varianza entre lecturas (Sonnet 4.6 sigue admitiéndolo; Opus 4.7 ya no). (3) Mantener la política actual de alerta `nota <7 → Telegram` durante 4-6 ediciones más; revisar el 2026-06-08 (lunes, ≈6 semanas) si conviene migrar a una política basada en warnings recurrentes en lugar de notas absolutas.
+- **Por qué:** sin ritual fijo, las sugerencias del self-review se diluyen en `private/self-review/{edicion}.md` y la promesa de "mejorar semana a semana" se queda en intención. Llevarlo Claude (no el editor) reduce fricción a casi cero. La varianza de notas detectada en el regenerado de W18 (rigor 5 → 8 entre dos lecturas idénticas) hace ruidoso el umbral fijo; `temperature=0` mitiga sin eliminar (los warnings cualitativos siguen siendo la fuente fiable). La revisión a 6 semanas evita rediseñar la política sin datos suficientes.
+- **Docs afectados:** `APRENDIZAJES.md` (nuevo, raíz), `CLAUDE.md` (sección *Ritual de aprendizaje semanal*), `src/self_review.py` (`temperature=0`).
+- **Próxima revisión:** 2026-06-08
+- **Criterio de revocación:** (a) si el ritual genera fricción real (editor abriendo sesiones específicas en 3+ semanas seguidas para discutir propuestas), (b) si `temperature=0` reduce la varianza por debajo de lo útil (notas pegadas en 8-9 sin variar), (c) si tras 4-6 ediciones los warnings recurrentes son más fiables que las notas y conviene migrar la política de alerta.
+- **Estado:** vigente
+
 ### D16 — Sistema de auto-recuperación del pipeline en tres capas
 
 - **Fecha:** 2026-04-27
