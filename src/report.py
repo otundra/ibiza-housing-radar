@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -33,6 +34,11 @@ ROOT = Path(__file__).resolve().parent.parent
 EDITIONS_DIR = ROOT / "docs" / "_editions"
 EXTRACTED_FILE = ROOT / "data" / "extracted.json"
 HISTORY_FILE = ROOT / "data" / "proposals_history.json"
+# Marca persistente que sobrevive entre runs (commit-back del workflow). Si
+# existe al iniciar un run que acaba bien, el aviso de éxito incluye un
+# prefijo "Recuperado tras fallo de [edición]" para que el editor confirme
+# de un vistazo que el sistema volvió a la normalidad.
+FAIL_FLAG_FILE = ROOT / "data" / "PIPELINE_FAILED.flag"
 
 log = logging.getLogger("report")
 
@@ -196,11 +202,41 @@ def _build_alerts_block() -> str:
     return "\n\n⚠ *Atención esta semana:*\n" + "\n".join(alerts)
 
 
-def _build_summary(success: bool, error: str | None = None) -> tuple[str, str]:
+def _read_fail_flag() -> str | None:
+    """Devuelve la edición del último fallo si la marca existe, o None."""
+    if not FAIL_FLAG_FILE.exists():
+        return None
+    try:
+        data = json.loads(FAIL_FLAG_FILE.read_text())
+        return data.get("edition") or "edición previa"
+    except Exception:  # noqa: BLE001
+        return "edición previa"
+
+
+def _write_fail_flag(edition: str, error: str) -> None:
+    FAIL_FLAG_FILE.parent.mkdir(parents=True, exist_ok=True)
+    FAIL_FLAG_FILE.write_text(json.dumps({
+        "edition": edition,
+        "error": error[:500],
+        "ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    }, ensure_ascii=False, indent=2))
+
+
+def _clear_fail_flag() -> None:
+    if FAIL_FLAG_FILE.exists():
+        FAIL_FLAG_FILE.unlink()
+
+
+def _build_summary(
+    success: bool,
+    error: str | None = None,
+    recovered_from: str | None = None,
+) -> tuple[str, str]:
     from src.costs import (
         MONTHLY_HARD_CAP_EUR,
         MONTHLY_SOFT_CAP_EUR,
         current_month_spend_eur,
+        edition_spend_eur,
         _current_layer,
     )
 
@@ -208,6 +244,7 @@ def _build_summary(success: bool, error: str | None = None) -> tuple[str, str]:
     layer = _current_layer(spend_eur)
     week = _iso_week()
     month = datetime.now(timezone.utc).strftime("%Y-%m")
+    edition_eur = edition_spend_eur(week)
 
     if success:
         stats = _edition_summary_stats()
@@ -223,13 +260,19 @@ def _build_summary(success: bool, error: str | None = None) -> tuple[str, str]:
             actors_line = f"\n• Actores: {', '.join(shown)}{suffix}"
 
         alerts_block = _build_alerts_block()
+        recovery_prefix = (
+            f"✅ *Recuperado tras fallo de {recovered_from}*\n\n"
+            if recovered_from else ""
+        )
 
         msg = (
+            f"{recovery_prefix}"
             f"📡 *Radar Vivienda Ibiza — {week}*\n"
             f"{stats['public_url']}\n"
             f"{counts_line}"
             f"{actors_line}\n"
-            f"\nPipeline OK · Gasto {month}: *{spend_eur:.2f} €* · Capa: {layer}"
+            f"\nPipeline OK · Edición: *{edition_eur:.2f} €* · "
+            f"Mes {month}: *{spend_eur:.2f} €* · Capa: {layer}"
             f"{alerts_block}"
         )
         return msg, "ok"
@@ -237,7 +280,8 @@ def _build_summary(success: bool, error: str | None = None) -> tuple[str, str]:
     msg = (
         f"*Radar Vivienda Ibiza — {week}: FALLO*\n"
         f"Pipeline abortado con error:\n```\n{error}\n```\n"
-        f"Gasto {month} hasta el fallo: *{spend_eur:.2f} €*.\n"
+        f"Gasto edición hasta el fallo: *{edition_eur:.2f} €*.\n"
+        f"Gasto {month}: *{spend_eur:.2f} €*.\n"
         f"Revisar workflow en GitHub Actions."
     )
     return msg, "critical"
@@ -245,6 +289,16 @@ def _build_summary(success: bool, error: str | None = None) -> tuple[str, str]:
 
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s %(name)s] %(message)s")
+
+    # Propaga la edición a todas las fases que registran coste, para que
+    # cada llamada al CSV vaya etiquetada con el slug de la semana en vez
+    # de "adhoc". Imprescindible para que edition_spend_eur() agregue bien.
+    edition = _iso_week()
+    os.environ["EDITION"] = edition
+
+    # Si el run anterior dejó marca de fallo, anotamos para que el aviso
+    # de éxito final lleve el prefijo de recuperación.
+    recovered_from = _read_fail_flag()
 
     try:
         run("ingest")
@@ -283,6 +337,9 @@ def main() -> int:
 
     except Exception as exc:  # noqa: BLE001
         log.error("Pipeline falló: %s", exc)
+        # Marca persistente: la lee el siguiente run para identificar la
+        # recuperación. Sobrevive entre runs porque va al commit-back.
+        _write_fail_flag(edition=edition, error=str(exc))
         try:
             from src.notify import notify
             msg, level = _build_summary(success=False, error=str(exc))
@@ -292,9 +349,12 @@ def main() -> int:
         raise
 
     log.info("✅ Pipeline completo.")
+    # Si veníamos de fallo, limpiamos la marca tras publicar bien.
+    if recovered_from:
+        _clear_fail_flag()
     try:
         from src.notify import notify
-        msg, level = _build_summary(success=True)
+        msg, level = _build_summary(success=True, recovered_from=recovered_from)
         notify(msg, level=level)
     except Exception as nexc:  # noqa: BLE001
         log.error("Resumen por Telegram no se pudo enviar: %s", nexc)

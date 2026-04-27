@@ -195,6 +195,21 @@ def current_month_spend_eur() -> float:
     return usd_to_eur(current_month_spend_usd())
 
 
+def edition_spend_eur(edition: str) -> float:
+    """Suma del gasto en EUR de todas las llamadas etiquetadas con esta edición.
+
+    Match case-insensitive para tolerar inconsistencia histórica del CSV
+    (mayúsculas/minúsculas) hasta que report.py propague EDITION uniforme.
+    Llamadas etiquetadas "adhoc" no entran (no son atribuibles a una edición).
+    """
+    target = edition.lower()
+    total_usd = sum(
+        r.cost_usd for r in read_all_records()
+        if r.edition.lower() == target
+    )
+    return usd_to_eur(round(total_usd, 6))
+
+
 def assert_budget_available(planned_cost: float = 0.0) -> None:
     """Corta solo si se supera el TOPE DURO en euros (protección runaway).
 
