@@ -232,19 +232,12 @@ def _build_summary(
     error: str | None = None,
     recovered_from: str | None = None,
 ) -> tuple[str, str]:
-    from src.costs import (
-        MONTHLY_HARD_CAP_EUR,
-        MONTHLY_SOFT_CAP_EUR,
-        current_month_spend_eur,
-        edition_spend_eur,
-        _current_layer,
-    )
+    # Coste de edición y mes acumulado los añade notify._build_footer().
+    # Aquí solo el cuerpo: identidad, contenido y capa de color.
+    from src.costs import current_month_spend_eur, _current_layer
 
-    spend_eur = current_month_spend_eur()
-    layer = _current_layer(spend_eur)
+    layer = _current_layer(current_month_spend_eur())
     week = _iso_week()
-    month = datetime.now(timezone.utc).strftime("%Y-%m")
-    edition_eur = edition_spend_eur(week)
 
     if success:
         stats = _edition_summary_stats()
@@ -261,7 +254,7 @@ def _build_summary(
 
         alerts_block = _build_alerts_block()
         recovery_prefix = (
-            f"✅ *Recuperado tras fallo de {recovered_from}*\n\n"
+            f"*Recuperado tras fallo de {recovered_from}*\n\n"
             if recovered_from else ""
         )
 
@@ -271,17 +264,14 @@ def _build_summary(
             f"{stats['public_url']}\n"
             f"{counts_line}"
             f"{actors_line}\n"
-            f"\nPipeline OK · Edición: *{edition_eur:.2f} €* · "
-            f"Mes {month}: *{spend_eur:.2f} €* · Capa: {layer}"
+            f"\nPipeline OK · Capa: {layer}"
             f"{alerts_block}"
         )
         return msg, "ok"
 
     msg = (
-        f"*Radar Vivienda Ibiza — {week}: FALLO*\n"
+        f"*Radar Vivienda Ibiza — {week}: FALLO*\n\n"
         f"Pipeline abortado con error:\n```\n{error}\n```\n"
-        f"Gasto edición hasta el fallo: *{edition_eur:.2f} €*.\n"
-        f"Gasto {month}: *{spend_eur:.2f} €*.\n"
         f"Revisar workflow en GitHub Actions."
     )
     return msg, "critical"

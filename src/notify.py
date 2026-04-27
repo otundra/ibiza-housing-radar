@@ -4,6 +4,10 @@ Filosofía: el pipeline nunca debe perder editorial por un fallo de
 notificación. Si Telegram cae, intentamos abrir un issue en el repo con
 `gh` CLI. Si ambos fallan, el error se loguea y el pipeline continúa.
 
+Cada mensaje se envuelve con un separador visible al inicio (para que
+varias notificaciones del mismo run sean fáciles de distinguir en
+Telegram) y un pie con el coste de la edición + acumulado mensual.
+
 Uso típico:
     from src.notify import notify
     notify("Resumen semanal publicado OK", level="ok")
@@ -15,6 +19,7 @@ from __future__ import annotations
 import logging
 import os
 import subprocess
+from datetime import datetime, timezone
 from typing import Final
 
 import httpx
@@ -30,6 +35,43 @@ _LEVEL_ICON: Final[dict[str, str]] = {
 
 _TELEGRAM_TIMEOUT_S: Final[float] = 10.0
 
+# Separador visible al inicio de cada mensaje. Telegram apila notificaciones
+# del mismo bot sin frontera clara; este header las distingue.
+_SEPARATOR: Final[str] = "━━━━━━━━━━━━━━━━━━"
+
+
+def _build_footer() -> str:
+    """Pie común con coste de la edición + mes acumulado.
+
+    Lee la edición del entorno (EDITION env, propagada por report.py).
+    Si no se puede calcular (CSV ausente, sin entradas, error), devuelve
+    cadena vacía: el footer es informativo, no debe romper notificaciones.
+    """
+    try:
+        from src.costs import current_month_spend_eur, edition_spend_eur
+    except Exception:  # noqa: BLE001
+        return ""
+
+    try:
+        edition = os.environ.get("EDITION", "").strip()
+        if not edition:
+            iso = datetime.now(timezone.utc).isocalendar()
+            edition = f"{iso.year}-W{iso.week:02d}"
+        ed_eur = edition_spend_eur(edition)
+        month = datetime.now(timezone.utc).strftime("%Y-%m")
+        month_eur = current_month_spend_eur()
+        return f"\n\n—\nEdición {edition}: *{ed_eur:.2f} €* · Mes {month}: *{month_eur:.2f} €*"
+    except Exception as exc:  # noqa: BLE001
+        log.debug("Footer de costes omitido: %s", exc)
+        return ""
+
+
+def _wrap_message(message: str, level: str) -> str:
+    icon = _LEVEL_ICON.get(level, "")
+    body = f"{icon} {message}".strip() if icon else message.strip()
+    footer = _build_footer()
+    return f"{_SEPARATOR}\n\n{body}{footer}"
+
 
 def send_telegram(message: str, level: str = "info") -> bool:
     """Envía un mensaje al chat configurado. Devuelve True si Telegram acusa 200.
@@ -43,8 +85,7 @@ def send_telegram(message: str, level: str = "info") -> bool:
         log.warning("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID no configurados; skip.")
         return False
 
-    icon = _LEVEL_ICON.get(level, "")
-    text = f"{icon} {message}".strip()
+    text = _wrap_message(message, level)
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {

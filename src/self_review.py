@@ -242,10 +242,28 @@ def append_log_if_alert(review_data: dict, edition_id: str, review_path: Path) -
 
     try:
         from src.notify import notify
+
+        # Descripción corta de cada dimensión para que el aviso sea
+        # autoexplicativo en Telegram sin obligar a abrir el detalle
+        # cada vez. La causa concreta sigue en el fichero del review.
+        dim_hint = {
+            "reglas": "cumplimiento de las 5 reglas duras (autor, URL, cero inferencia)",
+            "rigor": "cifras o generalizaciones sin trazabilidad",
+            "balance": "actores concentrados (poca diversidad)",
+            "cobertura": "hechos relevantes que pudo dejar fuera",
+            "claridad": "estructura o tono inconsistente",
+        }
+        scores_lines = "\n".join(
+            f"• {k}: *{v}/10* — {dim_hint.get(k, '(dimensión sin descripción)')}"
+            for k, v in low.items()
+        )
         msg = (
-            f"⚠️ Self-review {edition_id}: score bajo\n"
-            + "\n".join(f"- {k}: **{v}**" for k, v in low.items())
-            + f"\nDetalle: `{review_path.relative_to(ROOT)}`"
+            f"*Autoevaluación {edition_id}: notas por debajo del umbral*\n\n"
+            f"La segunda lectura interna (Sonnet 4.6) puntúa la edición "
+            f"en 5 dimensiones, escala 1-10. Umbral de aviso: nota <7.\n\n"
+            f"{scores_lines}\n\n"
+            f"Detalle: `{review_path.relative_to(ROOT)}`\n\n"
+            f"Acción: revisar el detalle; si lo confirma, ajustar prompt del generador."
         )
         notify(msg, level="warning")
     except Exception as exc:  # noqa: BLE001
