@@ -61,5 +61,49 @@
     "id": "2026-w17-003",
     "first_seen": "2026-04-20T18:16:38.850788+00:00",
     "first_seen_edition": "2026-W17"
+  },
+  {
+    "actor": "CCOO",
+    "actor_type": "sindicato",
+    "statement_summary": "CCOO demanda más vivienda en Ibiza como necesidad prioritaria.",
+    "statement_verbatim": "CCOO reclama más vivienda en Ibiza",
+    "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/23/2615039/consuelo-lopez-ccoo-necesitamos-vivienda-vivienda-mas-vivienda.html",
+    "palanca": "oferta_vivienda",
+    "target_actor": "",
+    "horizon": "estructural",
+    "state": "en_movimiento",
+    "viability_legal": "no_evaluada",
+    "viability_legal_reason": "",
+    "viability_economic": "no_evaluada",
+    "viability_economic_reason": "",
+    "supporters_cited": [],
+    "opponents_cited": [],
+    "precedents": [],
+    "id": "2026-w18-001",
+    "first_seen": "2026-04-27T09:46:13+00:00",
+    "first_seen_edition": "2026-W18"
+  },
+  {
+    "actor": "Rafael Triguero, Ayuntamiento de Ibiza",
+    "actor_type": "institucional_publico",
+    "statement_summary": "El alcalde de Ibiza anuncia que no tolerará más asentamientos en la ciudad.",
+    "statement_verbatim": "no vamos a seguir tolerando esta forma de vida en la ciudad",
+    "url_source": "https://www.noudiari.es/local-ibiza/rafael-triguero-alcalde-de-ibiza-sobre-asentamientos-no-vamos-a-seguir-tolerando-esta-forma-de-vida-en-la-ciudad/",
+    "palanca": "enforcement",
+    "target_actor": "Ayuntamiento de Ibiza",
+    "horizon": "corto_plazo",
+    "state": "en_movimiento",
+    "viability_legal": "no_evaluada",
+    "viability_legal_reason": "",
+    "viability_economic": "no_evaluada",
+    "viability_economic_reason": "",
+    "supporters_cited": [],
+    "opponents_cited": [],
+    "precedents": [
+      "desalojo de sa Joveria culminado el 21-04-2026"
+    ],
+    "id": "2026-w18-002",
+    "first_seen": "2026-04-27T09:46:13+00:00",
+    "first_seen_edition": "2026-W18"
   }
 ]
