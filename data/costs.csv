@@ -117,3 +117,6 @@ ts,edition,stage,model,input_tokens,output_tokens,cache_read_tokens,cache_write_
 2026-04-27T09:46:13+00:00,2026-W18,generate,claude-opus-4-7,13682,5124,0,3143,0.648461
 2026-04-27T09:46:46+00:00,2026-W18,self_review,claude-sonnet-4-6,8101,876,0,0,0.037443
 2026-04-27T10:29:08+00:00,2026-W18,self_review,claude-sonnet-4-6,8018,711,0,0,0.034719
+2026-04-28T20:37:19+00:00,2026-W18,generate,claude-opus-4-7,5981,3647,0,3673,0.432109
+2026-04-28T20:38:45+00:00,2026-W18,generate,claude-opus-4-7,5981,3294,3673,0,0.342274
+2026-04-28T20:39:54+00:00,2026-W17,generate,claude-opus-4-7,5981,4007,3673,0,0.395749

@@ -8,7 +8,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 1. **Hito 1 · Auditor mínimo viable publicado con una edición real** ← activo.
 2. **Hito 2 · Sistema de tiers cerrado e integrado** (en paralelo).
-3. **Hito 3 · Titular legal resuelto** (en paralelo, bloquea empuje público).
+3. **Hito 3 · Titular legal resuelto** — diferido hasta antes del empuje público (decisión del editor 2026-04-28). No corre prisa mientras la web no se publique activamente; bloquea solo el lanzamiento, no el rodaje.
 
 ## 🟢 Activo
 
@@ -40,6 +40,8 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 ## 🎯 Próximos hitos
 
 Sin calendario ni fecha de lanzamiento ([D15](DECISIONES.md)). El avance se organiza por hitos; los rangos de reloj solo aplican al cron semanal, que es automático.
+
+> **Régimen actual: rodaje pre-lanzamiento** ([D21](DECISIONES.md), 2026-04-28). Las ediciones publicadas son revisables libremente (formato, contenido editorial, estructura) sin nota pública de corrección hasta que la web se empuje al público activamente. Tras el lanzamiento, vuelve a aplicar plena la regla 1 fundacional (contenido editorial inmutable, errores vía `/correcciones/`).
 
 - **Próxima edición automática** — lunes siguiente según el cron semanal. Etiqueta pública según rango de fechas reales.
 - **Hito 1 — Auditor MVP en construcción.** Fases 1, 2 y 3 cerradas 2026-04-25 (segunda lectura ciega + comparador + heurísticas + whitelist V1 + bloque `signals` con stub de tier + registro JSON + integración silenciosa + señal de disputas + `/correcciones/` mínima). Pendiente: corrida end-to-end en la próxima edición del cron (automática) y Fase 4 reformulada como observación en vivo durante 3-4 ediciones consecutivas (W19-W22) en lugar del backfill de W10 — ver [D20](DECISIONES.md). Detalle en [`DISENO-AUDITOR-MVP.md §9`](DISENO-AUDITOR-MVP.md).

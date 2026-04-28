@@ -79,7 +79,17 @@ rescued_count: <N>
 
 ## Cronología
 
-3 líneas describiendo el orden temporal de los hechos relevantes esta semana. Sin interpretación, sin valoración, sin "ventana de decisión". Solo ordenar.
+3-8 bullets en orden cronológico. Cada bullet:
+- Empieza con la fecha en negrita: día de la semana abreviado + número de día (ej. **Sáb 18**, **Mar 21**, **Lun 27**). Si un bullet cubre dos días seguidos, usa rango: **Sáb 18 — Dom 19**.
+- Después un em-dash o espacio + frase corta describiendo el hecho.
+- Sin enlaces (las URLs ya están en "Señales detectadas").
+- Sin valoración, sin "ventana de decisión", sin "esto es preocupante".
+- Solo ordenar lo que pasó.
+
+Ejemplo:
+- **Sáb 18 — Dom 19** trascienden los planes del Ayuntamiento de Ibiza para desalojar varios asentamientos.
+- **Mar 21** se ejecuta el desalojo de sa Joveria; Prohens declara que la regularización agravaría el problema.
+- **Lun 27** el Govern aprueba 25 millones para vivienda pública municipal.
 
 ## Mapa de posiciones
 
@@ -99,18 +109,27 @@ Para cada propuesta (ya fusionada si aplica):
 
 ### <N>. <Título corto fiel al statement_summary>
 
-**Actor que la propone:** <actor> (<actor_type_label>) — [fuente](<url_source>)
+**<actor>** (<actor_type_label>) — [fuente](<url_source>)
 
-**Qué:** <statement_summary>
+<statement_summary>
 
-- **Actor que tendría que ejecutarla:** <target_actor>
-- **Estado:** <state_label>
-- **Horizonte:** <horizon_label>
-- **Viabilidad jurídica:** <viability_legal> — <viability_legal_reason o "sin evaluación pública">
-- **Viabilidad económica:** <viability_economic> — <viability_economic_reason o "sin cifra pública disponible">
-- **Apoyos públicos citados:** <supporters_cited joined or "ninguno registrado esta semana">
-- **Rechazos públicos citados:** <opponents_cited joined or "ninguno registrado esta semana">
-- **Precedentes citados:** <precedents si los hay, con URL>
+- Destinatario: <target_actor>
+- Estado: <state_label>
+- Horizonte: <horizon_label>
+- Viabilidad jurídica: <viability_legal_label> — <viability_legal_reason>
+- Viabilidad económica: <viability_economic_label> — <viability_economic_reason>
+- Apoyos: <supporters_cited joined>
+- Rechazos: <opponents_cited joined>
+- Precedentes: <precedents con URL>
+
+**REGLA DURA — OMITIR LÍNEAS VACÍAS.** No imprimas líneas con "ninguno registrado esta semana", "sin evaluación pública", "sin cifra pública disponible" ni "no evaluada". Si un campo no tiene contenido real, **omite la línea entera**:
+- `Destinatario:` → omitir si `target_actor` es "sin destinatario explícito en la fuente" o equivalente.
+- `Viabilidad jurídica:` → omitir si `viability_legal` es `no_evaluada`.
+- `Viabilidad económica:` → omitir si `viability_economic` es `no_evaluada`.
+- `Apoyos:` → omitir si `supporters_cited` está vacío.
+- `Rechazos:` → omitir si `opponents_cited` está vacío.
+- `Precedentes:` → omitir si `precedents` está vacío.
+Estado y Horizonte siempre se imprimen (siempre tienen valor real).
 
 Si no hay propuestas formales esta semana, escribe LITERALMENTE:
 > Esta semana no se han registrado propuestas formales en circulación. Revisa las secciones "Radar" y "Omisiones" para el contexto.
