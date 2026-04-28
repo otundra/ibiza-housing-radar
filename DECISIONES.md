@@ -45,7 +45,7 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Decisión:** la construcción del auditor IA se parte en dos bloques. **Mínimo viable (2 semanas):** auditoría ciega con Sonnet + tres heurísticas (cruce de fuentes, verbatim match, whitelist de dominios) + log público con protocolo de corrección + integración con el pipeline. Sin Opus formalizado como capa separada (se queda como fallback de extracción actual), sin página de cuarentena, sin dashboard del auditor, sin repaso mensual IA. **Iteración posterior (2-3 semanas):** Opus capa explícita, página pública `/auditor/` con métricas, página `/revision-pendiente/` navegable, repaso mensual IA de la cuarentena (capa 5bis).
 - **Por qué:** el plan cerrado en [ESTUDIO-COSTES-AUDITOR.md](ESTUDIO-COSTES-AUDITOR.md) construía las 5 capas completas desde el día uno. Es ambicioso para un editor operador no-programador que está validando el producto al mismo tiempo. El mínimo viable entrega el 80 % de la transparencia (doble-ojo automático + log público + protocolo de corrección) y llega antes al punto *"funciona y lo entiendo"*. La iteración posterior añade autoresolución + vitrina + autocalibración como confort y optimización, no como defensa.
 - **Docs afectados:** `ESTUDIO-COSTES-AUDITOR.md` (§10.1 nueva), `REVISION-FASE-0.5.md` (PI9 partido), `ROADMAP.md` (Fase 1 reordenada), `STATUS.md` (próximo hito), `DISENO-AUDITOR-MVP.md` (plano de obra derivado, cerrado 2026-04-24).
-- **Próxima revisión:** al cerrar el Hito 1 (tras la prueba empírica del auditor mínimo sobre la semana del 2-8 mar 2026)
+- **Próxima revisión:** al cerrar el Hito 1 según el criterio reformulado en [D20](#d20--cierre-del-hito-1-con-calibración-en-vivo-desde-w19-no-por-backfill-de-w10) (calibración en vivo W19-W22, no backfill de W10).
 - **Estado:** vigente
 
 ### D2 — Log del auditor público desde el día uno + protocolo formal de correcciones en 72 h
@@ -202,7 +202,7 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Criterio de revocación:** si el proyecto llega a un nivel de madurez en que fijar un objetivo público ancla positivamente (por ejemplo, *"lanzamiento alineado con cierre de temporada"*) y hay compromiso externo que lo justifique, reabrir.
 - **Estado:** vigente
 
-### D20 — Página global `/propuestas/` con vista agregada del histórico
+### D19 — Página global `/propuestas/` con vista agregada del histórico
 
 - **Fecha:** 2026-04-27
 - **Tema:** editorial
@@ -261,4 +261,16 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Docs afectados:** `DECISIONES.md` (formato ampliado + campo retroactivo en D0-D13 + corrección de estado de D10 a superada_por:D13 parcial), `CLAUDE.md` (regla 4 de gestión documental), `src/panel.py` (nuevo), `private/panel.md` (nuevo), `src/decisions_watch.py` (nuevo), `.github/workflows/weekly-report.yml` (pasos nuevos antes de la generación), `DIARIO.md` (entrada 2026-04-24 [docs]).
 - **Próxima revisión:** tras 2-4 ediciones del sistema funcionando (decidir si activar avisos 2 y 3, y validar que aporta más que lo que pesa)
 - **Criterio de revocación:** si tras 2-4 ediciones el aviso 1 no se ha disparado sobre ninguna decisión vencida (ahora mismo ocurre porque D15 deja casi todas las decisiones sin fecha ISO — ver su *Efecto (f)*), el sistema requiere más de 30 min/mes de mantenimiento, o el editor lo percibe como fricción > valor, simplificar o desmantelar. Reversibilidad: borrar `src/panel.py` + `src/decisions_watch.py` + paso del workflow + regla 4 de CLAUDE.md + campos ampliados de DECISIONES.md. Reversión total en <15 min.
+- **Estado:** vigente
+
+### D20 — Cierre del Hito 1 con calibración en vivo desde W19, no por backfill de W10
+
+- **Fecha:** 2026-04-28
+- **Tema:** arquitectura
+- **Decisión:** el criterio de cierre del Hito 1 (auditor MVP) deja de ser *"prueba empírica sobre el backfill de la semana W10 (2-8 mar 2026)"* y pasa a ser *"primera corrida limpia del cron en W19 + revisión de métricas tras 3-4 ediciones consecutivas con el auditor activo (W19-W22)"*. Las métricas a revisar siguen siendo las del §10 del plano del auditor (ratio de disputas en rango saludable, coste por edición <0,50 €, las 11 señales pobladas, ninguna heurística falla en silencio, edición pública sigue legible).
+- **Por qué:** la Fase 3 ya integró el auditor en `src/report.py` y desde W18 corre vivo. El backfill de W10 requería primero construir `src/backfill.py` (tarea de Fase 2 del ROADMAP, todavía no abordada) porque la ingesta solo recupera ventana RSS reciente. Calibrar antes de seguir bloquea Fase 2 sin mejorar lo que el cron en vivo ya da gratis cada lunes. Calibrar con datos en vivo desde W19 acumula muestra real (3-4 ediciones × 3-7 propuestas semanales) sin coste extra ni nuevas dependencias. El commit-back ya cubre la persistencia: `data/audit/` está incluido en `git add` del workflow desde el fix del 2026-04-27 (verificado 2026-04-28).
+- **Efectos inmediatos:** (a) Fase 4 del plano se reformula como *"observación en vivo W19-W22"* en vez de *"backfill W10"*. (b) D1 *Próxima revisión* apunta a este D20. (c) `DISENO-AUDITOR-MVP.md` actualiza §1, §9 (Fase 4), §10 (criterios). (d) STATUS y ROADMAP reflejan la observación en vivo. (e) Las menciones tangenciales a W10 en D4 y REVISION-FASE-0.5 se mantienen — su decisión principal no cambia y D20 las supera operativamente sin invalidar el archivo cerrado.
+- **Docs afectados:** `DECISIONES.md` (D20 nuevo + D1 *Próxima revisión*), `DISENO-AUDITOR-MVP.md` (§1, §9, §10), `STATUS.md` (Hito 1), `ROADMAP.md` (Fase 1, Hito 1 detalle), `DIARIO.md` (entrada nueva 2026-04-28).
+- **Próxima revisión:** tras la edición W22 (4ª corrida live del auditor) — momento en que se evalúan las métricas acumuladas y se cierra o reabre el Hito 1.
+- **Criterio de revocación:** (a) si tras 3-4 ediciones la muestra acumulada (~10-25 propuestas) sigue siendo demasiado pequeña para concluir nada sobre umbrales, reabrir y construir backfill de verdad antes de cerrar el Hito 1; (b) si las heurísticas del auditor disparan ruido continuo en producción que afecta a la edición pública, parar y revisar antes de cumplir las 4 ediciones; (c) si el cron sufre incidentes que invalidan ediciones consecutivas (>1 edición perdida en la ventana W19-W22), prolongar la observación.
 - **Estado:** vigente

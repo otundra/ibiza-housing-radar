@@ -41,7 +41,7 @@ Este documento es el **plano de obra** del auditor mínimo viable. El estudio de
 - **Buzón de email del proyecto** queda diferido hasta el cierre del nombre del observatorio (D2). En `/correcciones/` se anuncia *"próximamente"* con ruta alternativa (issue en GitHub).
 - **Estudio legal del titular** es Hito 3 (D6). La exposición del protocolo se revisa al cerrar ese hito. Apuntado también en STATUS.md.
 
-**Cierre del Hito 1:** prueba empírica sobre la semana W10 (2-8 marzo 2026) con el auditor activo y log visible, sin fallos bloqueantes. D1 revisa el MVP tras esa prueba. Sin fecha de calendario ([D15](DECISIONES.md)).
+**Cierre del Hito 1:** primera corrida limpia del cron en W19 + revisión de métricas tras 3-4 ediciones consecutivas con el auditor activo (W19-W22). Reformulado el 2026-04-28 ([D20](DECISIONES.md)): la calibración se hace con datos en vivo en vez de un backfill de W10 — la Fase 3 ya integró el auditor en el pipeline y el commit-back persiste `data/audit/` cada lunes, así que no hace falta construir `src/backfill.py` antes de cerrar el hito. Sin fecha de calendario ([D15](DECISIONES.md)).
 
 ---
 
@@ -723,24 +723,27 @@ Cuatro fases en cascada. Cada una se cierra cuando sus entregables están verifi
 - [x] Ajuste en `src/self_review.py` con señal `auditor_disputes_ratio`.
 - [ ] Corrida end-to-end en una edición piloto (la que toque tras cerrar la fase) con el auditor activo en modo silencioso (log se escribe; la edición no visibiliza tier todavía). Se dispara automáticamente en la próxima ejecución del cron lunes.
 
-### Fase 4 — Prueba empírica sobre W10 (~5-8 h de trabajo del editor)
+### Fase 4 — Observación en vivo W19-W22 (~2-3 h de trabajo del editor distribuidas en 4 lunes)
+
+**Reformulada el 2026-04-28 ([D20](DECISIONES.md)).** Antes era *"backfill solo de la semana W10"* (~5-8 h). Cambio: el auditor ya corre vivo en el pipeline desde W18 (Fase 3 integrada), el commit-back persiste `data/audit/` cada lunes, y construir `src/backfill.py` solo para calibrar es trabajo de Fase 2 que aquí estaría adelantado sin necesidad. La calibración se hace con datos reales acumulados en producción, no con un dato histórico recreado.
 
 **Entregables.**
 
-- [ ] Backfill solo de la semana W10 (2-8 marzo 2026, dato histórico). Una semana sola, no las 12.
-- [ ] Medir: coste real vs proyección, ratio de disputas, tiempo, tamaño del log, distribución de señales.
-- [ ] Ajustar umbrales de heurísticas si los tiers quedan mal calibrados (revisar bloque `signals` de las propuestas).
-- [ ] Decisión go / no-go para el backfill completo de 12 semanas.
+- [ ] Primera corrida limpia de W19 (cron del lunes siguiente al fix del commit-back) sin fallos bloqueantes. Verificación: edición publica + log JSON en `data/audit/2026-w19/` + aviso de Telegram con coste por edición + sin warnings críticos en self-review.
+- [ ] Acumular 3-4 ediciones consecutivas con el auditor activo (W19-W22).
+- [ ] Tras W22, medir sobre la muestra acumulada (~10-25 propuestas reales): coste real por edición vs proyección, ratio de disputas, distribución de `verbatim_match_ratio`, hits/misses de la whitelist, distribución prevista de tiers (con `compute_tier()` real ya conectado o como dry-run sobre el bloque `signals`).
+- [ ] Ajustar umbrales de heurísticas si los datos lo piden — apuntes ya identificados en Fase 2 (huecos de whitelist V1 con `cadenaser.com` / `lavozdeibiza.com`, ruido en `verbatim_match` de cross-checks).
+- [ ] Decisión cierre Hito 1 / reapertura según el criterio de revocación de [D20](DECISIONES.md).
 
-**Cierre del Hito 1.** Se cumple cuando el criterio de éxito de §10 se da en la corrida sobre W10. [D1](DECISIONES.md) revisa el MVP con esos datos + los de la edición piloto de la Fase 3.
+**Cierre del Hito 1.** Se cumple cuando los criterios de éxito de §10 se dan en la observación acumulada de W19-W22. [D1](DECISIONES.md) revisa el MVP con esos datos.
 
 ---
 
 ## 10 · Criterios de éxito del MVP
 
-El MVP se considera cerrado si, tras la prueba empírica sobre W10, se cumplen los 6 criterios:
+El MVP se considera cerrado si, tras la observación en vivo de W19-W22 ([D20](DECISIONES.md)), se cumplen los 6 criterios:
 
-1. **Las propuestas de W17 (3) y las de W10 pasan por el auditor sin errores bloqueantes.** Log JSON escrito correctamente para cada una.
+1. **Las propuestas reales acumuladas en W19-W22 pasan por el auditor sin errores bloqueantes.** Log JSON escrito correctamente para cada una en `data/audit/YYYY-wWW/{proposal_id}.json`.
 2. **El log contiene las 11 señales pobladas** (algunas con valores por defecto declarados, como `arbitraje: no_hubo`).
 3. **El ratio de disputas sobre el total de propuestas** está entre 5 % y 30 % (rango saludable ampliado para muestras pequeñas; el estudio apunta 8-25 % como objetivo estable con más datos).
 4. **El coste real por edición auditada** se mantiene por debajo de 0.50 € (margen amplio sobre la proyección 0.40 €).

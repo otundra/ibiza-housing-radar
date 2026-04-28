@@ -50,7 +50,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 **Hito 1 · Auditor mínimo viable publicado con una edición real (activo):**
 
 1. **Auditor MVP** — PI9 partido en mínimo viable + iteración ([D1](DECISIONES.md)). 2 semanas: capa 2 ciega Sonnet + comparador determinista + tres heurísticas sin IA (cruce de fuentes / verbatim match / whitelist V1, ver [D3](DECISIONES.md)) + log público con campo `corrections` append-only y protocolo de correcciones en 72 h ([D2](DECISIONES.md)) + integración con `report.py`. Hueco reservado para tiers ([D5](DECISIONES.md)). Sin Opus formalizado, sin cuarentena navegable, sin dashboard. Detalle en [ESTUDIO-COSTES-AUDITOR.md §10.0](ESTUDIO-COSTES-AUDITOR.md). **Plano de obra cerrado 2026-04-24:** [DISENO-AUDITOR-MVP.md](DISENO-AUDITOR-MVP.md) (contratos de módulos, schema del registro, whitelist V1 de 20 actores, calendario 4 semanas).
-2. **Prueba empírica** (RT1). Corrida del auditor MVP sobre la semana W10 (2-8 marzo 2026) antes del backfill completo.
+2. **Observación en vivo** (reformulada 2026-04-28, [D20](DECISIONES.md)). Antes era *"prueba empírica sobre W10 antes del backfill"*; ahora es *"primera corrida limpia de W19 + revisión de métricas tras 3-4 ediciones consecutivas con el auditor activo (W19-W22)"*. Calibración con datos en vivo del cron, no con un backfill recreado.
 3. **Iteración posterior del auditor** (2-3 semanas, puede solaparse con Fase 2): formalización explícita de capa 4 Opus + página `/revision-pendiente/` + dashboard público `/auditor/` + capa 5bis (repaso mensual IA de cuarentena).
 
 **Hito 2 · Sistema de tiers cerrado e integrado (cerrado conceptualmente 2026-04-23, pendiente implementación + validación empírica):**
@@ -60,7 +60,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 - **Implementación pendiente (entra en PI10):** `src/tiers.py` con `compute_tier(signals)` + `data/tiers.yml` con los umbrales operativos + plantilla visual del badge en Jekyll + `/metodologia/#tiers` con el copy de §5 del estudio. No bloquea Hito 1; se hace como sub-tarea dentro de la iteración posterior del auditor o en Fase 2.
 - **Medición empírica del sesgo** (RT25). Tras backfill de 12 semanas (PI2-B). Script `scripts/tier_bias_audit.py` (~2 h) + análisis + activación opcional de mitigación M1 en `data/tiers.yml`. Cierra §8.5 del estudio.
 - **Test de usabilidad con 5 personas** (RT3). Valida en campo la decisión de visibilidad mixta (Q1). ~3 h de trabajo del editor con su red personal. Recomendable antes del empuje público.
-- **Validación empírica preliminar del árbol** sobre backfill piloto W10 (RT1) — queda dentro del Hito 1; aquí solo se anota que confirma que los umbrales por defecto funcionan antes del backfill grande.
+- **Validación empírica preliminar del árbol** sobre la muestra acumulada en vivo W19-W22 ([D20](DECISIONES.md)) — queda dentro del Hito 1; aquí solo se anota que confirma que los umbrales por defecto funcionan antes del backfill grande.
 
 **Hito 3 · Titular legal resuelto (en paralelo, bloquea empuje público):**
 
@@ -73,7 +73,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 - **Estudio de factibilidad BOIB** (RT22). 2-4 h. Decide si sube a Fase 2 o queda en Fase 3.
 - **Regla fundacional automatización + veracidad pública** (RT13) documentada en CLAUDE.md ✅ hecha 2026-04-21.
 
-**Tests del pipeline diferidos a RT5 ([D4](DECISIONES.md)):** cobertura en un solo bloque con fixtures reales del backfill (incluye `audit.py`, `verify.py`, `balance.py`, `extract.py`, `rescue.py`). Se ejecuta cuando haya fixtures utilizables (Fase 2). El auditor MVP se valida durante construcción con la prueba empírica sobre W10.
+**Tests del pipeline diferidos a RT5 ([D4](DECISIONES.md)):** cobertura en un solo bloque con fixtures reales del backfill (incluye `audit.py`, `verify.py`, `balance.py`, `extract.py`, `rescue.py`). Se ejecuta cuando haya fixtures utilizables (Fase 2). El auditor MVP se valida durante construcción con la observación en vivo W19-W22 ([D20](DECISIONES.md)).
 
 **Decisiones cerradas en Fase 1:**
 - Rol del editor = operador sin revisión de contenido (RT2 resuelto: opción B actual, opción C cuando haya tracción).
@@ -220,7 +220,7 @@ Estas tareas siguen apuntadas pero no entran en el roadmap del relanzamiento:
 - **BOIB watcher como servicio activo** — si no entró en Fase 2.
 - **Evento anual co-organizado**.
 - **Modelo de newsletter pago/híbrido**.
-- **Rediseño de la sección "Cronología" en las ediciones semanales.** Hoy es un párrafo denso de prosa con todas las fechas embebidas; difícil de escanear, no se ve la estructura de los hechos. Apuntado por el editor 2026-04-27 al revisar W18. Solución probable: bullet por evento con fecha al inicio (p.ej. `Sáb 18 — Ayuntamiento de Ibiza prepara desalojos…`), agrupados por día. Cambio en el prompt de `generate.py` y plantilla `_layouts/edition.html` si hace falta. **Condición:** ejecutar tras cerrar la sección "Movimientos esta semana" (D19 cuando se cierre), porque ambas reformas tocan la misma plantilla.
+- **Rediseño de la sección "Cronología" en las ediciones semanales.** Hoy es un párrafo denso de prosa con todas las fechas embebidas; difícil de escanear, no se ve la estructura de los hechos. Apuntado por el editor 2026-04-27 al revisar W18. Solución probable: bullet por evento con fecha al inicio (p.ej. `Sáb 18 — Ayuntamiento de Ibiza prepara desalojos…`), agrupados por día. Cambio en el prompt de `generate.py` y plantilla `_layouts/edition.html` si hace falta. **Condición:** ejecutar tras cerrar la sección "Movimientos esta semana" (decisión futura, ID por asignar), porque ambas reformas tocan la misma plantilla.
 - **Rediseño de la sección "Radar: señales en movimiento" en las ediciones semanales.** Hoy lista cada propuesta con 9 campos (actor, qué, destinatario, estado, horizonte, viabilidad jurídica, viabilidad económica, apoyos, rechazos, precedentes) en formato vertical denso. Con 3-4 propuestas son 30+ líneas de viñetas seguidas, espesas de leer. Apuntado por el editor 2026-04-27 al revisar W18. Soluciones a estudiar: (a) tabla compacta con 4-5 columnas, (b) ficha jerarquizada con esenciales arriba y técnicos colapsados, (c) eliminar campos siempre vacíos ("ninguno registrado esta semana", "no evaluada"). **Condición:** ejecutar junto al rediseño de la cronología (misma plantilla, mismo prompt).
 
 ### Hipótesis post-tracción — Escalabilidad provincial
