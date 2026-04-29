@@ -471,9 +471,9 @@ Hoy `sources.yaml` es estático. No hay proceso de revisión. Debería haber:
 Las 4 búsquedas actuales (Ibiza vivienda, Ibiza trabajadores temporada, Consell Eivissa vivienda, Ibiza desahucio caravanas) se pusieron sin debate. Merece análisis: qué queries cubren mejor, qué términos faltan (ej. *"bolsa alquiler"*, *"vivienda protegida"*, *"mobbing inmobiliario"*, *"chabolismo"*, *"HUT"*, *"Llei habitatge"*), en catalán y en castellano.
 **Salida:** matriz de queries puntuada por recall/precision + `sources.yaml` ampliado + método de revisión anual.
 
-### FU3 · Hora Ibiza + Nou Diari — reevaluar ⏳
-Descartados por feeds débiles. El editor pide revisión con más detalle: frecuencia real de publicación, cobertura temática, si hay alternativa vía Google News filtrado por dominio.
-**Salida:** informe corto + decisión final + incorporación si procede.
+### FU3 · Hora Ibiza + Nou Diari — reevaluar ✅ CERRADA 2026-04-29
+- **Hora Ibiza:** descartada definitivamente. El dominio `horadeibiza.com` no responde, el medio no tiene presencia rastreable en directorios ni redes sociales. No existe como fuente activa.
+- **Nou Diari (`noudiari.es`):** incorporada. Feed RSS `https://www.noudiari.es/feed/` activo y funcional, 8-15 artículos/día, cobertura directa de vivienda y trabajadores de temporada en Ibiza/Formentera, sin paywall, todo en castellano. Añadida a `src/sources.yaml` 2026-04-29.
 
 ### FU4 · BOIB / legal — conexión al pipeline ⏳
 El Boletín Oficial de las Illes Balears publica leyes, decretos, resoluciones del Govern y Consell. Es fuente primaria pura. Hoy no está conectado. ¿Tiene RSS? ¿Hay que scrappear el buscador? ¿Coste de mantenimiento?
@@ -788,7 +788,7 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | ED5 | Modo entrenamiento 4 semanas | ❌ | Descartada 2026-04-21, reemplazada por tiers+cuarentena |
 | FU1 | Fuentes vivas | ⏳ | |
 | FU2 | Queries Google News | ⏳ | |
-| FU3 | Hora Ibiza + Nou Diari | ⏳ | |
+| FU3 | Hora Ibiza + Nou Diari | ✅ | Hora Ibiza inexistente; Nou Diari incorporada a sources.yaml |
 | FU4 | BOIB | ⏳ | |
 | PI1 | Revisión pipeline | ⏳ | |
 | PI2-A | Archivado append-only desde hoy | ✅ | Cerrada 2026-04-21, W17 snapshot ok |

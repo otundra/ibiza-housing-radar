@@ -13,6 +13,13 @@ Reglas:
 
 ---
 
+## 2026-04-29 [pipeline] — Nou Diari incorporada como fuente RSS; Hora Ibiza descartada (FU3)
+
+- **Hora Ibiza descartada.** El dominio `horadeibiza.com` no responde y el medio no tiene presencia rastreable. No es una fuente viable.
+- **Nou Diari incorporada** (`https://www.noudiari.es/feed/`). Medio digital de Eivissa y Formentera, castellano, sin paywall. Publica 8-15 artículos/día con cobertura directa de vivienda, alquiler y trabajadores de temporada. Añadida como fuente nativa en `src/sources.yaml`. Entrará en el pipeline a partir del próximo cron del lunes.
+
+---
+
 ## 2026-04-29 [editorial] — Horizonte temporal del observatorio aclarado en las páginas públicas (ED4)
 
 - **Fecha de origen oficial fijada: semana del 3-9 de febrero de 2026 (W06).** Es la primera semana cubierta por el archivo retroactivo. "Primera vez documentada" significa siempre en este observatorio, no en la historia del debate.

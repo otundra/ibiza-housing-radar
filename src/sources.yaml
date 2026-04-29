@@ -31,6 +31,13 @@ feeds:
     url: "https://www.periodicodeibiza.es/rss/ibiza/"
     kind: native
 
+  # Nou Diari - medio digital Eivissa/Formentera, castellano, sin paywall
+  # Incorporado 2026-04-29 tras evaluar FU3: feed activo, 8-15 art/día,
+  # cobertura directa de vivienda y trabajadores de temporada.
+  - name: "Nou Diari · Eivissa i Formentera"
+    url: "https://www.noudiari.es/feed/"
+    kind: native
+
 # Palabras clave para filtro inicial antes de clasificación con IA.
 # Basta con que aparezca una en título o resumen.
 keywords:
