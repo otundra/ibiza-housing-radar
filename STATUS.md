@@ -18,6 +18,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 - **Control de costes operativo.** Topes blando 12 € / duro 50 €. Dashboard en [`private/costs.md`](private/costs.md).
 - **Snapshot append-only** en `data/archive/YYYY-WNN/` desde W17.
 - **Copia de seguridad en GitLab operativa** desde 2026-04-29. Pull mirroring nativo (gitlab.com/otundra/ibiza-housing-radar, privado). Actualización automática cada hora. Cero mantenimiento.
+- **Nou Diari añadida como fuente RSS** desde 2026-04-29 (`src/sources.yaml`). Medio digital Eivissa/Formentera, 8-15 art/día, cobertura directa vivienda y temporada, sin paywall. Entra en el próximo cron.
 - **Salud de fuentes operativa** desde 2026-04-25 (tarea OP2 de Revisión Fase 0.5). Módulo [`src/sources_health.py`](src/sources_health.py) + integración silenciosa en `ingest.py` + alerta consolidada vía Telegram con 4 reglas de detección (feed muerto, frecuencia caída, vacío inesperado, estructura cambiada).
 - **Sistema de monitorización de decisiones operativo** desde 2026-04-24 ([D14](DECISIONES.md)). Aviso semanal por Telegram ([`src/decisions_watch.py`](src/decisions_watch.py)) + tablero interno ([`private/panel.md`](private/panel.md)) + refuerzo al arranque.
 
@@ -28,7 +29,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 ## 🟡 En curso
 
-- **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21, 34 tareas. Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) + memoria [`revision_fase_0_5.md`](.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/revision_fase_0_5.md).
+- **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21. 16 tareas cerradas sobre 69 totales de la tabla de seguimiento. Sesión 2026-04-29: OP1, RT8, RT9 (parcial), RT13, ED1 (parcial), ED4, EX4, FU3. Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md).
 - **Hito 1 — Auditor mínimo viable.** PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). Diseño del módulo cerrado 2026-04-24 en [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md). **Construcción en marcha:** Fases 1 (segunda lectura ciega + comparador), 2 (heurísticas deterministas + whitelist V1 cerrada + caché HTTP local + bloque `signals` con stub de tier) y 3 (registro JSON append-only + integración silenciosa en `src/report.py` + señal de disputas en `src/self_review.py` + página `/correcciones/` mínima) **cerradas 2026-04-25**. Coste acumulado validación: 0,042 €. Pendiente: corrida end-to-end en la próxima edición del cron lunes (entregable 5 de Fase 3, automático) y Fase 4 reformulada como **observación en vivo durante 3-4 ediciones consecutivas (W19-W22)** en lugar del backfill de W10, ver [D20](DECISIONES.md). Sin calendario ni fecha ([D15](DECISIONES.md)).
 - **Hito 2 — Re-estudio del sistema de tiers** ✅ **cerrado 2026-04-23** (RT15, RT26). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo con 5 decisiones operativas en [D9](DECISIONES.md). Queda como pendiente de datos la medición empírica del sesgo por actor (RT25, post-backfill). Implementación de `src/tiers.py` + `data/tiers.yml` pasa a PI10 (sin bloquear auditor MVP).
 
