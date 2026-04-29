@@ -629,9 +629,11 @@ Editor propone construir todas las páginas aunque en la Fase 1 pública solo se
 
 ## P3 — Operacional y meta
 
-### OP1 · Plan de respuesta a rectificación de actor ⏳
+### OP1 · Plan de respuesta a rectificación de actor ✅ CERRADA 2026-04-29
 Qué pasa si un partido/institución escribe diciendo *"esa cita no es mía"* o *"el contexto es otro"*. Hoy hay `/correcciones/` pero sin SLA ni proceso.
 **Salida:** protocolo + plantillas + tiempos + quién decide.
+
+**Cerrada 2026-04-29.** Protocolo interno en [`private/protocolo-correcciones.md`](private/protocolo-correcciones.md): dos casos (error de hecho vs. reclamación de actor), plazos (24 h acuse de recibo, 72 h resolución), criterio de decisión, qué actualizar al corregir, tres plantillas de respuesta, lista de qué no ceder, y cuándo escalar si hay amenaza legal. Revisión antes del empuje público (Hito 3).
 
 ### OP2 · Health de feeds — alertas proactivas ✅
 Si un RSS deja de publicar, si baja la frecuencia, si Google News cambia su formato → alerta Telegram.
@@ -813,7 +815,7 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | UX6 | Semana flaca | ⏳ | |
 | UX7 | Avances/éxitos | ⏳ | |
 | UX8 | Construir entera | ⏳ | |
-| OP1 | Rectificación actor | ⏳ | |
+| OP1 | Rectificación actor | ✅ | Cerrada 2026-04-29. Protocolo interno en `private/protocolo-correcciones.md` |
 | OP2 | Health feeds — alertas proactivas | ✅ | Cerrada 2026-04-25. Calibración de umbrales pendiente de datos del cron (4-8 sem) |
 | OP3 | Auto-recuperación de feeds caídos | ⏳ | Pendiente datos reales (3-4 caídas) que orienten qué espejos sirven |
 | OP4 | Dashboard visual de estado de feeds | ⏳ | Decisión UX (privado/público) cuando haya 4-8 sem de `feed_health.json` |

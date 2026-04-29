@@ -13,6 +13,13 @@ Reglas:
 
 ---
 
+## 2026-04-29 [operacional] — Protocolo interno de correcciones (OP1)
+
+- **Protocolo cuando llega una rectificación.** Creado `private/protocolo-correcciones.md`: guion paso a paso para el editor con los dos casos posibles (error de hecho verificable vs. reclamación de actor sobre interpretación), plazos (24 h acuse de recibo, 72 h resolución), criterio de decisión único (¿es un error de hecho comprobable con la fuente?), tres plantillas de respuesta, lista de qué no ceder bajo ningún concepto, y cuándo escalar si llega amenaza legal. Cierra el hueco entre la promesa pública de `/correcciones/` y la ausencia de proceso interno. Revisión anclada al Hito 3 legal. Tarea OP1 de la Revisión Fase 0.5 cerrada.
+- **Coste.** 0 € de API.
+
+---
+
 ## 2026-04-28 [editorial] — Régimen de rodaje pre-lanzamiento (D21) + rediseño Cronología/Radar + regeneración W17 y W18
 
 Al revisar la edición W18 publicada el 27-abr salieron dos secciones espesas: la *Cronología* era un párrafo denso de prosa con todas las fechas embebidas (difícil de escanear), y la *Radar: señales en movimiento* mostraba 9 campos verticales por propuesta con la mitad rellenos de "ninguno registrado esta semana" / "no evaluada — sin evaluación pública". El editor preguntó si conviene hacer cambios solo desde W19 o también retroactivos a W17 y W18. Su lógica: la regla 1 fundacional (contenido editorial inmutable) protege el contrato con el lector, pero hoy no hay lector — la web no se ha empujado al público. Aplicarla durante la fase de prototipo congela formato cuando todavía estamos calibrando.
