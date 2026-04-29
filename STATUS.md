@@ -17,6 +17,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 - **Web live** → <https://otundra.github.io/ibiza-housing-radar/>
 - **Control de costes operativo.** Topes blando 12 € / duro 50 €. Dashboard en [`private/costs.md`](private/costs.md).
 - **Snapshot append-only** en `data/archive/YYYY-WNN/` desde W17.
+- **Copia de seguridad en GitLab operativa** desde 2026-04-29. Pull mirroring nativo (gitlab.com/otundra/ibiza-housing-radar, privado). Actualización automática cada hora. Cero mantenimiento.
 - **Salud de fuentes operativa** desde 2026-04-25 (tarea OP2 de Revisión Fase 0.5). Módulo [`src/sources_health.py`](src/sources_health.py) + integración silenciosa en `ingest.py` + alerta consolidada vía Telegram con 4 reglas de detección (feed muerto, frecuencia caída, vacío inesperado, estructura cambiada).
 - **Sistema de monitorización de decisiones operativo** desde 2026-04-24 ([D14](DECISIONES.md)). Aviso semanal por Telegram ([`src/decisions_watch.py`](src/decisions_watch.py)) + tablero interno ([`private/panel.md`](private/panel.md)) + refuerzo al arranque.
 

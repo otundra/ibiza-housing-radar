@@ -18,6 +18,7 @@ Reglas:
 - **Decisión cerrada: pull mirroring nativo de GitLab, sin tocar el repo.** GitLab copia el repo de GitHub cada hora de forma autónoma. No requiere GitHub Actions adicional, no requiere tokens (el repo es público), cero mantenimiento. Enfoque elegido frente a un workflow Actions porque el proyecto ya corre un cron semanal y 1 hora de desfase en el espejo es completamente asumible.
 - **Pasos para configurar (una sola vez en la web de GitLab):** (1) Crear proyecto privado `ibiza-housing-radar` en gitlab.com. (2) Settings → Repository → Mirroring repositories. (3) URL: `https://github.com/otundra/ibiza-housing-radar.git`, dirección Pull, sin autenticación. (4) Guardar. El espejo se actualiza solo cada hora.
 - **Coste:** 0 €. GitLab gratuito incluye pull mirroring para repos públicos.
+- **Configurado y operativo** 2026-04-29.
 
 ---
 

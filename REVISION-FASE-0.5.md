@@ -830,5 +830,5 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | EX1 | Test usabilidad | ⏳ | |
 | EX2 | SEO schema.org | ⏳ | |
 | EX3 | Estrategia lanzamiento | ⏳ | |
-| EX4 | Backup repo | ✅ | Pull mirroring GitLab nativo; pendiente configurar UI GitLab |
+| EX4 | Backup repo | ✅ | Pull mirroring GitLab nativo; operativo desde 2026-04-29 |
 | EX5 | Sanity check externo pre-lanzamiento | ⏳ | Nuevo, 50-100 € |
