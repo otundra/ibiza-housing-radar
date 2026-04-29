@@ -440,9 +440,13 @@ Las tareas de identidad/legalidad del editor ([LG1 anonimato, LG2 portfolio sin 
 
 ## P0 — Fundacional (método editorial y fuentes)
 
-### ED1 · Criterio de "OK" para admitir una propuesta ⏳
+### ED1 · Criterio de "OK" para admitir una propuesta ✅ CERRADA PARCIAL 2026-04-29
 En qué se basa el pipeline exactamente para dar luz verde a *"autor identificado + URL verificable"*. ¿Qué cuenta como URL primaria? ¿Qué hace `verify.py` hoy vs qué debería hacer? ¿Qué pasa cuando la URL cae meses después?
 **Salida:** checklist formal de verificación + árbol de decisión + actualización de `ARQUITECTURA.md §verify.py`.
+
+**Cerrada parcial 2026-04-29 — criterio editorial público.** Documentado en [`docs/que-documentamos.md`](docs/que-documentamos.md) (`/que-documentamos/`): tres puertas de admisión (origen, tema, propuesta verificable), tres tipos de propuesta (formal, en movimiento, descartada) con ejemplos reales del histórico W17-W18, reglas estrictas que aplica el sistema (sin actor con nombre no entra, sin enlace vivo no entra, no se inventan firmantes, cifras solo si aparecen literales, verbos opinativos prohibidos), niveles de fiabilidad (D9), y procedimiento si el lector cree que falta una propuesta. Enlazada desde footer, `/metodo/` y `/politica-editorial/`.
+
+**Pendiente técnico interno:** árbol de decisión formal de `verify.py` (qué hace ante 403/5xx/timeout), política de URLs caídas a posteriori (¿se retira la propuesta? ¿se marca?), criterio de URL primaria vs URL secundaria. Queda abierta como tarea técnica del pipeline, no editorial.
 
 ### ED2 · Imparcialidad medible y alertable ⏳
 La imparcialidad es pilar. Hoy se mide a trimestre vista en `/balance/`. Hace falta:
@@ -781,7 +785,7 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | **RT24** | **Escenarios de lanzamiento y horizonte** | ⏳ | **P-1 · A soft mayo-junio / B rodaje 1 año** |
 | **RT25** | **Medición empírica del sesgo de tiers por tipo de actor** | ⏳ | **ALTA · depende del backfill 12 sem (PI2-B) · cierra §8 de [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) · puede activar mitigación M1 en `data/tiers.yml`** |
 | **RT26** | **Cierre de las 5 decisiones abiertas del estudio de tiers** | ✅ | **Cerrada 2026-04-23 con OK en bloque del editor. Ver [D9](DECISIONES.md) y [`ESTUDIO-TIERS.md §11.6`](ESTUDIO-TIERS.md). Desbloquea PI10.** |
-| ED1 | Criterio OK propuestas | ⏳ | |
+| ED1 | Criterio OK propuestas | ✅ parcial | Editorial público cerrado 2026-04-29 (`/que-documentamos/`). Técnico interno (árbol verify.py, URLs caídas a posteriori) queda como tarea del pipeline |
 | ED2 | Imparcialidad alertable | ⏳ | |
 | ED3 | Presencia de Omisiones | ⏳ | |
 | ED4 | Horizonte desde inicio | ⏳ | |

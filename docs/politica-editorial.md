@@ -45,3 +45,5 @@ Esta regla define cómo se construye cada parte del sistema y cómo se escribe e
 ## Lo que esta política no cubre
 
 La política editorial no es la metodología técnica del sistema: cómo se captura la información, qué modelos de IA se usan en cada fase, cómo se clasifican los actores ni qué sesgos declaramos. Todo eso vive en [/metodo/](/metodo/).
+
+Tampoco entra aquí el detalle de qué noticias se convierten en propuestas documentadas y cuáles no — los criterios exactos de admisión están en [/que-documentamos/](/que-documentamos/).

@@ -14,6 +14,8 @@ Cada lunes a primera hora, el sistema lee automáticamente los titulares de pren
 
 Solo entra lo que ya ha sido publicado por un medio. No hacemos scraping de redes sociales, no procesamos comunicados no publicados, no escuchamos fuentes de confianza.
 
+Los criterios exactos de qué noticias se convierten en propuestas documentadas y cuáles no están en [/que-documentamos/](/que-documentamos/).
+
 ---
 
 ## Qué hace el sistema con cada noticia

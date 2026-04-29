@@ -13,6 +13,15 @@ Reglas:
 
 ---
 
+## 2026-04-29 [editorial] — Página pública del criterio de admisión de propuestas (ED1, parcial)
+
+- **Qué entra y qué no, escrito.** Creada [`docs/que-documentamos.md`](docs/que-documentamos.md) (`/que-documentamos/`) con los criterios reales que aplica el sistema, sintetizados desde tres lugares dispersos: filtro de fuentes y palabras clave (`src/sources.yaml`), prompt del clasificador Haiku (`src/classify.py`), prompt del extractor Sonnet + validador (`src/extract.py`) y verificador final (`src/verify.py`). La página cubre: tres puertas de admisión, tres tipos de propuesta (formal / en movimiento / descartada) con ejemplos reales del histórico W17-W18 y de noticias clasificadas como "ninguna" en la última corrida, reglas estrictas del sistema, niveles de fiabilidad ([D9](DECISIONES.md)) y procedimiento si el lector echa en falta una propuesta. Sin ningún ejemplo inventado.
+- **Enlazada en footer** junto a las otras páginas estructurales y referenciada desde [`docs/metodo.md`](docs/metodo.md) y [`docs/politica-editorial.md`](docs/politica-editorial.md).
+- **Tarea ED1 cerrada parcial.** La parte editorial pública está cubierta. El detalle técnico interno (árbol de decisión de `verify.py` ante errores HTTP, política de URLs que caen meses después, criterio de URL primaria vs secundaria) queda abierto como tarea del pipeline.
+- **Coste.** 0 € de API.
+
+---
+
 ## 2026-04-29 [diseno] — Páginas públicas de política editorial y método (RT9)
 
 - **Dos páginas que faltaban y prometíamos.** Creadas [`docs/politica-editorial.md`](docs/politica-editorial.md) y [`docs/metodo.md`](docs/metodo.md), ambas en lenguaje llano para el lector público. La política editorial recoge las 5 reglas duras + la regla complementaria de automatización. El método explica el ciclo semanal en 8 pasos, los tres modelos de IA con su lógica de reparto, la taxonomía de actores (8 categorías), los sesgos declarados y lo que el observatorio no hace. Enlazadas desde `/acerca/` y añadidas al pie de todas las páginas. Las tres páginas exigidas por las reglas fundacionales (`/politica-editorial/`, `/metodo/`, `/correcciones/`) ya existen. Tarea RT9 de la Revisión Fase 0.5 cerrada.
