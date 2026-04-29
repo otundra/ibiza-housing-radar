@@ -709,9 +709,10 @@ Que cada `/propuestas/{id}/` tenga structured data (ClaimReview, NewsArticle). G
 Cómo se lanza. A quién se le dice primero. Embargo con periodista afín. Nota de prensa. O sigiloso y que el SEO haga su trabajo.
 **Salida:** plan de lanzamiento con fases y fechas.
 
-### EX4 · Backup automático del repo ⏳
-Mirror automático a GitLab o Codeberg. Cero coste, seguro ante cualquier incidencia en GitHub.
-**Salida:** workflow GitHub Actions que empuja a mirror.
+### EX4 · Backup automático del repo ✅ CERRADA 2026-04-29
+Mirror automático a GitLab. Cero coste, seguro ante cualquier incidencia en GitHub.
+**Decisión:** Pull mirroring nativo de GitLab (sin workflow GitHub Actions). GitLab copia el repo cada hora. El repo de GitHub es público → no requiere token. Cero cambios al repo. Instrucciones de configuración en DIARIO 2026-04-29.
+**Salida:** configuración en GitLab Settings → Repository → Mirroring.
 
 ### EX5 · Sanity check externo pre-lanzamiento ⏳ [NUEVO 2026-04-21]
 Contratar 1-2 h a periodista local o académico UIB para auditar una muestra de 30 propuestas del backfill antes de hacer público el sitio. Coste estimado 50-100 €. Sirve para (a) detectar sesgos que el editor y la IA no ven por proximidad al tema, (b) validar que el tono y la neutralidad funcionan para lector profesional local, (c) tener un escudo de validación independiente documentado en `/metodologia/`.
@@ -829,5 +830,5 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | EX1 | Test usabilidad | ⏳ | |
 | EX2 | SEO schema.org | ⏳ | |
 | EX3 | Estrategia lanzamiento | ⏳ | |
-| EX4 | Backup repo | ⏳ | |
+| EX4 | Backup repo | ✅ | Pull mirroring GitLab nativo; pendiente configurar UI GitLab |
 | EX5 | Sanity check externo pre-lanzamiento | ⏳ | Nuevo, 50-100 € |

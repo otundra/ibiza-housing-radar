@@ -13,6 +13,14 @@ Reglas:
 
 ---
 
+## 2026-04-29 [arquitectura] — Copia de seguridad automática del repo fuera de GitHub (EX4)
+
+- **Decisión cerrada: pull mirroring nativo de GitLab, sin tocar el repo.** GitLab copia el repo de GitHub cada hora de forma autónoma. No requiere GitHub Actions adicional, no requiere tokens (el repo es público), cero mantenimiento. Enfoque elegido frente a un workflow Actions porque el proyecto ya corre un cron semanal y 1 hora de desfase en el espejo es completamente asumible.
+- **Pasos para configurar (una sola vez en la web de GitLab):** (1) Crear proyecto privado `ibiza-housing-radar` en gitlab.com. (2) Settings → Repository → Mirroring repositories. (3) URL: `https://github.com/otundra/ibiza-housing-radar.git`, dirección Pull, sin autenticación. (4) Guardar. El espejo se actualiza solo cada hora.
+- **Coste:** 0 €. GitLab gratuito incluye pull mirroring para repos públicos.
+
+---
+
 ## 2026-04-29 [editorial] — Página pública del criterio de admisión de propuestas (ED1, parcial)
 
 - **Qué entra y qué no, escrito.** Creada [`docs/que-documentamos.md`](docs/que-documentamos.md) (`/que-documentamos/`) con los criterios reales que aplica el sistema, sintetizados desde tres lugares dispersos: filtro de fuentes y palabras clave (`src/sources.yaml`), prompt del clasificador Haiku (`src/classify.py`), prompt del extractor Sonnet + validador (`src/extract.py`) y verificador final (`src/verify.py`). La página cubre: tres puertas de admisión, tres tipos de propuesta (formal / en movimiento / descartada) con ejemplos reales del histórico W17-W18 y de noticias clasificadas como "ninguna" en la última corrida, reglas estrictas del sistema, niveles de fiabilidad ([D9](DECISIONES.md)) y procedimiento si el lector echa en falta una propuesta. Sin ningún ejemplo inventado.
