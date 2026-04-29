@@ -458,7 +458,7 @@ Descartada 2026-04-21. Incompatible con el rol realista del editor (operador, no
 
 ### ED4 · Horizonte temporal = fecha de inicio del proyecto ✅ CERRADA 2026-04-29
 Regla dura: cuando una propuesta dice *"primera vez documentada"*, se refiere al **observatorio**, no a la historia.
-**Cerrada 2026-04-29.** Fecha de origen oficial: semana del 3 al 9 de febrero de 2026 (W06, primera semana del archivo retroactivo). Disclaimer añadido en dos sitios: sección *"Desde cuándo"* en [`/que-documentamos/`](docs/que-documentamos.md) (párrafo explicativo con la fecha y la aclaración de qué significa "primera vez documentada") y sesgo declarado adicional en [`/metodo/`](docs/metodo.md) bajo *"Sesgos declarados"*. El tooltip contextual en la ficha de propuesta queda diferido a la fase de Diseño (depende de cómo se presente la ficha en la web final).
+**Cerrada 2026-04-29.** Disclaimer añadido en dos sitios: sección *"Desde cuándo"* en [`/que-documentamos/`](docs/que-documentamos.md) y sesgo adicional en [`/metodo/`](docs/metodo.md). Ambos dicen "primera semana del archivo" sin fecha concreta — la fecha exacta se rellena cuando el backfill real (PI2-B) confirme la semana más antigua del corpus. El tooltip contextual queda diferido a la fase de Diseño.
 
 ### FU1 · Fuentes — estáticas vs vivas ⏳
 Hoy `sources.yaml` es estático. No hay proceso de revisión. Debería haber:
@@ -501,6 +501,7 @@ Script one-shot `src/backfill.py` que recorre Google News con operadores tempora
 **Salida:** 12 semanas de corpus real con propuestas extraídas, auditadas, verificadas y con snapshot Wayback.
 **Coste:** ~3 € API + ~1 h ejecución.
 **Prioridad ejecución:** tras PI2-A y PI9.
+**Tarea asociada al cerrar:** actualizar la fecha de origen en [`/que-documentamos/`](docs/que-documentamos.md) y [`/metodo/`](docs/metodo.md) con la semana real más antigua del corpus generado. Ambas páginas ahora dicen "primera semana del archivo" sin fecha concreta — rellenar cuando el backfill confirme la semana real. Ver ED4 cerrada.
 
 ### PI10 · Sistema de tiers de confianza públicos ⏳ [NUEVO 2026-04-21]
 Implementa Plan A aprobado. Cada propuesta publicada lleva badge 🟢/🟡/🟠 calculado por el auditor IA. Las 🔴 van a cuarentena. Criterios:

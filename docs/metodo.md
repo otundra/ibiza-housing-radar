@@ -77,7 +77,7 @@ Ningún observatorio es neutral. Enumeramos los sesgos conocidos. Si detectas un
 - **Sesgo del sistema de IA:** los modelos que usamos están entrenados globalmente y pueden tener tendencias favorables a la retórica institucional o al castellano frente al catalán. Contamos con una verificación cruzada entre dos modelos distintos en los casos dudosos.
 - **Sesgo idiomático:** más del 90% del corpus está en castellano. El contenido en catalán se procesa correctamente pero representa menos del 10% del volumen total.
 - **Sesgo del editor:** un solo editor decide qué fuentes se leen y qué palabras clave se usan como filtro. La auditoría trimestral de balance es la principal vacuna.
-- **Sesgo de horizonte temporal:** el observatorio empieza a documentar en la semana del 3 al 9 de febrero de 2026. Las propuestas anteriores a esa fecha no están cubiertas, aunque sean relevantes o se repitan hoy. Cuando una propuesta aparece como *"primera vez documentada"*, significa siempre primera vez en este observatorio — no en la historia del debate.
+- **Sesgo de horizonte temporal:** el observatorio cubre desde su primera semana de archivo. Las propuestas anteriores a esa fecha no están recogidas, aunque sean relevantes o se repitan hoy. Cuando una propuesta aparece como *"primera vez documentada"*, significa siempre primera vez en este observatorio — no en la historia del debate.
 
 ---
 
