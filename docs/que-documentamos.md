@@ -92,6 +92,14 @@ La presentación visual de estos niveles se completa antes del lanzamiento al p�
 
 ---
 
+## Desde cuándo
+
+El observatorio empezó a documentar propuestas en la semana del **3 al 9 de febrero de 2026** (primera semana cubierta por el archivo). Cuando una propuesta aparece como *"primera vez documentada"*, significa primera vez que este observatorio la recoge — no que sea la primera vez en la historia del debate sobre vivienda en Ibiza.
+
+El debate lleva décadas. Este proyecto empieza en febrero de 2026. Si una propuesta se formuló en 2023 y un actor la retoma ahora, el observatorio la documenta como propuesta activa de esta semana, no como repetición histórica — porque no tiene registro de lo anterior a esa fecha.
+
+---
+
 ## Si crees que falta una propuesta
 
 Si has visto una propuesta que cumple los criterios anteriores y no aparece en la edición que le tocaba, [escríbenos por la página de correcciones](/correcciones/). Lo más probable: la noticia no estaba en ninguna de las fuentes que el sistema lee, o el filtro automático la descartó por error.

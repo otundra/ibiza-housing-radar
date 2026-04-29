@@ -456,9 +456,9 @@ Hoy Omisiones vive como sección 6 de la edición. ¿Es suficiente? ¿Merece pá
 ### ED5 · Modo entrenamiento — DESCARTADA ❌
 Descartada 2026-04-21. Incompatible con el rol realista del editor (operador, no revisor). Reemplazada por sistema de tiers públicos + cuarentena + sanity check externo.
 
-### ED4 · Horizonte temporal = fecha de inicio del proyecto ⏳
-Regla dura: cuando una propuesta dice *"primera vez documentada"*, se refiere al **observatorio**, no a la historia. El proyecto no pretende cubrir lo anterior a su arranque. Debe quedar explícito en UI y copy.
-**Salida:** disclaimer estable + decisión de fecha-origen oficial + texto en `/metodologia/` y tooltip contextual.
+### ED4 · Horizonte temporal = fecha de inicio del proyecto ✅ CERRADA 2026-04-29
+Regla dura: cuando una propuesta dice *"primera vez documentada"*, se refiere al **observatorio**, no a la historia.
+**Cerrada 2026-04-29.** Fecha de origen oficial: semana del 3 al 9 de febrero de 2026 (W06, primera semana del archivo retroactivo). Disclaimer añadido en dos sitios: sección *"Desde cuándo"* en [`/que-documentamos/`](docs/que-documentamos.md) (párrafo explicativo con la fecha y la aclaración de qué significa "primera vez documentada") y sesgo declarado adicional en [`/metodo/`](docs/metodo.md) bajo *"Sesgos declarados"*. El tooltip contextual en la ficha de propuesta queda diferido a la fase de Diseño (depende de cómo se presente la ficha en la web final).
 
 ### FU1 · Fuentes — estáticas vs vivas ⏳
 Hoy `sources.yaml` es estático. No hay proceso de revisión. Debería haber:
@@ -783,7 +783,7 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | ED1 | Criterio OK propuestas | ✅ parcial | Editorial público cerrado 2026-04-29 (`/que-documentamos/`). Técnico interno (árbol verify.py, URLs caídas a posteriori) queda como tarea del pipeline |
 | ED2 | Imparcialidad alertable | ⏳ | |
 | ED3 | Presencia de Omisiones | ⏳ | |
-| ED4 | Horizonte desde inicio | ⏳ | |
+| ED4 | Horizonte desde inicio | ✅ | Fecha origen W06 (3 feb 2026); disclaimer en /que-documentamos/ y /metodo/ |
 | ED5 | Modo entrenamiento 4 semanas | ❌ | Descartada 2026-04-21, reemplazada por tiers+cuarentena |
 | FU1 | Fuentes vivas | ⏳ | |
 | FU2 | Queries Google News | ⏳ | |

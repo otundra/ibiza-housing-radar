@@ -13,6 +13,14 @@ Reglas:
 
 ---
 
+## 2026-04-29 [editorial] — Horizonte temporal del observatorio aclarado en las páginas públicas (ED4)
+
+- **Fecha de origen oficial fijada: semana del 3-9 de febrero de 2026 (W06).** Es la primera semana cubierta por el archivo retroactivo. "Primera vez documentada" significa siempre en este observatorio, no en la historia del debate.
+- **Dos sitios actualizados:** sección *"Desde cuándo"* añadida a [`/que-documentamos/`](docs/que-documentamos.md) con párrafo explicativo; sesgo de horizonte temporal añadido a [`/metodo/`](docs/metodo.md) bajo *"Sesgos declarados"*.
+- **Tooltip contextual diferido** a la fase de Diseño (depende del formato de la ficha de propuesta en la web final).
+
+---
+
 ## 2026-04-29 [docs] — Cierre de RT8 y RT13 de la Revisión Fase 0.5
 
 - **RT8 cerrada.** La decisión de estructura `/acerca/` + `/metodo/` estaba pendiente desde 2026-04-21; quedó resuelta en esta sesión al crear `/metodo/` con contenido completo (RT9). `/acerca/` ya es la página de identidad breve que se buscaba. Marcada como cerrada.
