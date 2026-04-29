@@ -189,12 +189,8 @@ El fix aplicado hoy en `src/balance.py` es un parche temporal: silencia las aler
 ### RT7 · `build_index.py` — adaptar al schema documental ✅
 **Cerrada 2026-04-21 noche** como parte del barrido de esta revisión técnica. El regenerador de la home buscaba campos del modelo antiguo (`Actor responsable`, `Precedente`, `Coste`, `Primer paso`, `Por qué ahora`) que no existen en las ediciones documentales. Resultado: cards vacíos en la home. Actualizado el parser para el schema nuevo (`Actor que la propone`, `Estado`, `Horizonte`, `Actor que tendría que ejecutarla`) + copy de la home reescrito para no vender "propuestas accionables" del modelo antiguo.
 
-### RT8 · Banner de "página en reescritura" en `/acerca/` ⏳
-Aplicado fix temporal 2026-04-21: `docs/acerca.md` mantiene un callout de *"página en reescritura"* con los números correctos (topes 12/50, coste ~6-7 €). El texto conceptual sigue siendo del modelo antiguo. La reescritura completa depende de decidir si `/acerca/` queda como página breve de identidad y `/metodo/` absorbe el detalle técnico (recomendado), o si `/acerca/` absorbe todo y `/metodo/` no se crea como página separada.
-
-**Acción:** decidir estructura (split `/acerca/` + `/metodo/` basada en el prototipo `docs/prototype/metodo.html` vs. una sola página) y reescribir cuando se retome Diseño.
-
-**Salida esperada:** dos páginas Jekyll coherentes, enlazadas desde el pie de edición y desde el menú.
+### RT8 · Banner de "página en reescritura" en `/acerca/` ✅ CERRADA 2026-04-29
+Decisión tomada 2026-04-29: split `/acerca/` + `/metodo/` (opción recomendada). `/metodo/` creada con contenido completo (pipeline, modelos, taxonomía, sesgos) en RT9. `/acerca/` reescrita como página de identidad breve: qué es el proyecto, fase de rodaje, quién edita, licencias, financiación, contacto. Enlaza explícitamente a `/metodo/` y `/politica-editorial/` para el detalle técnico y editorial. Ambas páginas enlazadas desde el pie de todas las páginas.
 
 ### RT9 · Prototipo de páginas mínimas que las reglas duras exigen ✅ CERRADA PARCIAL 2026-04-29
 Las 5 reglas duras del observatorio asumen que existen tres páginas públicas: `/politica-editorial/` (texto de las reglas), `/metodologia/` (cómo funciona el pipeline y sesgos declarados), `/correcciones/` (log público de enmiendas). Hoy ninguna existe. El pipeline emite ediciones que hacen afirmaciones editoriales fuertes ("las 5 reglas duras", "balance auditado", "correcciones públicas") sin soporte público.
@@ -213,12 +209,10 @@ Esa decisión se toma cuando se reanude la etapa de Diseño, tras cerrar los hal
 
 **Salida esperada:** copy final de la home cerrado, componentes del dashboard revisados contra las decisiones D1-D13 del estudio de diseño, `build_index.py` emite el copy definitivo.
 
-### RT13 · Regla fundacional — automatización máxima + niveles de veracidad públicos ⏳ [FILOSOFÍA]
-**Decisión del editor 2026-04-21 noche:** la filosofía del proyecto se fija como **automatización máxima con transparencia radical sobre niveles de veracidad**. El editor opera, no audita contenido. El sistema se audita a sí mismo mediante auditor IA de 5 capas + tiers públicos 🟢🟡🟠🔴 + cuarentena + log de auditoría abierto. Cualquier visitante que pregunte *"¿y quién revisa?"* puede ver en abierto: el código, el log literal por propuesta, el tier calculado, las correcciones, el balance, las auditorías trimestrales.
+### RT13 · Regla fundacional — automatización máxima + niveles de veracidad públicos ✅ CERRADA 2026-04-29 [FILOSOFÍA]
+**Decisión del editor 2026-04-21 noche:** la filosofía del proyecto se fija como **automatización máxima con transparencia radical sobre niveles de veracidad**. El editor opera, no audita contenido. El sistema se audita a sí mismo mediante auditor IA de 5 capas + tiers públicos 🟢🟡🟠🔴 + cuarentena + log de auditoría abierto.
 
-Esta regla define cómo se construye cada módulo posterior y cómo se escribe la política editorial. Todo lo que requiera revisión humana continua del editor queda fuera del diseño del pipeline (el editor solo revisa en excepcional, como respuesta a escalados).
-
-**Salida:** regla fundacional documentada en [`CLAUDE.md#reglas-fundacionales`](CLAUDE.md#reglas-fundacionales) y desarrollada en la política editorial pública con copy en lenguaje llano. Referencia explícita al rol del editor como operador no revisor, y al log de auditoría como mecanismo de transparencia.
+**Cerrada 2026-04-29.** La regla está documentada en dos sitios: (a) [`CLAUDE.md#regla-complementaria`](CLAUDE.md) — regla interna del proyecto con toda la especificación técnica; (b) [`docs/politica-editorial.md`](docs/politica-editorial.md) — versión pública en lenguaje llano bajo el título *"Automatización máxima con transparencia sobre niveles de fiabilidad"*, con el rol del editor como operador y el mecanismo de escalado. Enlazada desde el pie de todas las páginas.
 
 ### RT14 · Estudio preciso de costes del auditor IA ✅ CERRADA 2026-04-23
 
@@ -767,12 +761,12 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | **RT5** | **Tests básicos del pipeline** | ⏳ | **P-1 · absorbe cobertura de `audit.py`, `verify.py`, `balance.py`, `extract.py`, `rescue.py` con fixtures reales del backfill ([D4](DECISIONES.md))** |
 | **RT6** | **Balance — rediseño con persistencia (tras 3 meses)** | ⏳ | **P-1 · diferido a ~julio 2026** |
 | **RT7** | **build_index.py adaptado al schema documental** | ✅ | **Cerrada 2026-04-21 noche** |
-| **RT8** | **Banner temporal en `/acerca/` + split acerca/metodo** | 🔄 | **Fix temporal aplicado, reescritura cuando se retome Diseño** |
+| **RT8** | **Banner temporal en `/acerca/` + split acerca/metodo** | ✅ | **Split cerrado 2026-04-29: /acerca/ identidad breve, /metodo/ detalle técnico** |
 | **RT9** | **Páginas mínimas (política editorial, método, correcciones)** | ✅ | **Cerrada 2026-04-29. `/politica-editorial/` y `/metodo/` creadas. `/correcciones/` ya existía.** |
 | **RT10** | **LG1 + LG2 promovidas a alta — anonimato legal pre-relanzamiento** | ⏳ | **P-1 · antes de empuje público** |
 | **RT11** | **Copy y tono de la home — decisión editorial** | ⏳ | **P-1 · en la etapa de Diseño, depende de RT3, RT12 y RT16** |
 | **RT12** | **Vía A de precios — estudio en profundidad** | ⏳ | **P-1 · ALTA · adelantarla al pre-relanzamiento si el estudio da viable** |
-| **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ⏳ | **P-1 · FILOSOFÍA · migrada a CLAUDE.md#reglas-fundacionales** |
+| **RT13** | **Regla fundacional — automatización + niveles de veracidad públicos** | ✅ | **CLAUDE.md + /politica-editorial/ cerrados 2026-04-29** |
 | **RT14** | **Estudio preciso de costes del auditor IA** | ✅ | **Cerrada 2026-04-23. Entregable: ESTUDIO-COSTES-AUDITOR.md. Régimen estable ~2,4 €/mes; backfill ~5,4 € one-shot. Desbloquea PI9** |
 | **RT15** | **Re-estudio profundo del sistema de tiers** | ✅ | **Cerrada 2026-04-23. Entregable [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo. 5 decisiones operativas cerradas en [D9](DECISIONES.md) (mixto / congelar / 🟠 default / Q2 tras backfill / HTML en Fase 4). §8.5 medición empírica = RT25. Desbloquea PI10.** |
 | **RT16** | **Experimento Claude Design — archivado** | 🔄 | **P-1 · archivo en `private/claude-design-experiment/` · no es referencia · se estudia en fase Diseño** |

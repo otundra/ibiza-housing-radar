@@ -13,6 +13,13 @@ Reglas:
 
 ---
 
+## 2026-04-29 [docs] — Cierre de RT8 y RT13 de la Revisión Fase 0.5
+
+- **RT8 cerrada.** La decisión de estructura `/acerca/` + `/metodo/` estaba pendiente desde 2026-04-21; quedó resuelta en esta sesión al crear `/metodo/` con contenido completo (RT9). `/acerca/` ya es la página de identidad breve que se buscaba. Marcada como cerrada.
+- **RT13 cerrada.** La regla fundacional de automatización máxima ya estaba publicada en `CLAUDE.md` (sección *Regla complementaria*) y en `/politica-editorial/` (sección pública). Solo faltaba marcarla formalmente.
+
+---
+
 ## 2026-04-29 [arquitectura] — Copia de seguridad automática del repo fuera de GitHub (EX4)
 
 - **Decisión cerrada: pull mirroring nativo de GitLab, sin tocar el repo.** GitLab copia el repo de GitHub cada hora de forma autónoma. No requiere GitHub Actions adicional, no requiere tokens (el repo es público), cero mantenimiento. Enfoque elegido frente a un workflow Actions porque el proyecto ya corre un cron semanal y 1 hora de desfase en el espejo es completamente asumible.
