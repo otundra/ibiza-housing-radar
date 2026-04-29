@@ -196,14 +196,12 @@ Aplicado fix temporal 2026-04-21: `docs/acerca.md` mantiene un callout de *"pág
 
 **Salida esperada:** dos páginas Jekyll coherentes, enlazadas desde el pie de edición y desde el menú.
 
-### RT9 · Prototipo de páginas mínimas que las reglas duras exigen ⏳
+### RT9 · Prototipo de páginas mínimas que las reglas duras exigen ✅ CERRADA PARCIAL 2026-04-29
 Las 5 reglas duras del observatorio asumen que existen tres páginas públicas: `/politica-editorial/` (texto de las reglas), `/metodologia/` (cómo funciona el pipeline y sesgos declarados), `/correcciones/` (log público de enmiendas). Hoy ninguna existe. El pipeline emite ediciones que hacen afirmaciones editoriales fuertes ("las 5 reglas duras", "balance auditado", "correcciones públicas") sin soporte público.
 
-**Acción mínima:** crear stubs Jekyll de las tres páginas con contenido textual suficiente para no ser páginas vacías. Fuente de contenido: el prototipo ya construido (`docs/prototype/metodo.html` para metodología). Para política editorial, extraer las 5 reglas de [`CLAUDE.md#reglas-fundacionales`](CLAUDE.md#reglas-fundacionales). Para correcciones, página vacía con formato estándar listo para la primera enmienda.
+**Cerrada 2026-04-29 (huecos críticos).** Creadas [`docs/politica-editorial.md`](docs/politica-editorial.md) (`/politica-editorial/`) y [`docs/metodo.md`](docs/metodo.md) (`/metodo/`), ambas con contenido completo: reglas fundacionales en lenguaje público, pipeline semanal, modelos, taxonomía de actores, sesgos declarados y qué no hace el observatorio. Enlazadas desde `/acerca/` y desde el pie de todas las páginas. `/correcciones/` ya existía desde 2026-04-23. Las tres páginas exigidas por las reglas duras están operativas.
 
-Esto se hace **cuando se reanude el bloque Diseño** (pausado por esta revisión). No antes.
-
-**Salida esperada:** 3 páginas Jekyll en `docs/` con permalinks `/politica-editorial/`, `/metodologia/`, `/correcciones/`, enlazadas desde el menú y el pie de edición.
+**Pendiente menor:** las páginas diferidas referenciadas en el prototipo (`/estado/`, `/costes/`, `/auditoria/`, `/datos-abiertos/`) siguen como tareas futuras — no son exigidas por las reglas duras.
 
 ### RT11 · Copy y tono de la home — decisión editorial en la etapa de Diseño ⏳
 El fix mecánico aplicado en el barrido 2026-04-21 ya quita el copy del modelo antiguo de la home (cambios en `build_index.py`: *"propuestas accionables con precedente"* → *"propuestas documentadas en circulación"*, bloque final reescrito para reflejar que el observatorio no genera propuestas propias). Queda pendiente la **decisión editorial** sobre el tono, jerarquía visual, qué se ve above-the-fold, cómo se comunica a los dos públicos (primer visitante vs profesional recurrente) y cómo se integra con los tiers de confianza (RT3).
@@ -765,7 +763,7 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | **RT6** | **Balance — rediseño con persistencia (tras 3 meses)** | ⏳ | **P-1 · diferido a ~julio 2026** |
 | **RT7** | **build_index.py adaptado al schema documental** | ✅ | **Cerrada 2026-04-21 noche** |
 | **RT8** | **Banner temporal en `/acerca/` + split acerca/metodo** | 🔄 | **Fix temporal aplicado, reescritura cuando se retome Diseño** |
-| **RT9** | **Prototipo de páginas mínimas (política editorial, metodología, correcciones)** | ⏳ | **P-1 · cuando se retome Diseño** |
+| **RT9** | **Páginas mínimas (política editorial, método, correcciones)** | ✅ | **Cerrada 2026-04-29. `/politica-editorial/` y `/metodo/` creadas. `/correcciones/` ya existía.** |
 | **RT10** | **LG1 + LG2 promovidas a alta — anonimato legal pre-relanzamiento** | ⏳ | **P-1 · antes de empuje público** |
 | **RT11** | **Copy y tono de la home — decisión editorial** | ⏳ | **P-1 · en la etapa de Diseño, depende de RT3, RT12 y RT16** |
 | **RT12** | **Vía A de precios — estudio en profundidad** | ⏳ | **P-1 · ALTA · adelantarla al pre-relanzamiento si el estudio da viable** |

@@ -12,7 +12,7 @@ Cada lunes mapeamos las propuestas que actores con nombre —instituciones, part
 
 Hoy somos lectura semanal estructurada de prensa local. No somos fuente primaria todavía: las fuentes propias (precios con datos abiertos y testimonios ciudadanos, seguimiento de normativa oficial) llegarán en fases posteriores. Lo decimos en cada página y en la cabecera de la web por honestidad — importa saber qué es esto antes de citarlo.
 
-El detalle editorial y técnico —las 5 reglas duras del proyecto, el pipeline semanal, los modelos que usamos, los sesgos que reconocemos, qué no hacemos— vivirá en la página **Método**, actualmente en construcción. El reparto público de citas por actor está en [**/balance/**](/balance/).
+El detalle editorial y técnico —las 5 reglas duras del proyecto, el sistema semanal, los modelos que usamos, los sesgos que reconocemos, qué no hacemos— está en [**/metodo/**](/metodo/). Las reglas fundacionales del observatorio, en [**/politica-editorial/**](/politica-editorial/). El reparto público de citas por actor está en [**/balance/**](/balance/).
 
 ## Quién lo edita
 

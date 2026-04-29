@@ -13,6 +13,13 @@ Reglas:
 
 ---
 
+## 2026-04-29 [diseno] — Páginas públicas de política editorial y método (RT9)
+
+- **Dos páginas que faltaban y prometíamos.** Creadas [`docs/politica-editorial.md`](docs/politica-editorial.md) y [`docs/metodo.md`](docs/metodo.md), ambas en lenguaje llano para el lector público. La política editorial recoge las 5 reglas duras + la regla complementaria de automatización. El método explica el ciclo semanal en 8 pasos, los tres modelos de IA con su lógica de reparto, la taxonomía de actores (8 categorías), los sesgos declarados y lo que el observatorio no hace. Enlazadas desde `/acerca/` y añadidas al pie de todas las páginas. Las tres páginas exigidas por las reglas fundacionales (`/politica-editorial/`, `/metodo/`, `/correcciones/`) ya existen. Tarea RT9 de la Revisión Fase 0.5 cerrada.
+- **Coste.** 0 € de API.
+
+---
+
 ## 2026-04-29 [operacional] — Protocolo interno de correcciones (OP1)
 
 - **Protocolo cuando llega una rectificación.** Creado `private/protocolo-correcciones.md`: guion paso a paso para el editor con los dos casos posibles (error de hecho verificable vs. reclamación de actor sobre interpretación), plazos (24 h acuse de recibo, 72 h resolución), criterio de decisión único (¿es un error de hecho comprobable con la fuente?), tres plantillas de respuesta, lista de qué no ceder bajo ningún concepto, y cuándo escalar si llega amenaza legal. Cierra el hueco entre la promesa pública de `/correcciones/` y la ausencia de proceso interno. Revisión anclada al Hito 3 legal. Tarea OP1 de la Revisión Fase 0.5 cerrada.
