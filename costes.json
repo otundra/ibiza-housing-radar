@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "currency": "EUR",
+  "updated_at": "2026-04-30T10:00:00Z",
+  "updated_by": "panel-fase-4a-bootstrap",
+
+  "fixed_monthly": [],
+
+  "recurring_variable": {
+    "current_month": {
+      "amount": null,
+      "source": "csv:data/costs.csv",
+      "method": "auditar formato del csv antes de conectar",
+      "as_of": null,
+      "certainty": "no_data"
+    },
+    "history": []
+  },
+
+  "one_off": [],
+
+  "shared_attribution": {
+    "claude_max": {
+      "current_month_share_eur": null,
+      "method": "weighted_by_imputed_cost",
+      "tokens_method": "sum (tokens x precio-por-modelo) en ~/.claude/projects/<id>/*.jsonl",
+      "as_of": null,
+      "certainty": "estimated"
+    }
+  },
+
+  "notes": [
+    "Bootstrap fase-4a. Fuente esperada: csv:data/costs.csv (lector csv local).",
+    "Pendiente auditar el formato del csv antes de conectar (Fase 4b, friccion baja).",
+    "Poblar recurring_variable cuando el lector csv este activo."
+  ]
+}
