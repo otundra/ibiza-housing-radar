@@ -158,9 +158,8 @@ Cuatro reglas baratas que frenan la entropía hasta la revisión profunda post-l
 
 Índice vivo en [`COMANDOS.md`](COMANDOS.md) (raíz). Si no aparece ahí, no existe. Al crear un comando nuevo en `.claude/commands/`, añadirlo a la tabla de `COMANDOS.md` en el mismo commit.
 
-- **Arranque por defecto (sin comando, desde 2026-04-24).** Al empezar una sesión sin invocar ningún comando, leer en silencio `STATUS.md`, `DECISIONES.md` y las primeras 120 líneas de `DIARIO.md`, y **responder directo al prompt del editor sin sacar informe**. El informe ordenado + 1-3 recomendaciones + pregunta *"¿qué hacemos?"* solo se dispara cuando el editor escribe `/arranque` explícito.
-- **Arranques con informe:** `/arranque` (ligero, ≈200 palabras), `/arranque-auditoria` (profundo, mapa de estudios + código, ≈700 palabras), `/arranque-total` (completo, todo el proyecto sin huecos, uso escaso). Criterio y qué lee cada uno en [`COMANDOS.md`](COMANDOS.md).
-- **Ampliación transversal:** `/ampliar [área o descripción]` carga documentos de un área concreta del proyecto sin sacar informe. Usable tras cualquier arranque para subir de nivel de contexto sin repetir síntesis, o como carga puntual al empezar.
+- **Arranque por defecto (silencioso, regla global).** Al empezar una sesión sin invocar ningún comando, leer en silencio el contexto base del proyecto y **responder directo al prompt del editor sin sacar informe**. Ver sección *Arranque por defecto (silencioso)* del `~/.claude/CLAUDE.md` global.
+- **Arranques con informe (sistema global de 4 niveles):** `/arranque` (Tier 1, ligero, ≈250 palabras), `/arranque-auditoria` (Tier 2, profundo, carga TODOS los docs vivos del inventario, 600-900 palabras), `/arranque-total` (Tier 3, exhaustivo, docs + código + configs). Criterio detallado en `~/.claude/commands/` y en la sección *Comandos globales de sesión* del `~/.claude/CLAUDE.md` global. Desde 2026-05-02 todos son globales — ya no hay arranques locales en este proyecto.
 - **Cierre de sesión:** `/cierre` (ver [`.claude/commands/cierre.md`](.claude/commands/cierre.md)) con checklist fijo: auditoría de cambios, actualización dirigida de docs, commits atómicos, push y reporte de qué se tocó y qué no.
 
 ## Lenguaje en el chat del proyecto (desde 2026-04-24)
