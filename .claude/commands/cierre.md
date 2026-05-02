@@ -1,64 +1,29 @@
 ---
-description: Cierra la sesión con checklist fijo — actualiza docs, commit atómico y push
+description: Cierra sesión con checklist global + extras específicos de ibiza-housing-radar
 ---
 
-Estás cerrando una sesión de trabajo en `ibiza-housing-radar`. Ejecuta este checklist **en orden**, sin saltarte pasos. Al final da un reporte corto al editor.
+**Hereda del global.** Lee y ejecuta `~/.claude/commands/cierre.md` completo, en orden, sin saltarte pasos. Después aplica los extras específicos de este proyecto descritos abajo.
 
-**Separador visual del bloque.** Empieza la primera respuesta de este comando con una línea horizontal (`---`) como primera línea del mensaje. Termina el reporte final del paso 5 con otra línea horizontal igual. Esto delimita visualmente el bloque de cierre dentro de la conversación.
+## Extras específicos de `ibiza-housing-radar`
 
-## 0. Chequeo de concurrencia
+### Etiquetas DIARIO permitidas (paso 2)
 
-- Ejecuta `git fetch origin main --quiet` y compara `HEAD` local con `origin/main`.
-- Si `origin/main` tiene commits que la rama local no tiene (otra sesión commiteó mientras trabajabas): **para aquí**, avisa al editor con la lista de commits remotos nuevos, y pregunta si sigue esta sesión o si hay que cerrar la otra primero. No sigas con el paso 1 hasta tener respuesta.
-- Si remoto y local coinciden (o solo la local va por delante): sigue con el paso 1.
+El DIARIO de este proyecto solo admite estas etiquetas en la cabecera `## YYYY-MM-DD [tema]`:
 
-## 1. Inventario de cambios
+`[pipeline]`, `[diseno]`, `[editorial]`, `[arquitectura]`, `[docs]`, `[costes]`, `[legal]`, `[feedback]`, `[sesion]` (cierre general).
 
-- `git status` + `git diff --stat` para ver qué se tocó en disco.
-- Repaso mental de la conversación: ¿hubo decisiones, feedback del editor, hitos, acuerdos o cambios de rumbo que se hablaron pero NO se han escrito a ningún archivo?
+### Docs vivos extra a auditar (paso 2)
 
-## 2. Auditoría cruzada de docs vivos
-
-Revisa uno a uno y decide si tocar. No tocar por tocar; tocar si hay algo nuevo que reflejar.
+Además de los del global, revisar:
 
 | Documento | Tocar si… |
 |---|---|
-| `DIARIO.md` | Hubo hito, decisión, fix estructural, cambio de rumbo, feedback del editor o aprendizaje relevante. Cabecera `## YYYY-MM-DD [tema]` obligatoria ([D0](../../DECISIONES.md)). Temas: `[pipeline]`, `[diseno]`, `[editorial]`, `[arquitectura]`, `[docs]`, `[costes]`, `[legal]`, `[feedback]`, `[sesion]`. |
-| `STATUS.md` | Cambió lo activo/pausado/en curso, se cerró o abrió un hito, cambió el próximo hito operativo. **Mantener ≤ 100 líneas.** |
-| `DECISIONES.md` | Se tomó cualquier decisión nueva en la sesión. Fila nueva con ID `D{N}` correlativo. Otros docs que la referencien usan el ID, no duplican contenido. |
-| `ROADMAP.md` | Se cerró una tarea, se añadió una nueva, cambió el orden o la fase de algo. |
-| `CLAUDE.md` (proyecto) | Hubo decisión estructural durable (stack, convención, regla "qué NO hacer", contrato de arranque). Raro. |
-| Memoria `.claude/projects/.../memory/` | Hubo feedback nuevo del editor sobre cómo trabajar, o decisión reutilizable que merece persistir entre sesiones. Actualizar `MEMORY.md` índice si se añade archivo. |
 | Estudios activos (`ESTUDIO-*.md`, `REVISION-FASE-0.5.md`) | La sesión avanzó, cerró o cambió el contenido de ese estudio en concreto. |
 
-**Regla:** si dudas si tocar un doc, pregunta al editor antes de editarlo. No ejecutes ediciones dudosas por tu cuenta (regla `feedback_esperar_ok_antes_de_editar.md`).
+### Tipo de commit extra (paso 3)
 
-**Paraleliza.** Cuando vayas a editar varios docs con cambios independientes, lanza las llamadas a Edit en paralelo (un solo mensaje con varias herramientas). Secuencia solo cuando una edición depende del resultado de otra.
+Además de los del global, este proyecto admite el tipo `report` para commits de ediciones semanales generadas por el pipeline.
 
-## 3. Commits atómicos
+### Aviso de tamaño de DIARIO (paso 5, en el reporte final)
 
-- Un commit por **cambio lógico**, no por archivo. Si una decisión cerrada toca 4 docs, va en un solo commit bien titulado (ej. `docs(auditor): propagación de D1-D7`). Separa solo cuando son decisiones lógicamente distintas. No bundlees decisiones distintas en el mismo commit.
-- Formato: `tipo(ámbito): descripción en español`. Tipos: `docs`, `feat`, `fix`, `config`, `refactor`, `chore`, `pipeline`, `report`.
-- Co-author: `Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>`.
-- Nunca `git add -A` ciego; añade archivos explícitos.
-- Nunca `--no-verify`.
-
-## 4. Push
-
-- `git push` si hay remoto y hay commits locales. Si falla por divergencia, `git pull --rebase` y vuelve a empujar. No force-push.
-
-## 5. Reporte final al editor
-
-Formato corto (viñetas, sin adornos):
-
-- **Archivos tocados:** lista.
-- **Commits creados:** N commits, primera línea de cada uno.
-- **Push:** OK / no aplicable / falló (con motivo).
-- **NO toqué:** docs que podrían haber necesitado actualización pero no toqué + razón en una línea. Esto sirve para que el editor detecte omisiones.
-- **Dudas abiertas:** si hubo algo que no supe resolver solo.
-
-## Reglas duras
-
-- Si en cualquier paso detectas que falta contexto o hay una decisión que el editor no ha aprobado explícitamente, **PARA y pregunta**. No improvises.
-- No marques tareas del ROADMAP como completadas si no hubo OK explícito del editor en la sesión.
-- Si el DIARIO se acerca a 150 KB, avisa al editor en el reporte: toca considerar el troceo diferido (ver `ESTUDIO-GESTION-CONOCIMIENTO.md §3.3`).
+Si `DIARIO.md` se acerca a 150 KB, avisar a Raúl en el reporte: toca considerar el troceo diferido (ver `ESTUDIO-GESTION-CONOCIMIENTO.md §3.3`).

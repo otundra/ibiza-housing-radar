@@ -139,6 +139,12 @@ gh workflow run validate-key.yml
 
 6. **Modelo por fase.** Haiku para filtrar (coste marginal), Opus solo para la pieza final donde la calidad editorial sí importa. No mezclar.
 
+## Docs vivos /cierre
+
+Excluir: docs/_site/, docs/_posts/, docs/_includes/, docs/_layouts/, docs/assets/, docs/prototype/, private/
+
+(Sintaxis del sistema, ver `~/.claude/DEFAULTS.md`.)
+
 ## Reglas de gestión documental (desde 2026-04-23, ver [D0](DECISIONES.md); regla 4 desde 2026-04-24, ver [D14](DECISIONES.md))
 
 Cuatro reglas baratas que frenan la entropía hasta la revisión profunda post-lanzamiento (ver [`ESTUDIO-GESTION-CONOCIMIENTO.md`](ESTUDIO-GESTION-CONOCIMIENTO.md)):
