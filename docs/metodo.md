@@ -68,6 +68,24 @@ El sistema reconoce 8 tipos de actor. La lista está cerrada: añadir un tipo nu
 
 ---
 
+## Niveles de confianza {#tiers}
+
+Cada propuesta publicada lleva un color que resume la confianza que tenemos en ella en el momento de publicar. Lo calculamos automáticamente con reglas fijas; no lo decide una persona caso a caso.
+
+**🟢 Alta confianza.** Dos medios distintos recogen la misma propuesta, el enlace de origen está activo, la cita del actor aparece en el artículo, y la revisión automática la ha procesado sin discusión interna. No mostramos ningún aviso: el sistema la ha validado en todos los controles.
+
+**🟡 Confianza media.** Cumple los controles mínimos pero falta algo de redundancia: fuente única, o una cifra de viabilidad declarada sin respaldo, o una discrepancia entre capas de la revisión que se resolvió con una tercera pasada. Se publica con aviso visible.
+
+**🟠 Confianza baja.** Publicable pero con reservas. Hay avisos no bloqueantes — por ejemplo no hay copia guardada en un archivo externo, o el medio no está en la lista de fuentes estables. Consulta el enlace original antes de citar.
+
+**🔴 No publicada.** La propuesta existe en la prensa pero no supera los controles: enlace caído, cita que no se encuentra en el artículo, o la revisión automática no llega a un acuerdo ni tras una tercera pasada. Va a [/revision-pendiente/](/revision-pendiente/) y se archiva a los 60 días si nada cambia.
+
+Los controles son los mismos para todos los actores: partidos políticos, sindicatos, patronales, asambleas vecinales, tercer sector. No se pondera la reputación del actor ni la del medio más allá de una lista fija de fuentes aceptadas.
+
+Los umbrales exactos están en [`data/tiers.yml`](https://github.com/otundra/ibiza-housing-radar/blob/main/data/tiers.yml), públicos y auditables. Los cambios se anotan en [/correcciones/](/correcciones/) y no se aplican hacia atrás.
+
+---
+
 ## Sesgos declarados
 
 Ningún observatorio es neutral. Enumeramos los sesgos conocidos. Si detectas uno no listado, [escríbenos](/correcciones/).
