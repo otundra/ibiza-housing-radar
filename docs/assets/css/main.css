@@ -1392,3 +1392,37 @@ pre code { background: transparent; padding: 0; border: 0; color: inherit; }
   color: inherit;
   font-weight: 600;
 }
+
+/* --- Cuarentena /revision-pendiente/ --------------------------------- */
+.quarantine-card {
+  border: 1px solid var(--rule);
+  border-left: 4px solid;
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: .92rem;
+  line-height: 1.55;
+}
+.quarantine-card--activa  { border-left-color: #b83232; background: #ffecec; }
+.quarantine-card--resuelta { border-left-color: var(--success); background: #f0faf2; }
+.quarantine-card--archivada { border-left-color: var(--ink-muted); background: var(--bg-soft); }
+.quarantine-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.quarantine-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  color: var(--ink-muted);
+  font-size: .85rem;
+}
+.quarantine-card__meta a { color: var(--accent); }
+.quarantine-empty {
+  color: var(--ink-muted);
+  font-style: italic;
+  padding: 20px 0;
+}
