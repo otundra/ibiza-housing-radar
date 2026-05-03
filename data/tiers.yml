@@ -1,0 +1,27 @@
+# data/tiers.yml — umbrales ajustables del sistema de tiers
+# Diseño: ESTUDIO-TIERS.md §4.2 · Decisiones: DECISIONES.md D9
+# La lógica del árbol vive en src/tiers.py; aquí solo los parámetros operativos.
+
+umbrales_verify:
+  verbatim_quote_min: 0.95        # cita textual: ratio mínimo bloqueante
+  verbatim_reported_min: 0.60     # estilo indirecto: mínimo bloqueante
+  verbatim_reported_verde: 0.80   # estilo indirecto: mínimo para verde
+
+techos:
+  fuente_unica: amarillo
+  arbitraje_opus_resolvio: amarillo
+  whitelist_debilita: amarillo
+  viability_sin_cifra_declarada_alta: amarillo
+  sin_wayback_en_dominio_inestable: naranja
+
+dominios_estables:
+  - "boib.caib.es"
+  - "caib.es"
+  - "conselldeivissa.es"
+  - "diariodeibiza.es"
+  - "periodicodeibiza.es"
+  - "ibestat.cat"
+  - "ib3.org"
+
+politica_cambio_retroactivo: congelar  # congelar | recalcular | hibrido
+default_paso_6: naranja

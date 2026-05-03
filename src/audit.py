@@ -7,8 +7,8 @@ Tres bloques principales:
   ``src/extract.py``. Alimenta el comparador determinista de
   ``src/audit_compare.py``.
 - ``build_signals`` + ``compute_tier``. Bloque ``signals`` (11 señales del
-  registro de auditoría, plano §3.2) y stub de ``compute_tier`` que en el
-  MVP siempre devuelve ``value=None`` con ``reason='pendiente_estudio'``.
+  registro de auditoría, plano §3.2). ``compute_tier`` vive en
+  ``src/tiers.py`` — árbol determinista de 6 pasos (D9, PI10).
 - ``audit_proposals`` + ``write_audit_log``. Orquestador del MVP completo:
   capa 2 ciega (un único batch Sonnet) + comparador + heurísticas
   (``src/audit_heuristics.py``) + signals + escritura del JSON por
@@ -39,6 +39,7 @@ from src.audit_compare import compare_extractions
 from src.audit_heuristics import load_actor_domains, run_heuristics
 from src.costs import assert_budget_available, record_call
 from src.extract import EXTRACT_SYSTEM, MODEL_BASE, MODEL_VALIDATOR, _call, _try_json
+from src.tiers import compute_tier
 
 log = logging.getLogger("audit")
 
@@ -159,23 +160,6 @@ def build_signals(
         "whitelist_match": whitelist_match,
         "viability_con_cifra": viability_con_cifra,
         "statement_type": statement_type,
-    }
-
-
-def compute_tier(signals: dict) -> dict:
-    """Hueco reservado en el MVP — siempre devuelve ``value=None``.
-
-    En la iteración posterior ([D9](DECISIONES.md), PI10), esta función
-    leerá el bloque ``signals`` y devolverá un color real (🟢🟡🟠🔴). El
-    estudio de tiers (`ESTUDIO-TIERS.md`) ya cierra el árbol de decisión;
-    sólo falta conectarlo al ``compute_tier()`` real.
-
-    Plano: §2.1.
-    """
-    return {
-        "value": None,
-        "reason": "pendiente_estudio",
-        "signals": dict(signals or {}),
     }
 
 
