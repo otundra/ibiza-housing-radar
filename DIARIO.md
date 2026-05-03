@@ -13,6 +13,17 @@ Reglas:
 
 ---
 
+## 2026-05-03 [feat] — PI10 cerrado: compute_tier() real + badge Jekyll + /metodo/#tiers + RT25 script + /revision-pendiente/ + GoatCounter infra
+
+- **compute_tier() real** en `src/tiers.py`: árbol determinista de 6 pasos (D9/PI10) con `data/tiers.yml` para umbrales ajustables. Cierra la brecha entre el estudio cerrado (RT15/RT26) y el código.
+- **Badge Jekyll** (`docs/_includes/tier_badge.html`): verde sin badge (decisión Q1 mixto), amarillo/naranja/rojo con aviso. CSS de badges añadido a `docs/assets/css/main.css`.
+- **Copy público de niveles** en `/metodo/#tiers`: 4 niveles explicados en lenguaje llano, enlace a `data/tiers.yml` en GitHub.
+- **Script de sesgo por actor** (`scripts/tier_bias_audit.py`, RT25): lee `data/audit/`, calcula distribución verde/amarillo/naranja/rojo por tipo de actor, aplica test con umbrales 65 %/50 %. Listo; necesita datos W19-W22.
+- **Página /revision-pendiente/** (PI11) + `docs/_data/quarantine.json` vacío: infraestructura Jekyll lista; el pipeline la poblará al cuarentenar propuestas.
+- **GoatCounter integrado en infra Jekyll**: `goatcounter_id: ""` en `_config.yml` + script condicional en `_layouts/default.html`. Sin cookies, GDPR-friendly. Activa rellenando el campo.
+
+---
+
 ## 2026-04-29 [pipeline] — Nou Diari incorporada como fuente RSS; Hora Ibiza descartada (FU3)
 
 - **Hora Ibiza descartada.** El dominio `horadeibiza.com` no responde y el medio no tiene presencia rastreable. No es una fuente viable.

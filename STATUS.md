@@ -31,7 +31,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 - **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21. 16 tareas cerradas sobre 69 totales de la tabla de seguimiento. Sesión 2026-04-29: OP1, RT8, RT9 (parcial), RT13, ED1 (parcial), ED4, EX4, FU3. Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md).
 - **Hito 1 — Auditor mínimo viable.** PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). Diseño del módulo cerrado 2026-04-24 en [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md). **Construcción en marcha:** Fases 1 (segunda lectura ciega + comparador), 2 (heurísticas deterministas + whitelist V1 cerrada + caché HTTP local + bloque `signals` con stub de tier) y 3 (registro JSON append-only + integración silenciosa en `src/report.py` + señal de disputas en `src/self_review.py` + página `/correcciones/` mínima) **cerradas 2026-04-25**. Coste acumulado validación: 0,042 €. Pendiente: corrida end-to-end en la próxima edición del cron lunes (entregable 5 de Fase 3, automático) y Fase 4 reformulada como **observación en vivo durante 3-4 ediciones consecutivas (W19-W22)** en lugar del backfill de W10, ver [D20](DECISIONES.md). Sin calendario ni fecha ([D15](DECISIONES.md)).
-- **Hito 2 — Re-estudio del sistema de tiers** ✅ **cerrado 2026-04-23** (RT15, RT26). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo con 5 decisiones operativas en [D9](DECISIONES.md). Queda como pendiente de datos la medición empírica del sesgo por actor (RT25, post-backfill). Implementación de `src/tiers.py` + `data/tiers.yml` pasa a PI10 (sin bloquear auditor MVP).
+- **Hito 2 — Sistema de tiers** ✅ **cerrado 2026-05-03** (RT15, RT26, PI10). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) + `src/tiers.py` + `data/tiers.yml` + badge Jekyll + `/metodo/#tiers`. Sesgo por actor (RT25): script listo, análisis pendiente de datos W19-W22. Cuarentena pública `/revision-pendiente/` (PI11) con infraestructura lista.
 
 ## 🏷️ Identidad (provisional 2026-04-21)
 
@@ -55,7 +55,7 @@ Sin calendario ni fecha de lanzamiento ([D15](DECISIONES.md)). El avance se orga
 | Vengo a… | Abrir primero |
 |---|---|
 | Arrancar el auditor mínimo | [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md) (plano de obra) + [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md) + [D1](DECISIONES.md), [D2](DECISIONES.md), [D3](DECISIONES.md) |
-| Implementar el sistema de tiers | [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) cerrado. Siguiente: `src/tiers.py` + `data/tiers.yml` con los valores de [D9](DECISIONES.md) + badge en Jekyll + `/metodologia/#tiers` (tarea PI10) |
+| ~~Implementar el sistema de tiers~~ | ✅ PI10 cerrado 2026-05-03. `src/tiers.py` + `data/tiers.yml` + badge + `/metodo/#tiers` en prod. |
 | Retomar diseño visual | memoria `prototipo_paso1_en_pausa.md` + [`ESTUDIO-DISENO.md §10`](ESTUDIO-DISENO.md) + entradas DIARIO 2026-04-21 |
 | Cerrar Revisión Fase 0.5 | [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) |
 | Tocar pipeline | [`ARQUITECTURA.md`](ARQUITECTURA.md) + [`src/`](src/) |

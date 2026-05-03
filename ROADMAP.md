@@ -57,8 +57,8 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 
 - **Re-estudio profundo del sistema de tiers** (RT15) ✅ **cerrada 2026-04-23**. Entregable [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo: 11 secciones + 5 decisiones operativas cerradas ([D9](DECISIONES.md)) — visibilidad mixta (🟢 sin badge, 🟡🟠🔴 con aviso), política de cambios retroactivos congelar, default paso 6 = 🟠 + alerta Telegram, Q2 diferida a datos del backfill, mockups HTML para Fase 4.
 - **Cierre editorial** (RT26) ✅ cerrada 2026-04-23 con OK en bloque del editor.
-- **Implementación pendiente (entra en PI10):** `src/tiers.py` con `compute_tier(signals)` + `data/tiers.yml` con los umbrales operativos + plantilla visual del badge en Jekyll + `/metodologia/#tiers` con el copy de §5 del estudio. No bloquea Hito 1; se hace como sub-tarea dentro de la iteración posterior del auditor o en Fase 2.
-- **Medición empírica del sesgo** (RT25). Tras backfill de 12 semanas (PI2-B). Script `scripts/tier_bias_audit.py` (~2 h) + análisis + activación opcional de mitigación M1 en `data/tiers.yml`. Cierra §8.5 del estudio.
+- **Implementación PI10 ✅ cerrada 2026-05-03:** `src/tiers.py` con `compute_tier(signals)` + `data/tiers.yml` con los umbrales operativos + badge Jekyll (`docs/_includes/tier_badge.html`) + `/metodo/#tiers` con el copy de §5 del estudio.
+- **Medición empírica del sesgo** (RT25). Script `scripts/tier_bias_audit.py` ✅ listo (2026-05-03). Análisis + activación opcional de mitigación M1 en `data/tiers.yml` pendiente hasta datos W19-W22. Cierra §8.5 del estudio.
 - **Test de usabilidad con 5 personas** (RT3). Valida en campo la decisión de visibilidad mixta (Q1). ~3 h de trabajo del editor con su red personal. Recomendable antes del empuje público.
 - **Validación empírica preliminar del árbol** sobre la muestra acumulada en vivo W19-W22 ([D20](DECISIONES.md)) — queda dentro del Hito 1; aquí solo se anota que confirma que los umbrales por defecto funcionan antes del backfill grande.
 
@@ -86,8 +86,8 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 **Ruta crítica en serie:**
 
 1. **Backfill real** (PI2-B). Ajustado según prueba empírica de Fase 1. 12, 6 o 4 semanas.
-2. **Sistema de tiers de confianza** (PI10). Implementado sobre datos del backfill. Ajustes si el re-estudio (RT15) ha cambiado algo.
-3. **Cuarentena pública** `/revision-pendiente/` (PI11).
+2. **Sistema de tiers de confianza** (PI10). ✅ Implementado 2026-05-03 (`src/tiers.py` + `data/tiers.yml` + badge Jekyll). Ajustes pendientes con datos del backfill.
+3. **Cuarentena pública** `/revision-pendiente/` (PI11). ✅ Página y datos vacíos listos 2026-05-03; el pipeline la poblará al cuarentenar propuestas.
 4. **Alerta Telegram enriquecida completa** (PI12). Ahora hay datos upstream.
 
 **En paralelo:**
