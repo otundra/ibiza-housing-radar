@@ -1,0 +1,21 @@
+{% comment %}
+  Plantilla de badge de confianza — decisión Q1: mixto.
+  Verde no muestra badge (se asume OK).
+  Uso: {% include tier_badge.html tier="amarillo" %}
+  Parámetro tier: amarillo | naranja | rojo | verde (o ausente/null → no renderiza)
+{% endcomment %}
+{% assign _t = include.tier %}
+{% if _t == "amarillo" or _t == "naranja" or _t == "rojo" %}
+<aside class="tier-badge tier-badge--{{ _t }}">
+  <span class="tier-badge__dot" aria-hidden="true">{% if _t == "amarillo" %}🟡{% elsif _t == "naranja" %}🟠{% elsif _t == "rojo" %}🔴{% endif %}</span>
+  <span class="tier-badge__text">
+    {% if _t == "amarillo" %}
+      <strong>Confianza media.</strong> Un solo medio lo recoge, o hubo alguna duda durante la revisión. Si conoces el caso, <a href="{{ site.baseurl }}/correcciones/">ayúdanos</a>.
+    {% elsif _t == "naranja" %}
+      <strong>Confianza baja.</strong> La revisión automática dejó avisos. Consulta el enlace de origen antes de citar.
+    {% elsif _t == "rojo" %}
+      <strong>No publicada — en revisión.</strong> Detectada pero pendiente de verificación mínima. Ver <a href="{{ site.baseurl }}/revision-pendiente/">revisión pendiente</a>.
+    {% endif %}
+  </span>
+</aside>
+{% endif %}

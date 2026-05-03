@@ -1352,3 +1352,43 @@ pre code { background: transparent; padding: 0; border: 0; color: inherit; }
   text-align: center;
   color: var(--ink-muted);
 }
+
+/* --- Tiers de confianza (D9 / PI10) ---------------------------------- */
+.tier-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border-left: 3px solid;
+  margin: 16px 0;
+  font-size: .92rem;
+  line-height: 1.5;
+}
+.tier-badge--amarillo {
+  background: #fffae0;
+  border-color: #c9970a;
+  color: #5a4200;
+}
+.tier-badge--naranja {
+  background: #fff4e6;
+  border-color: #c96a0a;
+  color: #5a2c00;
+}
+.tier-badge--rojo {
+  background: #ffecec;
+  border-color: #b83232;
+  color: #5a0000;
+}
+.tier-badge__dot {
+  flex-shrink: 0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.tier-badge__text {
+  flex: 1;
+}
+.tier-badge__text a {
+  color: inherit;
+  font-weight: 600;
+}
