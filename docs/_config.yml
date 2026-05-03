@@ -42,6 +42,11 @@ defaults:
     values:
       layout: edition
 
+# Analítica — GoatCounter (sin cookies, GDPR-friendly).
+# Rellenar con el ID del sitio (subdomain de goatcounter.com) para activar.
+# Dejar vacío ("") para deshabilitar.
+goatcounter_id: ""
+
 exclude:
   - README.md
   - Gemfile
