@@ -105,5 +105,26 @@
     "id": "2026-w18-002",
     "first_seen": "2026-04-27T09:46:13+00:00",
     "first_seen_edition": "2026-W18"
+  },
+  {
+    "actor": "Govern Balear",
+    "actor_type": "institucional_publico",
+    "statement_summary": "El Govern Balear aprueba 25 millones de euros para que los municipios de Eivissa construyan vivienda pública o trasladen residuos.",
+    "statement_verbatim": "Luz verde a 25 millones de euros para que los municipios de Eivissa construyan vivienda pública o trasladen residuos",
+    "url_source": "https://www.msn.com/es-es/dinero/bien-inmueble/luz-verde-a-25-millones-de-euros-para-que-los-municipios-de-eivissa-construyan-vivienda-p%C3%BAblica-o-trasladen-residuos/ar-AA21CPfB?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1&bundles=feat-es2020-c",
+    "palanca": "oferta_vivienda",
+    "target_actor": "Municipios de Eivissa",
+    "horizon": "corto_plazo",
+    "state": "aprobada",
+    "viability_legal": "no_evaluada",
+    "viability_legal_reason": "",
+    "viability_economic": "no_evaluada",
+    "viability_economic_reason": "",
+    "supporters_cited": [],
+    "opponents_cited": [],
+    "precedents": [],
+    "id": "2026-w19-006",
+    "first_seen": "2026-05-04T07:49:43.990115+00:00",
+    "first_seen_edition": "2026-W19"
   }
 ]

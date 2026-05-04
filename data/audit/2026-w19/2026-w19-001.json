@@ -1,0 +1,125 @@
+{
+  "proposal_id": "2026-w19-001",
+  "week": "2026-w19",
+  "created_at": "2026-05-04T07:48:41Z",
+  "tier": {
+    "value": null,
+    "reason": "pendiente_estudio",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": false,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 0.026,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 1,
+      "whitelist_match": "debilita",
+      "viability_con_cifra": false,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-05-04T07:48:41Z",
+      "proposal": {
+        "actor": "Govern Balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Govern Balear aprueba 25 millones de euros para que los municipios de Eivissa construyan vivienda pública o trasladen residuos.",
+        "statement_verbatim": "Luz verde a 25 millones de euros para que los municipios de Eivissa construyan vivienda pública o trasladen residuos",
+        "url_source": "https://www.msn.com/es-es/dinero/bien-inmueble/luz-verde-a-25-millones-de-euros-para-que-los-municipios-de-eivissa-construyan-vivienda-p%C3%BAblica-o-trasladen-residuos/ar-AA21CPfB?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1&bundles=feat-es2020-c",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Municipios de Eivissa",
+        "horizon": "corto_plazo",
+        "state": "aprobada",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-05-04T07:48:41Z",
+      "proposal": {
+        "actor": "Govern Balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Govern Balear aprueba 25 millones de euros destinados a que los municipios de Eivissa puedan construir vivienda pública o trasladar residuos.",
+        "statement_verbatim": "Luz verde a 25 millones de euros para que los municipios de Eivissa construyan vivienda pública o trasladen residuos",
+        "url_source": "https://www.msn.com/es-es/dinero/bien-inmueble/luz-verde-a-25-millones-de-euros-para-que-los-municipios-de-eivissa-construyan-vivienda-p%C3%BAblica-o-trasladen-residuos/ar-AA21CPfB?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1&bundles=feat-es2020-c",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Ayuntamientos de Eivissa",
+        "horizon": "corto_plazo",
+        "state": "aprobada",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "target_actor",
+          "a": "Municipios de Eivissa",
+          "b": "Ayuntamientos de Eivissa",
+          "reason": "diff_critico"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 1,
+        "urls": [
+          "https://www.msn.com/es-es/dinero/bien-inmueble/luz-verde-a-25-millones-de-euros-para-que-los-municipios-de-eivissa-construyan-vivienda-p%C3%BAblica-o-trasladen-residuos/ar-AA21CPfB?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1&bundles=feat-es2020-c"
+        ],
+        "dominios": [
+          "msn.com"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 0.026,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": false,
+        "passed_green": false,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "debilita",
+        "domain": "msn.com",
+        "known_actor": true,
+        "whitelist_miss": false
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-05-04T07:48:41Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": false,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": []
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 5585,
+    "heuristics_ms": 80,
+    "verify_ms": 0,
+    "total_ms": 5665
+  }
+}

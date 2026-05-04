@@ -7,33 +7,50 @@ permalink: /
 <section class="dash-cover">
 <p class="dash-cover-kicker">
 <span class="dash-pulse" aria-hidden="true"></span>
-<span>Informe semanal · actualizado 2026-04-27</span>
+<span>Informe semanal · actualizado 2026-05-04</span>
 </p>
 <div class="dash-cover-grid">
 <div class="dash-cover-main">
-<p class="dash-cover-eyebrow">Semana 5 - Abril 2026</p>
-<h1 class="dash-cover-headline">Ibiza desaloja sa Joveria con 200 trabajadores afectados; CCOO reclama vivienda; Govern aprueba 25M para vivienda pública municipal.</h1>
+<p class="dash-cover-eyebrow">Semana 1 - Mayo 2026</p>
+<h1 class="dash-cover-headline">Inicio de temporada turística marcado por desalojos masivos de asentamientos y aprobación de 25 millones para vivienda pública municipal.</h1>
 <div class="dash-cover-lectura" markdown="1">
 
-El sábado 18 y domingo 19 trascienden los planes del Ayuntamiento de Ibiza para desalojar varios asentamientos antes de la temporada; en paralelo Marí (Ayuntamiento) anima a denunciar abusos en alquileres. El martes 21 se ejecuta el desalojo de sa Joveria con dispositivo policial, y la presidenta Prohens declara que la regularización agravaría el problema. El jueves 23 CCOO reclama más vivienda y se publican los datos balear de 1.742 pisos menos en alquiler permanente; el viernes 24 se conocen la multa de 37.000 euros en Santa Eulària y los realojos del Ibavi tras la explosión; el lunes 27 el Govern aprueba los 25 millones para vivienda pública municipal.
+- **Lun 27** una tertulia en Radio Ibiza SER centra el debate en los desalojos y el inicio de temporada.
+- **Mar 28** sexto desalojo de un asentamiento de chabolas en Ibiza en dos años; coincide con la inauguración de la temporada turística. Mateo (concejal) atribuye al PSOE la responsabilidad de los asentamientos.
+- **Mié 29** se desaloja sin incidentes el asentamiento junto al estadio de Can Misses, ya prácticamente deshabitado. El Consell d'Eivissa anuncia el uso de un dron para localizar asentamientos. El Govern aprueba los 25 millones para vivienda pública municipal.
+- **Jue 30** se publican datos que sitúan a Ibiza con los precios de vivienda usada más altos de Baleares.
+- **Vie 1** Primero de Mayo: testimonios de temporeros sobre habitaciones paupérrimas; reportaje sobre las condiciones de Punta Xinxó.
+- **Sáb 2** Yolanda Díaz llama a una "gran movilización" por la vivienda; vecinos de Punta Xinxó reclaman solución al asentamiento.
+- **Dom 3 — Lun 4** se publican testimonios sobre estafas de alquiler y parálisis por estrés; un propietario denuncia restricciones pese a tener licencia turística.
 
 </div>
 <div class="dash-cover-ctas">
-<a href="{{ site.baseurl }}/ediciones/2026-w18/" class="dash-cta-primary">Leer informe completo →</a>
-<a href="#senales" class="dash-cta-secondary">Ver las 9 señales ↓</a>
+<a href="{{ site.baseurl }}/ediciones/2026-w19/" class="dash-cta-primary">Leer informe completo →</a>
+<a href="#senales" class="dash-cta-secondary">Ver las 8 señales ↓</a>
 </div>
 </div>
 <aside class="dash-cover-aside">
+<section class="dash-aside-block">
+<p class="dash-aside-kicker">1 propuesta documentada</p>
+<h2 class="dash-aside-title">Qué se ha propuesto esta semana</h2>
+<ol class="dash-aside-list dash-aside-propuestas">
+<li>
+<span class="dash-aside-num">01</span>
+<a href="{{ site.baseurl }}/ediciones/2026-w19/#1-25-millones-para-que-los-municipios-de-eivissa-construyan-vivienda-pública">25 millones para que los municipios de Eivissa construyan vivienda pública</a>
+</li>
+</ol>
+<a href="#propuestas" class="dash-aside-more">Detalle de las propuestas ↓</a>
+</section>
 <section class="dash-aside-block">
 <p class="dash-aside-kicker">5 puntos</p>
 <h2 class="dash-aside-title">A vigilar</h2>
 <div class="dash-aside-vigilar" markdown="1">
 
-- Inicio de temporada: dónde se alojarán los trabajadores desalojados de sa Joveria que quedan sin recurso ([Ara Balears](https://es.arabalears.cat/sociedad/mitad-personas-desalojadas-asentamiento-joveria-quedaran-calle_1_5713909.html)).
-- Vigilancia anunciada por el Ayuntamiento de Ibiza para impedir nuevos asentamientos ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/22/2614245/desalojo-joveria-ibiza-incrementa-vigilancia-para-evitar-nuevos-asentamientos.html)).
-- Trámite en Congreso y Senado tras la llegada del caso sa Joveria a las cámaras ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/21/desalojo-mayor-asentamiento-ibiza-llega-129348900.html)).
-- Bajada (o no) del expediente municipal de los 25 millones del Govern a proyectos concretos de vivienda pública en cada municipio de Eivissa ([MSN](https://www.msn.com/es-es/dinero/bien-inmueble/luz-verde-a-25-millones-de-euros-para-que-los-municipios-de-eivissa-construyan-vivienda-p%C3%BAblica-o-trasladen-residuos/ar-AA21CPfB)).
-- Investigación judicial sobre la explosión por escape de gas en la vivienda social y posibles consecuencias para el parque del Ibavi ([El Periódico](https://www.elperiodico.com/es/sucesos/20260423/escape-gas-explosion-piso-ibiza-129447703)).
+- Calendario y reparto concreto de los 25 millones aprobados por el Govern entre los cinco municipios de Eivissa.
+- Despliegue efectivo del dron del Consell d'Eivissa y posibles nuevos desalojos derivados de su uso.
+- Reacciones de patronales, sindicatos y ayuntamientos a los testimonios de temporeros publicados al inicio de temporada.
+- Posible concreción de la "gran movilización" anunciada por Yolanda Díaz y su eventual aterrizaje en Baleares.
+- Evolución del asentamiento de Punta Xinxó tras las protestas vecinales del sábado 2.
 
 </div>
 </section>
@@ -44,21 +61,37 @@ El sábado 18 y domingo 19 trascienden los planes del Ayuntamiento de Ibiza para
 <section class="dash-senales" id="senales">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Señales detectadas</p>
-<h2>9 hechos publicados esta semana</h2>
+<h2>8 hechos publicados esta semana</h2>
 <p class="dash-section-lead">Cada punto enlaza a la noticia original en su medio. Sin resumen sesgado: cifras y fechas tal como se publicaron.</p>
 </header>
 <div class="dash-senales-list" markdown="1">
 
-- El Ayuntamiento de Ibiza culmina el desalojo de sa Joveria, el mayor asentamiento chabolista de la isla, con unos 200 trabajadores afectados *(estimación periodística)* a puertas de la temporada ([El País](https://elpais.com/espana/2026-04-21/ibiza-culmina-el-desalojo-del-mayor-asentamiento-de-infraviviendas-de-la-isla.html), [Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/21/ibiza-desalojo-asentamiento-sa-joveria-chabolas-129336649.html)).
-- El alcalde Rafael Triguero revela que algunas chabolas de sa Joveria se realquilaban por 500 euros *(dato oficial declarado por el alcalde)* ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/21/alcalde-ibiza-chabolas-asentamientos-alquiler-129348464.html)).
-- Ara Balears documenta que más de la mitad de los desalojados de sa Joveria quedarán en la calle ([Ara Balears](https://es.arabalears.cat/sociedad/mitad-personas-desalojadas-asentamiento-joveria-quedaran-calle_1_5713909.html)).
-- El Govern Balear aprueba 25 millones de euros *(dato oficial)* para que los municipios de Eivissa construyan vivienda pública o trasladen residuos ([MSN](https://www.msn.com/es-es/dinero/bien-inmueble/luz-verde-a-25-millones-de-euros-para-que-los-municipios-de-eivissa-construyan-vivienda-p%C3%BAblica-o-trasladen-residuos/ar-AA21CPfB)).
-- Baleares revoca 3.006 licencias turísticas *(dato oficial)* pero el alquiler permanente pierde 1.742 pisos *(dato oficial)* ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/23/baleares-perdio-1-742-viviendas-129429123.html)).
-- El Ayuntamiento de Santa Eulària multa con 37.000 euros *(dato oficial)* a un inquilino por realquilar su vivienda a turistas ([Periódico de Ibiza](https://www.periodicodeibiza.es/cronica-negra/local/2026/04/24/2616115/multa-37000-euros-por-alquilar-vivienda-turisticamente-santa-eularia.html)).
-- El Ibavi realoja en viviendas provisionales a dos familias afectadas por la explosión de gas en una vivienda social y suspende el cobro del alquiler ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/24/familias-explosion-edificio-ibiza-realojadas-129495913.html)).
-- En Sant Josep se anuncia el alquiler de una autocaravana en un terreno por 1.300 euros mensuales *(dato oficial del anuncio)* ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/27/alquilan-autocaravana-terreno-1-300-129562633.html)).
-- El desalojo de sa Joveria llega al Congreso y al Senado ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/21/desalojo-mayor-asentamiento-ibiza-llega-129348900.html)).
+- El Govern Balear aprueba 25 millones de euros para que los municipios de Eivissa construyan vivienda pública o trasladen residuos *(dato oficial)* ([fuente](https://www.msn.com/es-es/dinero/bien-inmueble/luz-verde-a-25-millones-de-euros-para-que-los-municipios-de-eivissa-construyan-vivienda-p%C3%BAblica-o-trasladen-residuos/ar-AA21CPfB?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1&bundles=feat-es2020-c)).
+- Se desaloja sin incidentes el asentamiento junto al estadio de Can Misses, con un centenar de chabolas *(estimación periodística)*, segundo desalojo masivo en 10 días ([fuente](https://okdiario.com/baleares/desalojado-sin-incidentes-asentamiento-centenar-chabolas-ibiza-segundo-10-dias-16699013)).
+- Un asentamiento en Ibiza alberga más de 100 personas *(estimación periodística)* en condiciones insalubres, según reportaje sobre Punta Xinxó ([fuente](https://www.periodicodeibiza.es/cronica-negra/local/2026/05/01/2620907/animales-muertos-basura-fuertes-olores-asi-viven-mas-100-personas-asentamiento-ibiza.html)).
+- El Consell d'Eivissa anuncia el despliegue de un dron para detectar asentamientos ilegales y pernoctación de caravanas en zonas boscosas ([fuente](https://www.diariodeibiza.es/ibiza/2026/04/29/dron-asentamientos-ilegales-pernoctacion-ibiza-129664600.html)).
+- Yolanda Díaz convoca una "gran movilización" por la vivienda en España ([fuente](https://www.diariodeibiza.es/economia/2026/05/02/yolanda-diaz-gran-batalla-carlos-cuerpo-economia-social-129770327.html)).
+- Ibiza vuelve a liderar los precios más altos de vivienda usada en Baleares; la vivienda en Baleares es hasta 30 veces más cara *(estimación periodística)* que en zonas del interior de España ([fuente Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/30/ibiza-vuelve-liderar-precios-vivienda-129694540.html), [fuente Baleares](https://www.eldebate.com/espana/baleares/20260430/vivienda-baleares-hasta-30-veces-cara-interior-espana_412772.html)).
+- El concejal Mateo declara que los asentamientos ilegales en Ibiza "son culpa del PSOE" ([fuente](https://cadenaser.com/baleares/2026/04/28/mateo-dice-que-los-asentamientos-ilegales-en-ibiza-son-culpa-del-psoe-radio-ibiza/)).
+- Trabajadores de temporada denuncian condiciones extremas: parálisis facial por estrés en la búsqueda de vivienda, habitaciones compartidas por tres personas y comparaciones con campos de refugiados ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/03/2621441/paralizo-media-cara-como-consecuencia-del-estres-encontrar-vivienda-ibiza.html), [Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/05/01/mayo-ibiza-dan-habitacion-pauperrima-129754676.html), [Pitaluga](https://www.diariodeibiza.es/ibiza/2026/04/28/peor-asentamientos-ibiza-campos-refugiados-129601841.html)).
 
+</div>
+</section>
+
+<section class="dash-propuestas" id="propuestas">
+<header class="dash-section-header">
+<p class="dash-section-kicker">Propuestas documentadas</p>
+<h2>1 propuesta en circulación esta semana</h2>
+<p class="dash-section-lead">Cada propuesta la ha formulado un actor con nombre, con fuente verificable. El observatorio no genera propuestas propias.</p>
+</header>
+<div class="dash-propuestas-grid">
+<article class="dash-propuesta">
+<div class="dash-propuesta-num">01</div>
+<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w19/#1-25-millones-para-que-los-municipios-de-eivissa-construyan-vivienda-pública">25 millones para que los municipios de Eivissa construyan vivienda pública</a></h3>
+<dl class="dash-propuesta-meta">
+</dl>
+<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w19/#1-25-millones-para-que-los-municipios-de-eivissa-construyan-vivienda-pública">Ver ficha y fuentes →</a>
+</article>
 </div>
 </section>
 
@@ -70,11 +103,11 @@ El sábado 18 y domingo 19 trascienden los planes del Ayuntamiento de Ibiza para
 </header>
 <div class="dash-vigilar-list" markdown="1">
 
-- Inicio de temporada: dónde se alojarán los trabajadores desalojados de sa Joveria que quedan sin recurso ([Ara Balears](https://es.arabalears.cat/sociedad/mitad-personas-desalojadas-asentamiento-joveria-quedaran-calle_1_5713909.html)).
-- Vigilancia anunciada por el Ayuntamiento de Ibiza para impedir nuevos asentamientos ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/22/2614245/desalojo-joveria-ibiza-incrementa-vigilancia-para-evitar-nuevos-asentamientos.html)).
-- Trámite en Congreso y Senado tras la llegada del caso sa Joveria a las cámaras ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/21/desalojo-mayor-asentamiento-ibiza-llega-129348900.html)).
-- Bajada (o no) del expediente municipal de los 25 millones del Govern a proyectos concretos de vivienda pública en cada municipio de Eivissa ([MSN](https://www.msn.com/es-es/dinero/bien-inmueble/luz-verde-a-25-millones-de-euros-para-que-los-municipios-de-eivissa-construyan-vivienda-p%C3%BAblica-o-trasladen-residuos/ar-AA21CPfB)).
-- Investigación judicial sobre la explosión por escape de gas en la vivienda social y posibles consecuencias para el parque del Ibavi ([El Periódico](https://www.elperiodico.com/es/sucesos/20260423/escape-gas-explosion-piso-ibiza-129447703)).
+- Calendario y reparto concreto de los 25 millones aprobados por el Govern entre los cinco municipios de Eivissa.
+- Despliegue efectivo del dron del Consell d'Eivissa y posibles nuevos desalojos derivados de su uso.
+- Reacciones de patronales, sindicatos y ayuntamientos a los testimonios de temporeros publicados al inicio de temporada.
+- Posible concreción de la "gran movilización" anunciada por Yolanda Díaz y su eventual aterrizaje en Baleares.
+- Evolución del asentamiento de Punta Xinxó tras las protestas vecinales del sábado 2.
 
 </div>
 </section>
@@ -82,13 +115,18 @@ El sábado 18 y domingo 19 trascienden los planes del Ayuntamiento de Ibiza para
 <section class="dash-archivo">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Informes anteriores</p>
-<h2>1 edición publicada antes de esta</h2>
+<h2>2 ediciones publicadas antes de esta</h2>
 </header>
 <ol class="dash-archivo-list">
 <li>
+<time datetime="2026-04-27">2026-04-27</time>
+<h3><a href="{{ site.baseurl }}/ediciones/2026-w18/">Semana 5 - Abril 2026</a></h3>
+<p>Desalojo de sa Joveria con unos 200 trabajadores afectados; Consell, patronales y sindicatos respaldan residencias para temporeros.</p>
+</li>
+<li>
 <time datetime="2026-04-20">2026-04-20</time>
 <h3><a href="{{ site.baseurl }}/ediciones/2026-w17/">Semana 4 - Abril 2026</a></h3>
-<p>Desmantelamiento de sa Joveria a las puertas de la temporada y respaldo institucional a residencias para temporeros.</p>
+<p>Desalojo de sa Joveria y otros asentamientos a las puertas de la temporada; Consell, patronales y sindicatos respaldan residencias para temporeros.</p>
 </li>
 </ol>
 <a href="{{ site.baseurl }}/ediciones/" class="dash-archivo-cta">Ir al archivo completo →</a>
