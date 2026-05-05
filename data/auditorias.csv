@@ -1,2 +1,3 @@
 date,last_decision_id,active_count,trigger,note
 2026-05-05,D24,21,bootstrap,"Línea base D24 — primera auditoría programada al cumplir trigger (≥90 días o ≥5 decisiones nuevas)"
+2026-05-05,D24,22,manual,"bootstrap — sistema controlado, sin acciones inmediatas. Hallazgos en seguimiento natural (W20, W21, W23, 8-jun)"

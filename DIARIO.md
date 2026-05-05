@@ -13,6 +13,17 @@ Reglas:
 
 ---
 
+## 2026-05-05 [docs] — Primera auditoría sistémica (bootstrap) cerrada con veredicto verde
+
+- **Disparador.** Petición explícita del editor (tercer disparador de D24) tras montar el sistema de freno en esta misma sesión. Etiquetada como bootstrap por el sesgo evidente — auditoría hecha en la sesión que abrió D24, así que la utilidad real del mecanismo se medirá en la segunda.
+- **Hallazgos.** Una contradicción activa (`blocks_cited` proponentes vs. amplitud) ya en seguimiento desde antes de la auditoría. Una redundancia tolerada con vigilancia (trazabilidad de fuente expresada en cuatro lugares — fundacional, dos del generador, una del revisor — son ángulos distintos del mismo concepto). Dos zombis: claridad como dimensión muerta (revisar tras W21, ya en seguimiento) y D14 efecto (f) sobre el aviso 1 con pocos disparos (test real al disparar D17 el 8-jun). Presupuesto de complejidad holgado (17 reglas / 6 dimensiones / 22 decisiones vigentes).
+- **Acciones acordadas.** Ninguna inmediata. Todos los hallazgos están en seguimiento natural por mecanismos existentes (W20, W21, W23, 8-jun).
+- **Mecánica de cierre validada end-to-end.** Comando `python -m src.decisions_watch --register-audit --audit-note "..."` añade fila a `data/auditorias.csv` y reinicia los dos contadores (días + crecimiento de decisiones). El módulo silencia el aviso por Telegram tras registrar; smoke test confirma silencio inmediato.
+- **Sistema documentado.** `AUDITORIAS.md` raíz con plantilla, comandos de uso y distinción operativa con `REVISIONES.md` y `APRENDIZAJES.md`. Carpeta nueva `private/auditorias/` (no servida por GitHub Pages) para los informes individuales.
+- **Próximo disparo automático.** Cuando aparezca D29 o el 2026-08-03 (90 días desde hoy), lo que ocurra antes.
+
+---
+
 ## 2026-05-05 [docs] — Freno al pozo de modificación infinita: auditoría sistémica + termómetro + convención ([D24](DECISIONES.md#d24--freno-al-pozo-de-modificación-infinita-auditoría-sistémica--termómetro--convención))
 
 - **Disparador.** Pregunta del editor al cierre de la sesión: *"hay un miedo que tengo, que es que todas estas reglas y modificaciones enreven el sistema, y se vaya viciando y complejizando infinitamente"*. La sesión de hoy había añadido 5 reglas al prompt del generador, 1 dimensión nueva al revisor, 2 decisiones (D22, D23) y 1 sistema nuevo (revisiones post-publicación). Sin freno explícito, la curva se acelera.
