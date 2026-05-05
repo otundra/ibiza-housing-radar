@@ -1,6 +1,6 @@
 # Tablero interno — monitorización del proyecto
 
-*Archivo privado. No se publica en la web. Última actualización: 2026-05-04 07:50 UTC.*
+*Archivo privado. No se publica en la web. Última actualización: 2026-05-05 19:56 UTC.*
 
 Agrega las señales que otros módulos ya producen: gasto del mes, autoevaluación, verificación, decisiones con revisión pendiente, última edición. No genera datos propios. Ver decisión D14.
 
@@ -28,8 +28,8 @@ _Ninguna decisión vencida ni próxima. Siguiente revisión: **Ritual de aprendi
 ## Verificación (última ejecución)
 
 - **Resultado:** ✅ sin fallos bloqueantes
-- **URLs comprobadas:** 12, caídas: 0
-- **Actores comprobados:** 0, no trazables: 0
+- **URLs comprobadas:** 13, caídas: 0
+- **Actores comprobados:** 2, no trazables: 0
 - **Avisos blandos:** 0
 
 ## Autoevaluación (último corte)
@@ -37,6 +37,15 @@ _Ninguna decisión vencida ni próxima. Siguiente revisión: **Ritual de aprendi
 ## 2026-W19 · 2026-05-04 07:50 UTC
 - Scores bajos: rigor=5, balance=6
 - Detalle: [2026-w19.md](private/self-review/2026-w19.md)
+
+## Salud sistémica (termómetro de complejidad)
+
+Termómetro orientativo para detectar pozo de modificación infinita. Disparador de auditoría sistémica (D24) cuando los conteos crezcan más rápido que la utilidad real.
+
+- **Reglas duras adicionales en el prompt del generador:** 17
+- **Dimensiones del revisor (self-review):** 6
+- **Decisiones vigentes en `DECISIONES.md`:** 21
+- **Candidatas a retirar:** ninguna detectada con la heurística actual (ventana 4 ediciones).
 
 ---
 

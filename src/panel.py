@@ -34,10 +34,17 @@ DECISIONES_MD = ROOT / "DECISIONES.md"
 VERIFICATION_JSON = ROOT / "data" / "verification_report.json"
 PROPOSALS_HISTORY = ROOT / "data" / "proposals_history.json"
 SELF_REVIEW_LOG = ROOT / "private" / "self-review-log.md"
+SELF_REVIEW_DIR = ROOT / "private" / "self-review"
 EDITIONS_DIR = ROOT / "docs" / "_editions"
 PANEL_MD = ROOT / "private" / "panel.md"
+GENERATE_PY = ROOT / "src" / "generate.py"
+SELF_REVIEW_PY = ROOT / "src" / "self_review.py"
 
 WARNING_WINDOW_DAYS: Final[int] = 7
+
+# Ventana para considerar una dimensión "candidata a retirar" si su nota ha sido
+# constante durante este número de ediciones consecutivas (D24 termómetro).
+ZOMBIE_DIMENSION_WINDOW: Final[int] = 4
 
 
 # ---------------------------------------------------------------------------
@@ -155,6 +162,112 @@ def _last_self_review_lines() -> list[str] | None:
     except Exception as exc:  # noqa: BLE001
         log.warning("No pude leer self-review-log.md: %s", exc)
         return None
+
+
+# ---------------------------------------------------------------------------
+# Termómetro de salud sistémica (D24)
+# ---------------------------------------------------------------------------
+
+def _count_generator_rules() -> int | None:
+    """Cuenta las viñetas de "REGLAS DURAS ADICIONALES" del prompt del generador.
+
+    Heurística simple: lee `src/generate.py`, localiza el bloque que empieza
+    con la cabecera y cuenta las líneas que comienzan con "- " hasta el cierre
+    `\"\"\"` del SYSTEM. Útil como termómetro de complejidad — no pretende ser
+    exacto, solo orientativo.
+    """
+    if not GENERATE_PY.exists():
+        return None
+    try:
+        text = GENERATE_PY.read_text()
+    except Exception as exc:  # noqa: BLE001
+        log.warning("No pude leer src/generate.py: %s", exc)
+        return None
+    m_start = re.search(r"^REGLAS DURAS ADICIONALES:\s*$", text, flags=re.MULTILINE)
+    if not m_start:
+        return None
+    tail = text[m_start.end():]
+    m_end = re.search(r'^"""', tail, flags=re.MULTILINE)
+    block = tail[: m_end.start()] if m_end else tail
+    return sum(1 for line in block.splitlines() if line.startswith("- "))
+
+
+def _count_review_dimensions() -> int | None:
+    """Cuenta las dimensiones del JSON `scores` del prompt del revisor.
+
+    Heurística: lee `src/self_review.py`, localiza el bloque `"scores": { ... }`
+    y cuenta las claves. Si el formato cambia, la heurística falla en silencio
+    y devolvemos None.
+    """
+    if not SELF_REVIEW_PY.exists():
+        return None
+    try:
+        text = SELF_REVIEW_PY.read_text()
+    except Exception as exc:  # noqa: BLE001
+        log.warning("No pude leer src/self_review.py: %s", exc)
+        return None
+    m = re.search(r'"scores":\s*\{([^}]+)\}', text)
+    if not m:
+        return None
+    block = m.group(1)
+    return len(re.findall(r'"\w+":', block))
+
+
+def _count_active_decisions() -> int:
+    """Cuenta las decisiones con Estado=vigente en DECISIONES.md."""
+    if not DECISIONES_MD.exists():
+        return 0
+    text = DECISIONES_MD.read_text()
+    blocks = re.split(r"(?=^### D\d+ — )", text, flags=re.MULTILINE)
+    count = 0
+    for block in blocks:
+        if not re.match(r"^### D\d+ — ", block, flags=re.MULTILINE):
+            continue
+        m = re.search(r"\*\*Estado:\*\*\s+(.+?)(?:\n|$)", block)
+        if m and m.group(1).strip().lower().startswith("vigente"):
+            count += 1
+    return count
+
+
+def _zombie_dimensions(window: int = ZOMBIE_DIMENSION_WINDOW) -> list[str]:
+    """Identifica dimensiones del revisor con nota constante en últimas N ediciones.
+
+    Lee los archivos `private/self-review/{edition}.md` ordenados por nombre,
+    parsea la tabla "| dimension | **N** |" de cada uno, y devuelve los nombres
+    de las dimensiones cuya nota ha sido idéntica durante las últimas `window`
+    ediciones consecutivas. Heurística orientativa para detectar dimensiones
+    muertas candidatas a retirar (D22, D24).
+
+    Si no hay suficientes self-reviews (< window), devuelve lista vacía.
+    """
+    if not SELF_REVIEW_DIR.exists():
+        return []
+    files = sorted(SELF_REVIEW_DIR.glob("*.md"))
+    if len(files) < window:
+        return []
+    recent = files[-window:]
+    scores_per_edition: list[dict[str, int]] = []
+    for f in recent:
+        try:
+            text = f.read_text()
+        except Exception:  # noqa: BLE001
+            continue
+        scores: dict[str, int] = {}
+        for m in re.finditer(r"^\|\s*(\w+)\s*\|\s*\*\*(\d+)\*\*\s*\|", text, flags=re.MULTILINE):
+            scores[m.group(1)] = int(m.group(2))
+        if scores:
+            scores_per_edition.append(scores)
+    if len(scores_per_edition) < window:
+        return []
+    dims = set(scores_per_edition[0].keys())
+    for s in scores_per_edition[1:]:
+        dims &= set(s.keys())
+    zombies: list[str] = []
+    for d in sorted(dims):
+        values = [s[d] for s in scores_per_edition]
+        if len(set(values)) == 1:
+            zombies.append(f"{d} (constante en {values[0]}/10 durante {window} ediciones)")
+    return zombies
 
 
 def _spend_line() -> str:
@@ -308,6 +421,42 @@ def generate_panel() -> None:
             lines.append(sline)
     else:
         lines.append("_Sin autoevaluación registrada aún._")
+    lines.append("")
+
+    # --- Salud sistémica (D24) ---
+    lines.append("## Salud sistémica (termómetro de complejidad)")
+    lines.append("")
+    lines.append(
+        "Termómetro orientativo para detectar pozo de modificación infinita. "
+        "Disparador de auditoría sistémica (D24) cuando los conteos crezcan "
+        "más rápido que la utilidad real."
+    )
+    lines.append("")
+    gen_rules = _count_generator_rules()
+    rev_dims = _count_review_dimensions()
+    active_decs = _count_active_decisions()
+    zombies = _zombie_dimensions()
+    lines.append(
+        f"- **Reglas duras adicionales en el prompt del generador:** "
+        f"{gen_rules if gen_rules is not None else 'no detectado'}"
+    )
+    lines.append(
+        f"- **Dimensiones del revisor (self-review):** "
+        f"{rev_dims if rev_dims is not None else 'no detectado'}"
+    )
+    lines.append(f"- **Decisiones vigentes en `DECISIONES.md`:** {active_decs}")
+    if zombies:
+        lines.append(
+            f"- **Candidatas a retirar** (dimensiones con nota constante en "
+            f"últimas {ZOMBIE_DIMENSION_WINDOW} ediciones):"
+        )
+        for z in zombies:
+            lines.append(f"    - {z}")
+    else:
+        lines.append(
+            f"- **Candidatas a retirar:** ninguna detectada con la heurística "
+            f"actual (ventana {ZOMBIE_DIMENSION_WINDOW} ediciones)."
+        )
     lines.append("")
 
     # --- Pie ---
