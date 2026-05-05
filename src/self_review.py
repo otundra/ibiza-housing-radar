@@ -62,7 +62,9 @@ También recibes un bloque "auditor" con métricas de la auditoría interna de l
 
 - "ratio_disputas" es la fracción de propuestas con desacuerdo Haiku↔Sonnet de severidad crítica o menor.
 - "rango_saludable" indica el intervalo [min, max] esperable. "en_rango" es true si ratio cae dentro.
-- Si en_rango es false, el rigor de la edición está en duda — añade un warning concreto y baja la nota de "rigor" a 6 o menos. Razón típica: prompt degradado, modelo cambiado, o noticias inusualmente confusas.
+- "propuestas_auditadas" indica el tamaño de muestra. Por debajo de 3, el ratio NO es estadísticamente interpretable: con n=1 cualquier desacuerdo da ratio=1.0 y con n=2 el grano es 0/0,5/1,0. Por eso el umbral de penalización solo aplica con muestra suficiente.
+- **Regla con muestra suficiente (propuestas_auditadas ≥ 3):** si en_rango es false, el rigor de la edición está en duda — añade un warning concreto y baja la nota de "rigor" a 6 o menos. Razón típica: prompt degradado, modelo cambiado, o noticias inusualmente confusas.
+- **Regla con muestra escasa (propuestas_auditadas < 3):** si en_rango es false, añade igualmente warning explicando el desacuerdo Haiku↔Sonnet y la limitación estadística (frase tipo "ratio fuera de rango pero n={N} no es interpretable"), pero NO bajes la nota de rigor por este motivo. La nota de rigor sigue evaluándose por el contenido del cuerpo (cifras trazables, atribuciones completas, fuentes primarias).
 - Si "propuestas_flagged" > 0, son propuestas que el auditor marcó para revisión manual; cítalas en warnings con su id.
 
 Devuelve JSON con:
