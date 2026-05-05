@@ -141,7 +141,7 @@ gh workflow run validate-key.yml
 
 ## Docs vivos /cierre
 
-Excluir: docs/_site/, docs/_posts/, docs/_includes/, docs/_layouts/, docs/assets/, docs/prototype/, private/
+Excluir: docs/_site/, docs/_posts/, docs/_includes/, docs/_layouts/, docs/assets/, docs/prototype/, private/, .claude/commands/
 
 (Sintaxis del sistema, ver `~/.claude/DEFAULTS.md`.)
 
