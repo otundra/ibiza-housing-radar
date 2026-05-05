@@ -13,6 +13,16 @@ Reglas:
 
 ---
 
+## 2026-05-05 [docs] — Sistema de revisiones post-publicación como registro narrativo ([D23](DECISIONES.md#d23--sistema-de-revisiones-post-publicación-como-registro-narrativo))
+
+- **Hueco que rellena.** Durante el rodaje pre-lanzamiento (D21) cada lunes la alerta del self-review dispara conversación crítica con el editor. Esa conversación contiene alternativas evaluadas, motivos de cada decisión y opciones descartadas con razón explícita — material de valor que no cabía ni en DIARIO (cronológico, no narrativa) ni en APRENDIZAJES (tabla de sugerencias, no debate) ni en DECISIONES (decisión canónica, no narrativa).
+- **Estructura.** Carpeta nueva `private/revisiones/` con archivo por revisión (`YYYY-wWW.md`). Índice raíz `REVISIONES.md` con plantilla fija (resumen, diagnóstico, debate, decisiones, cambios, seguimiento, revisar si). Append-only.
+- **Cuándo se crea archivo.** Solo si la conversación produce cambios o decisiones explícitas. Revisiones triviales (typos, fix puntual sin debate) no crean archivo.
+- **Distinción con APRENDIZAJES.** APRENDIZAJES guarda la lección destilada del revisor automático (1-3 líneas, estado pendiente/aplicada). REVISIONES guarda el debate humano (200-800 palabras por archivo, narrativa cerrada). Pueden cruzarse — la revisión es el origen, APRENDIZAJES el destino destilado.
+- **Primera revisión.** [`private/revisiones/2026-w19.md`](private/revisiones/2026-w19.md) — narrativa completa de la sesión de hoy con los seis cambios cerrados (incluido este).
+
+---
+
 ## 2026-05-05 [pipeline] — Loop de aprendizaje cerrado: cinco reglas del W18+W19 al prompt del generador
 
 - **Disparador.** Lectura crítica con el editor de la alerta de W19 reveló que las sugerencias del revisor de W18 (heredar tipología, cerrar "a vigilar", marcar fuente agregada) llevaban dos semanas en estado pendiente sin aplicar. El loop estaba abierto: el sistema detectaba pero no corregía.
