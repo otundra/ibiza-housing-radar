@@ -13,6 +13,16 @@ Reglas:
 
 ---
 
+## 2026-05-05 [docs] — Freno al pozo de modificación infinita: auditoría sistémica + termómetro + convención ([D24](DECISIONES.md#d24--freno-al-pozo-de-modificación-infinita-auditoría-sistémica--termómetro--convención))
+
+- **Disparador.** Pregunta del editor al cierre de la sesión: *"hay un miedo que tengo, que es que todas estas reglas y modificaciones enreven el sistema, y se vaya viciando y complejizando infinitamente"*. La sesión de hoy había añadido 5 reglas al prompt del generador, 1 dimensión nueva al revisor, 2 decisiones (D22, D23) y 1 sistema nuevo (revisiones post-publicación). Sin freno explícito, la curva se acelera.
+- **Inventario de frenos previos.** El sistema ya tenía mecanismos: criterio de revocación obligatorio (D14 regla 4), próxima revisión obligatoria (D14 regla 4), monitor automático de decisiones vencidas (`decisions_watch.py`), APRENDIZAJES con cuatro estados, régimen de rodaje (D21), `/poda` semanal global. Pero faltaban tres piezas para frenar de verdad.
+- **Tres piezas nuevas (D24):** (a) **Auditoría sistémica humana** disparada cuando ocurra antes de las dos: 3 meses sin auditar, 5 decisiones nuevas, o petición. Sesión específica con cuatro apartados (contradicciones / redundancias / zombis / presupuesto). (b) **Termómetro de salud sistémica** en `private/panel.md` con cuatro métricas orientativas — cifras de partida (2026-05-05): 17 reglas duras del generador, 6 dimensiones del revisor, 21 decisiones vigentes, 0 candidatas a retirar. La heurística de zombis necesita 4 self-reviews para empezar a disparar; arranca en W21. (c) **Convención "una mirada antes de añadir"** como regla 5 de gestión documental.
+- **Paradoja reconocida.** El freno añade complejidad para frenar la complejidad. Mitigado con envergadura mínima — sesión cada 3 meses, apartado nuevo en panel ya existente, dos líneas en CLAUDE.md. Si la primera auditoría no encuentra nada significativo, D24 se revoca con criterio (a) del propio campo.
+- **Hook con monitor automático diferido.** Aviso por Telegram cuando hayan pasado 90 días desde la última auditoría requiere registrar fecha de la última en sitio persistente. Diferido a la primera auditoría real — hasta entonces, disparador manual.
+
+---
+
 ## 2026-05-05 [docs] — Sistema de revisiones post-publicación como registro narrativo ([D23](DECISIONES.md#d23--sistema-de-revisiones-post-publicación-como-registro-narrativo))
 
 - **Hueco que rellena.** Durante el rodaje pre-lanzamiento (D21) cada lunes la alerta del self-review dispara conversación crítica con el editor. Esa conversación contiene alternativas evaluadas, motivos de cada decisión y opciones descartadas con razón explícita — material de valor que no cabía ni en DIARIO (cronológico, no narrativa) ni en APRENDIZAJES (tabla de sugerencias, no debate) ni en DECISIONES (decisión canónica, no narrativa).

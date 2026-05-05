@@ -145,14 +145,15 @@ Excluir: docs/_site/, docs/_posts/, docs/_includes/, docs/_layouts/, docs/assets
 
 (Sintaxis del sistema, ver `~/.claude/DEFAULTS.md`.)
 
-## Reglas de gestión documental (desde 2026-04-23, ver [D0](DECISIONES.md); regla 4 desde 2026-04-24, ver [D14](DECISIONES.md))
+## Reglas de gestión documental (desde 2026-04-23, ver [D0](DECISIONES.md); regla 4 desde 2026-04-24, ver [D14](DECISIONES.md); regla 5 desde 2026-05-05, ver [D24](DECISIONES.md))
 
-Cuatro reglas baratas que frenan la entropía hasta la revisión profunda post-lanzamiento (ver [`ESTUDIO-GESTION-CONOCIMIENTO.md`](ESTUDIO-GESTION-CONOCIMIENTO.md)):
+Cinco reglas baratas que frenan la entropía hasta la revisión profunda post-lanzamiento (ver [`ESTUDIO-GESTION-CONOCIMIENTO.md`](ESTUDIO-GESTION-CONOCIMIENTO.md)):
 
 1. **DIARIO con fecha ISO + etiqueta temática.** Cada entrada nueva lleva cabecera `## YYYY-MM-DD [tema]`. Temas válidos: `[pipeline]`, `[diseno]`, `[editorial]`, `[arquitectura]`, `[docs]`, `[costes]`, `[legal]`, `[feedback]`, `[sesion]` (cierre general).
 2. **DECISIONES.md fuente única.** Toda decisión nueva entra en [`DECISIONES.md`](DECISIONES.md) con ID `D{N}`. Otros docs referencian por ID (*"ver D7"*), no duplican contenido.
 3. **STATUS.md ≤ 100 líneas.** Si crece, podar a DIARIO o borrar lo que ya viva en otro sitio.
 4. **Cada decisión nueva lleva dos campos obligatorios.** `Próxima revisión` (fecha ISO, evento/hito descrito en prosa, o `permanente`) y `Criterio de revocación` (qué señal rompería la decisión). Sin ellos, la decisión no entra al registro. Desde [D15](DECISIONES.md) se prefiere el formato de evento/hito (*"al cerrar el Hito 1"*, *"tras el backfill"*, *"tras 2-4 ediciones"*) frente a la fecha ISO, porque el proyecto no tiene calendario público. El sistema de monitorización automático solo lee las entradas en formato ISO: las de evento/hito quedan fuera del aviso por Telegram y se revisan al disparar el hito. Ver [D14](DECISIONES.md) y [D15](DECISIONES.md).
+5. **Una mirada antes de añadir.** Cuando se proponga una regla nueva al prompt del generador, una dimensión nueva al revisor o una decisión nueva, antes de aplicar hay que listar las reglas / dimensiones / decisiones existentes en esa misma área y comprobar si alguna puede absorber la nueva, generalizarse para cubrirla, o retirarse para hacer hueco. **No es obligatorio retirar — es obligatorio mirar.** Va al servicio de evitar el pozo de modificación infinita; complementa la auditoría sistémica trimestral ([D24](DECISIONES.md)) y el termómetro de salud sistémica de [`private/panel.md`](private/panel.md).
 
 ## Slash commands del proyecto
 
