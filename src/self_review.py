@@ -50,13 +50,14 @@ Las 5 reglas duras del observatorio (vinculantes):
 4. Balance de actores auditado y publicado.
 5. Correcciones públicas con traza.
 
-Recibes la edición recién publicada y las 3 ediciones anteriores como contexto. Analiza la nueva y puntúa de 1 a 10 en cinco dimensiones:
+Recibes la edición recién publicada y las 3 ediciones anteriores como contexto. Analiza la nueva y puntúa de 1 a 10 en seis dimensiones:
 
 - "reglas": cumplimiento de las 5 reglas duras (URL en cada propuesta, actor con nombre, cero inferencia, tono descriptivo).
 - "rigor": rigor factual. Cifras trazables. Ausencia de generalización o redondeo sin declarar.
 - "balance": diversidad de actores citados en la edición. Distribución entre tipos (público, privado, sindical, tercer sector, etc.).
 - "cobertura": ¿cubre los hechos importantes de la semana con las fuentes dadas? ¿Deja fuera algo relevante de la ingesta?
 - "claridad": legibilidad sin perder densidad. Estructura clara, bullets concretos, tono consistente.
+- "trazabilidad": calidad de la cadena fuente→hecho. (a) ¿cada cifra cita fuente identificable?, (b) ¿la fuente es primaria (BOIB, nota oficial, web institucional, cabecera original) o agregador (MSN, Google News, otro reagregador)?, (c) ¿los agregadores están etiquetados visiblemente como tales en el cuerpo?, (d) ¿las estimaciones llevan etiqueta inline declarando su naturaleza ("estimación periodística", "dato oficial", "orientativa")? Penaliza fuerte cuando una cifra clave proviene solo de agregador sin marca, o cuando hay estimación sin etiqueta de naturaleza.
 
 También recibes un bloque "auditor" con métricas de la auditoría interna de la semana (segunda lectura ciega Haiku↔Sonnet). Tienes que interpretar la señal "ratio_disputas":
 
@@ -74,7 +75,8 @@ Devuelve JSON con:
     "rigor": N,
     "balance": N,
     "cobertura": N,
-    "claridad": N
+    "claridad": N,
+    "trazabilidad": N
   },
   "warnings": [<lista de problemas concretos detectados, frases cortas>],
   "suggestions": [<0-3 ajustes al prompt del generador si detectas patrón degradado; si no, lista vacía>]
@@ -260,6 +262,7 @@ def append_log_if_alert(review_data: dict, edition_id: str, review_path: Path) -
             "balance": "actores concentrados (poca diversidad)",
             "cobertura": "hechos relevantes que pudo dejar fuera",
             "claridad": "estructura o tono inconsistente",
+            "trazabilidad": "fuentes agregadas no marcadas o cifras sin origen identificable",
         }
         scores_lines = "\n".join(
             f"• {k}: *{v}/10* — {dim_hint.get(k, '(dimensión sin descripción)')}"

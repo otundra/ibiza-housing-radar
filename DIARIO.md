@@ -13,6 +13,16 @@ Reglas:
 
 ---
 
+## 2026-05-05 [pipeline] — Trazabilidad como sexta dimensión del self-review + fix umbral n≥3 ([D22](DECISIONES.md#d22--trazabilidad-de-fuente-como-sexta-dimensión-del-self-review))
+
+- **Disparador.** Alerta automática del self-review de la edición W19 (rigor=5, balance=6). Lectura crítica con el editor identificó dos problemas distintos: (1) bug del prompt del revisor que tira rigor a 5 cuando solo se ha auditado una propuesta y los dos lectores discrepan (n=1 → ratio=1.0 → fuera de rango → penalización obligatoria); (2) los warnings de fuentes agregadas y cifras sin origen citable se repiten en W17, W18 y W19, escondidos dentro de "rigor", sin un eje propio que permita atacarlos.
+- **Fix del umbral.** El revisor sigue añadiendo warning sobre el desacuerdo Haiku↔Sonnet con muestra escasa pero no toca la nota de rigor por este motivo. Con n≥3 la regla original se mantiene. La nota de rigor sigue bajando si las cifras o las fuentes del cuerpo son flojas. Cubierto por D17 sin abrir decisión nueva.
+- **Trazabilidad como sexta dimensión.** Añadida al prompt del revisor, al JSON de salida y al aviso de Telegram. Mide cifras con fuente identificable, fuente primaria vs agregador, agregadores etiquetados visiblemente, estimaciones con etiqueta inline de naturaleza. D22 abierta con revisión tras W20-W23 y tres criterios de revocación (dimensión constante / correlación con rigor / fuentes oficiales casi siempre).
+- **Claridad en seguimiento.** Tres semanas dando 9 sin warnings concretos. Si tras W20-W21 sigue siendo dimensión muerta, propuesta de retirarla y consolidar en cinco dimensiones útiles. Apunte en `APRENDIZAJES.md`.
+- **Loop de aprendizaje cerrado en commit aparte.** Las cinco sugerencias acumuladas de W18 y W19 (heredar tipología actor, cerrar items "a vigilar", marcar fuente agregada, generar lista de actores al final, identificar cargo público completo) van al prompt del generador. Detalle en `APRENDIZAJES.md` y commit `feat(generate)`.
+
+---
+
 ## 2026-04-29 [pipeline] — Nou Diari incorporada como fuente RSS; Hora Ibiza descartada (FU3)
 
 - **Hora Ibiza descartada.** El dominio `horadeibiza.com` no responde y el medio no tiene presencia rastreable. No es una fuente viable.
