@@ -172,6 +172,11 @@ REGLAS DURAS ADICIONALES:
 - **MARCA CARRY-OVER**: si citas una señal publicada ANTES del lunes de la semana cubierta, añade al final del bullet o de la frase el rango de fechas (lunes a domingo) de la semana anterior: *«(carry-over de la semana del DD-DD de [mes])»*. Ejemplo: si la edición cubre el 20-26 de abril y citas una noticia del 11 de abril, escribe *«(carry-over de la semana del 6-12 de abril)»*. Nunca uses "semana ISO" ni números de semana técnicos en el cuerpo. Si no hay carry-over, no marques nada.
 - **DEDUPLICACIÓN** (ver sección "Propuestas en circulación"): dos ítems del input que comparten objetivo + actor_type + horizon son UNA sola propuesta. `proposals_formal_count` y `proposals_en_movimiento_count` del frontmatter cuentan propuestas DESPUÉS de fusionar.
 - **`blocks_cited` en el frontmatter**: solo incluye los `actor_type` (códigos crudos) de actores que PROPONEN algo (`formal` o `en_movimiento`). NO incluyas tipos de actor que solo aparecen en señales o en el mapa de posiciones sin proponer nada. Si no hay propuestas, `blocks_cited` es `[]`.
+- **HERENCIA DE TIPOLOGÍA DE ACTOR** (usa INPUT 4 — edición anterior): si un actor aparecía en la edición anterior con un `actor_type` concreto (visible en sus `actors_cited` y `blocks_cited`), mantén la misma tipología en esta edición salvo que el contexto haga obvio el cambio (ej. cambio real de cargo o de organización). No re-clasifiques arbitrariamente. Si INPUT 4 está vacío (primera edición o no disponible), clasifica desde cero con criterio.
+- **CIERRE EXPLÍCITO DE "A VIGILAR"** (usa INPUT 4 — edición anterior): lee la sección final "A vigilar la semana que viene" de la edición anterior. Para cada item listado allí: (a) si esta semana hay novedad relacionada, cítala en "Señales detectadas" o en "Cronología" como es habitual; (b) si NO hay novedad, añade línea explícita en "Señales detectadas" u "Omisiones" del tipo *"Sin novedad esta semana sobre [item]"*. Nunca dejes pendientes de la semana anterior sin reflejo en esta edición. Si INPUT 4 está vacío, omite esta regla.
+- **FUENTE AGREGADA ETIQUETADA**: si la URL de una propuesta, señal o cita apunta a un agregador (`msn.com`, `news.google.com`, `news.yahoo.com`, otros reagregadores) en vez de a la cabecera original, añade al final de la frase o del bullet la etiqueta visible *«(fuente agregada — sin primaria localizada)»*. Aplica a Señales detectadas, Cronología, Mapa de posiciones, Propuestas en circulación y Radar. Si la URL es una cabecera nativa (diariodeibiza.es, periodicodeibiza.es, noudiari.es, elpais.com, BOIB oficial, etc.), no marques nada.
+- **FRONTMATTER GENERADO AL FINAL**: el orden de escritura es estricto. Primero escribes el cuerpo entero (Señales detectadas → Cronología → Mapa de posiciones → Propuestas en circulación → Radar → Rescate → Omisiones → A vigilar). DESPUÉS rellenas los campos `actors_cited` y `blocks_cited` del frontmatter releyendo lo que tú mismo acabas de escribir. Regla práctica: (a) `actors_cited` debe contener TODOS los actores que aparezcan como sujetos identificados en cualquier sección del cuerpo (Señales, Cronología, Mapa, Propuestas, Radar); (b) `blocks_cited` debe contener los `actor_type` (código crudo) de TODOS los actores que PROPONEN algo en `formal` o `en_movimiento`. Verifica antes de cerrar la edición que no haya actores en el cuerpo que falten en el frontmatter.
+- **IDENTIFICACIÓN DE CARGOS PÚBLICOS**: si un actor es cargo público (alcalde, alcaldesa, concejal, conseller, consellera, diputado, senador, secretario/a general de organismo público, presidente/a de institución), en su PRIMERA mención en el cuerpo: (a) reproduce literalmente el nombre, cargo y filiación que da la fuente; (b) si la fuente da municipio o partido de forma implícita pero unívoca (ej. *"concejal de Vivienda de Sant Joan"* → municipio Sant Joan; *"diputado del PP en el Parlament"* → partido PP), inclúyelo con la fuente como respaldo; (c) si la fuente NO da municipio o partido y el actor es cargo público local o autonómico, añade etiqueta inline visible: *«— municipio y/o partido no especificados en la fuente»*. NUNCA completes con información posterior buscando fuera del input. NUNCA inventes municipio, partido o cargo. La regla es trabajar con lo que la fuente da y etiquetar visiblemente los huecos.
 - Coaliciones: reproduce los firmantes literales separados por coma. No elijas "primario".
 - Si la semana es floja (poca señal, pocas propuestas), sé honesto: mejor secciones cortas que secciones infladas.
 - No saludes, no te despidas, no firmes. El editor se encarga.
@@ -193,6 +198,9 @@ INPUT 2 — Propuestas ya extraídas (formal + en_movimiento):
 
 INPUT 3 — Candidatas a rescate de ediciones previas (elige 1-2 máximo):
 {rescue_candidates}
+
+INPUT 4 — Edición anterior (para herencia de tipología de actor y cierre de "A vigilar"). Si está vacío, es la primera edición:
+{previous_edition}
 
 Escribe la edición completa siguiendo la estructura exacta del system prompt. Empieza por el frontmatter YAML y termina con la sección "A vigilar". Nada más. Nada antes. Nada después."""
 
@@ -271,6 +279,29 @@ Silencio informativo. Puede significar ausencia real de actividad pública, cicl
 """
 
 
+def load_previous_edition(now: datetime) -> str:
+    """Devuelve el texto de la edición publicada más reciente anterior a `now`.
+
+    Lee el directorio ``docs/_editions/`` y selecciona el archivo más
+    reciente cuyo slug sea anterior al de la semana actual. Sirve para
+    que el generador pueda heredar tipología de actor y cerrar items de
+    "A vigilar" de la semana previa (REGLAS DURAS ADICIONALES en SYSTEM).
+
+    Si no hay ediciones previas (primera ejecución), devuelve cadena
+    vacía. El prompt tolera el caso vacío.
+    """
+    if not EDITIONS_DIR.exists():
+        return ""
+    current_slug = edition_slug(now)
+    files = sorted(EDITIONS_DIR.glob("*.md"), reverse=True)
+    for f in files:
+        # Slug de archivo es 'YYYY-wWW.md'. Comparación lexicográfica
+        # equivale a comparación temporal porque el formato es ISO.
+        if f.stem < current_slug:
+            return f.read_text(encoding="utf-8")
+    return ""
+
+
 def slim_classified(classified: list[dict]) -> list[dict]:
     return [
         {
@@ -332,6 +363,7 @@ def generate(
 
     slim_cls = slim_classified(classified)
     slim_ext = slim_extracted(extracted)
+    prev_edition = load_previous_edition(now)
 
     prompt = USER_TEMPLATE.format(
         iso_week=iso_week_string(now),
@@ -341,12 +373,14 @@ def generate(
         classified=json.dumps(slim_cls, ensure_ascii=False, indent=2),
         extracted=json.dumps(slim_ext, ensure_ascii=False, indent=2),
         rescue_candidates=json.dumps(rescue_candidates[:3], ensure_ascii=False, indent=2),
+        previous_edition=prev_edition if prev_edition else "(no hay edición anterior — primera ejecución)",
     )
 
     assert_budget_available(planned_cost=1.5)
 
-    log.info("Generando edición con %s (classified=%d, extracted=%d, rescue=%d)",
-             MODEL, len(slim_cls), len(slim_ext), len(rescue_candidates))
+    log.info("Generando edición con %s (classified=%d, extracted=%d, rescue=%d, previous_edition=%s)",
+             MODEL, len(slim_cls), len(slim_ext), len(rescue_candidates),
+             "cargada" if prev_edition else "vacío")
 
     resp = client.messages.create(
         model=MODEL,

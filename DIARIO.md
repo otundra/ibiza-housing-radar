@@ -13,6 +13,21 @@ Reglas:
 
 ---
 
+## 2026-05-05 [pipeline] — Loop de aprendizaje cerrado: cinco reglas del W18+W19 al prompt del generador
+
+- **Disparador.** Lectura crítica con el editor de la alerta de W19 reveló que las sugerencias del revisor de W18 (heredar tipología, cerrar "a vigilar", marcar fuente agregada) llevaban dos semanas en estado pendiente sin aplicar. El loop estaba abierto: el sistema detectaba pero no corregía.
+- **Cinco reglas nuevas en el prompt del generador** (`src/generate.py`):
+  1. **Herencia de tipología de actor.** Si un actor ya fue clasificado en una semana anterior, mantener la misma tipología salvo cambio obvio.
+  2. **Cierre explícito de "A vigilar".** Cada item de la edición anterior debe tener reflejo en esta: o novedad citada, o línea explícita "Sin novedad esta semana sobre [item]".
+  3. **Fuente agregada etiquetada.** URLs de MSN, Google News y otros reagregadores llevan etiqueta inline visible *(fuente agregada — sin primaria localizada)*.
+  4. **Frontmatter generado al final.** El orden es estricto: cuerpo entero primero, luego `actors_cited` y `blocks_cited` releyendo lo escrito. Cierra el caso de actor en cuerpo pero ausente del frontmatter (Burón en W19) y de `blocks_cited` incompleto.
+  5. **Identificación de cargos públicos.** Nombre + cargo + filiación literal de la fuente. Si la fuente no da municipio o partido, etiqueta inline visible "*— municipio y/o partido no especificados en la fuente*". Nunca completar con información posterior buscando fuera del input.
+- **Acceso a la edición anterior.** Las reglas 1, 2 y 4 requieren contexto previo. Añadido INPUT 4 al prompt + función `load_previous_edition()` que lee el archivo más reciente del directorio. Coste extra marginal (~3-5k tokens × $5/MTok = ~2 céntimos por edición). Tolerante a primera ejecución (cadena vacía).
+- **Sugerencias movidas a aplicada en `APRENDIZAJES.md`** con enlace al commit. Sección W19 nueva con sus warnings y sugerencias resueltas.
+- **Validación en W20** (lunes 11 de mayo). El self-review verá si las cinco reglas funcionan en producción.
+
+---
+
 ## 2026-05-05 [pipeline] — Trazabilidad como sexta dimensión del self-review + fix umbral n≥3 ([D22](DECISIONES.md#d22--trazabilidad-de-fuente-como-sexta-dimensión-del-self-review))
 
 - **Disparador.** Alerta automática del self-review de la edición W19 (rigor=5, balance=6). Lectura crítica con el editor identificó dos problemas distintos: (1) bug del prompt del revisor que tira rigor a 5 cuando solo se ha auditado una propuesta y los dos lectores discrepan (n=1 → ratio=1.0 → fuera de rango → penalización obligatoria); (2) los warnings de fuentes agregadas y cifras sin origen citable se repiten en W17, W18 y W19, escondidos dentro de "rigor", sin un eje propio que permita atacarlos.
