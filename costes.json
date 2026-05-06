@@ -1,66 +1,94 @@
 {
   "version": 2,
   "currency": "EUR",
-  "updated_at": "2026-05-05T19:39:43Z",
-  "updated_by": "panel-fase-b-auditoria",
+  "updated_at": "2026-05-06T16:52:49Z",
+  "updated_by": "panel-sync-billing",
   "fixed_monthly": [],
   "recurring_variable": {
     "current_month": {
-      "amount": 0.6035,
-      "amount_original_usd": 0.656019,
-      "fx_rate_used": 0.92,
+      "amount": 0.603537,
       "calls": 7,
-      "source": "csv:data/costs.csv",
-      "method": "sum(cost_usd) where month=current",
-      "as_of": "2026-05-04T07:50:04+00:00",
+      "sources": [
+        "csv:data/costs.csv"
+      ],
+      "amount_original": {
+        "value": 0.656019,
+        "currency": "USD"
+      },
+      "fx_rate_used": 0.92,
+      "by_breakdown": {
+        "haiku-4-5": {
+          "amount_eur": 0.027097,
+          "calls": 2
+        },
+        "sonnet-4-6": {
+          "amount_eur": 0.054273,
+          "calls": 3
+        },
+        "opus-4-7": {
+          "amount_eur": 0.522168,
+          "calls": 2
+        }
+      },
+      "as_of": "2026-05-06T16:52:49Z",
       "certainty": "exact"
     },
     "history": [
       {
         "month": "2026-04",
-        "amount_eur": 6.8642,
+        "amount_eur": 6.864241,
         "amount_original_usd": 7.461131,
         "fx_rate_used": 0.92,
         "calls": 121,
         "source": "csv:data/costs.csv",
         "method": "sum(cost_usd) agrupado por mes (tokens × precio Anthropic)",
         "certainty": "exact",
-        "frozen": true
-      },
-      {
-        "month": "2026-05",
-        "amount_eur": 0.6035,
-        "amount_original_usd": 0.656019,
-        "fx_rate_used": 0.92,
-        "calls": 7,
-        "source": "csv:data/costs.csv",
-        "method": "sum(cost_usd) agrupado por mes (tokens × precio Anthropic)",
-        "certainty": "exact",
-        "frozen": false
+        "frozen": true,
+        "sources": [
+          "csv:data/costs.csv"
+        ],
+        "amount_original": {
+          "value": 7.461131,
+          "currency": "USD"
+        },
+        "by_breakdown": {
+          "haiku-4-5": {
+            "amount_eur": 0.202799,
+            "calls": 17
+          },
+          "opus-4-7": {
+            "amount_eur": 6.138115,
+            "calls": 19
+          },
+          "sonnet-4-6": {
+            "amount_eur": 0.523326,
+            "calls": 85
+          }
+        }
       }
     ],
     "ceiling": {
       "amount_eur": 11.040000000000001,
-      "amount_original_usd": 12.0,
+      "amount_original_usd": 12,
       "from_const": "soft cap 12 EUR/mes en src/costs.py v3",
       "behavior": "warn_only",
       "alert_levels": [
         0.8,
-        1.0
+        1
       ]
     }
   },
   "one_off": [],
   "shared_attribution": {
     "claude_max": {
-      "current_month_share_eur": 36.61,
+      "current_month_share_eur": 35.19,
       "method": "weighted_by_imputed_cost",
-      "imputable_usd_period": 971.88,
-      "imputable_pct_period": 25.98,
+      "imputable_usd_period": 1004.2971,
+      "imputable_pct_period": 24.97,
       "period_start": "2026-04-08",
       "period_end": "2026-05-04",
       "tokens_method": "sum (tokens × precio-por-modelo) en ~/.claude/projects/<id>/*.jsonl",
-      "as_of": "2026-05-05T19:39:43Z",
+      "as_of": "2026-05-06T16:52:49Z",
       "certainty": "exact",
       "history": [
         {
@@ -68,7 +96,8 @@
           "share_eur_with_iva": 36.61,
           "note": "Periodo cubierto 8-abr → 4-may. Suscripcion Apple 140,92 EUR (Pro 22 + Max5x 137,99 - credito 19,07). Reparto por coste imputable real desde jsonl. Detalle en panel/docs/costes/01_inventario.md."
         }
-      ]
+      ],
+      "messages_period": 5914
     }
   },
   "notes": [
