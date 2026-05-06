@@ -1,7 +1,7 @@
 {
   "version": 2,
   "currency": "EUR",
-  "updated_at": "2026-05-06T16:52:49Z",
+  "updated_at": "2026-05-06T17:26:08Z",
   "updated_by": "panel-sync-billing",
   "fixed_monthly": [],
   "recurring_variable": {
@@ -30,7 +30,7 @@
           "calls": 2
         }
       },
-      "as_of": "2026-05-06T16:52:49Z",
+      "as_of": "2026-05-06T17:26:08Z",
       "certainty": "exact"
     },
     "history": [
@@ -81,23 +81,18 @@
   "one_off": [],
   "shared_attribution": {
     "claude_max": {
-      "current_month_share_eur": 35.19,
+      "current_month_share_eur": 39.12,
       "method": "weighted_by_imputed_cost",
-      "imputable_usd_period": 1004.2971,
-      "imputable_pct_period": 24.97,
+      "imputable_usd_period": 1004.292,
+      "imputable_pct_period": 27.76,
       "period_start": "2026-04-08",
-      "period_end": "2026-05-04",
+      "period_end": "2026-05-12",
       "tokens_method": "sum (tokens × precio-por-modelo) en ~/.claude/projects/<id>/*.jsonl",
-      "as_of": "2026-05-06T16:52:49Z",
+      "as_of": "2026-05-06T17:26:08Z",
       "certainty": "exact",
-      "history": [
-        {
-          "month": "2026-04",
-          "share_eur_with_iva": 36.61,
-          "note": "Periodo cubierto 8-abr → 4-may. Suscripcion Apple 140,92 EUR (Pro 22 + Max5x 137,99 - credito 19,07). Reparto por coste imputable real desde jsonl. Detalle en panel/docs/costes/01_inventario.md."
-        }
-      ],
-      "messages_period": 5914
+      "messages_period": 5914,
+      "applies": true,
+      "period_label": "2026-04-08 → 2026-05-12 (Pro 22 + Max5x 137,99 − crédito Pro 19,07)"
     }
   },
   "notes": [
