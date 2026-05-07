@@ -133,7 +133,8 @@ Tabla con hallazgo + mecanismo de seguimiento + próxima cita.
 | Fecha | Slug | Disparador | Veredicto | Archivo |
 |---|---|---|---|---|
 | 2026-05-05 | bootstrap | petición del editor | 🟢 sistema controlado, sin acciones inmediatas | [`private/auditorias/2026-05-05-bootstrap.md`](private/auditorias/2026-05-05-bootstrap.md) |
+| 2026-05-07 | segunda | revisión profunda pedida por el editor + trigger automático D24 (≥5 decisiones nuevas) | 🟢 sistema controlado, 2 fixes aplicados (texto self-review + conteo STATUS), 3 apuntes diferidos | [`private/auditorias/2026-05-07-segunda.md`](private/auditorias/2026-05-07-segunda.md) |
 
 ---
 
-*Última actualización: 2026-05-05.*
+*Última actualización: 2026-05-07.*

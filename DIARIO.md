@@ -13,6 +13,19 @@ Reglas:
 
 ---
 
+## 2026-05-07 [docs] — Segunda auditoría sistémica cerrada con veredicto verde + 2 fixes aplicados
+
+- **Disparador.** Petición del editor de revisión profunda tras la sesión densa de cierres de hoy. Trigger automático de [D24](DECISIONES.md): ≥5 decisiones nuevas desde la bootstrap (D29 superado — 16 nuevas contando D25-D27 reales y D28-D40 migradas).
+- **Hallazgos.** Tres contradicciones (texto del self-review desactualizado a "5 dimensiones", conteo "Docs vivos (28)" en STATUS cuando son 27, deuda paralela del esquema `state` del pipeline vs el ciclo del estudio §6.5 / D33). Cinco hallazgos nuevos menores (inflación bruta del contador de decisiones por la migración formal D28-D40, aplicación incompleta de D26 al prototipo más allá de la sección de firmantes, coherencia cruzada de las 16 decisiones nuevas de hoy verificada como ✅, volumen creciente de DECISIONES.md). Sin redundancias ni zombis nuevos en cinco días — los del bootstrap siguen en seguimiento natural.
+- **Acciones aplicadas en la propia sesión (2 fixes pequeños).** Cambio de `5 dimensiones` a `6 dimensiones` en el aviso de Telegram del self-review (`src/self_review.py:274`) — alinea con [D22](DECISIONES.md). Corrección de `Docs vivos en raíz (28)` a `(27)` en `STATUS.md`.
+- **Apuntes diferidos.** (a) Esquema `state` código vs estudio: si W22 cierra Hito 1 sin resolverlo, abrir sesión específica para alinear antes de construir Jekyll. (b) Mejora futura del termómetro `src/panel.py`: distinguir decisiones nuevas de filas migradas con formato canónico, o documentar la convención. (c) Verificación visual del orden D26 en mapa de posiciones, directorio de actores y home del prototipo.
+- **Aviso del lunes calibrado.** El termómetro automático va a marcar 🔴 en decisiones vigentes (41 crudo vs 30 umbral) por inflación de la migración formal. Esperado, no es complejidad real. El conteo real de complejidad acumulada sigue siendo 28 (🟢 holgado).
+- **Cierre con `--register-audit`.** Auditoría registrada en `data/auditorias.csv` con trigger `manual` y nota *"segunda — sistema controlado, dos fixes aplicados, tres apuntes diferidos"*. El aviso por Telegram queda silenciado hasta el próximo disparo (≈D45 reales nuevas o el 2026-08-05).
+- **Calibración para la siguiente.** Si la próxima auditoría tampoco encuentra problemas enquistados que esta no haya detectado, aplicar criterio (a) de revocación de D24 y bajar frecuencia a 6 meses.
+- **Informe completo:** [`private/auditorias/2026-05-07-segunda.md`](private/auditorias/2026-05-07-segunda.md). Índice raíz [`AUDITORIAS.md`](AUDITORIAS.md) actualizado.
+
+---
+
 ## 2026-05-07 [docs] — Migración de las 13 decisiones del estudio de diseño + 16 del cuestionario inicial a `DECISIONES.md` como fuente única
 
 - **Disparador.** Decisión del editor de pasar a la rec 3 del informe de arranque (consolidar fuente única) tras cerrar el bloque B con sus tres preguntas resueltas. La regla 4 del registro de decisiones (parte del [D14](DECISIONES.md)) ya advertía la migración como pendiente; el estudio de gestión del conocimiento la difería a "post-lanzamiento". El editor adelanta la operación al detectar el riesgo de divergencia silenciosa entre las tres fuentes paralelas.
