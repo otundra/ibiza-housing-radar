@@ -7,7 +7,7 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 1. **Una fila por decisión.** Nunca editar una fila cerrada; si cambia algo, añadir una nueva decisión que la reemplace y marcar la antigua como `superada_por: DXX`.
 2. **ID correlativo `D0`, `D1`, `D2`…** Sin huecos, sin reutilizar.
 3. **Decisión nueva entra aquí primero.** Otros docs referencian por ID (ej. *"ver [D7]"*), no duplican el contenido.
-4. **Migración histórica pendiente.** D1-D13 de `ESTUDIO-DISENO.md` y las 16 de `DECISIONES-PENDIENTES.md` se moverán aquí durante la revisión profunda post-lanzamiento (ver `ESTUDIO-GESTION-CONOCIMIENTO.md` §3.4). Hasta entonces, ambos docs siguen siendo fuentes válidas de sus decisiones propias.
+4. **Migración histórica completada el 2026-05-07.** Las 13 decisiones que vivían en `ESTUDIO-DISENO.md` §11 como "D1-D13 del estudio" están aquí como **D28-D40**. Las 16 cuestiones cerradas el 2026-04-20 que vivían en `DECISIONES-PENDIENTES.md` están aquí como **Anexo — Cuestionario inicial del 2026-04-20** (tabla resumen con enlace al doc canónico de cada una). El estudio de diseño y el documento del cuestionario se mantienen como referencia narrativa con redirección a esta fuente única.
 5. **Dos campos obligatorios desde 2026-04-24** (ver [D14](#d14--sistema-de-monitorización-de-decisiones-del-proyecto)): toda decisión nueva lleva `Próxima revisión` (fecha ISO o `permanente`) y `Criterio de revocación` (qué señal rompería la decisión). En D0-D13 se añadió retroactivamente solo `Próxima revisión`; el criterio de revocación no se redactó hacia atrás.
 
 ## Formato de fila
@@ -365,3 +365,183 @@ Registro **append-only** de decisiones del proyecto. Fuente única desde 2026-04
 - **Próxima revisión:** al construir el componente real en Jekyll (cuando se retome el bloque B). Primera revisión con datos del backfill cuando haya varias propuestas en estados distintos, incluida al menos una "Descartada" o "Incumplida" para validar que el indicador alternativo se lee bien en pantalla.
 - **Criterio de revocación:** si en uso real (a) la mezcla "barra principal + indicador alternativo aparte" confunde más de lo que aclara (tests de usabilidad muestran que el lector no entiende la diferencia o cree que la propuesta sigue activa cuando está descartada), o (b) más del 30 % de propuestas del corpus salta múltiples pasos del medio y la barra queda con varios huecos vacíos perdiendo legibilidad, simplificar a un patrón distinto — opción C (los 8 lineales con orden canónico fijo, sin distinción de ramas) es la alternativa de fallback aunque conceptualmente sea peor.
 - **Estado:** vigente
+
+---
+
+## Decisiones migradas del estudio de diseño (2026-04-21)
+
+Las siguientes 13 decisiones se cerraron el **2026-04-21** dentro de [`ESTUDIO-DISENO.md`](ESTUDIO-DISENO.md) §11 como "D1-D13 del estudio". Se migran a `DECISIONES.md` como **D28-D40** el **2026-05-07** para tener fuente única. La tabla §11 del estudio queda como índice visual con redirección; los detalles canónicos viven aquí. Las 13 se cerraron antes de la regla 4 ([D14](#d14--sistema-de-monitorización-de-decisiones-del-proyecto), 2026-04-24): `Próxima revisión` y `Criterio de revocación` se añaden con criterios honestos derivados del estudio cuando hay base, y nota explícita *"ninguno explícito en el estudio original"* cuando no la hay.
+
+### D28 — Wordmark del proyecto: V2 Split en JetBrains Mono (era D1 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** wordmark del proyecto en variante V2 Split — `radar))vivienda_ibiza` con las dos `))` en color terracota (`--accent`) y el resto en tinta (`--ink`), todo en JetBrains Mono. Variante elegida entre 4 (V1 mono plano, V2 Split, V3 Tri, V4 Underline) renderizadas en `docs/prototype/logo/preview.html`.
+- **Por qué:** las `))` evocan ondas de radar y dan personalidad sin necesidad de monograma gráfico aparte. V2 Split aguanta la atención sin chillar, convive bien con menú y modo claro/oscuro en cabecera real. Refuerza la dirección visual "mono + seams".
+- **Docs afectados:** `CLAUDE.md` (cabecera), `STATUS.md`, `ESTUDIO-DISENO.md`, `ROADMAP.md`, `PIVOTE.md`, `EXPANSION-TEMATICA.md`, `REVISION-FASE-0.5.md`, `docs/acerca.md`, `docs/prototype/` (4 páginas).
+- **Próxima revisión:** al cerrar nombre/dominio definitivo del proyecto (cuando se compre `radaribiza.com` u otro y se reevalúe nombre).
+- **Criterio de revocación:** si en tests de usabilidad sostenidos al construir el bloque B en Jekyll, el wordmark confunde sistemáticamente al primer visitante (lo lee como nombre técnico de archivo, no de marca), revisar variante (V1, V3 o V4) o sustituir por wordmark sin guion bajo.
+- **Histórico:** cerrada el 21-abr en `radar))ibiza_vivienda` (lugar delante); orden revertido el 2026-05-07 a `vivienda_ibiza` por [D25](#d25--wordmark-del-proyecto-orden-vivienda_ibiza-tema-antes-que-lugar) tras lectura visual con el prototipo en pantalla real.
+- **Estado:** vigente
+
+### D29 — Identidad 100% tipográfica: logo gráfico descartado, favicon `))` vectorial (era D2 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** sin logo gráfico (monograma SVG). La identidad se sostiene íntegramente con tipografía + el gesto `))`. Favicon SVG vectorial con las dos `))` en terracota como glifo aislado, escalable de 16 px a 512 px sin pérdida (`docs/prototype/logo/favicon.svg`).
+- **Por qué:** las 3 direcciones gráficas iniciales (punto + arcos concéntricos) fueron juzgadas insatisfactorias por el editor. La identidad tipográfica + las `))` cumplen la función completa. Sin monograma separable se evita una superficie de mantenimiento adicional. Refuerza la dirección "mono + seams".
+- **Docs afectados:** `CLAUDE.md` (sección de identidad), `STATUS.md`, `ESTUDIO-DISENO.md` §4.2-§4.3, `docs/prototype/logo/favicon.svg`.
+- **Próxima revisión:** ninguna programada — se reabre solo si surge necesidad real de monograma (merchandising, partner externo que pida logo gráfico).
+- **Criterio de revocación:** ninguno explícito en el estudio original. Se reabre si la identidad tipográfica falla en algún uso concreto donde no se reconozca como marca (ej. avatar redondo en redes sociales).
+- **Estado:** vigente
+
+### D30 — Chrome operacional: 6 datos visibles (era D3 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** el chrome operacional muestra 6 datos en monoespaciado: edición actual, propuestas documentadas, actores seguidos, coste API del mes, última publicación, estado del pipeline. Capas de coste con color (`--success` 🟢, `--warning` 🟡/🟠, `--accent` 🔴, tinta 🚨).
+- **Por qué:** 6 es el equilibrio entre la tesis "transparencia radical" del proyecto y el ruido visual. 3 datos resulta insuficiente para sostener la tesis; 9 empieza a competir con el contenido editorial.
+- **Docs afectados:** `ESTUDIO-DISENO.md` §6.1, futuro `docs/_includes/chrome-ops.html`.
+- **Próxima revisión:** tras 3-6 meses de operación pública con analítica activa, cuando haya datos para evaluar si los 6 datos elegidos son los más útiles.
+- **Criterio de revocación:** si en uso real algún dato no aporta señal (siempre verde sin variación visible) o si el formulario de contacto recibe peticiones recurrentes de un dato distinto, sustituir el menos informativo por el demandado.
+- **Estado:** vigente
+
+### D31 — Chrome operacional al pie de cada página, encima del footer estándar (era D4 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** colocación del chrome operacional al pie de cada página, encima del footer estándar.
+- **Por qué:** una barra fija sticky compite con el contenido permanente y come pantalla; el pie es visible para quien busca la información operativa pero no estorba al primer visitante.
+- **Docs afectados:** `ESTUDIO-DISENO.md` §6.1, futuros layouts Jekyll.
+- **Próxima revisión:** al construir el componente real en Jekyll — puede haber ajuste según comportamiento responsive.
+- **Criterio de revocación:** si analítica muestra que menos del 5 % de lectores hacen scroll hasta el pie en 6 meses de operación, cambiar a barra fija inferior (32 px) o eliminar el componente.
+- **Estado:** vigente
+
+### D32 — Paleta extendida por tipo de actor: 8 tokens con candado de taxonomía (era D5 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** 8 tokens CSS `--actor-*` (uno por tipo de la taxonomía pública: institucional público, partido, patronal, sindicato, tercer sector, académico, judicial, colectivo ciudadano), tonos neutros matizados que **no compiten** con el color primario (terracota). Las 8 categorías forman candado: casos fronterizos se asimilan al tipo más cercano sin abrir nueva categoría. Regla dura derivada: los partidos políticos siempre en `--actor-partido` (gris neutro), nunca el color del partido.
+- **Por qué:** la diferenciación cromática sutil acelera reconocimiento visual sin meter colores nuevos primarios que canibalicen al acento del proyecto. La taxonomía cerrada evita inflación de tipos y mantiene la regla 3 fundacional ("ningún actor queda excluido por filiación").
+- **Docs afectados:** `docs/assets/css/main.css`, `ESTUDIO-DISENO.md` §5.1, `docs/metodo.md` (taxonomía pública).
+- **Próxima revisión:** permanente (regla dura del sistema visual).
+- **Criterio de revocación:** si tras 6 meses de operación la taxonomía resulta insuficiente (más del 10 % de actores reales no encajan razonablemente en ninguna de las 8 y forzar la asimilación falsea la cobertura), reabrir la taxonomía en sesión específica con propuesta de tipo nuevo o reordenación.
+- **Estado:** vigente
+
+### D33 — Ciclo de propuesta: 8 estados con barra de progreso (era D6 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** ciclo de vida de una propuesta con 8 estados nominales: `Propuesta`, `Registrada`, `En debate`, `Aprobada`, `En ejecución`, `Implementada` (camino principal de éxito) + `Descartada`, `Incumplida` (ramas alternativas al camino principal). Cada estado con su pill de color en el sistema visual. Cambio de estado siempre con fecha + fuente pública.
+- **Por qué:** los 8 estados reflejan la realidad institucional de un trámite legislativo o normativo. Reducir a menos pierde información significativa (Registrada ≠ Propuesta; Incumplida ≠ Descartada — la primera es "aprobada que nadie ejecutó", la segunda es "rechazada formalmente").
+- **Docs afectados:** `ESTUDIO-DISENO.md` §6.5, `docs/que-documentamos.md` (cara pública), futuro componente Jekyll.
+- **Concretado por [D27](#d27--barra-de-progreso-de-propuestas-camino-principal-lineal-de-6--cierres-alternativos-aparte) (2026-05-07):** cómo se visualiza la barra (camino principal lineal de 6 + cierres alternativos aparte como indicador).
+- **Deuda paralela apuntada:** el campo `state` del esquema del pipeline (`src/extract.py`) tiene `en_movimiento` y `pendiente_resolucion_judicial` que no están en estos 8 nominales; el estudio tiene `Registrada` e `Incumplida` que no están en el esquema del código. Resolver al reanudar el bloque B en Jekyll.
+- **Próxima revisión:** al construir el componente real en Jekyll y resolver la deuda con el esquema del pipeline.
+- **Criterio de revocación:** si tras consolidar el esquema del pipeline con datos reales del backfill, los 8 nominales del estudio resultan no reflejar la realidad operativa (ej. `Registrada` casi nunca aplica porque las propuestas saltan directo a `En debate`), revisar y consolidar.
+- **Estado:** vigente
+
+### D34 — Ficha de actor con sidebar sticky (era D7 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** ficha de actor `/actores/{slug}/` con sidebar sticky en desktop ≥1024 px (ítems: resumen, propuestas, declaraciones, votos, ficha, descargas), colapsado a `<details>` plegable en la cabecera de la ficha en móvil <768 px. `position: sticky; top: 82px` con borde izquierdo terracota para el ítem activo.
+- **Por qué:** convierte la ficha en herramienta de trabajo para el profesional recurrente (periodista, técnico de ayuntamiento, sindicalista) sin penalizar al primer visitante. Coste CSS bajo (~40 líneas), sin JS.
+- **Docs afectados:** `ESTUDIO-DISENO.md` §6.7, futuro `docs/_layouts/actor.html`.
+- **Próxima revisión:** al construir el componente real en Jekyll.
+- **Criterio de revocación:** si tests de usabilidad o analítica de scroll muestran que el sidebar confunde o que el lector no lo usa (clicks <5 % en sus ítems durante 3 meses), simplificar a anchors al inicio de la ficha sin posicionamiento sticky.
+- **Estado:** vigente
+
+### D35 — Notas al margen Tufte-style en contenido editorial denso (era D8 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** notas al margen tipo Edward Tufte en ediciones largas, páginas `/explica/` y `/metodologia/` (`/metodo/`). En desktop ≥1024 px: posicionadas a la derecha (`position: absolute; right: -280px; width: 240px`), font 13 px, color `--ink-muted`, borde izquierdo 2 px `--rule-strong`. En móvil: colapsadas en `<details>` desplegable inline tras el párrafo de referencia.
+- **Por qué:** convierte texto denso en lectura fluida con aclaraciones técnicas (definiciones, referencias cruzadas, contexto histórico) sin romper el flujo del cuerpo. Componente reutilizable importado de Solar Low-Tech + libros académicos.
+- **Docs afectados:** `ESTUDIO-DISENO.md` §6.8, futuro `docs/_includes/margin-note.html`.
+- **Próxima revisión:** al construir el componente real en Jekyll.
+- **Criterio de revocación:** ninguno explícito en el estudio original. Se reabre si en analítica móvil las notas plegadas no se despliegan (>95 % nunca abierto) — entonces el componente es ruido en móvil y conviene quitarlas en ese viewport.
+- **Estado:** vigente
+
+### D36 — Toggle temporal Temporada / Pre-temporada / Histórico (era D9 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** toggle visible en fichas de actor, fichas de palanca y `/balance/` con tres opciones: `Temporada YYYY`, `Pre-temporada YYYY`, `Histórico completo`. Etiquetas públicas sin "invierno" (ambiguo). Fechas reales internas calculadas por opening/closing de las clubs grandes (Pacha, Hï, Ushuaïa, Amnesia) — 2026: 24 abril → ~12 octubre. Implementación sin JS (radio oculto + `:has()` en navegadores modernos, paneles apilados como fallback en navegadores legacy).
+- **Por qué:** resuelve a los dos públicos del proyecto con un solo componente. Sin toggle, el primer visitante se pierde en el histórico o el profesional se frustra solo con lo reciente. La automatización anual `src/update_temporadas.py` (A17 del roadmap) consulta news con las fechas candidatas del año siguiente y alerta por Telegram.
+- **Docs afectados:** `ESTUDIO-DISENO.md` §6.9, `data/temporadas.yml` (futuro), `src/update_temporadas.py` (futuro), `docs/_includes/horizon-toggle.html` (futuro).
+- **Próxima revisión:** al construir el componente real en Jekyll.
+- **Criterio de revocación:** si analítica muestra que el toggle no se usa (más del 95 % de sesiones se quedan en la opción default sin tocarlo) en 6 meses, eliminar el toggle y mostrar siempre Temporada con enlace a `/historico/` aparte.
+- **Estado:** vigente
+
+### D37 — OG images automáticas con Puppeteer (era D10 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** OG images automáticas con Puppeteer (Node.js en runner CI). Plantilla `docs/assets/og-template.html` editable en CSS. Generación por edición, ficha de actor, ficha de palanca. OG fallback estática (`og-fallback.png` 1200×630) cuando falla la generación.
+- **Por qué:** Puppeteer permite editar el template como HTML/CSS y ver cambios al instante; Pillow obliga a manipular píxeles a mano. Coste asumible del runner CI: ~10 segundos por edición.
+- **Docs afectados:** `ESTUDIO-DISENO.md` §7, `scripts/gen_og.mjs` (futuro), `.github/workflows/weekly-report.yml` (paso nuevo).
+- **Próxima revisión:** al construir el script real (B39 del roadmap).
+- **Criterio de revocación:** si el coste de tiempo del runner CI por edición pasa de 30 segundos sostenidos, simplificar a Pillow o a fallback estático rotativo (1 imagen genérica que se reutiliza).
+- **Estado:** vigente
+
+### D38 — Modo oscuro híbrido: automático por sistema + dos botones manuales `○`/`●` (era D11 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** modo oscuro con `prefers-color-scheme` por defecto + dos botones manuales en la cabecera con persistencia en `localStorage`. Sin opción "auto" explícita — el default es implícito al no tocar los botones. Símbolos Unicode puros: `○` (claro) y `●` (oscuro), no emoji.
+- **Por qué:** automático cubre el 90 % de los casos sin que el lector haga nada; los botones manuales dan control explícito a quien lo quiere. Persistencia en `localStorage` (no cookie) — compatible con la política "sin cookies" del proyecto y GDPR-OK.
+- **Docs afectados:** `ESTUDIO-DISENO.md` §6 + §11.D11, `docs/assets/css/main.css`, `docs/assets/js/theme.js` (script mínimo de toggle).
+- **Próxima revisión:** al construir el componente real en Jekyll.
+- **Criterio de revocación:** si tests de usabilidad muestran confusión sobre cómo cambiar el modo (los dos símbolos `○`/`●` no se reconocen como interruptor), añadir tooltip o simplificar a un solo botón de toggle.
+- **Estado:** vigente
+
+### D39 — Documentación interna del sistema visual en `/sistema/` (era D12 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** página interna `/sistema/` con `<meta name="robots" content="noindex,nofollow">` (no indexable). Accesible solo por URL directa. Documenta la paleta extendida con muestras de color en vivo, escala tipográfica con ejemplos, los 9 componentes del sistema renderizados en sus distintos estados.
+- **Por qué:** el editor (o futuros colaboradores, o el propio editor en 6 meses) no va a recordar los tokens del sistema sin referencia visual. Hacer pública la página añade ruido para el lector externo (no es contenido editorial); privarla totalmente la hace inservible. La opción `noindex` es el equilibrio.
+- **Docs afectados:** `ESTUDIO-DISENO.md` §10 paso 6, futuro `docs/sistema.md` con `noindex,nofollow`.
+- **Próxima revisión:** permanente (utilidad operativa interna).
+- **Criterio de revocación:** si en 12 meses la página se queda desactualizada permanentemente respecto al sistema real (drift) y nadie la consulta, eliminar — la documentación canónica vive en `ESTUDIO-DISENO.md` y la página deja de aportar.
+- **Estado:** vigente
+
+### D40 — Formulario universal "Escríbenos" flotante en todas las páginas (era D13 del estudio)
+
+- **Fecha:** 2026-04-21 (registrada en DECISIONES.md el 2026-05-07)
+- **Tema:** diseno
+- **Decisión:** formulario universal `Escríbenos` como botón flotante fijo en esquina inferior derecha, visible en todas las páginas salvo en la página de confirmación. Backend: Formspree gratis. Campos: mensaje (obligatorio) + nombre (opcional) + email (opcional) + auto-captura de URL origen. Honeypot anti-spam. Diseño en mono + seams (coherente con la dirección visual).
+- **Texto explícito en el formulario:** *"Si aportas un dato, adjunta URL a fuente primaria. Sin fuente verificable no lo incorporamos, pero lo leemos igual."*
+- **Por qué:** única vía de feedback externo del proyecto en Fase 0 (sin email del proyecto hasta que haya dominio). Botón fijo y omnipresente garantiza descubribilidad sin obligar a buscar `/contacto/`. Abierto a correcciones, datos nuevos, pistas, testimonios, dudas, críticas, colaboraciones — un único canal.
+- **Docs afectados:** `ESTUDIO-DISENO.md` §11.D13 + matiz, futuro `docs/_includes/escribenos.html`, `docs/_layouts/default.html` (botón flotante).
+- **Próxima revisión:** al construir el componente real en Jekyll.
+- **Criterio de revocación:** si el formulario recibe spam masivo aunque el honeypot funcione (>10 spams/día), añadir captcha o cambiar a formulario solo en `/contacto/`. Si los campos opcionales sesgan respuestas (todos los aportadores se identifican o ninguno lo hace en >95 % de los casos durante 3 meses), revisar el diseño del formulario.
+- **Estado:** vigente
+
+---
+
+## Anexo — Cuestionario inicial del 2026-04-20 (16 cuestiones cerradas)
+
+Documento histórico [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md). El editor cerró 16 cuestiones del cuestionario inicial el 2026-04-20 al activar el modelo documental. La mayoría son hechos consumados ya aplicados al sistema, cuya información operativa vive en `CLAUDE.md`, `ARQUITECTURA.md`, `docs/metodo.md` y demás. Esta tabla queda como índice canónico; los detalles narrativos de cómo se cerró cada cuestión viven en el documento histórico. Se incluyen **sin migrar a D propias** porque son hechos consumados sin criterio de revocación significativo abierto.
+
+| # | Tema | Decisión cerrada | Estado actual | Doc canónico |
+|---|---|---|---|---|
+| 1 | Ediciones W16-W17 | **Borrar** (más drástico que reescribir) | ✅ aplicado, archivo público arranca limpio bajo modelo documental | [DECISIONES-PENDIENTES.md](DECISIONES-PENDIENTES.md#1-reescritura-de-w16-w17), [CONTENIDO-RETROACTIVO.md](CONTENIDO-RETROACTIVO.md) |
+| 2 | Contenido retroactivo | **8 ediciones** (W10-W17) | 🔄 ampliado a 12 (W06-W17), pendiente backfill | [CONTENIDO-RETROACTIVO.md](CONTENIDO-RETROACTIVO.md) |
+| 3 | Fecha de relanzamiento | **"Cuando cerremos"** (sin fecha) | ✅ superado por [D15](#d15--frame-de-trabajo-y-comunicación-sin-calendario-ni-fecha-de-lanzamiento) — sin fecha de lanzamiento por decisión explícita | [D15](#d15--frame-de-trabajo-y-comunicación-sin-calendario-ni-fecha-de-lanzamiento) |
+| 4 | Autoría visible | **"Raúl S." sin email directo, solo formulario** | ✅ aplicado | [docs/acerca.md](docs/acerca.md) |
+| 5 | Dominio propio | **Sí, con estudio previo** antes de comprar | ⏸ pendiente compra (sin fecha por D15); candidato `radaribiza.com` | [ESTUDIOS-PENDIENTES.md](ESTUDIOS-PENDIENTES.md) #2 |
+| 6 | Contador de visitas / analítica | **Sí, desde día 1, con ambición de análisis potente** | ⏸ diferido a Fase 5 del roadmap (SEO + distribución) | [ROADMAP.md](ROADMAP.md) Fase 5, [ESTUDIOS-PENDIENTES.md](ESTUDIOS-PENDIENTES.md) #7 |
+| 7 | Newsletter | **Sí, modelo a definir** (recomendación: gratis Fase 0 + híbrido Pro Fase 2) | ⏸ pendiente, modelo recomendado en estudio | [PLAN.md](PLAN.md) sección Newsletter, [ESTUDIOS-PENDIENTES.md](ESTUDIOS-PENDIENTES.md) #4 |
+| 8 | Página `/recursos/` | **Fuera de Fase 0** | ⏸ diferido a Fase 1 con estudio previo | [ESTUDIOS-PENDIENTES.md](ESTUDIOS-PENDIENTES.md) #3 |
+| 9 | Balance público | **Sí, desde día 1, prioridad alta** | ✅ aplicado, [docs/balance.md](docs/balance.md) live | [docs/balance.md](docs/balance.md) |
+| 10 | Diseño visual | **Mantener actual + Solar Low-Tech** | ✅ aplicado, evolución incremental cerrada en [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md) | [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md), [DISENO-WEB.md](DISENO-WEB.md) |
+| 11 | SEO subdominio vs dominio | **Resuelto por #5** (cuando haya dominio propio) | ⏸ pendiente compra dominio | [SEO.md](SEO.md) |
+| 12 | Redes sociales | **Apuntar para más adelante** | ⏸ diferido a Fase 1 con estudio previo | [ESTUDIOS-PENDIENTES.md](ESTUDIOS-PENDIENTES.md) #5 |
+| 13 | Email del proyecto | **Cuando haya nombre del dominio** | ⏸ pendiente, dependencia con #5 | [ROADMAP.md](ROADMAP.md), [D2](#d2--log-del-auditor-público-desde-el-día-uno--protocolo-formal-de-correcciones-en-72-h) |
+| 14 | Privacidad del editor | **"Raúl S." sin foto** | ✅ aplicado | [docs/acerca.md](docs/acerca.md) |
+| 15 | Modelos de IA | **Estudio urgente integrando 3 modelos** (Haiku + Sonnet + Opus) | ✅ aplicado, reparto Opción C cerrado | [ESTUDIO-3-MODELOS.md](ESTUDIO-3-MODELOS.md), [ARQUITECTURA.md](ARQUITECTURA.md#reparto-de-modelos--decisión-2026-04-20) |
+| 16 | Licencia del dataset | **CC-BY 4.0** | ✅ aplicado | [docs/acerca.md](docs/acerca.md), [README.md](README.md) |
+
+**Reapertura:** si alguna cuestión cerrada en este cuestionario necesita revisarse en el futuro, abrir D propia en `DECISIONES.md` con criterio de revocación explícito (regla 4). El cierre original se mantiene aquí como referencia histórica.
