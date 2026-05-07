@@ -1,4 +1,4 @@
-# Roadmap — radar))ibiza_vivienda
+# Roadmap — radar))vivienda_ibiza
 
 **Fecha original:** 2026-04-20 · **Reestructurado en fases ejecutables:** 2026-04-21 noche.
 **Origen:** [CLAUDE.md](CLAUDE.md#reglas-fundacionales), [REVISION-FASE-0.5.md](REVISION-FASE-0.5.md).
@@ -23,7 +23,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 - **Ritmo:** ~15 h/semana del editor, sostenible.
 - **Objetivo de lanzamiento:** soft launch mediados de mayo / junio 2026 si no entra en mayo. Escenario B (rodaje privado 6-12 meses) es válido si al terminar Fase 6 el estado no está maduro. Ver tarea RT24.
 - **Prioridad:** calidad antes que velocidad. Error reputacional temprano es más caro que retraso.
-- **Marca:** `radar))ibiza_vivienda` (cerrado 2026-04-21).
+- **Marca:** `radar))vivienda_ibiza` (cerrado 2026-04-21 como `ibiza_vivienda`; orden revertido el 2026-05-07 — ver [D25](DECISIONES.md#d25--wordmark-del-proyecto-orden-vivienda_ibiza-tema-antes-que-lugar)).
 
 ### Panorama
 
@@ -77,7 +77,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 
 **Decisiones cerradas en Fase 1:**
 - Rol del editor = operador sin revisión de contenido (RT2 resuelto: opción B actual, opción C cuando haya tracción).
-- Nombre del wordmark: `radar))ibiza_vivienda` ✅ cerrado.
+- Nombre del wordmark: `radar))vivienda_ibiza` ✅ cerrado (orden revertido 2026-05-07, [D25](DECISIONES.md)).
 
 **Salida de la fase:** auditor mínimo operativo + prueba empírica validada + sistema de tiers cerrado en paralelo + titular legal en trámite. Pipeline con auditor MVP listo para absorber el backfill en Fase 2.
 

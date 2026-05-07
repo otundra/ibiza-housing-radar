@@ -36,9 +36,9 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 - **Hito 1 — Auditor mínimo viable.** PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). Diseño del módulo cerrado 2026-04-24 en [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md). **Construcción en marcha:** Fases 1, 2 y 3 cerradas 2026-04-25. **W19 publicada con auditor activo** (4-10 may 2026) — primera corrida limpia del cron con auditor live según [D20](DECISIONES.md). Coste acumulado validación previa: 0,042 €. **Fase 4 en curso:** observación en vivo durante 3-4 ediciones consecutivas (W19-W22) en lugar del backfill de W10. Cierre del Hito 1 previsto al evaluar las métricas tras W22. Sin calendario ni fecha ([D15](DECISIONES.md)).
 - **Hito 2 — Re-estudio del sistema de tiers** ✅ **cerrado 2026-04-23** (RT15, RT26). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo con 5 decisiones operativas en [D9](DECISIONES.md). Queda como pendiente de datos la medición empírica del sesgo por actor (RT25, post-backfill). Implementación de `src/tiers.py` + `data/tiers.yml` pasa a PI10 (sin bloquear auditor MVP).
 
-## 🏷️ Identidad (provisional 2026-04-21)
+## 🏷️ Identidad (provisional, revisada 2026-05-07)
 
-- **Wordmark:** `radar))ibiza_vivienda` (JetBrains Mono). Logo gráfico descartado, identidad 100% tipográfica.
+- **Wordmark:** `radar))vivienda_ibiza` (JetBrains Mono). Logo gráfico descartado, identidad 100% tipográfica. Orden revertido el 2026-05-07 ([D25](DECISIONES.md#d25--wordmark-del-proyecto-orden-vivienda_ibiza-tema-antes-que-lugar)) tras lectura visual con el prototipo abierto. ID1 (21-abr) había cerrado en `ibiza_vivienda`.
 - **Dominio candidato:** `radaribiza.com` (compra pendiente).
 - **Repo:** slug `ibiza-housing-radar` mantenido hasta decisión de dominio.
 

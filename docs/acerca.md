@@ -4,7 +4,7 @@ title: Acerca
 permalink: /acerca/
 ---
 
-**radar))ibiza_vivienda** es un observatorio semanal documental sobre la crisis de vivienda en Ibiza, con foco en los trabajadores de temporada.
+**radar))vivienda_ibiza** es un observatorio semanal documental sobre la crisis de vivienda en Ibiza, con foco en los trabajadores de temporada.
 
 Cada lunes mapeamos las propuestas que actores con nombre —instituciones, partidos, patronales, sindicatos, tercer sector, colectivos ciudadanos— han formulado públicamente durante la semana anterior, con fuente verificable. **No generamos propuestas propias**; documentamos las que existen y las hacemos trazables.
 

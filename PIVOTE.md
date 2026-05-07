@@ -7,7 +7,7 @@
 **Migración a CLAUDE.md:** 2026-04-24
 **Estado:** archivo histórico.
 
-> 📎 **Nota sobre el término "pivote".** Este documento conserva el nombre `PIVOTE.md` y usa la palabra "pivote" a lo largo del texto porque fue el término que describió el evento del 2026-04-20 (cambio de modelo de "generador de propuestas" a "observatorio documental"). **A partir del 2026-04-22, el término no se usa como adjetivo activo del proyecto.** El proyecto se refiere a sí mismo como "observatorio documental" o simplemente por su nombre (`radar))ibiza_vivienda`). El archivo `PIVOTE.md` se mantiene por continuidad de referencias y como registro histórico del cambio.
+> 📎 **Nota sobre el término "pivote".** Este documento conserva el nombre `PIVOTE.md` y usa la palabra "pivote" a lo largo del texto porque fue el término que describió el evento del 2026-04-20 (cambio de modelo de "generador de propuestas" a "observatorio documental"). **A partir del 2026-04-22, el término no se usa como adjetivo activo del proyecto.** El proyecto se refiere a sí mismo como "observatorio documental" o simplemente por su nombre (`radar))vivienda_ibiza` desde la revisión [D25](DECISIONES.md) del 2026-05-07; previamente `radar))ibiza_vivienda`). El archivo `PIVOTE.md` se mantiene por continuidad de referencias y como registro histórico del cambio.
 
 ---
 

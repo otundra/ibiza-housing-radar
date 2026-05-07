@@ -2,7 +2,7 @@
 
 Instrucciones para Claude Code al trabajar en este proyecto.
 
-> 🏷️ **Nombre 2026-04-21 (provisional).** Wordmark tipográfico cerrado: **`radar))ibiza_vivienda`** (formato `lugar_tema`, todo en `JetBrains Mono`, las `))` evocan ondas de radar). El editor cierra esta forma por lectura natural en español. Futuros verticales del mismo ecosistema: `radar))ibiza_turismo`, `radar))ibiza_medioambiente`, `radar))formentera_vivienda`.
+> 🏷️ **Nombre (provisional, revisado 2026-05-07).** Wordmark tipográfico: **`radar))vivienda_ibiza`** (formato `tema_lugar`, todo en `JetBrains Mono`, las `))` evocan ondas de radar). El editor cierra esta forma por lectura natural en español validada con el prototipo en pantalla real. Si en el futuro se abren verticales del mismo ecosistema, mantendrán el mismo orden: `radar))turismo_ibiza`, `radar))medioambiente_ibiza`, `radar))vivienda_formentera`. Trazabilidad: ID1 cerró el 2026-04-21 en `radar))ibiza_vivienda` (lugar delante); [D25](DECISIONES.md#d25--wordmark-del-proyecto-orden-vivienda_ibiza-tema-antes-que-lugar) revierte el 2026-05-07 por lectura visual confirmada al reanudar el bloque B.
 >
 > **Dominio:** `radaribiza.com` sigue siendo candidato principal. Compra pendiente según evolución del proyecto. Repo GitHub mantiene el slug `ibiza-housing-radar` hasta decisión de dominio. Tagline estable: *"Observatorio documental"*.
 >

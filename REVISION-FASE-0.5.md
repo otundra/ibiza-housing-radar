@@ -668,8 +668,8 @@ Hoy OP2 espera dos ejecuciones consecutivas con fallo antes de avisar (baja ruid
 
 ## P4 — Identidad, legal, financiación
 
-### ID1 · Nombre definitivo — `radar))ibiza_vivienda` ✅
-**Cerrada 2026-04-21 noche.** El editor cierra el wordmark en **`radar))ibiza_vivienda`** (formato `lugar_tema`) por sentir que se lee más natural en español. Futuros verticales: `radar))ibiza_turismo`, `radar))ibiza_medioambiente`, `radar))formentera_vivienda`. Documentos actualizados: CLAUDE.md, STATUS.md, ESTUDIO-DISENO.md. El prototipo HTML queda por actualizar cuando se retome Diseño (coordinado con RT16 Claude Design).
+### ID1 · Nombre definitivo — `radar))vivienda_ibiza` ✅ (orden revertido 2026-05-07)
+**Cerrada 2026-04-21 noche** en `radar))ibiza_vivienda` (lugar delante). **Superada parcialmente por [D25](DECISIONES.md#d25--wordmark-del-proyecto-orden-vivienda_ibiza-tema-antes-que-lugar) el 2026-05-07**: tras reanudar el bloque B con el prototipo abierto y leer la cabecera en pantalla real, el editor revirtió el orden a `radar))vivienda_ibiza` (tema delante). El formato V2 Split queda intacto. La motivación original de ID1 (lugar primero para abrir ecosistema futuro `radar))ibiza_turismo`, `radar))formentera_vivienda`) pasa al orden `radar))turismo_ibiza`, `radar))vivienda_formentera` si llegan los verticales. Documentos sincronizados con D25: CLAUDE.md, STATUS.md, ESTUDIO-DISENO.md, ROADMAP.md, PIVOTE.md, EXPANSION-TEMATICA.md, docs/acerca.md.
 
 ### LG1 · Anonimato legal del editor ⏳
 Investigar cómo mantener el nombre del editor oculto en:
@@ -818,7 +818,7 @@ Desbloquea PI10 (sistema de tiers público). Siguiente paso de implementación: 
 | OP3 | Auto-recuperación de feeds caídos | ⏳ | Pendiente datos reales (3-4 caídas) que orienten qué espejos sirven |
 | OP4 | Dashboard visual de estado de feeds | ⏳ | Decisión UX (privado/público) cuando haya 4-8 sem de `feed_health.json` |
 | OP5 | Alerta al primer fallo aislado | ⏳ | BAJA · esperar señal real de demanda antes de bajar umbral |
-| ID1 | Nombre definitivo `radar))ibiza_vivienda` | ✅ | Cerrada 2026-04-21 noche |
+| ID1 | Nombre definitivo `radar))vivienda_ibiza` | ✅ | Cerrada 2026-04-21 noche en `ibiza_vivienda`; orden revertido 2026-05-07 a `vivienda_ibiza` ([D25](DECISIONES.md)) |
 | LG1 | Anonimato legal | ⏳ | |
 | LG2 | Portfolio sin nombre | ⏳ | |
 | FI1 | Financiación | ⏳ | |

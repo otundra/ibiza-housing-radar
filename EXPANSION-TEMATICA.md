@@ -70,7 +70,7 @@ La decisión no es *qué* temas añadir, es **cómo**.
 - ✅ Los solapamientos dejan de serlo: una noticia puede llevar 2-3 etiquetas temáticas.
 - ✅ La audiencia ganada en vivienda alimenta los otros ejes.
 - ❌ Dilución del foco: "radar de la isla" es menos memorable que "radar de vivienda".
-- ❌ El nombre actual `radar))ibiza_vivienda` habría que repensarlo a `radar))ibiza` con secciones → rediseño de marca.
+- ❌ El nombre actual `radar))vivienda_ibiza` habría que repensarlo a `radar))ibiza` con secciones → rediseño de marca.
 
 ### Modelo C — Híbrido: observatorio vertical + palancas transversales
 

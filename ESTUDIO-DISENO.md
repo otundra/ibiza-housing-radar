@@ -1,4 +1,4 @@
-# Estudio de diseño — radar))ibiza_vivienda
+# Estudio de diseño — radar))vivienda_ibiza
 
 **Fecha:** 2026-04-20 · **Cerrado con OK del editor:** 2026-04-21
 **Autor:** Claude Opus 4.7 + Raúl Serrano
@@ -7,9 +7,7 @@
 
 > Este estudio **no reemplaza** a [DISENO-WEB.md](DISENO-WEB.md) (arquitectura de información, mapa del sitio, contenido por página). Lo complementa añadiendo identidad, tokens de sistema, spec de componentes y criterio de prototipado.
 
-> 🏷️ **Nombre 2026-04-21.** Wordmark tipográfico cerrado: **`radar))ibiza_vivienda`** (formato `lugar_tema`). Dominio candidato `radaribiza.com`. Repo GitHub mantiene slug `ibiza-housing-radar`. Tagline: *"Observatorio documental"*.
->
-> ⚠️ **Nota sobre los prototipos HTML.** Los prototipos bajo `docs/prototype/` aún muestran el orden anterior (`radar))vivienda_ibiza`). Se actualizan cuando se reanude el bloque de Diseño, coordinado con la propuesta visual de Claude Design (tarea RT16 en la revisión fundacional).
+> 🏷️ **Nombre (revisado 2026-05-07).** Wordmark tipográfico: **`radar))vivienda_ibiza`** (formato `tema_lugar`). Dominio candidato `radaribiza.com`. Repo GitHub mantiene slug `ibiza-housing-radar`. Tagline: *"Observatorio documental"*. ID1 (21-abr) cerró en `radar))ibiza_vivienda` (lugar delante); [D25](DECISIONES.md#d25--wordmark-del-proyecto-orden-vivienda_ibiza-tema-antes-que-lugar) revierte el orden el 2026-05-07 tras lectura visual con el prototipo en pantalla real. El prototipo HTML ya estaba con `vivienda_ibiza` heredado y no requiere cambio.
 
 > 🎯 **Dirección visual confirmada:** **"mono + seams"** — peso tipográfico mono (JetBrains Mono) en más elementos editoriales + separadores tipo costura (dashed, líneas finas). Iconografía: Unicode puro, no emoji coloreado.
 >
