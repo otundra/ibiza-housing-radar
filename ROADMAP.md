@@ -117,7 +117,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 
 **Ruta crítica en serie:**
 
-1. **Incorporar propuesta visual de Claude Design** (RT16). Requiere archivos del editor; comparar con D1-D13, decidir qué se mantiene/sustituye/integra.
+1. **Incorporar propuesta visual de Claude Design** (RT16). Requiere archivos del editor; comparar con D28-D40 de [DECISIONES.md](DECISIONES.md) (decisiones del estudio de diseño), decidir qué se mantiene / sustituye / integra.
 2. **Wireframes low-fi de todas las páginas** (UX1) con la propuesta visual ya integrada.
 3. **Documento de navegación** (RT17) — propio, `NAVEGACION.md`. Top-nav con subniveles, sidebars contextuales, sitemap visual siempre accesible, breadcrumbs, internal linking denso, CTAs exploración, mobile-first.
 4. **Decisión dos públicos** (UX3): home dual / toggle / dos landings.
@@ -462,7 +462,7 @@ Tras las decisiones del editor 2026-04-20, estos estudios se ejecutan antes o du
 - [x] **I3.** ~~Confirmación de fecha de relanzamiento~~ — superado por [D15](DECISIONES.md). Sin fecha de relanzamiento en el proyecto.
 - [ ] **I4.** Diseño del dashboard de estadísticas potente + página `/estadisticas/` complementaria a `/balance/`. Durante Fase 0.
 - [ ] **I5.** Implementación de elementos de [Solar Low-Tech](https://solar.lowtechmagazine.com/) — ver [DISENO-WEB.md §Inspiración](DISENO-WEB.md). Indicadores de transparencia en footer + notas al margen + manifiesto + `/estado/`. Durante Fase 0.
-- [x] **I6.** ✅ **Estudio de diseño completo** cerrado 2026-04-21. Entregable: [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md) (14 secciones, 13 decisiones D1-D13 cerradas con OK del editor, salvo D2 logo diferido). Incluye: benchmark editorial con 13 referentes, sistema visual completo con 8 tipos de actor, 9 componentes especificados, plan de prototipo en 6 pasos, decisiones sobre nombre ("Radar Ibiza"), calendario editorial (opening/closing), numeración por fecha, formulario universal "Escríbenos", automatización anual para temporadas. Derivadas en B34-B40 y A17.
+- [x] **I6.** ✅ **Estudio de diseño completo** cerrado 2026-04-21. Entregable: [ESTUDIO-DISENO.md](ESTUDIO-DISENO.md) (14 secciones, 13 decisiones cerradas con OK del editor — migradas el 2026-05-07 a [DECISIONES.md](DECISIONES.md) como D28-D40). Incluye: benchmark editorial con 13 referentes, sistema visual completo con 8 tipos de actor, 9 componentes especificados, plan de prototipo en 6 pasos, decisiones sobre nombre ("Radar Ibiza"), calendario editorial (opening/closing), numeración por fecha, formulario universal "Escríbenos", automatización anual para temporadas. Derivadas en B34-B40 y A17.
 - [ ] **I7.** Wordmark tipográfico final: el editor elige variante entre V1-V4 de [`docs/prototype/logo/preview.html`](docs/prototype/logo/preview.html). Logo gráfico descartado 2026-04-21. Tras elección, formalizar favicon tipográfico + variantes de uso.
 
 ### Estudios diferidos (no bloquean Fase 0)

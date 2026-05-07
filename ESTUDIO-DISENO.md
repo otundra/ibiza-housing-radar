@@ -795,23 +795,25 @@ Sirve al editor y a cualquier futuro colaborador. No es público pero es indexab
 
 ## 11. Decisiones cerradas por el editor (2026-04-21)
 
-**Las 13 decisiones del estudio resueltas. D2 (logo) diferida hasta que el editor revise [`docs/prototype/logo/preview.html`](docs/prototype/logo/preview.html) con las 3 direcciones SVG.**
+> 📦 **Migradas a `DECISIONES.md` el 2026-05-07.** Las 13 decisiones que aquí se cerraron como D1-D13 del estudio se trasladaron a [`DECISIONES.md`](DECISIONES.md) como **D28-D40** para tener fuente única canónica. Esta tabla queda como índice visual del bloque B con redirección. Los detalles canónicos (próxima revisión, criterio de revocación, deudas paralelas, histórico de cambios) viven solo en DECISIONES.md desde esa fecha. Los matices registrados (sección siguiente) y las opciones desechadas (§11bis) se mantienen aquí como histórico narrativo.
 
-| # | Tema | Elección final | Nota |
+**Las 13 decisiones del estudio resueltas. D29 (logo gráfico) descartado en favor de identidad 100% tipográfica + favicon `))` vectorial.**
+
+| D estudio | Tema | D actual | Resumen |
 |---|---|---|---|
-| D1 | Wordmark | **V2 Split** — `radar))vivienda_ibiza` en JetBrains Mono, con `))` en terracota y resto en tinta | Decidido 2026-04-21 |
-| D2 | Logo · dirección | **Descartado logo gráfico + favicon `))` vectorial** — identidad 100% tipográfica. Favicon heredado del `))` del wordmark | `docs/prototype/logo/favicon.svg` |
-| D3 | Chrome operacional · datos | **A · 6 datos** (edición, propuestas, actores, coste API mes, última publicación, pipeline) | |
-| D4 | Chrome operacional · colocación | **A · pie de cada página** (encima del footer estándar) | |
-| D5 | Paleta por tipo de actor | **A · 8 categorías con candado** | Taxonomía cerrada, casos fronterizos se asimilan |
-| D6 | Ciclo de propuesta | **A · 8 estados + barra de progreso** | Propuesta → registrada → en debate → aprobada → en ejecución → implementada (+descartada e incumplida como ramas) |
-| D7 | Ficha de actor | **A · sidebar sticky** en desktop ≥1024 px, `<details>` plegable en móvil | |
-| D8 | Notas al margen | **A · Tufte-style** en ediciones, `/explica/` y `/metodologia/` | |
-| D9 | Toggle temporal | **A · Temporada YYYY / Pre-temporada YYYY + Histórico** | Etiquetas públicas sin "invierno" (ambiguo); fechas reales internas por opening/closing de clubs |
-| D10 | OG images | **A · Puppeteer (HTML → PNG)** | Plantilla editable en CSS, runner CI |
-| D11 | Modo oscuro manual | **Híbrido · automático default + dos botones ○/● con localStorage** | Sin opción "auto" explícita; una vez elegido, queda fijado |
-| D12 | Documentación del sistema visual | **A · `/sistema/` interna con noindex,nofollow** | Accesible por URL directa |
-| D13 | Formulario universal | **A · "Escríbenos" flotante** (Formspree, campos opcionales salvo mensaje) | Botón fijo esquina inferior derecha en todas las páginas |
+| D1 | Wordmark | [D28](DECISIONES.md#d28--wordmark-del-proyecto-v2-split-en-jetbrains-mono-era-d1-del-estudio) | V2 Split — `radar))vivienda_ibiza` con `))` en terracota, resto en tinta y JetBrains Mono. Orden actualizado a `vivienda_ibiza` por [D25](DECISIONES.md#d25--wordmark-del-proyecto-orden-vivienda_ibiza-tema-antes-que-lugar) el 2026-05-07. |
+| D2 | Logo y favicon | [D29](DECISIONES.md#d29--identidad-100-tipográfica-logo-gráfico-descartado-favicon--vectorial-era-d2-del-estudio) | Logo gráfico descartado. Identidad 100% tipográfica. Favicon SVG con `))` en terracota. |
+| D3 | Chrome operacional · datos | [D30](DECISIONES.md#d30--chrome-operacional-6-datos-visibles-era-d3-del-estudio) | 6 datos: edición, propuestas, actores, coste API mes, última publicación, pipeline. |
+| D4 | Chrome operacional · colocación | [D31](DECISIONES.md#d31--chrome-operacional-al-pie-de-cada-página-encima-del-footer-estándar-era-d4-del-estudio) | Al pie de cada página, encima del footer estándar. |
+| D5 | Paleta por tipo de actor | [D32](DECISIONES.md#d32--paleta-extendida-por-tipo-de-actor-8-tokens-con-candado-de-taxonomía-era-d5-del-estudio) | 8 tokens `--actor-*` con candado de taxonomía. Partidos siempre en gris neutro. |
+| D6 | Ciclo de propuesta | [D33](DECISIONES.md#d33--ciclo-de-propuesta-8-estados-con-barra-de-progreso-era-d6-del-estudio) | 8 estados (descartada e incumplida como ramas). Concretado por [D27](DECISIONES.md#d27--barra-de-progreso-de-propuestas-camino-principal-lineal-de-6--cierres-alternativos-aparte) sobre cómo se visualiza. |
+| D7 | Ficha de actor | [D34](DECISIONES.md#d34--ficha-de-actor-con-sidebar-sticky-era-d7-del-estudio) | Sidebar sticky en desktop ≥1024 px, `<details>` plegable en móvil. |
+| D8 | Notas al margen | [D35](DECISIONES.md#d35--notas-al-margen-tufte-style-en-contenido-editorial-denso-era-d8-del-estudio) | Tufte-style en ediciones largas, `/explica/` y `/metodo/`. |
+| D9 | Toggle temporal | [D36](DECISIONES.md#d36--toggle-temporal-temporada--pre-temporada--histórico-era-d9-del-estudio) | Temporada YYYY / Pre-temporada YYYY / Histórico. Sin "invierno". Sin JS. |
+| D10 | OG images | [D37](DECISIONES.md#d37--og-images-automáticas-con-puppeteer-era-d10-del-estudio) | Puppeteer (HTML → PNG) en runner CI, plantilla editable en CSS. |
+| D11 | Modo oscuro | [D38](DECISIONES.md#d38--modo-oscuro-híbrido-automático-por-sistema--dos-botones-manuales--era-d11-del-estudio) | Híbrido: automático por `prefers-color-scheme` + botones manuales `○`/`●` con `localStorage`. |
+| D12 | Documentación del sistema | [D39](DECISIONES.md#d39--documentación-interna-del-sistema-visual-en-sistema-era-d12-del-estudio) | Página `/sistema/` interna con `noindex,nofollow`. |
+| D13 | Formulario universal | [D40](DECISIONES.md#d40--formulario-universal-escríbenos-flotante-en-todas-las-páginas-era-d13-del-estudio) | "Escríbenos" flotante en esquina inferior derecha (Formspree). |
 
 ### Matices registrados
 

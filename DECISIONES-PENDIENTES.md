@@ -1,5 +1,7 @@
 # Decisiones resueltas — 2026-04-20
 
+> 📦 **Documento histórico desde el 2026-05-07.** Las 16 cuestiones cerradas en este cuestionario inicial son hechos consumados ya aplicados al sistema. La tabla resumen canónica vive en [`DECISIONES.md`](DECISIONES.md) → sección **Anexo — Cuestionario inicial del 2026-04-20** con enlaces al doc canónico de cada decisión. Este documento se mantiene como referencia narrativa de cómo se cerró cada cuestión (qué opciones se valoraron, qué motivó la elección). Si alguna cuestión necesita revisarse en el futuro, abrir D propia en `DECISIONES.md` con criterio de revocación explícito.
+
 **Estado:** RESUELTAS por el editor el 2026-04-20.
 **Origen:** [CLAUDE.md](CLAUDE.md#reglas-fundacionales), [ROADMAP.md](ROADMAP.md).
 **Nota:** Los estudios pendientes derivados viven en [`ESTUDIOS-PENDIENTES.md`](ESTUDIOS-PENDIENTES.md).

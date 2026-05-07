@@ -65,7 +65,7 @@ Sin calendario ni fecha de lanzamiento ([D15](DECISIONES.md)). El avance se orga
 | Retomar diseño visual | memoria `prototipo_paso1_en_pausa.md` + [`ESTUDIO-DISENO.md §10`](ESTUDIO-DISENO.md) + entradas DIARIO 2026-04-21 |
 | Cerrar Revisión Fase 0.5 | [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) |
 | Tocar pipeline | [`ARQUITECTURA.md`](ARQUITECTURA.md) + [`src/`](src/) |
-| Ver decisiones vigentes | [`DECISIONES.md`](DECISIONES.md) + migración pendiente en D1-D13 de `ESTUDIO-DISENO.md` + 16 cerradas de `DECISIONES-PENDIENTES.md` |
+| Ver decisiones vigentes | [`DECISIONES.md`](DECISIONES.md) — fuente única canónica desde 2026-05-07 (incluye D28-D40 migradas del estudio + anexo del cuestionario del 20-abr) |
 | Reorganizar docs | **NO — diferido post-lanzamiento.** Ver [`ESTUDIO-GESTION-CONOCIMIENTO.md`](ESTUDIO-GESTION-CONOCIMIENTO.md). |
 
 ## 🧭 Modelo activo
