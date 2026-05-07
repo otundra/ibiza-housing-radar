@@ -287,6 +287,12 @@ def _build_audit_record(
         "traza_dominio_actor": signals.get("traza_dominio_actor"),
         "fecha_coherente": None,
         "verbos_prohibidos_detectados": [],
+        "_note": (
+            "MVP: verify por propuesta diferido a iteración posterior. "
+            "verify.py corre a nivel edición markdown completa, no por propuesta. "
+            "http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. "
+            "Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+        ),
     }
 
     return {
