@@ -13,6 +13,17 @@ Reglas:
 
 ---
 
+## 2026-05-07 [docs] — Dry-run del cierre del Hito 1 sobre el auditor de W19
+
+- **Disparador.** Lectura proactiva durante `/arranque-auditoria`. La rec 1 del informe (cerrar Hito 1 antes de mover otra cosa) bajó a auditar lo que ya hay acumulado, en vez de esperar 3 lunes a la muestra completa.
+- **Dry-run de los seis criterios del §10 sobre `data/audit/2026-w19/2026-w19-001.json`.** Con n=1 propuesta auditada, los criterios 3 (ratio de disputas) y 5 (heurísticas no fallan en silencio) no son interpretables aún; los demás dieron verde.
+- **Cuatro hallazgos:** (1) bloque verify del log no distingue "diferido al MVP" de "fallo silencioso" — aplicado fix cosmético con campo `_note` explícito; (2) comparador determinista marca sinónimos institucionales (Municipios/Ayuntamientos) como diff crítico — fix incompleto descartado, pide diccionario en sesión específica; (3) capa 4 desacoplada — Opus fallback de extract.py invisible para audit.py, requiere propagar news_id al record_call; (4) propuesta `2026-w19-001` saldría a cuarentena cuando PI10 conecte el cálculo real de niveles (msn.com agregador + verbatim 0.026 + n=1).
+- **Aplicado solo el cosmético.** Los otros tres apuntados como deuda explícita en la revisión, con propuesta concreta y criterio de cuándo elevarlos. Superficie mínima antes del cron del lunes 11.
+- **Medición formal del §10 sigue diferida a tras W22** (lunes 1 de junio), conforme a [D20](DECISIONES.md).
+- **Narrativa completa:** [`private/revisiones/2026-05-07-auditor-w19-dry-run.md`](private/revisiones/2026-05-07-auditor-w19-dry-run.md). Índice actualizado en `REVISIONES.md`.
+
+---
+
 ## 2026-05-05 [docs] — Primera auditoría sistémica (bootstrap) cerrada con veredicto verde
 
 - **Disparador.** Petición explícita del editor (tercer disparador de D24) tras montar el sistema de freno en esta misma sesión. Etiquetada como bootstrap por el sesgo evidente — auditoría hecha en la sesión que abrió D24, así que la utilidad real del mecanismo se medirá en la segunda.
