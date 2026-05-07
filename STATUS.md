@@ -72,7 +72,7 @@ Sin calendario ni fecha de lanzamiento ([D15](DECISIONES.md)). El avance se orga
 
 Observatorio documental. LLM no genera propuestas: documenta las de actores con nombre, con URL verificable. Consolidado en `main` desde 2026-04-21. Docs de referencia en cabecera de [`CLAUDE.md`](CLAUDE.md).
 
-## 🗂 Docs vivos en raíz (28)
+## 🗂 Docs vivos en raíz (27)
 
 Fundacionales: `CLAUDE.md`, `README.md`, `DECISIONES.md`, `COMANDOS.md`.
 Planificación: `ROADMAP.md`, `REVISION-FASE-0.5.md`, `DECISIONES-PENDIENTES.md`, `DISENO-AUDITOR-MVP.md`.

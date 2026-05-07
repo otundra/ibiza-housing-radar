@@ -271,7 +271,7 @@ def append_log_if_alert(review_data: dict, edition_id: str, review_path: Path) -
         msg = (
             f"*Autoevaluación {edition_id}: notas por debajo del umbral*\n\n"
             f"La segunda lectura interna (Sonnet 4.6) puntúa la edición "
-            f"en 5 dimensiones, escala 1-10. Umbral de aviso: nota <7.\n\n"
+            f"en 6 dimensiones, escala 1-10. Umbral de aviso: nota <7.\n\n"
             f"{scores_lines}\n\n"
             f"Detalle: `{review_path.relative_to(ROOT)}`\n\n"
             f"Acción: revisar el detalle; si lo confirma, ajustar prompt del generador."
