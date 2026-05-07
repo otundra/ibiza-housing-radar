@@ -115,6 +115,11 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 
 ### Fase 4 — Web completa + trilingüe
 
+**Precondiciones (deuda técnica del bloque B detectada en la auditoría sistémica del 2026-05-07):**
+
+- **Alinear esquema `state` del pipeline con el ciclo del estudio ([D33](DECISIONES.md#d33--ciclo-de-propuesta-8-estados-con-barra-de-progreso-era-d6-del-estudio)).** El campo `state` de `src/extract.py` + `src/labels.py` acepta hoy `propuesta`, `en_movimiento`, `en_debate`, `aprobada`, `en_ejecucion`, `implementada`, `descartada`, `pendiente_resolucion_judicial`. El estudio §6.5 lista `propuesta`, `registrada`, `en_debate`, `aprobada`, `en_ejecucion`, `implementada`, `descartada`, `incumplida`. Discrepan en 2 valores en cada lado. **Bloqueante de Fase 4** porque la barra de progreso ([D27](DECISIONES.md#d27--barra-de-progreso-de-propuestas-camino-principal-lineal-de-6--cierres-alternativos-aparte)) y el componente de niveles (PI10) consumen este campo. Si W22 cierra Hito 1 sin resolverlo, abrir sesión específica para alinear código ↔ estudio antes de empezar Fase 4.
+- **Verificación visual de [D26](DECISIONES.md#d26--orden-visual-de-actores-en-listados-públicos-taxonomía-pública--alfabético-dentro-de-cada-tipo) en el resto del prototipo.** D26 (orden de actores por taxonomía + alfabético) se aplicó solo a la sección "Actores que la proponen" de `docs/prototype/proposal.html` el 2026-05-07. Falta verificar y aplicar el mismo orden en: mapa de posiciones (`edition.html`), directorio de actores (`actor.html`), resumen de home (`home.html`). Tarea de revisión visual + ajustes HTML, ~30-60 min.
+
 **Ruta crítica en serie:**
 
 1. **Incorporar propuesta visual de Claude Design** (RT16). Requiere archivos del editor; comparar con D28-D40 de [DECISIONES.md](DECISIONES.md) (decisiones del estudio de diseño), decidir qué se mantiene / sustituye / integra.
@@ -220,6 +225,7 @@ Estas tareas siguen apuntadas pero no entran en el roadmap del relanzamiento:
 - **BOIB watcher como servicio activo** — si no entró en Fase 2.
 - **Evento anual co-organizado**.
 - **Modelo de newsletter pago/híbrido**.
+- **Mejora del termómetro `src/panel.py` para distinguir migración formal de decisiones nuevas** — detectada en la auditoría sistémica del 2026-05-07. Hoy el termómetro cuenta D28-D40 (migración del estudio el 7-may) como decisiones nuevas y dispara falsa alarma de complejidad acumulada. Mejora opcional: añadir convención (filas con prefijo "migrated" o consultar `DECISIONES-PENDIENTES.md` para descontar). Coste estimado: 1-2 h. Aplazado hasta que la inflación se mantenga ≥4 semanas sin matizarse o hasta que aparezca otra migración formal.
 - ✅ **Rediseño de la sección "Cronología" en las ediciones semanales** — cerrado 2026-04-28. La cronología pasa de párrafo denso de prosa a 3-8 bullets con fecha en negrita al inicio (`**Sáb 18**`, `**Lun 27**`...). Cambio aplicado en el prompt de `src/generate.py` líneas 80-93 sin tocar la plantilla `_layouts/edition.html` (resultó innecesaria). W17 y W18 regeneradas con el nuevo formato. Detalle en [`DIARIO 2026-04-28 [editorial]`](DIARIO.md). La condición original (*"esperar a cerrar la sección Movimientos esta semana"*) se relajó al amparo del régimen de rodaje pre-lanzamiento ([D21](DECISIONES.md)).
 - ✅ **Rediseño de la sección "Radar: señales en movimiento" en las ediciones semanales** — cerrado 2026-04-28. Cabecera más limpia (actor + tipo + fuente en una línea, statement como párrafo sin etiqueta `**Qué:**`) + regla dura: omitir líneas vacías en lugar de imprimir *"ninguno registrado esta semana"* / *"no evaluada"*. Una propuesta sin evaluaciones ni apoyos pasa de ~16 líneas a ~6. Estado y Horizonte siempre se imprimen. Mismo cambio aplicado a "Propuestas en circulación" por coherencia. W17 y W18 regeneradas. Detalle en [`DIARIO 2026-04-28 [editorial]`](DIARIO.md).
 
