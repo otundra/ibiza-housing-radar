@@ -96,7 +96,8 @@ Pueden cruzarse: si una revisión genera una lección que se traslada al generad
 | Edición / Tema | Fecha | Disparador | Cambios aplicados | Archivo |
 |---|---|---|---|---|
 | W19 | 2026-05-05 | Alerta Telegram (rigor=5, balance=6) | 5 ajustes al sistema (4 commits) + correcciones a edición W19 (1 commit) | [`private/revisiones/2026-w19.md`](private/revisiones/2026-w19.md) |
+| Auditor W19 — dry-run del Hito 1 | 2026-05-07 | Lectura proactiva durante `/arranque-auditoria` | 1 cambio cosmético al log del auditor + 3 hallazgos apuntados como deuda explícita (sin fix antes de W22) | [`private/revisiones/2026-05-07-auditor-w19-dry-run.md`](private/revisiones/2026-05-07-auditor-w19-dry-run.md) |
 
 ---
 
-*Última actualización: 2026-05-05.*
+*Última actualización: 2026-05-07.*
