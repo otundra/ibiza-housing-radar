@@ -13,6 +13,17 @@ Reglas:
 
 ---
 
+## 2026-05-07 [diseno] — Reanudación del bloque B: revisión visual del prototipo, dos decisiones cerradas (D25 + D26)
+
+- **Disparador.** Decisión del editor de pasar a la rec 2 del informe de arranque tras cerrar la rec 1. Bloque B llevaba pausado desde 2026-04-21 con tres preguntas abiertas (lectura del nombre del proyecto en cabecera real, apilado de los firmantes de una coalición en móvil, barra de progreso de los 8 estados). Sesión guiada con el prototipo abierto en `http://127.0.0.1:4100`.
+- **Pregunta 1 cerrada — formato V2 Split del nombre.** Se mantiene tal cual: las dos `))` en color terracota, el resto en monoespaciado.
+- **Pregunta 2 cerrada — orden de los firmantes en una coalición.** Se aplica la opción A: por taxonomía pública + alfabético dentro de cada tipo. Registrada como [D26](DECISIONES.md#d26--orden-visual-de-actores-en-listados-públicos-taxonomía-pública--alfabético-dentro-de-cada-tipo). Aplicada al prototipo (`docs/prototype/proposal.html`): Consell d'Eivissa · CAEB · Fecoei · PIMEEF · CCOO · UGT (antes el orden era CAEB · PIMEEF · Fecoei, copiado de la fuente original).
+- **Decisión nueva no prevista — orden del wordmark.** Al revisar la cabecera del prototipo, el editor revierte el orden del nombre cerrado el 21-abr (ID1) y lo deja en `radar))vivienda_ibiza` (tema delante, lugar detrás). Registrada como [D25](DECISIONES.md#d25--wordmark-del-proyecto-orden-vivienda_ibiza-tema-antes-que-lugar). Motivación: lectura más natural en español al verlo en pantalla real. Coste asumido: si se abren verticales futuros (`radar))turismo_ibiza`, `radar))vivienda_formentera`), seguirán el mismo orden — desaparece la idea original de "marca por lugar como raíz fija". El editor declara explícitamente que el nombre del proyecto puede cambiar más adelante; este wordmark vive mientras no haya nombre/dominio definitivo. Ocho documentos sincronizados: CLAUDE.md, STATUS.md, ESTUDIO-DISENO.md, ROADMAP.md, PIVOTE.md, EXPANSION-TEMATICA.md, REVISION-FASE-0.5.md (ID1 con nota de superación), docs/acerca.md.
+- **Pendiente para próxima sesión del bloque B.** La pregunta 3 (barra de progreso de los 8 estados — ¿se muestran siempre o solo los aplicables?) queda sin abrir; la sesión se cerró antes. Apuntado para retomar.
+- **Aclaración técnica.** El prototipo se sirve desde la raíz del repo (`/Users/raulserrano/Documents/GitHub/ibiza-housing-radar/docs/prototype/`), no desde el worktree donde se editó el HTML. Los cambios se copiaron a la raíz para que el preview los reflejara en vivo durante la verificación.
+
+---
+
 ## 2026-05-07 [docs] — Dry-run del cierre del Hito 1 sobre el auditor de W19
 
 - **Disparador.** Lectura proactiva durante `/arranque-auditoria`. La rec 1 del informe (cerrar Hito 1 antes de mover otra cosa) bajó a auditar lo que ya hay acumulado, en vez de esperar 3 lunes a la muestra completa.
