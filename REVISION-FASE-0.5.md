@@ -164,7 +164,7 @@ El modelo documental resuelve dos problemas reales (alucinación del LLM, sesgo 
 
 **Salida esperada:** (a) bloque de banner en `_layouts/` con copy cerrado; (b) decisión sobre si Vía A entra en Fase 0 o se queda en Fase 2; (c) actualización de `PLAN.md` con el cronograma resultante.
 
-### RT5 · Tests básicos del pipeline ⏳
+### RT5 · Tests básicos del pipeline ✅ CERRADA 2026-05-08
 Hoy no hay carpeta `tests/` y no hay ningún test automatizado. Un cambio en `classify.py` puede romper `extract.py` sin que nada lo avise hasta que falle el cron del lunes. Con el pipeline ya en producción (W17 publicada) y el backfill por delante (reprocesar 12 semanas de datos), el coste de un fallo silencioso sube.
 
 **Acción mínima (5-6 h):**
@@ -503,7 +503,7 @@ Script one-shot `src/backfill.py` que recorre Google News con operadores tempora
 **Prioridad ejecución:** tras PI2-A y PI9.
 **Tarea asociada al cerrar:** actualizar la fecha de origen en [`/que-documentamos/`](docs/que-documentamos.md) y [`/metodo/`](docs/metodo.md) con la semana real más antigua del corpus generado. Ambas páginas ahora dicen "primera semana del archivo" sin fecha concreta — rellenar cuando el backfill confirme la semana real. Ver ED4 cerrada.
 
-### PI10 · Sistema de tiers de confianza públicos ⏳ [NUEVO 2026-04-21]
+### PI10 · Sistema de tiers de confianza públicos ✅ CERRADA 2026-05-08 [NUEVO 2026-04-21]
 Implementa Plan A aprobado. Cada propuesta publicada lleva badge 🟢/🟡/🟠 calculado por el auditor IA. Las 🔴 van a cuarentena. Criterios:
 - 🟢 Alta: dos capas IA coinciden en todos los campos críticos + verify.py pasa los 5 checks + propuesta corroborada por 2+ fuentes independientes.
 - 🟡 Media: dos capas IA coinciden + verify.py pasa + fuente única.
@@ -512,13 +512,13 @@ Implementa Plan A aprobado. Cada propuesta publicada lleva badge 🟢/🟡/🟠 
 Los umbrales son ajustables (config en `src/tiers.py` o similar). Copy visible al público explicando cada tier en lenguaje llano.
 **Salida:** módulo `src/tiers.py` + campo `confidence_tier` en schema de propuesta + plantilla visual del badge en edición + fichas + tracker.
 
-### PI11 · Cuarentena pública `/revision-pendiente/` ⏳ [NUEVO 2026-04-21]
+### PI11 · Cuarentena pública `/revision-pendiente/` ✅ CERRADA 2026-05-08 [NUEVO 2026-04-21]
 Implementa Plan B aprobado. Las propuestas 🔴 no entran en edición semanal; viven en página pública `/revision-pendiente/` con explicación en lenguaje llano y tabla filtrable. Regla automática: a los 60 días sin corroboración se archivan como "no verificada" en `/propuestas/?status=no_verificada`.
 **Salida:** página Jekyll + lista generada desde `data/quarantine.json` + regla de archivo 60d + integración con alerta Telegram.
 
-### PI12 · Alerta Telegram de lunes enriquecida ⏳ [PARCIAL 2026-04-21]
-Mezcla A+C decidida. Implementado base en `src/report.py` (_build_summary y helpers). Falta conectar `balance_status.json` y `quarantine.json` (cuando existan los módulos upstream). Email queda como tarea futura.
-**Salida pendiente:** activar bloque de alertas cuando PI10/PI11/balance.py emitan sus archivos status.
+### PI12 · Alerta Telegram de lunes enriquecida ✅ CERRADA 2026-05-08 [PARCIAL 2026-04-21]
+Mezcla A+C decidida. Implementado base en `src/report.py` (_build_summary y helpers). `quarantine.json` conectado en PI11 (2026-05-08). `balance_status.json` activado al añadir `write_balance_status()` a `balance.py` (2026-05-08). Email queda diferido como PI13.
+**Salida alcanzada:** bloque de alertas activo — lee cuarentena pendiente + alertas de concentración de actores.
 
 ### PI13 · Notificación por email (futuro) ⏳ [NUEVO 2026-04-21]
 Cuando el proyecto tenga buzón de correo propio, la alerta del lunes también se envía por email (para tener archivo consultable). Baja prioridad hasta que el buzón exista.

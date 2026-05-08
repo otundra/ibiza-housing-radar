@@ -13,6 +13,13 @@ Reglas:
 
 ---
 
+## 2026-05-08 [pipeline] — PI11, PI12, RT5 cerrados: cuarentena + alerta Telegram enriquecida + tests
+
+- **PI11 (cuarentena).** Módulo `src/quarantine.py` con `update_quarantine()`, `pending_count()`, `_archive_stale()` (regla 60 días → estado "no_verificada"). `data/quarantine.json` inicializado con las dos propuestas rojo de W19. Integrado en `src/report.py` — el informe del lunes ya lee el conteo de pendientes.
+- **RT5 (tests).** 51 tests deterministas en cuatro módulos: `test_verify.py` (17), `test_rescue.py` (10), `test_tiers.py` (17), `test_quarantine.py` (9). Sin mocks de API — todo puro o con archivos temporales. Workflow `.github/workflows/tests.yml` activo en `main` y ramas `claude/**`. Todos en verde.
+- **PI12 (alerta Telegram enriquecida).** `balance.py` emite `data/balance_status.json` al final de cada ejecución (`write_balance_status()`): `alert_level` ok/warning/critical + `label` legible. `_build_alerts_block()` en `report.py` ya leía el archivo — PI12 queda activo con ambas fuentes conectadas. Email diferido como PI13.
+- **REVISION-FASE-0.5.md.** Marcadas como ✅ CERRADA 2026-05-08: RT5, PI10, PI11, PI12.
+
 ## 2026-05-08 [pipeline] — PI10 cerrado: sistema de tiers operativo + deuda viability_con_cifra saldada
 
 - **Qué.** `src/tiers.py` nuevo con `compute_tier()` real (árbol determinista de 6 pasos, ESTUDIO-TIERS.md §3). `data/tiers.yml` con umbrales ajustables. `src/audit.py` conectado al módulo real (se elimina el stub `value=null`). Sección `/metodo/#niveles-de-confianza` con el copy público del §5.2.
