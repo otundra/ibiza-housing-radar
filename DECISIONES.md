@@ -519,6 +519,20 @@ Las siguientes 13 decisiones se cerraron el **2026-04-21** dentro de [`ESTUDIO-D
 - **Criterio de revocación:** si el formulario recibe spam masivo aunque el honeypot funcione (>10 spams/día), añadir captcha o cambiar a formulario solo en `/contacto/`. Si los campos opcionales sesgan respuestas (todos los aportadores se identifican o ninguno lo hace en >95 % de los casos durante 3 meses), revisar el diseño del formulario.
 - **Estado:** vigente
 
+### D41 — BOIB es pata estructural del observatorio; calibración del clasificador con panel cruzado IA, sin supervisión jurídica humana del editor
+
+- **Fecha:** 2026-05-08
+- **Tema:** arquitectura
+- **Decisión:** tres puntos atados:
+  1. **El BOIB es pata estructural del proyecto, no fuente opcional.** Validar el observatorio sin BOIB no valida el observatorio real. El RT22 (originalmente *"factibilidad técnica del BOIB watcher 2-4 h"*) se reformula como **estudio de fondo** que vive en [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md) con sub-estudio del clasificador en [`ESTUDIO-CLASIFICADOR-OFICIAL.md`](ESTUDIO-CLASIFICADOR-OFICIAL.md).
+  2. **El Hito 1 (auditor mínimo viable) se redefine.** No se cierra antes de la integración del BOIB validada. La recomendación procedimental anterior (*"esperar al cierre del Hito 1 para integrar BOIB"*) queda retirada — era preocupación procedimental disfrazada de técnica.
+  3. **Frontera dura del editor: cero supervisión jurídica humana.** El editor no etiqueta textos jurídicos ni los lee rutinariamente. La calibración del clasificador BOIB se monta con **panel cruzado IA** (Opus 4.7 thinking + Sonnet 4.6 validador + Haiku 4.5 grueso). El conjunto de prueba se genera automáticamente con consenso fuerte entre Opus thinking y Sonnet validador. El asesor jurídico humano externo es opcional, reactivo y no recurrente (vía contratada, vía red de aliados o vía nula a elección).
+- **Por qué:** el editor planteó *"vamos a validar un proyecto sin una de sus patas, que considero que puede ser el BOIB"* + *"no tenemos presión en sacar el proyecto, la prioridad es que creemos algo relevante"*. El argumento desactiva la cautela procedimental. Sumado a la frontera personal del editor (*"no sé de asuntos jurídicos, ni tengo idea de leer textos técnicos de este tipo, ni me interesan"*), se necesita arquitectura que absorba la calibración sin tiempo humano. El patrón panel cruzado IA es continuista con el proyecto (ya se usa Opus thinking + Sonnet validador como referencia automática para los re-benchmarks mensuales).
+- **Docs afectados:** `ESTUDIO-FUENTES-OFICIALES.md` (nuevo), `ESTUDIO-CLASIFICADOR-OFICIAL.md` (nuevo), `REVISION-FASE-0.5.md` (RT22 reformulado), `DIARIO.md` (entrada 2026-05-08), `STATUS.md` (línea de trabajo activa + docs vivos), [D6](#d6--frame-de-tres-hitos-grandes-en-fase-1) (Hito 1 redefinido).
+- **Próxima revisión:** al recibir respuesta del editor a las 3 preguntas abiertas de §18 del estudio padre — qué patrones del catálogo de 7 selecciona para implementar y en qué orden.
+- **Criterio de revocación:** si la prueba en seco del clasificador (Estudio 3 dentro de `ESTUDIO-CLASIFICADOR-OFICIAL.md` §9) no alcanza los criterios objetivos de éxito (precisión ≥85%, exhaustividad ≥80%, tasa de cuarentena <15%), el módulo BOIB no se integra y el estudio se cierra con veredicto *"clasificador no viable con la arquitectura actual"*. La empresa no es heroica, es honesta: mejor un observatorio fiable basado en prensa que uno ambicioso que escupe ruido normativo.
+- **Estado:** vigente
+
 ---
 
 ## Anexo — Cuestionario inicial del 2026-04-20 (16 cuestiones cerradas)

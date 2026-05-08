@@ -40,6 +40,7 @@ ROOT = Path(__file__).resolve().parent.parent
 HISTORY_FILE = ROOT / "data" / "proposals_history.json"
 PRIVATE_OUT = ROOT / "private" / "balance.md"
 PUBLIC_OUT = ROOT / "docs" / "balance.md"
+BALANCE_STATUS_FILE = ROOT / "data" / "balance_status.json"
 
 WINDOWS_DAYS = {
     "30d": 30,
@@ -254,6 +255,39 @@ def maybe_alert(history: list[dict]) -> None:
         log.warning("No se pudo notificar: %s", exc)
 
 
+def write_balance_status(history: list[dict]) -> None:
+    """Emite data/balance_status.json para que report.py pueda leerlo en el aviso del lunes."""
+    if len(history) < MIN_HISTORY_FOR_ALERTS:
+        status = {
+            "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "alert_level": "ok",
+            "label": f"fase de rodaje ({len(history)} propuestas, mínimo {MIN_HISTORY_FOR_ALERTS})",
+            "details": {},
+        }
+    else:
+        filtered_60 = filter_window(history, 60)
+        counts = count_dimension(filtered_60, "actor_type")
+        alerts = alert_if_concentrated(counts)
+        if alerts:
+            status = {
+                "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "alert_level": "warning",
+                "label": alerts[0],
+                "details": {"alerts": alerts, "counts_60d": counts},
+            }
+        else:
+            status = {
+                "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "alert_level": "ok",
+                "label": "balance equilibrado (últimos 60d)",
+                "details": {"counts_60d": counts},
+            }
+
+    BALANCE_STATUS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    BALANCE_STATUS_FILE.write_text(json.dumps(status, ensure_ascii=False, indent=2))
+    log.info("balance_status.json → alert_level=%s", status["alert_level"])
+
+
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="[%(levelname)s %(name)s] %(message)s")
 
@@ -269,6 +303,7 @@ def main() -> int:
     log.info("Dashboard público → %s", PUBLIC_OUT)
 
     maybe_alert(history)
+    write_balance_status(history)
 
     return 0
 

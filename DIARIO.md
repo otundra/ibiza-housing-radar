@@ -13,6 +13,25 @@ Reglas:
 
 ---
 
+## 2026-05-08 [arquitectura] — Estudio de fuentes oficiales abierto: BOIB como pata estructural del observatorio
+
+- **Disparador.** Pregunta del editor tras cerrar PI10/PI11/PI12/RT5: *"¿esto también mira en el BOIB de Baleares y demás, o todavía no estamos haciendo eso?"*. La discusión se profundizó hasta convertirse en estudio de fondo. Decisiones del editor en la sesión: *"metemos integrar BOIB delante de backfill"*, *"no tenemos presión en sacar el proyecto, la prioridad es que creemos algo relevante"*, *"vamos a validar un proyecto sin una de sus patas, que considero que puede ser el BOIB"*.
+- **Reordenación importante.** La recomendación procedimental anterior (*"esperar al cierre del Hito 1 antes de integrar"*) queda retirada. El argumento del editor desactiva la cautela: si el BOIB es estructural, validar el observatorio sin él no valida el observatorio real. Lo correcto es redefinir el Hito 1 para incluir la integración BOIB validada, no acelerarlo. Confesión técnica registrada en el estudio: la "contaminación del auditor" era preocupación procedimental disfrazada de técnica — el panel cruzado del BOIB no estresa al auditor en sus dimensiones críticas (tiers, cuarentena, contradicciones).
+- **Frontera dura del editor.** *"No sé de asuntos jurídicos, ni tengo idea de leer textos técnicos de este tipo, ni me interesan. Esto debe ir tan fino hilado que no tenga que hacer nada al respecto"*. Esto descarta cualquier diseño que requiera al editor leer textos jurídicos rutinariamente. La calibración del clasificador se monta con panel cruzado IA (Opus thinking + Sonnet validador + Haiku grueso) que genera ground truth automatizado. El editor no etiqueta nada, nunca.
+- **Brainstorming pedido por el editor.** *"Quiero un brainstorming profundo sobre múltiples maneras de poder aplicar el BOIB al proyecto sin ser una fuente más como hacemos con prensa"*. Resultado: 7 patrones de uso documentados con variantes, ventajas, riesgos, esfuerzo. Combinación 1+2 (espejo de promesas + detector de silencios) propuesta como primer movimiento por mejor relación coste-retorno.
+- **Entregables.** Dos documentos nuevos: [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md) (estudio de fondo con datos verificados del BOIB, encaje regla por regla, 7 patrones, estimación de costes, calendario, preguntas abiertas) y [`ESTUDIO-CLASIFICADOR-OFICIAL.md`](ESTUDIO-CLASIFICADOR-OFICIAL.md) (sub-estudio del clasificador IA con frontera "cero supervisión jurídica humana", patrón panel cruzado, generación automática del conjunto de prueba, modo cuarentena agresiva al inicio, riesgo residual).
+- **Estimación de costes registrada.** Coste IA recurrente proyectado: +2,50-4,00 €/mes (~9-11 €/mes total tras integración). Coste de implementación inicial: ~10-13 días de trabajo + 5-10 € de tokens. Tiempo del editor: 0-1 hora total en todo el recorrido. Cero horas de mantenimiento jurídico recurrente. Asesor jurídico externo opcional reactivo (~15-25 €/mes prorrateado en peor caso) — vía contratada, vía red de aliados o vía nula a elección.
+- **Estado del estudio.** Abierto, en fase de brainstorming editorial. 3 preguntas pendientes de respuesta del editor para cerrar §18 del estudio padre y arrancar implementación escalonada. RT22 reformulado en `REVISION-FASE-0.5.md`.
+
+---
+
+## 2026-05-08 [pipeline] — PI11, PI12, RT5 cerrados: cuarentena + alerta Telegram enriquecida + tests
+
+- **PI11 (cuarentena).** Módulo `src/quarantine.py` con `update_quarantine()`, `pending_count()`, `_archive_stale()` (regla 60 días → estado "no_verificada"). `data/quarantine.json` inicializado con las dos propuestas rojo de W19. Integrado en `src/report.py` — el informe del lunes ya lee el conteo de pendientes.
+- **RT5 (tests).** 51 tests deterministas en cuatro módulos: `test_verify.py` (17), `test_rescue.py` (10), `test_tiers.py` (17), `test_quarantine.py` (9). Sin mocks de API — todo puro o con archivos temporales. Workflow `.github/workflows/tests.yml` activo en `main` y ramas `claude/**`. Todos en verde.
+- **PI12 (alerta Telegram enriquecida).** `balance.py` emite `data/balance_status.json` al final de cada ejecución (`write_balance_status()`): `alert_level` ok/warning/critical + `label` legible. `_build_alerts_block()` en `report.py` ya leía el archivo — PI12 queda activo con ambas fuentes conectadas. Email diferido como PI13.
+- **REVISION-FASE-0.5.md.** Marcadas como ✅ CERRADA 2026-05-08: RT5, PI10, PI11, PI12.
+
 ## 2026-05-08 [pipeline] — PI10 cerrado: sistema de tiers operativo + deuda viability_con_cifra saldada
 
 - **Qué.** `src/tiers.py` nuevo con `compute_tier()` real (árbol determinista de 6 pasos, ESTUDIO-TIERS.md §3). `data/tiers.yml` con umbrales ajustables. `src/audit.py` conectado al módulo real (se elimina el stub `value=null`). Sección `/metodo/#niveles-de-confianza` con el copy público del §5.2.

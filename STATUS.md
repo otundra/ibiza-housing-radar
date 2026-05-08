@@ -32,9 +32,10 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 ## 🟡 En curso
 
-- **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21. 16 tareas cerradas sobre 69 totales de la tabla de seguimiento. Sesión 2026-04-29: OP1, RT8, RT9 (parcial), RT13, ED1 (parcial), ED4, EX4, FU3. Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md).
+- **Revisión Fase 0.5** — auditoría fundacional abierta 2026-04-21. 20 tareas cerradas sobre 69 totales de la tabla de seguimiento. Sesión 2026-05-08: PI10 (tiers), PI11 (cuarentena), PI12 (alerta Telegram), RT5 (tests). Ver [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md).
+- **Estudio de fuentes oficiales** — abierto 2026-05-08. RT22 reformulado de "factibilidad técnica BOIB 2-4 h" a estudio de fondo completo. Documento principal [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md) con 7 patrones de uso del BOIB que no lo convierten en "fuente más" como prensa. Sub-estudio [`ESTUDIO-CLASIFICADOR-OFICIAL.md`](ESTUDIO-CLASIFICADOR-OFICIAL.md) cierra la frontera *"cero supervisión jurídica humana del editor"* con panel cruzado IA. Pendiente: respuesta del editor a las 3 preguntas abiertas para arrancar implementación escalonada. **Reformula el Hito 1** — no se cierra antes de la integración BOIB validada.
 - **Hito 1 — Auditor mínimo viable.** PI9 partido en MVP + iteración ([D1](DECISIONES.md)). Detalle en [`ESTUDIO-COSTES-AUDITOR.md §10.0`](ESTUDIO-COSTES-AUDITOR.md). Diseño del módulo cerrado 2026-04-24 en [`DISENO-AUDITOR-MVP.md`](DISENO-AUDITOR-MVP.md). **Construcción en marcha:** Fases 1, 2 y 3 cerradas 2026-04-25. **W19 publicada con auditor activo** (4-10 may 2026) — primera corrida limpia del cron con auditor live según [D20](DECISIONES.md). Coste acumulado validación previa: 0,042 €. **Fase 4 en curso:** observación en vivo durante 3-4 ediciones consecutivas (W19-W22) en lugar del backfill de W10. Cierre del Hito 1 previsto al evaluar las métricas tras W22. Sin calendario ni fecha ([D15](DECISIONES.md)).
-- **Hito 2 — Re-estudio del sistema de tiers** ✅ **cerrado 2026-04-23** (RT15, RT26). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo con 5 decisiones operativas en [D9](DECISIONES.md). **PI10 implementado 2026-05-08:** `src/tiers.py` + `data/tiers.yml` operativos, `compute_tier()` real conectado al auditor. `build_signals.viability_con_cifra` corregido (misma sesión). Queda pendiente: (a) badge visual en Jekyll (Fase 4, bloque B, D9/Q5); (b) medición empírica del sesgo por actor (RT25, post-backfill).
+- **Hito 2 — Re-estudio del sistema de tiers** ✅ **cerrado 2026-04-23** (RT15, RT26). [`ESTUDIO-TIERS.md`](ESTUDIO-TIERS.md) completo con 5 decisiones operativas en [D9](DECISIONES.md). **PI10-PI11-PI12 y RT5 implementados 2026-05-08:** `src/tiers.py` + `data/tiers.yml` operativos, `compute_tier()` real conectado al auditor; cuarentena activa (`src/quarantine.py`, `data/quarantine.json`); alerta Telegram enriquecida con balance + cuarentena (`balance.py` emite `balance_status.json`); 51 tests en 4 módulos (CI activo). Queda pendiente: (a) badge visual en Jekyll (Fase 4, bloque B, D9/Q5); (b) medición empírica del sesgo por actor (RT25, post-backfill).
 
 ## 🏷️ Identidad (provisional, revisada 2026-05-07)
 
@@ -72,12 +73,12 @@ Sin calendario ni fecha de lanzamiento ([D15](DECISIONES.md)). El avance se orga
 
 Observatorio documental. LLM no genera propuestas: documenta las de actores con nombre, con URL verificable. Consolidado en `main` desde 2026-04-21. Docs de referencia en cabecera de [`CLAUDE.md`](CLAUDE.md).
 
-## 🗂 Docs vivos en raíz (27)
+## 🗂 Docs vivos en raíz (29)
 
 Fundacionales: `CLAUDE.md`, `README.md`, `DECISIONES.md`, `COMANDOS.md`.
 Planificación: `ROADMAP.md`, `REVISION-FASE-0.5.md`, `DECISIONES-PENDIENTES.md`, `DISENO-AUDITOR-MVP.md`.
 Producto: `ARQUITECTURA.md`, `DISENO-WEB.md`, `SEO.md`, `CONTENIDO-RETROACTIVO.md`.
-Estudios: `ESTUDIO-DISENO.md`, `ESTUDIO-COSTES-AUDITOR.md`, `ESTUDIO-TIERS.md`, `ESTUDIO-3-MODELOS.md`, `ESTUDIO-GESTION-CONOCIMIENTO.md`, `ESTUDIOS-PENDIENTES.md`, `EXPANSION-TEMATICA.md`, `REPORTE-BENCHMARK.md`.
+Estudios: `ESTUDIO-DISENO.md`, `ESTUDIO-COSTES-AUDITOR.md`, `ESTUDIO-TIERS.md`, `ESTUDIO-3-MODELOS.md`, `ESTUDIO-GESTION-CONOCIMIENTO.md`, `ESTUDIO-FUENTES-OFICIALES.md` (D2026-05-08), `ESTUDIO-CLASIFICADOR-OFICIAL.md` (D2026-05-08), `ESTUDIOS-PENDIENTES.md`, `EXPANSION-TEMATICA.md`, `REPORTE-BENCHMARK.md`.
 Sistemas vivos (registros narrativos y aprendizajes): `APRENDIZAJES.md`, `REVISIONES.md` (D23, 2026-05-05), `AUDITORIAS.md` (D24, 2026-05-05).
 Estado/memoria: `STATUS.md` (este), `DIARIO.md`, `PLAN.md` (histórico), `PIVOTE.md` (histórico).
 
