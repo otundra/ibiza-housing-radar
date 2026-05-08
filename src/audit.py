@@ -39,6 +39,7 @@ from src.audit_compare import compare_extractions
 from src.audit_heuristics import load_actor_domains, run_heuristics
 from src.costs import assert_budget_available, record_call
 from src.extract import EXTRACT_SYSTEM, MODEL_BASE, MODEL_VALIDATOR, _call, _try_json
+from src.tiers import compute_tier
 
 log = logging.getLogger("audit")
 
@@ -136,7 +137,11 @@ def build_signals(
         url_ok = verbatim.get("url_ok")
 
     viability_econ = str(proposal.get("viability_economic") or "")
-    viability_con_cifra = bool(re.search(r"\d", viability_econ))
+    if viability_econ in ("alta", "media"):
+        verbatim_text = str(proposal.get("statement_verbatim") or "")
+        viability_con_cifra: bool | None = bool(re.search(r"\d", verbatim_text))
+    else:
+        viability_con_cifra = None  # sin reclamación, no aplica
 
     whitelist_match = whitelist.get("match")
     traza_dominio_actor: bool | None = None
@@ -161,22 +166,6 @@ def build_signals(
         "statement_type": statement_type,
     }
 
-
-def compute_tier(signals: dict) -> dict:
-    """Hueco reservado en el MVP — siempre devuelve ``value=None``.
-
-    En la iteración posterior ([D9](DECISIONES.md), PI10), esta función
-    leerá el bloque ``signals`` y devolverá un color real (🟢🟡🟠🔴). El
-    estudio de tiers (`ESTUDIO-TIERS.md`) ya cierra el árbol de decisión;
-    sólo falta conectarlo al ``compute_tier()`` real.
-
-    Plano: §2.1.
-    """
-    return {
-        "value": None,
-        "reason": "pendiente_estudio",
-        "signals": dict(signals or {}),
-    }
 
 
 # ---------------------------------------------------------------------------

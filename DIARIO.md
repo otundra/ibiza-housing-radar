@@ -13,6 +13,16 @@ Reglas:
 
 ---
 
+## 2026-05-08 [pipeline] — PI10 cerrado: sistema de tiers operativo + deuda viability_con_cifra saldada
+
+- **Qué.** `src/tiers.py` nuevo con `compute_tier()` real (árbol determinista de 6 pasos, ESTUDIO-TIERS.md §3). `data/tiers.yml` con umbrales ajustables. `src/audit.py` conectado al módulo real (se elimina el stub `value=null`). Sección `/metodo/#niveles-de-confianza` con el copy público del §5.2.
+- **Comportamiento verificado.** Señales perfectas + 2 fuentes + wayback None (MVP normal) → amarillo con nota "archivo Wayback sin verificar". Fuente única → amarillo. URL caída → rojo. Verbatim bajo → rojo. Sin `default_path` en los casos habituales del MVP.
+- **Deuda saldada (misma sesión).** `build_signals.viability_con_cifra` buscaba dígitos en el campo enum (`"alta"`, `"media"`) en lugar de en `statement_verbatim`. Corregido: si `viability_economic` no es alta/media, señal queda `None` (sin reclamación, sin penalización); si es alta/media, busca dígito en `statement_verbatim`. Techo amarillo reactivado en el árbol. Registros dry-run W19 regenerados.
+- **Verificación visual D26 (misma sesión).** Tres desajustes corregidos en el prototipo: `balance.html` tenía judicial y colectivo ciudadano invertidos (posiciones 7/8); `balance.html` y `actor.html` listaban "CAEB, PIMEEF, Fecoei" en lugar de "CAEB, Fecoei, PIMEEF" (F antes de P, orden alfabético dentro del tipo patronal). `proposal.html` y `home.html` ya estaban correctos.
+- **Pendiente (Fase 4).** Badge visual en plantilla Jekyll (D9/Q5 = "Fase 4", bloque B en pausa). La lógica ya está operativa; el componente visual espera.
+
+---
+
 ## 2026-05-07 [docs] — Segunda auditoría sistémica cerrada con veredicto verde + 2 fixes aplicados
 
 - **Disparador.** Petición del editor de revisión profunda tras la sesión densa de cierres de hoy. Trigger automático de [D24](DECISIONES.md): ≥5 decisiones nuevas desde la bootstrap (D29 superado — 16 nuevas contando D25-D27 reales y D28-D40 migradas).

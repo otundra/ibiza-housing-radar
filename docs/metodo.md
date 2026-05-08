@@ -92,6 +92,24 @@ Ningún observatorio es neutral. Enumeramos los sesgos conocidos. Si detectas un
 
 ---
 
+## Niveles de confianza {#niveles-de-confianza}
+
+Cada propuesta publicada lleva un color que resume la confianza que tenemos en ella en el momento de publicar. Lo calculamos automáticamente con reglas fijas; no las decide una persona caso a caso.
+
+**🟢 Alta confianza.** Dos medios distintos recogen la misma propuesta, el enlace de origen está vivo, la cita del actor aparece literal en el artículo, y la revisión automática la ha procesado sin discusión interna.
+
+**🟡 Confianza media.** Cumple los controles mínimos pero falta algo de redundancia: fuente única, o una discusión interna entre capas de la revisión que se resolvió con una tercera pasada. Se publica, con aviso.
+
+**🟠 Confianza baja.** Publicable pero con reservas. Hay avisos no bloqueantes — por ejemplo no hay copia guardada en Wayback Machine, o el medio no está en la lista de fuentes estables. Conviene ir al enlace original antes de citar.
+
+**🔴 No publicada — en revisión.** La propuesta existe en la prensa pero no supera los controles: enlace caído, cita que no se encuentra en el artículo, o la revisión automática no se pone de acuerdo ni tras una tercera pasada. Va a /revision-pendiente/ y se archiva a los 60 días si nada cambia.
+
+Las reglas son las mismas para todos los actores: partidos políticos, sindicatos, patronales, asambleas vecinales, tercer sector. No se pondera la reputación del actor ni del medio más allá de una lista de fuentes aceptadas.
+
+Los umbrales concretos están en `data/tiers.yml`, públicos en el repositorio. Los cambios de criterio no se aplican hacia atrás.
+
+---
+
 ## Transparencia
 
 No pedimos confianza — ofrecemos lo que se puede verificar:
