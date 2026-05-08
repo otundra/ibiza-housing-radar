@@ -331,7 +331,7 @@ Antes de implementar la vía A (RT12 estudio de fuentes), cerrar:
 
 **Salida:** nombre cerrado + presupuesto cuantificado + estructura de URLs + plan de ejecución. Entrada al `ESTUDIO-PRECIOS.md` que contempla RT12.
 
-### RT22 · BOIB watcher — decisión de ubicación en el roadmap ⏳
+### RT22 · Fuentes oficiales (BOIB y otras) — estudio de fondo abierto 2026-05-08 ⏳
 **Pregunta del editor 2026-04-21 noche** sobre si la ubicación actual del BOIB watcher (Fase 3 afinado + diferido como servicio activo) es la correcta. Análisis honesto:
 
 **Pro subirlo a Fase 2** (junto al backfill):
@@ -345,9 +345,16 @@ Antes de implementar la vía A (RT12 estudio de fuentes), cerrar:
 - Complejidad técnica adicional encima de la del backfill.
 - Si se hace mal, genera falsos positivos ruidosos (normativa urbanística no relacionada con vivienda).
 
-**Decisión del editor 2026-04-22: Fase 2 confirmada.** El editor considera importante que la base legal esté presente desde el relanzamiento — es el diferencial más claro frente a "refrito de prensa". Se mantiene el estudio de factibilidad técnica previo de 2-4 horas (robots.txt del buscador BOIB, tasa de falsos positivos de búsqueda filtrada, decisión entre scraping ético vs filtro Google News) como primera tarea dentro de Fase 2.
+**Decisión del editor 2026-04-22: Fase 2 confirmada.** El editor considera importante que la base legal esté presente desde el relanzamiento — es el diferencial más claro frente a "refrito de prensa".
 
-**Salida:** estudio de factibilidad + implementación del watcher + integración con el corpus del backfill + entrada del BOIB como fuente primaria oficial desde el relanzamiento.
+**Reformulación 2026-05-08.** El editor decidió en sesión: *"metemos integrar BOIB delante de backfill"* + *"realmente no tenemos presión en sacar el proyecto, la prioridad es que creemos algo relevante"* + *"vamos a validar un proyecto sin una de sus patas, que considero que puede ser el BOIB"*. Esto reordena el RT22:
+
+- El estudio se amplía de "factibilidad técnica 2-4 h" a **estudio de fondo** completo. Vive en [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md) con sub-estudio del clasificador en [`ESTUDIO-CLASIFICADOR-OFICIAL.md`](ESTUDIO-CLASIFICADOR-OFICIAL.md).
+- El estudio recoge 7 patrones de uso del BOIB que no lo convierten en "una fuente más" como prensa (espejo de promesas, detector de silencios, árbitro reactivo, materia evergreen, termómetro de cumplimiento, motor de cambio de estado, infraestructura de servicio).
+- Se cierra la frontera dura del editor: **cero supervisión jurídica humana**. La calibración del clasificador se monta con panel cruzado IA (Opus thinking + Sonnet validador + Haiku grueso), no con humano editor etiquetando.
+- El Hito 1 del frame original ([D6](DECISIONES.md)) se redefine para incluir la integración BOIB validada — no se cierra antes.
+
+**Salida:** estudio cerrado con respuesta del editor a las 3 preguntas abiertas + sub-estudio del clasificador con conjunto de prueba generado + implementación escalonada según el patrón o combinación elegida + entrada del BOIB como fuente primaria oficial desde el relanzamiento.
 
 ### RT23 · Framework de señales de tracción a 90 días post-relanzamiento ⏳ [DIFERIDO POST-LANZAMIENTO]
 Para decidir si el proyecto escala a "dedicar energía seria" o se mantiene como side-project experimental, se definen señales medibles que se evalúan 90 días después del relanzamiento.

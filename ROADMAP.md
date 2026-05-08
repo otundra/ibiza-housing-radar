@@ -70,7 +70,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 
 - **Estudio Vía A de precios** (RT12 + RT21). Matriz de fuentes, nombre público ("Observatorio de precios"), presupuesto, recomendación de cronograma.
 - **Estudio titular legal** (RT20 + LG1 + LG2). Tabla comparativa + recomendación + plan de implementación. Es el Hito 3 del frame.
-- **Estudio de factibilidad BOIB** (RT22). 2-4 h. Decide si sube a Fase 2 o queda en Fase 3.
+- **Estudio de fuentes oficiales** (RT22 reformulado 2026-05-08, [D41](DECISIONES.md)). Originalmente *"factibilidad BOIB 2-4 h"*; ampliado a estudio de fondo en [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md) + sub-estudio del clasificador en [`ESTUDIO-CLASIFICADOR-OFICIAL.md`](ESTUDIO-CLASIFICADOR-OFICIAL.md). Cierra cuando el editor responda las 3 preguntas abiertas de §18 del estudio padre. **Reformula el Hito 1** — no se cierra antes de la integración BOIB validada.
 - **Regla fundacional automatización + veracidad pública** (RT13) documentada en CLAUDE.md ✅ hecha 2026-04-21.
 
 **Tests del pipeline diferidos a RT5 ([D4](DECISIONES.md)):** cobertura en un solo bloque con fixtures reales del backfill (incluye `audit.py`, `verify.py`, `balance.py`, `extract.py`, `rescue.py`). Se ejecuta cuando haya fixtures utilizables (Fase 2). El auditor MVP se valida durante construcción con la observación en vivo W19-W22 ([D20](DECISIONES.md)).
@@ -93,7 +93,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 **En paralelo:**
 
 - **Implementación Vía A de precios** si Fase 1 dio verde. Scripts de agregación mensual + publicación inicial de 3-6 meses de datos. Página `/precios/`.
-- **BOIB watcher** si el estudio de factibilidad dio verde. Si no, queda para Fase 3.
+- **Integración del BOIB y otras fuentes oficiales** según el patrón o combinación elegida en el estudio de fondo (ver [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md) §17 para el movimiento escalonado propuesto: combinación 1+2 espejo de promesas + detector de silencios como primer movimiento). [D41](DECISIONES.md). Tres sub-estudios encadenados antes de implementación: clasificador oficial, arquitectura dual de información, prueba en seco con criterios objetivos.
 
 **Salida:** 12 ediciones retroactivas publicadas, tiers operativos, cuarentena pública, posiblemente datos propios de precios y BOIB.
 
