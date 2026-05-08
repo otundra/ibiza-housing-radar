@@ -138,6 +138,7 @@ def compute_tier(signals: dict[str, Any]) -> dict[str, Any]:
     n_fuentes: int = s.get("n_fuentes_independientes") or 1
     wayback: bool | None = s.get("wayback_snapshot")
     ia_consenso: str = s.get("ia_consenso") or "desconocido"
+    viability_con_cifra: bool | None = s.get("viability_con_cifra")
 
     # ---- Paso 1: Bloqueantes → rojo -----------------------------------------
     if url_ok is False:
@@ -174,10 +175,8 @@ def compute_tier(signals: dict[str, Any]) -> dict[str, Any]:
     if wayback is False:
         techo = _max_techo(techo, "naranja")
 
-    # Techo viability_con_cifra desactivado en V1: la señal en build_signals
-    # busca dígitos en el campo enum (viability_economic="alta/media") en vez de
-    # en statement_verbatim. Resultado: señal casi siempre False, lo que haría el
-    # techo demasiado agresivo. Pendiente arreglar build_signals. Ver ESTUDIO-TIERS.md §2.6.
+    if viability_con_cifra is False:
+        techo = _max_techo(techo, "amarillo")
 
     # ---- Verificación básica (necesaria para pasos 4-5) ----------------------
     verify_basica_ok = (

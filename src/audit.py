@@ -137,7 +137,11 @@ def build_signals(
         url_ok = verbatim.get("url_ok")
 
     viability_econ = str(proposal.get("viability_economic") or "")
-    viability_con_cifra = bool(re.search(r"\d", viability_econ))
+    if viability_econ in ("alta", "media"):
+        verbatim_text = str(proposal.get("statement_verbatim") or "")
+        viability_con_cifra: bool | None = bool(re.search(r"\d", verbatim_text))
+    else:
+        viability_con_cifra = None  # sin reclamación, no aplica
 
     whitelist_match = whitelist.get("match")
     traza_dominio_actor: bool | None = None
