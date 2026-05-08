@@ -182,19 +182,17 @@ def _build_alerts_block() -> str:
         except Exception:  # noqa: BLE001
             pass
 
-    # Cuarentena (placeholder; activar cuando exista el tier system)
-    quarantine_file = ROOT / "data" / "quarantine.json"
-    if quarantine_file.exists():
-        try:
-            q = json.loads(quarantine_file.read_text())
-            count = len(q) if isinstance(q, list) else 0
-            if count > 0:
-                alerts.append(
-                    f"• {count} propuesta{'s' if count != 1 else ''} en "
-                    f"cuarentena (baja confianza)"
-                )
-        except Exception:  # noqa: BLE001
-            pass
+    # Cuarentena — propuestas con tier rojo pendientes de revisión
+    try:
+        from src.quarantine import pending_count
+        count = pending_count()
+        if count > 0:
+            alerts.append(
+                f"• {count} propuesta{'s' if count != 1 else ''} en "
+                f"cuarentena (fuente no verificada)"
+            )
+    except Exception:  # noqa: BLE001
+        pass
 
     if not alerts:
         return ""
@@ -296,6 +294,20 @@ def main() -> int:
         run("extract")
         run("rescue")
         run("audit")
+
+        # Actualiza cuarentena con los registros recién escritos por el auditor
+        try:
+            from src.quarantine import update_quarantine, read_audit_records
+            audit_records = read_audit_records(edition)
+            result = update_quarantine(audit_records, edition)
+            if result["added"]:
+                log.info(
+                    "Cuarentena: +%d propuesta%s con tier rojo.",
+                    result["added"], "s" if result["added"] != 1 else "",
+                )
+        except Exception as exc:  # noqa: BLE001
+            log.error("Cuarentena falló (no bloqueante): %s", exc)
+
         run("generate")
 
         # Verificar la edición antes de publicar. Si falla, la borramos.
