@@ -196,7 +196,15 @@ Tipos usados:
 - `refactor` — reorganización sin cambio de comportamiento
 - `pipeline` — cambios al flujo de ingesta/clasificación/generación
 
-Todos los commits generados por el bot llevan `Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>`.
+Un commit por cambio lógico. Todos los commits generados por el bot llevan `Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>`.
+
+## Flujo git — directo a main
+
+Desde 2026-05-09 ([D43](DECISIONES.md)): **commit + push directo a `main`, sin PR ni squash-merge**. Mismo patrón que los otros 9 proyectos del editor (wallabot, monesma, panel, kangoo-fantasma, notas, actualidad-legal, landings-pymes, model-master, gear-master), todos con la misma política.
+
+Si el harness arranca la sesión en un worktree con rama `claude/*` propia, fast-forward a `main` al cierre o sincronización antes del push. Las ramas `claude/*` no son flujo de trabajo intencional; son artefactos de la herramienta y se limpian al cerrar la sesión.
+
+**Reversibilidad.** Si aparecen consecuencias previstas en el criterio de revocación de [D43](DECISIONES.md) (cambio que rompe la cara pública en producción, conflictos recurrentes en sincronización del worktree, necesidad de revisión externa), se vuelve al flujo PR + squash de antes.
 
 ## Roadmap
 

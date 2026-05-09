@@ -535,6 +535,19 @@ Las siguientes 13 decisiones se cerraron el **2026-04-21** dentro de [`ESTUDIO-D
 
 ---
 
+### D43 — Flujo git directo a `main`, sin PR ni squash-merge
+
+- **Fecha:** 2026-05-09
+- **Tema:** docs (operación del proyecto)
+- **Decisión:** este proyecto pasa al flujo "commit + push directo a `main`", sin abrir PR para cada cambio. Alineado con los otros 9 proyectos del editor (wallabot, monesma, panel, kangoo-fantasma, notas, actualidad-legal, landings-pymes, model-master, gear-master), todos con la misma política. La regla "un commit por cambio lógico" se mantiene sin cambios. Si el harness arranca la sesión en un worktree con rama `claude/*` propia, fast-forward a `main` al cierre o sincronización antes del push.
+- **Por qué:** auditoría comparativa del 2026-05-09 mostró que radar-ibiza era el único proyecto del editor con flujo PR + squash. Esto generó: (a) acumulación de ramas `claude/*` huérfanas en GitHub, (b) conflictos triviales recurrentes al re-trabajar en la misma rama tras squash-merge — el cierre del PR #7 fue ejemplo, con tres archivos en conflicto entre dos versiones del mismo trabajo en evolución, (c) ceremonia adicional para el editor sin beneficio claro mientras el proyecto sea de un solo desarrollador. La política de los 9 proyectos restantes — "push a `main` después de cada commit" — funciona sin esos problemas y es el patrón que el editor ya conoce y prefiere implícitamente.
+- **Docs afectados:** [`CLAUDE.md`](CLAUDE.md) (sección nueva "Flujo git — directo a main" + nota en "Convenciones de commits"), [`DIARIO.md`](DIARIO.md) (entrada 2026-05-09).
+- **Próxima revisión:** tras 4-6 sesiones de trabajo bajo el nuevo flujo. Evaluar si han aparecido consecuencias previstas en el criterio de revocación.
+- **Criterio de revocación:** se vuelve al flujo PR + squash si aparece cualquiera de: (a) un cambio que se publica directo a `main` y rompe la cara pública del observatorio en producción sin red de seguridad para revertir antes de que llegue al lector, (b) tres o más sesiones consecutivas con conflictos al sincronizar el worktree con `main`, (c) necesidad de revisión externa antes de mergear (colaborador externo, fase de empuje público con sanity check obligatorio, auditor jurídico con ciclo de revisión). Cualquiera de los tres dispara reapertura de D43.
+- **Estado:** vigente
+
+---
+
 ### D42 — Movimiento 1 del BOIB: arrancamos por patrones 1+2 (espejo de promesas + detector de silencios)
 
 - **Fecha:** 2026-05-09
