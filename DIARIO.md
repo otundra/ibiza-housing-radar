@@ -13,6 +13,16 @@ Reglas:
 
 ---
 
+## 2026-05-09 [docs] — D43: vuelta al flujo directo a `main`, sin PR
+
+- **Disparador.** Conflicto trivial al cerrar el PR #7 (la rama `claude/keen-bhaskara-3a8c75` tenía el commit del PR #6 ya squash-mergeado en `main`, y al subir el segundo cambio chocaron las versiones del mismo trabajo en evolución). Pregunta del editor: *"no sé por qué tantas ramas"*.
+- **Auditoría comparativa.** Revisión de los 9 proyectos restantes del editor (wallabot, monesma, panel, kangoo-fantasma, notas, actualidad-legal, landings-pymes, model-master, gear-master). **Todos trabajan directo a `main`**, sin PR. Todos los CLAUDE.md dicen lo mismo: "un commit por cambio lógico, push a `main` después de cada commit". radar-ibiza era el único con flujo PR + squash + acumulación de ramas `claude/*` huérfanas en GitHub. Casos extremos detectados de paso: monesma (10+ ramas vivas), panel (5+ ramas vivas) — pendientes globales para limpieza en sesión específica.
+- **Decisión.** [D43](DECISIONES.md) cierra el flujo PR. Próximas sesiones: commit + push directo a `main`. Si el harness crea worktree con rama `claude/*` propia, fast-forward al cierre. Política "un commit por cambio lógico" se mantiene sin cambios.
+- **Reversibilidad explícita.** El editor pidió garantía: si aparecen consecuencias se vuelve atrás. Tres criterios de revocación duros en D43: (a) cambio que rompe cara pública en producción, (b) tres o más sesiones consecutivas con conflictos en worktree, (c) necesidad de revisión externa antes de mergear.
+- **Lo que NO toca esta entrada.** Limpieza de ramas `claude/*` huérfanas en monesma y panel. Decidir destino de la rama actual `claude/keen-bhaskara-3a8c75` una vez cerrada la sesión. Apuntado como pendiente sin afectar al alcance de D43.
+
+---
+
 ## 2026-05-09 [arquitectura] — Sub-estudio de arquitectura dual de información abierto y redactado
 
 - **Disparador.** Tras [D42](DECISIONES.md) (cierre del estudio BOIB §18 con elección del Movimiento 1 = patrones 1+2), arranque del primero de los dos sub-estudios de implementación pendientes antes de tocar código. El padre estimaba 1 día de trabajo y 0,20 € de tokens; este sub-estudio sale dimensionado para esa horquilla aunque añade alcance respecto al índice inicial.
