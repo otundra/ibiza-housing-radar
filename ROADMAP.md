@@ -93,7 +93,13 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 **En paralelo:**
 
 - **Implementación Vía A de precios** si Fase 1 dio verde. Scripts de agregación mensual + publicación inicial de 3-6 meses de datos. Página `/precios/`.
-- **Integración del BOIB y otras fuentes oficiales** según el patrón o combinación elegida en el estudio de fondo (ver [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md) §17 para el movimiento escalonado propuesto: combinación 1+2 espejo de promesas + detector de silencios como primer movimiento). [D41](DECISIONES.md). Tres sub-estudios encadenados antes de implementación: clasificador oficial, arquitectura dual de información, prueba en seco con criterios objetivos.
+- **Integración del BOIB — Movimiento 1: patrones 1+2 (espejo de promesas + detector de silencios)** según el §17 del estudio de fondo [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md). [D41](DECISIONES.md), [D42](DECISIONES.md). Orden de los movimientos confirmado el 2026-05-09:
+   - **Ahora:** Movimiento 1 = combinación 1+2 (comparten infraestructura). Resultado tangible: cada propuesta tiene campo de verificación y existe `/sin-reflejo/` autónoma.
+   - **Si Movimiento 1 da señal positiva en 2 meses:** Movimiento 2 = patrón 4 (materia evergreen alimentando explica).
+   - **Diferido a 3-6 meses con corpus:** patrón 5 (termómetro de cumplimiento).
+   - **Paralelo, al ritmo del editor:** patrón 7B (canal a profesionales) cuando la fase 5 del roadmap llegue al envío directo a periodistas.
+   - **Documentados en §13 sin compromiso:** patrones 3, 4 (en su variante de árbitro), 6.
+   - **Sub-estudios encadenados antes de tocar código del Movimiento 1:** (1) clasificador oficial → ya abierto en [`ESTUDIO-CLASIFICADOR-OFICIAL.md`](ESTUDIO-CLASIFICADOR-OFICIAL.md); (2) arquitectura dual de información → pendiente abrir en sesión específica; (3) prueba en seco del clasificador con criterios objetivos (precisión ≥85%, exhaustividad ≥80%) → dentro del estudio del clasificador §9.
 
 **Salida:** 12 ediciones retroactivas publicadas, tiers operativos, cuarentena pública, posiblemente datos propios de precios y BOIB.
 

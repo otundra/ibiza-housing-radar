@@ -615,19 +615,24 @@ Los patrones 3 y 6 quedan como segundo plano: se incorporan si emerge necesidad 
 
 ## 18. Cosas no decididas — preguntas abiertas para el editor
 
-El estudio queda en este punto. Para cerrarlo y pasar a implementación, hay tres preguntas pendientes de respuesta del editor:
+> ✅ **Cerrado el 2026-05-09 con respuesta del editor.** Ver [D42](DECISIONES.md).
 
-1. **¿De los siete patrones, cuáles le parecen alineados con la idea del proyecto y cuáles forzarían el observatorio en una dirección que no quiere?**
-2. **¿La idea de "termómetro de cumplimiento institucional" — patrón 5 — encaja con la regla 3 (ningún actor excluido por filiación) o la complica?** Lectura honesta: la regla dice no excluir por filiación, no que no se mida. Pero la frontera importa.
+Las tres preguntas planteadas y las respuestas:
+
+1. **¿De los siete patrones, cuáles encajan con la idea del proyecto y cuáles forzarían el observatorio en dirección no deseada?**
+   → **De momento patrones 1 y 2 (espejo de promesas + detector de silencios).** El resto queda documentado en §13 para por si acaso, sin compromiso.
+2. **¿El "termómetro de cumplimiento institucional" — patrón 5 — encaja con la regla fundacional 3 (ningún actor excluido por filiación) o la complica?**
+   → **Volvemos a esta pregunta dentro de 3-6 meses, cuando haya corpus** para que la métrica sea robusta y el debate de frontera tenga base empírica.
 3. **¿Empezamos por la combinación 1+2 como movimiento de prueba, o prefiere explorar otro punto del catálogo primero?**
+   → **Combinación 1+2.** Es el Movimiento 1 del §17 tal cual estaba propuesto.
 
-Cuando el editor responda, este estudio cierra y se abren los sub-estudios de implementación correspondientes.
+Con esto cierra el estudio padre. Próximo paso: encadenar los sub-estudios de implementación del Movimiento 1 (arquitectura dual de información + prueba en seco del clasificador) antes de tocar código. El sub-estudio del clasificador ya tiene documento abierto en [`ESTUDIO-CLASIFICADOR-OFICIAL.md`](ESTUDIO-CLASIFICADOR-OFICIAL.md).
 
 ---
 
 ## 19. Próxima revisión y criterio de revocación
 
-- **Próxima revisión:** al recibir respuesta del editor a las tres preguntas de §18.
+- **Próxima revisión:** tras 2 meses de Movimiento 1 publicado (patrones 1+2 en cara pública). Evaluar si genera tráfico orgánico o mención externa de actores; si no, parar sin haber comprometido más.
 - **Criterio de revocación del estudio:** si en cualquier punto del recorrido la prueba empírica del Estudio 3 (prueba en seco del clasificador) no pasa los criterios objetivos de éxito (precisión ≥85%, exhaustividad ≥80% — ver `ESTUDIO-CLASIFICADOR-OFICIAL.md`), se cierra el estudio sin integración. La empresa no es heroica; es honesta. Mejor un observatorio fiable basado en prensa que un observatorio ambicioso que escupe ruido normativo.
 
 ---
