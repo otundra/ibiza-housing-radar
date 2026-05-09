@@ -535,6 +535,22 @@ Las siguientes 13 decisiones se cerraron el **2026-04-21** dentro de [`ESTUDIO-D
 
 ---
 
+### D42 — Movimiento 1 del BOIB: arrancamos por patrones 1+2 (espejo de promesas + detector de silencios)
+
+- **Fecha:** 2026-05-09
+- **Tema:** arquitectura
+- **Decisión:** cierre del estudio padre [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md) §18 con tres respuestas atadas:
+  1. **Movimiento 1 = patrones 1+2** (espejo de promesas en cada propuesta + página `/sin-reflejo/` con normativa que ningún actor recoge). Comparten infraestructura, riesgo editorial bajo, valor tangible inmediato. Es exactamente el primer movimiento del §17 del estudio padre.
+  2. **Patrón 5 (termómetro de cumplimiento institucional) diferido a 3-6 meses**, cuando haya corpus suficiente para que la métrica sea robusta y el debate sobre la frontera con la regla fundacional 3 (ningún actor excluido por filiación) tenga base empírica, no especulativa.
+  3. **Patrones 3, 4, 6, 7 documentados en §13 del estudio padre** para por si acaso. Sin compromiso de implementación; se incorporan solo si emerge necesidad concreta o si el Movimiento 1 da señal positiva y el editor decide ampliar.
+- **Por qué:** el editor abrió el estudio padre el 2026-05-08 con la idea de que el BOIB es pata estructural ([D41](#d41--boib-es-pata-estructural-del-observatorio-calibración-del-clasificador-con-panel-cruzado-ia-sin-supervisión-jurídica-humana-del-editor)) pero sin compromiso de incorporar los siete patrones a la vez. La elección 1+2 honra dos restricciones: *"no tenemos presión en sacar el proyecto, la prioridad es que creemos algo relevante"* y la frontera dura *"cero supervisión jurídica humana"*. Patrones 1 y 2 son los que mejor relación coste-retorno tienen y los más alineados con el modelo documental ya consolidado: 1 ancla cada propuesta a su rastro normativo, 2 mapea el silencio institucional como ángulo editorial propio.
+- **Docs afectados:** [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md) §18 (cerrado con respuestas) + §19 (próxima revisión = 2 meses tras publicar Movimiento 1), [`STATUS.md`](STATUS.md) (estudio cerrado → Movimiento 1 BOIB en curso), [`ROADMAP.md`](ROADMAP.md) Fase 2 (orden concreto del bloque BOIB), [`DIARIO.md`](DIARIO.md) (entrada 2026-05-09), [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) (RT22 con estado actualizado).
+- **Próxima revisión:** tras 2 meses de Movimiento 1 publicado en cara pública. Evaluar si genera tráfico orgánico o mención externa.
+- **Criterio de revocación:** si en 2 meses el Movimiento 1 no genera tráfico ni mención externa, se para sin pasar al Movimiento 2 — el ángulo BOIB no engancha y el observatorio se queda con prensa y datos primarios. Si la prueba en seco del clasificador (ver `ESTUDIO-CLASIFICADOR-OFICIAL.md` §9) no alcanza precisión ≥85% / exhaustividad ≥80% antes de tocar código, el Movimiento 1 ni siquiera arranca y se reabre el estudio padre con veredicto *"clasificador no viable"*.
+- **Estado:** vigente
+
+---
+
 ## Anexo — Cuestionario inicial del 2026-04-20 (16 cuestiones cerradas)
 
 Documento histórico [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md). El editor cerró 16 cuestiones del cuestionario inicial el 2026-04-20 al activar el modelo documental. La mayoría son hechos consumados ya aplicados al sistema, cuya información operativa vive en `CLAUDE.md`, `ARQUITECTURA.md`, `docs/metodo.md` y demás. Esta tabla queda como índice canónico; los detalles narrativos de cómo se cerró cada cuestión viven en el documento histórico. Se incluyen **sin migrar a D propias** porque son hechos consumados sin criterio de revocación significativo abierto.

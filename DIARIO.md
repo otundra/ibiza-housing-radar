@@ -13,6 +13,17 @@ Reglas:
 
 ---
 
+## 2026-05-09 [arquitectura] — Cierre del estudio BOIB §18: arrancamos por Movimiento 1 (patrones 1+2)
+
+- **Disparador.** Respuesta del editor a las tres preguntas abiertas del §18 del estudio padre [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md), abierto el 2026-05-08 con [D41](DECISIONES.md). Una sola sesión corta — el editor llegó con criterio formado tras leer el estudio.
+- **Respuestas del editor.** (1) De los siete patrones, de momento 1 y 2 (espejo de promesas + detector de silencios); el resto documentado en §13 para por si acaso, sin compromiso. (2) Patrón 5 (termómetro de cumplimiento institucional) diferido a 3-6 meses cuando haya corpus para que la métrica sea robusta y el debate sobre la frontera con la regla fundacional 3 tenga base empírica. (3) Empezamos por la combinación 1+2 como Movimiento 1, tal cual estaba propuesto en §17.
+- **Decisión registrada.** [D42](DECISIONES.md) cierra el estudio padre con las tres respuestas atadas + criterio de revocación: si en 2 meses el Movimiento 1 publicado no genera tráfico orgánico ni mención externa, se para sin pasar al Movimiento 2.
+- **Sub-estudios pendientes antes de tocar código del Movimiento 1.** (1) Clasificador oficial → ya abierto en [`ESTUDIO-CLASIFICADOR-OFICIAL.md`](ESTUDIO-CLASIFICADOR-OFICIAL.md), pendiente cerrar §9 con prueba en seco contra criterios objetivos (precisión ≥85%, exhaustividad ≥80%, tasa de cuarentena <15%). (2) Arquitectura dual de información → no abierto todavía, queda como tarea para sesión específica. Sin estos dos cerrados, no se toca código.
+- **Sincronización de docs vivos.** [`ESTUDIO-FUENTES-OFICIALES.md`](ESTUDIO-FUENTES-OFICIALES.md) §18 marcado como cerrado con las tres respuestas + §19 con próxima revisión a 2 meses post-publicación. [`STATUS.md`](STATUS.md): "Estudio de fuentes oficiales en curso" → "Movimiento 1 del BOIB en curso". [`ROADMAP.md`](ROADMAP.md) Fase 2: bloque BOIB ampliado con orden concreto de los movimientos (1+2 ahora · 4 si 1+2 da señal · 5 con corpus · 7B paralelo · 3, 4 árbitro y 6 documentados sin compromiso). [`REVISION-FASE-0.5.md`](REVISION-FASE-0.5.md) sin tocar — el RT22 ya estaba reformulado con [D41](DECISIONES.md) y la dirección del Movimiento 1 no cambia el enunciado.
+- **Lo que NO toca esta sesión.** Implementación. El estudio padre sigue obligando a encadenar los dos sub-estudios antes de cualquier código (riesgo de saltarse la prueba en seco descrito en §12 — "riesgo residual"). Tampoco se reabre el debate sobre patrón 5 hasta 3-6 meses con corpus.
+
+---
+
 ## 2026-05-08 [arquitectura] — Estudio de fuentes oficiales abierto: BOIB como pata estructural del observatorio
 
 - **Disparador.** Pregunta del editor tras cerrar PI10/PI11/PI12/RT5: *"¿esto también mira en el BOIB de Baleares y demás, o todavía no estamos haciendo eso?"*. La discusión se profundizó hasta convertirse en estudio de fondo. Decisiones del editor en la sesión: *"metemos integrar BOIB delante de backfill"*, *"no tenemos presión en sacar el proyecto, la prioridad es que creemos algo relevante"*, *"vamos a validar un proyecto sin una de sus patas, que considero que puede ser el BOIB"*.
