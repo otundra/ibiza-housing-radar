@@ -99,7 +99,7 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
    - **Diferido a 3-6 meses con corpus:** patrón 5 (termómetro de cumplimiento).
    - **Paralelo, al ritmo del editor:** patrón 7B (canal a profesionales) cuando la fase 5 del roadmap llegue al envío directo a periodistas.
    - **Documentados en §13 sin compromiso:** patrones 3, 4 (en su variante de árbitro), 6.
-   - **Sub-estudios encadenados antes de tocar código del Movimiento 1:** (1) clasificador oficial → ya abierto en [`ESTUDIO-CLASIFICADOR-OFICIAL.md`](ESTUDIO-CLASIFICADOR-OFICIAL.md); (2) arquitectura dual de información → pendiente abrir en sesión específica; (3) prueba en seco del clasificador con criterios objetivos (precisión ≥85%, exhaustividad ≥80%) → dentro del estudio del clasificador §9.
+   - **Sub-estudios encadenados antes de tocar código del Movimiento 1:** (1) clasificador oficial → ya abierto en [`ESTUDIO-CLASIFICADOR-OFICIAL.md`](ESTUDIO-CLASIFICADOR-OFICIAL.md); (2) arquitectura dual de información → abierto el 2026-05-09 en [`ESTUDIO-ARQUITECTURA-DUAL.md`](ESTUDIO-ARQUITECTURA-DUAL.md) con 18 secciones cubriendo principios, anatomías de cinco componentes, capas por canal, direccionamiento canónico y frontera con sistemas existentes; (3) prueba en seco del clasificador con criterios objetivos (precisión ≥85%, exhaustividad ≥80%) → dentro del estudio del clasificador §9.
 
 **Salida:** 12 ediciones retroactivas publicadas, tiers operativos, cuarentena pública, posiblemente datos propios de precios y BOIB.
 
