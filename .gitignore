@@ -36,3 +36,4 @@ docs/Gemfile.lock
 
 # Claude Code local
 .claude/settings.local.json
+.claude/worktrees/
