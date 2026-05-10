@@ -1,7 +1,7 @@
 {
-  "version": 2,
+  "version": 3,
   "currency": "EUR",
-  "updated_at": "2026-05-06T17:26:08Z",
+  "updated_at": "2026-05-10T01:46:42Z",
   "updated_by": "panel-sync-billing",
   "fixed_monthly": [],
   "recurring_variable": {
@@ -30,17 +30,15 @@
           "calls": 2
         }
       },
-      "as_of": "2026-05-06T17:26:08Z",
+      "as_of": "2026-05-10T01:46:42Z",
       "certainty": "exact"
     },
     "history": [
       {
         "month": "2026-04",
         "amount_eur": 6.864241,
-        "amount_original_usd": 7.461131,
         "fx_rate_used": 0.92,
         "calls": 121,
-        "source": "csv:data/costs.csv",
         "method": "sum(cost_usd) agrupado por mes (tokens × precio Anthropic)",
         "certainty": "exact",
         "frozen": true,
@@ -69,30 +67,34 @@
     ],
     "ceiling": {
       "amount_eur": 11.040000000000001,
-      "amount_original_usd": 12,
       "from_const": "soft cap 12 EUR/mes en src/costs.py v3",
       "behavior": "warn_only",
       "alert_levels": [
         0.8,
         1
-      ]
+      ],
+      "amount_original": {
+        "value": 12,
+        "currency": "USD"
+      }
     }
   },
   "one_off": [],
   "shared_attribution": {
     "claude_max": {
-      "current_month_share_eur": 39.12,
+      "current_month_share_eur": 40.22,
       "method": "weighted_by_imputed_cost",
-      "imputable_usd_period": 1004.292,
-      "imputable_pct_period": 27.76,
+      "imputable_usd_period": 1263.5594,
+      "imputable_pct_period": 28.54,
       "period_start": "2026-04-08",
       "period_end": "2026-05-12",
       "tokens_method": "sum (tokens × precio-por-modelo) en ~/.claude/projects/<id>/*.jsonl",
-      "as_of": "2026-05-06T17:26:08Z",
+      "as_of": "2026-05-10T01:46:42Z",
       "certainty": "exact",
-      "messages_period": 5914,
+      "messages_period": 6958,
       "applies": true,
-      "period_label": "2026-04-08 → 2026-05-12 (Pro 22 + Max5x 137,99 − crédito Pro 19,07)"
+      "period_label": "2026-04-08 → 2026-05-12 (Pro 22 + Max5x 137,99 − crédito Pro 19,07)",
+      "closed_periods": []
     }
   },
   "notes": [
