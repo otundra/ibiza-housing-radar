@@ -7,36 +7,40 @@ permalink: /
 <section class="dash-cover">
 <p class="dash-cover-kicker">
 <span class="dash-pulse" aria-hidden="true"></span>
-<span>Informe semanal · actualizado 2026-05-04</span>
+<span>Informe semanal · actualizado 2026-05-11</span>
 </p>
 <div class="dash-cover-grid">
 <div class="dash-cover-main">
-<p class="dash-cover-eyebrow">Semana 1 - Mayo 2026</p>
-<h1 class="dash-cover-headline">Inicio de temporada turística marcado por desalojos masivos de asentamientos y aprobación de 25 millones para vivienda pública municipal.</h1>
+<p class="dash-cover-eyebrow">Semana 2 - Mayo 2026</p>
+<h1 class="dash-cover-headline">Escándalo del local del alcalde de Ibiza reconvertido en vivienda domina la semana, mientras temporeros y guardias civiles denuncian falta de alojamiento.</h1>
 <div class="dash-cover-lectura" markdown="1">
 
-- **Lun 27** una tertulia en Radio Ibiza SER centra el debate en los desalojos y el inicio de temporada.
-- **Mar 28** sexto desalojo de un asentamiento de chabolas en Ibiza en dos años; coincide con la inauguración de la temporada turística. Mateo (concejal) atribuye al PSOE la responsabilidad de los asentamientos.
-- **Mié 29** se desaloja sin incidentes el asentamiento junto al estadio de Can Misses, ya prácticamente deshabitado. El Consell d'Eivissa anuncia el uso de un dron para localizar asentamientos. El Govern aprueba los 25 millones para vivienda pública municipal.
-- **Jue 30** se publican datos que sitúan a Ibiza con los precios de vivienda usada más altos de Baleares.
-- **Vie 1** Primero de Mayo: testimonios de temporeros sobre habitaciones paupérrimas; reportaje sobre las condiciones de Punta Xinxó.
-- **Sáb 2** Yolanda Díaz llama a una "gran movilización" por la vivienda; vecinos de Punta Xinxó reclaman solución al asentamiento.
-- **Dom 3 — Lun 4** se publican testimonios sobre estafas de alquiler y parálisis por estrés; un propietario denuncia restricciones pese a tener licencia turística.
+- **Lun 4** medios de opinión documentan el atractivo persistente de Ibiza para trabajadores de temporada pese a la falta de vivienda.
+- **Mar 5** estalla la polémica por el local propiedad del alcalde Rafael Triguero reconvertido en vivienda; Triguero niega trato de favor, defiende la legalidad y anuncia que lo alquilará a precio limitado. PSOE y Vox piden aclaraciones; recibe apoyos públicos desde su partido.
+- **Mié 6** se difunden a escala estatal los desalojos de unos 200 trabajadores que vivían en furgonetas.
+- **Jue 7** PSOE y Podemos exigen pleno extraordinario; la secretaria de Estado de Turismo acusa al PP; Prohens confirma que el local del alcalde no figura registrado como vivienda de precio limitado; el Consell de Formentera reclama más herramientas frente a vivienda vacacional y migración.
+- **Vie 8** el Govern Balear moviliza 15 millones en ayudas que incluyen vivienda vinculadas al impacto de la guerra en Oriente Medio; Christian Roig advierte del aumento del chabolismo.
+- **Sáb 9 — Dom 10** el Obispo de Ibiza advierte contra el abuso en la vivienda; se publica que los guardias civiles forzados a venir a Ibiza solo tendrán diez días en julio para encontrar vivienda.
+- **Lun 11** se difunden reportajes sobre estafas en alquileres y dificultades de propietarios para recuperar pisos.
 
 </div>
 <div class="dash-cover-ctas">
-<a href="{{ site.baseurl }}/ediciones/2026-w19/" class="dash-cta-primary">Leer informe completo →</a>
-<a href="#senales" class="dash-cta-secondary">Ver las 8 señales ↓</a>
+<a href="{{ site.baseurl }}/ediciones/2026-w20/" class="dash-cta-primary">Leer informe completo →</a>
+<a href="#senales" class="dash-cta-secondary">Ver las 16 señales ↓</a>
 </div>
 </div>
 <aside class="dash-cover-aside">
 <section class="dash-aside-block">
-<p class="dash-aside-kicker">1 propuesta documentada</p>
+<p class="dash-aside-kicker">2 propuestas documentadas</p>
 <h2 class="dash-aside-title">Qué se ha propuesto esta semana</h2>
 <ol class="dash-aside-list dash-aside-propuestas">
 <li>
 <span class="dash-aside-num">01</span>
-<a href="{{ site.baseurl }}/ediciones/2026-w19/#1-25-millones-para-que-los-municipios-de-eivissa-construyan-vivienda-pública">25 millones para que los municipios de Eivissa construyan vivienda pública</a>
+<a href="{{ site.baseurl }}/ediciones/2026-w20/#1-pleno-extraordinario-para-aclarar-las-irregularidades-en-la-vivienda-del-alcalde">Pleno extraordinario para aclarar las irregularidades en la vivienda del alcalde</a>
+</li>
+<li>
+<span class="dash-aside-num">02</span>
+<a href="{{ site.baseurl }}/ediciones/2026-w20/#2-más-herramientas-para-proteger-formentera-frente-a-vivienda-vacacional-migración-y-deterioro-del-litoral">Más herramientas para proteger Formentera frente a vivienda vacacional, migración y deterioro del litoral</a>
 </li>
 </ol>
 <a href="#propuestas" class="dash-aside-more">Detalle de las propuestas ↓</a>
@@ -46,11 +50,11 @@ permalink: /
 <h2 class="dash-aside-title">A vigilar</h2>
 <div class="dash-aside-vigilar" markdown="1">
 
-- Calendario y reparto concreto de los 25 millones aprobados por el Govern entre los cinco municipios de Eivissa.
-- Despliegue efectivo del dron del Consell d'Eivissa y posibles nuevos desalojos derivados de su uso.
-- Reacciones de patronales, sindicatos y ayuntamientos a los testimonios de temporeros publicados al inicio de temporada.
-- Posible concreción de la "gran movilización" anunciada por Yolanda Díaz y su eventual aterrizaje en Baleares.
-- Evolución del asentamiento de Punta Xinxó tras las protestas vecinales del sábado 2.
+- Convocatoria efectiva (o rechazo) del pleno extraordinario solicitado por PSOE y Podemos sobre la vivienda del alcalde.
+- Eventual registro formal de la vivienda del alcalde como vivienda de precio limitado tras el anuncio público.
+- Concreción del reparto de los 15 millones en ayudas aprobados por el Govern y peso específico del capítulo de vivienda.
+- Respuesta institucional al plazo de diez días de los guardias civiles destinados a Ibiza en julio.
+- Concreción legislativa de las «herramientas» reclamadas por el Consell de Formentera frente a vivienda vacacional y migración.
 
 </div>
 </section>
@@ -61,19 +65,27 @@ permalink: /
 <section class="dash-senales" id="senales">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Señales detectadas</p>
-<h2>8 hechos publicados esta semana</h2>
+<h2>16 hechos publicados esta semana</h2>
 <p class="dash-section-lead">Cada punto enlaza a la noticia original en su medio. Sin resumen sesgado: cifras y fechas tal como se publicaron.</p>
 </header>
 <div class="dash-senales-list" markdown="1">
 
-- El Govern Balear aprueba 25 millones de euros para que los municipios de Eivissa construyan vivienda pública o trasladen residuos *(dato oficial)* ([fuente](https://www.msn.com/es-es/dinero/bien-inmueble/luz-verde-a-25-millones-de-euros-para-que-los-municipios-de-eivissa-construyan-vivienda-p%C3%BAblica-o-trasladen-residuos/ar-AA21CPfB?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1&bundles=feat-es2020-c)).
-- Se desaloja sin incidentes el asentamiento junto al estadio de Can Misses, con un centenar de chabolas *(estimación periodística)*, segundo desalojo masivo en 10 días ([fuente](https://okdiario.com/baleares/desalojado-sin-incidentes-asentamiento-centenar-chabolas-ibiza-segundo-10-dias-16699013)).
-- Un asentamiento en Ibiza alberga más de 100 personas *(estimación periodística)* en condiciones insalubres, según reportaje sobre Punta Xinxó ([fuente](https://www.periodicodeibiza.es/cronica-negra/local/2026/05/01/2620907/animales-muertos-basura-fuertes-olores-asi-viven-mas-100-personas-asentamiento-ibiza.html)).
-- El Consell d'Eivissa anuncia el despliegue de un dron para detectar asentamientos ilegales y pernoctación de caravanas en zonas boscosas ([fuente](https://www.diariodeibiza.es/ibiza/2026/04/29/dron-asentamientos-ilegales-pernoctacion-ibiza-129664600.html)).
-- Yolanda Díaz convoca una "gran movilización" por la vivienda en España ([fuente](https://www.diariodeibiza.es/economia/2026/05/02/yolanda-diaz-gran-batalla-carlos-cuerpo-economia-social-129770327.html)).
-- Ibiza vuelve a liderar los precios más altos de vivienda usada en Baleares; la vivienda en Baleares es hasta 30 veces más cara *(estimación periodística)* que en zonas del interior de España ([fuente Ibiza](https://www.diariodeibiza.es/ibiza/2026/04/30/ibiza-vuelve-liderar-precios-vivienda-129694540.html), [fuente Baleares](https://www.eldebate.com/espana/baleares/20260430/vivienda-baleares-hasta-30-veces-cara-interior-espana_412772.html)).
-- El concejal Mateo declara que los asentamientos ilegales en Ibiza "son culpa del PSOE" ([fuente](https://cadenaser.com/baleares/2026/04/28/mateo-dice-que-los-asentamientos-ilegales-en-ibiza-son-culpa-del-psoe-radio-ibiza/)).
-- Trabajadores de temporada denuncian condiciones extremas: parálisis facial por estrés en la búsqueda de vivienda, habitaciones compartidas por tres personas y comparaciones con campos de refugiados ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/03/2621441/paralizo-media-cara-como-consecuencia-del-estres-encontrar-vivienda-ibiza.html), [Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/05/01/mayo-ibiza-dan-habitacion-pauperrima-129754676.html), [Pitaluga](https://www.diariodeibiza.es/ibiza/2026/04/28/peor-asentamientos-ibiza-campos-refugiados-129601841.html)).
+- El alcalde de Ibiza, Rafael Triguero, defiende la legalidad de su vivienda y declara: «En todo momento he cumplido la ley escrupulosamente» ([fuente](https.www.periodicodeibiza.es/pitiusas/ibiza/2026/05/05/2623191/alcalde-ibiza-defiende-legalidad-vivienda-todo-momento-cumplido-ley-escrupulosamente.html)).
+- La presidenta del Govern, Marie Prohens, confirma que el local del alcalde de Ibiza no ha sido registrado como vivienda de precio limitado ([fuente](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/07/2624849/prohens-confirma-local-del-alcalde-ibiza-sido-registrado-como-vivienda-precio-limitado.html)).
+- PSOE y Podemos exigen un pleno extraordinario en el Ayuntamiento de Ibiza para aclarar las irregularidades sobre la vivienda del alcalde ([fuente](https://www.diariodeibiza.es/ibiza/2026/05/07/psoe-exigen-pleno-extraordinario-ibiza-129960568.html)).
+- Vox exige aclaraciones por posibles irregularidades en la vivienda de precio limitado del alcalde ([fuente](https://www.democrata.es/actualidad/vox-exige-aclaraciones-por-posibles-irregularidades-en-la-vivienda-de-precio-limitado-del-alcalde-de-ibiza/)).
+- La secretaria de Estado de Turismo y número 2 del PSIB acusa al PP de que sus políticas de vivienda sirven para que el alcalde de Ibiza incremente su patrimonio ([fuente](https://www.diariodeibiza.es/ibiza/2026/05/07/secretaria-turismo-numero-2-psoe-129956897.html)).
+- El Consell de Formentera reclama más herramientas para proteger un territorio «especialmente frágil» frente a la vivienda vacacional, la migración y el deterioro del litoral ([fuente](https://www.diariodeibiza.es/ibiza/2026/05/07/formentera-reclama-herramientas-proteger-territorio-129967430.html)).
+- El Govern Balear moviliza 15 millones en ayudas a dependencia, conciliación y vivienda *(dato oficial)* vinculadas al impacto de la guerra en Oriente Medio ([fuente](https://www.eldebate.com/espana/baleares/20260508/baleares-moviliza-15-millones-ayudas-dependencia-conciliacion-vivienda-guerra-oriente-medio_415595.html)).
+- Los guardias civiles destinados forzosamente a Ibiza tienen solo diez días en julio para encontrar vivienda ([fuente](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/10/2626281/guardias-civiles-obligados-venir-ibiza-solo-tendran-diez-dias-para-encontrar-vivienda-pleno-mes-julio.html)).
+- El Obispo de Ibiza advierte a los fieles que «no pueden abusar con la vivienda» ([fuente](https://www.diariodeibiza.es/ibiza/2026/05/10/obispo-ibiza-positivo-rosalia-hablen-130014566.html)).
+- Christian Roig advierte que «va a aumentar el chabolismo» en Ibiza y que prometer lo contrario «es engañar a la gente» ([fuente](https://www.diariodeibiza.es/ibiza/2026/05/08/christian-roig-vivienda-chabolas-ibiza-129982695.html)).
+- Reportajes nacionales documentan el desalojo de unos 200 trabajadores *(estimación periodística)* que vivían en furgonetas por no poder permitirse alquiler ([Motorpasión](https://www.motorpasion.com/furgonetas-y-caravanas/ibiza-desaloja-a-200-personas-que-vivian-sus-furgonetas-cierra-puerta-a-campers-eran-trabajadores-que-no-se-pueden-permitir-piso), [Xataka](https://www.xataka.com/magnet/ibiza-ha-desalojado-a-200-personas-que-vivian-campers-caravanas-su-gran-problema-que-trabajadores-clave-para-isla), [Noticiastrabajo](https://noticiastrabajo.huffingtonpost.es/economia/ibiza-deja-en-la-calle-a-200-trabajadores-que-sobrevivian-en-furgonetas-por-no-poder-permitirse-pagarse-un-alquiler/)).
+- El registro único de alquiler vacacional bloquea a propietarios de Ibiza con licencia ya concedida ([fuente](https://www.tourinews.es/resumen-de-prensa/notas-de-prensa-destinos-turismo/ibiza-alquiler-vacacional-registro-unico-licencia-propietarios-bloqueados_4492330_102.html)).
+- Sin novedad esta semana sobre el calendario y reparto concreto de los 25 millones aprobados por el Govern para los municipios de Eivissa.
+- Sin novedad esta semana sobre el despliegue efectivo del dron del Consell d'Eivissa anunciado la semana anterior.
+- Sin novedad esta semana sobre la concreción de la "gran movilización" anunciada por Yolanda Díaz.
+- Sin novedad esta semana sobre la evolución del asentamiento de Punta Xinxó tras las protestas vecinales.
 
 </div>
 </section>
@@ -81,16 +93,23 @@ permalink: /
 <section class="dash-propuestas" id="propuestas">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Propuestas documentadas</p>
-<h2>1 propuesta en circulación esta semana</h2>
+<h2>2 propuestas en circulación esta semana</h2>
 <p class="dash-section-lead">Cada propuesta la ha formulado un actor con nombre, con fuente verificable. El observatorio no genera propuestas propias.</p>
 </header>
 <div class="dash-propuestas-grid">
 <article class="dash-propuesta">
 <div class="dash-propuesta-num">01</div>
-<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w19/#1-25-millones-para-que-los-municipios-de-eivissa-construyan-vivienda-pública">25 millones para que los municipios de Eivissa construyan vivienda pública</a></h3>
+<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w20/#1-pleno-extraordinario-para-aclarar-las-irregularidades-en-la-vivienda-del-alcalde">Pleno extraordinario para aclarar las irregularidades en la vivienda del alcalde</a></h3>
 <dl class="dash-propuesta-meta">
 </dl>
-<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w19/#1-25-millones-para-que-los-municipios-de-eivissa-construyan-vivienda-pública">Ver ficha y fuentes →</a>
+<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w20/#1-pleno-extraordinario-para-aclarar-las-irregularidades-en-la-vivienda-del-alcalde">Ver ficha y fuentes →</a>
+</article>
+<article class="dash-propuesta">
+<div class="dash-propuesta-num">02</div>
+<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w20/#2-más-herramientas-para-proteger-formentera-frente-a-vivienda-vacacional-migración-y-deterioro-del-litoral">Más herramientas para proteger Formentera frente a vivienda vacacional, migración y deterioro del litoral</a></h3>
+<dl class="dash-propuesta-meta">
+</dl>
+<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w20/#2-más-herramientas-para-proteger-formentera-frente-a-vivienda-vacacional-migración-y-deterioro-del-litoral">Ver ficha y fuentes →</a>
 </article>
 </div>
 </section>
@@ -103,11 +122,11 @@ permalink: /
 </header>
 <div class="dash-vigilar-list" markdown="1">
 
-- Calendario y reparto concreto de los 25 millones aprobados por el Govern entre los cinco municipios de Eivissa.
-- Despliegue efectivo del dron del Consell d'Eivissa y posibles nuevos desalojos derivados de su uso.
-- Reacciones de patronales, sindicatos y ayuntamientos a los testimonios de temporeros publicados al inicio de temporada.
-- Posible concreción de la "gran movilización" anunciada por Yolanda Díaz y su eventual aterrizaje en Baleares.
-- Evolución del asentamiento de Punta Xinxó tras las protestas vecinales del sábado 2.
+- Convocatoria efectiva (o rechazo) del pleno extraordinario solicitado por PSOE y Podemos sobre la vivienda del alcalde.
+- Eventual registro formal de la vivienda del alcalde como vivienda de precio limitado tras el anuncio público.
+- Concreción del reparto de los 15 millones en ayudas aprobados por el Govern y peso específico del capítulo de vivienda.
+- Respuesta institucional al plazo de diez días de los guardias civiles destinados a Ibiza en julio.
+- Concreción legislativa de las «herramientas» reclamadas por el Consell de Formentera frente a vivienda vacacional y migración.
 
 </div>
 </section>
@@ -115,9 +134,14 @@ permalink: /
 <section class="dash-archivo">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Informes anteriores</p>
-<h2>2 ediciones publicadas antes de esta</h2>
+<h2>3 ediciones publicadas antes de esta</h2>
 </header>
 <ol class="dash-archivo-list">
+<li>
+<time datetime="2026-05-04">2026-05-04</time>
+<h3><a href="{{ site.baseurl }}/ediciones/2026-w19/">Semana 1 - Mayo 2026</a></h3>
+<p>Inicio de temporada turística marcado por desalojos masivos de asentamientos y aprobación de 25 millones para vivienda pública municipal.</p>
+</li>
 <li>
 <time datetime="2026-04-27">2026-04-27</time>
 <h3><a href="{{ site.baseurl }}/ediciones/2026-w18/">Semana 5 - Abril 2026</a></h3>

@@ -1,0 +1,135 @@
+{
+  "proposal_id": "2026-w20-003",
+  "week": "2026-w20",
+  "created_at": "2026-05-11T08:26:05Z",
+  "tier": {
+    "value": "rojo",
+    "reason": "traza_dominio_actor=False + whitelist=debilita",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": false,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 1,
+      "whitelist_match": "debilita",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-05-11T08:26:05Z",
+      "proposal": {
+        "actor": "Alcalde de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El alcalde anuncia que alquilará su vivienda a precio limitado.",
+        "statement_verbatim": "anuncia que la alquilará a precio limitado",
+        "url_source": "https://www.eldebate.com/espana/baleares/20260505/alcalde-ibiza-niega-trato-favor-vivienda-anuncia-alquilara-precio-limitado_414287.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-05-11T08:26:05Z",
+      "proposal": {
+        "actor": "Alcalde de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El alcalde de Ibiza niega haber recibido un trato de favor en la adquisición de su vivienda y anuncia que la pondrá en alquiler a precio limitado.",
+        "statement_verbatim": "El alcalde de Ibiza niega un trato de favor en su vivienda y anuncia que la alquilará a precio limitado",
+        "url_source": "https://www.eldebate.com/espana/baleares/20260505/alcalde-ibiza-niega-trato-favor-vivienda-anuncia-alquilara-precio-limitado_414287.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "inmediato",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [
+          "PSOE",
+          "Podemos"
+        ],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "statement_verbatim",
+          "a": "anuncia que la alquilará a precio limitado",
+          "b": "El alcalde de Ibiza niega un trato de favor en su vivienda y anuncia que la alquilará a precio limitado",
+          "reason": "ratio_0.58_lt_0.85"
+        },
+        {
+          "field": "horizon",
+          "a": "corto_plazo",
+          "b": "inmediato",
+          "reason": "diff_menor"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 1,
+        "urls": [
+          "https://www.eldebate.com/espana/baleares/20260505/alcalde-ibiza-niega-trato-favor-vivienda-anuncia-alquilara-precio-limitado_414287.html"
+        ],
+        "dominios": [
+          "eldebate.com"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "debilita",
+        "domain": "eldebate.com",
+        "known_actor": false,
+        "whitelist_miss": true
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-05-11T08:26:05Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": false,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 3979,
+    "heuristics_ms": 317,
+    "verify_ms": 0,
+    "total_ms": 4296
+  }
+}

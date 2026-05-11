@@ -6,7 +6,7 @@ permalink: /propuestas/
 
 <section class="prop-intro">
 <p class="prop-intro-kicker">Mapa completo del observatorio</p>
-<p class="prop-intro-count"><strong>6 propuestas documentadas · 6 actores distintos</strong></p>
+<p class="prop-intro-count"><strong>9 propuestas documentadas · 9 actores distintos</strong></p>
 <p class="prop-intro-lead">Cada propuesta la formuló un actor con nombre y fuente verificable. Aquí están todas las que el observatorio ha registrado desde su primera edición, agrupadas por estado actual.</p>
 </section>
 
@@ -14,7 +14,8 @@ permalink: /propuestas/
 <ul class="prop-nav-list">
 <li><a href="#aprobada">Aprobada <span class="prop-nav-count">1</span></a></li>
 <li><a href="#en-debate">En debate <span class="prop-nav-count">2</span></a></li>
-<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">3</span></a></li>
+<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">4</span></a></li>
+<li><a href="#propuesta">Propuesta <span class="prop-nav-count">2</span></a></li>
 </ul>
 </nav>
 
@@ -69,7 +70,7 @@ permalink: /propuestas/
 <section class="prop-state" id="en-movimiento">
 <header class="prop-state-header">
 <h2>En movimiento</h2>
-<p class="prop-state-count">3 propuestas</p>
+<p class="prop-state-count">4 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -101,6 +102,45 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w18/">2026-W18</a></dd>
 </dl>
 <a class="prop-card-source" href="https://www.noudiari.es/local-ibiza/rafael-triguero-alcalde-de-ibiza-sobre-asentamientos-no-vamos-a-seguir-tolerando-esta-forma-de-vida-en-la-ciudad/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Alcalde de Ibiza <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El alcalde anuncia que alquilará su vivienda a precio limitado.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w20/">2026-W20</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.eldebate.com/espana/baleares/20260505/alcalde-ibiza-niega-trato-favor-vivienda-anuncia-alquilara-precio-limitado_414287.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+</div>
+</section>
+
+<section class="prop-state" id="propuesta">
+<header class="prop-state-header">
+<h2>Propuesta</h2>
+<p class="prop-state-count">2 propuestas</p>
+</header>
+<div class="prop-state-grid">
+<article class="prop-card">
+<h3 class="prop-card-actor">Consell de Formentera <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">Formentera reclama más herramientas para proteger su territorio ante la vivienda, la migración y el deterioro del litoral.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Normativa</dd>
+<dt>Horizonte</dt><dd>Estructural</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w20/">2026-W20</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/05/07/formentera-reclama-herramientas-proteger-territorio-129967430.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">PSOE, Podemos <span class="prop-card-type">· Coalición intersectorial</span></h3>
+<p class="prop-card-summary">PSOE y Podemos exigen un pleno extraordinario en Ibiza para aclarar las irregularidades del alcalde en vivienda a precio limitado.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Aplicación de norma</dd>
+<dt>Horizonte</dt><dd>Inmediato</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w20/">2026-W20</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/05/07/psoe-exigen-pleno-extraordinario-ibiza-129960568.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>

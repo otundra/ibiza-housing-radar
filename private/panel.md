@@ -1,12 +1,12 @@
 # Tablero interno — monitorización del proyecto
 
-*Archivo privado. No se publica en la web. Última actualización: 2026-05-05 19:56 UTC.*
+*Archivo privado. No se publica en la web. Última actualización: 2026-05-11 08:27 UTC.*
 
 Agrega las señales que otros módulos ya producen: gasto del mes, autoevaluación, verificación, decisiones con revisión pendiente, última edición. No genera datos propios. Ver decisión D14.
 
 ## Costes del mes
 
-- **Gasto actual:** 0.60 € (blando 12 € / duro 50 €) — 🟢 Verde (<6 €) — silencio
+- **Gasto actual:** 1.36 € (blando 12 € / duro 50 €) — 🟢 Verde (<6 €) — silencio
 - **Dashboard detallado:** [`costs.md`](costs.md)
 
 ## Decisiones con revisión pendiente
@@ -19,24 +19,24 @@ _Ninguna decisión vencida ni próxima. Siguiente revisión: **Ritual de aprendi
 
 ## Última edición publicada
 
-- `2026-w19`
+- `2026-w20`
 
 ## Histórico de propuestas
 
-- **Total acumulado:** 6
+- **Total acumulado:** 9
 
 ## Verificación (última ejecución)
 
 - **Resultado:** ✅ sin fallos bloqueantes
-- **URLs comprobadas:** 13, caídas: 0
-- **Actores comprobados:** 2, no trazables: 0
-- **Avisos blandos:** 0
+- **URLs comprobadas:** 15, caídas: 0
+- **Actores comprobados:** 0, no trazables: 0
+- **Avisos blandos:** 1
 
 ## Autoevaluación (último corte)
 
-## 2026-W19 · 2026-05-04 07:50 UTC
-- Scores bajos: rigor=5, balance=6
-- Detalle: [2026-w19.md](private/self-review/2026-w19.md)
+## 2026-W20 · 2026-05-11 08:27 UTC
+- Scores bajos: rigor=5, trazabilidad=6
+- Detalle: [2026-w20.md](private/self-review/2026-w20.md)
 
 ## Salud sistémica (termómetro de complejidad)
 
@@ -44,8 +44,10 @@ Termómetro orientativo para detectar pozo de modificación infinita. Disparador
 
 - **Reglas duras adicionales en el prompt del generador:** 17
 - **Dimensiones del revisor (self-review):** 6
-- **Decisiones vigentes en `DECISIONES.md`:** 21
-- **Candidatas a retirar:** ninguna detectada con la heurística actual (ventana 4 ediciones).
+- **Decisiones vigentes en `DECISIONES.md`:** 41
+- **Candidatas a retirar** (dimensiones con nota constante en últimas 4 ediciones):
+    - claridad (constante en 9/10 durante 4 ediciones)
+    - cobertura (constante en 8/10 durante 4 ediciones)
 
 ---
 

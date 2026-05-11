@@ -59,5 +59,66 @@
         "exception": null
       }
     ]
+  },
+  {
+    "ts": "2026-05-11T08:25:07.424108+00:00",
+    "feeds": [
+      {
+        "name": "Google News · Ibiza vivienda",
+        "status": "ok",
+        "entries_total": 100,
+        "entries_kept": 79,
+        "entries_in_window": 37,
+        "exception": null
+      },
+      {
+        "name": "Google News · Ibiza trabajadores temporada",
+        "status": "ok",
+        "entries_total": 41,
+        "entries_kept": 31,
+        "entries_in_window": 2,
+        "exception": null
+      },
+      {
+        "name": "Google News · Consell Eivissa vivienda",
+        "status": "ok",
+        "entries_total": 45,
+        "entries_kept": 39,
+        "entries_in_window": 0,
+        "exception": null
+      },
+      {
+        "name": "Google News · Ibiza desahucio caravanas",
+        "status": "ok",
+        "entries_total": 100,
+        "entries_kept": 92,
+        "entries_in_window": 5,
+        "exception": null
+      },
+      {
+        "name": "Diario de Ibiza · Pitiusas",
+        "status": "malformed",
+        "entries_total": 0,
+        "entries_kept": 0,
+        "entries_in_window": 0,
+        "exception": "<unknown>:2:0: syntax error"
+      },
+      {
+        "name": "Periódico de Ibiza · Ibiza",
+        "status": "malformed",
+        "entries_total": 0,
+        "entries_kept": 0,
+        "entries_in_window": 0,
+        "exception": "<unknown>:3:26: not well-formed (invalid token)"
+      },
+      {
+        "name": "Nou Diari · Eivissa i Formentera",
+        "status": "ok",
+        "entries_total": 10,
+        "entries_kept": 2,
+        "entries_in_window": 2,
+        "exception": null
+      }
+    ]
   }
 ]
