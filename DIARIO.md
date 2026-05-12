@@ -13,6 +13,20 @@ Reglas:
 
 ---
 
+## 2026-05-12 [arquitectura] — Monitor diario de feeds RSS + descubrimiento automático de URL caída
+
+- **Disparador.** Resumen de Telegram del lunes W20 con dos avisos: `Diario de Ibiza · Pitiusas` y `Periódico de Ibiza · Ibiza` llevaban 2 ejecuciones seguidas con `<unknown>:N:N: syntax error / not well-formed`. Reacción inicial del editor: *"si que es grabe. son las dos principales fuentes de noticias"*. Lo importante no era el fallo puntual sino el patrón: el monitor existente (`src/sources_health.py`) opera dentro del cron semanal y dispara solo tras 2 ejecuciones seguidas — eso son **dos semanas de retraso** entre la caída real y el aviso. Inaceptable para fuentes primarias.
+- **Diagnóstico técnico.** Las dos URLs antiguas devolvían 404. Los sitios habían migrado: Prensa Ibérica (Diario) ahora sirve por IDs numéricos (`/rss/section/{id}` o `/rss/microsite/{id}`); Periódico de Ibiza cambió a `/pitiusas/{lugar}.rss` (formato Atom). El parser leía la página HTML de error 404 como si fuera XML, de ahí el syntax error en línea 2-3.
+- **Fix urgente (commit `545ab0c`).** Las dos URLs nuevas validadas con `feedparser` (bozo=False, 10 y 40 entradas, frescura 7d y 0d). [`src/sources.yaml`](src/sources.yaml) actualizado con comentario explicativo y fecha de migración.
+- **Sistema de detección y recuperación (commit `d55f52d`).** [D44](DECISIONES.md). Nuevo módulo [`src/feed_check.py`](src/feed_check.py) + workflow [`.github/workflows/feed-health.yml`](.github/workflows/feed-health.yml) con cron diario 06:00 UTC. Hace dos cosas:
+  - **Chequeo técnico:** HTTP 2xx + XML parseable + ≥1 entrada + última entrada ≤60 días. Estados: `ok | stale | empty | malformed | http_error | network_error`.
+  - **Descubrimiento automático cuando un nativo cae:** tres estrategias acumulativas. (1) Home + `<link rel="alternate">` con type RSS/Atom. (2) Rutas comunes (`/feed`, `/rss`, `/feed.rss`, `/rss.xml`, `/feed.html`, `/rss.html`). (3) Páginas índice del propio sitio, parseando enlaces a feeds — incluido el patrón "tabla con icono" de Prensa Ibérica (`/rss/section/{id}`). Ranking por coincidencia con la sección del nombre (lo que va tras `·`), con bonus si el match aparece en la parte específica del título (tras separador `:` o `—`). Top 3 candidatos validados al editor por Telegram. **No reemplaza nada solo** — el editor decide y edita a mano (regla 5 del proyecto + `feedback_esperar_ok_antes_de_editar`).
+- **Validación empírica.** Pruebas locales con `feed_check --dry`: 7/7 feeds actuales en `ok`. Caída forzada con las URLs antiguas (404 reales) y con URL inventada para Nou Diari: en los 3 casos el **candidato #1 acierta** con la URL correcta. Cero coste IA (solo httpx + feedparser + regex local).
+- **Por qué se mantiene `sources_health.py`.** El monitor diario es de **disponibilidad técnica** (¿está vivo?), el semanal es de **calidad editorial** (¿baja la frecuencia, sale empty inesperado, cambia estructura?). Cubren ángulos distintos y se respaldan.
+- **Próxima revisión.** Tras 4 semanas de monitor activo (~30 ejecuciones diarias). Criterios de revocación duros en D44: >1 falso positivo/semana sostenido, candidatos nunca aciertan en caso real, fricción operativa > valor de detección temprana.
+
+---
+
 ## 2026-05-09 [docs] — D43: vuelta al flujo directo a `main`, sin PR
 
 - **Disparador.** Conflicto trivial al cerrar el PR #7 (la rama `claude/keen-bhaskara-3a8c75` tenía el commit del PR #6 ya squash-mergeado en `main`, y al subir el segundo cambio chocaron las versiones del mismo trabajo en evolución). Pregunta del editor: *"no sé por qué tantas ramas"*.

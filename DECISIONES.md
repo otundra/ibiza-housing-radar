@@ -564,6 +564,19 @@ Las siguientes 13 decisiones se cerraron el **2026-04-21** dentro de [`ESTUDIO-D
 
 ---
 
+### D44 — Monitor diario de salud de feeds RSS + descubrimiento automático de URL alternativa
+
+- **Fecha:** 2026-05-12
+- **Tema:** arquitectura
+- **Decisión:** se añade un segundo workflow de GitHub Actions (`feed-health.yml`) que se ejecuta cada día a las 06:00 UTC y comprueba la disponibilidad técnica de cada feed declarado en [`src/sources.yaml`](src/sources.yaml) (HTTP 2xx + XML parseable + ≥1 entrada + última entrada ≤60 días). Para los feeds `kind: native` que estén caídos, el monitor intenta descubrir URLs alternativas inspeccionando el propio sitio (`<link rel="alternate">` en la home, rutas comunes como `/feed`, `/rss`, `/feed.rss`, y páginas índice tipo `/feed.html`, `/rss.html` con su tabla de feeds por sección). Los candidatos validados se rankean por coincidencia con la sección del nombre original y se proponen por Telegram. El monitor **nunca toca `sources.yaml` por su cuenta**: la decisión final es del editor, que edita el archivo a mano tras recibir el aviso.
+- **Por qué:** el monitor de salud existente (`src/sources_health.py`) opera dentro del cron semanal del lunes y dispara alerta solo tras dos ejecuciones consecutivas con fallo, lo que significa **dos semanas de retraso** entre la caída real y el aviso. Esta latencia es la causa directa del incidente del 2026-05-12: los feeds de Diario de Ibiza y Periódico de Ibiza llevaban caídos al menos desde W18 (404 por cambio de estructura del sitio) y solo se detectó al recibir el resumen del lunes W20. El observatorio depende de prensa local primaria — perder esa cobertura sin detección rápida degrada la calidad editorial aunque los Google News rellenen. El nuevo monitor reduce el ciclo a 24h y, cuando es posible, propone la URL nueva ya validada, eliminando el trabajo manual de localizarla. Coste de ejecución: cero euros (sin llamadas IA, solo HTTP + parseo local).
+- **Docs afectados:** [`src/feed_check.py`](src/feed_check.py) (módulo nuevo), [`.github/workflows/feed-health.yml`](.github/workflows/feed-health.yml) (workflow nuevo), [`CLAUDE.md`](CLAUDE.md) (stack), [`STATUS.md`](STATUS.md) (en operación), [`DIARIO.md`](DIARIO.md) (entrada 2026-05-12).
+- **Próxima revisión:** tras 4 semanas de monitor activo (≈30 ejecuciones diarias). Evaluar: tasa de falsos positivos (avisos por hiccups puntuales que se resuelven solos al día siguiente), calidad del ranking de candidatos cuando un feed se cae de verdad, fricción operativa con Telegram.
+- **Criterio de revocación:** el monitor se simplifica o se retira si: (a) genera más de 1 falso positivo por semana de media durante 4 semanas, (b) los candidatos descubiertos automáticamente nunca aciertan en un caso real de caída (proponiendo siempre feeds inadecuados), (c) el editor decide que el coste operativo de revisar las propuestas excede el valor de detección temprana. En cualquier caso, `sources_health.py` semanal queda como respaldo y no se toca.
+- **Estado:** vigente
+
+---
+
 ## Anexo — Cuestionario inicial del 2026-04-20 (16 cuestiones cerradas)
 
 Documento histórico [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md). El editor cerró 16 cuestiones del cuestionario inicial el 2026-04-20 al activar el modelo documental. La mayoría son hechos consumados ya aplicados al sistema, cuya información operativa vive en `CLAUDE.md`, `ARQUITECTURA.md`, `docs/metodo.md` y demás. Esta tabla queda como índice canónico; los detalles narrativos de cómo se cerró cada cuestión viven en el documento histórico. Se incluyen **sin migrar a D propias** porque son hechos consumados sin criterio de revocación significativo abierto.

@@ -78,6 +78,8 @@ Publicadas en `/politica-editorial`. Vinculantes y no negociables:
 │   ├── notify.py               # Alertas Telegram + fallback issue GitHub
 │   ├── panel.py                # Tablero interno privado (agrega señales — D14)
 │   ├── decisions_watch.py      # Aviso semanal de decisiones vencidas o próximas (D14)
+│   ├── sources_health.py       # Salud de feeds (semanal, dentro del cron principal)
+│   ├── feed_check.py           # Monitor diario de feeds + descubrimiento de URL (D44)
 │   ├── report.py               # Orquestador end-to-end
 │   └── sources.yaml            # Feeds + keywords + ventana temporal
 ├── data/
@@ -101,6 +103,7 @@ Publicadas en `/politica-editorial`. Vinculantes y no negociables:
 │   └── panel.md                # Tablero interno (regenerado cada lunes por panel.py — D14)
 ├── .github/workflows/
 │   ├── weekly-report.yml       # Cron lunes 05:00 UTC
+│   ├── feed-health.yml         # Cron diario 06:00 UTC: monitor de feeds (D44)
 │   └── validate-key.yml        # Test manual de la API key
 ├── requirements.txt
 ├── DIARIO.md                   # Diario del proyecto (hitos, decisiones, cambios)
