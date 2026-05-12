@@ -1,0 +1,53 @@
+name: Feed health check
+
+# Monitor diario de disponibilidad de los feeds RSS declarados en
+# src/sources.yaml. Complementa el chequeo semanal embebido en el pipeline
+# (sources_health.py) — ese detecta tarde porque solo se ejecuta los lunes.
+# Este se ejecuta cada día y, si encuentra feeds caídos, intenta descubrir
+# URLs alternativas y las propone por Telegram. Nunca toca sources.yaml.
+
+on:
+  # 06:00 UTC = 08:00 CEST en verano / 07:00 CET en invierno.
+  # Diferente hora que el weekly (05:00) para que no compitan los lunes.
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write  # fallback de alertas si Telegram cae (src/notify.py)
+
+concurrency:
+  group: feed-health
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PYTHONUNBUFFERED: "1"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run feed health check
+        run: |
+          python -m src.feed_check
