@@ -22,13 +22,18 @@ feeds:
     kind: google_news
 
   # RSS nativos - Prensa Ibérica group (Diario de Ibiza)
+  # URL actualizada 2026-05-12: la antigua /rss/pitiusas.xml empezó a devolver
+  # 404 entre W18 y W20. El sitio migró a IDs numéricos /rss/section/{id}.
+  # Esta sección equivale a la antigua "Pitiusas".
   - name: "Diario de Ibiza · Pitiusas"
-    url: "https://www.diariodeibiza.es/rss/pitiusas.xml"
+    url: "https://www.diariodeibiza.es/rss/section/1687470"
     kind: native
 
   # Periódico de Ibiza
+  # URL actualizada 2026-05-12: la antigua /rss/ibiza/ devuelve 404. Patrón
+  # actual del sitio: /pitiusas/{lugar}.rss (Atom).
   - name: "Periódico de Ibiza · Ibiza"
-    url: "https://www.periodicodeibiza.es/rss/ibiza/"
+    url: "https://www.periodicodeibiza.es/pitiusas/ibiza.rss"
     kind: native
 
   # Nou Diari - medio digital Eivissa/Formentera, castellano, sin paywall
