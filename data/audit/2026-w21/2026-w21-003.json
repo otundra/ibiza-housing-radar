@@ -1,0 +1,132 @@
+{
+  "proposal_id": "2026-w21-003",
+  "week": "2026-w21",
+  "created_at": "2026-05-18T08:47:19Z",
+  "tier": {
+    "value": "rojo",
+    "reason": "traza_dominio_actor=False + whitelist=debilita",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": false,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 1,
+      "whitelist_match": "debilita",
+      "viability_con_cifra": true,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-05-18T08:47:19Z",
+      "proposal": {
+        "actor": "Govern balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Govern licita suelo público en Mallorca e Ibiza para construir 387 viviendas protegidas de alquiler.",
+        "statement_verbatim": "El Govern licita suelo público en Mallorca e Ibiza para construir 387 viviendas protegidas de alquiler",
+        "url_source": "https://www.economiademallorca.com/articulo/mercado-inmobiliario/govern-licita-suelo-publico-mallorca-ibiza-construir-387-viviendas-protegidas-alquiler/20260514145951119391.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Govern balear",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "alta",
+        "viability_economic_reason": "Licitación de suelo público ya materializada con cifra concreta: 387 viviendas.",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-05-18T08:47:19Z",
+      "proposal": {
+        "actor": "Govern Balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Govern Balear licita suelo público en Mallorca e Ibiza para la construcción de 387 viviendas protegidas destinadas al alquiler. La medida supone la puesta en marcha de suelo de titularidad pública para ampliar el parque de vivienda asequible.",
+        "statement_verbatim": "El Govern licita suelo público en Mallorca e Ibiza para construir 387 viviendas protegidas de alquiler.",
+        "url_source": "https://www.economiademallorca.com/articulo/mercado-inmobiliario/govern-licita-suelo-publico-mallorca-ibiza-construir-387-viviendas-protegidas-alquiler/20260514145951119391.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "IBAVI",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "target_actor",
+          "a": "Govern balear",
+          "b": "IBAVI",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "viability_economic",
+          "a": "alta",
+          "b": "no_evaluada",
+          "reason": "diff_menor"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 1,
+        "urls": [
+          "https://www.economiademallorca.com/articulo/mercado-inmobiliario/govern-licita-suelo-publico-mallorca-ibiza-construir-387-viviendas-protegidas-alquiler/20260514145951119391.html"
+        ],
+        "dominios": [
+          "economiademallorca.com"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "debilita",
+        "domain": "economiademallorca.com",
+        "known_actor": true,
+        "whitelist_miss": false
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-05-18T08:47:19Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": false,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 3400,
+    "heuristics_ms": 477,
+    "verify_ms": 0,
+    "total_ms": 3877
+  }
+}

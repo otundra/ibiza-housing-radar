@@ -1,0 +1,132 @@
+{
+  "proposal_id": "2026-w21-002",
+  "week": "2026-w21",
+  "created_at": "2026-05-18T08:47:19Z",
+  "tier": {
+    "value": "amarillo",
+    "reason": "fuente única",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": true,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 1,
+      "whitelist_match": "neutro",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-05-18T08:47:19Z",
+      "proposal": {
+        "actor": "Govern balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Govern abre el programa Alquiler Seguro para incluir viviendas turísticas, pisos pendientes de reforma e inmuebles afectados por ocupación ilegal.",
+        "statement_verbatim": "El Govern abre el programa Alquiler Seguro a viviendas turísticas, pisos pendientes de reforma e inmuebles afectados por ocupación ilegal",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/05/15/govern-abre-programa-alquiler-seguro-130267523.html",
+        "palanca": "intermediacion",
+        "target_actor": "Govern balear",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-05-18T08:47:19Z",
+      "proposal": {
+        "actor": "Govern Balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Govern Balear amplía el programa Alquiler Seguro para incluir viviendas turísticas, pisos pendientes de reforma e inmuebles afectados por ocupación ilegal. La medida busca movilizar más vivienda hacia el mercado de alquiler habitual.",
+        "statement_verbatim": "El Govern abre el programa Alquiler Seguro a viviendas turísticas, pisos pendientes de reforma e inmuebles afectados por ocupación ilegal.",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/05/15/govern-abre-programa-alquiler-seguro-130267523.html",
+        "palanca": "intermediacion",
+        "target_actor": "propietarios de viviendas",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "target_actor",
+          "a": "Govern balear",
+          "b": "propietarios de viviendas",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "state",
+          "a": "en_ejecucion",
+          "b": "en_movimiento",
+          "reason": "diff_critico"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 1,
+        "urls": [
+          "https://www.diariodeibiza.es/ibiza/2026/05/15/govern-abre-programa-alquiler-seguro-130267523.html"
+        ],
+        "dominios": [
+          "diariodeibiza.es"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "neutro",
+        "domain": "diariodeibiza.es",
+        "known_actor": true,
+        "whitelist_miss": false
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-05-18T08:47:19Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": true,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 3400,
+    "heuristics_ms": 748,
+    "verify_ms": 0,
+    "total_ms": 4148
+  }
+}

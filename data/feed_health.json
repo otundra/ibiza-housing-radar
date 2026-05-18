@@ -120,5 +120,66 @@
         "exception": null
       }
     ]
+  },
+  {
+    "ts": "2026-05-18T08:45:31.543422+00:00",
+    "feeds": [
+      {
+        "name": "Google News · Ibiza vivienda",
+        "status": "ok",
+        "entries_total": 100,
+        "entries_kept": 90,
+        "entries_in_window": 35,
+        "exception": null
+      },
+      {
+        "name": "Google News · Ibiza trabajadores temporada",
+        "status": "ok",
+        "entries_total": 39,
+        "entries_kept": 30,
+        "entries_in_window": 1,
+        "exception": null
+      },
+      {
+        "name": "Google News · Consell Eivissa vivienda",
+        "status": "ok",
+        "entries_total": 43,
+        "entries_kept": 35,
+        "entries_in_window": 0,
+        "exception": null
+      },
+      {
+        "name": "Google News · Ibiza desahucio caravanas",
+        "status": "ok",
+        "entries_total": 100,
+        "entries_kept": 91,
+        "entries_in_window": 8,
+        "exception": null
+      },
+      {
+        "name": "Diario de Ibiza · Pitiusas",
+        "status": "ok",
+        "entries_total": 10,
+        "entries_kept": 5,
+        "entries_in_window": 0,
+        "exception": null
+      },
+      {
+        "name": "Periódico de Ibiza · Ibiza",
+        "status": "ok",
+        "entries_total": 40,
+        "entries_kept": 13,
+        "entries_in_window": 13,
+        "exception": null
+      },
+      {
+        "name": "Nou Diari · Eivissa i Formentera",
+        "status": "ok",
+        "entries_total": 10,
+        "entries_kept": 2,
+        "entries_in_window": 2,
+        "exception": null
+      }
+    ]
   }
 ]

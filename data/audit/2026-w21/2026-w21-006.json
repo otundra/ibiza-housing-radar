@@ -1,0 +1,140 @@
+{
+  "proposal_id": "2026-w21-006",
+  "week": "2026-w21",
+  "created_at": "2026-05-18T08:47:23Z",
+  "tier": {
+    "value": "rojo",
+    "reason": "traza_dominio_actor=False + whitelist=debilita",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": false,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 2,
+      "whitelist_match": "debilita",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-05-18T08:47:23Z",
+      "proposal": {
+        "actor": "Consell de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell de Ibiza implementa un sistema digital para impedir que las caravanas esquiven multas y controlar la picaresca.",
+        "statement_verbatim": "un sistema digital impedirá que esquiven las multas",
+        "url_source": "https://www.eldebate.com/espana/baleares/20260511/ibiza-declara-guerra-picaresca-caravanas-sistema-digital-impedira-esquiven-multas_416555.html",
+        "palanca": "enforcement",
+        "target_actor": "Consell de Ibiza",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-05-18T08:47:23Z",
+      "proposal": {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell d'Eivissa implantará un sistema digital para impedir que las caravanas esquiven las multas mediante la 'picaresca'. La medida refuerza el control y la aplicación efectiva de las sanciones sobre el uso irregular de autocaravanas.",
+        "statement_verbatim": "Ibiza declara la guerra a la 'picaresca' de las caravanas: un sistema digital impedirá que esquiven las multas.",
+        "url_source": "https://www.eldebate.com/espana/baleares/20260511/ibiza-declara-guerra-picaresca-caravanas-sistema-digital-impedira-esquiven-multas_416555.html",
+        "palanca": "enforcement",
+        "target_actor": "usuarios de caravanas",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "actor",
+          "a": "Consell de Ibiza",
+          "b": "Consell d'Eivissa",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "target_actor",
+          "a": "Consell de Ibiza",
+          "b": "usuarios de caravanas",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "statement_verbatim",
+          "a": "un sistema digital impedirá que esquiven las multas",
+          "b": "Ibiza declara la guerra a la 'picaresca' de las caravanas: un sistema digital impedirá que esquiven las multas.",
+          "reason": "ratio_0.63_lt_0.85"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 2,
+        "urls": [
+          "https://www.eldebate.com/espana/baleares/20260511/ibiza-declara-guerra-picaresca-caravanas-sistema-digital-impedira-esquiven-multas_416555.html",
+          "https://www.diariodeibiza.es/ibiza/2026/05/11/consell-ayuntamientos-movilidad-restriccion-ibiza-130103404.html"
+        ],
+        "dominios": [
+          "diariodeibiza.es",
+          "eldebate.com"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "debilita",
+        "domain": "eldebate.com",
+        "known_actor": false,
+        "whitelist_miss": true
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-05-18T08:47:23Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": false,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 3400,
+    "heuristics_ms": 182,
+    "verify_ms": 0,
+    "total_ms": 3582
+  }
+}

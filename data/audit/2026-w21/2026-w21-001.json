@@ -1,0 +1,138 @@
+{
+  "proposal_id": "2026-w21-001",
+  "week": "2026-w21",
+  "created_at": "2026-05-18T08:47:18Z",
+  "tier": {
+    "value": "amarillo",
+    "reason": "fuente única",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": true,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 1,
+      "whitelist_match": "neutro",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-05-18T08:47:18Z",
+      "proposal": {
+        "actor": "Alianza por el Agua",
+        "actor_type": "tercer_sector",
+        "statement_summary": "La Mesa de Diálogo del Agua apuesta por limitar el crecimiento urbanístico y turístico en la isla de Ibiza como medida acordada por unanimidad en su reunión de aniversario.",
+        "statement_verbatim": "La Mesa de Diálogo del Agua de Ibiza, impulsada por la Alianza por el Agua, apuesta por limitar el crecimiento urbanístico y turístico en la isla de Ibiza.",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/16/2630679/mesa-dialogo-del-agua-ibiza-acuerda-por-unanimidad-poner-limites-crecimiento-isla.html",
+        "palanca": "normativa",
+        "target_actor": "",
+        "horizon": "estructural",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-05-18T08:47:18Z",
+      "proposal": {
+        "actor": "Mesa de Diálogo del Agua de Ibiza, Alianza por el Agua",
+        "actor_type": "coalicion_intersectorial",
+        "statement_summary": "La Mesa de Diálogo del Agua de Ibiza, impulsada por la Alianza por el Agua, acordó por unanimidad limitar el crecimiento urbanístico y turístico en la isla de Ibiza. La decisión se tomó en una reunión con más de treinta representantes sectoriales y ciudadanos.",
+        "statement_verbatim": "La Mesa de Diálogo del Agua de Ibiza, impulsada por la Alianza por el Agua, apuesta por limitar el crecimiento urbanístico y turístico en la isla de Ibiza.",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/16/2630679/mesa-dialogo-del-agua-ibiza-acuerda-por-unanimidad-poner-limites-crecimiento-isla.html",
+        "palanca": "normativa",
+        "target_actor": "",
+        "horizon": "estructural",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "actor",
+          "a": "Alianza por el Agua",
+          "b": "Mesa de Diálogo del Agua de Ibiza, Alianza por el Agua",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "state",
+          "a": "en_movimiento",
+          "b": "propuesta",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "actor_type",
+          "a": "tercer_sector",
+          "b": "coalicion_intersectorial",
+          "reason": "diff_menor"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 1,
+        "urls": [
+          "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/16/2630679/mesa-dialogo-del-agua-ibiza-acuerda-por-unanimidad-poner-limites-crecimiento-isla.html"
+        ],
+        "dominios": [
+          "periodicodeibiza.es"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "neutro",
+        "domain": "periodicodeibiza.es",
+        "known_actor": false,
+        "whitelist_miss": true
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-05-18T08:47:18Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": true,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 3400,
+    "heuristics_ms": 528,
+    "verify_ms": 0,
+    "total_ms": 3928
+  }
+}
