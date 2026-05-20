@@ -1,36 +1,36 @@
 {
   "version": 3,
   "currency": "EUR",
-  "updated_at": "2026-05-10T01:46:42Z",
+  "updated_at": "2026-05-20T01:55:30Z",
   "updated_by": "panel-sync-billing",
   "fixed_monthly": [],
   "recurring_variable": {
     "current_month": {
-      "amount": 0.603537,
-      "calls": 7,
+      "amount": 1.357086,
+      "calls": 15,
       "sources": [
         "csv:data/costs.csv"
       ],
       "amount_original": {
-        "value": 0.656019,
+        "value": 1.475094,
         "currency": "USD"
       },
       "fx_rate_used": 0.92,
       "by_breakdown": {
         "haiku-4-5": {
-          "amount_eur": 0.027097,
-          "calls": 2
+          "amount_eur": 0.056367,
+          "calls": 4
         },
         "sonnet-4-6": {
-          "amount_eur": 0.054273,
-          "calls": 3
+          "amount_eur": 0.139115,
+          "calls": 8
         },
         "opus-4-7": {
-          "amount_eur": 0.522168,
-          "calls": 2
+          "amount_eur": 1.161605,
+          "calls": 3
         }
       },
-      "as_of": "2026-05-10T01:46:42Z",
+      "as_of": "2026-05-20T01:55:30Z",
       "certainty": "exact"
     },
     "history": [
@@ -82,19 +82,33 @@
   "one_off": [],
   "shared_attribution": {
     "claude_max": {
-      "current_month_share_eur": 40.22,
+      "current_month_share_eur": 2.07,
       "method": "weighted_by_imputed_cost",
-      "imputable_usd_period": 1263.5594,
-      "imputable_pct_period": 28.54,
-      "period_start": "2026-04-08",
-      "period_end": "2026-05-12",
+      "imputable_usd_period": 21.8469,
+      "imputable_pct_period": 1.5,
+      "period_start": "2026-05-12",
+      "period_end": "2026-06-12",
       "tokens_method": "sum (tokens × precio-por-modelo) en ~/.claude/projects/<id>/*.jsonl",
-      "as_of": "2026-05-10T01:46:42Z",
+      "as_of": "2026-05-20T01:55:30Z",
       "certainty": "exact",
-      "messages_period": 6958,
+      "messages_period": 172,
       "applies": true,
-      "period_label": "2026-04-08 → 2026-05-12 (Pro 22 + Max5x 137,99 − crédito Pro 19,07)",
-      "closed_periods": []
+      "period_label": "2026-05-12 → 2026-06-12 (Max5x mensual)",
+      "closed_periods": [
+        {
+          "period_start": "2026-04-08",
+          "period_end": "2026-05-12",
+          "period_label": "2026-04-08 → 2026-05-12 (Pro 22 + Max5x 137,99 − crédito Pro 19,07)",
+          "applies": true,
+          "share_eur": 40.22,
+          "imputable_usd_period": 1263.5594,
+          "imputable_pct_period": 28.54,
+          "messages_period": 6958,
+          "method": "weighted_by_imputed_cost",
+          "sealed_at": "2026-05-13T01:55:37Z",
+          "sealed_by": "panel-sync-billing"
+        }
+      ]
     }
   },
   "notes": [

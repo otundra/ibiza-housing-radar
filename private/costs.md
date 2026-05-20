@@ -1,6 +1,6 @@
 # Control de costes — privado
 
-*Archivo privado. No se publica en la web. Última actualización: 2026-05-18 08:49 UTC*
+*Archivo privado. No se publica en la web. Última actualización: 2026-05-20 15:18 UTC*
 
 Tipo de cambio interno: **1 USD = 0.92 EUR** (revisar cada 3 meses).
 
