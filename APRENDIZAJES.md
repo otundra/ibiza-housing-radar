@@ -59,6 +59,23 @@ Solo trazabilidad. No ascienden a regla salvo que se repitan.
 
 ---
 
+## 2026-W21 (18-24 mayo 2026)
+
+### Sugerencias del self-review
+
+- [x] **Etiquetar `(dato oficial vía medio)`.** Cuando la cifra se presente como dato oficial pero la URL sea de un medio (elDiario, noudiari, Diario de Ibiza, economiademallorca…) y no se localice fuente primaria en el input, etiquetar inline. *(Origen: 6 cifras del W21 etiquetadas como `(dato oficial)` cuando la fuente real era un medio; el auditor disparó tasa de disputa Haiku↔Sonnet 0.875 con n=8 — muy por encima del rango saludable [0.08, 0.25] — y bajó rigor a 5.)* **Aplicada el 2026-05-20** en commit que refina la regla "DECLARA LA NATURALEZA DE CADA CIFRA" del prompt SYSTEM en `src/generate.py`.
+- [x] **Consolidación de actores duplicados.** Si dos nombres referencian al mismo organismo o derivan de la misma declaración pública (mismo evento, misma fecha, mismo portavoz), unificar en una sola entrada del Mapa y una sola propuesta. Si son órganos institucionalmente distintos, explicitar la diferencia en una frase. *(Origen: Colegio de Arquitectos de Baleares y Colegio de Arquitectos de Ibiza desdoblados en dos propuestas a partir del mismo evento de prensa del 12 de mayo.)* **Aplicada el 2026-05-20** en mismo commit, regla nueva "CONSOLIDACIÓN DE ACTORES" en `src/generate.py`.
+- [x] **Cierre de eventos de la cronología actual.** Si la cronología sitúa un evento con resultado esperado (pleno parlamentario, votación, comparecencia) cuyo desenlace no aparece en el input clasificado, declarar `«sin resultado publicado al cierre»` en lugar de omitirlo. *(Origen: pleno del Parlament del domingo 17 con vivienda en el orden del día sin resultado recogido en la edición W21, leído por el auditor como laguna de cobertura.)* **Aplicada el 2026-05-20** en mismo commit, regla nueva "CIERRE DE EVENTOS DE LA CRONOLOGÍA ACTUAL" en `src/generate.py`.
+
+### Warnings concretos (esta edición)
+
+- [W21] AUDITOR — tasa de disputa Haiku↔Sonnet de 0.875 con n=8 propuestas, rango saludable [0.08, 0.25]. Hipótesis del propio auditor: cifras con fuente ambigua interpretadas de modo distinto por cada modelo. **Mitigado** por la regla `(dato oficial vía medio)` arriba; se valida en W22.
+- [W21] AUDITOR — 3 propuestas marcadas para revisión manual: 2026-w21-003 (caso del alcalde), 2026-w21-005, 2026-w21-006.
+- [W21] RIGOR — el caso del alcalde (herencia en vida + vivienda protegida) no cita el marco legal específico de la ley balear de vivienda protegida que determinaría si hay irregularidad. La edición habla bien de *"supuestas irregularidades"*, pero la ambigüedad legal pudo ser origen del desacuerdo Haiku↔Sonnet en la propuesta 003. *(No regla nueva — el generador no puede invocar reglamentación que no esté en el input; queda en seguimiento.)*
+- [W21] BALANCE — ausencia de voz de propietarios o sector inmobiliario privado pese a noticias de alquiler turístico ilegal, caída de oferta y bloqueos registrales. *(Segunda aparición del patrón "bloque ausente": W19 sindicato/patronal frente a temporeros, W21 propietarios/inmobiliario. Queda en seguimiento; si se repite en W22-W23 asciende a sugerencia con propuesta concreta.)*
+
+---
+
 ## Seguimiento
 
 - **Claridad como dimensión muerta** (en seguimiento desde 2026-05-05). Tres semanas (W17, W18, W19) dando 9/10 sin warning concreto. La nueva dimensión "trazabilidad" entra en W20 como sexta. Si tras W20-W21 claridad sigue dando 9/10 sin warnings concretos, se propondrá retirarla y consolidar en cinco dimensiones útiles (reglas, rigor, balance, cobertura, trazabilidad). Si en algún punto baja, se mantiene. Decisión asociada: [D22](DECISIONES.md#d22--trazabilidad-de-fuente-como-sexta-dimensión-del-self-review).
