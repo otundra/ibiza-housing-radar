@@ -13,6 +13,17 @@ Reglas:
 
 ---
 
+## 2026-05-20 [arquitectura] — Persistencia del archive append-only en el cron semanal
+
+- **Disparador.** Rellenando el check `private/checks/2026-w21-feeds-reparados.md` (verificación post-fix de feeds reparados D44): dos candidatos fuertes 🔴 (vivienda de la Guardia Civil, reportaje de propietarios) no entraron a la edición W21 y la causa raíz no se pudo determinar porque `data/archive/2026-W21/` no existe en el repo. Inventario: solo está `data/archive/2026-W17/`. Faltan W18-W21.
+- **Diagnóstico.** `src/archive.py` genera correctamente la carpeta semanal con `ingested.json`, `classified.json`, `extracted.json` y `rescue_candidates.json` dentro del runner; la función se invoca desde `src/report.py` (línea 330-331). El fallo estaba en el step *Commit edition and costs* de [`.github/workflows/weekly-report.yml`](.github/workflows/weekly-report.yml): no incluía `data/archive/` en sus `git add`. El snapshot se generaba en el runner y se descartaba al destruir el runner. Patrón "código produce, workflow no persiste" — variante del antipatrón documentado en el CLAUDE.md global el 2026-05-12 (caso `ANTHROPIC_API_KEY` ausente del bloque `env:` de sync.yml en Monesma).
+- **Fix.** Commit `d4ec837` añade `data/archive/` al `git add` de la línea que ya incluye `data/audit/` y compañía. Comentario al lado explicando el porqué y la fecha del fix para que futuras sesiones no lo borren por confusión.
+- **Lo no recuperable.** W18-W21 ya no existen — el snapshot vivió solo dentro del runner de su semana. No hay backfill posible. El fix preserva W22 en adelante.
+- **Validación.** Tras el cron del 2026-05-25, comprobar que aparece `data/archive/2026-W22/` commiteado en el repo. Si no aparece, abrir sesión específica para revisar la invocación o el `git add`.
+- **Lección sistémica.** Cualquier módulo del pipeline que produzca artefactos persistentes debe verificarse de extremo a extremo (código → runner → commit → repo), no solo "el código se ejecuta sin fallo". El antipatrón es silencioso por diseño: el runner corre, el módulo no rompe, los datos se crean — pero nadie comprueba que llegan al repo. Generalización en CLAUDE.md global ya cubre el caso (regla del 2026-05-12). Aquí solo registramos la aplicación concreta.
+
+---
+
 ## 2026-05-20 [pipeline] — Cierre del loop de aprendizaje W21: tres reglas nuevas al prompt del generador
 
 - **Disparador.** Self-review de la edición W21 (2026-05-18) por debajo de umbral en dos dimensiones: rigor 5/10 y trazabilidad 6/10. El auditor disparó dos focos: (a) tasa de disputa Haiku↔Sonnet de 0.875 con n=8 propuestas, muy por encima del rango sano [0.08, 0.25] — degradación del prompt o semana ambigua; (b) 6 cifras etiquetadas como `(dato oficial)` cuando la fuente real era un medio (elDiario, noudiari, Diario de Ibiza, economiademallorca) y no la primaria institucional. Tres propuestas marcadas para revisión manual (2026-w21-003 caso del alcalde, 005, 006).
