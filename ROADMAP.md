@@ -75,6 +75,10 @@ Montado tras la revisión técnica 2026-04-21 noche. Ordena las tareas abiertas 
 
 **Tests del pipeline diferidos a RT5 ([D4](DECISIONES.md)):** cobertura en un solo bloque con fixtures reales del backfill (incluye `audit.py`, `verify.py`, `balance.py`, `extract.py`, `rescue.py`). Se ejecuta cuando haya fixtures utilizables (Fase 2). El auditor MVP se valida durante construcción con la observación en vivo W19-W22 ([D20](DECISIONES.md)).
 
+**Deuda técnica del pipeline detectada 2026-05-20:**
+
+- **Archive append-only no persiste en el repo desde W18.** `src/archive.py` se invoca correctamente desde `src/report.py` (línea 330-331) y genera la carpeta `data/archive/YYYY-WNN/` dentro del runner, pero el step *Commit edition and costs* de [`.github/workflows/weekly-report.yml`](.github/workflows/weekly-report.yml) no incluye `data/archive/` en sus `git add`. Resultado: solo existe `data/archive/2026-W17/` (probablemente añadido a mano en su día). W18-W21 generaron el snapshot dentro del runner y se descartaron al destruir el runner. Patrón "código produce, workflow no persiste" — variante del antipatrón documentado en CLAUDE.md global 2026-05-12. **Impacto operativo:** sin archive no se puede diagnosticar para una URL ❌ si fue filtrada por palabras clave (`ingest.py`), marcada `has_explicit_proposal=false` (`classify.py`), o tumbada por el auditor (`extract.py`). Detectado al rellenar el check `private/checks/2026-w21-feeds-reparados.md`: dos candidatos 🔴 no entraron y la causa raíz no se puede determinar. **Fix:** añadir `data/archive/` al `git add` del workflow. Esfuerzo S (~5 min) + commit. **Las semanas W18-W21 ya no son recuperables**; el fix preserva W22 en adelante.
+
 **Decisiones cerradas en Fase 1:**
 - Rol del editor = operador sin revisión de contenido (RT2 resuelto: opción B actual, opción C cuando haya tracción).
 - Nombre del wordmark: `radar))vivienda_ibiza` ✅ cerrado (orden revertido 2026-05-07, [D25](DECISIONES.md)).

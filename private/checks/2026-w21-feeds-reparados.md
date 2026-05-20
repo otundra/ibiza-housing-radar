@@ -13,34 +13,40 @@ Decisión del editor el 2026-05-12: **no forzar nada con `rescue.py`**. Dejar qu
 
 ### 🔴 Candidatos fuertes (propuesta documentable probable)
 
-- [ ] **"Los ayuntamientos de Ibiza controlarán las caravanas que estén fuera de los campings"**
+- [x] ✅ **"Los ayuntamientos de Ibiza controlarán las caravanas que estén fuera de los campings"**
   Periódico, 11 may.
   `https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/11/2627317/consell-ibiza-ayuntamientos-refuerzan-control-sobre-au`
   Actor con nombre (Consell + ayuntamientos). Tema central: asentamientos.
+  **Resultado:** entró en la edición W21.
 
-- [ ] **"La Comandancia de la Guardia Civil apenas dispone de 500 viviendas en Baleares para alojar"**
+- [x] ❌ **"La Comandancia de la Guardia Civil apenas dispone de 500 viviendas en Baleares para alojar"**
   Periódico, 10 may.
   `https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/10/2626285/comandancia-guardia-civil-apenas-dispone-500-viviendas`
   Datos institucionales sobre vivienda de la GC. Complementa el del 10 may sobre 10 días para encontrar piso que sí entró en W20.
+  **Resultado:** no entró. URL ausente de la edición W21 y de cualquier archivo bajo `data/` (ni `proposals_history.json` ni archive). Causa raíz no determinable porque `data/archive/2026-W21/` no existe (ver nota operativa abajo).
 
-- [ ] **"Alquileres en Ibiza: el infierno de algunos propietarios para recuperar sus pisos"**
+- [x] ❌ **"Alquileres en Ibiza: el infierno de algunos propietarios para recuperar sus pisos"**
   Periódico, 11 may.
   `https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/11/2626743/alquileres-ibiza-infierno-algunos-propietarios-para-re`
   Reportaje de fondo, probable que tenga voces concretas.
+  **Resultado:** no entró. URL ausente de la edición y de `data/`. Encaja con el patrón "bloque ausente: propietarios e inmobiliario privado" detectado por el auditor de la W21 — esta URL habría sido la pieza con voz de propietarios.
 
 ### 🟡 Candidatos medios (datos sectoriales, sin propuesta clara)
 
-- [ ] **"Casi el 90 % de los hoteles de Ibiza mantendrá su plantilla esta temporada"**
+- [x] ❌ **"Casi el 90 % de los hoteles de Ibiza mantendrá su plantilla esta temporada"**
   Periódico, 11 may.
   `https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/11/2627467/sector-hotelero-ibiza-formentera-preve-temporada-estab`
+  **Resultado:** no entró. Esperable como 🟡: sin propuesta concreta, probable que el clasificador lo marcase `has_explicit_proposal=false`. No es fallo del sistema.
 
-- [ ] **"Hoteles de Ibiza prevén una ocupación del 80 % en mayo y cercana al 90 % en verano"**
+- [x] ❌ **"Hoteles de Ibiza prevén una ocupación del 80 % en mayo y cercana al 90 % en verano"**
   Periódico, 12 may.
   `https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/12/2627505/hoteles-ibiza-preven-ocupacion-del-mayo-cercana-verano`
+  **Resultado:** no entró. Mismo análisis: tema sectorial sin propuesta, comportamiento esperado para un 🟡.
 
-- [ ] **"José Luis Benítez (Ocio de Ibiza): La temporada será similar a la de 2025"**
+- [x] ❌ **"José Luis Benítez (Ocio de Ibiza): La temporada será similar a la de 2025"**
   Diario, 5 may. *(Probablemente fuera de la ventana de 10 días del cron del 18 may.)*
   `https://www.diariodeibiza.es/ibiza/2026/05/05/jose-luis-benitez-gerente-asociacion-temporada-129827686.html`
+  **Resultado:** no entró. Confirmado fuera de ventana (5 may queda a 13 días del cron del 18 may, ventana de 10 días). Comportamiento esperado.
 
 ### ⚫ Ruido esperado (no debería entrar; si entra es señal de problema en classify)
 
@@ -65,3 +71,13 @@ Tributo bomberos, sanciones almacén Formentera, taxis carga/descarga, residuos 
 - El cron W21 mira ventana de 10 días = ~8-18 may. **Los del 5-6 may ya estarán fuera** — no es fallo del sistema si no entran.
 - El feed del Diario solo guarda 10 entradas en su histórico RSS. Material de hace >2 semanas ya no es recuperable vía RSS aunque el feed funcione.
 - Si el monitor diario de feeds (D44) dispara aviso entre hoy y el lunes, atender primero.
+
+## Conclusión (rellenada el 2026-05-20)
+
+- **Cobertura real:** 1 de 3 candidatos 🔴 entró (caravanas Consell). Los dos 🔴 ausentes son la pieza de la GC (datos institucionales de vivienda) y el reportaje de propietarios.
+- **Diagnóstico parcial:** la URL del reportaje de propietarios encaja exactamente con el patrón **"bloque ausente: voz de propietarios / inmobiliario privado"** que el auditor de la W21 marcó por separado. Que esa URL existiera en el feed reparado y no entrase al pipeline refuerza la señal: no es solo que falte la voz, es que el clasificador o el extractor están dejándola fuera incluso cuando hay material. Si en W22 (cron del 2026-05-25) sigue sin entrar voz de propietarios pese a haber material disponible, asciende a sugerencia con propuesta concreta en [`APRENDIZAJES.md`](../../APRENDIZAJES.md) (segunda aparición consecutiva → criterio D17).
+- **Decisión sobre cerrar el check:** **NO se mueve a `_resueltos/`** porque dos 🔴 no entraron y la causa raíz no es plenamente verificable (ver nota operativa abajo). Queda abierto en seguimiento. Se cierra al revisar W22 si el patrón no se repite.
+
+## Nota operativa colateral
+
+- **El archive append-only de W21 no se guardó.** `data/archive/` solo contiene `2026-W17/`. Las W18-W21 no tienen carpeta de archive. Sin archive, este check no puede determinar para cada ❌ si la URL fue filtrada por palabras clave en `ingest.py`, marcada `has_explicit_proposal=false` por `classify.py`, o tumbada por el auditor en `extract.py`. La función `src/archive.py` está en el código pero la integración con `report.py` puede estar rota desde W18 (o nunca llegó a ejecutarse fuera de W17). Apuntar como deuda técnica a investigar en sesión específica — no entra en el alcance de este check.
