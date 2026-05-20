@@ -1,4 +1,4 @@
-# Estado operativo — actualizado 2026-05-12
+# Estado operativo — actualizado 2026-05-20
 
 > **Regla:** ≤ 100 líneas. Solo estado vigente. Lo histórico vive en [`DIARIO.md`](DIARIO.md); lo fundacional en [`CLAUDE.md`](CLAUDE.md) (sección *Reglas fundacionales*). Ver [D0](DECISIONES.md).
 
@@ -12,11 +12,11 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 ## 🟢 Activo
 
-- **Pipeline documental semanal** en `main`. Cron lunes 05:00 UTC. Última edición: W19 (4-10 may 2026), corregida bajo régimen de rodaje ([D21](DECISIONES.md)) tras la sesión 2026-05-05 — cambios en metadata + etiquetas inline de fuente. Detalle en [`private/revisiones/2026-w19.md`](private/revisiones/2026-w19.md).
+- **Pipeline documental semanal** en `main`. Cron lunes 05:00 UTC. Última edición: W21 (18-24 may 2026). Self-review tres reglas nuevas al prompt del generador aplicadas el 2026-05-20 (commit `c3ffefd`) — `(dato oficial vía medio)`, consolidación de actores duplicados, cierre de eventos de cronología actual. Validación empírica prevista en W22.
 - **Sistema de auto-recuperación operativo** desde 2026-04-27 ([D16](DECISIONES.md)). Tres capas: reintentos automáticos del SDK (`max_retries=5`), workflow `auto-retry.yml` que relanza tras push de fix, y marca persistente `data/PIPELINE_FAILED.flag` que dispara aviso de recuperación al volver a publicar. Coste cero. Validación pendiente con el próximo incidente real.
 - **Web live** → <https://otundra.github.io/ibiza-housing-radar/>
 - **Control de costes operativo.** Topes blando 12 € / duro 50 €. Dashboard en [`private/costs.md`](private/costs.md).
-- **Snapshot append-only** en `data/archive/YYYY-WNN/` desde W17.
+- **Snapshot append-only** en `data/archive/YYYY-WNN/`. Operativo desde W17 con interrupción W18-W21 (el workflow no incluía la carpeta en sus `git add`; el código sí generaba el snapshot pero se descartaba al destruir el runner). Corregido el 2026-05-20 (commit `d4ec837`); preserva W22 en adelante. Las semanas perdidas no son recuperables.
 - **Copia de seguridad en GitLab operativa** desde 2026-04-29. Pull mirroring nativo (gitlab.com/otundra/ibiza-housing-radar, privado). Actualización automática cada hora. Cero mantenimiento.
 - **Nou Diari añadida como fuente RSS** desde 2026-04-29 (`src/sources.yaml`). Medio digital Eivissa/Formentera, 8-15 art/día, cobertura directa vivienda y temporada, sin paywall. Entra en el próximo cron.
 - **Salud de fuentes operativa** desde 2026-04-25 (tarea OP2 de Revisión Fase 0.5). Módulo [`src/sources_health.py`](src/sources_health.py) + integración silenciosa en `ingest.py` + alerta consolidada vía Telegram con 4 reglas de detección (feed muerto, frecuencia caída, vacío inesperado, estructura cambiada).
@@ -24,7 +24,8 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 ## 🔎 Pendientes de verificación
 
-- **Tras cron W21 (lunes 18 may):** comprobar si los candidatos relevantes que se quedaron fuera durante las semanas con feeds caídos entran orgánicamente con los feeds reparados. Lista curada + criterios en [`private/checks/2026-w21-feeds-reparados.md`](private/checks/2026-w21-feeds-reparados.md). Sin acción mía hasta el lunes; al arrancar esa sesión, abrir el check y rellenarlo contra la edición publicada.
+- **Check de feeds reparados W21** ([`private/checks/2026-w21-feeds-reparados.md`](private/checks/2026-w21-feeds-reparados.md)) rellenado el 2026-05-20: 1 de 3 🔴 entró (caravanas Consell). Los dos 🔴 ausentes (vivienda GC, reportaje propietarios) encajan con el patrón "bloque ausente: voz de propietarios" que el auditor de W21 también marcó. El check queda **abierto en seguimiento**; si W22 vuelve a fallar el mismo patrón, asciende a sugerencia en APRENDIZAJES.md.
+- **Validación post-W22 del fix del archive** (2026-05-25): comprobar que `data/archive/2026-W22/` aparece commiteado en el repo tras el cron del lunes. Si no, abrir sesión específica.
 - **Sistema de monitorización de decisiones operativo** desde 2026-04-24 ([D14](DECISIONES.md)). Aviso semanal por Telegram ([`src/decisions_watch.py`](src/decisions_watch.py)) + tablero interno ([`private/panel.md`](private/panel.md)) + refuerzo al arranque.
 - **Sistema de aprendizaje semanal vivo** ([D17](DECISIONES.md), 2026-04-27): el revisor automático del lunes propone ajustes al generador, registro en [`APRENDIZAJES.md`](APRENDIZAJES.md). Loop cerrado por primera vez en sesión 2026-05-05 — 5 reglas nuevas al prompt del generador + sexta dimensión "trazabilidad" en el revisor ([D22](DECISIONES.md)).
 - **Sistema de revisiones post-publicación** ([D23](DECISIONES.md), 2026-05-05): registro narrativo del razonamiento humano sobre las ediciones cuando dispara alerta o el editor pide lectura proactiva. Carpeta [`private/revisiones/`](private/revisiones/) + índice raíz [`REVISIONES.md`](REVISIONES.md). Primera revisión: W19.
@@ -54,10 +55,10 @@ Sin calendario ni fecha de lanzamiento ([D15](DECISIONES.md)). El avance se orga
 
 > **Régimen actual: rodaje pre-lanzamiento** ([D21](DECISIONES.md), 2026-04-28). Las ediciones publicadas son revisables libremente (formato, contenido editorial, estructura) sin nota pública de corrección hasta que la web se empuje al público activamente. Tras el lanzamiento, vuelve a aplicar plena la regla 1 fundacional (contenido editorial inmutable, errores vía `/correcciones/`).
 
-- **Próxima edición automática** — W20 (lunes 11 may 2026). Primera con las 5 reglas nuevas en el prompt del generador + 6ª dimensión "trazabilidad" en el revisor.
-- **Hito 1 — Auditor MVP en observación en vivo.** Fases 1-3 cerradas 2026-04-25, primera corrida live en W19. Fase 4 en curso: observación durante W19-W22. Cierre del Hito al evaluar métricas tras W22 — ver [D20](DECISIONES.md). Detalle en [`DISENO-AUDITOR-MVP.md §9`](DISENO-AUDITOR-MVP.md).
-- **Cierre de tensión `blocks_cited`** — vigilar W20: si el revisor reabre la queja sobre amplitud, asciende a warning recurrente. Apuntado en [`private/revisiones/2026-w19.md`](private/revisiones/2026-w19.md).
-- **Claridad como dimensión muerta** — revisar tras W21 si sigue dando 9/10 sin warnings concretos. Apuntado en [`APRENDIZAJES.md`](APRENDIZAJES.md). Decisión asociada [D22](DECISIONES.md).
+- **Próxima edición automática** — W22 (lunes 25 may 2026). Primera con las tres reglas nuevas del W21 aplicadas + el archive append-only de vuelta en el repo.
+- **Hito 1 — Auditor MVP en observación en vivo.** Fases 1-3 cerradas 2026-04-25, primera corrida live en W19. Fase 4 en curso: observación durante W19-W22. **Tres ediciones completadas (W19, W20, W21); queda W22.** Cierre del Hito al evaluar métricas tras W22 — ver [D20](DECISIONES.md). Detalle en [`DISENO-AUDITOR-MVP.md §9`](DISENO-AUDITOR-MVP.md).
+- **Cierre de tensión `blocks_cited`** — la queja no reapareció en W20 ni W21. Si pasa W22-W23 sin reabrirse, se cierra como resuelto. Apuntado en [`private/revisiones/2026-w19.md`](private/revisiones/2026-w19.md).
+- **Claridad como dimensión muerta** — W19, W20 y W21 dieron 9/10 sin warnings concretos. Toca decidir si se retira y consolidamos en cinco dimensiones (reglas, rigor, balance, cobertura, trazabilidad) o esperamos una semana más. Apuntado en [`APRENDIZAJES.md`](APRENDIZAJES.md). Decisión asociada [D22](DECISIONES.md).
 - **Antes de abrir al público** — revisar exposición legal de la página de correcciones (`/correcciones/`). El protocolo de 72 h queda publicado antes de tener buzón operativo; riesgo acotado mientras la web no tiene tráfico pero hay que cerrarlo antes de abrir al público. Anclado al Hito 3 legal. Detalle en [`DISENO-AUDITOR-MVP.md §7`](DISENO-AUDITOR-MVP.md).
 - **Revisión del sistema de monitorización** ([D14](DECISIONES.md)) — tras 2-4 ediciones del sistema funcionando. Decidir si sumar aviso por patrón en autoevaluación + aviso por acumulación de 5 decisiones pequeñas autónomas del asistente sin resumen.
 - **Próxima auditoría sistémica** ([D24](DECISIONES.md)) — al cumplir antes de los dos disparadores: 5 decisiones nuevas (D29) o 90 días (≈2026-08-03).
