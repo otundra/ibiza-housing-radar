@@ -1,12 +1,12 @@
 # Tablero interno — monitorización del proyecto
 
-*Archivo privado. No se publica en la web. Última actualización: 2026-05-18 08:49 UTC.*
+*Archivo privado. No se publica en la web. Última actualización: 2026-05-25 09:00 UTC.*
 
 Agrega las señales que otros módulos ya producen: gasto del mes, autoevaluación, verificación, decisiones con revisión pendiente, última edición. No genera datos propios. Ver decisión D14.
 
 ## Costes del mes
 
-- **Gasto actual:** 2.49 € (blando 12 € / duro 50 €) — 🟢 Verde (<6 €) — silencio
+- **Gasto actual:** 3.30 € (blando 12 € / duro 50 €) — 🟢 Verde (<6 €) — silencio
 - **Dashboard detallado:** [`costs.md`](costs.md)
 
 ## Decisiones con revisión pendiente
@@ -19,16 +19,16 @@ _Ninguna decisión vencida ni próxima. Siguiente revisión: **Ritual de aprendi
 
 ## Última edición publicada
 
-- `2026-w21`
+- `2026-w22`
 
 ## Histórico de propuestas
 
-- **Total acumulado:** 17
+- **Total acumulado:** 18
 
 ## Verificación (última ejecución)
 
 - **Resultado:** ✅ sin fallos bloqueantes
-- **URLs comprobadas:** 24, caídas: 0
+- **URLs comprobadas:** 23, caídas: 0
 - **Actores comprobados:** 0, no trazables: 0
 - **Avisos blandos:** 0
 
@@ -42,7 +42,7 @@ _Ninguna decisión vencida ni próxima. Siguiente revisión: **Ritual de aprendi
 
 Termómetro orientativo para detectar pozo de modificación infinita. Disparador de auditoría sistémica (D24) cuando los conteos crezcan más rápido que la utilidad real.
 
-- **Reglas duras adicionales en el prompt del generador:** 17
+- **Reglas duras adicionales en el prompt del generador:** 19
 - **Dimensiones del revisor (self-review):** 6
 - **Decisiones vigentes en `DECISIONES.md`:** 42
 - **Candidatas a retirar** (dimensiones con nota constante en últimas 4 ediciones):

@@ -1,0 +1,29 @@
+[
+  {
+    "news_id": "item-000",
+    "proposals": [
+      {
+        "actor": "Vecinos de Punta Xinxó",
+        "actor_type": "colectivo_ciudadano",
+        "statement_summary": "Los vecinos proponen que las administraciones adquieran el hotel okupado de Punta Xinxó como única solución efectiva para acabar con los problemas de suciedad e inseguridad.",
+        "statement_verbatim": "la única solución que tendrá resultado para acabar con el problema pasa porque sean las administraciones las que adquieran el inmueble",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/25/2636251/vecinos-punta-xinxo-proponen-las-administraciones-adquieran-hotel-okupado.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "administraciones",
+        "horizon": "corto_plazo",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  }
+]

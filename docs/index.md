@@ -7,60 +7,50 @@ permalink: /
 <section class="dash-cover">
 <p class="dash-cover-kicker">
 <span class="dash-pulse" aria-hidden="true"></span>
-<span>Informe semanal · actualizado 2026-05-18</span>
+<span>Informe semanal · actualizado 2026-05-25</span>
 </p>
 <div class="dash-cover-grid">
 <div class="dash-cover-main">
-<p class="dash-cover-eyebrow">Semana 3 - Mayo 2026</p>
-<h1 class="dash-cover-headline">Govern licita suelo para 387 viviendas protegidas y abre Alquiler Seguro; Consell y ayuntamientos refuerzan persecución a caravanas; PSOE denuncia al alcalde.</h1>
+<p class="dash-cover-eyebrow">Semana 4 - Mayo 2026</p>
+<h1 class="dash-cover-headline">El Supremo anula el registro único de alquiler turístico; vecinos de Punta Xinxó piden comprar un hotel okupado; multa de 446.834 euros por turística ilegal.</h1>
 <div class="dash-cover-lectura" markdown="1">
 
-- **Lun 11** el Consell d'Eivissa y los ayuntamientos de Ibiza anuncian medidas conjuntas contra las caravanas en suelo rústico y urbano, incluido un sistema digital antimultas; se publica que en lo que va de año hay 17 caravanas denunciadas.
-- **Mar 12** el Colegio de Arquitectos pide priorizar a residentes en la vivienda y reclama incentivos al suelo y agilización de proyectos públicos.
-- **Mié 13** el Ayuntamiento de Ibiza publica la lista provisional de aspirantes a alquiler asequible; reportajes nacionales documentan desalojos de habitaciones pagadas y rupturas anticipadas de alquileres a profesores; se difunden cifras de Ibiza entre los alquileres más caros del país.
-- **Jue 14** el Govern licita suelo público para 387 viviendas protegidas de alquiler; la oferta de venta cae un 7% en Baleares.
-- **Vie 15** el Govern abre el programa Alquiler Seguro a viviendas turísticas, pisos pendientes de reforma e inmuebles afectados por ocupación; elDiario.es publica el análisis del caso del alcalde de Ibiza y la herencia en vida vinculada a vivienda protegida.
-- **Sáb 16** se conoce que Alquiler Seguro solo ha movilizado cuatro viviendas en Ibiza en 18 meses; la Mesa del Agua acuerda por unanimidad limitar el crecimiento urbanístico y turístico.
-- **Dom 17** el orden del día del pleno del Parlament balear incluye vivienda, saturación turística y sanidad.
-- **Lun 18** el sindicato de inquilinas denuncia coacciones en renovaciones de alquiler; se publica que la falta de vivienda complica la llegada de 90 guardias civiles en julio; la Justicia condena un caso de alquiler turístico ilegal.
+- **Sáb 16** seis multados por aparcar autocaravanas en suelo rústico recurren sanciones de hasta 20.000 euros (carry-over de la semana del 11-17 de mayo).
+- **Lun 18** la Justicia se pronuncia sobre un caso de inquilino que subarrendaba como turística ilegal y se publica que la falta de vivienda complica la llegada de 90 guardias civiles en julio.
+- **Mié 20** un trabajador de temporada relata que el alquiler en Ibiza absorbe todo lo que viene a ahorrar.
+- **Jue 21** el Tribunal Supremo anula el registro único estatal de alquiler de corta duración; el Govern balear y el sector vacacional lo celebran; se publica una multa de 446.834 euros por turística ilegal.
+- **Sáb 23** una familia ocupa una caseta de pescadores en Ibiza; una vecina pierde su piso tras 14 años; el sector de viviendas turísticas de Ibiza celebra de nuevo la anulación del registro.
+- **Dom 24** un desahucio entre hermanos deja sin hogar a una menor y dos personas con discapacidad; miles se manifiestan en Madrid por vivienda digna; se publica que los extranjeros poseen 13.419 viviendas en Ibiza-Formentera y un reportaje sobre caravanas en zonas prohibidas.
+- **Lun 25** los vecinos de Punta Xinxó proponen que las administraciones compren el hotel okupado del barrio; reportaje sobre estancias cortas y regateo de precios en viviendas vacacionales.
 
 </div>
 <div class="dash-cover-ctas">
-<a href="{{ site.baseurl }}/ediciones/2026-w21/" class="dash-cta-primary">Leer informe completo →</a>
-<a href="#senales" class="dash-cta-secondary">Ver las 19 señales ↓</a>
+<a href="{{ site.baseurl }}/ediciones/2026-w22/" class="dash-cta-primary">Leer informe completo →</a>
+<a href="#senales" class="dash-cta-secondary">Ver las 20 señales ↓</a>
 </div>
 </div>
 <aside class="dash-cover-aside">
 <section class="dash-aside-block">
-<p class="dash-aside-kicker">3 propuestas documentadas</p>
+<p class="dash-aside-kicker">1 propuesta documentada</p>
 <h2 class="dash-aside-title">Qué se ha propuesto esta semana</h2>
 <ol class="dash-aside-list dash-aside-propuestas">
 <li>
 <span class="dash-aside-num">01</span>
-<a href="{{ site.baseurl }}/ediciones/2026-w21/#1-licitación-de-suelo-público-para-387-viviendas-protegidas-de-alquiler">Licitación de suelo público para 387 viviendas protegidas de alquiler</a>
-</li>
-<li>
-<span class="dash-aside-num">02</span>
-<a href="{{ site.baseurl }}/ediciones/2026-w21/#2-apertura-del-programa-alquiler-seguro-a-nuevas-tipologías-de-vivienda">Apertura del programa Alquiler Seguro a nuevas tipologías de vivienda</a>
-</li>
-<li>
-<span class="dash-aside-num">03</span>
-<a href="{{ site.baseurl }}/ediciones/2026-w21/#3-priorizar-a-los-residentes-de-ibiza-y-formentera-en-el-acceso-a-la-vivienda">Priorizar a los residentes de Ibiza y Formentera en el acceso a la vivienda</a>
+<a href="{{ site.baseurl }}/ediciones/2026-w22/#1-compra-pública-del-hotel-okupado-de-punta-xinxó">Compra pública del hotel okupado de Punta Xinxó</a>
 </li>
 </ol>
 <a href="#propuestas" class="dash-aside-more">Detalle de las propuestas ↓</a>
 </section>
 <section class="dash-aside-block">
-<p class="dash-aside-kicker">6 puntos</p>
+<p class="dash-aside-kicker">5 puntos</p>
 <h2 class="dash-aside-title">A vigilar</h2>
 <div class="dash-aside-vigilar" markdown="1">
 
-- Plazo y publicaciones del BOIB asociados a la licitación del suelo público para las 387 viviendas protegidas de alquiler.
-- Evolución del programa Alquiler Seguro tras la apertura a nuevas tipologías y cifra actualizada de viviendas movilizadas en Ibiza.
-- Tramitación de la denuncia del PSOE contra el alcalde de Ibiza por la vivienda protegida y eventual convocatoria del pleno extraordinario aún pendiente desde la semana anterior.
-- Despliegue efectivo del sistema digital antimultas anunciado por el Consell y los ayuntamientos contra las caravanas.
-- Respuesta institucional al plazo de julio para la llegada de los 90 guardias civiles sin vivienda.
-- Resultado del debate sobre vivienda en el pleno del Parlament balear.
+- Decisiones del Govern balear y de los ayuntamientos sobre el régimen aplicable a las viviendas turísticas afectadas por la sentencia del Supremo.
+- Respuesta de las administraciones (Govern, Consell, Ayuntamiento) a la propuesta vecinal de adquirir el hotel okupado de Punta Xinxó.
+- Recursos pendientes de resolución de los seis sancionados por autocaravanas en suelo rústico.
+- Plazo de julio para la llegada de los 90 guardias civiles a Ibiza y eventual plan de alojamiento.
+- Convocatoria o archivo del pleno extraordinario sobre la vivienda del alcalde de Ibiza, pendiente desde principios de mayo.
 
 </div>
 </section>
@@ -71,30 +61,31 @@ permalink: /
 <section class="dash-senales" id="senales">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Señales detectadas</p>
-<h2>19 hechos publicados esta semana</h2>
+<h2>20 hechos publicados esta semana</h2>
 <p class="dash-section-lead">Cada punto enlaza a la noticia original en su medio. Sin resumen sesgado: cifras y fechas tal como se publicaron.</p>
 </header>
 <div class="dash-senales-list" markdown="1">
 
-- El Govern balear licita suelo público en Mallorca e Ibiza para construir 387 viviendas protegidas de alquiler *(dato oficial)* ([fuente](https://www.economiademallorca.com/articulo/mercado-inmobiliario/govern-licita-suelo-publico-mallorca-ibiza-construir-387-viviendas-protegidas-alquiler/20260514145951119391.html)).
-- El Govern abre el programa Alquiler Seguro a viviendas turísticas, pisos pendientes de reforma e inmuebles afectados por ocupación ilegal ([fuente](https://www.diariodeibiza.es/ibiza/2026/05/15/govern-abre-programa-alquiler-seguro-130267523.html)).
-- El programa Alquiler Seguro del Govern ha movilizado solo cuatro viviendas en Ibiza en año y medio *(dato oficial)* ([fuente](https://www.diariodeibiza.es/baleares/2026/05/16/programa-alquiler-seguro-govern-balear-130289081.html)).
-- El Consell d'Eivissa y los ayuntamientos de Ibiza anuncian medidas conjuntas para perseguir el uso de caravanas como vivienda en suelo rústico y urbano, incluido un sistema digital contra la picaresca de multas ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/05/11/consell-ayuntamientos-movilidad-restriccion-ibiza-130103404.html), [El Debate](https://www.eldebate.com/espana/baleares/20260511/ibiza-declara-guerra-picaresca-caravanas-sistema-digital-impedira-esquiven-multas_416555.html)).
-- Seis multados por aparcar autocaravanas en suelo rústico recurren sanciones de hasta 20.000 euros *(dato oficial)* ([fuente](https://www.noudiari.es/local-ibiza/seis-multados-en-ibiza-por-aparcar-autocaravanas-en-rustico-recurren-multas-de-hasta-20-000-euros/)); en lo que va de año se han denunciado 17 caravanas por estacionar en rústico ([fuente](https://www.noudiari.es/local-ibiza/denunciadas-17-caravanas-en-ibiza-por-estacionar-en-suelo-rustico-en-lo-que-va-de-ano/)).
-- El Colegio de Arquitectos de Baleares pide priorizar a los residentes de Ibiza y Formentera en la solución de la vivienda y reclama incentivos para aprovechar más el suelo y agilizar proyectos públicos ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/05/12/ibiza-solucion-problema-vivienda-temporeros-130135684.html), [Cadena SER](https://cadenaser.com/baleares/2026/05/12/los-arquitectos-de-ibiza-piden-incentivos-para-aprovechar-mas-el-suelo-y-agilizar-proyectos-de-vivienda-publica-radio-ibiza/)).
-- La Mesa de Diálogo del Agua acuerda por unanimidad poner límites al crecimiento urbanístico y turístico en Ibiza ([fuente](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/16/2630679/mesa-dialogo-del-agua-ibiza-acuerda-por-unanimidad-poner-limites-crecimiento-isla.html)).
-- El PSOE denuncia al alcalde de Ibiza, Rafael Triguero (PP), por supuestas irregularidades en el acceso a una vivienda con protección pública mediante herencia en vida ([elDiario.es](https://www.eldiario.es/illes-balears/politica/psoe-denuncia-alcalde-ibiza-supuestas-irregularidades-acceso-vivienda-proteccion-publica_1_13211925.html), [análisis](https://www.eldiario.es/illes-balears/politica/herencia-vida-vivienda-precio-limitado-lio-inmobiliario-alcalde-ibiza_1_13218139.html)).
-- El sindicato de inquilinas de Ibiza denuncia coacciones en la renovación de contratos de alquiler ([fuente](https://cadenaser.com/baleares/2026/05/18/el-sindicato-de-inquilinas-de-ibiza-denuncia-coacciones-en-la-renovacion-de-contratos-de-alquiler-radio-ibiza/)).
-- El Ayuntamiento de Ibiza publica la lista provisional de quienes podrán optar a una vivienda en alquiler asequible ([fuente](https://cadenaser.com/baleares/2026/05/13/el-ayuntamiento-de-ibiza-ya-tiene-la-lista-provisional-de-quienes-podran-optar-a-una-vivienda-en-alquiler-asequible-radio-ibiza/)).
-- La falta de vivienda complica la llegada de 90 guardias civiles a Ibiza prevista para julio ([fuente](https://www.diariodeibiza.es/ibiza/2026/05/18/falta-vivienda-complica-llegada-90-130346021.html)).
-- Trabajadores denuncian en reportajes nacionales el desalojo de habitaciones que habían pagado en un supermercado okupado y la ruptura anticipada de alquileres por la llegada del turismo ([El Mundo](https://www.elmundo.es/cronica/2026/05/13/6a04a525fc6c83ee288b45c4.html), [Marca](https://amp.marca.com/tiramillas/economia/2026/05/13/polemica-vivienda-ibiza-profesores-denuncian-alquileres-acaban-culpa-turismo.html)).
-- La Justicia condena un caso de alquiler turístico ilegal en Ibiza ([fuente](https://www.diariodeibiza.es/ibiza/2026/05/18/vivienda-ibiza-alquiler-turistico-ilegal-130221418.html)) y se registra una multa de 59.500 euros *(dato oficial)* por otro alquiler turístico ilegal ([fuente](https://www.eldiario.es/illes-balears/economia/multa-59-500-euros-alquiler-turistico-ilegal-ibiza_1_13217455.html)).
-- Cuatro municipios de Ibiza figuran entre los alquileres más caros de España ([fuente](https://www.diariodeibiza.es/ibiza/2026/05/13/cuatro-municipios-ibiza-caros-espana-130167392.html)) y la oferta de vivienda en venta cae un 7% en Baleares ([fuente](https://www.noudiari.es/local-ibiza/la-oferta-de-vivienda-en-venta-cae-un-7-en-baleares/)).
-- El pleno del Parlament balear incluye en su orden del día vivienda, saturación turística y sanidad ([fuente](https://www.noudiari.es/noticias-ibiza-formentera-sidebar/la-vivienda-la-saturacion-turistica-y-la-sanidad-centraran-el-pleno-del-parlament-balear/)).
-- Sin novedad esta semana sobre la convocatoria del pleno extraordinario sobre la vivienda del alcalde solicitado por PSOE y Podemos.
-- Sin novedad esta semana sobre el registro formal de la vivienda del alcalde como vivienda de precio limitado.
-- Sin novedad esta semana sobre el reparto detallado de los 15 millones en ayudas aprobados por el Govern.
-- Sin novedad esta semana sobre la concreción legislativa de las herramientas reclamadas por el Consell de Formentera.
+- El Tribunal Supremo anula el registro único estatal de alquiler de corta duración por considerar que el Estado carece de competencia; la sentencia afecta a unas 300 viviendas turísticas de Ibiza *(estimación periodística)* que habían sido desinscritas ([Periódico de Ibiza](https://www.periodicodeibiza.es/noticias/baleares/2026/05/21/2634315/supremo-anula-registro-alquiler-corta-duracion-afirmar-estado-carece-competencia.html)).
+- El Govern balear y el sector de vivienda vacacional de Ibiza celebran la anulación del registro y reclaman que las competencias se gestionen desde la comunidad autónoma ([Periódico de Ibiza](https://www.periodicodeibiza.es/noticias/baleares/2026/05/21/2634503/baleares-celebra-anulacion-del-registro-alquiler-turistico-centralizar-competencias-genera-fracasos.html), [Cadena SER](https://cadenaser.com/baleares/2026/05/21/la-vivienda-vacacional-de-ibiza-celebra-que-se-tumbe-el-registro-obligatorio-radio-ibiza/), [Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/23/2635343/viviendas-turisticas-ibiza-celebran-supremo-haya-cargado-registro-unico-del-gobierno.html)).
+- Vecinos de Punta Xinxó proponen que las administraciones adquieran el hotel okupado del barrio como única solución efectiva para acabar con los problemas de suciedad e inseguridad ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/25/2636251/vecinos-punta-xinxo-proponen-las-administraciones-adquieran-hotel-okupado.html)).
+- Se publica una multa de 446.834 euros *(dato oficial vía medio)* por alquilar ilegalmente una vivienda turística en Ibiza ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/05/21/multazo-446-000-euros-alquiler-130500577.html), [Noudiari](https://www.noudiari.es/local-ibiza/multa-de-446-834-euros-por-alquilar-ilegalmente-una-vivienda-turistica-en-ibiza/)).
+- Los extranjeros poseen 13.419 viviendas en Ibiza y Formentera, casi el 19% del total *(dato oficial vía medio)* ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/05/24/extranjeros-poseen-13-419-viviendas-130580067.html)).
+- Un reportaje documenta que las estancias en viviendas vacacionales de Ibiza se acortan y que aparecen prácticas de regateo de precios ([Cadena SER](https://cadenaser.com/baleares/2026/05/25/estancias-cada-vez-mas-cortas-y-regateo-de-precios-en-las-viviendas-vacacionales-de-ibiza-radio-ibiza/)).
+- Un testimonio de trabajador de temporada describe que viene a Ibiza para ahorrar y que el alquiler absorbe todos sus ingresos ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/05/20/vivienda-ibiza-alquiler-trabajador-temporada-130441029.html)).
+- Una familia ocupa una caseta de pescadores en Ibiza buscando una forma de sobrevivir ([Diario de Mallorca](https://www.diariodemallorca.es/sucesos/2026/05/23/familia-okupa-caseta-pescadores-ibiza-130575143.html)); una vecina pierde su piso tras 14 años y busca casa de acogida para sus dos gatas ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/23/2635803/buscan-casa-acogida-adopcion-urgente-para-dos-gatas-ibiza-desgarra-alma.html)).
+- Una menor y dos personas con discapacidad se quedan sin vivienda tras un desahucio entre hermanos en Ibiza ([El Periódico](https://www.elperiodico.com/es/sociedad/20260524/menor-personas-dispacidad-vivienda-ibiza-desahucio-130549480)).
+- Miles de personas se manifiestan en Madrid en defensa de una vivienda digna y contra el rentismo ([Diario de Ibiza](https://www.diariodeibiza.es/sociedad/2026/05/24/sindicatos-vecinos-vuelven-calle-domingo-vivienda-cuesta-vida-130596308.html)).
+- Un reportaje de investigación rastrea digitalmente caravanas y furgonetas camperizadas durmiendo en zonas prohibidas de Ibiza ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/05/24/dormir-prohibido-rastro-digital-caravanas-130130526.html)); seis multados por aparcar autocaravanas en suelo rústico recurren sanciones de hasta 20.000 euros ([Noudiari](https://www.noudiari.es/local-ibiza/seis-multados-en-ibiza-por-aparcar-autocaravanas-en-rustico-recurren-multas-de-hasta-20-000-euros/)).
+- Una pieza de opinión señala que la falta de vivienda en Ibiza es un problema estructural agravado ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/24/2635639/falta-vivienda-problema-estructural-solo-resuelto-sino-algunos-aspectos-agravado.html)); otras dos columnas plantean el peso de los compradores ricos en el mercado local ([Noudiari](https://www.noudiari.es/opinion-ibiza/ricos-y-pobres-por-samaj-moreno/)) y rechazan reducir el problema al alquiler turístico ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/21/2633781/reducir-problema-del-acceso-vivienda-ibiza-alquiler-turistico-pura-demagogia.html)).
+- La Justicia se pronuncia sobre un caso de inquilino que destinó una vivienda alquilada a alquiler turístico ilegal en Ibiza ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/05/18/vivienda-ibiza-alquiler-turistico-ilegal-130221418.html)).
+- La falta de vivienda complica la llegada de 90 guardias civiles a Ibiza prevista para julio ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/05/18/falta-vivienda-complica-llegada-90-130346021.html)).
+- Sin novedad esta semana sobre los plazos del BOIB para la licitación del suelo público destinado a las 387 viviendas protegidas anunciada la semana anterior.
+- Sin novedad esta semana sobre la cifra actualizada de viviendas movilizadas por Alquiler Seguro en Ibiza tras la ampliación a nuevas tipologías.
+- Sin novedad esta semana sobre la tramitación de la denuncia del PSOE contra el alcalde de Ibiza ni sobre la convocatoria del pleno extraordinario reclamado por PSOE y Podemos.
+- Sin novedad esta semana sobre el despliegue efectivo del sistema digital antimultas anunciado por el Consell y los ayuntamientos contra las caravanas.
+- Sin novedad esta semana sobre la respuesta institucional al plazo de julio para la llegada de los 90 guardias civiles sin vivienda; el problema sigue documentado pero sin propuesta de realojo.
+- Sin novedad esta semana sobre el resultado del debate de vivienda en el pleno del Parlament balear.
 
 </div>
 </section>
@@ -102,30 +93,16 @@ permalink: /
 <section class="dash-propuestas" id="propuestas">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Propuestas documentadas</p>
-<h2>3 propuestas en circulación esta semana</h2>
+<h2>1 propuesta en circulación esta semana</h2>
 <p class="dash-section-lead">Cada propuesta la ha formulado un actor con nombre, con fuente verificable. El observatorio no genera propuestas propias.</p>
 </header>
 <div class="dash-propuestas-grid">
 <article class="dash-propuesta">
 <div class="dash-propuesta-num">01</div>
-<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w21/#1-licitación-de-suelo-público-para-387-viviendas-protegidas-de-alquiler">Licitación de suelo público para 387 viviendas protegidas de alquiler</a></h3>
+<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w22/#1-compra-pública-del-hotel-okupado-de-punta-xinxó">Compra pública del hotel okupado de Punta Xinxó</a></h3>
 <dl class="dash-propuesta-meta">
 </dl>
-<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w21/#1-licitación-de-suelo-público-para-387-viviendas-protegidas-de-alquiler">Ver ficha y fuentes →</a>
-</article>
-<article class="dash-propuesta">
-<div class="dash-propuesta-num">02</div>
-<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w21/#2-apertura-del-programa-alquiler-seguro-a-nuevas-tipologías-de-vivienda">Apertura del programa Alquiler Seguro a nuevas tipologías de vivienda</a></h3>
-<dl class="dash-propuesta-meta">
-</dl>
-<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w21/#2-apertura-del-programa-alquiler-seguro-a-nuevas-tipologías-de-vivienda">Ver ficha y fuentes →</a>
-</article>
-<article class="dash-propuesta">
-<div class="dash-propuesta-num">03</div>
-<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w21/#3-priorizar-a-los-residentes-de-ibiza-y-formentera-en-el-acceso-a-la-vivienda">Priorizar a los residentes de Ibiza y Formentera en el acceso a la vivienda</a></h3>
-<dl class="dash-propuesta-meta">
-</dl>
-<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w21/#3-priorizar-a-los-residentes-de-ibiza-y-formentera-en-el-acceso-a-la-vivienda">Ver ficha y fuentes →</a>
+<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w22/#1-compra-pública-del-hotel-okupado-de-punta-xinxó">Ver ficha y fuentes →</a>
 </article>
 </div>
 </section>
@@ -133,17 +110,16 @@ permalink: /
 <section class="dash-vigilar" id="a-vigilar">
 <header class="dash-section-header">
 <p class="dash-section-kicker">A vigilar la próxima semana</p>
-<h2>6 decisiones o fechas pendientes</h2>
+<h2>5 decisiones o fechas pendientes</h2>
 <p class="dash-section-lead">Lo que aún no ha pasado pero condiciona la agenda de las próximas semanas.</p>
 </header>
 <div class="dash-vigilar-list" markdown="1">
 
-- Plazo y publicaciones del BOIB asociados a la licitación del suelo público para las 387 viviendas protegidas de alquiler.
-- Evolución del programa Alquiler Seguro tras la apertura a nuevas tipologías y cifra actualizada de viviendas movilizadas en Ibiza.
-- Tramitación de la denuncia del PSOE contra el alcalde de Ibiza por la vivienda protegida y eventual convocatoria del pleno extraordinario aún pendiente desde la semana anterior.
-- Despliegue efectivo del sistema digital antimultas anunciado por el Consell y los ayuntamientos contra las caravanas.
-- Respuesta institucional al plazo de julio para la llegada de los 90 guardias civiles sin vivienda.
-- Resultado del debate sobre vivienda en el pleno del Parlament balear.
+- Decisiones del Govern balear y de los ayuntamientos sobre el régimen aplicable a las viviendas turísticas afectadas por la sentencia del Supremo.
+- Respuesta de las administraciones (Govern, Consell, Ayuntamiento) a la propuesta vecinal de adquirir el hotel okupado de Punta Xinxó.
+- Recursos pendientes de resolución de los seis sancionados por autocaravanas en suelo rústico.
+- Plazo de julio para la llegada de los 90 guardias civiles a Ibiza y eventual plan de alojamiento.
+- Convocatoria o archivo del pleno extraordinario sobre la vivienda del alcalde de Ibiza, pendiente desde principios de mayo.
 
 </div>
 </section>
@@ -151,9 +127,14 @@ permalink: /
 <section class="dash-archivo">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Informes anteriores</p>
-<h2>4 ediciones publicadas antes de esta</h2>
+<h2>5 ediciones publicadas antes de esta</h2>
 </header>
 <ol class="dash-archivo-list">
+<li>
+<time datetime="2026-05-18">2026-05-18</time>
+<h3><a href="{{ site.baseurl }}/ediciones/2026-w21/">Semana 3 - Mayo 2026</a></h3>
+<p>Govern licita suelo para 387 viviendas protegidas y abre Alquiler Seguro; Consell y ayuntamientos refuerzan persecución a caravanas; PSOE denuncia al alcalde.</p>
+</li>
 <li>
 <time datetime="2026-05-11">2026-05-11</time>
 <h3><a href="{{ site.baseurl }}/ediciones/2026-w20/">Semana 2 - Mayo 2026</a></h3>
@@ -168,11 +149,6 @@ permalink: /
 <time datetime="2026-04-27">2026-04-27</time>
 <h3><a href="{{ site.baseurl }}/ediciones/2026-w18/">Semana 5 - Abril 2026</a></h3>
 <p>Desalojo de sa Joveria con unos 200 trabajadores afectados; Consell, patronales y sindicatos respaldan residencias para temporeros.</p>
-</li>
-<li>
-<time datetime="2026-04-20">2026-04-20</time>
-<h3><a href="{{ site.baseurl }}/ediciones/2026-w17/">Semana 4 - Abril 2026</a></h3>
-<p>Desalojo de sa Joveria y otros asentamientos a las puertas de la temporada; Consell, patronales y sindicatos respaldan residencias para temporeros.</p>
 </li>
 </ol>
 <a href="{{ site.baseurl }}/ediciones/" class="dash-archivo-cta">Ir al archivo completo →</a>

@@ -6,7 +6,7 @@ permalink: /propuestas/
 
 <section class="prop-intro">
 <p class="prop-intro-kicker">Mapa completo del observatorio</p>
-<p class="prop-intro-count"><strong>17 propuestas documentadas · 16 actores distintos</strong></p>
+<p class="prop-intro-count"><strong>18 propuestas documentadas · 17 actores distintos</strong></p>
 <p class="prop-intro-lead">Cada propuesta la formuló un actor con nombre y fuente verificable. Aquí están todas las que el observatorio ha registrado desde su primera edición, agrupadas por estado actual.</p>
 </section>
 
@@ -16,7 +16,7 @@ permalink: /propuestas/
 <li><a href="#aprobada">Aprobada <span class="prop-nav-count">1</span></a></li>
 <li><a href="#en-debate">En debate <span class="prop-nav-count">2</span></a></li>
 <li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">9</span></a></li>
-<li><a href="#propuesta">Propuesta <span class="prop-nav-count">3</span></a></li>
+<li><a href="#propuesta">Propuesta <span class="prop-nav-count">4</span></a></li>
 </ul>
 </nav>
 
@@ -199,7 +199,7 @@ permalink: /propuestas/
 <section class="prop-state" id="propuesta">
 <header class="prop-state-header">
 <h2>Propuesta</h2>
-<p class="prop-state-count">3 propuestas</p>
+<p class="prop-state-count">4 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -231,6 +231,16 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w21/">2026-W21</a></dd>
 </dl>
 <a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/05/12/ibiza-solucion-problema-vivienda-temporeros-130135684.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Vecinos de Punta Xinxó <span class="prop-card-type">· Colectivo ciudadano</span></h3>
+<p class="prop-card-summary">Los vecinos proponen que las administraciones adquieran el hotel okupado de Punta Xinxó como única solución efectiva para acabar con los problemas de suciedad e inseguridad.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w22/">2026-W22</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/25/2636251/vecinos-punta-xinxo-proponen-las-administraciones-adquieran-hotel-okupado.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>
