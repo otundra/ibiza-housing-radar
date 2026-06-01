@@ -1,0 +1,132 @@
+{
+  "proposal_id": "2026-w23-004",
+  "week": "2026-w23",
+  "created_at": "2026-06-01T10:22:57Z",
+  "tier": {
+    "value": "amarillo",
+    "reason": "fuente única",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": true,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 1,
+      "whitelist_match": "neutro",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-06-01T10:22:57Z",
+      "proposal": {
+        "actor": "PSOE",
+        "actor_type": "partido",
+        "statement_summary": "El PSOE exige al Parlament un expediente contra Triguero por el escándalo de su vivienda de precio limitado en Ibiza.",
+        "statement_verbatim": "El PSOE exige al Parlament un expediente contra Triguero por el escándalo de su vivienda de precio limitado en Ibiza",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/05/25/psoe-exige-parlament-expediente-triguero-130628669.html",
+        "palanca": "judicial",
+        "target_actor": "Parlament",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-06-01T10:22:57Z",
+      "proposal": {
+        "actor": "PSOE",
+        "actor_type": "partido",
+        "statement_summary": "El PSOE exige al Parlament de les Illes Balears que abra un expediente contra Triguero por el escándalo relacionado con su vivienda de precio limitado en Ibiza. La formación socialista reclama que se depuren responsabilidades institucionales ante este caso.",
+        "statement_verbatim": "El PSOE exige al Parlament un expediente contra Triguero por el escándalo de su vivienda de precio limitado en Ibiza",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/05/25/psoe-exige-parlament-expediente-triguero-130628669.html",
+        "palanca": "enforcement",
+        "target_actor": "Parlament de les Illes Balears",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "target_actor",
+          "a": "Parlament",
+          "b": "Parlament de les Illes Balears",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "palanca",
+          "a": "judicial",
+          "b": "enforcement",
+          "reason": "diff_critico"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 1,
+        "urls": [
+          "https://www.diariodeibiza.es/ibiza/2026/05/25/psoe-exige-parlament-expediente-triguero-130628669.html"
+        ],
+        "dominios": [
+          "diariodeibiza.es"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "neutro",
+        "domain": "diariodeibiza.es",
+        "known_actor": false,
+        "whitelist_miss": true
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-06-01T10:22:57Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": true,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 3766,
+    "heuristics_ms": 688,
+    "verify_ms": 0,
+    "total_ms": 4454
+  }
+}

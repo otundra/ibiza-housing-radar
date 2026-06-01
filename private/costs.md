@@ -1,19 +1,19 @@
 # Control de costes — privado
 
-*Archivo privado. No se publica en la web. Última actualización: 2026-05-25 09:00 UTC*
+*Archivo privado. No se publica en la web. Última actualización: 2026-06-01 10:25 UTC*
 
 Tipo de cambio interno: **1 USD = 0.92 EUR** (revisar cada 3 meses).
 
 ## Mes en curso
 
-- **Gastado 2026-05:** `3.30 €` (`$3.5859` USD)
+- **Gastado 2026-06:** `0.93 €` (`$1.0123` USD)
 - **Tope blando:** `12.00 €` → solo avisa por Telegram, sigue publicando
 - **Tope duro:** `50.00 €` → corta el pipeline (protección runaway)
-- **Consumo vs blando:** `27.5%`
-- **Consumo vs duro:** `6.6%`
+- **Consumo vs blando:** `7.8%`
+- **Consumo vs duro:** `1.9%`
 
 ```
-[█░░░░░░░░░░░░░░░░░░░] 6.6% del tope duro
+[░░░░░░░░░░░░░░░░░░░░] 1.9% del tope duro
 ```
 
 **Capa actual:** 🟢 Verde (<6 €) — silencio
@@ -22,27 +22,28 @@ Tipo de cambio interno: **1 USD = 0.92 EUR** (revisar cada 3 meses).
 
 | Mes | Gasto (€) | Gasto (USD) |
 |---|---|---|
+| 2026-06 | 0.93 € | $1.0123 |
 | 2026-05 | 3.30 € | $3.5859 |
 | 2026-04 | 6.86 € | $7.4611 |
-| **TOTAL** | **10.16 €** | **$11.0470** |
+| **TOTAL** | **11.09 €** | **$12.0593** |
 
 ## Gasto por fase
 
 | Fase | Gasto (€) | % |
 |---|---|---|
-| generate | 7.20 € | 70.8% |
-| bench_extract | 0.59 € | 5.8% |
-| gold_extract_opus | 0.46 € | 4.5% |
-| self_review | 0.36 € | 3.5% |
-| bench_classify | 0.30 € | 2.9% |
-| bench_detect | 0.28 € | 2.7% |
-| classify | 0.20 € | 2.0% |
-| extract_fallback | 0.17 € | 1.7% |
-| audit_blind | 0.14 € | 1.4% |
-| gold_classify_opus | 0.12 € | 1.2% |
-| gold_detect_opus | 0.12 € | 1.2% |
-| extract_validate | 0.07 € | 0.7% |
-| extract_base | 0.06 € | 0.6% |
+| generate | 7.98 € | 71.9% |
+| bench_extract | 0.59 € | 5.3% |
+| gold_extract_opus | 0.46 € | 4.1% |
+| self_review | 0.43 € | 3.9% |
+| bench_classify | 0.30 € | 2.7% |
+| bench_detect | 0.28 € | 2.5% |
+| classify | 0.23 € | 2.1% |
+| extract_fallback | 0.17 € | 1.5% |
+| audit_blind | 0.16 € | 1.5% |
+| gold_classify_opus | 0.12 € | 1.1% |
+| gold_detect_opus | 0.12 € | 1.1% |
+| extract_validate | 0.08 € | 0.7% |
+| extract_base | 0.07 € | 0.6% |
 | gold_validate_task_3_extract | 0.04 € | 0.4% |
 | gold_validate_task_1_classify | 0.03 € | 0.3% |
 | gold_validate_task_2_proposal_detect | 0.03 € | 0.3% |
@@ -51,14 +52,23 @@ Tipo de cambio interno: **1 USD = 0.92 EUR** (revisar cada 3 meses).
 
 | Modelo | Input tokens | Output tokens | Gasto (€) |
 |---|---|---|---|
-| `claude-opus-4-7` | 204,242 | 80,643 | 8.94 € |
-| `claude-sonnet-4-6` | 173,884 | 28,398 | 0.89 € |
-| `claude-haiku-4-5-20251001` | 88,791 | 54,730 | 0.33 € |
+| `claude-opus-4-7` | 220,093 | 87,308 | 9.72 € |
+| `claude-sonnet-4-6` | 198,060 | 31,013 | 1.00 € |
+| `claude-haiku-4-5-20251001` | 98,636 | 61,783 | 0.37 € |
 
 ## Últimas 20 llamadas
 
 | Fecha | Edición | Fase | Modelo | In | Out | € |
 |---|---|---|---|---|---|---|
+| 2026-06-01 10:25 | 2026-W23 | self_review | `claude-sonnet-4-6` | 20,237 | 1,167 | 0.0761 € |
+| 2026-06-01 10:24 | 2026-W23 | generate | `claude-opus-4-7` | 15,851 | 6,665 | 0.7791 € |
+| 2026-06-01 10:22 | 2026-w23 | audit_blind | `claude-sonnet-4-6` | 732 | 1,386 | 0.0249 € |
+| 2026-06-01 10:22 | 2026-W23 | extract_validate | `claude-sonnet-4-6` | 806 | 18 | 0.0025 € |
+| 2026-06-01 10:22 | 2026-W23 | extract_validate | `claude-sonnet-4-6` | 791 | 18 | 0.0024 € |
+| 2026-06-01 10:22 | 2026-W23 | extract_validate | `claude-sonnet-4-6` | 805 | 13 | 0.0024 € |
+| 2026-06-01 10:22 | 2026-W23 | extract_validate | `claude-sonnet-4-6` | 805 | 13 | 0.0024 € |
+| 2026-06-01 10:22 | 2026-W23 | extract_base | `claude-haiku-4-5-20251001` | 1,818 | 1,231 | 0.0073 € |
+| 2026-06-01 10:22 | 2026-W23 | classify | `claude-haiku-4-5-20251001` | 8,027 | 5,822 | 0.0342 € |
 | 2026-05-25 09:00 | 2026-W22 | self_review | `claude-sonnet-4-6` | 18,328 | 997 | 0.0685 € |
 | 2026-05-25 08:59 | 2026-W22 | generate | `claude-opus-4-7` | 14,628 | 5,782 | 0.7013 € |
 | 2026-05-25 08:58 | 2026-w22 | audit_blind | `claude-sonnet-4-6` | 275 | 374 | 0.0097 € |
@@ -70,15 +80,6 @@ Tipo de cambio interno: **1 USD = 0.92 EUR** (revisar cada 3 meses).
 | 2026-05-18 08:47 | 2026-w21 | audit_blind | `claude-sonnet-4-6` | 1,695 | 2,997 | 0.0498 € |
 | 2026-05-18 08:46 | 2026-W21 | extract_validate | `claude-sonnet-4-6` | 842 | 18 | 0.0026 € |
 | 2026-05-18 08:46 | 2026-W21 | extract_fallback | `claude-opus-4-7` | 1,726 | 447 | 0.0547 € |
-| 2026-05-18 08:46 | 2026-W21 | extract_validate | `claude-sonnet-4-6` | 837 | 126 | 0.0040 € |
-| 2026-05-18 08:46 | 2026-W21 | extract_validate | `claude-sonnet-4-6` | 809 | 18 | 0.0025 € |
-| 2026-05-18 08:46 | 2026-W21 | extract_fallback | `claude-opus-4-7` | 1,753 | 444 | 0.0548 € |
-| 2026-05-18 08:46 | 2026-W21 | extract_validate | `claude-sonnet-4-6` | 859 | 71 | 0.0034 € |
-| 2026-05-18 08:46 | 2026-W21 | extract_validate | `claude-sonnet-4-6` | 839 | 18 | 0.0026 € |
-| 2026-05-18 08:46 | 2026-W21 | extract_validate | `claude-sonnet-4-6` | 888 | 18 | 0.0027 € |
-| 2026-05-18 08:46 | 2026-W21 | extract_validate | `claude-sonnet-4-6` | 844 | 18 | 0.0026 € |
-| 2026-05-18 08:46 | 2026-W21 | extract_validate | `claude-sonnet-4-6` | 998 | 13 | 0.0029 € |
-| 2026-05-18 08:46 | 2026-W21 | extract_base | `claude-haiku-4-5-20251001` | 2,781 | 2,721 | 0.0151 € |
 
 ## Política de costes
 

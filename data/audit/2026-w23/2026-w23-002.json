@@ -1,0 +1,134 @@
+{
+  "proposal_id": "2026-w23-002",
+  "week": "2026-w23",
+  "created_at": "2026-06-01T10:22:56Z",
+  "tier": {
+    "value": "amarillo",
+    "reason": "techo activo",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": true,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 2,
+      "whitelist_match": "neutro",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-06-01T10:22:56Z",
+      "proposal": {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell pretende habilitar residencias para trabajadores de temporada en Ibiza.",
+        "statement_verbatim": "El Consell pretende habilitar residencias para trabajadores de temporada en Ibiza",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/30/2640173/consell-pretende-habilitar-residencias-para-trabajadores-temporada-ibiza.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "en_movimiento",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-06-01T10:22:56Z",
+      "proposal": {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell pretende habilitar residencias destinadas a trabajadores de temporada en Ibiza. La medida busca dar respuesta al problema de alojamiento del personal que llega a la isla durante la temporada turística.",
+        "statement_verbatim": "El Consell pretende habilitar residencias para trabajadores de temporada en Ibiza",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/30/2640173/consell-pretende-habilitar-residencias-para-trabajadores-temporada-ibiza.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Consell d'Eivissa",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "target_actor",
+          "a": "",
+          "b": "Consell d'Eivissa",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "horizon",
+          "a": "en_movimiento",
+          "b": "corto_plazo",
+          "reason": "diff_menor"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 2,
+        "urls": [
+          "https://amp.periodicodeibiza.es/pitiusas/ibiza/2026/05/30/2640173/consell-pretende-habilitar-residencias-para-trabajadores-temporada-ibiza.html",
+          "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/30/2640173/consell-pretende-habilitar-residencias-para-trabajadores-temporada-ibiza.html"
+        ],
+        "dominios": [
+          "amp.periodicodeibiza.es",
+          "periodicodeibiza.es"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "neutro",
+        "domain": "periodicodeibiza.es",
+        "known_actor": true,
+        "whitelist_miss": false
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-06-01T10:22:56Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": true,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 3766,
+    "heuristics_ms": 668,
+    "verify_ms": 0,
+    "total_ms": 4434
+  }
+}

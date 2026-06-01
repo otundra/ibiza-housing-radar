@@ -6,7 +6,7 @@ permalink: /propuestas/
 
 <section class="prop-intro">
 <p class="prop-intro-kicker">Mapa completo del observatorio</p>
-<p class="prop-intro-count"><strong>18 propuestas documentadas · 17 actores distintos</strong></p>
+<p class="prop-intro-count"><strong>22 propuestas documentadas · 20 actores distintos</strong></p>
 <p class="prop-intro-lead">Cada propuesta la formuló un actor con nombre y fuente verificable. Aquí están todas las que el observatorio ha registrado desde su primera edición, agrupadas por estado actual.</p>
 </section>
 
@@ -15,8 +15,8 @@ permalink: /propuestas/
 <li><a href="#en-ejecucion">En ejecución <span class="prop-nav-count">2</span></a></li>
 <li><a href="#aprobada">Aprobada <span class="prop-nav-count">1</span></a></li>
 <li><a href="#en-debate">En debate <span class="prop-nav-count">2</span></a></li>
-<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">9</span></a></li>
-<li><a href="#propuesta">Propuesta <span class="prop-nav-count">4</span></a></li>
+<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">11</span></a></li>
+<li><a href="#propuesta">Propuesta <span class="prop-nav-count">6</span></a></li>
 </ul>
 </nav>
 
@@ -100,7 +100,7 @@ permalink: /propuestas/
 <section class="prop-state" id="en-movimiento">
 <header class="prop-state-header">
 <h2>En movimiento</h2>
-<p class="prop-state-count">9 propuestas</p>
+<p class="prop-state-count">11 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -193,13 +193,33 @@ permalink: /propuestas/
 </dl>
 <a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/11/2627317/consell-ibiza-ayuntamientos-refuerzan-control-sobre-autocaravanas.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Consell d'Eivissa <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Consell pretende habilitar residencias para trabajadores de temporada en Ibiza.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>en_movimiento</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w23/">2026-W23</a></dd>
+</dl>
+<a class="prop-card-source" href="https://amp.periodicodeibiza.es/pitiusas/ibiza/2026/05/30/2640173/consell-pretende-habilitar-residencias-para-trabajadores-temporada-ibiza.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Consell d'Eivissa <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Consell pretende habilitar residencias para trabajadores de temporada en Ibiza.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>en_movimiento</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w23/">2026-W23</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/30/2640173/consell-pretende-habilitar-residencias-para-trabajadores-temporada-ibiza.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
 </div>
 </section>
 
 <section class="prop-state" id="propuesta">
 <header class="prop-state-header">
 <h2>Propuesta</h2>
-<p class="prop-state-count">4 propuestas</p>
+<p class="prop-state-count">6 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -241,6 +261,26 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w22/">2026-W22</a></dd>
 </dl>
 <a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/25/2636251/vecinos-punta-xinxo-proponen-las-administraciones-adquieran-hotel-okupado.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Agentes inmobiliarios <span class="prop-card-type">· Otro</span></h3>
+<p class="prop-card-summary">Los agentes inmobiliarios reclaman soluciones para ampliar la oferta de viviendas en Ibiza.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Estructural</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w23/">2026-W23</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/05/29/api-reclaman-soluciones-ampliar-oferta-130797948.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">PSOE <span class="prop-card-type">· Partido</span></h3>
+<p class="prop-card-summary">El PSOE exige al Parlament un expediente contra Triguero por el escándalo de su vivienda de precio limitado en Ibiza.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Vía judicial</dd>
+<dt>Horizonte</dt><dd>Inmediato</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w23/">2026-W23</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/05/25/psoe-exige-parlament-expediente-triguero-130628669.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>

@@ -1,0 +1,110 @@
+[
+  {
+    "news_id": "item-000",
+    "proposals": [
+      {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell pretende habilitar residencias para trabajadores de temporada en Ibiza.",
+        "statement_verbatim": "El Consell pretende habilitar residencias para trabajadores de temporada en Ibiza",
+        "url_source": "https://amp.periodicodeibiza.es/pitiusas/ibiza/2026/05/30/2640173/consell-pretende-habilitar-residencias-para-trabajadores-temporada-ibiza.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "en_movimiento",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-001",
+    "proposals": [
+      {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell pretende habilitar residencias para trabajadores de temporada en Ibiza.",
+        "statement_verbatim": "El Consell pretende habilitar residencias para trabajadores de temporada en Ibiza",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/30/2640173/consell-pretende-habilitar-residencias-para-trabajadores-temporada-ibiza.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "en_movimiento",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-002",
+    "proposals": [
+      {
+        "actor": "Agentes inmobiliarios",
+        "actor_type": "otro",
+        "statement_summary": "Los agentes inmobiliarios reclaman soluciones para ampliar la oferta de viviendas en Ibiza.",
+        "statement_verbatim": "Los agentes inmobiliarios reclaman soluciones para \"ampliar la oferta de viviendas\" en Ibiza",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/05/29/api-reclaman-soluciones-ampliar-oferta-130797948.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "estructural",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-003",
+    "proposals": [
+      {
+        "actor": "PSOE",
+        "actor_type": "partido",
+        "statement_summary": "El PSOE exige al Parlament un expediente contra Triguero por el escándalo de su vivienda de precio limitado en Ibiza.",
+        "statement_verbatim": "El PSOE exige al Parlament un expediente contra Triguero por el escándalo de su vivienda de precio limitado en Ibiza",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/05/25/psoe-exige-parlament-expediente-triguero-130628669.html",
+        "palanca": "judicial",
+        "target_actor": "Parlament",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  }
+]
