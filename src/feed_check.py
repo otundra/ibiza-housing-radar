@@ -46,7 +46,7 @@ SOURCES_FILE = ROOT / "src" / "sources.yaml"
 
 HTTP_TIMEOUT_S: Final[float] = 15.0
 USER_AGENT: Final[str] = (
-    "Mozilla/5.0 (compatible; IbizaHousingRadarBot/1.0; +https://otundra.github.io/ibiza-housing-radar/)"
+    "Mozilla/5.0 (compatible; IbizaHousingRadarBot/1.0)"
 )
 STALE_DAYS: Final[int] = 60
 
