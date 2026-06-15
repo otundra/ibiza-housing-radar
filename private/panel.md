@@ -1,23 +1,23 @@
 # Tablero interno — monitorización del proyecto
 
-*Archivo privado. No se publica en la web. Última actualización: 2026-06-08 09:26 UTC.*
+*Archivo privado. No se publica en la web. Última actualización: 2026-06-15 10:58 UTC.*
 
 Agrega las señales que otros módulos ya producen: gasto del mes, autoevaluación, verificación, decisiones con revisión pendiente, última edición. No genera datos propios. Ver decisión D14.
 
 ## Costes del mes
 
-- **Gasto actual:** 1.92 € (blando 12 € / duro 50 €) — 🟢 Verde (<6 €) — silencio
+- **Gasto actual:** 2.86 € (blando 12 € / duro 50 €) — 🟢 Verde (<6 €) — silencio
 - **Dashboard detallado:** [`costs.md`](costs.md)
 
 ## Decisiones con revisión pendiente
 
-### ⚠️ Próximas (≤7 días)
+### 🚨 Vencidas
 
-- **Ritual de aprendizaje semanal + temperature=0 en self-review** (D17) — vence el 2026-06-08 (hoy)
+- **Ritual de aprendizaje semanal + temperature=0 en self-review** (D17) — vencía el 2026-06-08 (hace 7 días)
 
 ## Última edición publicada
 
-- `2026-w24`
+- `2026-w25`
 
 ## Histórico de propuestas
 
@@ -26,7 +26,7 @@ Agrega las señales que otros módulos ya producen: gasto del mes, autoevaluaci�
 ## Verificación (última ejecución)
 
 - **Resultado:** ✅ sin fallos bloqueantes
-- **URLs comprobadas:** 34, caídas: 0
+- **URLs comprobadas:** 26, caídas: 0
 - **Actores comprobados:** 0, no trazables: 0
 - **Avisos blandos:** 2
 
@@ -43,8 +43,7 @@ Termómetro orientativo para detectar pozo de modificación infinita. Disparador
 - **Reglas duras adicionales en el prompt del generador:** 19
 - **Dimensiones del revisor (self-review):** 6
 - **Decisiones vigentes en `DECISIONES.md`:** 42
-- **Candidatas a retirar** (dimensiones con nota constante en últimas 4 ediciones):
-    - claridad (constante en 9/10 durante 4 ediciones)
+- **Candidatas a retirar:** ninguna detectada con la heurística actual (ventana 4 ediciones).
 
 ---
 

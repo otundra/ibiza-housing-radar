@@ -1,0 +1,13 @@
+{
+  "urls_checked": 26,
+  "urls_failed": [],
+  "actors_checked": 0,
+  "actors_untraceable": [],
+  "forbidden_verbs_found": [],
+  "frontmatter_issues": [],
+  "blocking_failures": [],
+  "soft_warnings": [
+    "URL con aviso (no bloqueante): {'url': 'https://www.tourinews.es/destinos-turismo/ibiza-ayuntamiento-intercepta-cinco-pisos-alquiler-turistico-ilegal-una-semana_4493086_102.html', 'status': 403, 'reason': 'bot-blocked or rate-limited (URL viva)'}",
+    "URL con aviso (no bloqueante): {'url': 'https://www.tourinews.es/destinos-turismo/ibiza-alquiler-turistico-ilegal-denuncia-detecta-dos-primeros-casos-temporada_4492988_102.html', 'status': 403, 'reason': 'bot-blocked or rate-limited (URL viva)'}"
+  ]
+}

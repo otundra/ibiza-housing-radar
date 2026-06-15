@@ -7,38 +7,55 @@ permalink: /
 <section class="dash-cover">
 <p class="dash-cover-kicker">
 <span class="dash-pulse" aria-hidden="true"></span>
-<span>Informe semanal · actualizado 2026-06-08</span>
+<span>Informe semanal · actualizado 2026-06-15</span>
 </p>
 <div class="dash-cover-grid">
 <div class="dash-cover-main">
-<p class="dash-cover-eyebrow">Semana 2 - Junio 2026</p>
-<h1 class="dash-cover-headline">Desmantelamiento de asentamientos en Ibiza y Sant Josep, multa de 800.000€ por alquiler turístico ilegal, Ibavi licita 48 VPO en Can Cantó y precio de vivienda sube 12,9%.</h1>
+<p class="dash-cover-eyebrow">Semana 3 - Junio 2026</p>
+<h1 class="dash-cover-headline">Justicia avala aval de 240.000€ para alquilar en Ibiza, Ayuntamiento sortea siete VPO en Sa Penya, Consell geolocaliza caravanas ilegales y familias destinan 45% al alquiler.</h1>
 <div class="dash-cover-lectura" markdown="1">
 
-- **Lun 1** los caravanistas de sa Joveria abandonan el asentamiento bajo aviso de denuncia de la Policía Local; Ibiza impone una sanción de casi 800.000€ por alquiler turístico ilegal; Roselló (PSOE) califica de «fracaso absoluto» la política de vivienda del PP en Eivissa.
-- **Mié 3 — Jue 4** Sant Josep desaloja el asentamiento de caravanas de sa Joveria dentro del Parque Natural de ses Salines; Formentera estrena su primera «vivienda puente» para víctimas de violencia machista.
-- **Vie 5** la Policía Local denuncia los dos primeros pisos turísticos ilegales de la temporada en Platja d'en Bossa; trasciende un nuevo asentamiento en ses Feixes con tiendas de campaña; el Ayuntamiento de Ibiza declara «tolerancia cero» y promete acabar con el chabolismo.
-- **Sáb 6** el Ibavi licita las obras de 48 viviendas públicas en Can Cantó; el Ayuntamiento de Ibiza trabaja en el desmantelamiento del asentamiento de ses Feixes; el PSOE denuncia que el Govern permite más plazas turísticas «a escondidas».
-- **Dom 7** el presidente de PIMEEF declara que la especulación causa la falta de trabajadores; los vecinos de es Pratet denuncian «miedo e impotencia» ante las chabolas; un agente inmobiliario plantea una posible contención de precios; una empresa de seguridad es multada por dejar 52 veces sin vigilancia un hospital culpando al precio del alquiler.
-- **Lun 8** el precio de la vivienda sube un 12,9% con récord en usada en 19 años; un caravanista recibe una multa de 60.000€ en menos de nueve horas; trasciende un proyecto de coliving con 18 estudios de madera para trabajadores de temporada.
+- **Lun 8** Àlex Pitaluga (PSOE) declara que la crisis de vivienda amenaza al profesorado y a los servicios públicos.
+- **Mar 9** se difunde que la villa de alquiler vacacional más cara de España está en Ibiza; el Ayuntamiento anuncia el sorteo de siete viviendas asequibles en Sa Penya para el jueves.
+- **Mié 10** el Ayuntamiento de Ibiza denuncia tres nuevos pisos turísticos ilegales; trasciende el drama de trabajadores que duermen en la calle y recurren a Cáritas Ibiza para alimentarse.
+- **Jue 11** el Ayuntamiento intercepta cinco pisos turísticos ilegales en una semana; vecinos del apartamento incendiado en Platja d'en Bossa denuncian riesgo; se publica que las familias de Baleares destinan el 45% de sus ingresos al alquiler.
+- **Vie 12** el Consell de Ibiza activa el sistema digital de geolocalización de caravanas en suelo rústico; el Ayuntamiento adjudica las siete viviendas de alquiler asequible en Sa Penya.
+- **Sáb 13** las patronales de Ibiza adoptan «tolerancia cero» frente a fiestas ilegales en villas; el Consell exige a Ocio de Ibiza y discotecas incluir cláusulas para expulsar DJ que pinchen en fiestas ilegales.
+- **Dom 14** el Govern balear anuncia nuevas medidas fiscales para facilitar el acceso a la vivienda; trasciende que el alquiler más caro de Ibiza alcanza los 80.000€/mes.
+- **Lun 15** una sentencia avala exigir un aval de 240.000€ para alquilar una vivienda en Ibiza; se publica la cobertura de los siete adjudicatarios de las viviendas de Sa Penya.
 
 </div>
 <div class="dash-cover-ctas">
-<a href="{{ site.baseurl }}/ediciones/2026-w24/" class="dash-cta-primary">Leer informe completo →</a>
-<a href="#senales" class="dash-cta-secondary">Ver las 13 señales ↓</a>
+<a href="{{ site.baseurl }}/ediciones/2026-w25/" class="dash-cta-primary">Leer informe completo →</a>
+<a href="#senales" class="dash-cta-secondary">Ver las 14 señales ↓</a>
 </div>
 </div>
 <aside class="dash-cover-aside">
+<section class="dash-aside-block">
+<p class="dash-aside-kicker">2 propuestas documentadas</p>
+<h2 class="dash-aside-title">Qué se ha propuesto esta semana</h2>
+<ol class="dash-aside-list dash-aside-propuestas">
+<li>
+<span class="dash-aside-num">01</span>
+<a href="{{ site.baseurl }}/ediciones/2026-w25/#1-geolocalización-de-caravanas-estacionadas-ilegalmente-en-suelo-rústico">Geolocalización de caravanas estacionadas ilegalmente en suelo rústico</a>
+</li>
+<li>
+<span class="dash-aside-num">02</span>
+<a href="{{ site.baseurl }}/ediciones/2026-w25/#2-cláusulas-en-contratos-de-dj-y-discotecas-para-frenar-fiestas-ilegales-en-villas">Cláusulas en contratos de DJ y discotecas para frenar fiestas ilegales en villas</a>
+</li>
+</ol>
+<a href="#propuestas" class="dash-aside-more">Detalle de las propuestas ↓</a>
+</section>
 <section class="dash-aside-block">
 <p class="dash-aside-kicker">5 puntos</p>
 <h2 class="dash-aside-title">A vigilar</h2>
 <div class="dash-aside-vigilar" markdown="1">
 
-- Adjudicación de la licitación de las 48 VPO de Can Cantó por parte del Ibavi y calendario de inicio de obras.
-- Evolución del desmantelamiento del asentamiento de ses Feixes anunciado por el Ayuntamiento de Ibiza y eventual plan de realojo.
-- Concreción del plan del Consell d'Eivissa para habilitar residencias de trabajadores de temporada (presupuesto, ubicaciones, calendario), pendiente desde la semana anterior.
-- Tramitación en el Parlament del expediente contra el alcalde Triguero exigido por el PSOE, sin novedad esta semana.
-- Plazo de julio para la llegada de los 90 guardias civiles a Ibiza y plan de alojamiento, sin novedad esta semana.
+- Concreción de las medidas fiscales anunciadas por el Govern balear (tributos afectados, calendario de tramitación).
+- Respuesta de Ocio de Ibiza y de las discotecas a la exigencia del Consell de incorporar cláusulas contractuales contra DJ que pinchen en fiestas ilegales.
+- Resultados del sistema de geolocalización de caravanas activado por el Consell d'Eivissa (denuncias o sanciones derivadas).
+- Adjudicación de la licitación de las 48 VPO de Can Cantó por parte del Ibavi y calendario de inicio de obras, sin novedad esta semana.
+- Evolución del desmantelamiento del asentamiento de ses Feixes anunciado por el Ayuntamiento de Ibiza y eventual plan de realojo, sin novedad esta semana.
 
 </div>
 </section>
@@ -49,25 +66,50 @@ permalink: /
 <section class="dash-senales" id="senales">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Señales detectadas</p>
-<h2>13 hechos publicados esta semana</h2>
+<h2>14 hechos publicados esta semana</h2>
 <p class="dash-section-lead">Cada punto enlaza a la noticia original en su medio. Sin resumen sesgado: cifras y fechas tal como se publicaron.</p>
 </header>
 <div class="dash-senales-list" markdown="1">
 
-- El precio de la vivienda sube un 12,9% *(dato oficial vía medio)* tras crecer la usada a su mayor ritmo en 19 años ([Diario de Ibiza](https://www.diariodeibiza.es/economia/2026/06/08/precio-vivienda-sube-12-9-131138984.html)); una pieza sitúa el precio de la vivienda en Eivissa muy cerca de su tope ([Ultima Hora](https://www.ultimahora.es/noticias/economico/2026/06/05/2643395/precio-vivienda-eivissa-muy-cerca-tope.html)) y un agente inmobiliario plantea una posible contención de precios o parada de la subida ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/07/2645125/podemos-estar-momento-hay-contencion-precios-ibiza-parada-subida.html)).
-- El Ayuntamiento de Ibiza desmantela el asentamiento de caravanas de sa Joveria ([Noudiari](https://www.noudiari.es/local-ibiza/el-ayuntamiento-de-ibiza-desmantela-el-asentamiento-de-caravanas-de-sa-joveria/), [MSN](http://www.msn.com/es-es/noticias/espana/el-ayuntamiento-de-ibiza-desmantela-el-asentamiento-de-caravanas-de-sa-joveria/ar-AA24Ks6x) *(fuente agregada — sin primaria localizada)*) y multa con 60.000€ en menos de nueve horas a un caravanista ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/08/2645213/multan-menos-nueve-horas-caravanista-ibiza-60000-euros.html)).
-- Sant Josep desaloja un asentamiento de caravanas dentro del Parque Natural de ses Salines ([Cadena SER](https://cadenaser.com/baleares/2026/06/04/sant-josep-desaloja-un-asentamiento-de-caravanas-dentro-del-parque-natural-de-ses-salines-radio-ibiza/), [Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/04/desalojado-asentamiento-caravanas-parque-natural-ibiza-130977394.html), [Ara Balears](https://es.arabalears.cat/sociedad/desmantelan-nuevo-asentamiento-ilegal-ibiza_1_5757807.html), [Periódico de Ibiza](https://www.periodicodeibiza.es/cronica-negra/local/2026/06/03/2643179/revientan-asentamiento-ilegal-una-docena-caravanas-tiendas-campana-pleno-parque-natural-ses-salines-ibiza.html)).
-- Trasciende un nuevo asentamiento ilegal en ses Feixes con tiendas de campaña ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/05/2643865/nuevo-asentamiento-ilegal-ibiza-ses-feixes-llena-tiendas-campana.html)); los vecinos de es Pratet denuncian «miedo e impotencia» ante la proliferación de chabolas en la zona ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/07/2645149/vecinos-pratet-sienten-miedo-impotencia-ante-proliferacion-chabolas-ses-feixes.html)); el Ayuntamiento de Ibiza ya trabaja en el desmantelamiento del asentamiento ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/06/2644701/ayuntamiento-ibiza-trabaja-desmantelamiento-del-asentamiento-ilegal-ses-feixes.html)) y declara que el chabolismo «en 2026 no es admisible y haremos todo lo que esté a nuestro alcance para evitarlo» ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/05/2643859/chabolismo-ibiza-2026-admisible-haremos-todo-este-nuestro-alcance-para-evitarlo.html)).
-- Ibiza impone una sanción de casi 800.000€ *(dato oficial vía medio)*, el 75% del valor del inmueble, por un alquiler turístico ilegal ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/01/ibiza-impone-sancion-800-000-130890368.html), [Hosteltur](https://www.hosteltur.com/176618_multa-de-800000-euros-a-una-vivienda-turistica-ilegal-en-ibiza.html), [Tourinews](https://www.tourinews.es/destinos-turismo/ibiza-alquiler-vacacional-turistico-multa-800000-euros-75-por-ciento-valor-inmueble_4492858_102.html)); la Policía Local denuncia los dos primeros pisos turísticos ilegales de la temporada en Platja d'en Bossa tras quejas vecinales por ruido ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/05/2644115/policia-local-ibiza-denuncia-dos-primeros-pisos-turisticos-ilegales-temporada-platja-bossa.html), [Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/05/ibiza-caza-primeros-pisos-turisticos-131051402.html), [Cadena SER](https://cadenaser.com/baleares/2026/06/05/denunciados-los-dos-primeros-pisos-turisticos-ilegales-de-la-temporada-en-ibiza-radio-ibiza/), [Tourinews](https://www.tourinews.es/destinos-turismo/ibiza-alquiler-turistico-ilegal-denuncia-detecta-dos-primeros-casos-temporada_4492988_102_amp.html), [OkDiario](https://okdiario.com/baleares/denunciados-dos-primeros-pisos-turisticos-ilegales-temporada-playa-mas-animada-ibiza-17874431)).
-- El PSOE denuncia que el Govern balear permite más plazas turísticas «a escondidas» ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/06/ibiza-viviendas-turistas-residentes-plurifamiliar-131097658.html)) y Roselló (PSOE) califica de «fracaso absoluto» la política de vivienda del PP en Eivissa ([Forbes](https://forbes.es/baleares/actualidad-baleares/945051/rosello-psoe-califica-de-fracaso-absoluto-la-politica-de-vivienda-del-pp-en-eivissa-solo-benefician-al-alcalde/)).
-- El Ibavi licita las obras de 48 viviendas públicas en Can Cantó ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/06/ibiza-ibavi-licita-obras-apartamentos-131089124.html), [Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/06/2644783/ibavi-construira-nuevas-viviendas-publicas-ibiza.html)).
-- Formentera estrena su primera «vivienda puente» para víctimas de violencia machista ([Diario de Ibiza](https://www.diariodeibiza.es/formentera/2026/06/04/formentera-primer-piso-puente-mujeres-131022526.html)).
-- Trasciende un proyecto de coliving en Ibiza con 18 estudios de madera *(dato oficial vía medio)* para trabajadores de temporada ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/08/2645493/coliving-ibiza-estudios-madera-para-trabajadores-temporada.html)).
-- El presidente de PIMEEF, Alfonso Rojo, declara que «la especulación maligna tiene la culpa de la falta de trabajadores» ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/07/alfonso-rojo-pimeef-ibiza-plantillas-130949320.html)); una empresa de seguridad es multada por dejar 52 veces sin vigilancia un hospital culpando al alto precio del alquiler en Ibiza ([El Debate](https://www.eldebate.com/espana/baleares/20260607/multa-empresa-dejo-52-veces-vigilancia-hospital-culpo-alto-precio-alquiler-ibiza_424446.html)); una trabajadora de temporada denuncia que con dos trabajos y 12 horas diarias compartiendo habitación pagará 2.000€ en la declaración de Hacienda ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/06/2644829/trabajadora-temporada-ibiza-estalla-contra-hacienda-dos-trabajos-mas-horas-dia-compartiendo-habitacion-voy-pagar-2000-euros-declaracion.html)).
-- Tras una explosión de gas en un piso de Ibiza, PIMEEF, Asemie y el Centro Técnico Europeo recuerdan la importancia de contratar instaladores habilitados ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/07/2645161/explosion-gas-piso-ibiza-asemie-pimeef-centro-tecnico-europeo-recuerdan-importancia-contratar-instaladores-habilitados-1.html)).
+- Una sentencia avala que se exija un aval de 240.000€ *(dato oficial vía medio)* para alquilar una vivienda en Ibiza ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/15/justicia-permite-exigir-aval-240-131391352.html)).
+- El Ayuntamiento de Ibiza sortea y adjudica siete viviendas de alquiler asequible en Sa Penya desde 200€ *(dato oficial vía medio)* ([El Debate](https://www.eldebate.com/espana/baleares/20260610/sorteo-gordo-casas-ibiza-rifa-siete-alquileres-publicos-en-casco-historico-ciudad_427235.html), [Noudiari](https://www.noudiari.es/noticias-ibiza-formentera-sidebar/el-ayuntamiento-de-ibiza-sorteara-este-jueves-siete-viviendas-de-alquiler-asequible-en-sa-penya/), [Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/12/2648577/siete-familias-ibiza-podran-disfrutar-breve-nuevas-viviendas-gracias-ayuntamiento.html), [Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/12/decir-piso-ibiza-locura-131311373.html), [El Debate](https://www.eldebate.com/espana/baleares/20260615/ruth-aroa-joan-siete-afortunados-logran-piso-desde-200-euros-isla-alquiler-imposible_428258.html)).
+- El Govern balear anuncia nuevas medidas fiscales para facilitar el acceso a la vivienda en las islas ([Cadena SER](https://cadenaser.com/baleares/2026/06/14/nuevas-medidas-fiscales-para-facilitar-el-acceso-a-la-vivienda-en-las-islas-radio-ibiza/)).
+- El Consell de Ibiza activa un sistema digital para geolocalizar caravanas aparcadas ilegalmente en suelo rústico ([Cadena SER](https://cadenaser.com/baleares/2026/06/12/el-consell-de-ibiza-geolocalizara-las-caravanas-aparcadas-de-forma-ilegal-en-rustico-radio-ibiza/), [Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/12/ibiza-cuenta-sistema-digital-detectar-131339904.html), [Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/12/2649037/consell-ibiza-implementa-plataforma-tecnologica-para-detectar-caravanas-estacionadas-ilegalmente-suelo-rustico.html), [Noudiari](https://www.noudiari.es/noticias-ibiza-formentera-sidebar/ibiza-estrena-sistema-de-geolocalizacion-de-caravanas-estacionadas-en-suelo-rustico/)).
+- Las patronales de Ibiza adoptan «tolerancia cero» frente a las fiestas ilegales en villas y el Consell exige a Ocio de Ibiza y a las discotecas incorporar cláusulas para expulsar a los DJ que pinchen en fiestas ilegales ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/13/2649409/patronales-ibiza-tolerancia-cero-frente-fiestas-ilegales-villas.html), [Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/13/2649405/exigimos-ocio-ibiza-discotecas-clausulas-para-sus-pinchan-fiestas-ilegales-villas-sean-expulsados-negocios.html)).
+- El Ayuntamiento de Ibiza intercepta cinco pisos turísticos ilegales en una semana, con tres nuevas denuncias añadidas ([Tourinews](https://www.tourinews.es/destinos-turismo/ibiza-ayuntamiento-intercepta-cinco-pisos-alquiler-turistico-ilegal-una-semana_4493086_102.html), [Cadena SER](https://cadenaser.com/baleares/2026/06/10/denunciados-otros-tres-pisos-de-ibiza-por-alquilar-ilegalmente-a-turistas-radio-ibiza/), [OkDiario](https://okdiario.com/baleares/ibiza-pone-directa-contra-alquiler-turistico-ilegal-cinco-denuncias-semana-18354198), [Noudiari](https://www.noudiari.es/local-ibiza/la-ciudad-de-ibiza-intensifica-la-lucha-contra-el-alquiler-turistico-ilegal-tres-pisos-mas-denunciados/), [Tourinews](https://www.tourinews.es/destinos-turismo/ibiza-alquiler-turistico-ilegal-denuncia-detecta-dos-primeros-casos-temporada_4492988_102.html)).
+- Las familias de Baleares destinan el 45% de sus ingresos al alquiler y el 43% a la compra de vivienda *(dato oficial vía medio)* ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/11/familias-baleares-destinar-45-vivienda-ibiza-131270386.html)); el alquiler más caro de Ibiza alcanza los 80.000€/mes por un chalet en Sant Carles ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/14/2649575/cuanto-cuesta-vivienda-alquiler-mas-cara-ibiza-mes-verano.html)) y una villa en Ibiza se sitúa como el alquiler vacacional más caro de España con 300.000€/semana *(estimación periodística)* ([Directo al Paladar](https://www.directoalpaladar.com/viajes/villa-alquiler-cara-espana-exclusiva-que-solo-se-pueden-permitir-messi-elon-musk-300-000-euros-a-semana)).
+- Trabajadores de temporada relatan dormir en la calle y recurrir a Cáritas Ibiza para alimentarse a causa del precio del alquiler ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/10/2647039/drama-vivienda-ibiza-siento-destrozado-por-nunca-habia-tenido-dormir-calle.html), [Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/10/2647045/alquiler-ahoga-trabajadores-recurren-caritas-ibiza-para-alimentarse.html)); vecinos del apartamento incendiado en Platja d'en Bossa denuncian riesgo de hacinamiento ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/11/vecinos-incendio-apartamento-ibiza-quemado-todos-131277911.html)).
+- Àlex Pitaluga (PSOE) — municipio y/o partido no especificados en la fuente — declara que el problema de la vivienda «amenaza al profesorado y a todos los servicios públicos» ([Cadena SER](https://cadenaser.com/baleares/2026/06/08/alex-pitaluga-psoe-el-problema-de-la-vivienda-amenaza-el-profesorado-y-todos-los-servicios-publicos-radio-ibiza/)).
+- Sin novedad esta semana sobre la adjudicación de la licitación de las 48 VPO de Can Cantó y calendario de inicio de obras.
+- Sin novedad esta semana sobre la evolución del desmantelamiento del asentamiento de ses Feixes y eventual plan de realojo.
+- Sin novedad esta semana sobre la concreción del plan del Consell d'Eivissa para habilitar residencias de trabajadores de temporada (presupuesto, ubicaciones, calendario).
 - Sin novedad esta semana sobre la tramitación en el Parlament del expediente contra el alcalde Triguero exigido por el PSOE.
 - Sin novedad esta semana sobre el plazo de julio para la llegada de los 90 guardias civiles a Ibiza y plan de alojamiento.
 
+</div>
+</section>
+
+<section class="dash-propuestas" id="propuestas">
+<header class="dash-section-header">
+<p class="dash-section-kicker">Propuestas documentadas</p>
+<h2>2 propuestas en circulación esta semana</h2>
+<p class="dash-section-lead">Cada propuesta la ha formulado un actor con nombre, con fuente verificable. El observatorio no genera propuestas propias.</p>
+</header>
+<div class="dash-propuestas-grid">
+<article class="dash-propuesta">
+<div class="dash-propuesta-num">01</div>
+<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w25/#1-geolocalización-de-caravanas-estacionadas-ilegalmente-en-suelo-rústico">Geolocalización de caravanas estacionadas ilegalmente en suelo rústico</a></h3>
+<dl class="dash-propuesta-meta">
+</dl>
+<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w25/#1-geolocalización-de-caravanas-estacionadas-ilegalmente-en-suelo-rústico">Ver ficha y fuentes →</a>
+</article>
+<article class="dash-propuesta">
+<div class="dash-propuesta-num">02</div>
+<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w25/#2-cláusulas-en-contratos-de-dj-y-discotecas-para-frenar-fiestas-ilegales-en-villas">Cláusulas en contratos de DJ y discotecas para frenar fiestas ilegales en villas</a></h3>
+<dl class="dash-propuesta-meta">
+</dl>
+<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w25/#2-cláusulas-en-contratos-de-dj-y-discotecas-para-frenar-fiestas-ilegales-en-villas">Ver ficha y fuentes →</a>
+</article>
 </div>
 </section>
 
@@ -79,11 +121,11 @@ permalink: /
 </header>
 <div class="dash-vigilar-list" markdown="1">
 
-- Adjudicación de la licitación de las 48 VPO de Can Cantó por parte del Ibavi y calendario de inicio de obras.
-- Evolución del desmantelamiento del asentamiento de ses Feixes anunciado por el Ayuntamiento de Ibiza y eventual plan de realojo.
-- Concreción del plan del Consell d'Eivissa para habilitar residencias de trabajadores de temporada (presupuesto, ubicaciones, calendario), pendiente desde la semana anterior.
-- Tramitación en el Parlament del expediente contra el alcalde Triguero exigido por el PSOE, sin novedad esta semana.
-- Plazo de julio para la llegada de los 90 guardias civiles a Ibiza y plan de alojamiento, sin novedad esta semana.
+- Concreción de las medidas fiscales anunciadas por el Govern balear (tributos afectados, calendario de tramitación).
+- Respuesta de Ocio de Ibiza y de las discotecas a la exigencia del Consell de incorporar cláusulas contractuales contra DJ que pinchen en fiestas ilegales.
+- Resultados del sistema de geolocalización de caravanas activado por el Consell d'Eivissa (denuncias o sanciones derivadas).
+- Adjudicación de la licitación de las 48 VPO de Can Cantó por parte del Ibavi y calendario de inicio de obras, sin novedad esta semana.
+- Evolución del desmantelamiento del asentamiento de ses Feixes anunciado por el Ayuntamiento de Ibiza y eventual plan de realojo, sin novedad esta semana.
 
 </div>
 </section>
@@ -91,9 +133,14 @@ permalink: /
 <section class="dash-archivo">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Informes anteriores</p>
-<h2>7 ediciones publicadas antes de esta</h2>
+<h2>8 ediciones publicadas antes de esta</h2>
 </header>
 <ol class="dash-archivo-list">
+<li>
+<time datetime="2026-06-08">2026-06-08</time>
+<h3><a href="{{ site.baseurl }}/ediciones/2026-w24/">Semana 2 - Junio 2026</a></h3>
+<p>Desmantelamiento de asentamientos en Ibiza y Sant Josep, multa de 800.000€ por alquiler turístico ilegal, Ibavi licita 48 VPO en Can Cantó y precio de vivienda sube 12,9%.</p>
+</li>
 <li>
 <time datetime="2026-06-01">2026-06-01</time>
 <h3><a href="{{ site.baseurl }}/ediciones/2026-w23/">Semana 1 - Junio 2026</a></h3>
@@ -108,11 +155,6 @@ permalink: /
 <time datetime="2026-05-18">2026-05-18</time>
 <h3><a href="{{ site.baseurl }}/ediciones/2026-w21/">Semana 3 - Mayo 2026</a></h3>
 <p>Govern licita suelo para 387 viviendas protegidas y abre Alquiler Seguro; Consell y ayuntamientos refuerzan persecución a caravanas; PSOE denuncia al alcalde.</p>
-</li>
-<li>
-<time datetime="2026-05-11">2026-05-11</time>
-<h3><a href="{{ site.baseurl }}/ediciones/2026-w20/">Semana 2 - Mayo 2026</a></h3>
-<p>Escándalo del local del alcalde de Ibiza reconvertido en vivienda domina la semana, mientras temporeros y guardias civiles denuncian falta de alojamiento.</p>
 </li>
 </ol>
 <a href="{{ site.baseurl }}/ediciones/" class="dash-archivo-cta">Ir al archivo completo →</a>

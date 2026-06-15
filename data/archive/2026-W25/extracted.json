@@ -1,0 +1,34 @@
+[
+  {
+    "news_id": "item-000",
+    "proposals": [],
+    "produced_by": "claude-opus-4-7",
+    "validator_verdict": "invalid",
+    "validator_reason": "El texto del summary no menciona literalmente al 'Govern Balear' como actor proponente, por lo que atribuirle la propuesta es una inferencia no soportada por el texto disponible.",
+    "was_disputed": true
+  },
+  {
+    "news_id": "item-001",
+    "proposals": [],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "skipped",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-002",
+    "proposals": [],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "skipped",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-003",
+    "proposals": [],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "skipped",
+    "validator_reason": "",
+    "was_disputed": false
+  }
+]
