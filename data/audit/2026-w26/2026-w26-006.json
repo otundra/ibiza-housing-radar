@@ -1,0 +1,134 @@
+{
+  "proposal_id": "2026-w26-006",
+  "week": "2026-w26",
+  "created_at": "2026-06-22T10:45:44Z",
+  "tier": {
+    "value": "amarillo",
+    "reason": "consenso IA parcial + 5 fuentes + whitelist neutro (archivo Wayback sin verificar — MVP)",
+    "signals": {
+      "ia_consenso": "parcial",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": true,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 5,
+      "whitelist_match": "neutro",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-06-22T10:45:44Z",
+      "proposal": {
+        "actor": "Ayuntamiento de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Ibiza planea nueva vivienda a precio limitado en Platja d'en Bossa y Sa Joveria.",
+        "statement_verbatim": "Ibiza planea nueva vivienda a precio limitado en Platja d'en Bossa y sa Joveria",
+        "url_source": "https://www.noudiari.es/local-ibiza/ibiza-planea-nueva-vivienda-a-precio-limitado-en-platja-den-bossa-y-sa-joveria/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "sin_cifra_publica_disponible",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-06-22T10:45:44Z",
+      "proposal": {
+        "actor": "Ayuntamiento de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Ayuntamiento de Ibiza planea promover nueva vivienda a precio limitado en las zonas de Platja d'en Bossa y Sa Joveria.",
+        "statement_verbatim": "Ibiza planea nueva vivienda a precio limitado en Platja d'en Bossa y sa Joveria",
+        "url_source": "https://www.noudiari.es/local-ibiza/ibiza-planea-nueva-vivienda-a-precio-limitado-en-platja-den-bossa-y-sa-joveria/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "minor",
+      "diffs": [
+        {
+          "field": "viability_economic",
+          "a": "sin_cifra_publica_disponible",
+          "b": "no_evaluada",
+          "reason": "diff_menor"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 5,
+        "urls": [
+          "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/20/2654271/ibiza-activa-pista-despegue-para-construir-miles-viviendas-precio-limitado.html",
+          "https://www.diariodeibiza.es/ibiza/2026/06/19/ibiza-abre-via-construir-miles-131611819.html",
+          "https://www.eldebate.com/espana/baleares/20260619/ibiza-destinara-47-millones-vivienda-publica-promovera-nuevos-pisos-sa-joveria_429902.html",
+          "https://www.noudiari.es/local-ibiza/ibiza-planea-nueva-vivienda-a-precio-limitado-en-platja-den-bossa-y-sa-joveria/",
+          "https://cadenaser.com/baleares/2026/06/17/el-ayuntamiento-de-ibiza-habilita-mas-suelo-para-la-construccion-de-viviendas-a-precio-limitado-radio-ibiza/"
+        ],
+        "dominios": [
+          "cadenaser.com",
+          "diariodeibiza.es",
+          "eldebate.com",
+          "noudiari.es",
+          "periodicodeibiza.es"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "neutro",
+        "domain": "noudiari.es",
+        "known_actor": false,
+        "whitelist_miss": true
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-06-22T10:45:44Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": true,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 3437,
+    "heuristics_ms": 1724,
+    "verify_ms": 0,
+    "total_ms": 5161
+  }
+}

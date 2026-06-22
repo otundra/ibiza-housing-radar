@@ -6,7 +6,7 @@ permalink: /propuestas/
 
 <section class="prop-intro">
 <p class="prop-intro-kicker">Mapa completo del observatorio</p>
-<p class="prop-intro-count"><strong>22 propuestas documentadas · 20 actores distintos</strong></p>
+<p class="prop-intro-count"><strong>30 propuestas documentadas · 23 actores distintos</strong></p>
 <p class="prop-intro-lead">Cada propuesta la formuló un actor con nombre y fuente verificable. Aquí están todas las que el observatorio ha registrado desde su primera edición, agrupadas por estado actual.</p>
 </section>
 
@@ -14,8 +14,8 @@ permalink: /propuestas/
 <ul class="prop-nav-list">
 <li><a href="#en-ejecucion">En ejecución <span class="prop-nav-count">2</span></a></li>
 <li><a href="#aprobada">Aprobada <span class="prop-nav-count">1</span></a></li>
-<li><a href="#en-debate">En debate <span class="prop-nav-count">2</span></a></li>
-<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">11</span></a></li>
+<li><a href="#en-debate">En debate <span class="prop-nav-count">3</span></a></li>
+<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">18</span></a></li>
 <li><a href="#propuesta">Propuesta <span class="prop-nav-count">6</span></a></li>
 </ul>
 </nav>
@@ -71,7 +71,7 @@ permalink: /propuestas/
 <section class="prop-state" id="en-debate">
 <header class="prop-state-header">
 <h2>En debate</h2>
-<p class="prop-state-count">2 propuestas</p>
+<p class="prop-state-count">3 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -94,13 +94,23 @@ permalink: /propuestas/
 </dl>
 <a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/04/11/2606853/patronales-sindicatos-favor-residencias-ibiza-para-trabajadores-temporada.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Municipios de Ibiza <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">Los municipios de Ibiza debatirán convertir áreas de transición en suelo residencial para vivienda a precio limitado.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Normativa</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w26/">2026-W26</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.noudiari.es/local-ibiza/los-municipios-de-ibiza-debatiran-este-mes-convertir-areas-de-transicion-en-suelo-residencial-para-vivienda-a-precio-limitado/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
 </div>
 </section>
 
 <section class="prop-state" id="en-movimiento">
 <header class="prop-state-header">
 <h2>En movimiento</h2>
-<p class="prop-state-count">11 propuestas</p>
+<p class="prop-state-count">18 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -212,6 +222,76 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w23/">2026-W23</a></dd>
 </dl>
 <a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/05/30/2640173/consell-pretende-habilitar-residencias-para-trabajadores-temporada-ibiza.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Ayuntamiento de Ibiza <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Ayuntamiento de Ibiza activa la 'pista de despegue' para impulsar la construcción de miles de viviendas a precio limitado.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Estructural</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w26/">2026-W26</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/20/2654271/ibiza-activa-pista-despegue-para-construir-miles-viviendas-precio-limitado.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Ayuntamiento de Ibiza <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Ayuntamiento de Ibiza abre la vía para construir miles de viviendas a precio limitado en la periferia de los núcleos urbanos.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Estructural</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w26/">2026-W26</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/06/19/ibiza-abre-via-construir-miles-131611819.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Gobierno de España <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Gobierno espera que en 2027 empiecen a construirse nuevas viviendas en Ibiza para policías y guardias civiles.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Temporada 2027</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w26/">2026-W26</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/06/19/gobierno-viviendas-ibiza-policia-guardia-civil-131596220.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Ayuntamiento de Ibiza <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">Ibiza destinará 4,7 millones a vivienda pública y promoverá nuevos pisos en Sa Joveria.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Fiscal</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w26/">2026-W26</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.eldebate.com/espana/baleares/20260619/ibiza-destinara-47-millones-vivienda-publica-promovera-nuevos-pisos-sa-joveria_429902.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Ayuntamiento de Ibiza <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">Ibiza planea nueva vivienda a precio limitado en Platja d'en Bossa y Sa Joveria.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w26/">2026-W26</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.noudiari.es/local-ibiza/ibiza-planea-nueva-vivienda-a-precio-limitado-en-platja-den-bossa-y-sa-joveria/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Ayuntamiento de Ibiza <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Ayuntamiento de Ibiza habilita más suelo para la construcción de viviendas a precio limitado.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Normativa</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w26/">2026-W26</a></dd>
+</dl>
+<a class="prop-card-source" href="https://cadenaser.com/baleares/2026/06/17/el-ayuntamiento-de-ibiza-habilita-mas-suelo-para-la-construccion-de-viviendas-a-precio-limitado-radio-ibiza/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Consell de Ibiza <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Consell de Ibiza geolocalizará las caravanas aparcadas de forma ilegal en suelo rústico.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Aplicación de norma</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w26/">2026-W26</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/12/2649037/consell-ibiza-implementa-plataforma-tecnologica-para-detectar-caravanas-estacionadas-ilegalmente-suelo-rustico.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>

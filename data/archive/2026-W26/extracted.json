@@ -1,0 +1,234 @@
+[
+  {
+    "news_id": "item-000",
+    "proposals": [
+      {
+        "actor": "Ayuntamiento de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Ayuntamiento de Ibiza activa la 'pista de despegue' para impulsar la construcción de miles de viviendas a precio limitado.",
+        "statement_verbatim": "Ibiza activa la «pista de despegue» para construir «miles de viviendas a precio limitado»",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/20/2654271/ibiza-activa-pista-despegue-para-construir-miles-viviendas-precio-limitado.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "estructural",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-opus-4-7",
+    "validator_verdict": "invalid",
+    "validator_reason": "El resumen de la noticia no contiene texto suficiente para verificar que el actor es específicamente el 'Ayuntamiento de Ibiza' (podría ser otra entidad) ni para confirmar el estado 'en_movimiento' u otros campos; el summary solo reproduce el titular sin cuerpo de noticia verificable.",
+    "was_disputed": true
+  },
+  {
+    "news_id": "item-001",
+    "proposals": [
+      {
+        "actor": "Municipios de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Los municipios de Ibiza debatirán convertir áreas de transición en suelo residencial para vivienda a precio limitado.",
+        "statement_verbatim": "Los municipios de Ibiza debatirán este mes convertir áreas de transición en suelo residencial para vivienda a precio limitado",
+        "url_source": "https://www.noudiari.es/local-ibiza/los-municipios-de-ibiza-debatiran-este-mes-convertir-areas-de-transicion-en-suelo-residencial-para-vivienda-a-precio-limitado/",
+        "palanca": "normativa",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_debate",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "sin_cifra_publica_disponible",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-002",
+    "proposals": [
+      {
+        "actor": "Ayuntamiento de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Ayuntamiento de Ibiza abre la vía para construir miles de viviendas a precio limitado en la periferia de los núcleos urbanos.",
+        "statement_verbatim": "Ibiza abre la vía para construir \"miles\" de viviendas a precio limitado en la periferia de los núcleos urbanos",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/06/19/ibiza-abre-via-construir-miles-131611819.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Ayuntamiento de Ibiza",
+        "horizon": "estructural",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-opus-4-7",
+    "validator_verdict": "invalid",
+    "validator_reason": "El summary de la noticia no contiene texto suficiente para verificar que el actor 'Ayuntamiento de Ibiza' aparece literalmente (podría ser el Consell, la Generalitat u otro organismo), ni se pueden confirmar otros detalles de la extracción.",
+    "was_disputed": true
+  },
+  {
+    "news_id": "item-003",
+    "proposals": [
+      {
+        "actor": "Gobierno de España",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Gobierno espera que en 2027 empiecen a construirse nuevas viviendas en Ibiza para policías y guardias civiles.",
+        "statement_verbatim": "2027, el año en que el Gobierno espera que las nuevas viviendas en Ibiza para policías y guardias civiles empiecen a construirse",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/06/19/gobierno-viviendas-ibiza-policia-guardia-civil-131596220.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "temporada_2027",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "sin_cifra_publica_disponible",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-004",
+    "proposals": [
+      {
+        "actor": "Ayuntamiento de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Ibiza destinará 4,7 millones a vivienda pública y promoverá nuevos pisos en Sa Joveria.",
+        "statement_verbatim": "Ibiza destinará 4,7 millones a vivienda pública y promoverá nuevos pisos en Sa Joveria",
+        "url_source": "https://www.eldebate.com/espana/baleares/20260619/ibiza-destinara-47-millones-vivienda-publica-promovera-nuevos-pisos-sa-joveria_429902.html",
+        "palanca": "fiscal",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "media",
+        "viability_economic_reason": "Se menciona una cifra de 4,7 millones de destinación presupuestaria",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-005",
+    "proposals": [],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "skipped",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-006",
+    "proposals": [
+      {
+        "actor": "Ayuntamiento de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Ibiza planea nueva vivienda a precio limitado en Platja d'en Bossa y Sa Joveria.",
+        "statement_verbatim": "Ibiza planea nueva vivienda a precio limitado en Platja d'en Bossa y sa Joveria",
+        "url_source": "https://www.noudiari.es/local-ibiza/ibiza-planea-nueva-vivienda-a-precio-limitado-en-platja-den-bossa-y-sa-joveria/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "sin_cifra_publica_disponible",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-007",
+    "proposals": [
+      {
+        "actor": "Ayuntamiento de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Ayuntamiento de Ibiza habilita más suelo para la construcción de viviendas a precio limitado.",
+        "statement_verbatim": "El Ayuntamiento de Ibiza habilita más suelo para la construcción de viviendas a precio limitado",
+        "url_source": "https://cadenaser.com/baleares/2026/06/17/el-ayuntamiento-de-ibiza-habilita-mas-suelo-para-la-construccion-de-viviendas-a-precio-limitado-radio-ibiza/",
+        "palanca": "normativa",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "sin_cifra_publica_disponible",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-008",
+    "proposals": [],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "skipped",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-009",
+    "proposals": [
+      {
+        "actor": "Consell de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell de Ibiza geolocalizará las caravanas aparcadas de forma ilegal en suelo rústico.",
+        "statement_verbatim": "El Consell de Ibiza geolocalizará las caravanas aparcadas de forma ilegal en rústico",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/12/2649037/consell-ibiza-implementa-plataforma-tecnologica-para-detectar-caravanas-estacionadas-ilegalmente-suelo-rustico.html",
+        "palanca": "enforcement",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "sin_cifra_publica_disponible",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  }
+]
