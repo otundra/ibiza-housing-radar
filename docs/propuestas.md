@@ -6,7 +6,7 @@ permalink: /propuestas/
 
 <section class="prop-intro">
 <p class="prop-intro-kicker">Mapa completo del observatorio</p>
-<p class="prop-intro-count"><strong>30 propuestas documentadas · 23 actores distintos</strong></p>
+<p class="prop-intro-count"><strong>38 propuestas documentadas · 29 actores distintos</strong></p>
 <p class="prop-intro-lead">Cada propuesta la formuló un actor con nombre y fuente verificable. Aquí están todas las que el observatorio ha registrado desde su primera edición, agrupadas por estado actual.</p>
 </section>
 
@@ -15,8 +15,8 @@ permalink: /propuestas/
 <li><a href="#en-ejecucion">En ejecución <span class="prop-nav-count">2</span></a></li>
 <li><a href="#aprobada">Aprobada <span class="prop-nav-count">1</span></a></li>
 <li><a href="#en-debate">En debate <span class="prop-nav-count">3</span></a></li>
-<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">18</span></a></li>
-<li><a href="#propuesta">Propuesta <span class="prop-nav-count">6</span></a></li>
+<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">20</span></a></li>
+<li><a href="#propuesta">Propuesta <span class="prop-nav-count">12</span></a></li>
 </ul>
 </nav>
 
@@ -110,7 +110,7 @@ permalink: /propuestas/
 <section class="prop-state" id="en-movimiento">
 <header class="prop-state-header">
 <h2>En movimiento</h2>
-<p class="prop-state-count">18 propuestas</p>
+<p class="prop-state-count">20 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -293,13 +293,33 @@ permalink: /propuestas/
 </dl>
 <a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/12/2649037/consell-ibiza-implementa-plataforma-tecnologica-para-detectar-caravanas-estacionadas-ilegalmente-suelo-rustico.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Ayuntamiento de Sant Antoni <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">Sant Antoni busca ubicación para las viviendas a precio limitado en suelo rústico.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w27/">2026-W27</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/06/25/sant-antoni-busca-ubicacion-viviendas-131819926.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Ayuntamiento de Ibiza <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Ayuntamiento de Ibiza desbloquea 236.000 metros cuadrados de suelo para impulsar la construcción de Vivienda a Precio Limitado.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w27/">2026-W27</a></dd>
+</dl>
+<a class="prop-card-source" href="https://lavozdeibiza.com/actualidad/ibiza-desbloquea-236-000-metros-cuadrados-para-impulsar-vivienda-a-precio-limitado/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
 </div>
 </section>
 
 <section class="prop-state" id="propuesta">
 <header class="prop-state-header">
 <h2>Propuesta</h2>
-<p class="prop-state-count">6 propuestas</p>
+<p class="prop-state-count">12 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -361,6 +381,66 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w23/">2026-W23</a></dd>
 </dl>
 <a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/05/25/psoe-exige-parlament-expediente-triguero-130628669.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Asociación de Inmobiliarias de Ibiza (PIMEEF) <span class="prop-card-type">· Patronal</span></h3>
+<p class="prop-card-summary">Las inmobiliarias piden que la vivienda se planifique en función del crecimiento poblacional anual.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Normativa</dd>
+<dt>Horizonte</dt><dd>Estructural</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w27/">2026-W27</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/28/2659239/asociacion-inmobiliarias-pimeef-pide-planificacion-vivienda-funcion-del-crecimiento-poblacional-anual.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Federación Hotelera de Ibiza y Formentera, CAEB <span class="prop-card-type">· Coalición intersectorial</span></h3>
+<p class="prop-card-summary">Los hoteleros rechazan que parte de la ecotasa se destine a vivienda.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Fiscal</dd>
+<dt>Horizonte</dt><dd>Inmediato</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w27/">2026-W27</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/25/2657287/hoteleros-pitiusos-suman-caeb-rechazan-ecotasa-destine-parte-vivienda.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Federación Hotelera de Ibiza <span class="prop-card-type">· Patronal</span></h3>
+<p class="prop-card-summary">La Federación Hotelera rechaza destinar la ecotasa a vivienda y pide un plan específico.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Fiscal</dd>
+<dt>Horizonte</dt><dd>Inmediato</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w27/">2026-W27</a></dd>
+</dl>
+<a class="prop-card-source" href="https://cadenaser.com/baleares/2026/06/24/los-hoteleros-pitiusos-rechazan-destinar-la-ecotasa-a-vivienda-y-piden-un-plan-especifico-radio-ibiza/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Hoteleros de Ibiza y Formentera <span class="prop-card-type">· Patronal</span></h3>
+<p class="prop-card-summary">Los hoteleros rechazan destinar la ecotasa a vivienda y piden un plan específico.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Fiscal</dd>
+<dt>Horizonte</dt><dd>Inmediato</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w27/">2026-W27</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.noudiari.es/local-ibiza/los-hoteleros-de-ibiza-y-formentera-rechazan-destinar-la-ecotasa-a-vivienda-y-piden-un-plan-especifico/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Hoteleros de Ibiza y Formentera <span class="prop-card-type">· Patronal</span></h3>
+<p class="prop-card-summary">Los hoteleros consideran inadecuado destinar el ITS a políticas de vivienda.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Fiscal</dd>
+<dt>Horizonte</dt><dd>Inmediato</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w27/">2026-W27</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/24/2657087/hoteleros-ibiza-formentera-creen-inadecuado-destinar-its-politicas-vivienda.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Hoteleros de Ibiza <span class="prop-card-type">· Patronal</span></h3>
+<p class="prop-card-summary">Los hoteleros rechazan que la ecotasa se destine a vivienda.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Fiscal</dd>
+<dt>Horizonte</dt><dd>Inmediato</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w27/">2026-W27</a></dd>
+</dl>
+<a class="prop-card-source" href="https://lavozdeibiza.com/actualidad/los-hoteleros-de-ibiza-se-plantan-no-quieren-la-ecotasa-para-vivienda/" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>

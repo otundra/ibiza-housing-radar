@@ -1,0 +1,218 @@
+[
+  {
+    "news_id": "item-000",
+    "proposals": [
+      {
+        "actor": "Asociación de Inmobiliarias de Ibiza (PIMEEF)",
+        "actor_type": "patronal",
+        "statement_summary": "Las inmobiliarias piden que la vivienda se planifique en función del crecimiento poblacional anual.",
+        "statement_verbatim": "Inmobiliarias de Ibiza piden que la vivienda se planifique en función del crecimiento poblacional anual",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/28/2659239/asociacion-inmobiliarias-pimeef-pide-planificacion-vivienda-funcion-del-crecimiento-poblacional-anual.html",
+        "palanca": "normativa",
+        "target_actor": "",
+        "horizon": "estructural",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-001",
+    "proposals": [
+      {
+        "actor": "Ayuntamiento de Sant Antoni",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Sant Antoni busca ubicación para las viviendas a precio limitado en suelo rústico.",
+        "statement_verbatim": "Sant Antoni busca ubicación para las viviendas a precio limitado en suelo rústico",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/06/25/sant-antoni-busca-ubicacion-viviendas-131819926.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Ayuntamiento de Sant Antoni",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-002",
+    "proposals": [
+      {
+        "actor": "Ayuntamiento de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Ayuntamiento de Ibiza desbloquea 236.000 metros cuadrados de suelo para impulsar la construcción de Vivienda a Precio Limitado.",
+        "statement_verbatim": "Ibiza desbloquea 236.000 metros cuadrados para impulsar Vivienda a Precio Limitado",
+        "url_source": "https://lavozdeibiza.com/actualidad/ibiza-desbloquea-236-000-metros-cuadrados-para-impulsar-vivienda-a-precio-limitado/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-opus-4-7",
+    "validator_verdict": "invalid",
+    "validator_reason": "El texto disponible es solo el título/summary de la noticia, sin cuerpo, por lo que no es posible verificar que el actor 'Ayuntamiento de Ibiza' aparezca literalmente ni que las afirmaciones de la extracción estén respaldadas por el contenido real del artículo.",
+    "was_disputed": true
+  },
+  {
+    "news_id": "item-003",
+    "proposals": [
+      {
+        "actor": "Federación Hotelera de Ibiza y Formentera, CAEB",
+        "actor_type": "coalicion_intersectorial",
+        "statement_summary": "Los hoteleros rechazan que parte de la ecotasa se destine a vivienda.",
+        "statement_verbatim": "Hoteleros de Ibiza y Formentera se suman a la CAEB y rechazan que parte de la ecotasa se destine a vivienda",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/25/2657287/hoteleros-pitiusos-suman-caeb-rechazan-ecotasa-destine-parte-vivienda.html",
+        "palanca": "fiscal",
+        "target_actor": "Administración autonómica",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-004",
+    "proposals": [
+      {
+        "actor": "Federación Hotelera de Ibiza",
+        "actor_type": "patronal",
+        "statement_summary": "La Federación Hotelera rechaza destinar la ecotasa a vivienda y pide un plan específico.",
+        "statement_verbatim": "La Federación Hotelera de Ibiza rechaza destinar la ecotasa a vivienda y piden un plan específico",
+        "url_source": "https://cadenaser.com/baleares/2026/06/24/los-hoteleros-pitiusos-rechazan-destinar-la-ecotasa-a-vivienda-y-piden-un-plan-especifico-radio-ibiza/",
+        "palanca": "fiscal",
+        "target_actor": "Administración autonómica",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-005",
+    "proposals": [
+      {
+        "actor": "Hoteleros de Ibiza y Formentera",
+        "actor_type": "patronal",
+        "statement_summary": "Los hoteleros rechazan destinar la ecotasa a vivienda y piden un plan específico.",
+        "statement_verbatim": "Los hoteleros de Ibiza y Formentera rechazan destinar la ecotasa a vivienda y piden un plan específico",
+        "url_source": "https://www.noudiari.es/local-ibiza/los-hoteleros-de-ibiza-y-formentera-rechazan-destinar-la-ecotasa-a-vivienda-y-piden-un-plan-especifico/",
+        "palanca": "fiscal",
+        "target_actor": "Administración autonómica",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-006",
+    "proposals": [
+      {
+        "actor": "Hoteleros de Ibiza y Formentera",
+        "actor_type": "patronal",
+        "statement_summary": "Los hoteleros consideran inadecuado destinar el ITS a políticas de vivienda.",
+        "statement_verbatim": "Los hoteleros de Ibiza y Formentera creen que es «inadecuado» destinar el ITS a políticas de vivienda",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/24/2657087/hoteleros-ibiza-formentera-creen-inadecuado-destinar-its-politicas-vivienda.html",
+        "palanca": "fiscal",
+        "target_actor": "Administración autonómica",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-007",
+    "proposals": [
+      {
+        "actor": "Hoteleros de Ibiza",
+        "actor_type": "patronal",
+        "statement_summary": "Los hoteleros rechazan que la ecotasa se destine a vivienda.",
+        "statement_verbatim": "Los hoteleros de Ibiza se plantan: no quieren la ecotasa para vivienda",
+        "url_source": "https://lavozdeibiza.com/actualidad/los-hoteleros-de-ibiza-se-plantan-no-quieren-la-ecotasa-para-vivienda/",
+        "palanca": "fiscal",
+        "target_actor": "Administración autonómica",
+        "horizon": "inmediato",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  }
+]
