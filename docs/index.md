@@ -7,41 +7,36 @@ permalink: /
 <section class="dash-cover">
 <p class="dash-cover-kicker">
 <span class="dash-pulse" aria-hidden="true"></span>
-<span>Informe semanal · actualizado 2026-06-29</span>
+<span>Informe semanal · actualizado 2026-07-06</span>
 </p>
 <div class="dash-cover-grid">
 <div class="dash-cover-main">
-<p class="dash-cover-eyebrow">Semana 1 - Julio 2026</p>
-<h1 class="dash-cover-headline">Hoteleros rechazan destinar la ecotasa a vivienda; Ibiza desbloquea 236.000 m² para Vivienda a Precio Limitado y Sant Antoni busca ubicación en suelo rústico.</h1>
+<p class="dash-cover-eyebrow">Semana 2 - Julio 2026</p>
+<h1 class="dash-cover-headline">Consell avanza residencias para temporeros con interés inversor; Ibiza licita rehabilitación en sa Penya por 166.000€ y proyecta hasta 2.200 VPL en tres zonas.</h1>
 <div class="dash-cover-lectura" markdown="1">
 
-- **Lun 22** el estreno del cuarto turno de la Policía Local de Ibiza deja 20 denuncias por botellón y tres actas por alquiler turístico ilegal en el fin de semana previo.
-- **Mar 23** la Policía detiene a un ocupa por agredir con arma blanca a otro hombre en una vivienda ocupada.
-- **Mié 24** la Federación Hotelera de Ibiza y Formentera se suma a la CAEB y rechaza destinar la ecotasa a vivienda, pidiendo un plan específico; el Ayuntamiento de Ibiza pone ses Feixes en el punto de mira por un nuevo asentamiento ilegal.
-- **Jue 25** el Ayuntamiento de Ibiza desbloquea 236.000 m² para Vivienda a Precio Limitado; Sant Antoni busca ubicación para esas viviendas en suelo rústico; Santiago García califica de «parche» destinar el ITS a vivienda; el Govern actualiza los límites de valor para beneficios fiscales.
-- **Vie 26** Sant Antoni y el Consell celebran una jornada de formación contra el alquiler turístico ilegal; se publica una nueva promoción privada de 65 pisos en Cala Gració.
-- **Sáb 27** la Policía Local identifica a los moradores del asentamiento ilegal de ses Feixes; el Consell d'Eivissa afirma que reduce un 43,7% las viviendas turísticas ilegales sin destruir la economía; La Voz de Ibiza publica un seguimiento sobre las VPL «del anuncio a la realidad».
-- **Dom 28** Rafa Triguero declara que «la vivienda es un derecho constitucional que hemos dejado de atender»; la Asociación de Inmobiliarias (PIMEEF) pide planificar la vivienda según el crecimiento poblacional anual.
-- **Lun 29** José Antonio Llanos declara que un 20% de las viviendas turísticas con licencia en Ibiza no se están comercializando.
+- **Sáb 27** editorial del Periódico de Ibiza pide «decisiones valientes» para paliar la falta de vivienda (carry-over de la semana del 22-28 de junio).
+- **Dom 28** la Asociación de Inmobiliarias de Ibiza (PIMEEF) pide planificar la vivienda según el crecimiento poblacional anual (carry-over de la semana del 22-28 de junio).
+- **Lun 29** inmobiliarias en Ibiza piden 200 euros de reserva solo para poder visitar un piso en alquiler.
+- **Mar 30** Ibiza mantiene el precio de vivienda usada más caro de España con ligera bajada en el segundo trimestre; se precinta y sanciona con 275.000 euros al propietario de un piso turístico ilegal; se publica el testimonio de Juan José Bonnín, profesor funcionario que paga 400 euros por habitación.
+- **Mié 1** Vila mantiene el alquiler más caro de Baleares; el Ayuntamiento de Sant Josep publica sus ayudas al alquiler.
+- **Vie 3** aflora un nuevo asentamiento ilegal de grandes dimensiones en Cala de Bou; se registra un detenido y varios heridos en el asentamiento de Casa Lola; Grupo GS presenta la promoción residencial de 65 viviendas de lujo en Cala Gració.
+- **Dom 5** el Consell d'Eivissa detecta fuerte interés inversor en el proyecto de residencias para temporeros; el Ayuntamiento de Ibiza licita por 166.000 euros la rehabilitación de una vivienda para alquiler social en sa Penya; La Voz de Ibiza documenta que Ibiza podría construir hasta 2.200 VPL en tres zonas y proyecta una urbanización de 96 viviendas junto a una casa payesa protegida; Baleares aparece como segunda provincia más cara de España para comprar vivienda; los desahucios y desalojos aumentan un 20% en Ibiza y Formentera.
 
 </div>
 <div class="dash-cover-ctas">
-<a href="{{ site.baseurl }}/ediciones/2026-w27/" class="dash-cta-primary">Leer informe completo →</a>
-<a href="#senales" class="dash-cta-secondary">Ver las 20 señales ↓</a>
+<a href="{{ site.baseurl }}/ediciones/2026-w28/" class="dash-cta-primary">Leer informe completo →</a>
+<a href="#senales" class="dash-cta-secondary">Ver las 17 señales ↓</a>
 </div>
 </div>
 <aside class="dash-cover-aside">
 <section class="dash-aside-block">
-<p class="dash-aside-kicker">2 propuestas documentadas</p>
+<p class="dash-aside-kicker">1 propuesta documentada</p>
 <h2 class="dash-aside-title">Qué se ha propuesto esta semana</h2>
 <ol class="dash-aside-list dash-aside-propuestas">
 <li>
 <span class="dash-aside-num">01</span>
-<a href="{{ site.baseurl }}/ediciones/2026-w27/#1-rechazo-a-destinar-la-ecotasa-a-vivienda-y-demanda-de-un-plan-específico">Rechazo a destinar la ecotasa a vivienda y demanda de un plan específico</a>
-</li>
-<li>
-<span class="dash-aside-num">02</span>
-<a href="{{ site.baseurl }}/ediciones/2026-w27/#2-planificación-de-la-vivienda-según-el-crecimiento-poblacional-anual">Planificación de la vivienda según el crecimiento poblacional anual</a>
+<a href="{{ site.baseurl }}/ediciones/2026-w28/#1-planificación-de-la-vivienda-según-el-crecimiento-poblacional-anual">Planificación de la vivienda según el crecimiento poblacional anual</a>
 </li>
 </ol>
 <a href="#propuestas" class="dash-aside-more">Detalle de las propuestas ↓</a>
@@ -51,11 +46,11 @@ permalink: /
 <h2 class="dash-aside-title">A vigilar</h2>
 <div class="dash-aside-vigilar" markdown="1">
 
-- Concreción de la ubicación que busque Sant Antoni en suelo rústico para sus viviendas a precio limitado.
-- Detalle del Ayuntamiento de Ibiza sobre los 236.000 m² desbloqueados: número de viviendas, criterios de adjudicación y calendario.
-- Respuesta del Govern balear y de los grupos parlamentarios al rechazo hotelero a destinar la ecotasa a vivienda.
-- Plan de realojo o actuación administrativa sobre los moradores identificados en el asentamiento de ses Feixes.
-- Resultado pendiente del debate intermunicipal de junio sobre la conversión de áreas de transición en suelo residencial.
+- Publicación de pliegos, ubicaciones y calendario del proyecto del Consell d'Eivissa para residencias de temporeros tras la declaración de interés inversor.
+- Detalle del Ayuntamiento de Ibiza sobre la distribución concreta de las hasta 2.200 VPL en tres zonas: número por zona, criterios de adjudicación y calendario.
+- Respuesta administrativa al nuevo asentamiento de Cala de Bou y al asentamiento de Casa Lola tras los incidentes registrados esta semana.
+- Resolución de la licitación de 166.000 euros para la rehabilitación de la vivienda de alquiler social en sa Penya.
+- Cierre pendiente sobre la ubicación en suelo rústico que buscaba Sant Antoni y sobre la respuesta del Govern al rechazo hotelero a destinar la ecotasa a vivienda.
 
 </div>
 </section>
@@ -66,31 +61,28 @@ permalink: /
 <section class="dash-senales" id="senales">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Señales detectadas</p>
-<h2>20 hechos publicados esta semana</h2>
+<h2>17 hechos publicados esta semana</h2>
 <p class="dash-section-lead">Cada punto enlaza a la noticia original en su medio. Sin resumen sesgado: cifras y fechas tal como se publicaron.</p>
 </header>
 <div class="dash-senales-list" markdown="1">
 
-- La Federación Hotelera de Ibiza y Formentera se suma a la CAEB y rechaza que parte de la ecotasa se destine a vivienda, reclamando «un plan específico» ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/25/2657287/hoteleros-pitiusos-suman-caeb-rechazan-ecotasa-destine-parte-vivienda.html), [Cadena SER](https://cadenaser.com/baleares/2026/06/24/los-hoteleros-pitiusos-rechazan-destinar-la-ecotasa-a-vivienda-y-piden-un-plan-especifico-radio-ibiza/), [Noudiari](https://www.noudiari.es/local-ibiza/los-hoteleros-de-ibiza-y-formentera-rechazan-destinar-la-ecotasa-a-vivienda-y-piden-un-plan-especifico/), [Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/24/2657087/hoteleros-ibiza-formentera-creen-inadecuado-destinar-its-politicas-vivienda.html), [La Voz de Ibiza](https://lavozdeibiza.com/actualidad/los-hoteleros-de-ibiza-se-plantan-no-quieren-la-ecotasa-para-vivienda/)).
-- Santiago García considera que «usar fondos del Impuesto de Turismo Sostenible para vivienda es un parche y no la solución de fondo al problema» ([Onda Cero](https://www.ondacero.es/emisoras/baleares/ibiza/noticias/santiago-garcia-usar-fondos-impuesto-turismo-sostenible-vivienda-parche-solucion-fondo-problema_202606256a3d1173abcaef0cd12545ce.html)) — municipio y/o partido no especificados en la fuente.
-- El Ayuntamiento de Ibiza desbloquea 236.000 metros cuadrados *(dato oficial vía medio)* para impulsar la Vivienda a Precio Limitado ([La Voz de Ibiza](https://lavozdeibiza.com/actualidad/ibiza-desbloquea-236-000-metros-cuadrados-para-impulsar-vivienda-a-precio-limitado/)).
-- Sant Antoni busca ubicación para las viviendas a precio limitado en suelo rústico ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/25/sant-antoni-busca-ubicacion-viviendas-131819926.html)).
-- La Asociación de Inmobiliarias de Ibiza (PIMEEF) pide que la vivienda se planifique en función del crecimiento poblacional anual ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/28/2659239/asociacion-inmobiliarias-pimeef-pide-planificacion-vivienda-funcion-del-crecimiento-poblacional-anual.html)).
-- José Antonio Llanos afirma que «un 20% de las viviendas turísticas con licencia en Ibiza no se están comercializando» ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/29/vivienda-turistica-ibiza-temporada-turistica-131607104.html)).
-- El alcalde de Ibiza Rafa Triguero declara que «la vivienda es un derecho constitucional que hemos dejado de atender mucho tiempo» ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/28/2659241/vivienda-derecho-constitucional-hemos-dejado-atender-mucho-tiempo.html)).
-- El Consell d'Eivissa afirma que reduce un 43,7% las viviendas turísticas ilegales *(dato oficial vía medio)* «sin destruir la economía» ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/27/2658973/estamos-reduciendo-presion-sobre-ibiza-destruir-economia.html)).
-- La Policía Local de Ibiza identifica a los moradores del asentamiento ilegal de ses Feixes ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/27/2659005/policia-local-ibiza-identifica-moradores-del-asentamiento-ilegal-ses-feixes.html)); el Ayuntamiento de Ibiza pone ses Feixes en el punto de mira por un nuevo asentamiento ilegal ([Cadena SER](https://cadenaser.com/baleares/2026/06/24/ses-feixes-en-el-punto-de-mira-del-ayuntamiento-de-ibiza-por-un-nuevo-asentamiento-ilegal-radio-ibiza/)).
-- Sant Antoni y el Consell de Ibiza celebran una jornada de formación para combatir el alquiler turístico ilegal ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/26/ibiza-intrusismo-alquiler-ilegal-curso-131840659.html), [Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/06/26/2658435/sant-antoni-celebra-nueva-jornada-formacion-sobre-instrusismo.html)).
-- El estreno del cuarto turno de la Policía Local de Ibiza deja 20 denuncias por botellón y tres actas por alquiler turístico ilegal en el fin de semana *(dato oficial vía medio)* ([La Voz de Ibiza](https://lavozdeibiza.com/actualidad/el-estreno-del-cuarto-turno-de-la-policia-local-de-ibiza-deja-20-denuncias-por-botellon-y-tres-casos-de-alquiler-ilegal/), [Cadena SER](https://cadenaser.com/baleares/2026/06/22/balance-policial-en-ibiza-del-fin-de-semana-tres-actas-por-alquiler-turistico-ilegal-y-veinte-denuncias-por-botellones-radio-ibiza/)).
-- Una promotora lanza una nueva promoción de 65 pisos en Cala Gració, Sant Antoni ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/06/26/constructora-viviendas-lujo-santa-eularia-131832560.html)).
-- El Govern balear actualiza los límites de valor de vivienda aplicables a ciertos beneficios fiscales en Baleares, incluida la Vivienda de Precio Limitado *(dato oficial)* ([Fiscal Impuestos](https://www.fiscal-impuestos.com/tributos-cedidos-Baleares-beneficios-fiscales-vivienda-valor-maximo-vivienda-vivienda-de-precio-limitado-Mallorca-Menorca-Ibiza-Formentera-fiscalidad-inmobiliaria-limites-incentivos-fiscales-vivienda)).
-- La Voz de Ibiza publica un seguimiento sobre las Viviendas de Precio Limitado anunciadas en Ibiza «del anuncio a la realidad» ([La Voz de Ibiza](https://lavozdeibiza.com/actualidad/del-anuncio-a-la-realidad-que-se-sabe-sobre-las-viviendas-de-precio-limitado-anunciadas-en-ibiza/)).
-- La Policía Nacional detiene a un ocupa por agredir con arma blanca a otro hombre en una vivienda ocupada en Ibiza ([Cadena SER](https://cadenaser.com/baleares/2026/06/23/detenido-en-ibiza-por-atacar-a-otro-hombre-con-un-cuchillo-en-una-vivienda-okupada-radio-ibiza/), [Canal 4 Diario](https://canal4diario.com/sucesos-y-tribunales/2026/06/23/detenido-un-ocupa-por-agredir-con-arma-blanca-a-otro-en-una-vivienda-de-ibiza/), [El Debate](https://www.eldebate.com/espana/baleares/20260623/detenido-ibiza-intentar-matar-otro-hombre-cuchillo-vivienda-ocupada_431816.html)); otros ocupantes acaban a patadas, puñetazos y mordiscos contra los agentes ([El Debate](https://www.eldebate.com/espana/baleares/20260622/okupan-vivienda-acaban-patadas-punetazos-mordiscos-contra-policias_431305.html)).
-- Sin novedad esta semana sobre el resultado del debate intermunicipal previsto en junio para convertir áreas de transición en suelo residencial.
-- Sin novedad esta semana sobre la concreción del plan del Ayuntamiento de Ibiza para Sa Joveria y Platja d'en Bossa (número de viviendas, calendario, precios).
-- Sin novedad esta semana sobre las cifras públicas del programa Lloguer Segur tras la adhesión de grandes tenedores anunciada la semana anterior.
-- Sin novedad esta semana sobre la respuesta del PP y del propio Rafa Triguero a las acusaciones del PSOE sobre el piso de Can Misses.
-- Sin novedad esta semana sobre los primeros datos del sistema de geolocalización de caravanas del Consell d'Eivissa.
+- El Consell d'Eivissa detecta un fuerte interés inversor en su proyecto de residencias para trabajadores temporales, que cifra en unos 30.000 en Ibiza *(dato oficial vía medio)* ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/05/2663985/consell-detecta-fuerte-interes-inversor-viviendas-para-temporeros-ibiza.html)).
+- El Ayuntamiento de Ibiza licita por 166.000 euros *(dato oficial vía medio)* la rehabilitación de una vivienda para alquiler social en sa Penya ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/05/2664111/ibiza-licita-por-166000-euros-rehabilitacion-vivienda-para-alquiler-social-penya.html), [Noudiari](https://www.noudiari.es/noticias-ibiza-formentera-sidebar/el-ayuntamiento-de-ibiza-licita-la-rehabilitacion-de-una-vivienda-para-alquiler-social-en-sa-penya/)).
+- La Voz de Ibiza documenta que Ibiza podría construir hasta 2.200 viviendas de precio limitado en tres zonas ([La Voz de Ibiza](https://lavozdeibiza.com/actualidad/ibiza-podria-construir-hasta-2-200-viviendas-de-precio-limitado-en-tres-zonas/)) y proyecta una urbanización de 96 viviendas alrededor de una casa payesa protegida ([La Voz de Ibiza](https://lavozdeibiza.com/actualidad/ibiza-proyecta-una-urbanizacion-de-96-viviendas-alrededor-de-una-casa-payesa-protegida/)).
+- La Voz de Ibiza publica un análisis sobre la contradicción entre las miles de viviendas asequibles anunciadas para residentes y el historial urbanístico de Ca n'Escandell ([La Voz de Ibiza](https://lavozdeibiza.com/actualidad/urbanismo-a-la-carta-en-ibiza-la-contradiccion-entre-las-miles-de-viviendas-asequibles-para-residentes-y-el-despilfarro-historico-de-ca-nescandell/)).
+- Baleares figura como segunda provincia más cara de España para comprar vivienda por la presión turística ([Noudiari](https://www.noudiari.es/noticias-ibiza-formentera-sidebar/baleares-segunda-provincia-mas-cara-de-espana-para-comprar-vivienda-por-la-presion-turistica/)); el precio de la vivienda usada en Ibiza sigue siendo el más caro de España con una ligera bajada en el segundo trimestre ([Cadena SER](https://cadenaser.com/baleares/2026/06/30/el-precio-de-la-vivienda-usada-en-ibiza-sigue-siendo-el-mas-caro-de-espana-con-una-ligera-bajada-en-el-primer-trimestre-radio-ibiza/)); Vila mantiene el alquiler más caro de Baleares ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/07/01/vivienda-imposible-ibiza-alquiler-caro-132002900.html), [Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/01/2661513/alquiler-ibiza-isla-pitiusa-continua-liderando-precios-baleares.html)).
+- Los desahucios y desalojos aumentan un 20% en Ibiza y Formentera *(dato oficial vía medio)* ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/07/05/desahucios-desalojos-aumentan-20-ibiza-131967701.html)).
+- Aflora un nuevo asentamiento ilegal de grandes dimensiones en Cala de Bou ([Noudiari](https://www.noudiari.es/local-ibiza/aflora-un-nuevo-y-gran-asentamiento-ilegal-en-ibiza-esta-vez-en-cala-de-bou/)); en el asentamiento de Casa Lola se produce un detenido y varios heridos en la misma semana ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/03/2662867/sigue-infierno-okupas-casa-lola-detenido-varios-heridos-esta-misma-semana.html)).
+- Un experto avisa de las prácticas abusivas de propietarios de clase media en el alquiler ([Diario de Ibiza](https://www.diariodeibiza.es/ibiza/2026/07/05/propietarios-clase-media-alquiler-viviendas-ibiza-132142038.html)); inmobiliarias piden 200 euros de reserva solo para poder visitar un piso en alquiler ([Cadena SER](https://cadenaser.com/baleares/2026/06/29/piden-200-euros-de-reserva-para-poder-visitar-un-piso-en-alquiler-en-ibiza-radio-ibiza/)).
+- Precintado y sancionado con 275.000 euros *(dato oficial vía medio)* el propietario de un piso turístico ilegal en Ibiza ([OkDiario](https://okdiario.com/baleares/precintado-sancionado-275-000-euros-propietario-piso-turistico-ilegal-ibiza-18894769)).
+- Grupo GS presenta en privado la promoción residencial GS Cala Gració, con 65 viviendas de lujo ([Periódico de Ibiza](https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/03/2662959/gran-acogida-presentacion-privada-cala-gracio-promocion-residencial-viviendas-lujo-impulsada-por-grupo-gs.html)).
+- Juan José Bonnín, profesor de instituto en Ibiza con plaza de funcionario, declara que comparte piso y paga 400 euros por habitación ([HuffPost](https://www.huffingtonpost.es/sociedad/juan-jose-bonnin-59nos-profesor-instituto-ibiza-tengo-plaza-funcionario-comparto-piso-pago-400-euros-habitacion-f202606.html)).
+- El Ayuntamiento de Sant Josep publica sus ayudas al alquiler ([Welcometoibiza](https://welcometoibiza.com/agenda-ibiza/lifestyle/ayudas-al-alquiler-en-san-jose/)).
+- Sin novedad esta semana sobre la ubicación concreta que buscaba Sant Antoni en suelo rústico para sus viviendas a precio limitado.
+- Sin novedad esta semana sobre el detalle del Ayuntamiento de Ibiza sobre los 236.000 m² desbloqueados (número de viviendas, criterios de adjudicación y calendario) más allá de la cifra global de hasta 2.200 VPL en tres zonas publicada por La Voz de Ibiza.
+- Sin novedad esta semana sobre la respuesta del Govern balear y de los grupos parlamentarios al rechazo hotelero a destinar la ecotasa a vivienda.
+- Sin novedad esta semana sobre el plan de realojo o actuación administrativa sobre los moradores identificados en el asentamiento de ses Feixes.
+- Sin novedad esta semana sobre el resultado del debate intermunicipal de junio sobre la conversión de áreas de transición en suelo residencial.
 
 </div>
 </section>
@@ -98,23 +90,16 @@ permalink: /
 <section class="dash-propuestas" id="propuestas">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Propuestas documentadas</p>
-<h2>2 propuestas en circulación esta semana</h2>
+<h2>1 propuesta en circulación esta semana</h2>
 <p class="dash-section-lead">Cada propuesta la ha formulado un actor con nombre, con fuente verificable. El observatorio no genera propuestas propias.</p>
 </header>
 <div class="dash-propuestas-grid">
 <article class="dash-propuesta">
 <div class="dash-propuesta-num">01</div>
-<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w27/#1-rechazo-a-destinar-la-ecotasa-a-vivienda-y-demanda-de-un-plan-específico">Rechazo a destinar la ecotasa a vivienda y demanda de un plan específico</a></h3>
+<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w28/#1-planificación-de-la-vivienda-según-el-crecimiento-poblacional-anual">Planificación de la vivienda según el crecimiento poblacional anual</a></h3>
 <dl class="dash-propuesta-meta">
 </dl>
-<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w27/#1-rechazo-a-destinar-la-ecotasa-a-vivienda-y-demanda-de-un-plan-específico">Ver ficha y fuentes →</a>
-</article>
-<article class="dash-propuesta">
-<div class="dash-propuesta-num">02</div>
-<h3 class="dash-propuesta-title"><a href="{{ site.baseurl }}/ediciones/2026-w27/#2-planificación-de-la-vivienda-según-el-crecimiento-poblacional-anual">Planificación de la vivienda según el crecimiento poblacional anual</a></h3>
-<dl class="dash-propuesta-meta">
-</dl>
-<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w27/#2-planificación-de-la-vivienda-según-el-crecimiento-poblacional-anual">Ver ficha y fuentes →</a>
+<a class="dash-propuesta-link" href="{{ site.baseurl }}/ediciones/2026-w28/#1-planificación-de-la-vivienda-según-el-crecimiento-poblacional-anual">Ver ficha y fuentes →</a>
 </article>
 </div>
 </section>
@@ -127,11 +112,11 @@ permalink: /
 </header>
 <div class="dash-vigilar-list" markdown="1">
 
-- Concreción de la ubicación que busque Sant Antoni en suelo rústico para sus viviendas a precio limitado.
-- Detalle del Ayuntamiento de Ibiza sobre los 236.000 m² desbloqueados: número de viviendas, criterios de adjudicación y calendario.
-- Respuesta del Govern balear y de los grupos parlamentarios al rechazo hotelero a destinar la ecotasa a vivienda.
-- Plan de realojo o actuación administrativa sobre los moradores identificados en el asentamiento de ses Feixes.
-- Resultado pendiente del debate intermunicipal de junio sobre la conversión de áreas de transición en suelo residencial.
+- Publicación de pliegos, ubicaciones y calendario del proyecto del Consell d'Eivissa para residencias de temporeros tras la declaración de interés inversor.
+- Detalle del Ayuntamiento de Ibiza sobre la distribución concreta de las hasta 2.200 VPL en tres zonas: número por zona, criterios de adjudicación y calendario.
+- Respuesta administrativa al nuevo asentamiento de Cala de Bou y al asentamiento de Casa Lola tras los incidentes registrados esta semana.
+- Resolución de la licitación de 166.000 euros para la rehabilitación de la vivienda de alquiler social en sa Penya.
+- Cierre pendiente sobre la ubicación en suelo rústico que buscaba Sant Antoni y sobre la respuesta del Govern al rechazo hotelero a destinar la ecotasa a vivienda.
 
 </div>
 </section>
@@ -139,9 +124,14 @@ permalink: /
 <section class="dash-archivo">
 <header class="dash-section-header">
 <p class="dash-section-kicker">Informes anteriores</p>
-<h2>10 ediciones publicadas antes de esta</h2>
+<h2>11 ediciones publicadas antes de esta</h2>
 </header>
 <ol class="dash-archivo-list">
+<li>
+<time datetime="2026-06-29">2026-06-29</time>
+<h3><a href="{{ site.baseurl }}/ediciones/2026-w27/">Semana 1 - Julio 2026</a></h3>
+<p>Hoteleros rechazan destinar la ecotasa a vivienda; Ibiza desbloquea 236.000 m² para Vivienda a Precio Limitado y Sant Antoni busca ubicación en suelo rústico.</p>
+</li>
 <li>
 <time datetime="2026-06-22">2026-06-22</time>
 <h3><a href="{{ site.baseurl }}/ediciones/2026-w26/">Semana 4 - Junio 2026</a></h3>
@@ -156,11 +146,6 @@ permalink: /
 <time datetime="2026-06-08">2026-06-08</time>
 <h3><a href="{{ site.baseurl }}/ediciones/2026-w24/">Semana 2 - Junio 2026</a></h3>
 <p>Desmantelamiento de asentamientos en Ibiza y Sant Josep, multa de 800.000€ por alquiler turístico ilegal, Ibavi licita 48 VPO en Can Cantó y precio de vivienda sube 12,9%.</p>
-</li>
-<li>
-<time datetime="2026-06-01">2026-06-01</time>
-<h3><a href="{{ site.baseurl }}/ediciones/2026-w23/">Semana 1 - Junio 2026</a></h3>
-<p>Desalojo de Sa Joveria, Sant Antoni denuncia a 20 personas por pernoctar ilegal, Govern financia 48 VPO y precio del alquiler alcanza 32,3€/m² en Ibiza.</p>
 </li>
 </ol>
 <a href="{{ site.baseurl }}/ediciones/" class="dash-archivo-cta">Ir al archivo completo →</a>

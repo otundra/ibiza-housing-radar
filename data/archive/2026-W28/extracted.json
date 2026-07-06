@@ -1,0 +1,64 @@
+[
+  {
+    "news_id": "item-000",
+    "proposals": [
+      {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell d'Eivissa avanza en su proyecto para habilitar residencias destinadas a trabajadores temporales vinculados a la temporada turística, iniciativa que considera pionera en España.",
+        "statement_verbatim": "El Consell d'Eivissa continúa avanzando en su proyecto para habilitar residencias destinadas a trabajadores temporales vinculados a la temporada turística, unos 30.000 en Ibiza, una iniciativa que la institución considera pionera en España",
+        "url_source": "https://amp.periodicodeibiza.es/pitiusas/ibiza/2026/07/05/2663985/consell-detecta-fuerte-interes-inversor-viviendas-para-temporeros-ibiza.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "temporada_2026",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-001",
+    "proposals": [
+      {
+        "actor": "Consell d'Eivissa",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Consell d'Eivissa continúa avanzando en su proyecto para habilitar residencias destinadas a trabajadores temporales vinculados a la temporada turística, unos 30.000 en Ibiza, iniciativa que considera pionera en España.",
+        "statement_verbatim": "El Consell d'Eivissa continúa avanzando en su proyecto para habilitar residencias destinadas a trabajadores temporales vinculados a la temporada turística, unos 30.000 en Ibiza, una iniciativa que la institución considera pionera en España y que ya está despertando un notable interés tanto dentro como fuera de la isla.",
+        "url_source": "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/05/2663985/consell-detecta-fuerte-interes-inversor-viviendas-para-temporeros-ibiza.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "temporada_2026",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-002",
+    "proposals": [],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "skipped",
+    "validator_reason": "",
+    "was_disputed": false
+  }
+]

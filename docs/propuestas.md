@@ -6,7 +6,7 @@ permalink: /propuestas/
 
 <section class="prop-intro">
 <p class="prop-intro-kicker">Mapa completo del observatorio</p>
-<p class="prop-intro-count"><strong>38 propuestas documentadas · 29 actores distintos</strong></p>
+<p class="prop-intro-count"><strong>40 propuestas documentadas · 29 actores distintos</strong></p>
 <p class="prop-intro-lead">Cada propuesta la formuló un actor con nombre y fuente verificable. Aquí están todas las que el observatorio ha registrado desde su primera edición, agrupadas por estado actual.</p>
 </section>
 
@@ -15,7 +15,7 @@ permalink: /propuestas/
 <li><a href="#en-ejecucion">En ejecución <span class="prop-nav-count">2</span></a></li>
 <li><a href="#aprobada">Aprobada <span class="prop-nav-count">1</span></a></li>
 <li><a href="#en-debate">En debate <span class="prop-nav-count">3</span></a></li>
-<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">20</span></a></li>
+<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">22</span></a></li>
 <li><a href="#propuesta">Propuesta <span class="prop-nav-count">12</span></a></li>
 </ul>
 </nav>
@@ -110,7 +110,7 @@ permalink: /propuestas/
 <section class="prop-state" id="en-movimiento">
 <header class="prop-state-header">
 <h2>En movimiento</h2>
-<p class="prop-state-count">20 propuestas</p>
+<p class="prop-state-count">22 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -312,6 +312,26 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w27/">2026-W27</a></dd>
 </dl>
 <a class="prop-card-source" href="https://lavozdeibiza.com/actualidad/ibiza-desbloquea-236-000-metros-cuadrados-para-impulsar-vivienda-a-precio-limitado/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Consell d'Eivissa <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Consell d'Eivissa avanza en su proyecto para habilitar residencias destinadas a trabajadores temporales vinculados a la temporada turística, iniciativa que considera pionera en España.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Temporada 2026</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w28/">2026-W28</a></dd>
+</dl>
+<a class="prop-card-source" href="https://amp.periodicodeibiza.es/pitiusas/ibiza/2026/07/05/2663985/consell-detecta-fuerte-interes-inversor-viviendas-para-temporeros-ibiza.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Consell d'Eivissa <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Consell d'Eivissa continúa avanzando en su proyecto para habilitar residencias destinadas a trabajadores temporales vinculados a la temporada turística, unos 30.000 en Ibiza, iniciativa que considera pionera en España.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Temporada 2026</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w28/">2026-W28</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/05/2663985/consell-detecta-fuerte-interes-inversor-viviendas-para-temporeros-ibiza.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>

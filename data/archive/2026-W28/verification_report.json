@@ -1,0 +1,12 @@
+{
+  "urls_checked": 21,
+  "urls_failed": [],
+  "actors_checked": 0,
+  "actors_untraceable": [],
+  "forbidden_verbs_found": [],
+  "frontmatter_issues": [],
+  "blocking_failures": [],
+  "soft_warnings": [
+    "URL con aviso (no bloqueante): {'url': 'https://welcometoibiza.com/agenda-ibiza/lifestyle/ayudas-al-alquiler-en-san-jose/', 'error': 'timed out'}"
+  ]
+}
