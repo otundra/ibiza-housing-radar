@@ -6,24 +6,24 @@ permalink: /propuestas/
 
 <section class="prop-intro">
 <p class="prop-intro-kicker">Mapa completo del observatorio</p>
-<p class="prop-intro-count"><strong>40 propuestas documentadas · 29 actores distintos</strong></p>
+<p class="prop-intro-count"><strong>43 propuestas documentadas · 31 actores distintos</strong></p>
 <p class="prop-intro-lead">Cada propuesta la formuló un actor con nombre y fuente verificable. Aquí están todas las que el observatorio ha registrado desde su primera edición, agrupadas por estado actual.</p>
 </section>
 
 <nav class="prop-nav" aria-label="Saltar a estado">
 <ul class="prop-nav-list">
-<li><a href="#en-ejecucion">En ejecución <span class="prop-nav-count">2</span></a></li>
-<li><a href="#aprobada">Aprobada <span class="prop-nav-count">1</span></a></li>
+<li><a href="#en-ejecucion">En ejecución <span class="prop-nav-count">3</span></a></li>
+<li><a href="#aprobada">Aprobada <span class="prop-nav-count">2</span></a></li>
 <li><a href="#en-debate">En debate <span class="prop-nav-count">3</span></a></li>
 <li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">22</span></a></li>
-<li><a href="#propuesta">Propuesta <span class="prop-nav-count">12</span></a></li>
+<li><a href="#propuesta">Propuesta <span class="prop-nav-count">13</span></a></li>
 </ul>
 </nav>
 
 <section class="prop-state" id="en-ejecucion">
 <header class="prop-state-header">
 <h2>En ejecución</h2>
-<p class="prop-state-count">2 propuestas</p>
+<p class="prop-state-count">3 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -46,13 +46,23 @@ permalink: /propuestas/
 </dl>
 <a class="prop-card-source" href="https://www.economiademallorca.com/articulo/mercado-inmobiliario/govern-licita-suelo-publico-mallorca-ibiza-construir-387-viviendas-protegidas-alquiler/20260514145951119391.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Ayuntamiento de Santa Eulària des Riu <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">Se ha abierto convocatoria de ayudas dotada con 60.000 euros para la compra de primera vivienda, con subvenciones de hasta 5.000 euros por residente.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Fiscal</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w29/">2026-W29</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/10/2667593/residentes-santa-eularia-pueden-pedir-ayudas-para-compra-primera-vivienda.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
 </div>
 </section>
 
 <section class="prop-state" id="aprobada">
 <header class="prop-state-header">
 <h2>Aprobada</h2>
-<p class="prop-state-count">1 propuesta</p>
+<p class="prop-state-count">2 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -64,6 +74,16 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w19/">2026-W19</a></dd>
 </dl>
 <a class="prop-card-source" href="https://www.msn.com/es-es/dinero/bien-inmueble/luz-verde-a-25-millones-de-euros-para-que-los-municipios-de-eivissa-construyan-vivienda-p%C3%BAblica-o-trasladen-residuos/ar-AA21CPfB?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1&bundles=feat-es2020-c" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Ayuntamiento de Ibiza, IBAVI <span class="prop-card-type">· Coalición institucional</span></h3>
+<p class="prop-card-summary">Se aprueba la construcción de ocho nuevas viviendas públicas en el antiguo Mercat Pagès de Ibiza.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w29/">2026-W29</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.noudiari.es/noticias-ibiza-formentera-sidebar/luz-verde-a-la-construccion-de-ocho-nuevas-viviendas-publicas-del-ibavi-en-el-antiguo-mercat-pages-de-ibiza/" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>
@@ -339,7 +359,7 @@ permalink: /propuestas/
 <section class="prop-state" id="propuesta">
 <header class="prop-state-header">
 <h2>Propuesta</h2>
-<p class="prop-state-count">12 propuestas</p>
+<p class="prop-state-count">13 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -461,6 +481,16 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w27/">2026-W27</a></dd>
 </dl>
 <a class="prop-card-source" href="https://lavozdeibiza.com/actualidad/los-hoteleros-de-ibiza-se-plantan-no-quieren-la-ecotasa-para-vivienda/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Ayuntamiento de Santa Eulària des Riu <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Ayuntamiento de Santa Eulària establecerá ayudas de hasta 5.000 euros para la compra de la primera vivienda en el municipio.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Fiscal</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w29/">2026-W29</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/07/10/comprar-primera-vivienda-santa-eularia-132320861.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>

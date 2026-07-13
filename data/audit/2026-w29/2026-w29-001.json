@@ -1,0 +1,138 @@
+{
+  "proposal_id": "2026-w29-001",
+  "week": "2026-w29",
+  "created_at": "2026-07-13T08:19:21Z",
+  "tier": {
+    "value": "amarillo",
+    "reason": "fuente única",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": true,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 1,
+      "whitelist_match": "neutro",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-07-13T08:19:21Z",
+      "proposal": {
+        "actor": "Ayuntamiento de Ibiza, IBAVI",
+        "actor_type": "coalicion_institucional",
+        "statement_summary": "Se aprueba la construcción de ocho nuevas viviendas públicas en el antiguo Mercat Pagès de Ibiza.",
+        "statement_verbatim": "Luz verde a la construcción de ocho nuevas viviendas públicas en el antiguo Mercat Pagès de Ibiza",
+        "url_source": "https://www.noudiari.es/noticias-ibiza-formentera-sidebar/luz-verde-a-la-construccion-de-ocho-nuevas-viviendas-publicas-del-ibavi-en-el-antiguo-mercat-pages-de-ibiza/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "aprobada",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-07-13T08:19:21Z",
+      "proposal": {
+        "actor": "Ayuntamiento de Ibiza",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Ayuntamiento de Ibiza ha dado luz verde a la construcción de ocho nuevas viviendas públicas en el solar del antiguo Mercat Pagès, promovidas por el IBAVI.",
+        "statement_verbatim": "Luz verde a la construcción de ocho nuevas viviendas públicas del IBAVI en el antiguo Mercat Pagès de Ibiza",
+        "url_source": "https://www.noudiari.es/noticias-ibiza-formentera-sidebar/luz-verde-a-la-construccion-de-ocho-nuevas-viviendas-publicas-del-ibavi-en-el-antiguo-mercat-pages-de-ibiza/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "IBAVI",
+        "horizon": "corto_plazo",
+        "state": "aprobada",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "actor",
+          "a": "Ayuntamiento de Ibiza, IBAVI",
+          "b": "Ayuntamiento de Ibiza",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "target_actor",
+          "a": "",
+          "b": "IBAVI",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "actor_type",
+          "a": "coalicion_institucional",
+          "b": "institucional_publico",
+          "reason": "diff_menor"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 1,
+        "urls": [
+          "https://www.noudiari.es/noticias-ibiza-formentera-sidebar/luz-verde-a-la-construccion-de-ocho-nuevas-viviendas-publicas-del-ibavi-en-el-antiguo-mercat-pages-de-ibiza/"
+        ],
+        "dominios": [
+          "noudiari.es"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "neutro",
+        "domain": "noudiari.es",
+        "known_actor": false,
+        "whitelist_miss": true
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-07-13T08:19:21Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": true,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 4519,
+    "heuristics_ms": 30346,
+    "verify_ms": 0,
+    "total_ms": 34865
+  }
+}

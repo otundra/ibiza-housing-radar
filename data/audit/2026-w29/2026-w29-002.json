@@ -1,0 +1,140 @@
+{
+  "proposal_id": "2026-w29-002",
+  "week": "2026-w29",
+  "created_at": "2026-07-13T08:19:23Z",
+  "tier": {
+    "value": "amarillo",
+    "reason": "techo activo",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": true,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 2,
+      "whitelist_match": "neutro",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-07-13T08:19:23Z",
+      "proposal": {
+        "actor": "Ayuntamiento de Santa Eulària des Riu",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Ayuntamiento de Santa Eulària establecerá ayudas de hasta 5.000 euros para la compra de la primera vivienda en el municipio.",
+        "statement_verbatim": "Comprar la primera vivienda en Santa Eulària tendrá ayudas de hasta 5.000 euros",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/07/10/comprar-primera-vivienda-santa-eularia-132320861.html",
+        "palanca": "fiscal",
+        "target_actor": "Ayuntamiento de Santa Eulària des Riu",
+        "horizon": "corto_plazo",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-07-13T08:19:23Z",
+      "proposal": {
+        "actor": "Ayuntamiento de Santa Eulària des Riu",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Ayuntamiento de Santa Eulària des Riu ofrecerá ayudas de hasta 5.000 euros para la compra de la primera vivienda en el municipio.",
+        "statement_verbatim": "Comprar la primera vivienda en Santa Eulària tendrá ayudas de hasta 5.000 euros",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/07/10/comprar-primera-vivienda-santa-eularia-132320861.html",
+        "palanca": "fiscal",
+        "target_actor": "",
+        "horizon": "inmediato",
+        "state": "aprobada",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "target_actor",
+          "a": "Ayuntamiento de Santa Eulària des Riu",
+          "b": "",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "state",
+          "a": "propuesta",
+          "b": "aprobada",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "horizon",
+          "a": "corto_plazo",
+          "b": "inmediato",
+          "reason": "diff_menor"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 2,
+        "urls": [
+          "https://www.diariodeibiza.es/ibiza/2026/07/10/comprar-primera-vivienda-santa-eularia-132320861.html",
+          "https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/10/2667593/residentes-santa-eularia-pueden-pedir-ayudas-para-compra-primera-vivienda.html"
+        ],
+        "dominios": [
+          "diariodeibiza.es",
+          "periodicodeibiza.es"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "neutro",
+        "domain": "diariodeibiza.es",
+        "known_actor": false,
+        "whitelist_miss": true
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-07-13T08:19:23Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": true,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 4519,
+    "heuristics_ms": 1154,
+    "verify_ms": 0,
+    "total_ms": 5673
+  }
+}
