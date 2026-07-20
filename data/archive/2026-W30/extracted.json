@@ -1,0 +1,199 @@
+[
+  {
+    "news_id": "item-000",
+    "proposals": [
+      {
+        "actor": "Govern balear, Consell d'Eivissa",
+        "actor_type": "coalicion_institucional",
+        "statement_summary": "El Govern y el Consell d'Eivissa presentan una nueva promoción del IBAVI de 25 viviendas dotacionales de alquiler para empleados públicos.",
+        "statement_verbatim": "El Govern y el Consell d'Eivissa presentan la nueva promoción del IBAVI de 25 viviendas dotacionales de alquiler para empleados públicos",
+        "url_source": "https://www.caib.es/webgoib/es/w/el-govern-y-el-consell-deivissa-presentan-la-nueva-promocion-del-ibavi-de-25-viviendas-dotacionales-de-alquiler-para-empleados-publicos",
+        "palanca": "oferta_vivienda",
+        "target_actor": "IBAVI",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-001",
+    "proposals": [
+      {
+        "actor": "IBAVI",
+        "actor_type": "institucional_publico",
+        "statement_summary": "IBAVI presenta 25 viviendas de nueva promoción en Ibiza.",
+        "statement_verbatim": "Ibavi presenta 25 viviendas de nueva promoción en Ibiza",
+        "url_source": "https://vivirediciones.es/isla-de-ibiza/ibavi-25-viviendas-ibiza-consell/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-002",
+    "proposals": [
+      {
+        "actor": "IBAVI",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El IBAVI construye 25 viviendas para funcionarios en Ibiza con alquileres limitados al 30% de sus ingresos.",
+        "statement_verbatim": "El Ibavi levanta en Ibiza 25 viviendas para funcionarios con alquileres limitados al 30% de sus ingresos",
+        "url_source": "https://www.eldebate.com/espana/baleares/20260714/ibavi-levanta-ibiza-25-viviendas-funcionarios-alquileres-limitados-30-ingresos_439541.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-003",
+    "proposals": [
+      {
+        "actor": "Govern balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Ibiza contará con una promoción de vivienda destinada a empleados públicos desplazados.",
+        "statement_verbatim": "Ibiza tendrá una promoción de vivienda para empleados públicos desplazados",
+        "url_source": "https://cadenaser.com/baleares/2026/07/14/ibiza-tendra-una-promocion-de-vivienda-para-empleados-publicos-desplazados-radio-ibiza/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Govern balear",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-opus-4-7",
+    "validator_verdict": "invalid",
+    "validator_reason": "El texto del summary no permite verificar que el actor sea específicamente 'Govern balear' ni ningún detalle adicional, ya que el summary es prácticamente idéntico al título y no contiene información suficiente para confirmar el actor, el estado 'en_ejecucion' u otros campos extraídos.",
+    "was_disputed": true
+  },
+  {
+    "news_id": "item-004",
+    "proposals": [
+      {
+        "actor": "Consell d'Eivissa, Govern balear",
+        "actor_type": "coalicion_institucional",
+        "statement_summary": "El Consell d'Eivissa y el Govern balear impulsan 25 viviendas públicas de alquiler asequible para empleados públicos en Ibiza.",
+        "statement_verbatim": "El Consell d'Eivissa y el Govern balear impulsan 25 viviendas públicas de alquiler asequible para empleados públicos en Ibiza",
+        "url_source": "https://www.fibwidiario.com/articulo/eivissa-formentera/consell-deivissa-govern-balear-impulsan-25-viviendas-publicas-alquiler-asequible-empleados-publicos-ibiza/20260714123955322615.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-005",
+    "proposals": [
+      {
+        "actor": "Govern balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Govern balear construirá la primera promoción de 25 pisos de alquiler para funcionarios desplazados a Ibiza.",
+        "statement_verbatim": "Prohens construirá la primera promoción de 25 pisos de alquiler para funcionarios desplazados a Ibiza",
+        "url_source": "https://okdiario.com/baleares/prohens-construira-primera-promocion-25-pisos-alquiler-funcionarios-desplazados-ibiza-18991518",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "valid",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-006",
+    "proposals": [],
+    "produced_by": "claude-haiku-4-5-20251001",
+    "validator_verdict": "skipped",
+    "validator_reason": "",
+    "was_disputed": false
+  },
+  {
+    "news_id": "item-007",
+    "proposals": [
+      {
+        "actor": "Govern balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Govern balear impulsa 25 viviendas públicas de alquiler en Ibiza destinadas a empleados esenciales, en una zona considerada de lujo, para frenar su fuga.",
+        "statement_verbatim": "Ibiza tendrá 25 viviendas públicas de alquiler para frenar la fuga de empleados esenciales en plena zona \"de lujo\"",
+        "url_source": "https://www.noudiari.es/local-ibiza/ibiza-tendra-25-viviendas-publicas-de-alquiler-para-frenar-la-fuga-de-empleados-esenciales-en-plena-zona-de-lujo/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Govern balear",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    ],
+    "produced_by": "claude-opus-4-7",
+    "validator_verdict": "invalid",
+    "validator_reason": "El texto (summary) no menciona al 'Govern balear' como actor; no hay evidencia en el texto proporcionado que atribuya la propuesta a dicha entidad.",
+    "was_disputed": true
+  }
+]

@@ -49,3 +49,7 @@ Registro automático de cada ejecución de `src/self_review.py` tras publicar un
 ## 2026-W29 · 2026-07-13 08:21 UTC
 - Scores bajos: rigor=5
 - Detalle: [2026-w29.md](private/self-review/2026-w29.md)
+
+## 2026-W30 · 2026-07-20 08:10 UTC
+- Scores bajos: rigor=5, trazabilidad=6
+- Detalle: [2026-w30.md](private/self-review/2026-w30.md)

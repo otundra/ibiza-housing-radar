@@ -6,16 +6,16 @@ permalink: /propuestas/
 
 <section class="prop-intro">
 <p class="prop-intro-kicker">Mapa completo del observatorio</p>
-<p class="prop-intro-count"><strong>43 propuestas documentadas · 31 actores distintos</strong></p>
+<p class="prop-intro-count"><strong>50 propuestas documentadas · 34 actores distintos</strong></p>
 <p class="prop-intro-lead">Cada propuesta la formuló un actor con nombre y fuente verificable. Aquí están todas las que el observatorio ha registrado desde su primera edición, agrupadas por estado actual.</p>
 </section>
 
 <nav class="prop-nav" aria-label="Saltar a estado">
 <ul class="prop-nav-list">
-<li><a href="#en-ejecucion">En ejecución <span class="prop-nav-count">3</span></a></li>
+<li><a href="#en-ejecucion">En ejecución <span class="prop-nav-count">8</span></a></li>
 <li><a href="#aprobada">Aprobada <span class="prop-nav-count">2</span></a></li>
 <li><a href="#en-debate">En debate <span class="prop-nav-count">3</span></a></li>
-<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">22</span></a></li>
+<li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">24</span></a></li>
 <li><a href="#propuesta">Propuesta <span class="prop-nav-count">13</span></a></li>
 </ul>
 </nav>
@@ -23,7 +23,7 @@ permalink: /propuestas/
 <section class="prop-state" id="en-ejecucion">
 <header class="prop-state-header">
 <h2>En ejecución</h2>
-<p class="prop-state-count">3 propuestas</p>
+<p class="prop-state-count">8 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -55,6 +55,56 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w29/">2026-W29</a></dd>
 </dl>
 <a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/10/2667593/residentes-santa-eularia-pueden-pedir-ayudas-para-compra-primera-vivienda.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Govern balear, Consell d'Eivissa <span class="prop-card-type">· Coalición institucional</span></h3>
+<p class="prop-card-summary">El Govern y el Consell d'Eivissa presentan una nueva promoción del IBAVI de 25 viviendas dotacionales de alquiler para empleados públicos.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w30/">2026-W30</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.caib.es/webgoib/es/w/el-govern-y-el-consell-deivissa-presentan-la-nueva-promocion-del-ibavi-de-25-viviendas-dotacionales-de-alquiler-para-empleados-publicos" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">IBAVI <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">IBAVI presenta 25 viviendas de nueva promoción en Ibiza.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w30/">2026-W30</a></dd>
+</dl>
+<a class="prop-card-source" href="https://vivirediciones.es/isla-de-ibiza/ibavi-25-viviendas-ibiza-consell/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">IBAVI <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El IBAVI construye 25 viviendas para funcionarios en Ibiza con alquileres limitados al 30% de sus ingresos.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w30/">2026-W30</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.eldebate.com/espana/baleares/20260714/ibavi-levanta-ibiza-25-viviendas-funcionarios-alquileres-limitados-30-ingresos_439541.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Consell d'Eivissa, Govern balear <span class="prop-card-type">· Coalición institucional</span></h3>
+<p class="prop-card-summary">El Consell d'Eivissa y el Govern balear impulsan 25 viviendas públicas de alquiler asequible para empleados públicos en Ibiza.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w30/">2026-W30</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.fibwidiario.com/articulo/eivissa-formentera/consell-deivissa-govern-balear-impulsan-25-viviendas-publicas-alquiler-asequible-empleados-publicos-ibiza/20260714123955322615.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Govern balear <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Govern balear construirá la primera promoción de 25 pisos de alquiler para funcionarios desplazados a Ibiza.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w30/">2026-W30</a></dd>
+</dl>
+<a class="prop-card-source" href="https://okdiario.com/baleares/prohens-construira-primera-promocion-25-pisos-alquiler-funcionarios-desplazados-ibiza-18991518" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>
@@ -130,7 +180,7 @@ permalink: /propuestas/
 <section class="prop-state" id="en-movimiento">
 <header class="prop-state-header">
 <h2>En movimiento</h2>
-<p class="prop-state-count">22 propuestas</p>
+<p class="prop-state-count">24 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -352,6 +402,26 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w28/">2026-W28</a></dd>
 </dl>
 <a class="prop-card-source" href="https://www.periodicodeibiza.es/pitiusas/ibiza/2026/07/05/2663985/consell-detecta-fuerte-interes-inversor-viviendas-para-temporeros-ibiza.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Govern balear <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">Ibiza contará con una promoción de vivienda destinada a empleados públicos desplazados.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w30/">2026-W30</a></dd>
+</dl>
+<a class="prop-card-source" href="https://cadenaser.com/baleares/2026/07/14/ibiza-tendra-una-promocion-de-vivienda-para-empleados-publicos-desplazados-radio-ibiza/" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Govern balear <span class="prop-card-type">· Institucional público</span></h3>
+<p class="prop-card-summary">El Govern balear impulsa 25 viviendas públicas de alquiler en Ibiza destinadas a empleados esenciales, en una zona considerada de lujo, para frenar su fuga.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Oferta de vivienda</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w30/">2026-W30</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.noudiari.es/local-ibiza/ibiza-tendra-25-viviendas-publicas-de-alquiler-para-frenar-la-fuga-de-empleados-esenciales-en-plena-zona-de-lujo/" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>

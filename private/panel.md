@@ -1,40 +1,40 @@
 # Tablero interno — monitorización del proyecto
 
-*Archivo privado. No se publica en la web. Última actualización: 2026-07-13 08:21 UTC.*
+*Archivo privado. No se publica en la web. Última actualización: 2026-07-20 08:10 UTC.*
 
 Agrega las señales que otros módulos ya producen: gasto del mes, autoevaluación, verificación, decisiones con revisión pendiente, última edición. No genera datos propios. Ver decisión D14.
 
 ## Costes del mes
 
-- **Gasto actual:** 1.91 € (blando 12 € / duro 50 €) — 🟢 Verde (<6 €) — silencio
+- **Gasto actual:** 3.10 € (blando 12 € / duro 50 €) — 🟢 Verde (<6 €) — silencio
 - **Dashboard detallado:** [`costs.md`](costs.md)
 
 ## Decisiones con revisión pendiente
 
 ### 🚨 Vencidas
 
-- **Ritual de aprendizaje semanal + temperature=0 en self-review** (D17) — vencía el 2026-06-08 (hace 35 días)
+- **Ritual de aprendizaje semanal + temperature=0 en self-review** (D17) — vencía el 2026-06-08 (hace 42 días)
 
 ## Última edición publicada
 
-- `2026-w29`
+- `2026-w30`
 
 ## Histórico de propuestas
 
-- **Total acumulado:** 43
+- **Total acumulado:** 50
 
 ## Verificación (última ejecución)
 
 - **Resultado:** ✅ sin fallos bloqueantes
-- **URLs comprobadas:** 29, caídas: 0
+- **URLs comprobadas:** 34, caídas: 0
 - **Actores comprobados:** 0, no trazables: 0
-- **Avisos blandos:** 0
+- **Avisos blandos:** 4
 
 ## Autoevaluación (último corte)
 
-## 2026-W29 · 2026-07-13 08:21 UTC
-- Scores bajos: rigor=5
-- Detalle: [2026-w29.md](private/self-review/2026-w29.md)
+## 2026-W30 · 2026-07-20 08:10 UTC
+- Scores bajos: rigor=5, trazabilidad=6
+- Detalle: [2026-w30.md](private/self-review/2026-w30.md)
 
 ## Salud sistémica (termómetro de complejidad)
 

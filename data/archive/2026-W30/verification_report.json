@@ -1,0 +1,15 @@
+{
+  "urls_checked": 34,
+  "urls_failed": [],
+  "actors_checked": 0,
+  "actors_untraceable": [],
+  "forbidden_verbs_found": [],
+  "frontmatter_issues": [],
+  "blocking_failures": [],
+  "soft_warnings": [
+    "URL con aviso (no bloqueante): {'url': 'https://lavozdeibiza.com/actualidad/ibiza-vuelve-a-frenar-el-ingreso-de-coches-y-se-desploma-la-entrada-de-caravanas/', 'status': 403, 'reason': 'bot-blocked or rate-limited (URL viva)'}",
+    "URL con aviso (no bloqueante): {'url': 'https://lavozdeibiza.com/actualidad/ibiza-vuelve-a-liderar-en-espana-la-caida-de-plazas-de-vivienda-turistica/', 'status': 403, 'reason': 'bot-blocked or rate-limited (URL viva)'}",
+    "URL con aviso (no bloqueante): {'url': 'https://www.tourinews.es/resumen-de-prensa/notas-de-prensa-destinos-turismo/aumenta-alquiler-irregular-autocaravanas-furgonetas-camperizadas-turistas-en-ibiza_4493676_102.html', 'status': 403, 'reason': 'bot-blocked or rate-limited (URL viva)'}",
+    "URL con aviso (no bloqueante): {'url': 'https://lavozdeibiza.com/actualidad/cayo-en-la-trampa-del-alquiler-barato-en-ibiza-770-euros-y-llaves-que-no-llegaron/', 'status': 403, 'reason': 'bot-blocked or rate-limited (URL viva)'}"
+  ]
+}

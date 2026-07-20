@@ -1,0 +1,144 @@
+{
+  "proposal_id": "2026-w30-005",
+  "week": "2026-w30",
+  "created_at": "2026-07-20T08:08:01Z",
+  "tier": {
+    "value": "rojo",
+    "reason": "traza_dominio_actor=False + whitelist=debilita",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": false,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 7,
+      "whitelist_match": "debilita",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-07-20T08:08:01Z",
+      "proposal": {
+        "actor": "Consell d'Eivissa, Govern balear",
+        "actor_type": "coalicion_institucional",
+        "statement_summary": "El Consell d'Eivissa y el Govern balear impulsan 25 viviendas públicas de alquiler asequible para empleados públicos en Ibiza.",
+        "statement_verbatim": "El Consell d'Eivissa y el Govern balear impulsan 25 viviendas públicas de alquiler asequible para empleados públicos en Ibiza",
+        "url_source": "https://www.fibwidiario.com/articulo/eivissa-formentera/consell-deivissa-govern-balear-impulsan-25-viviendas-publicas-alquiler-asequible-empleados-publicos-ibiza/20260714123955322615.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "",
+        "horizon": "corto_plazo",
+        "state": "en_ejecucion",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-07-20T08:08:01Z",
+      "proposal": {
+        "actor": "Consell d'Eivissa, Govern Balear",
+        "actor_type": "coalicion_institucional",
+        "statement_summary": "El Consell d'Eivissa y el Govern balear impulsan 25 viviendas públicas de alquiler asequible destinadas a empleados públicos en Ibiza.",
+        "statement_verbatim": "El Consell d'Eivissa y el Govern balear impulsan 25 viviendas públicas de alquiler asequible para empleados públicos en Ibiza",
+        "url_source": "https://www.fibwidiario.com/articulo/eivissa-formentera/consell-deivissa-govern-balear-impulsan-25-viviendas-publicas-alquiler-asequible-empleados-publicos-ibiza/20260714123955322615.html",
+        "palanca": "oferta_vivienda",
+        "target_actor": "IBAVI",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "target_actor",
+          "a": "",
+          "b": "IBAVI",
+          "reason": "diff_critico"
+        },
+        {
+          "field": "state",
+          "a": "en_ejecucion",
+          "b": "en_movimiento",
+          "reason": "diff_critico"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 7,
+        "urls": [
+          "https://vivirediciones.es/isla-de-ibiza/ibavi-25-viviendas-ibiza-consell/",
+          "https://www.eldebate.com/espana/baleares/20260714/ibavi-levanta-ibiza-25-viviendas-funcionarios-alquileres-limitados-30-ingresos_439541.html",
+          "https://cadenaser.com/baleares/2026/07/14/ibiza-tendra-una-promocion-de-vivienda-para-empleados-publicos-desplazados-radio-ibiza/",
+          "https://okdiario.com/baleares/prohens-construira-primera-promocion-25-pisos-alquiler-funcionarios-desplazados-ibiza-18991518",
+          "https://forbes.es/baleares/979111/nueva-promociona-viviendas-empleados-publicos-ibiza/",
+          "https://www.noudiari.es/local-ibiza/ibiza-tendra-25-viviendas-publicas-de-alquiler-para-frenar-la-fuga-de-empleados-esenciales-en-plena-zona-de-lujo/",
+          "https://www.fibwidiario.com/articulo/eivissa-formentera/consell-deivissa-govern-balear-impulsan-25-viviendas-publicas-alquiler-asequible-empleados-publicos-ibiza/20260714123955322615.html"
+        ],
+        "dominios": [
+          "cadenaser.com",
+          "eldebate.com",
+          "fibwidiario.com",
+          "forbes.es",
+          "noudiari.es",
+          "okdiario.com",
+          "vivirediciones.es"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "debilita",
+        "domain": "fibwidiario.com",
+        "known_actor": false,
+        "whitelist_miss": true
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-07-20T08:08:01Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": false,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 4102,
+    "heuristics_ms": 1082,
+    "verify_ms": 0,
+    "total_ms": 5184
+  }
+}

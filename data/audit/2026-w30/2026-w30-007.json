@@ -1,0 +1,140 @@
+{
+  "proposal_id": "2026-w30-007",
+  "week": "2026-w30",
+  "created_at": "2026-07-20T08:08:05Z",
+  "tier": {
+    "value": "amarillo",
+    "reason": "techo activo",
+    "signals": {
+      "ia_consenso": "disputa",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": true,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 1.0,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 8,
+      "whitelist_match": "neutro",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-07-20T08:08:05Z",
+      "proposal": {
+        "actor": "Govern balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "El Govern balear impulsa 25 viviendas públicas de alquiler en Ibiza destinadas a empleados esenciales, en una zona considerada de lujo, para frenar su fuga.",
+        "statement_verbatim": "Ibiza tendrá 25 viviendas públicas de alquiler para frenar la fuga de empleados esenciales en plena zona \"de lujo\"",
+        "url_source": "https://www.noudiari.es/local-ibiza/ibiza-tendra-25-viviendas-publicas-de-alquiler-para-frenar-la-fuga-de-empleados-esenciales-en-plena-zona-de-lujo/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "Govern balear",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-07-20T08:08:05Z",
+      "proposal": {
+        "actor": "Govern Balear",
+        "actor_type": "institucional_publico",
+        "statement_summary": "Ibiza contará con 25 viviendas públicas de alquiler para frenar la fuga de empleados esenciales ante la presión del mercado inmobiliario de lujo.",
+        "statement_verbatim": "Ibiza tendrá 25 viviendas públicas de alquiler para frenar la fuga de empleados esenciales en plena zona \"de lujo\"",
+        "url_source": "https://www.noudiari.es/local-ibiza/ibiza-tendra-25-viviendas-publicas-de-alquiler-para-frenar-la-fuga-de-empleados-esenciales-en-plena-zona-de-lujo/",
+        "palanca": "oferta_vivienda",
+        "target_actor": "IBAVI",
+        "horizon": "corto_plazo",
+        "state": "en_movimiento",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "critical",
+      "diffs": [
+        {
+          "field": "target_actor",
+          "a": "Govern balear",
+          "b": "IBAVI",
+          "reason": "diff_critico"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 8,
+        "urls": [
+          "https://www.caib.es/webgoib/es/w/el-govern-y-el-consell-deivissa-presentan-la-nueva-promocion-del-ibavi-de-25-viviendas-dotacionales-de-alquiler-para-empleados-publicos",
+          "https://vivirediciones.es/isla-de-ibiza/ibavi-25-viviendas-ibiza-consell/",
+          "https://www.eldebate.com/espana/baleares/20260714/ibavi-levanta-ibiza-25-viviendas-funcionarios-alquileres-limitados-30-ingresos_439541.html",
+          "https://cadenaser.com/baleares/2026/07/14/ibiza-tendra-una-promocion-de-vivienda-para-empleados-publicos-desplazados-radio-ibiza/",
+          "https://www.fibwidiario.com/articulo/eivissa-formentera/consell-deivissa-govern-balear-impulsan-25-viviendas-publicas-alquiler-asequible-empleados-publicos-ibiza/20260714123955322615.html",
+          "https://okdiario.com/baleares/prohens-construira-primera-promocion-25-pisos-alquiler-funcionarios-desplazados-ibiza-18991518",
+          "https://forbes.es/baleares/979111/nueva-promociona-viviendas-empleados-publicos-ibiza/",
+          "https://www.noudiari.es/local-ibiza/ibiza-tendra-25-viviendas-publicas-de-alquiler-para-frenar-la-fuga-de-empleados-esenciales-en-plena-zona-de-lujo/"
+        ],
+        "dominios": [
+          "cadenaser.com",
+          "caib.es",
+          "eldebate.com",
+          "fibwidiario.com",
+          "forbes.es",
+          "noudiari.es",
+          "okdiario.com",
+          "vivirediciones.es"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 1.0,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "neutro",
+        "domain": "noudiari.es",
+        "known_actor": true,
+        "whitelist_miss": false
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-07-20T08:08:05Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": true,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 4102,
+    "heuristics_ms": 1677,
+    "verify_ms": 0,
+    "total_ms": 5779
+  }
+}
