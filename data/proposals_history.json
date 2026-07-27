@@ -1050,5 +1050,26 @@
     "id": "2026-w30-056",
     "first_seen": "2026-07-20T08:09:59.705791+00:00",
     "first_seen_edition": "2026-W30"
+  },
+  {
+    "actor": "Rosario Sánchez",
+    "actor_type": "partido",
+    "statement_summary": "Rosario Sánchez, candidata del PSOE, promete topar el precio de los alquileres en Ibiza si llega al poder en Baleares.",
+    "statement_verbatim": "La candidata del PSOE Rosario Sánchez promete topar el precio de los alquileres en Ibiza si llega al poder en Baleares",
+    "url_source": "https://www.diariodeibiza.es/ibiza/2026/07/25/rosario-sanchez-fse-psoe-ibiza-vivienda-132807380.html",
+    "palanca": "normativa",
+    "target_actor": "Govern Balear",
+    "horizon": "corto_plazo",
+    "state": "propuesta",
+    "viability_legal": "no_evaluada",
+    "viability_legal_reason": "",
+    "viability_economic": "no_evaluada",
+    "viability_economic_reason": "",
+    "supporters_cited": [],
+    "opponents_cited": [],
+    "precedents": [],
+    "id": "2026-w31-051",
+    "first_seen": "2026-07-27T08:33:47.007827+00:00",
+    "first_seen_edition": "2026-W31"
   }
 ]

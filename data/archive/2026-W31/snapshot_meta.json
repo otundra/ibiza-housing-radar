@@ -1,0 +1,14 @@
+{
+  "archived_at": "2026-07-27T08:33:47.012761+00:00",
+  "week_iso": "2026-W31",
+  "files_copied": [
+    "ingested.json",
+    "classified.json",
+    "extracted.json",
+    "rescue.json",
+    "verification_report.json"
+  ],
+  "files_missing": [],
+  "source_dir": "data",
+  "month_spend_eur": 3.9814
+}

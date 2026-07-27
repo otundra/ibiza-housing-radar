@@ -1,0 +1,128 @@
+{
+  "proposal_id": "2026-w31-001",
+  "week": "2026-w31",
+  "created_at": "2026-07-27T08:31:59Z",
+  "tier": {
+    "value": "amarillo",
+    "reason": "fuente única",
+    "signals": {
+      "ia_consenso": "parcial",
+      "arbitraje": "no_hubo",
+      "url_ok": true,
+      "traza_dominio_actor": true,
+      "fecha_coherente": null,
+      "verbatim_match_ratio": 0.873,
+      "wayback_snapshot": null,
+      "n_fuentes_independientes": 1,
+      "whitelist_match": "neutro",
+      "viability_con_cifra": null,
+      "statement_type": "reported"
+    }
+  },
+  "corrections": [],
+  "layers": {
+    "haiku": {
+      "model": "claude-haiku-4-5-20251001",
+      "extracted_at": "2026-07-27T08:31:59Z",
+      "proposal": {
+        "actor": "Rosario Sánchez",
+        "actor_type": "partido",
+        "statement_summary": "Rosario Sánchez, candidata del PSOE, promete topar el precio de los alquileres en Ibiza si llega al poder en Baleares.",
+        "statement_verbatim": "La candidata del PSOE Rosario Sánchez promete topar el precio de los alquileres en Ibiza si llega al poder en Baleares",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/07/25/rosario-sanchez-fse-psoe-ibiza-vivienda-132807380.html",
+        "palanca": "normativa",
+        "target_actor": "Govern Balear",
+        "horizon": "corto_plazo",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "sonnet_blind": {
+      "model": "claude-sonnet-4-6",
+      "extracted_at": "2026-07-27T08:31:59Z",
+      "proposal": {
+        "actor": "Rosario Sánchez",
+        "actor_type": "partido",
+        "statement_summary": "La candidata del PSOE Rosario Sánchez promete topar el precio de los alquileres en Ibiza si llega al poder en Baleares.",
+        "statement_verbatim": "Rosario Sánchez promete topar el precio de los alquileres en Ibiza si llega al poder en Baleares",
+        "url_source": "https://www.diariodeibiza.es/ibiza/2026/07/25/rosario-sanchez-fse-psoe-ibiza-vivienda-132807380.html",
+        "palanca": "normativa",
+        "target_actor": "Govern Balear",
+        "horizon": "corto_plazo",
+        "state": "propuesta",
+        "viability_legal": "no_evaluada",
+        "viability_legal_reason": "",
+        "viability_economic": "no_evaluada",
+        "viability_economic_reason": "",
+        "supporters_cited": [
+          "PSOE"
+        ],
+        "opponents_cited": [],
+        "precedents": []
+      }
+    },
+    "compare": {
+      "identical": false,
+      "severity": "minor",
+      "diffs": [
+        {
+          "field": "statement_verbatim",
+          "a": "La candidata del PSOE Rosario Sánchez promete topar el precio de los alquileres en Ibiza si llega al poder en Baleares",
+          "b": "Rosario Sánchez promete topar el precio de los alquileres en Ibiza si llega al poder en Baleares",
+          "reason": "ratio_0.90_lt_0.95"
+        }
+      ]
+    },
+    "heuristics": {
+      "cross_source": {
+        "n_fuentes_independientes": 1,
+        "urls": [
+          "https://www.diariodeibiza.es/ibiza/2026/07/25/rosario-sanchez-fse-psoe-ibiza-vivienda-132807380.html"
+        ],
+        "dominios": [
+          "diariodeibiza.es"
+        ]
+      },
+      "verbatim_match": {
+        "ratio": 0.873,
+        "statement_type": "reported",
+        "threshold_blocking": 0.6,
+        "threshold_green": 0.8,
+        "passed_blocking": true,
+        "passed_green": true,
+        "html_cache_hit": false,
+        "url_ok": true,
+        "error": null
+      },
+      "whitelist": {
+        "match": "neutro",
+        "domain": "diariodeibiza.es",
+        "known_actor": false,
+        "whitelist_miss": true
+      }
+    }
+  },
+  "verify": {
+    "url_ok": true,
+    "http_status": null,
+    "checked_at": "2026-07-27T08:31:59Z",
+    "wayback_snapshot": null,
+    "traza_dominio_actor": true,
+    "fecha_coherente": null,
+    "verbos_prohibidos_detectados": [],
+    "_note": "MVP: verify por propuesta diferido a iteración posterior. verify.py corre a nivel edición markdown completa, no por propuesta. http_status / wayback_snapshot / fecha_coherente quedan en null por diseño. Distinguir de fallo silencioso. Ver DISENO-AUDITOR-MVP.md §8."
+  },
+  "timestamps": {
+    "haiku_ms": null,
+    "sonnet_blind_ms": 4236,
+    "heuristics_ms": 450,
+    "verify_ms": 0,
+    "total_ms": 4686
+  }
+}

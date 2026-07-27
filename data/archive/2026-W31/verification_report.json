@@ -1,0 +1,12 @@
+{
+  "urls_checked": 29,
+  "urls_failed": [],
+  "actors_checked": 0,
+  "actors_untraceable": [],
+  "forbidden_verbs_found": [],
+  "frontmatter_issues": [],
+  "blocking_failures": [],
+  "soft_warnings": [
+    "URL con aviso (no bloqueante): {'url': 'https://lavozdeibiza.com/actualidad/quien-puede-pedir-los-10-000-euros-del-govern-para-comprar-vivienda-y-como-solicitarlos/', 'status': 403, 'reason': 'bot-blocked or rate-limited (URL viva)'}"
+  ]
+}

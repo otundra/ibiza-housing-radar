@@ -6,7 +6,7 @@ permalink: /propuestas/
 
 <section class="prop-intro">
 <p class="prop-intro-kicker">Mapa completo del observatorio</p>
-<p class="prop-intro-count"><strong>50 propuestas documentadas · 34 actores distintos</strong></p>
+<p class="prop-intro-count"><strong>51 propuestas documentadas · 35 actores distintos</strong></p>
 <p class="prop-intro-lead">Cada propuesta la formuló un actor con nombre y fuente verificable. Aquí están todas las que el observatorio ha registrado desde su primera edición, agrupadas por estado actual.</p>
 </section>
 
@@ -16,7 +16,7 @@ permalink: /propuestas/
 <li><a href="#aprobada">Aprobada <span class="prop-nav-count">2</span></a></li>
 <li><a href="#en-debate">En debate <span class="prop-nav-count">3</span></a></li>
 <li><a href="#en-movimiento">En movimiento <span class="prop-nav-count">24</span></a></li>
-<li><a href="#propuesta">Propuesta <span class="prop-nav-count">13</span></a></li>
+<li><a href="#propuesta">Propuesta <span class="prop-nav-count">14</span></a></li>
 </ul>
 </nav>
 
@@ -429,7 +429,7 @@ permalink: /propuestas/
 <section class="prop-state" id="propuesta">
 <header class="prop-state-header">
 <h2>Propuesta</h2>
-<p class="prop-state-count">13 propuestas</p>
+<p class="prop-state-count">14 propuestas</p>
 </header>
 <div class="prop-state-grid">
 <article class="prop-card">
@@ -561,6 +561,16 @@ permalink: /propuestas/
 <dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w29/">2026-W29</a></dd>
 </dl>
 <a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/07/10/comprar-primera-vivienda-santa-eularia-132320861.html" target="_blank" rel="noopener">Fuente original →</a>
+</article>
+<article class="prop-card">
+<h3 class="prop-card-actor">Rosario Sánchez <span class="prop-card-type">· Partido</span></h3>
+<p class="prop-card-summary">Rosario Sánchez, candidata del PSOE, promete topar el precio de los alquileres en Ibiza si llega al poder en Baleares.</p>
+<dl class="prop-card-meta">
+<dt>Palanca</dt><dd>Normativa</dd>
+<dt>Horizonte</dt><dd>Corto plazo</dd>
+<dt>Vista por primera vez</dt><dd><a href="{{ site.baseurl }}/ediciones/2026-w31/">2026-W31</a></dd>
+</dl>
+<a class="prop-card-source" href="https://www.diariodeibiza.es/ibiza/2026/07/25/rosario-sanchez-fse-psoe-ibiza-vivienda-132807380.html" target="_blank" rel="noopener">Fuente original →</a>
 </article>
 </div>
 </section>
