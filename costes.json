@@ -1,36 +1,36 @@
 {
   "version": 3,
   "currency": "EUR",
-  "updated_at": "2026-05-20T01:55:30Z",
+  "updated_at": "2026-07-28T01:14:13Z",
   "updated_by": "panel-sync-billing",
   "fixed_monthly": [],
   "recurring_variable": {
     "current_month": {
-      "amount": 1.357086,
+      "amount": 1.923489,
       "calls": 15,
       "sources": [
         "csv:data/costs.csv"
       ],
       "amount_original": {
-        "value": 1.475094,
+        "value": 2.090749,
         "currency": "USD"
       },
       "fx_rate_used": 0.92,
       "by_breakdown": {
         "haiku-4-5": {
-          "amount_eur": 0.056367,
+          "amount_eur": 0.076935,
           "calls": 4
         },
         "sonnet-4-6": {
-          "amount_eur": 0.139115,
-          "calls": 8
+          "amount_eur": 0.201456,
+          "calls": 9
         },
         "opus-4-7": {
-          "amount_eur": 1.161605,
-          "calls": 3
+          "amount_eur": 1.645098,
+          "calls": 2
         }
       },
-      "as_of": "2026-05-20T01:55:30Z",
+      "as_of": "2026-06-30T01:05:26Z",
       "certainty": "exact"
     },
     "history": [
@@ -63,6 +63,64 @@
             "calls": 85
           }
         }
+      },
+      {
+        "month": "2026-05",
+        "amount_eur": 3.298993,
+        "calls": 36,
+        "sources": [
+          "csv:data/costs.csv"
+        ],
+        "certainty": "exact",
+        "frozen": true,
+        "amount_original": {
+          "value": 3.585862,
+          "currency": "USD"
+        },
+        "fx_rate_used": 0.92,
+        "by_breakdown": {
+          "haiku-4-5": {
+            "amount_eur": 0.130646,
+            "calls": 8
+          },
+          "sonnet-4-6": {
+            "amount_eur": 0.364238,
+            "calls": 21
+          },
+          "opus-4-7": {
+            "amount_eur": 2.804108,
+            "calls": 7
+          }
+        }
+      },
+      {
+        "month": "2026-06",
+        "amount_eur": 1.923489,
+        "calls": 15,
+        "sources": [
+          "csv:data/costs.csv"
+        ],
+        "certainty": "exact",
+        "frozen": true,
+        "amount_original": {
+          "value": 2.090749,
+          "currency": "USD"
+        },
+        "fx_rate_used": 0.92,
+        "by_breakdown": {
+          "haiku-4-5": {
+            "amount_eur": 0.076935,
+            "calls": 4
+          },
+          "sonnet-4-6": {
+            "amount_eur": 0.201456,
+            "calls": 9
+          },
+          "opus-4-7": {
+            "amount_eur": 1.645098,
+            "calls": 2
+          }
+        }
       }
     ],
     "ceiling": {
@@ -82,18 +140,18 @@
   "one_off": [],
   "shared_attribution": {
     "claude_max": {
-      "current_month_share_eur": 2.07,
+      "current_month_share_eur": 0,
       "method": "weighted_by_imputed_cost",
-      "imputable_usd_period": 21.8469,
-      "imputable_pct_period": 1.5,
-      "period_start": "2026-05-12",
-      "period_end": "2026-06-12",
+      "imputable_usd_period": 0,
+      "imputable_pct_period": 0,
+      "period_start": "2026-07-12",
+      "period_end": "2026-08-12",
       "tokens_method": "sum (tokens × precio-por-modelo) en ~/.claude/projects/<id>/*.jsonl",
-      "as_of": "2026-05-20T01:55:30Z",
+      "as_of": "2026-07-28T01:14:13Z",
       "certainty": "exact",
-      "messages_period": 172,
+      "messages_period": 21,
       "applies": true,
-      "period_label": "2026-05-12 → 2026-06-12 (Max5x mensual)",
+      "period_label": "2026-07-12 → 2026-08-12 (Max5x mensual)",
       "closed_periods": [
         {
           "period_start": "2026-04-08",
@@ -106,6 +164,32 @@
           "messages_period": 6958,
           "method": "weighted_by_imputed_cost",
           "sealed_at": "2026-05-13T01:55:37Z",
+          "sealed_by": "panel-sync-billing"
+        },
+        {
+          "period_start": "2026-05-12",
+          "period_end": "2026-06-12",
+          "period_label": "2026-05-12 → 2026-06-12 (Max5x mensual)",
+          "applies": true,
+          "share_eur": 3.83,
+          "imputable_usd_period": 53.188,
+          "imputable_pct_period": 2.77,
+          "messages_period": 382,
+          "method": "weighted_by_imputed_cost",
+          "sealed_at": "2026-06-12T01:27:56Z",
+          "sealed_by": "panel-sync-billing"
+        },
+        {
+          "period_start": "2026-06-12",
+          "period_end": "2026-07-12",
+          "period_label": "2026-06-12 → 2026-07-12 (Max5x mensual)",
+          "applies": true,
+          "share_eur": 0,
+          "imputable_usd_period": 0,
+          "imputable_pct_period": 0,
+          "messages_period": 0,
+          "method": "weighted_by_imputed_cost",
+          "sealed_at": "2026-07-12T02:14:24Z",
           "sealed_by": "panel-sync-billing"
         }
       ]
