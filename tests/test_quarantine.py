@@ -17,7 +17,7 @@ def _audit_rec(proposal_id, tier_value="rojo", actor="Consell", url="https://x.c
     return {
         "proposal_id": proposal_id,
         "week": "2026-w19",
-        "created_at": "2026-05-08T03:00:00Z",
+        "created_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "tier": {
             "value": tier_value,
             "reason": "url_ok=False: fuente inaccesible",
