@@ -31,7 +31,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 ## ⏸ Pausado
 
-- **Automatizaciones del pipeline (desde 2026-07-28 — [D45](DECISIONES.md)).** Cron semanal (`gh workflow disable "Weekly report"`) y monitor diario de feeds (`gh workflow disable "Feed health check"`) desactivados en GitHub Actions. `auto-retry.yml` sigue activo pero dormido de facto (no tiene nada que relanzar). **Reactivación:** `gh workflow enable "Weekly report"` + `gh workflow enable "Feed health check"` — sin cambio de código, el pipeline vuelve tal cual estaba.
+- **Automatizaciones del pipeline (desde 2026-07-28 — [D45](DECISIONES.md)).** Los tres workflows recurrentes/reactivos del pipeline están desactivados en GitHub Actions: cron semanal (`Weekly report`), monitor diario de feeds (`Feed health check`) y el relanzador (`Auto-retry on fix`). `Tests` y `Validate Anthropic API key` siguen activos (no mandan avisos por su cuenta; `Tests` solo corre si hay push a `main`/`claude/**`). **Reactivación:** `gh workflow enable "Weekly report"` + `gh workflow enable "Feed health check"` + `gh workflow enable "Auto-retry on fix"` — sin cambio de código, el pipeline vuelve tal cual estaba.
 - **Bloque B (web completa).** Prototipo HTML Paso 1 entregado y verificado 2026-04-21 pero **no cerrado** — falta visto bueno visual y responder 3 preguntas abiertas (wordmark V2 Split en cabecera real, apilado 6 chips en mobile, barra de progreso 8 estados vs aplicables). Ver memoria [`prototipo_paso1_en_pausa.md`](.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/prototipo_paso1_en_pausa.md).
 - **Resto del Bloque B** (~20 páginas) en espera de decisión de alcance del editor.
 
