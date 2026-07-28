@@ -1,6 +1,8 @@
-# Estado operativo — actualizado 2026-05-20
+# Estado operativo — actualizado 2026-07-28
 
 > **Regla:** ≤ 100 líneas. Solo estado vigente. Lo histórico vive en [`DIARIO.md`](DIARIO.md); lo fundacional en [`CLAUDE.md`](CLAUDE.md) (sección *Reglas fundacionales*). Ver [D0](DECISIONES.md).
+
+> ⏸️ **Proyecto en pausa (solo automatizaciones) desde 2026-07-28** ([D45](DECISIONES.md)). Cron semanal y monitor diario de feeds desactivados en GitHub Actions (`gh workflow disable`). La web sigue publicada tal cual con la última edición (W31). **Para reactivar:** `gh workflow enable "Weekly report"` y `gh workflow enable "Feed health check"`.
 
 ## 🧭 Marco de trabajo de la Fase 1 (desde 2026-04-23, [D6](DECISIONES.md))
 
@@ -12,15 +14,11 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 ## 🟢 Activo
 
-- **Pipeline documental semanal** en `main`. Cron lunes 05:00 UTC. Última edición: W21 (18-24 may 2026). Self-review tres reglas nuevas al prompt del generador aplicadas el 2026-05-20 (commit `c3ffefd`) — `(dato oficial vía medio)`, consolidación de actores duplicados, cierre de eventos de cronología actual. Validación empírica prevista en W22.
-- **Sistema de auto-recuperación operativo** desde 2026-04-27 ([D16](DECISIONES.md)). Tres capas: reintentos automáticos del SDK (`max_retries=5`), workflow `auto-retry.yml` que relanza tras push de fix, y marca persistente `data/PIPELINE_FAILED.flag` que dispara aviso de recuperación al volver a publicar. Coste cero. Validación pendiente con el próximo incidente real.
-- **Web live** → <https://otundra.github.io/ibiza-housing-radar/>
-- **Control de costes operativo.** Topes blando 12 € / duro 50 €. Dashboard en [`private/costs.md`](private/costs.md).
-- **Snapshot append-only** en `data/archive/YYYY-WNN/`. Operativo desde W17 con interrupción W18-W21 (el workflow no incluía la carpeta en sus `git add`; el código sí generaba el snapshot pero se descartaba al destruir el runner). Corregido el 2026-05-20 (commit `d4ec837`); preserva W22 en adelante. Las semanas perdidas no son recuperables.
-- **Copia de seguridad en GitLab operativa** desde 2026-04-29. Pull mirroring nativo (gitlab.com/otundra/ibiza-housing-radar, privado). Actualización automática cada hora. Cero mantenimiento.
-- **Nou Diari añadida como fuente RSS** desde 2026-04-29 (`src/sources.yaml`). Medio digital Eivissa/Formentera, 8-15 art/día, cobertura directa vivienda y temporada, sin paywall. Entra en el próximo cron.
-- **Salud de fuentes operativa** desde 2026-04-25 (tarea OP2 de Revisión Fase 0.5). Módulo [`src/sources_health.py`](src/sources_health.py) + integración silenciosa en `ingest.py` + alerta consolidada vía Telegram con 4 reglas de detección (feed muerto, frecuencia caída, vacío inesperado, estructura cambiada).
-- **Monitor diario de feeds RSS operativo** desde 2026-05-12 ([D44](DECISIONES.md)). Workflow [`feed-health.yml`](.github/workflows/feed-health.yml) (cron 06:00 UTC) ejecuta [`src/feed_check.py`](src/feed_check.py): chequeo técnico HTTP + XML válido + frescura ≤60 días, y descubrimiento automático de URL alternativa para feeds `kind: native` caídos. Propone candidatos por Telegram; no toca `sources.yaml` solo. Complementa el chequeo semanal del cron principal — reduce latencia de detección de 14 días a 24 horas. Cero coste IA.
+- **Web live** → <https://otundra.github.io/ibiza-housing-radar/>. Última edición publicada: W31, antes de la pausa.
+- **Control de costes operativo.** Topes blando 12 € / duro 50 €. Dashboard en [`private/costs.md`](private/costs.md). Sin gasto nuevo mientras dure la pausa.
+- **Snapshot append-only** en `data/archive/YYYY-WNN/`. Operativo desde W17 con interrupción W18-W21, corregida el 2026-05-20 (commit `d4ec837`).
+- **Copia de seguridad en GitLab operativa** desde 2026-04-29. Pull mirroring nativo (gitlab.com/otundra/ibiza-housing-radar, privado). Actualización automática cada hora. Cero mantenimiento. (No depende del cron — sigue activa aunque el pipeline esté en pausa.)
+- **Salud de fuentes (módulo silencioso)** desde 2026-04-25. [`src/sources_health.py`](src/sources_health.py) vive dentro de `report.py` — no corre mientras el cron esté desactivado.
 
 ## 🔎 Pendientes de verificación
 
@@ -33,6 +31,7 @@ Tres hitos grandes. El editor decide entrada y cierre de cada uno; el resto va e
 
 ## ⏸ Pausado
 
+- **Automatizaciones del pipeline (desde 2026-07-28 — [D45](DECISIONES.md)).** Cron semanal (`gh workflow disable "Weekly report"`) y monitor diario de feeds (`gh workflow disable "Feed health check"`) desactivados en GitHub Actions. `auto-retry.yml` sigue activo pero dormido de facto (no tiene nada que relanzar). **Reactivación:** `gh workflow enable "Weekly report"` + `gh workflow enable "Feed health check"` — sin cambio de código, el pipeline vuelve tal cual estaba.
 - **Bloque B (web completa).** Prototipo HTML Paso 1 entregado y verificado 2026-04-21 pero **no cerrado** — falta visto bueno visual y responder 3 preguntas abiertas (wordmark V2 Split en cabecera real, apilado 6 chips en mobile, barra de progreso 8 estados vs aplicables). Ver memoria [`prototipo_paso1_en_pausa.md`](.claude/projects/-Users-raulserrano-Documents-GitHub-ibiza-housing-radar/memory/prototipo_paso1_en_pausa.md).
 - **Resto del Bloque B** (~20 páginas) en espera de decisión de alcance del editor.
 

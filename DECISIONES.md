@@ -577,6 +577,19 @@ Las siguientes 13 decisiones se cerraron el **2026-04-21** dentro de [`ESTUDIO-D
 
 ---
 
+### D45 — Pausa de las automatizaciones del pipeline (cron semanal + monitor de feeds)
+
+- **Fecha:** 2026-07-28
+- **Tema:** arquitectura
+- **Decisión:** se desactivan en GitHub Actions los dos workflows programados del proyecto — `Weekly report` (cron semanal, genera y publica la edición) y `Feed health check` (monitor diario de feeds, [D44](#d44--monitor-diario-de-salud-de-feeds-rss--descubrimiento-automático-de-url-alternativa)) — vía `gh workflow disable "Weekly report"` y `gh workflow disable "Feed health check"`. Sin tocar código ni configuración de los workflows: la desactivación es un flag de GitHub, no un cambio en el repo. La web sigue publicada con la última edición (W31) y GitHub Pages no se toca. `auto-retry.yml` queda activo pero dormido de facto (no tiene qué relanzar mientras el cron principal está desactivado). El resto de infraestructura (backup GitLab, control de costes, tests) sigue como está.
+- **Por qué:** petición explícita del editor de pausar el proyecto y sus procesos, con requisito expreso de que la reactivación sea fácil. Desactivar a nivel de GitHub Actions (en vez de comentar el `schedule:` en el YAML) cumple ambas cosas: cero coste de API mientras dure la pausa, y reactivación en un solo comando sin generar diffs de código que alguien tenga que revisar o resolver más adelante.
+- **Docs afectados:** `STATUS.md` (bloque de aviso arriba + secciones Activo/Pausado reorganizadas), `DIARIO.md` (entrada 2026-07-28), `DECISIONES.md` (esta).
+- **Próxima revisión:** cuando el editor decida retomar. Sin fecha fija — coherente con [D15](#d15--sin-calendario-público-ni-fecha-de-lanzamiento-el-ritmo-lo-marca-el-editor-no-el-reloj).
+- **Criterio de revocación:** se reactiva en el momento en que el editor lo pida — `gh workflow enable "Weekly report"` + `gh workflow enable "Feed health check"`. No hay condición técnica que dispare la reactivación sola; es puramente decisión del editor.
+- **Estado:** vigente
+
+---
+
 ## Anexo — Cuestionario inicial del 2026-04-20 (16 cuestiones cerradas)
 
 Documento histórico [`DECISIONES-PENDIENTES.md`](DECISIONES-PENDIENTES.md). El editor cerró 16 cuestiones del cuestionario inicial el 2026-04-20 al activar el modelo documental. La mayoría son hechos consumados ya aplicados al sistema, cuya información operativa vive en `CLAUDE.md`, `ARQUITECTURA.md`, `docs/metodo.md` y demás. Esta tabla queda como índice canónico; los detalles narrativos de cómo se cerró cada cuestión viven en el documento histórico. Se incluyen **sin migrar a D propias** porque son hechos consumados sin criterio de revocación significativo abierto.

@@ -13,6 +13,15 @@ Reglas:
 
 ---
 
+## 2026-07-28 [arquitectura] — Proyecto en pausa: automatizaciones desactivadas ([D45](DECISIONES.md))
+
+- **Disparador.** Petición explícita del editor: *"quiero pausar el proyecto y sus procesos"*. Tras preguntar el alcance, eligió pausar solo las automatizaciones (no la web), con reactivación fácil garantizada.
+- **Qué se hizo.** `gh workflow disable "Weekly report"` y `gh workflow disable "Feed health check"` — desactivación a nivel de GitHub Actions, sin tocar código ni YAML. La web sigue publicada tal cual con la última edición (W31). `auto-retry.yml` queda activo pero dormido de facto. Reactivación en un solo paso: `gh workflow enable "Weekly report"` + `gh workflow enable "Feed health check"`.
+- **Contexto de la sesión.** Al arrancar, el repo local estaba 7 commits por detrás del remoto (el cron llevaba corriendo solo desde el 20-may hasta la W31, 9 ediciones sin que ninguna sesión tocara el diario). Se trajo todo con `git pull --ff-only` antes de pausar. `STATUS.md` quedó actualizado con el aviso de pausa arriba del todo y las secciones Activo/Pausado reorganizadas; el resto del documento (Hito 1, sub-estudios BOIB) sigue con la foto de mediados de mayo — pendiente de repasar cuando se retome.
+- **Decisión registrada.** [D45](DECISIONES.md).
+
+---
+
 ## 2026-05-20 [arquitectura] — Persistencia del archive append-only en el cron semanal
 
 - **Disparador.** Rellenando el check `private/checks/2026-w21-feeds-reparados.md` (verificación post-fix de feeds reparados D44): dos candidatos fuertes 🔴 (vivienda de la Guardia Civil, reportaje de propietarios) no entraron a la edición W21 y la causa raíz no se pudo determinar porque `data/archive/2026-W21/` no existe en el repo. Inventario: solo está `data/archive/2026-W17/`. Faltan W18-W21.
