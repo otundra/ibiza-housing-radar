@@ -5,7 +5,6 @@ description: >
   trabajadores de temporada. Cada lunes una lectura de la prensa local
   y propuestas accionables enlazadas a las noticias que las motivan.
 author: otundra
-email: serranocervantes@gmail.com
 
 baseurl: "/ibiza-housing-radar"
 url: "https://otundra.github.io"

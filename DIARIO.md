@@ -13,6 +13,11 @@ Reglas:
 
 ---
 
+## 2026-09-28 [arquitectura] — Repaso de vuelta: la pausa se mantiene; email personal fuera del repo público
+
+- **Pausa confirmada (D45 sigue vigente).** Desde el 2026-07-28 no ha corrido nada: las 3 automatizaciones están apagadas, sin coste ni avisos. La web sigue publicada con la edición W31. Se reactiva con los dos `gh workflow enable` de D45.
+- **Email personal quitado de `docs/_config.yml`** (punto 2 de la auditoría de seguridad del 2026-06-16). Ninguna plantilla lo usaba y no salía en la web. Sigue en el historial público desde abril; no se reescribe, porque obligaría a forzar la subida en un repo público y no deshace la exposición.
+
 ## 2026-07-28 [arquitectura] — Proyecto en pausa: automatizaciones desactivadas ([D45](DECISIONES.md))
 
 - **Disparador.** Petición explícita del editor: *"quiero pausar el proyecto y sus procesos"*. Tras preguntar el alcance, eligió pausar solo las automatizaciones (no la web), con reactivación fácil garantizada.
